@@ -19,9 +19,10 @@ limitations under the License.
 package fake
 
 import (
+	v1alpha1 "kubeform.dev/provider-aws-api/client/clientset/versioned/typed/loadbalancer/v1alpha1"
+
 	rest "k8s.io/client-go/rest"
 	testing "k8s.io/client-go/testing"
-	v1alpha1 "kubeform.dev/provider-aws-api/client/clientset/versioned/typed/loadbalancer/v1alpha1"
 )
 
 type FakeLoadbalancerV1alpha1 struct {

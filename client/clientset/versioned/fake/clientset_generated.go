@@ -19,11 +19,6 @@ limitations under the License.
 package fake
 
 import (
-	"k8s.io/apimachinery/pkg/runtime"
-	"k8s.io/apimachinery/pkg/watch"
-	"k8s.io/client-go/discovery"
-	fakediscovery "k8s.io/client-go/discovery/fake"
-	"k8s.io/client-go/testing"
 	clientset "kubeform.dev/provider-aws-api/client/clientset/versioned"
 	accessanalyzerv1alpha1 "kubeform.dev/provider-aws-api/client/clientset/versioned/typed/accessanalyzer/v1alpha1"
 	fakeaccessanalyzerv1alpha1 "kubeform.dev/provider-aws-api/client/clientset/versioned/typed/accessanalyzer/v1alpha1/fake"
@@ -331,6 +326,12 @@ import (
 	fakeworkspacesv1alpha1 "kubeform.dev/provider-aws-api/client/clientset/versioned/typed/workspaces/v1alpha1/fake"
 	xrayv1alpha1 "kubeform.dev/provider-aws-api/client/clientset/versioned/typed/xray/v1alpha1"
 	fakexrayv1alpha1 "kubeform.dev/provider-aws-api/client/clientset/versioned/typed/xray/v1alpha1/fake"
+
+	"k8s.io/apimachinery/pkg/runtime"
+	"k8s.io/apimachinery/pkg/watch"
+	"k8s.io/client-go/discovery"
+	fakediscovery "k8s.io/client-go/discovery/fake"
+	"k8s.io/client-go/testing"
 )
 
 // NewSimpleClientset returns a clientset that will respond with the provided objects.

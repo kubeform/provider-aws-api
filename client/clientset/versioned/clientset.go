@@ -21,9 +21,6 @@ package versioned
 import (
 	"fmt"
 
-	discovery "k8s.io/client-go/discovery"
-	rest "k8s.io/client-go/rest"
-	flowcontrol "k8s.io/client-go/util/flowcontrol"
 	accessanalyzerv1alpha1 "kubeform.dev/provider-aws-api/client/clientset/versioned/typed/accessanalyzer/v1alpha1"
 	acmv1alpha1 "kubeform.dev/provider-aws-api/client/clientset/versioned/typed/acm/v1alpha1"
 	acmpcav1alpha1 "kubeform.dev/provider-aws-api/client/clientset/versioned/typed/acmpca/v1alpha1"
@@ -177,6 +174,10 @@ import (
 	worklinkv1alpha1 "kubeform.dev/provider-aws-api/client/clientset/versioned/typed/worklink/v1alpha1"
 	workspacesv1alpha1 "kubeform.dev/provider-aws-api/client/clientset/versioned/typed/workspaces/v1alpha1"
 	xrayv1alpha1 "kubeform.dev/provider-aws-api/client/clientset/versioned/typed/xray/v1alpha1"
+
+	discovery "k8s.io/client-go/discovery"
+	rest "k8s.io/client-go/rest"
+	flowcontrol "k8s.io/client-go/util/flowcontrol"
 )
 
 type Interface interface {

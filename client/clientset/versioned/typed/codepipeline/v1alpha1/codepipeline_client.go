@@ -19,9 +19,10 @@ limitations under the License.
 package v1alpha1
 
 import (
-	rest "k8s.io/client-go/rest"
 	v1alpha1 "kubeform.dev/provider-aws-api/apis/codepipeline/v1alpha1"
 	"kubeform.dev/provider-aws-api/client/clientset/versioned/scheme"
+
+	rest "k8s.io/client-go/rest"
 )
 
 type CodepipelineV1alpha1Interface interface {
