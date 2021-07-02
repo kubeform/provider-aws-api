@@ -210,7 +210,7 @@ gen-crd-docs:
 manifests: gen-crds label-crds
 
 .PHONY: gen
-gen: clientset manifests openapi
+gen: clientset manifests # openapi
 
 fmt: $(BUILD_DIRS)
 	@docker run                                                 \
