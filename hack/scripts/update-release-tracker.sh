@@ -14,20 +14,17 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-
-
-
 set -eou pipefail
 
 # ref: https://gist.github.com/joshisa/297b0bc1ec0dcdda0d1625029711fa24
 parse_url() {
-    proto="$(echo $1 | grep :// | sed -e's,^\(.*://\).*,\1,g')"
+    proto="$(echo "$1" | grep :// | sed -e's,^\(.*://\).*,\1,g')"
     # remove the protocol
-    url="$(echo ${1/$proto/})"
+    url="$(echo "${1/$proto/}")"
 
     IFS='/'                  # / is set as delimiter
     read -ra PARTS <<<"$url" # str is read into an array as tokens separated by IFS
-    if [ ${PARTS[0]} != 'github.com' ] || [ ${#PARTS[@]} -ne 5 ]; then
+    if [ "${PARTS[0]}" != 'github.com' ] || [ ${#PARTS[@]} -ne 5 ]; then
         echo "failed to parse relase-tracker: $url"
         exit 1
     fi
@@ -42,25 +39,27 @@ GITHUB_BASE_REF=${GITHUB_BASE_REF:-}
 while IFS=$': \r\t' read -r -u9 marker v; do
     case $marker in
         Release-tracker)
-            export RELEASE_TRACKER=$(echo $v | tr -d '\r\t')
+            RELEASE_TRACKER=$(echo "$v" | tr -d '\r\t')
+            export RELEASE_TRACKER
             ;;
         Release)
-            export RELEASE=$(echo $v | tr -d '\r\t')
+            RELEASE=$(echo "$v" | tr -d '\r\t')
+            export RELEASE
             ;;
     esac
 done 9< <(git show -s --format=%b)
 
-[ ! -z "$RELEASE_TRACKER" ] || {
+[ -n "$RELEASE_TRACKER" ] || {
     echo "Release-tracker url not found."
     exit 0
 }
 
-[ ! -z "$GITHUB_BASE_REF" ] || {
+[ -n "$GITHUB_BASE_REF" ] || {
     echo "GitHub base ref not found."
     exit 0
 }
 
-parse_url $RELEASE_TRACKER
+parse_url "$RELEASE_TRACKER"
 api_url="repos/${RELEASE_TRACKER_OWNER}/${RELEASE_TRACKER_REPO}/issues/${RELEASE_TRACKER_PR}/comments"
 
 case $GITHUB_BASE_REF in
