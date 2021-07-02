@@ -23,8 +23,7 @@ BIN      := provider-$(PROVIDER)-api
 CRD_OPTIONS          ?= "crd:trivialVersions=true,allowDangerousTypes=true"
 # https://github.com/appscodelabs/gengo-builder
 CODE_GENERATOR_IMAGE ?= appscode/gengo:release-1.21
-ALL_API_GROUP        ?= $(shell find $$(pwd)/apis -maxdepth 1 -mindepth 1 -type d -printf '%f:v1alpha1 ')
-API_GROUPS            = $(filter-out $(aws):v1alpha1,$(ALL_API_GROUP))
+API_GROUPS           ?= $(shell find $$(pwd)/apis -maxdepth 1 -mindepth 1 -type d -printf '%f:v1alpha1 ')
 
 # This version-strategy uses git tags to set the version string
 git_branch       := $(shell git rev-parse --abbrev-ref HEAD)
@@ -115,7 +114,7 @@ gen-apis:
 # Generate a typed clientset
 .PHONY: clientset
 clientset:
-	@docker run --rm                                     \
+	@docker run --rm                                   \
 		-u $$(id -u):$$(id -g)                           \
 		-v /tmp:/.cache                                  \
 		-v $$(pwd):$(DOCKER_REPO_ROOT)                   \
@@ -124,10 +123,10 @@ clientset:
 		--env HTTPS_PROXY=$(HTTPS_PROXY)                 \
 		$(CODE_GENERATOR_IMAGE)                          \
 		/go/src/k8s.io/code-generator/generate-groups.sh \
-			all                                          \
-			$(GO_PKG)/$(REPO)/client                     \
-			$(GO_PKG)/$(REPO)/apis                       \
-			"$(subst base:v1alpha1,, $(API_GROUPS))"     \
+			all                                            \
+			$(GO_PKG)/$(REPO)/client                       \
+			$(GO_PKG)/$(REPO)/apis                         \
+			"$(API_GROUPS)"                                \
 			--go-header-file "./hack/license/go.txt"
 
 # Generate openapi schema
