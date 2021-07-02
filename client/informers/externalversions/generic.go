@@ -21,8 +21,6 @@ package externalversions
 import (
 	"fmt"
 
-	schema "k8s.io/apimachinery/pkg/runtime/schema"
-	cache "k8s.io/client-go/tools/cache"
 	v1alpha1 "kubeform.dev/provider-aws-api/apis/accessanalyzer/v1alpha1"
 	acmv1alpha1 "kubeform.dev/provider-aws-api/apis/acm/v1alpha1"
 	acmpcav1alpha1 "kubeform.dev/provider-aws-api/apis/acmpca/v1alpha1"
@@ -176,6 +174,9 @@ import (
 	worklinkv1alpha1 "kubeform.dev/provider-aws-api/apis/worklink/v1alpha1"
 	workspacesv1alpha1 "kubeform.dev/provider-aws-api/apis/workspaces/v1alpha1"
 	xrayv1alpha1 "kubeform.dev/provider-aws-api/apis/xray/v1alpha1"
+
+	schema "k8s.io/apimachinery/pkg/runtime/schema"
+	cache "k8s.io/client-go/tools/cache"
 )
 
 // GenericInformer is type of SharedIndexInformer which will locate and delegate to other

@@ -21,10 +21,11 @@ package internalinterfaces
 import (
 	time "time"
 
+	versioned "kubeform.dev/provider-aws-api/client/clientset/versioned"
+
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	runtime "k8s.io/apimachinery/pkg/runtime"
 	cache "k8s.io/client-go/tools/cache"
-	versioned "kubeform.dev/provider-aws-api/client/clientset/versioned"
 )
 
 // NewInformerFunc takes versioned.Interface and time.Duration to return a SharedIndexInformer.
