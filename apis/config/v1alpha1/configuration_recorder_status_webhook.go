@@ -28,30 +28,30 @@ import (
 	"sigs.k8s.io/controller-runtime/pkg/webhook"
 )
 
-func (r *ConfigurationRecorderStatus_) SetupWebhookWithManager(mgr ctrl.Manager) error {
+func (r *ConfigurationRecorderStatus) SetupWebhookWithManager(mgr ctrl.Manager) error {
 	return ctrl.NewWebhookManagedBy(mgr).
 		For(r).
 		Complete()
 }
 
-//+kubebuilder:webhook:verbs=create;update;delete,path=/validate-config-aws-kubeform-com-v1alpha1-configurationrecorderstatus_,mutating=false,failurePolicy=fail,groups=config.aws.kubeform.com,resources=configurationrecorderstatus_configurationrecorderstatuses,versions=v1alpha1,name=configurationrecorderstatus_.config.aws.kubeform.io,sideEffects=None,admissionReviewVersions=v1
+//+kubebuilder:webhook:verbs=create;update;delete,path=/validate-config-aws-kubeform-com-v1alpha1-configurationrecorderstatus,mutating=false,failurePolicy=fail,groups=config.aws.kubeform.com,resources=configurationrecorderstatuses,versions=v1alpha1,name=configurationrecorderstatus.config.aws.kubeform.io,sideEffects=None,admissionReviewVersions=v1
 
-var _ webhook.Validator = &ConfigurationRecorderStatus_{}
+var _ webhook.Validator = &ConfigurationRecorderStatus{}
 
 // ValidateCreate implements webhook.Validator so a webhook will be registered for the type
-func (r *ConfigurationRecorderStatus_) ValidateCreate() error {
+func (r *ConfigurationRecorderStatus) ValidateCreate() error {
 	return nil
 }
 
 // ValidateUpdate implements webhook.Validator so a webhook will be registered for the type
-func (r *ConfigurationRecorderStatus_) ValidateUpdate(old runtime.Object) error {
+func (r *ConfigurationRecorderStatus) ValidateUpdate(old runtime.Object) error {
 	return nil
 }
 
 // ValidateDelete implements webhook.Validator so a webhook will be registered for the type
-func (r *ConfigurationRecorderStatus_) ValidateDelete() error {
+func (r *ConfigurationRecorderStatus) ValidateDelete() error {
 	if r.Spec.TerminationPolicy == base.TerminationPolicyDoNotTerminate {
-		return fmt.Errorf(`configurationrecorderstatus_ "%v/%v" can't be terminated. To delete, change spec.terminationPolicy to Delete`, r.Namespace, r.Name)
+		return fmt.Errorf(`configurationrecorderstatus "%v/%v" can't be terminated. To delete, change spec.terminationPolicy to Delete`, r.Namespace, r.Name)
 	}
 	return nil
 }

@@ -606,8 +606,8 @@ func (f *sharedInformerFactory) ForResource(resource schema.GroupVersionResource
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Config().V1alpha1().ConfigurationAggregators().Informer()}, nil
 	case configv1alpha1.SchemeGroupVersion.WithResource("configurationrecorders"):
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Config().V1alpha1().ConfigurationRecorders().Informer()}, nil
-	case configv1alpha1.SchemeGroupVersion.WithResource("configurationrecorderstatus_s"):
-		return &genericInformer{resource: resource.GroupResource(), informer: f.Config().V1alpha1().ConfigurationRecorderStatus_s().Informer()}, nil
+	case configv1alpha1.SchemeGroupVersion.WithResource("configurationrecorderstatuses"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Config().V1alpha1().ConfigurationRecorderStatuses().Informer()}, nil
 	case configv1alpha1.SchemeGroupVersion.WithResource("conformancepacks"):
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Config().V1alpha1().ConformancePacks().Informer()}, nil
 	case configv1alpha1.SchemeGroupVersion.WithResource("deliverychannels"):

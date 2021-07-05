@@ -34,17 +34,17 @@ import (
 // +kubebuilder:subresource:status
 // +kubebuilder:printcolumn:name="Phase",type=string,JSONPath=`.status.phase`
 
-type ConfigurationRecorderStatus_ struct {
+type ConfigurationRecorderStatus struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
 	metav1.ObjectMeta `json:"metadata,omitempty"`
-	Spec              ConfigurationRecorderStatus_Spec   `json:"spec,omitempty"`
-	Status            ConfigurationRecorderStatus_Status `json:"status,omitempty"`
+	Spec              ConfigurationRecorderStatusSpec   `json:"spec,omitempty"`
+	Status            ConfigurationRecorderStatusStatus `json:"status,omitempty"`
 }
 
-type ConfigurationRecorderStatus_Spec struct {
-	KubeformOutput *ConfigurationRecorderStatus_SpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+type ConfigurationRecorderStatusSpec struct {
+	KubeformOutput *ConfigurationRecorderStatusSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
 
-	Resource ConfigurationRecorderStatus_SpecResource `json:"resource" tf:"resource"`
+	Resource ConfigurationRecorderStatusSpecResource `json:"resource" tf:"resource"`
 
 	UpdatePolicy base.UpdatePolicy `json:"updatePolicy,omitempty" tf:"-"`
 
@@ -53,14 +53,14 @@ type ConfigurationRecorderStatus_Spec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 }
 
-type ConfigurationRecorderStatus_SpecResource struct {
+type ConfigurationRecorderStatusSpecResource struct {
 	ID string `json:"id,omitempty" tf:"id,omitempty"`
 
 	IsEnabled *bool   `json:"isEnabled" tf:"is_enabled"`
 	Name      *string `json:"name" tf:"name"`
 }
 
-type ConfigurationRecorderStatus_Status struct {
+type ConfigurationRecorderStatusStatus struct {
 	// Resource generation, which is updated on mutation by the API Server.
 	// +optional
 	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
@@ -73,10 +73,10 @@ type ConfigurationRecorderStatus_Status struct {
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
 // +kubebuilder:object:root=true
 
-// ConfigurationRecorderStatus_List is a list of ConfigurationRecorderStatus_s
-type ConfigurationRecorderStatus_List struct {
+// ConfigurationRecorderStatusList is a list of ConfigurationRecorderStatuss
+type ConfigurationRecorderStatusList struct {
 	metav1.TypeMeta `json:",inline"`
 	metav1.ListMeta `json:"metadata,omitempty"`
-	// Items is a list of ConfigurationRecorderStatus_ CRD objects
-	Items []ConfigurationRecorderStatus_ `json:"items,omitempty"`
+	// Items is a list of ConfigurationRecorderStatus CRD objects
+	Items []ConfigurationRecorderStatus `json:"items,omitempty"`
 }

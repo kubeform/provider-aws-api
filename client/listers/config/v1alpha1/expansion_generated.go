@@ -50,13 +50,13 @@ type ConfigurationRecorderListerExpansion interface{}
 // ConfigurationRecorderNamespaceLister.
 type ConfigurationRecorderNamespaceListerExpansion interface{}
 
-// ConfigurationRecorderStatus_ListerExpansion allows custom methods to be added to
-// ConfigurationRecorderStatus_Lister.
-type ConfigurationRecorderStatus_ListerExpansion interface{}
+// ConfigurationRecorderStatusListerExpansion allows custom methods to be added to
+// ConfigurationRecorderStatusLister.
+type ConfigurationRecorderStatusListerExpansion interface{}
 
-// ConfigurationRecorderStatus_NamespaceListerExpansion allows custom methods to be added to
-// ConfigurationRecorderStatus_NamespaceLister.
-type ConfigurationRecorderStatus_NamespaceListerExpansion interface{}
+// ConfigurationRecorderStatusNamespaceListerExpansion allows custom methods to be added to
+// ConfigurationRecorderStatusNamespaceLister.
+type ConfigurationRecorderStatusNamespaceListerExpansion interface{}
 
 // ConformancePackListerExpansion allows custom methods to be added to
 // ConformancePackLister.

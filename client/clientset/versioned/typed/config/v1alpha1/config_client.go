@@ -31,7 +31,7 @@ type ConfigV1alpha1Interface interface {
 	ConfigRulesGetter
 	ConfigurationAggregatorsGetter
 	ConfigurationRecordersGetter
-	ConfigurationRecorderStatus_sGetter
+	ConfigurationRecorderStatusesGetter
 	ConformancePacksGetter
 	DeliveryChannelsGetter
 	OrganizationCustomRulesGetter
@@ -60,8 +60,8 @@ func (c *ConfigV1alpha1Client) ConfigurationRecorders(namespace string) Configur
 	return newConfigurationRecorders(c, namespace)
 }
 
-func (c *ConfigV1alpha1Client) ConfigurationRecorderStatus_s(namespace string) ConfigurationRecorderStatus_Interface {
-	return newConfigurationRecorderStatus_s(c, namespace)
+func (c *ConfigV1alpha1Client) ConfigurationRecorderStatuses(namespace string) ConfigurationRecorderStatusInterface {
+	return newConfigurationRecorderStatuses(c, namespace)
 }
 
 func (c *ConfigV1alpha1Client) ConformancePacks(namespace string) ConformancePackInterface {
