@@ -33,59 +33,59 @@ import (
 	cache "k8s.io/client-go/tools/cache"
 )
 
-// ConfigurationRecorderStatus_Informer provides access to a shared informer and lister for
-// ConfigurationRecorderStatus_s.
-type ConfigurationRecorderStatus_Informer interface {
+// ConfigurationRecorderStatusInformer provides access to a shared informer and lister for
+// ConfigurationRecorderStatuses.
+type ConfigurationRecorderStatusInformer interface {
 	Informer() cache.SharedIndexInformer
-	Lister() v1alpha1.ConfigurationRecorderStatus_Lister
+	Lister() v1alpha1.ConfigurationRecorderStatusLister
 }
 
-type configurationRecorderStatus_Informer struct {
+type configurationRecorderStatusInformer struct {
 	factory          internalinterfaces.SharedInformerFactory
 	tweakListOptions internalinterfaces.TweakListOptionsFunc
 	namespace        string
 }
 
-// NewConfigurationRecorderStatus_Informer constructs a new informer for ConfigurationRecorderStatus_ type.
+// NewConfigurationRecorderStatusInformer constructs a new informer for ConfigurationRecorderStatus type.
 // Always prefer using an informer factory to get a shared informer instead of getting an independent
 // one. This reduces memory footprint and number of connections to the server.
-func NewConfigurationRecorderStatus_Informer(client versioned.Interface, namespace string, resyncPeriod time.Duration, indexers cache.Indexers) cache.SharedIndexInformer {
-	return NewFilteredConfigurationRecorderStatus_Informer(client, namespace, resyncPeriod, indexers, nil)
+func NewConfigurationRecorderStatusInformer(client versioned.Interface, namespace string, resyncPeriod time.Duration, indexers cache.Indexers) cache.SharedIndexInformer {
+	return NewFilteredConfigurationRecorderStatusInformer(client, namespace, resyncPeriod, indexers, nil)
 }
 
-// NewFilteredConfigurationRecorderStatus_Informer constructs a new informer for ConfigurationRecorderStatus_ type.
+// NewFilteredConfigurationRecorderStatusInformer constructs a new informer for ConfigurationRecorderStatus type.
 // Always prefer using an informer factory to get a shared informer instead of getting an independent
 // one. This reduces memory footprint and number of connections to the server.
-func NewFilteredConfigurationRecorderStatus_Informer(client versioned.Interface, namespace string, resyncPeriod time.Duration, indexers cache.Indexers, tweakListOptions internalinterfaces.TweakListOptionsFunc) cache.SharedIndexInformer {
+func NewFilteredConfigurationRecorderStatusInformer(client versioned.Interface, namespace string, resyncPeriod time.Duration, indexers cache.Indexers, tweakListOptions internalinterfaces.TweakListOptionsFunc) cache.SharedIndexInformer {
 	return cache.NewSharedIndexInformer(
 		&cache.ListWatch{
 			ListFunc: func(options v1.ListOptions) (runtime.Object, error) {
 				if tweakListOptions != nil {
 					tweakListOptions(&options)
 				}
-				return client.ConfigV1alpha1().ConfigurationRecorderStatus_s(namespace).List(context.TODO(), options)
+				return client.ConfigV1alpha1().ConfigurationRecorderStatuses(namespace).List(context.TODO(), options)
 			},
 			WatchFunc: func(options v1.ListOptions) (watch.Interface, error) {
 				if tweakListOptions != nil {
 					tweakListOptions(&options)
 				}
-				return client.ConfigV1alpha1().ConfigurationRecorderStatus_s(namespace).Watch(context.TODO(), options)
+				return client.ConfigV1alpha1().ConfigurationRecorderStatuses(namespace).Watch(context.TODO(), options)
 			},
 		},
-		&configv1alpha1.ConfigurationRecorderStatus_{},
+		&configv1alpha1.ConfigurationRecorderStatus{},
 		resyncPeriod,
 		indexers,
 	)
 }
 
-func (f *configurationRecorderStatus_Informer) defaultInformer(client versioned.Interface, resyncPeriod time.Duration) cache.SharedIndexInformer {
-	return NewFilteredConfigurationRecorderStatus_Informer(client, f.namespace, resyncPeriod, cache.Indexers{cache.NamespaceIndex: cache.MetaNamespaceIndexFunc}, f.tweakListOptions)
+func (f *configurationRecorderStatusInformer) defaultInformer(client versioned.Interface, resyncPeriod time.Duration) cache.SharedIndexInformer {
+	return NewFilteredConfigurationRecorderStatusInformer(client, f.namespace, resyncPeriod, cache.Indexers{cache.NamespaceIndex: cache.MetaNamespaceIndexFunc}, f.tweakListOptions)
 }
 
-func (f *configurationRecorderStatus_Informer) Informer() cache.SharedIndexInformer {
-	return f.factory.InformerFor(&configv1alpha1.ConfigurationRecorderStatus_{}, f.defaultInformer)
+func (f *configurationRecorderStatusInformer) Informer() cache.SharedIndexInformer {
+	return f.factory.InformerFor(&configv1alpha1.ConfigurationRecorderStatus{}, f.defaultInformer)
 }
 
-func (f *configurationRecorderStatus_Informer) Lister() v1alpha1.ConfigurationRecorderStatus_Lister {
-	return v1alpha1.NewConfigurationRecorderStatus_Lister(f.Informer().GetIndexer())
+func (f *configurationRecorderStatusInformer) Lister() v1alpha1.ConfigurationRecorderStatusLister {
+	return v1alpha1.NewConfigurationRecorderStatusLister(f.Informer().GetIndexer())
 }

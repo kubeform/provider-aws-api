@@ -26,7 +26,7 @@ type ConfigurationAggregatorExpansion interface{}
 
 type ConfigurationRecorderExpansion interface{}
 
-type ConfigurationRecorderStatus_Expansion interface{}
+type ConfigurationRecorderStatusExpansion interface{}
 
 type ConformancePackExpansion interface{}
 

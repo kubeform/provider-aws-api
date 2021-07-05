@@ -37,8 +37,8 @@ import (
 type ConfigurationRecorder struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
 	metav1.ObjectMeta `json:"metadata,omitempty"`
-	Spec              ConfigurationRecorderSpec   `json:"spec,omitempty"`
-	Status            ConfigurationRecorderStatus `json:"status,omitempty"`
+	Spec              ConfigurationRecorderSpec    `json:"spec,omitempty"`
+	Status            ConfigurationRecorderStatus_ `json:"status,omitempty"`
 }
 
 type ConfigurationRecorderSpecRecordingGroup struct {
@@ -72,7 +72,7 @@ type ConfigurationRecorderSpecResource struct {
 	RoleArn        *string                                  `json:"roleArn" tf:"role_arn"`
 }
 
-type ConfigurationRecorderStatus struct {
+type ConfigurationRecorderStatus_ struct {
 	// Resource generation, which is updated on mutation by the API Server.
 	// +optional
 	ObservedGeneration int64 `json:"observedGeneration,omitempty"`

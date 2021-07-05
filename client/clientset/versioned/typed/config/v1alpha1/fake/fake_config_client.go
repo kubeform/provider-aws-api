@@ -45,8 +45,8 @@ func (c *FakeConfigV1alpha1) ConfigurationRecorders(namespace string) v1alpha1.C
 	return &FakeConfigurationRecorders{c, namespace}
 }
 
-func (c *FakeConfigV1alpha1) ConfigurationRecorderStatus_s(namespace string) v1alpha1.ConfigurationRecorderStatus_Interface {
-	return &FakeConfigurationRecorderStatus_s{c, namespace}
+func (c *FakeConfigV1alpha1) ConfigurationRecorderStatuses(namespace string) v1alpha1.ConfigurationRecorderStatusInterface {
+	return &FakeConfigurationRecorderStatuses{c, namespace}
 }
 
 func (c *FakeConfigV1alpha1) ConformancePacks(namespace string) v1alpha1.ConformancePackInterface {

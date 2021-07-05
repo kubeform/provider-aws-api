@@ -32,8 +32,8 @@ type Interface interface {
 	ConfigurationAggregators() ConfigurationAggregatorInformer
 	// ConfigurationRecorders returns a ConfigurationRecorderInformer.
 	ConfigurationRecorders() ConfigurationRecorderInformer
-	// ConfigurationRecorderStatus_s returns a ConfigurationRecorderStatus_Informer.
-	ConfigurationRecorderStatus_s() ConfigurationRecorderStatus_Informer
+	// ConfigurationRecorderStatuses returns a ConfigurationRecorderStatusInformer.
+	ConfigurationRecorderStatuses() ConfigurationRecorderStatusInformer
 	// ConformancePacks returns a ConformancePackInformer.
 	ConformancePacks() ConformancePackInformer
 	// DeliveryChannels returns a DeliveryChannelInformer.
@@ -77,9 +77,9 @@ func (v *version) ConfigurationRecorders() ConfigurationRecorderInformer {
 	return &configurationRecorderInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
 }
 
-// ConfigurationRecorderStatus_s returns a ConfigurationRecorderStatus_Informer.
-func (v *version) ConfigurationRecorderStatus_s() ConfigurationRecorderStatus_Informer {
-	return &configurationRecorderStatus_Informer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+// ConfigurationRecorderStatuses returns a ConfigurationRecorderStatusInformer.
+func (v *version) ConfigurationRecorderStatuses() ConfigurationRecorderStatusInformer {
+	return &configurationRecorderStatusInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
 }
 
 // ConformancePacks returns a ConformancePackInformer.
