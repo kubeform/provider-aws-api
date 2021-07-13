@@ -50,7 +50,7 @@ type NotificationRuleSpecTarget struct {
 }
 
 type NotificationRuleSpec struct {
-	KubeformOutput *NotificationRuleSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *NotificationRuleSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource NotificationRuleSpecResource `json:"resource" tf:"resource"`
 

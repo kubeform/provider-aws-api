@@ -42,7 +42,7 @@ type NotebookInstanceLifecycleConfiguration struct {
 }
 
 type NotebookInstanceLifecycleConfigurationSpec struct {
-	KubeformOutput *NotebookInstanceLifecycleConfigurationSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *NotebookInstanceLifecycleConfigurationSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource NotebookInstanceLifecycleConfigurationSpecResource `json:"resource" tf:"resource"`
 

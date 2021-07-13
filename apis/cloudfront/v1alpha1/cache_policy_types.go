@@ -86,7 +86,7 @@ type CachePolicySpecParametersInCacheKeyAndForwardedToOrigin struct {
 }
 
 type CachePolicySpec struct {
-	KubeformOutput *CachePolicySpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *CachePolicySpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource CachePolicySpecResource `json:"resource" tf:"resource"`
 

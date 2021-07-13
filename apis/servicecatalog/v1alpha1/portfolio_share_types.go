@@ -42,7 +42,7 @@ type PortfolioShare struct {
 }
 
 type PortfolioShareSpec struct {
-	KubeformOutput *PortfolioShareSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *PortfolioShareSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource PortfolioShareSpecResource `json:"resource" tf:"resource"`
 

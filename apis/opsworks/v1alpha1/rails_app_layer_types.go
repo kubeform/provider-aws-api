@@ -56,7 +56,7 @@ type RailsAppLayerSpecEbsVolume struct {
 }
 
 type RailsAppLayerSpec struct {
-	KubeformOutput *RailsAppLayerSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *RailsAppLayerSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource RailsAppLayerSpecResource `json:"resource" tf:"resource"`
 

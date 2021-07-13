@@ -83,7 +83,7 @@ type EndpointConfigurationSpecProductionVariants struct {
 }
 
 type EndpointConfigurationSpec struct {
-	KubeformOutput *EndpointConfigurationSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *EndpointConfigurationSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource EndpointConfigurationSpecResource `json:"resource" tf:"resource"`
 

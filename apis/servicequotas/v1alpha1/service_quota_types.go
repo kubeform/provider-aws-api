@@ -42,7 +42,7 @@ type ServiceQuota struct {
 }
 
 type ServiceQuotaSpec struct {
-	KubeformOutput *ServiceQuotaSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *ServiceQuotaSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource ServiceQuotaSpecResource `json:"resource" tf:"resource"`
 

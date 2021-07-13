@@ -42,7 +42,7 @@ type OrganizationConfiguration struct {
 }
 
 type OrganizationConfigurationSpec struct {
-	KubeformOutput *OrganizationConfigurationSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *OrganizationConfigurationSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource OrganizationConfigurationSpecResource `json:"resource" tf:"resource"`
 

@@ -42,7 +42,7 @@ type BackendServerPolicy struct {
 }
 
 type BackendServerPolicySpec struct {
-	KubeformOutput *BackendServerPolicySpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *BackendServerPolicySpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource BackendServerPolicySpecResource `json:"resource" tf:"resource"`
 

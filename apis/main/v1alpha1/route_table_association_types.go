@@ -42,7 +42,7 @@ type RouteTableAssociation struct {
 }
 
 type RouteTableAssociationSpec struct {
-	KubeformOutput *RouteTableAssociationSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *RouteTableAssociationSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource RouteTableAssociationSpecResource `json:"resource" tf:"resource"`
 

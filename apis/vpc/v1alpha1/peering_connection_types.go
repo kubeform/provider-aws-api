@@ -60,7 +60,7 @@ type PeeringConnectionSpecRequester struct {
 }
 
 type PeeringConnectionSpec struct {
-	KubeformOutput *PeeringConnectionSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *PeeringConnectionSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource PeeringConnectionSpecResource `json:"resource" tf:"resource"`
 

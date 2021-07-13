@@ -42,7 +42,7 @@ type GlobalSettings struct {
 }
 
 type GlobalSettingsSpec struct {
-	KubeformOutput *GlobalSettingsSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *GlobalSettingsSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource GlobalSettingsSpecResource `json:"resource" tf:"resource"`
 

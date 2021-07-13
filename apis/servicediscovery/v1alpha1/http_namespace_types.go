@@ -42,7 +42,7 @@ type HttpNamespace struct {
 }
 
 type HttpNamespaceSpec struct {
-	KubeformOutput *HttpNamespaceSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *HttpNamespaceSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource HttpNamespaceSpecResource `json:"resource" tf:"resource"`
 

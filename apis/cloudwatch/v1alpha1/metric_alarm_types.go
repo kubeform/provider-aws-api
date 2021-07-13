@@ -66,7 +66,7 @@ type MetricAlarmSpecMetricQuery struct {
 }
 
 type MetricAlarmSpec struct {
-	KubeformOutput *MetricAlarmSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *MetricAlarmSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource MetricAlarmSpecResource `json:"resource" tf:"resource"`
 

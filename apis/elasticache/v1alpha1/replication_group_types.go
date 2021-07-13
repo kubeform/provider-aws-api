@@ -47,7 +47,7 @@ type ReplicationGroupSpecClusterMode struct {
 }
 
 type ReplicationGroupSpec struct {
-	KubeformOutput *ReplicationGroupSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *ReplicationGroupSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource ReplicationGroupSpecResource `json:"resource" tf:"resource"`
 

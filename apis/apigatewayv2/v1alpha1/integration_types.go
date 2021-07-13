@@ -52,7 +52,7 @@ type IntegrationSpecTlsConfig struct {
 }
 
 type IntegrationSpec struct {
-	KubeformOutput *IntegrationSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *IntegrationSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource IntegrationSpecResource `json:"resource" tf:"resource"`
 

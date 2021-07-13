@@ -61,7 +61,7 @@ type OptionGroupSpecOption struct {
 }
 
 type OptionGroupSpec struct {
-	KubeformOutput *OptionGroupSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *OptionGroupSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource OptionGroupSpecResource `json:"resource" tf:"resource"`
 

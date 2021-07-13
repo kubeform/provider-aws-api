@@ -42,7 +42,7 @@ type BackendEnvironment struct {
 }
 
 type BackendEnvironmentSpec struct {
-	KubeformOutput *BackendEnvironmentSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *BackendEnvironmentSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource BackendEnvironmentSpecResource `json:"resource" tf:"resource"`
 

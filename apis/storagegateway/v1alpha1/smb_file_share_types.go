@@ -47,7 +47,7 @@ type SmbFileShareSpecCacheAttributes struct {
 }
 
 type SmbFileShareSpec struct {
-	KubeformOutput *SmbFileShareSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *SmbFileShareSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource SmbFileShareSpecResource `json:"resource" tf:"resource"`
 

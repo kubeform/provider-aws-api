@@ -42,7 +42,7 @@ type Lock struct {
 }
 
 type LockSpec struct {
-	KubeformOutput *LockSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *LockSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource LockSpecResource `json:"resource" tf:"resource"`
 

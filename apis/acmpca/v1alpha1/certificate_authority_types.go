@@ -94,7 +94,7 @@ type CertificateAuthoritySpecRevocationConfiguration struct {
 }
 
 type CertificateAuthoritySpec struct {
-	KubeformOutput *CertificateAuthoritySpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *CertificateAuthoritySpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource CertificateAuthoritySpecResource `json:"resource" tf:"resource"`
 

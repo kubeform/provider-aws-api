@@ -42,7 +42,7 @@ type Protection struct {
 }
 
 type ProtectionSpec struct {
-	KubeformOutput *ProtectionSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *ProtectionSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource ProtectionSpecResource `json:"resource" tf:"resource"`
 

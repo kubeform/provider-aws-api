@@ -48,7 +48,7 @@ type ManagedPrefixListSpecEntry struct {
 }
 
 type ManagedPrefixListSpec struct {
-	KubeformOutput *ManagedPrefixListSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *ManagedPrefixListSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource ManagedPrefixListSpecResource `json:"resource" tf:"resource"`
 

@@ -42,7 +42,7 @@ type SigningProfilePermission struct {
 }
 
 type SigningProfilePermissionSpec struct {
-	KubeformOutput *SigningProfilePermissionSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *SigningProfilePermissionSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource SigningProfilePermissionSpecResource `json:"resource" tf:"resource"`
 

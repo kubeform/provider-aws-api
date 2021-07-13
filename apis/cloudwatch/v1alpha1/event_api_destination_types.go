@@ -42,7 +42,7 @@ type EventAPIDestination struct {
 }
 
 type EventAPIDestinationSpec struct {
-	KubeformOutput *EventAPIDestinationSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *EventAPIDestinationSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource EventAPIDestinationSpecResource `json:"resource" tf:"resource"`
 

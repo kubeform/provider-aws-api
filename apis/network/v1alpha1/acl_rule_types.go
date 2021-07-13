@@ -42,7 +42,7 @@ type AclRule struct {
 }
 
 type AclRuleSpec struct {
-	KubeformOutput *AclRuleSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *AclRuleSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource AclRuleSpecResource `json:"resource" tf:"resource"`
 

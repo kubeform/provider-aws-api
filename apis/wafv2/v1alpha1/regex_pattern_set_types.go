@@ -46,7 +46,7 @@ type RegexPatternSetSpecRegularExpression struct {
 }
 
 type RegexPatternSetSpec struct {
-	KubeformOutput *RegexPatternSetSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *RegexPatternSetSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource RegexPatternSetSpecResource `json:"resource" tf:"resource"`
 

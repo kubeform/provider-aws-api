@@ -65,7 +65,7 @@ type JobDefinitionSpecTimeout struct {
 }
 
 type JobDefinitionSpec struct {
-	KubeformOutput *JobDefinitionSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *JobDefinitionSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource JobDefinitionSpecResource `json:"resource" tf:"resource"`
 

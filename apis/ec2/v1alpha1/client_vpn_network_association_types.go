@@ -42,7 +42,7 @@ type ClientVPNNetworkAssociation struct {
 }
 
 type ClientVPNNetworkAssociationSpec struct {
-	KubeformOutput *ClientVPNNetworkAssociationSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *ClientVPNNetworkAssociationSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource ClientVPNNetworkAssociationSpecResource `json:"resource" tf:"resource"`
 

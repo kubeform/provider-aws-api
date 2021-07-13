@@ -58,7 +58,7 @@ type NfsFileShareSpecNfsFileShareDefaults struct {
 }
 
 type NfsFileShareSpec struct {
-	KubeformOutput *NfsFileShareSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *NfsFileShareSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource NfsFileShareSpecResource `json:"resource" tf:"resource"`
 

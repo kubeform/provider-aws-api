@@ -135,7 +135,7 @@ type InstanceRequestSpecRootBlockDevice struct {
 }
 
 type InstanceRequestSpec struct {
-	KubeformOutput *InstanceRequestSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *InstanceRequestSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource InstanceRequestSpecResource `json:"resource" tf:"resource"`
 

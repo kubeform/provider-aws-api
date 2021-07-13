@@ -42,7 +42,7 @@ type Notification struct {
 }
 
 type NotificationSpec struct {
-	KubeformOutput *NotificationSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *NotificationSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource NotificationSpecResource `json:"resource" tf:"resource"`
 

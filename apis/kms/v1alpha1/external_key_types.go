@@ -42,7 +42,7 @@ type ExternalKey struct {
 }
 
 type ExternalKeySpec struct {
-	KubeformOutput *ExternalKeySpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *ExternalKeySpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource ExternalKeySpecResource `json:"resource" tf:"resource"`
 

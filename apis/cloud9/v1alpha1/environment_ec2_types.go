@@ -42,7 +42,7 @@ type EnvironmentEc2 struct {
 }
 
 type EnvironmentEc2Spec struct {
-	KubeformOutput *EnvironmentEc2SpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *EnvironmentEc2SpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource EnvironmentEc2SpecResource `json:"resource" tf:"resource"`
 

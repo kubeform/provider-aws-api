@@ -42,7 +42,7 @@ type EndpointRouteTableAssociation struct {
 }
 
 type EndpointRouteTableAssociationSpec struct {
-	KubeformOutput *EndpointRouteTableAssociationSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *EndpointRouteTableAssociationSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource EndpointRouteTableAssociationSpecResource `json:"resource" tf:"resource"`
 

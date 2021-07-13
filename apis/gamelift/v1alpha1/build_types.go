@@ -48,7 +48,7 @@ type BuildSpecStorageLocation struct {
 }
 
 type BuildSpec struct {
-	KubeformOutput *BuildSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *BuildSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource BuildSpecResource `json:"resource" tf:"resource"`
 

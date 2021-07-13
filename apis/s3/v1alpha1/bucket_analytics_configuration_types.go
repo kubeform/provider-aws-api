@@ -73,7 +73,7 @@ type BucketAnalyticsConfigurationSpecStorageClassAnalysis struct {
 }
 
 type BucketAnalyticsConfigurationSpec struct {
-	KubeformOutput *BucketAnalyticsConfigurationSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *BucketAnalyticsConfigurationSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource BucketAnalyticsConfigurationSpecResource `json:"resource" tf:"resource"`
 

@@ -53,7 +53,7 @@ type OrganizationalUnitSpecAccounts struct {
 }
 
 type OrganizationalUnitSpec struct {
-	KubeformOutput *OrganizationalUnitSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *OrganizationalUnitSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource OrganizationalUnitSpecResource `json:"resource" tf:"resource"`
 

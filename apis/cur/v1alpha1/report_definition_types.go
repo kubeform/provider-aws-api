@@ -42,7 +42,7 @@ type ReportDefinition struct {
 }
 
 type ReportDefinitionSpec struct {
-	KubeformOutput *ReportDefinitionSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *ReportDefinitionSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource ReportDefinitionSpecResource `json:"resource" tf:"resource"`
 

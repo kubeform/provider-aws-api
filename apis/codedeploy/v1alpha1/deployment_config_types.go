@@ -72,7 +72,7 @@ type DeploymentConfigSpecTrafficRoutingConfig struct {
 }
 
 type DeploymentConfigSpec struct {
-	KubeformOutput *DeploymentConfigSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *DeploymentConfigSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource DeploymentConfigSpecResource `json:"resource" tf:"resource"`
 

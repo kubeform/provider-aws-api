@@ -42,7 +42,7 @@ type ApnsVoipSandboxChannel struct {
 }
 
 type ApnsVoipSandboxChannelSpec struct {
-	KubeformOutput *ApnsVoipSandboxChannelSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *ApnsVoipSandboxChannelSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource ApnsVoipSandboxChannelSpecResource `json:"resource" tf:"resource"`
 

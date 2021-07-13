@@ -80,7 +80,7 @@ type ComputeEnvironmentSpecComputeResources struct {
 }
 
 type ComputeEnvironmentSpec struct {
-	KubeformOutput *ComputeEnvironmentSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *ComputeEnvironmentSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource ComputeEnvironmentSpecResource `json:"resource" tf:"resource"`
 

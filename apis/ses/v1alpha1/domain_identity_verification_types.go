@@ -42,7 +42,7 @@ type DomainIdentityVerification struct {
 }
 
 type DomainIdentityVerificationSpec struct {
-	KubeformOutput *DomainIdentityVerificationSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *DomainIdentityVerificationSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource DomainIdentityVerificationSpecResource `json:"resource" tf:"resource"`
 

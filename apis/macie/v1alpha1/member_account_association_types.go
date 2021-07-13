@@ -42,7 +42,7 @@ type MemberAccountAssociation struct {
 }
 
 type MemberAccountAssociationSpec struct {
-	KubeformOutput *MemberAccountAssociationSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *MemberAccountAssociationSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource MemberAccountAssociationSpecResource `json:"resource" tf:"resource"`
 

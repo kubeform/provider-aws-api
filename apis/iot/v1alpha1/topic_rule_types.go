@@ -309,7 +309,7 @@ type TopicRuleSpecStepFunctions struct {
 }
 
 type TopicRuleSpec struct {
-	KubeformOutput *TopicRuleSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *TopicRuleSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource TopicRuleSpecResource `json:"resource" tf:"resource"`
 

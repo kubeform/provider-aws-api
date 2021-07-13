@@ -46,7 +46,7 @@ type LocationS3SpecS3Config struct {
 }
 
 type LocationS3Spec struct {
-	KubeformOutput *LocationS3SpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *LocationS3SpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource LocationS3SpecResource `json:"resource" tf:"resource"`
 

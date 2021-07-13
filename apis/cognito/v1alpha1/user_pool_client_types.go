@@ -64,7 +64,7 @@ type UserPoolClientSpecTokenValidityUnits struct {
 }
 
 type UserPoolClientSpec struct {
-	KubeformOutput *UserPoolClientSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *UserPoolClientSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource UserPoolClientSpecResource `json:"resource" tf:"resource"`
 

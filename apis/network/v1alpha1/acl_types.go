@@ -74,7 +74,7 @@ type AclSpecIngress struct {
 }
 
 type AclSpec struct {
-	KubeformOutput *AclSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *AclSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource AclSpecResource `json:"resource" tf:"resource"`
 

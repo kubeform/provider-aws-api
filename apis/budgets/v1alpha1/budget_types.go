@@ -78,7 +78,7 @@ type BudgetSpecNotification struct {
 }
 
 type BudgetSpec struct {
-	KubeformOutput *BudgetSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *BudgetSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource BudgetSpecResource `json:"resource" tf:"resource"`
 

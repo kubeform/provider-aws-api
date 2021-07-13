@@ -42,7 +42,7 @@ type Project struct {
 }
 
 type ProjectSpec struct {
-	KubeformOutput *ProjectSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *ProjectSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource ProjectSpecResource `json:"resource" tf:"resource"`
 

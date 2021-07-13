@@ -42,7 +42,7 @@ type NotebookInstance struct {
 }
 
 type NotebookInstanceSpec struct {
-	KubeformOutput *NotebookInstanceSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *NotebookInstanceSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource NotebookInstanceSpecResource `json:"resource" tf:"resource"`
 

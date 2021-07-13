@@ -55,7 +55,7 @@ type FileSystemSpecSizeInBytes struct {
 }
 
 type FileSystemSpec struct {
-	KubeformOutput *FileSystemSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *FileSystemSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource FileSystemSpecResource `json:"resource" tf:"resource"`
 

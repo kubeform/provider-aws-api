@@ -70,7 +70,7 @@ type LifecyclePolicySpecPolicyDetails struct {
 }
 
 type LifecyclePolicySpec struct {
-	KubeformOutput *LifecyclePolicySpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *LifecyclePolicySpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource LifecyclePolicySpecResource `json:"resource" tf:"resource"`
 

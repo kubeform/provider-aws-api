@@ -177,7 +177,7 @@ type DeploymentGroupSpecTriggerConfiguration struct {
 }
 
 type DeploymentGroupSpec struct {
-	KubeformOutput *DeploymentGroupSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *DeploymentGroupSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource DeploymentGroupSpecResource `json:"resource" tf:"resource"`
 

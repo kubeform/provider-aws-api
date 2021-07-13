@@ -203,7 +203,7 @@ type UserPoolSpecVerificationMessageTemplate struct {
 }
 
 type UserPoolSpec struct {
-	KubeformOutput *UserPoolSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *UserPoolSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource UserPoolSpecResource `json:"resource" tf:"resource"`
 

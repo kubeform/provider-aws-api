@@ -56,7 +56,7 @@ type SigningProfileSpecSignatureValidityPeriod struct {
 }
 
 type SigningProfileSpec struct {
-	KubeformOutput *SigningProfileSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *SigningProfileSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource SigningProfileSpecResource `json:"resource" tf:"resource"`
 

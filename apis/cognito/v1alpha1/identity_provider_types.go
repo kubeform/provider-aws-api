@@ -42,7 +42,7 @@ type IdentityProvider struct {
 }
 
 type IdentityProviderSpec struct {
-	KubeformOutput *IdentityProviderSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *IdentityProviderSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource IdentityProviderSpecResource `json:"resource" tf:"resource"`
 

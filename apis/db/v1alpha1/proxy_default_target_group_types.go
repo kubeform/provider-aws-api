@@ -55,7 +55,7 @@ type ProxyDefaultTargetGroupSpecConnectionPoolConfig struct {
 }
 
 type ProxyDefaultTargetGroupSpec struct {
-	KubeformOutput *ProxyDefaultTargetGroupSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *ProxyDefaultTargetGroupSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource ProxyDefaultTargetGroupSpecResource `json:"resource" tf:"resource"`
 

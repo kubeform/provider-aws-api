@@ -42,7 +42,7 @@ type DomainMailFrom struct {
 }
 
 type DomainMailFromSpec struct {
-	KubeformOutput *DomainMailFromSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *DomainMailFromSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource DomainMailFromSpecResource `json:"resource" tf:"resource"`
 

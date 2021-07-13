@@ -53,7 +53,7 @@ type ObjectCopySpecGrant struct {
 }
 
 type ObjectCopySpec struct {
-	KubeformOutput *ObjectCopySpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *ObjectCopySpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource ObjectCopySpecResource `json:"resource" tf:"resource"`
 

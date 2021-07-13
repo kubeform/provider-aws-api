@@ -53,7 +53,7 @@ type XssMatchSetSpecXssMatchTuple struct {
 }
 
 type XssMatchSetSpec struct {
-	KubeformOutput *XssMatchSetSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *XssMatchSetSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource XssMatchSetSpecResource `json:"resource" tf:"resource"`
 

@@ -42,7 +42,7 @@ type ProvisionedConcurrencyConfig struct {
 }
 
 type ProvisionedConcurrencyConfigSpec struct {
-	KubeformOutput *ProvisionedConcurrencyConfigSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *ProvisionedConcurrencyConfigSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource ProvisionedConcurrencyConfigSpecResource `json:"resource" tf:"resource"`
 

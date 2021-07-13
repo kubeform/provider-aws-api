@@ -56,7 +56,7 @@ type MemcachedLayerSpecEbsVolume struct {
 }
 
 type MemcachedLayerSpec struct {
-	KubeformOutput *MemcachedLayerSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *MemcachedLayerSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource MemcachedLayerSpecResource `json:"resource" tf:"resource"`
 

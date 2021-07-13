@@ -42,7 +42,7 @@ type PlatformApplication struct {
 }
 
 type PlatformApplicationSpec struct {
-	KubeformOutput *PlatformApplicationSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *PlatformApplicationSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource PlatformApplicationSpecResource `json:"resource" tf:"resource"`
 

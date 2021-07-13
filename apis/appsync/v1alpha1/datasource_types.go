@@ -64,7 +64,7 @@ type DatasourceSpecLambdaConfig struct {
 }
 
 type DatasourceSpec struct {
-	KubeformOutput *DatasourceSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *DatasourceSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource DatasourceSpecResource `json:"resource" tf:"resource"`
 

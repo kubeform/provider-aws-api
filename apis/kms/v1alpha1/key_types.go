@@ -42,7 +42,7 @@ type Key struct {
 }
 
 type KeySpec struct {
-	KubeformOutput *KeySpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *KeySpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource KeySpecResource `json:"resource" tf:"resource"`
 

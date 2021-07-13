@@ -42,7 +42,7 @@ type VaultPolicy struct {
 }
 
 type VaultPolicySpec struct {
-	KubeformOutput *VaultPolicySpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *VaultPolicySpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource VaultPolicySpecResource `json:"resource" tf:"resource"`
 

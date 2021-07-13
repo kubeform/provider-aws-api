@@ -50,7 +50,7 @@ type CodeRepositorySpecGitConfig struct {
 }
 
 type CodeRepositorySpec struct {
-	KubeformOutput *CodeRepositorySpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *CodeRepositorySpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource CodeRepositorySpecResource `json:"resource" tf:"resource"`
 

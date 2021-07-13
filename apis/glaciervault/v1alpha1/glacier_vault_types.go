@@ -47,7 +47,7 @@ type GlacierVaultSpecNotification struct {
 }
 
 type GlacierVaultSpec struct {
-	KubeformOutput *GlacierVaultSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *GlacierVaultSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource GlacierVaultSpecResource `json:"resource" tf:"resource"`
 

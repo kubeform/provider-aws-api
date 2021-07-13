@@ -42,7 +42,7 @@ type Parameter struct {
 }
 
 type ParameterSpec struct {
-	KubeformOutput *ParameterSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *ParameterSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource ParameterSpecResource `json:"resource" tf:"resource"`
 

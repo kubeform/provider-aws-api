@@ -42,7 +42,7 @@ type Threatintelset struct {
 }
 
 type ThreatintelsetSpec struct {
-	KubeformOutput *ThreatintelsetSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *ThreatintelsetSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource ThreatintelsetSpecResource `json:"resource" tf:"resource"`
 

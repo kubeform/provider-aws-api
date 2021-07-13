@@ -42,7 +42,7 @@ type ListenerPolicy struct {
 }
 
 type ListenerPolicySpec struct {
-	KubeformOutput *ListenerPolicySpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *ListenerPolicySpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource ListenerPolicySpecResource `json:"resource" tf:"resource"`
 

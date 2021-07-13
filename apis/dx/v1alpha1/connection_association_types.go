@@ -42,7 +42,7 @@ type ConnectionAssociation struct {
 }
 
 type ConnectionAssociationSpec struct {
-	KubeformOutput *ConnectionAssociationSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *ConnectionAssociationSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource ConnectionAssociationSpecResource `json:"resource" tf:"resource"`
 

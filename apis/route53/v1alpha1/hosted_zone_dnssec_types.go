@@ -42,7 +42,7 @@ type HostedZoneDnssec struct {
 }
 
 type HostedZoneDnssecSpec struct {
-	KubeformOutput *HostedZoneDnssecSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *HostedZoneDnssecSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource HostedZoneDnssecSpecResource `json:"resource" tf:"resource"`
 

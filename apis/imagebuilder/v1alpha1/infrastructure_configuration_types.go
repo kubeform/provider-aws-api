@@ -52,7 +52,7 @@ type InfrastructureConfigurationSpecLogging struct {
 }
 
 type InfrastructureConfigurationSpec struct {
-	KubeformOutput *InfrastructureConfigurationSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *InfrastructureConfigurationSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource InfrastructureConfigurationSpecResource `json:"resource" tf:"resource"`
 

@@ -108,7 +108,7 @@ type WebACLLoggingConfigurationSpecRedactedFields struct {
 }
 
 type WebACLLoggingConfigurationSpec struct {
-	KubeformOutput *WebACLLoggingConfigurationSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *WebACLLoggingConfigurationSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource WebACLLoggingConfigurationSpecResource `json:"resource" tf:"resource"`
 

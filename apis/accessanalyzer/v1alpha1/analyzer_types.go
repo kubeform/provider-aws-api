@@ -42,7 +42,7 @@ type Analyzer struct {
 }
 
 type AnalyzerSpec struct {
-	KubeformOutput *AnalyzerSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *AnalyzerSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource AnalyzerSpecResource `json:"resource" tf:"resource"`
 

@@ -49,7 +49,7 @@ type ClusterParameterGroupSpecParameter struct {
 }
 
 type ClusterParameterGroupSpec struct {
-	KubeformOutput *ClusterParameterGroupSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *ClusterParameterGroupSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource ClusterParameterGroupSpecResource `json:"resource" tf:"resource"`
 

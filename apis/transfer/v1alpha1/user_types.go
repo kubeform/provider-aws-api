@@ -54,7 +54,7 @@ type UserSpecPosixProfile struct {
 }
 
 type UserSpec struct {
-	KubeformOutput *UserSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *UserSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource UserSpecResource `json:"resource" tf:"resource"`
 

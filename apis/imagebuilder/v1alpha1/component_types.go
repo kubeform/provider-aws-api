@@ -42,7 +42,7 @@ type Component struct {
 }
 
 type ComponentSpec struct {
-	KubeformOutput *ComponentSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *ComponentSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource ComponentSpecResource `json:"resource" tf:"resource"`
 

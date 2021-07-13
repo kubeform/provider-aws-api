@@ -42,7 +42,7 @@ type ResolverFirewallConfig struct {
 }
 
 type ResolverFirewallConfigSpec struct {
-	KubeformOutput *ResolverFirewallConfigSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *ResolverFirewallConfigSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource ResolverFirewallConfigSpecResource `json:"resource" tf:"resource"`
 

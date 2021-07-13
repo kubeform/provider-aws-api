@@ -48,7 +48,7 @@ type DatabaseSpecEncryptionConfiguration struct {
 }
 
 type DatabaseSpec struct {
-	KubeformOutput *DatabaseSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *DatabaseSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource DatabaseSpecResource `json:"resource" tf:"resource"`
 

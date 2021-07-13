@@ -86,7 +86,7 @@ type PlanSpecRule struct {
 }
 
 type PlanSpec struct {
-	KubeformOutput *PlanSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *PlanSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource PlanSpecResource `json:"resource" tf:"resource"`
 

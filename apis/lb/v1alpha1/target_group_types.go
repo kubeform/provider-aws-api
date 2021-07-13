@@ -73,7 +73,7 @@ type TargetGroupSpecStickiness struct {
 }
 
 type TargetGroupSpec struct {
-	KubeformOutput *TargetGroupSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *TargetGroupSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource TargetGroupSpecResource `json:"resource" tf:"resource"`
 

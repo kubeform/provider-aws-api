@@ -42,7 +42,7 @@ type ActionTarget struct {
 }
 
 type ActionTargetSpec struct {
-	KubeformOutput *ActionTargetSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *ActionTargetSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource ActionTargetSpecResource `json:"resource" tf:"resource"`
 

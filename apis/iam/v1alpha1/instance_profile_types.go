@@ -42,7 +42,7 @@ type InstanceProfile struct {
 }
 
 type InstanceProfileSpec struct {
-	KubeformOutput *InstanceProfileSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *InstanceProfileSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource InstanceProfileSpecResource `json:"resource" tf:"resource"`
 

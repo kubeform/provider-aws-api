@@ -51,7 +51,7 @@ type IdentityPoolSpecCognitoIdentityProviders struct {
 }
 
 type IdentityPoolSpec struct {
-	KubeformOutput *IdentityPoolSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *IdentityPoolSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource IdentityPoolSpecResource `json:"resource" tf:"resource"`
 

@@ -42,7 +42,7 @@ type PermissionSetInlinePolicy struct {
 }
 
 type PermissionSetInlinePolicySpec struct {
-	KubeformOutput *PermissionSetInlinePolicySpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *PermissionSetInlinePolicySpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource PermissionSetInlinePolicySpecResource `json:"resource" tf:"resource"`
 

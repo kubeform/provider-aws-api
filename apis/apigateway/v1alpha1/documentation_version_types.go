@@ -42,7 +42,7 @@ type DocumentationVersion struct {
 }
 
 type DocumentationVersionSpec struct {
-	KubeformOutput *DocumentationVersionSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *DocumentationVersionSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource DocumentationVersionSpecResource `json:"resource" tf:"resource"`
 

@@ -47,7 +47,7 @@ type LocationEfsSpecEc2Config struct {
 }
 
 type LocationEfsSpec struct {
-	KubeformOutput *LocationEfsSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *LocationEfsSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource LocationEfsSpecResource `json:"resource" tf:"resource"`
 

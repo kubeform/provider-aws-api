@@ -50,7 +50,7 @@ type ResolverEndpointSpecIpAddress struct {
 }
 
 type ResolverEndpointSpec struct {
-	KubeformOutput *ResolverEndpointSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *ResolverEndpointSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource ResolverEndpointSpecResource `json:"resource" tf:"resource"`
 

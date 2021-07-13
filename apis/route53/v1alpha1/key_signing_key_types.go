@@ -42,7 +42,7 @@ type KeySigningKey struct {
 }
 
 type KeySigningKeySpec struct {
-	KubeformOutput *KeySigningKeySpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *KeySigningKeySpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource KeySigningKeySpecResource `json:"resource" tf:"resource"`
 

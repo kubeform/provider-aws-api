@@ -42,7 +42,7 @@ type TransitGatewayPeeringAttachmentAccepter struct {
 }
 
 type TransitGatewayPeeringAttachmentAccepterSpec struct {
-	KubeformOutput *TransitGatewayPeeringAttachmentAccepterSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *TransitGatewayPeeringAttachmentAccepterSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource TransitGatewayPeeringAttachmentAccepterSpecResource `json:"resource" tf:"resource"`
 

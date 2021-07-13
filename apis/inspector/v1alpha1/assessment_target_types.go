@@ -42,7 +42,7 @@ type AssessmentTarget struct {
 }
 
 type AssessmentTargetSpec struct {
-	KubeformOutput *AssessmentTargetSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *AssessmentTargetSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource AssessmentTargetSpecResource `json:"resource" tf:"resource"`
 

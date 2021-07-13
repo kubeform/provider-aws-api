@@ -500,7 +500,7 @@ type FirehoseDeliveryStreamSpecSplunkConfiguration struct {
 }
 
 type FirehoseDeliveryStreamSpec struct {
-	KubeformOutput *FirehoseDeliveryStreamSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *FirehoseDeliveryStreamSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource FirehoseDeliveryStreamSpecResource `json:"resource" tf:"resource"`
 

@@ -63,7 +63,7 @@ type CapacityProviderSpecAutoScalingGroupProvider struct {
 }
 
 type CapacityProviderSpec struct {
-	KubeformOutput *CapacityProviderSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *CapacityProviderSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource CapacityProviderSpecResource `json:"resource" tf:"resource"`
 

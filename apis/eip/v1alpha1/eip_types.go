@@ -42,7 +42,7 @@ type Eip struct {
 }
 
 type EipSpec struct {
-	KubeformOutput *EipSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *EipSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource EipSpecResource `json:"resource" tf:"resource"`
 

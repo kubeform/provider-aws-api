@@ -76,7 +76,7 @@ type BucketNotificationSpecTopic struct {
 }
 
 type BucketNotificationSpec struct {
-	KubeformOutput *BucketNotificationSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *BucketNotificationSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource BucketNotificationSpecResource `json:"resource" tf:"resource"`
 

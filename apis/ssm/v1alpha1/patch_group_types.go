@@ -42,7 +42,7 @@ type PatchGroup struct {
 }
 
 type PatchGroupSpec struct {
-	KubeformOutput *PatchGroupSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *PatchGroupSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource PatchGroupSpecResource `json:"resource" tf:"resource"`
 

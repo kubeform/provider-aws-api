@@ -42,7 +42,7 @@ type EmailIdentity struct {
 }
 
 type EmailIdentitySpec struct {
-	KubeformOutput *EmailIdentitySpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *EmailIdentitySpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource EmailIdentitySpecResource `json:"resource" tf:"resource"`
 

@@ -74,7 +74,7 @@ type StageSpecRouteSettings struct {
 }
 
 type StageSpec struct {
-	KubeformOutput *StageSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *StageSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource StageSpecResource `json:"resource" tf:"resource"`
 

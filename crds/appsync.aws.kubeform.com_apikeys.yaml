@@ -37,19 +37,6 @@ spec:
             type: object
           spec:
             properties:
-              kubeformOutput:
-                properties:
-                  apiID:
-                    type: string
-                  description:
-                    type: string
-                  expires:
-                    type: string
-                  id:
-                    type: string
-                required:
-                - apiID
-                type: object
               providerRef:
                 description: LocalObjectReference contains enough information to let
                   you locate the referenced object inside the same namespace.
@@ -80,6 +67,19 @@ spec:
                     description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
                       TODO: Add other useful fields. apiVersion, kind, uid?'
                     type: string
+                type: object
+              state:
+                properties:
+                  apiID:
+                    type: string
+                  description:
+                    type: string
+                  expires:
+                    type: string
+                  id:
+                    type: string
+                required:
+                - apiID
                 type: object
               terminationPolicy:
                 enum:

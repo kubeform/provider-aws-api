@@ -76,7 +76,7 @@ type PatchBaselineSpecSource struct {
 }
 
 type PatchBaselineSpec struct {
-	KubeformOutput *PatchBaselineSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *PatchBaselineSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource PatchBaselineSpecResource `json:"resource" tf:"resource"`
 

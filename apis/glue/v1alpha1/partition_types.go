@@ -100,7 +100,7 @@ type PartitionSpecStorageDescriptor struct {
 }
 
 type PartitionSpec struct {
-	KubeformOutput *PartitionSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *PartitionSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource PartitionSpecResource `json:"resource" tf:"resource"`
 

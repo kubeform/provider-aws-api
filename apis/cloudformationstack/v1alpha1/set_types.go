@@ -49,7 +49,7 @@ type SetSpecAutoDeployment struct {
 }
 
 type SetSpec struct {
-	KubeformOutput *SetSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *SetSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource SetSpecResource `json:"resource" tf:"resource"`
 

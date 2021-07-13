@@ -42,7 +42,7 @@ type AggregateAuthorization struct {
 }
 
 type AggregateAuthorizationSpec struct {
-	KubeformOutput *AggregateAuthorizationSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *AggregateAuthorizationSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource AggregateAuthorizationSpecResource `json:"resource" tf:"resource"`
 

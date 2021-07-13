@@ -42,7 +42,7 @@ type CreateVolumePermission struct {
 }
 
 type CreateVolumePermissionSpec struct {
-	KubeformOutput *CreateVolumePermissionSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *CreateVolumePermissionSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource CreateVolumePermissionSpecResource `json:"resource" tf:"resource"`
 

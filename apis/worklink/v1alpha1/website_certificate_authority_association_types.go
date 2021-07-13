@@ -42,7 +42,7 @@ type WebsiteCertificateAuthorityAssociation struct {
 }
 
 type WebsiteCertificateAuthorityAssociationSpec struct {
-	KubeformOutput *WebsiteCertificateAuthorityAssociationSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *WebsiteCertificateAuthorityAssociationSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource WebsiteCertificateAuthorityAssociationSpecResource `json:"resource" tf:"resource"`
 

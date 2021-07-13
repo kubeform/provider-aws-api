@@ -132,7 +132,7 @@ type ScalingPlanSpecScalingInstruction struct {
 }
 
 type ScalingPlanSpec struct {
-	KubeformOutput *ScalingPlanSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *ScalingPlanSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource ScalingPlanSpecResource `json:"resource" tf:"resource"`
 

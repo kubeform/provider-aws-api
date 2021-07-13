@@ -67,7 +67,7 @@ type WorkgroupSpecConfiguration struct {
 }
 
 type WorkgroupSpec struct {
-	KubeformOutput *WorkgroupSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *WorkgroupSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource WorkgroupSpecResource `json:"resource" tf:"resource"`
 

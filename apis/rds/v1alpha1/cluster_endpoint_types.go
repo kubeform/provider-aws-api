@@ -42,7 +42,7 @@ type ClusterEndpoint struct {
 }
 
 type ClusterEndpointSpec struct {
-	KubeformOutput *ClusterEndpointSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *ClusterEndpointSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource ClusterEndpointSpecResource `json:"resource" tf:"resource"`
 

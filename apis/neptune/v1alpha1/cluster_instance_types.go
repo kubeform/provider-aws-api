@@ -42,7 +42,7 @@ type ClusterInstance struct {
 }
 
 type ClusterInstanceSpec struct {
-	KubeformOutput *ClusterInstanceSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *ClusterInstanceSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource ClusterInstanceSpecResource `json:"resource" tf:"resource"`
 

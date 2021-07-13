@@ -42,7 +42,7 @@ type Bucket struct {
 }
 
 type BucketSpec struct {
-	KubeformOutput *BucketSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *BucketSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource BucketSpecResource `json:"resource" tf:"resource"`
 

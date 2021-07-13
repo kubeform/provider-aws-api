@@ -52,7 +52,7 @@ type DomainNameSpecMutualTlsAuthentication struct {
 }
 
 type DomainNameSpec struct {
-	KubeformOutput *DomainNameSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *DomainNameSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource DomainNameSpecResource `json:"resource" tf:"resource"`
 

@@ -48,7 +48,7 @@ type MaintenanceWindowTargetSpecTargets struct {
 }
 
 type MaintenanceWindowTargetSpec struct {
-	KubeformOutput *MaintenanceWindowTargetSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *MaintenanceWindowTargetSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource MaintenanceWindowTargetSpecResource `json:"resource" tf:"resource"`
 

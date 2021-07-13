@@ -113,7 +113,7 @@ type BrokerSpecUser struct {
 }
 
 type BrokerSpec struct {
-	KubeformOutput *BrokerSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *BrokerSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource BrokerSpecResource `json:"resource" tf:"resource"`
 

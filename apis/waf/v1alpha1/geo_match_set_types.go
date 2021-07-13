@@ -47,7 +47,7 @@ type GeoMatchSetSpecGeoMatchConstraint struct {
 }
 
 type GeoMatchSetSpec struct {
-	KubeformOutput *GeoMatchSetSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *GeoMatchSetSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource GeoMatchSetSpecResource `json:"resource" tf:"resource"`
 

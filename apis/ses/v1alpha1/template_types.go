@@ -42,7 +42,7 @@ type Template struct {
 }
 
 type TemplateSpec struct {
-	KubeformOutput *TemplateSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *TemplateSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource TemplateSpecResource `json:"resource" tf:"resource"`
 

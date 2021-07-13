@@ -42,7 +42,7 @@ type RepositoryPermissionsPolicy struct {
 }
 
 type RepositoryPermissionsPolicySpec struct {
-	KubeformOutput *RepositoryPermissionsPolicySpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *RepositoryPermissionsPolicySpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource RepositoryPermissionsPolicySpecResource `json:"resource" tf:"resource"`
 

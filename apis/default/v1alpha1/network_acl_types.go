@@ -74,7 +74,7 @@ type NetworkACLSpecIngress struct {
 }
 
 type NetworkACLSpec struct {
-	KubeformOutput *NetworkACLSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *NetworkACLSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource NetworkACLSpecResource `json:"resource" tf:"resource"`
 

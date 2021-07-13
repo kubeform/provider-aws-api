@@ -77,7 +77,7 @@ type PermissionsSpecTableWithColumns struct {
 }
 
 type PermissionsSpec struct {
-	KubeformOutput *PermissionsSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *PermissionsSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource PermissionsSpecResource `json:"resource" tf:"resource"`
 

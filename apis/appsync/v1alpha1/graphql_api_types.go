@@ -94,7 +94,7 @@ type GraphqlAPISpecUserPoolConfig struct {
 }
 
 type GraphqlAPISpec struct {
-	KubeformOutput *GraphqlAPISpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *GraphqlAPISpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource GraphqlAPISpecResource `json:"resource" tf:"resource"`
 

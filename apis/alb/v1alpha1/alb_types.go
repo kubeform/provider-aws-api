@@ -62,7 +62,7 @@ type AlbSpecSubnetMapping struct {
 }
 
 type AlbSpec struct {
-	KubeformOutput *AlbSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *AlbSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource AlbSpecResource `json:"resource" tf:"resource"`
 

@@ -58,7 +58,7 @@ type AcceleratorSpecIpSets struct {
 }
 
 type AcceleratorSpec struct {
-	KubeformOutput *AcceleratorSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *AcceleratorSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource AcceleratorSpecResource `json:"resource" tf:"resource"`
 

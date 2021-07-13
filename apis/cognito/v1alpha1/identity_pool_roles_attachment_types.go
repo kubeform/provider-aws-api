@@ -59,7 +59,7 @@ type IdentityPoolRolesAttachmentSpecRoleMapping struct {
 }
 
 type IdentityPoolRolesAttachmentSpec struct {
-	KubeformOutput *IdentityPoolRolesAttachmentSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *IdentityPoolRolesAttachmentSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource IdentityPoolRolesAttachmentSpecResource `json:"resource" tf:"resource"`
 

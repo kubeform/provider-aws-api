@@ -42,7 +42,7 @@ type Method struct {
 }
 
 type MethodSpec struct {
-	KubeformOutput *MethodSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *MethodSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource MethodSpecResource `json:"resource" tf:"resource"`
 

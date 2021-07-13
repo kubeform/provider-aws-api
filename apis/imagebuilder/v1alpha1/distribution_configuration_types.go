@@ -73,7 +73,7 @@ type DistributionConfigurationSpecDistribution struct {
 }
 
 type DistributionConfigurationSpec struct {
-	KubeformOutput *DistributionConfigurationSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *DistributionConfigurationSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource DistributionConfigurationSpecResource `json:"resource" tf:"resource"`
 

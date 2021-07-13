@@ -42,7 +42,7 @@ type LicenseConfiguration struct {
 }
 
 type LicenseConfigurationSpec struct {
-	KubeformOutput *LicenseConfigurationSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *LicenseConfigurationSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource LicenseConfigurationSpecResource `json:"resource" tf:"resource"`
 

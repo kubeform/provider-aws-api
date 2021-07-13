@@ -93,7 +93,7 @@ type InstanceFleetSpecLaunchSpecifications struct {
 }
 
 type InstanceFleetSpec struct {
-	KubeformOutput *InstanceFleetSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *InstanceFleetSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource InstanceFleetSpecResource `json:"resource" tf:"resource"`
 

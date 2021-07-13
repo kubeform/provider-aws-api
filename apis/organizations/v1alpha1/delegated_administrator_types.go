@@ -42,7 +42,7 @@ type DelegatedAdministrator struct {
 }
 
 type DelegatedAdministratorSpec struct {
-	KubeformOutput *DelegatedAdministratorSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *DelegatedAdministratorSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource DelegatedAdministratorSpecResource `json:"resource" tf:"resource"`
 

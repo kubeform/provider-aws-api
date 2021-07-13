@@ -42,7 +42,7 @@ type TopicSubscription struct {
 }
 
 type TopicSubscriptionSpec struct {
-	KubeformOutput *TopicSubscriptionSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *TopicSubscriptionSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource TopicSubscriptionSpecResource `json:"resource" tf:"resource"`
 

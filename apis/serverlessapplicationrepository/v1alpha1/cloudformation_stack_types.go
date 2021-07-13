@@ -42,7 +42,7 @@ type CloudformationStack struct {
 }
 
 type CloudformationStackSpec struct {
-	KubeformOutput *CloudformationStackSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *CloudformationStackSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource CloudformationStackSpecResource `json:"resource" tf:"resource"`
 

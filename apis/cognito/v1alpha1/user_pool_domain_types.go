@@ -42,7 +42,7 @@ type UserPoolDomain struct {
 }
 
 type UserPoolDomainSpec struct {
-	KubeformOutput *UserPoolDomainSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *UserPoolDomainSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource UserPoolDomainSpecResource `json:"resource" tf:"resource"`
 

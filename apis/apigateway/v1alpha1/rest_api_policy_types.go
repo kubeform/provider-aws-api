@@ -42,7 +42,7 @@ type RestAPIPolicy struct {
 }
 
 type RestAPIPolicySpec struct {
-	KubeformOutput *RestAPIPolicySpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *RestAPIPolicySpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource RestAPIPolicySpecResource `json:"resource" tf:"resource"`
 

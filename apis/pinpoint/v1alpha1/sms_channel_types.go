@@ -42,7 +42,7 @@ type SmsChannel struct {
 }
 
 type SmsChannelSpec struct {
-	KubeformOutput *SmsChannelSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *SmsChannelSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource SmsChannelSpecResource `json:"resource" tf:"resource"`
 

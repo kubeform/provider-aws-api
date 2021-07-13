@@ -61,7 +61,7 @@ type ConfigurationAggregatorSpecOrganizationAggregationSource struct {
 }
 
 type ConfigurationAggregatorSpec struct {
-	KubeformOutput *ConfigurationAggregatorSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *ConfigurationAggregatorSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource ConfigurationAggregatorSpecResource `json:"resource" tf:"resource"`
 

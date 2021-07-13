@@ -42,7 +42,7 @@ type AccountPasswordPolicy struct {
 }
 
 type AccountPasswordPolicySpec struct {
-	KubeformOutput *AccountPasswordPolicySpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *AccountPasswordPolicySpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource AccountPasswordPolicySpecResource `json:"resource" tf:"resource"`
 

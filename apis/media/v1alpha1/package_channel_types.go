@@ -56,7 +56,7 @@ type PackageChannelSpecHlsIngest struct {
 }
 
 type PackageChannelSpec struct {
-	KubeformOutput *PackageChannelSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *PackageChannelSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource PackageChannelSpecResource `json:"resource" tf:"resource"`
 

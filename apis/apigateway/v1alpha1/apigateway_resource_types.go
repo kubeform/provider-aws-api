@@ -42,7 +42,7 @@ type ApigatewayResource struct {
 }
 
 type ApigatewayResourceSpec struct {
-	KubeformOutput *ApigatewayResourceSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *ApigatewayResourceSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource ApigatewayResourceSpecResource `json:"resource" tf:"resource"`
 

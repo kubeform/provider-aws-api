@@ -42,7 +42,7 @@ type JobQueue struct {
 }
 
 type JobQueueSpec struct {
-	KubeformOutput *JobQueueSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *JobQueueSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource JobQueueSpecResource `json:"resource" tf:"resource"`
 

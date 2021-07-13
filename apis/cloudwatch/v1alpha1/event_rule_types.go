@@ -42,7 +42,7 @@ type EventRule struct {
 }
 
 type EventRuleSpec struct {
-	KubeformOutput *EventRuleSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *EventRuleSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource EventRuleSpecResource `json:"resource" tf:"resource"`
 

@@ -42,7 +42,7 @@ type RequestValidator struct {
 }
 
 type RequestValidatorSpec struct {
-	KubeformOutput *RequestValidatorSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *RequestValidatorSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource RequestValidatorSpecResource `json:"resource" tf:"resource"`
 

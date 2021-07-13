@@ -60,7 +60,7 @@ type ClientVPNEndpointSpecConnectionLogOptions struct {
 }
 
 type ClientVPNEndpointSpec struct {
-	KubeformOutput *ClientVPNEndpointSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *ClientVPNEndpointSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource ClientVPNEndpointSpecResource `json:"resource" tf:"resource"`
 

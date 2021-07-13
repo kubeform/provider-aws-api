@@ -42,7 +42,7 @@ type StandardsSubscription struct {
 }
 
 type StandardsSubscriptionSpec struct {
-	KubeformOutput *StandardsSubscriptionSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *StandardsSubscriptionSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource StandardsSubscriptionSpecResource `json:"resource" tf:"resource"`
 

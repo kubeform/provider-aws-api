@@ -42,7 +42,7 @@ type BasePathMapping struct {
 }
 
 type BasePathMappingSpec struct {
-	KubeformOutput *BasePathMappingSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *BasePathMappingSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource BasePathMappingSpecResource `json:"resource" tf:"resource"`
 

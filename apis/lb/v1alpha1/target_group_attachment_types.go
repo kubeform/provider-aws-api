@@ -42,7 +42,7 @@ type TargetGroupAttachment struct {
 }
 
 type TargetGroupAttachmentSpec struct {
-	KubeformOutput *TargetGroupAttachmentSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *TargetGroupAttachmentSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource TargetGroupAttachmentSpecResource `json:"resource" tf:"resource"`
 

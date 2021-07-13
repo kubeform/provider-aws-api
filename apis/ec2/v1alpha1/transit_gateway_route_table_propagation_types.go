@@ -42,7 +42,7 @@ type TransitGatewayRouteTablePropagation struct {
 }
 
 type TransitGatewayRouteTablePropagationSpec struct {
-	KubeformOutput *TransitGatewayRouteTablePropagationSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *TransitGatewayRouteTablePropagationSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource TransitGatewayRouteTablePropagationSpecResource `json:"resource" tf:"resource"`
 

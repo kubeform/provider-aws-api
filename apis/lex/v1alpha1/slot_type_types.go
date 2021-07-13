@@ -49,7 +49,7 @@ type SlotTypeSpecEnumerationValue struct {
 }
 
 type SlotTypeSpec struct {
-	KubeformOutput *SlotTypeSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *SlotTypeSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource SlotTypeSpecResource `json:"resource" tf:"resource"`
 

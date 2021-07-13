@@ -56,7 +56,7 @@ type CustomLayerSpecEbsVolume struct {
 }
 
 type CustomLayerSpec struct {
-	KubeformOutput *CustomLayerSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *CustomLayerSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource CustomLayerSpecResource `json:"resource" tf:"resource"`
 

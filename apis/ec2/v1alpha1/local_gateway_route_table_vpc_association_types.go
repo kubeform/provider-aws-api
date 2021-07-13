@@ -42,7 +42,7 @@ type LocalGatewayRouteTableVpcAssociation struct {
 }
 
 type LocalGatewayRouteTableVpcAssociationSpec struct {
-	KubeformOutput *LocalGatewayRouteTableVpcAssociationSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *LocalGatewayRouteTableVpcAssociationSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource LocalGatewayRouteTableVpcAssociationSpecResource `json:"resource" tf:"resource"`
 

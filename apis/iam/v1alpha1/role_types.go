@@ -49,7 +49,7 @@ type RoleSpecInlinePolicy struct {
 }
 
 type RoleSpec struct {
-	KubeformOutput *RoleSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *RoleSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource RoleSpecResource `json:"resource" tf:"resource"`
 

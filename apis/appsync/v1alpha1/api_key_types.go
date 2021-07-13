@@ -42,7 +42,7 @@ type ApiKey struct {
 }
 
 type ApiKeySpec struct {
-	KubeformOutput *ApiKeySpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *ApiKeySpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource ApiKeySpecResource `json:"resource" tf:"resource"`
 

@@ -176,7 +176,7 @@ type IntentSpecSlot struct {
 }
 
 type IntentSpec struct {
-	KubeformOutput *IntentSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *IntentSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource IntentSpecResource `json:"resource" tf:"resource"`
 

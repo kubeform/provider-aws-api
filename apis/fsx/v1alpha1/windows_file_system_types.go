@@ -55,7 +55,7 @@ type WindowsFileSystemSpecSelfManagedActiveDirectory struct {
 }
 
 type WindowsFileSystemSpec struct {
-	KubeformOutput *WindowsFileSystemSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *WindowsFileSystemSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource WindowsFileSystemSpecResource `json:"resource" tf:"resource"`
 

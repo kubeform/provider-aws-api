@@ -42,7 +42,7 @@ type ResolverRuleAssociation struct {
 }
 
 type ResolverRuleAssociationSpec struct {
-	KubeformOutput *ResolverRuleAssociationSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *ResolverRuleAssociationSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource ResolverRuleAssociationSpecResource `json:"resource" tf:"resource"`
 

@@ -52,7 +52,7 @@ type RealtimeLogConfigSpecEndpoint struct {
 }
 
 type RealtimeLogConfigSpec struct {
-	KubeformOutput *RealtimeLogConfigSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *RealtimeLogConfigSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource RealtimeLogConfigSpecResource `json:"resource" tf:"resource"`
 

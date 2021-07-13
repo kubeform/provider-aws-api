@@ -42,7 +42,7 @@ type ResolverFirewallRuleGroup struct {
 }
 
 type ResolverFirewallRuleGroupSpec struct {
-	KubeformOutput *ResolverFirewallRuleGroupSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *ResolverFirewallRuleGroupSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource ResolverFirewallRuleGroupSpecResource `json:"resource" tf:"resource"`
 

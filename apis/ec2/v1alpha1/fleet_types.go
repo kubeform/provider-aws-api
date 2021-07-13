@@ -107,7 +107,7 @@ type FleetSpecTargetCapacitySpecification struct {
 }
 
 type FleetSpec struct {
-	KubeformOutput *FleetSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *FleetSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource FleetSpecResource `json:"resource" tf:"resource"`
 

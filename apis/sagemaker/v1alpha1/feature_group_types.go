@@ -84,7 +84,7 @@ type FeatureGroupSpecOnlineStoreConfig struct {
 }
 
 type FeatureGroupSpec struct {
-	KubeformOutput *FeatureGroupSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *FeatureGroupSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource FeatureGroupSpecResource `json:"resource" tf:"resource"`
 

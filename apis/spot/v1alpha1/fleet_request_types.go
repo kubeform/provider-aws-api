@@ -165,7 +165,7 @@ type FleetRequestSpecSpotMaintenanceStrategies struct {
 }
 
 type FleetRequestSpec struct {
-	KubeformOutput *FleetRequestSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *FleetRequestSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource FleetRequestSpecResource `json:"resource" tf:"resource"`
 

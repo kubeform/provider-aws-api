@@ -42,7 +42,7 @@ type VideoStream struct {
 }
 
 type VideoStreamSpec struct {
-	KubeformOutput *VideoStreamSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *VideoStreamSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource VideoStreamSpecResource `json:"resource" tf:"resource"`
 

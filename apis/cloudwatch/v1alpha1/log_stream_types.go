@@ -42,7 +42,7 @@ type LogStream struct {
 }
 
 type LogStreamSpec struct {
-	KubeformOutput *LogStreamSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *LogStreamSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource LogStreamSpecResource `json:"resource" tf:"resource"`
 

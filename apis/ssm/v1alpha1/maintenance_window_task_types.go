@@ -133,7 +133,7 @@ type MaintenanceWindowTaskSpecTaskInvocationParameters struct {
 }
 
 type MaintenanceWindowTaskSpec struct {
-	KubeformOutput *MaintenanceWindowTaskSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *MaintenanceWindowTaskSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource MaintenanceWindowTaskSpecResource `json:"resource" tf:"resource"`
 

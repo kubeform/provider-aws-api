@@ -76,7 +76,7 @@ type OriginRequestPolicySpecQueryStringsConfig struct {
 }
 
 type OriginRequestPolicySpec struct {
-	KubeformOutput *OriginRequestPolicySpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *OriginRequestPolicySpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource OriginRequestPolicySpecResource `json:"resource" tf:"resource"`
 

@@ -42,7 +42,7 @@ type ResolverDnssecConfig struct {
 }
 
 type ResolverDnssecConfigSpec struct {
-	KubeformOutput *ResolverDnssecConfigSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *ResolverDnssecConfigSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource ResolverDnssecConfigSpecResource `json:"resource" tf:"resource"`
 

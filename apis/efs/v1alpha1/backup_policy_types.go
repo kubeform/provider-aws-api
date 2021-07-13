@@ -46,7 +46,7 @@ type BackupPolicySpecBackupPolicy struct {
 }
 
 type BackupPolicySpec struct {
-	KubeformOutput *BackupPolicySpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *BackupPolicySpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource BackupPolicySpecResource `json:"resource" tf:"resource"`
 

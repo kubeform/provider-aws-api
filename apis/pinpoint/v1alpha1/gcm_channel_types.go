@@ -42,7 +42,7 @@ type GcmChannel struct {
 }
 
 type GcmChannelSpec struct {
-	KubeformOutput *GcmChannelSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *GcmChannelSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource GcmChannelSpecResource `json:"resource" tf:"resource"`
 

@@ -59,7 +59,7 @@ type ReportGroupSpecExportConfig struct {
 }
 
 type ReportGroupSpec struct {
-	KubeformOutput *ReportGroupSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *ReportGroupSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource ReportGroupSpecResource `json:"resource" tf:"resource"`
 

@@ -37,17 +37,6 @@ spec:
             type: object
           spec:
             properties:
-              kubeformOutput:
-                properties:
-                  hostedZoneID:
-                    type: string
-                  id:
-                    type: string
-                  signingStatus:
-                    type: string
-                required:
-                - hostedZoneID
-                type: object
               providerRef:
                 description: LocalObjectReference contains enough information to let
                   you locate the referenced object inside the same namespace.
@@ -58,6 +47,17 @@ spec:
                     type: string
                 type: object
               resource:
+                properties:
+                  hostedZoneID:
+                    type: string
+                  id:
+                    type: string
+                  signingStatus:
+                    type: string
+                required:
+                - hostedZoneID
+                type: object
+              state:
                 properties:
                   hostedZoneID:
                     type: string

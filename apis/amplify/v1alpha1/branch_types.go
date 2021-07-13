@@ -42,7 +42,7 @@ type Branch struct {
 }
 
 type BranchSpec struct {
-	KubeformOutput *BranchSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *BranchSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource BranchSpecResource `json:"resource" tf:"resource"`
 

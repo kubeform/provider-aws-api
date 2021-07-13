@@ -42,7 +42,7 @@ type InstanceRoleAssociation struct {
 }
 
 type InstanceRoleAssociationSpec struct {
-	KubeformOutput *InstanceRoleAssociationSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *InstanceRoleAssociationSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource InstanceRoleAssociationSpecResource `json:"resource" tf:"resource"`
 

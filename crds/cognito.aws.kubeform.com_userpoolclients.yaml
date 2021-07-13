@@ -37,93 +37,6 @@ spec:
             type: object
           spec:
             properties:
-              kubeformOutput:
-                properties:
-                  IDTokenValidity:
-                    format: int64
-                    type: integer
-                  accessTokenValidity:
-                    format: int64
-                    type: integer
-                  allowedOauthFlows:
-                    items:
-                      type: string
-                    maxItems: 3
-                    type: array
-                  allowedOauthFlowsUserPoolClient:
-                    type: boolean
-                  allowedOauthScopes:
-                    items:
-                      type: string
-                    maxItems: 50
-                    type: array
-                  analyticsConfiguration:
-                    properties:
-                      applicationArn:
-                        type: string
-                      applicationID:
-                        type: string
-                      externalID:
-                        type: string
-                      roleArn:
-                        type: string
-                      userDataShared:
-                        type: boolean
-                    type: object
-                  callbackUrls:
-                    items:
-                      type: string
-                    maxItems: 100
-                    type: array
-                  defaultRedirectURI:
-                    type: string
-                  explicitAuthFlows:
-                    items:
-                      type: string
-                    type: array
-                  generateSecret:
-                    type: boolean
-                  id:
-                    type: string
-                  logoutUrls:
-                    items:
-                      type: string
-                    maxItems: 100
-                    type: array
-                  name:
-                    type: string
-                  preventUserExistenceErrors:
-                    type: string
-                  readAttributes:
-                    items:
-                      type: string
-                    type: array
-                  refreshTokenValidity:
-                    format: int64
-                    type: integer
-                  supportedIdentityProviders:
-                    items:
-                      type: string
-                    type: array
-                  tokenValidityUnits:
-                    properties:
-                      IDToken:
-                        type: string
-                      accessToken:
-                        type: string
-                      refreshToken:
-                        type: string
-                    type: object
-                  userPoolID:
-                    type: string
-                  writeAttributes:
-                    items:
-                      type: string
-                    type: array
-                required:
-                - name
-                - userPoolID
-                type: object
               providerRef:
                 description: LocalObjectReference contains enough information to let
                   you locate the referenced object inside the same namespace.
@@ -228,6 +141,93 @@ spec:
                     description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
                       TODO: Add other useful fields. apiVersion, kind, uid?'
                     type: string
+                type: object
+              state:
+                properties:
+                  IDTokenValidity:
+                    format: int64
+                    type: integer
+                  accessTokenValidity:
+                    format: int64
+                    type: integer
+                  allowedOauthFlows:
+                    items:
+                      type: string
+                    maxItems: 3
+                    type: array
+                  allowedOauthFlowsUserPoolClient:
+                    type: boolean
+                  allowedOauthScopes:
+                    items:
+                      type: string
+                    maxItems: 50
+                    type: array
+                  analyticsConfiguration:
+                    properties:
+                      applicationArn:
+                        type: string
+                      applicationID:
+                        type: string
+                      externalID:
+                        type: string
+                      roleArn:
+                        type: string
+                      userDataShared:
+                        type: boolean
+                    type: object
+                  callbackUrls:
+                    items:
+                      type: string
+                    maxItems: 100
+                    type: array
+                  defaultRedirectURI:
+                    type: string
+                  explicitAuthFlows:
+                    items:
+                      type: string
+                    type: array
+                  generateSecret:
+                    type: boolean
+                  id:
+                    type: string
+                  logoutUrls:
+                    items:
+                      type: string
+                    maxItems: 100
+                    type: array
+                  name:
+                    type: string
+                  preventUserExistenceErrors:
+                    type: string
+                  readAttributes:
+                    items:
+                      type: string
+                    type: array
+                  refreshTokenValidity:
+                    format: int64
+                    type: integer
+                  supportedIdentityProviders:
+                    items:
+                      type: string
+                    type: array
+                  tokenValidityUnits:
+                    properties:
+                      IDToken:
+                        type: string
+                      accessToken:
+                        type: string
+                      refreshToken:
+                        type: string
+                    type: object
+                  userPoolID:
+                    type: string
+                  writeAttributes:
+                    items:
+                      type: string
+                    type: array
+                required:
+                - name
+                - userPoolID
                 type: object
               terminationPolicy:
                 enum:

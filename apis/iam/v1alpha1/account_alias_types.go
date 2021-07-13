@@ -42,7 +42,7 @@ type AccountAlias struct {
 }
 
 type AccountAliasSpec struct {
-	KubeformOutput *AccountAliasSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *AccountAliasSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource AccountAliasSpecResource `json:"resource" tf:"resource"`
 

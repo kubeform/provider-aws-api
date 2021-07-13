@@ -42,7 +42,7 @@ type CookieStickinessPolicy struct {
 }
 
 type CookieStickinessPolicySpec struct {
-	KubeformOutput *CookieStickinessPolicySpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *CookieStickinessPolicySpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource CookieStickinessPolicySpecResource `json:"resource" tf:"resource"`
 

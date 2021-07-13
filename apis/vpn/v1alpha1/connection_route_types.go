@@ -42,7 +42,7 @@ type ConnectionRoute struct {
 }
 
 type ConnectionRouteSpec struct {
-	KubeformOutput *ConnectionRouteSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *ConnectionRouteSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource ConnectionRouteSpecResource `json:"resource" tf:"resource"`
 

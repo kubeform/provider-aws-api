@@ -300,7 +300,7 @@ type DistributionSpecViewerCertificate struct {
 }
 
 type DistributionSpec struct {
-	KubeformOutput *DistributionSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *DistributionSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource DistributionSpecResource `json:"resource" tf:"resource"`
 

@@ -54,7 +54,7 @@ type LogMetricFilterSpecMetricTransformation struct {
 }
 
 type LogMetricFilterSpec struct {
-	KubeformOutput *LogMetricFilterSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *LogMetricFilterSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource LogMetricFilterSpecResource `json:"resource" tf:"resource"`
 

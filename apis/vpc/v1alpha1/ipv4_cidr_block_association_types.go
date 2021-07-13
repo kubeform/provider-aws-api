@@ -42,7 +42,7 @@ type Ipv4CIDRBlockAssociation struct {
 }
 
 type Ipv4CIDRBlockAssociationSpec struct {
-	KubeformOutput *Ipv4CIDRBlockAssociationSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *Ipv4CIDRBlockAssociationSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource Ipv4CIDRBlockAssociationSpecResource `json:"resource" tf:"resource"`
 

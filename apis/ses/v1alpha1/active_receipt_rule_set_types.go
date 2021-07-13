@@ -42,7 +42,7 @@ type ActiveReceiptRuleSet struct {
 }
 
 type ActiveReceiptRuleSetSpec struct {
-	KubeformOutput *ActiveReceiptRuleSetSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *ActiveReceiptRuleSetSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource ActiveReceiptRuleSetSpecResource `json:"resource" tf:"resource"`
 

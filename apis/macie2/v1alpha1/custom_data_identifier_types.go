@@ -42,7 +42,7 @@ type CustomDataIdentifier struct {
 }
 
 type CustomDataIdentifierSpec struct {
-	KubeformOutput *CustomDataIdentifierSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *CustomDataIdentifierSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource CustomDataIdentifierSpecResource `json:"resource" tf:"resource"`
 

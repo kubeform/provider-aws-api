@@ -65,7 +65,7 @@ type AmiSpecEphemeralBlockDevice struct {
 }
 
 type AmiSpec struct {
-	KubeformOutput *AmiSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *AmiSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource AmiSpecResource `json:"resource" tf:"resource"`
 

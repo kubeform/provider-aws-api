@@ -42,7 +42,7 @@ type LogSubscriptionFilter struct {
 }
 
 type LogSubscriptionFilterSpec struct {
-	KubeformOutput *LogSubscriptionFilterSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *LogSubscriptionFilterSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource LogSubscriptionFilterSpecResource `json:"resource" tf:"resource"`
 

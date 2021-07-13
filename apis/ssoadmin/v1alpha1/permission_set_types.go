@@ -42,7 +42,7 @@ type PermissionSet struct {
 }
 
 type PermissionSetSpec struct {
-	KubeformOutput *PermissionSetSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *PermissionSetSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource PermissionSetSpecResource `json:"resource" tf:"resource"`
 

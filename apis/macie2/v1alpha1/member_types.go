@@ -42,7 +42,7 @@ type Member struct {
 }
 
 type MemberSpec struct {
-	KubeformOutput *MemberSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *MemberSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource MemberSpecResource `json:"resource" tf:"resource"`
 

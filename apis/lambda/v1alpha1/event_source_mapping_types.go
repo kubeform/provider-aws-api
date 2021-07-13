@@ -60,7 +60,7 @@ type EventSourceMappingSpecSourceAccessConfiguration struct {
 }
 
 type EventSourceMappingSpec struct {
-	KubeformOutput *EventSourceMappingSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *EventSourceMappingSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource EventSourceMappingSpecResource `json:"resource" tf:"resource"`
 

@@ -63,7 +63,7 @@ type AppImageConfigSpecKernelGatewayImageConfig struct {
 }
 
 type AppImageConfigSpec struct {
-	KubeformOutput *AppImageConfigSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *AppImageConfigSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource AppImageConfigSpecResource `json:"resource" tf:"resource"`
 

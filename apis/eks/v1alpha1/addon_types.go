@@ -42,7 +42,7 @@ type Addon struct {
 }
 
 type AddonSpec struct {
-	KubeformOutput *AddonSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *AddonSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource AddonSpecResource `json:"resource" tf:"resource"`
 

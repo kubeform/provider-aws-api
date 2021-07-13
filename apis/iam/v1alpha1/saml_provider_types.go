@@ -42,7 +42,7 @@ type SamlProvider struct {
 }
 
 type SamlProviderSpec struct {
-	KubeformOutput *SamlProviderSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *SamlProviderSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource SamlProviderSpecResource `json:"resource" tf:"resource"`
 

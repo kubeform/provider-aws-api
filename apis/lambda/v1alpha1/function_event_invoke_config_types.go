@@ -57,7 +57,7 @@ type FunctionEventInvokeConfigSpecDestinationConfig struct {
 }
 
 type FunctionEventInvokeConfigSpec struct {
-	KubeformOutput *FunctionEventInvokeConfigSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *FunctionEventInvokeConfigSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource FunctionEventInvokeConfigSpecResource `json:"resource" tf:"resource"`
 

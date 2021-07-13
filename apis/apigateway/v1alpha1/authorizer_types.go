@@ -42,7 +42,7 @@ type Authorizer struct {
 }
 
 type AuthorizerSpec struct {
-	KubeformOutput *AuthorizerSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *AuthorizerSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource AuthorizerSpecResource `json:"resource" tf:"resource"`
 

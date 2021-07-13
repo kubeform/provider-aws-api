@@ -42,7 +42,7 @@ type StaticIPAttachment struct {
 }
 
 type StaticIPAttachmentSpec struct {
-	KubeformOutput *StaticIPAttachmentSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *StaticIPAttachmentSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource StaticIPAttachmentSpecResource `json:"resource" tf:"resource"`
 

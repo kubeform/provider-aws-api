@@ -37,121 +37,6 @@ spec:
             type: object
           spec:
             properties:
-              kubeformOutput:
-                properties:
-                  applyImmediately:
-                    type: boolean
-                  arn:
-                    type: string
-                  availabilityZones:
-                    items:
-                      type: string
-                    type: array
-                  backupRetentionPeriod:
-                    format: int64
-                    type: integer
-                  clusterIdentifier:
-                    type: string
-                  clusterIdentifierPrefix:
-                    type: string
-                  clusterMembers:
-                    items:
-                      type: string
-                    type: array
-                  clusterResourceID:
-                    type: string
-                  dbClusterParameterGroupName:
-                    type: string
-                  dbSubnetGroupName:
-                    type: string
-                  deletionProtection:
-                    type: boolean
-                  enabledCloudwatchLogsExports:
-                    items:
-                      type: string
-                    type: array
-                  endpoint:
-                    type: string
-                  engine:
-                    type: string
-                  engineVersion:
-                    type: string
-                  finalSnapshotIdentifier:
-                    type: string
-                  hostedZoneID:
-                    type: string
-                  id:
-                    type: string
-                  kmsKeyID:
-                    type: string
-                  masterUsername:
-                    type: string
-                  port:
-                    format: int64
-                    type: integer
-                  preferredBackupWindow:
-                    type: string
-                  preferredMaintenanceWindow:
-                    type: string
-                  readerEndpoint:
-                    type: string
-                  skipFinalSnapshot:
-                    type: boolean
-                  snapshotIdentifier:
-                    type: string
-                  storageEncrypted:
-                    type: boolean
-                  tags:
-                    additionalProperties:
-                      type: string
-                    type: object
-                  tagsAll:
-                    additionalProperties:
-                      type: string
-                    type: object
-                  timeouts:
-                    properties:
-                      create:
-                        description: A Duration represents the elapsed time between
-                          two instants as an int64 nanosecond count. The representation
-                          limits the largest representable duration to approximately
-                          290 years.
-                        format: int64
-                        type: integer
-                      default:
-                        description: A Duration represents the elapsed time between
-                          two instants as an int64 nanosecond count. The representation
-                          limits the largest representable duration to approximately
-                          290 years.
-                        format: int64
-                        type: integer
-                      delete:
-                        description: A Duration represents the elapsed time between
-                          two instants as an int64 nanosecond count. The representation
-                          limits the largest representable duration to approximately
-                          290 years.
-                        format: int64
-                        type: integer
-                      read:
-                        description: A Duration represents the elapsed time between
-                          two instants as an int64 nanosecond count. The representation
-                          limits the largest representable duration to approximately
-                          290 years.
-                        format: int64
-                        type: integer
-                      update:
-                        description: A Duration represents the elapsed time between
-                          two instants as an int64 nanosecond count. The representation
-                          limits the largest representable duration to approximately
-                          290 years.
-                        format: int64
-                        type: integer
-                    type: object
-                  vpcSecurityGroupIDS:
-                    items:
-                      type: string
-                    type: array
-                type: object
               providerRef:
                 description: LocalObjectReference contains enough information to let
                   you locate the referenced object inside the same namespace.
@@ -284,6 +169,121 @@ spec:
                     description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
                       TODO: Add other useful fields. apiVersion, kind, uid?'
                     type: string
+                type: object
+              state:
+                properties:
+                  applyImmediately:
+                    type: boolean
+                  arn:
+                    type: string
+                  availabilityZones:
+                    items:
+                      type: string
+                    type: array
+                  backupRetentionPeriod:
+                    format: int64
+                    type: integer
+                  clusterIdentifier:
+                    type: string
+                  clusterIdentifierPrefix:
+                    type: string
+                  clusterMembers:
+                    items:
+                      type: string
+                    type: array
+                  clusterResourceID:
+                    type: string
+                  dbClusterParameterGroupName:
+                    type: string
+                  dbSubnetGroupName:
+                    type: string
+                  deletionProtection:
+                    type: boolean
+                  enabledCloudwatchLogsExports:
+                    items:
+                      type: string
+                    type: array
+                  endpoint:
+                    type: string
+                  engine:
+                    type: string
+                  engineVersion:
+                    type: string
+                  finalSnapshotIdentifier:
+                    type: string
+                  hostedZoneID:
+                    type: string
+                  id:
+                    type: string
+                  kmsKeyID:
+                    type: string
+                  masterUsername:
+                    type: string
+                  port:
+                    format: int64
+                    type: integer
+                  preferredBackupWindow:
+                    type: string
+                  preferredMaintenanceWindow:
+                    type: string
+                  readerEndpoint:
+                    type: string
+                  skipFinalSnapshot:
+                    type: boolean
+                  snapshotIdentifier:
+                    type: string
+                  storageEncrypted:
+                    type: boolean
+                  tags:
+                    additionalProperties:
+                      type: string
+                    type: object
+                  tagsAll:
+                    additionalProperties:
+                      type: string
+                    type: object
+                  timeouts:
+                    properties:
+                      create:
+                        description: A Duration represents the elapsed time between
+                          two instants as an int64 nanosecond count. The representation
+                          limits the largest representable duration to approximately
+                          290 years.
+                        format: int64
+                        type: integer
+                      default:
+                        description: A Duration represents the elapsed time between
+                          two instants as an int64 nanosecond count. The representation
+                          limits the largest representable duration to approximately
+                          290 years.
+                        format: int64
+                        type: integer
+                      delete:
+                        description: A Duration represents the elapsed time between
+                          two instants as an int64 nanosecond count. The representation
+                          limits the largest representable duration to approximately
+                          290 years.
+                        format: int64
+                        type: integer
+                      read:
+                        description: A Duration represents the elapsed time between
+                          two instants as an int64 nanosecond count. The representation
+                          limits the largest representable duration to approximately
+                          290 years.
+                        format: int64
+                        type: integer
+                      update:
+                        description: A Duration represents the elapsed time between
+                          two instants as an int64 nanosecond count. The representation
+                          limits the largest representable duration to approximately
+                          290 years.
+                        format: int64
+                        type: integer
+                    type: object
+                  vpcSecurityGroupIDS:
+                    items:
+                      type: string
+                    type: array
                 type: object
               terminationPolicy:
                 enum:

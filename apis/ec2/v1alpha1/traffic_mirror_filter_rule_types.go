@@ -56,7 +56,7 @@ type TrafficMirrorFilterRuleSpecSourcePortRange struct {
 }
 
 type TrafficMirrorFilterRuleSpec struct {
-	KubeformOutput *TrafficMirrorFilterRuleSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *TrafficMirrorFilterRuleSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource TrafficMirrorFilterRuleSpecResource `json:"resource" tf:"resource"`
 

@@ -62,7 +62,7 @@ type VirtualServiceSpecSpec struct {
 }
 
 type VirtualServiceSpec struct {
-	KubeformOutput *VirtualServiceSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *VirtualServiceSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource VirtualServiceSpecResource `json:"resource" tf:"resource"`
 

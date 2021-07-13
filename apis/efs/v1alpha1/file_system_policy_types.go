@@ -42,7 +42,7 @@ type FileSystemPolicy struct {
 }
 
 type FileSystemPolicySpec struct {
-	KubeformOutput *FileSystemPolicySpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *FileSystemPolicySpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource FileSystemPolicySpecResource `json:"resource" tf:"resource"`
 

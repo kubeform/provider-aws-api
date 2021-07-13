@@ -42,7 +42,7 @@ type ResolverQueryLogConfigAssociation struct {
 }
 
 type ResolverQueryLogConfigAssociationSpec struct {
-	KubeformOutput *ResolverQueryLogConfigAssociationSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *ResolverQueryLogConfigAssociationSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource ResolverQueryLogConfigAssociationSpecResource `json:"resource" tf:"resource"`
 

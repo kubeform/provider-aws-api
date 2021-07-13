@@ -42,7 +42,7 @@ type Thing struct {
 }
 
 type ThingSpec struct {
-	KubeformOutput *ThingSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *ThingSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource ThingSpecResource `json:"resource" tf:"resource"`
 

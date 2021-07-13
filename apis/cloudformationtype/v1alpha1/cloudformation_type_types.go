@@ -47,7 +47,7 @@ type CloudformationTypeSpecLoggingConfig struct {
 }
 
 type CloudformationTypeSpec struct {
-	KubeformOutput *CloudformationTypeSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *CloudformationTypeSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource CloudformationTypeSpecResource `json:"resource" tf:"resource"`
 

@@ -42,7 +42,7 @@ type DomainPermissionsPolicy struct {
 }
 
 type DomainPermissionsPolicySpec struct {
-	KubeformOutput *DomainPermissionsPolicySpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *DomainPermissionsPolicySpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource DomainPermissionsPolicySpecResource `json:"resource" tf:"resource"`
 

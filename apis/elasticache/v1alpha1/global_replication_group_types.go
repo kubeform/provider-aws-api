@@ -42,7 +42,7 @@ type GlobalReplicationGroup struct {
 }
 
 type GlobalReplicationGroupSpec struct {
-	KubeformOutput *GlobalReplicationGroupSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *GlobalReplicationGroupSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource GlobalReplicationGroupSpecResource `json:"resource" tf:"resource"`
 

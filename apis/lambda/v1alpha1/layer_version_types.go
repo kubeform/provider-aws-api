@@ -42,7 +42,7 @@ type LayerVersion struct {
 }
 
 type LayerVersionSpec struct {
-	KubeformOutput *LayerVersionSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *LayerVersionSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource LayerVersionSpecResource `json:"resource" tf:"resource"`
 

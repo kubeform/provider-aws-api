@@ -150,7 +150,7 @@ type ElasticsearchDomainSpecVpcOptions struct {
 }
 
 type ElasticsearchDomainSpec struct {
-	KubeformOutput *ElasticsearchDomainSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *ElasticsearchDomainSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource ElasticsearchDomainSpecResource `json:"resource" tf:"resource"`
 

@@ -56,7 +56,7 @@ type MysqlLayerSpecEbsVolume struct {
 }
 
 type MysqlLayerSpec struct {
-	KubeformOutput *MysqlLayerSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *MysqlLayerSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource MysqlLayerSpecResource `json:"resource" tf:"resource"`
 

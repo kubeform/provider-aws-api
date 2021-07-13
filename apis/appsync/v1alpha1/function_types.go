@@ -42,7 +42,7 @@ type Function struct {
 }
 
 type FunctionSpec struct {
-	KubeformOutput *FunctionSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *FunctionSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource FunctionSpecResource `json:"resource" tf:"resource"`
 

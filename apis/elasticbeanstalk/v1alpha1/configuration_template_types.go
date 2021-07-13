@@ -50,7 +50,7 @@ type ConfigurationTemplateSpecSetting struct {
 }
 
 type ConfigurationTemplateSpec struct {
-	KubeformOutput *ConfigurationTemplateSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *ConfigurationTemplateSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource ConfigurationTemplateSpecResource `json:"resource" tf:"resource"`
 

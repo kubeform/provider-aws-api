@@ -42,7 +42,7 @@ type ImageVersion struct {
 }
 
 type ImageVersionSpec struct {
-	KubeformOutput *ImageVersionSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *ImageVersionSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource ImageVersionSpecResource `json:"resource" tf:"resource"`
 

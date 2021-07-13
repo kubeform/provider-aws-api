@@ -37,17 +37,6 @@ spec:
             type: object
           spec:
             properties:
-              kubeformOutput:
-                properties:
-                  eventBusName:
-                    type: string
-                  id:
-                    type: string
-                  policy:
-                    type: string
-                required:
-                - policy
-                type: object
               providerRef:
                 description: LocalObjectReference contains enough information to let
                   you locate the referenced object inside the same namespace.
@@ -58,6 +47,17 @@ spec:
                     type: string
                 type: object
               resource:
+                properties:
+                  eventBusName:
+                    type: string
+                  id:
+                    type: string
+                  policy:
+                    type: string
+                required:
+                - policy
+                type: object
+              state:
                 properties:
                   eventBusName:
                     type: string

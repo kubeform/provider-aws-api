@@ -42,7 +42,7 @@ type ClusterSnapshot struct {
 }
 
 type ClusterSnapshotSpec struct {
-	KubeformOutput *ClusterSnapshotSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *ClusterSnapshotSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource ClusterSnapshotSpecResource `json:"resource" tf:"resource"`
 

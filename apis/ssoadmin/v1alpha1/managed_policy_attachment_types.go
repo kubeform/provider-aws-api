@@ -42,7 +42,7 @@ type ManagedPolicyAttachment struct {
 }
 
 type ManagedPolicyAttachmentSpec struct {
-	KubeformOutput *ManagedPolicyAttachmentSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *ManagedPolicyAttachmentSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource ManagedPolicyAttachmentSpecResource `json:"resource" tf:"resource"`
 

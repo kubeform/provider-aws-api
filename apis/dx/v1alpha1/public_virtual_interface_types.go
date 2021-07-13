@@ -42,7 +42,7 @@ type PublicVirtualInterface struct {
 }
 
 type PublicVirtualInterfaceSpec struct {
-	KubeformOutput *PublicVirtualInterfaceSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *PublicVirtualInterfaceSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource PublicVirtualInterfaceSpecResource `json:"resource" tf:"resource"`
 

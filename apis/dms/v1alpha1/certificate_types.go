@@ -42,7 +42,7 @@ type Certificate struct {
 }
 
 type CertificateSpec struct {
-	KubeformOutput *CertificateSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *CertificateSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource CertificateSpecResource `json:"resource" tf:"resource"`
 

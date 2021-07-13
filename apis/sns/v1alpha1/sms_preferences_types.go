@@ -42,7 +42,7 @@ type SmsPreferences struct {
 }
 
 type SmsPreferencesSpec struct {
-	KubeformOutput *SmsPreferencesSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *SmsPreferencesSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource SmsPreferencesSpecResource `json:"resource" tf:"resource"`
 

@@ -42,7 +42,7 @@ type PolicyAttachment struct {
 }
 
 type PolicyAttachmentSpec struct {
-	KubeformOutput *PolicyAttachmentSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *PolicyAttachmentSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource PolicyAttachmentSpecResource `json:"resource" tf:"resource"`
 

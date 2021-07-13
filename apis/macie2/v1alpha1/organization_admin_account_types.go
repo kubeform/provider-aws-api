@@ -42,7 +42,7 @@ type OrganizationAdminAccount struct {
 }
 
 type OrganizationAdminAccountSpec struct {
-	KubeformOutput *OrganizationAdminAccountSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *OrganizationAdminAccountSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource OrganizationAdminAccountSpecResource `json:"resource" tf:"resource"`
 

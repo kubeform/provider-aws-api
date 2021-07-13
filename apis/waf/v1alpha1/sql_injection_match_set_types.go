@@ -53,7 +53,7 @@ type SqlInjectionMatchSetSpecSqlInjectionMatchTuples struct {
 }
 
 type SqlInjectionMatchSetSpec struct {
-	KubeformOutput *SqlInjectionMatchSetSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *SqlInjectionMatchSetSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource SqlInjectionMatchSetSpecResource `json:"resource" tf:"resource"`
 

@@ -42,7 +42,7 @@ type UsagePlanKey struct {
 }
 
 type UsagePlanKeySpec struct {
-	KubeformOutput *UsagePlanKeySpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *UsagePlanKeySpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource UsagePlanKeySpecResource `json:"resource" tf:"resource"`
 

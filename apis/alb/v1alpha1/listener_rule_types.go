@@ -181,7 +181,7 @@ type ListenerRuleSpecCondition struct {
 }
 
 type ListenerRuleSpec struct {
-	KubeformOutput *ListenerRuleSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *ListenerRuleSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource ListenerRuleSpecResource `json:"resource" tf:"resource"`
 

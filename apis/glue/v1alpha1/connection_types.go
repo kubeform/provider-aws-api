@@ -52,7 +52,7 @@ type ConnectionSpecPhysicalConnectionRequirements struct {
 }
 
 type ConnectionSpec struct {
-	KubeformOutput *ConnectionSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *ConnectionSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource ConnectionSpecResource `json:"resource" tf:"resource"`
 

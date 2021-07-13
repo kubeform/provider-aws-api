@@ -137,7 +137,7 @@ type PresetSpecVideoWatermarks struct {
 }
 
 type PresetSpec struct {
-	KubeformOutput *PresetSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *PresetSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource PresetSpecResource `json:"resource" tf:"resource"`
 

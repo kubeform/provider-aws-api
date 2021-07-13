@@ -82,7 +82,7 @@ type TriggerSpecPredicate struct {
 }
 
 type TriggerSpec struct {
-	KubeformOutput *TriggerSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *TriggerSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource TriggerSpecResource `json:"resource" tf:"resource"`
 

@@ -42,7 +42,7 @@ type MethodResponse struct {
 }
 
 type MethodResponseSpec struct {
-	KubeformOutput *MethodResponseSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *MethodResponseSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource MethodResponseSpecResource `json:"resource" tf:"resource"`
 

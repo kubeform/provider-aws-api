@@ -53,7 +53,7 @@ type ResourceDataSyncSpecS3Destination struct {
 }
 
 type ResourceDataSyncSpec struct {
-	KubeformOutput *ResourceDataSyncSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *ResourceDataSyncSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource ResourceDataSyncSpecResource `json:"resource" tf:"resource"`
 

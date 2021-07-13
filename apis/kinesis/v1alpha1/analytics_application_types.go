@@ -219,7 +219,7 @@ type AnalyticsApplicationSpecReferenceDataSources struct {
 }
 
 type AnalyticsApplicationSpec struct {
-	KubeformOutput *AnalyticsApplicationSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *AnalyticsApplicationSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource AnalyticsApplicationSpecResource `json:"resource" tf:"resource"`
 

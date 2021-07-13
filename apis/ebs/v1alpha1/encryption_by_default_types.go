@@ -42,7 +42,7 @@ type EncryptionByDefault struct {
 }
 
 type EncryptionByDefaultSpec struct {
-	KubeformOutput *EncryptionByDefaultSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *EncryptionByDefaultSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource EncryptionByDefaultSpecResource `json:"resource" tf:"resource"`
 

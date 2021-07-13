@@ -42,7 +42,7 @@ type TransitGatewayPrefixListReference struct {
 }
 
 type TransitGatewayPrefixListReferenceSpec struct {
-	KubeformOutput *TransitGatewayPrefixListReferenceSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *TransitGatewayPrefixListReferenceSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource TransitGatewayPrefixListReferenceSpecResource `json:"resource" tf:"resource"`
 

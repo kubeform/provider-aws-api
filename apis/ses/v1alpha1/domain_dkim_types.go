@@ -42,7 +42,7 @@ type DomainDkim struct {
 }
 
 type DomainDkimSpec struct {
-	KubeformOutput *DomainDkimSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *DomainDkimSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource DomainDkimSpecResource `json:"resource" tf:"resource"`
 

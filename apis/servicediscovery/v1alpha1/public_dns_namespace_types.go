@@ -42,7 +42,7 @@ type PublicDNSNamespace struct {
 }
 
 type PublicDNSNamespaceSpec struct {
-	KubeformOutput *PublicDNSNamespaceSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *PublicDNSNamespaceSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource PublicDNSNamespaceSpecResource `json:"resource" tf:"resource"`
 

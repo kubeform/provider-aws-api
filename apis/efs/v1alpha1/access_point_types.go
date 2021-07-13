@@ -62,7 +62,7 @@ type AccessPointSpecRootDirectory struct {
 }
 
 type AccessPointSpec struct {
-	KubeformOutput *AccessPointSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *AccessPointSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource AccessPointSpecResource `json:"resource" tf:"resource"`
 

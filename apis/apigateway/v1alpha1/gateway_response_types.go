@@ -42,7 +42,7 @@ type GatewayResponse struct {
 }
 
 type GatewayResponseSpec struct {
-	KubeformOutput *GatewayResponseSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *GatewayResponseSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource GatewayResponseSpecResource `json:"resource" tf:"resource"`
 

@@ -42,7 +42,7 @@ type HostedTransitVirtualInterfaceAccepter struct {
 }
 
 type HostedTransitVirtualInterfaceAccepterSpec struct {
-	KubeformOutput *HostedTransitVirtualInterfaceAccepterSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *HostedTransitVirtualInterfaceAccepterSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource HostedTransitVirtualInterfaceAccepterSpecResource `json:"resource" tf:"resource"`
 

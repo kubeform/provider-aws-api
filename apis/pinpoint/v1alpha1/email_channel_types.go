@@ -42,7 +42,7 @@ type EmailChannel struct {
 }
 
 type EmailChannelSpec struct {
-	KubeformOutput *EmailChannelSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *EmailChannelSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource EmailChannelSpecResource `json:"resource" tf:"resource"`
 

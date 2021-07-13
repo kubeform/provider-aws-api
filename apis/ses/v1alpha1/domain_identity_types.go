@@ -42,7 +42,7 @@ type DomainIdentity struct {
 }
 
 type DomainIdentitySpec struct {
-	KubeformOutput *DomainIdentitySpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *DomainIdentitySpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource DomainIdentitySpecResource `json:"resource" tf:"resource"`
 

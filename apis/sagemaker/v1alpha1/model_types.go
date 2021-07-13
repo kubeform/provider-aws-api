@@ -83,7 +83,7 @@ type ModelSpecVpcConfig struct {
 }
 
 type ModelSpec struct {
-	KubeformOutput *ModelSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *ModelSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource ModelSpecResource `json:"resource" tf:"resource"`
 

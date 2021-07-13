@@ -62,7 +62,7 @@ type LbSpecSubnetMapping struct {
 }
 
 type LbSpec struct {
-	KubeformOutput *LbSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *LbSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource LbSpecResource `json:"resource" tf:"resource"`
 

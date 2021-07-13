@@ -42,7 +42,7 @@ type IdentityPolicy struct {
 }
 
 type IdentityPolicySpec struct {
-	KubeformOutput *IdentityPolicySpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *IdentityPolicySpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource IdentityPolicySpecResource `json:"resource" tf:"resource"`
 

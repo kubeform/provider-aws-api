@@ -42,7 +42,7 @@ type Image struct {
 }
 
 type ImageSpec struct {
-	KubeformOutput *ImageSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *ImageSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource ImageSpecResource `json:"resource" tf:"resource"`
 

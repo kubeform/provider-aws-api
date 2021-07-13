@@ -42,7 +42,7 @@ type UserPoolUiCustomization struct {
 }
 
 type UserPoolUiCustomizationSpec struct {
-	KubeformOutput *UserPoolUiCustomizationSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *UserPoolUiCustomizationSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource UserPoolUiCustomizationSpecResource `json:"resource" tf:"resource"`
 

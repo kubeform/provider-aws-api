@@ -42,7 +42,7 @@ type TransitGatewayVpcAttachment struct {
 }
 
 type TransitGatewayVpcAttachmentSpec struct {
-	KubeformOutput *TransitGatewayVpcAttachmentSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *TransitGatewayVpcAttachmentSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource TransitGatewayVpcAttachmentSpecResource `json:"resource" tf:"resource"`
 
