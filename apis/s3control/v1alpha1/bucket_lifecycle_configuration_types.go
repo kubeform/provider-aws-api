@@ -74,7 +74,7 @@ type BucketLifecycleConfigurationSpecRule struct {
 }
 
 type BucketLifecycleConfigurationSpec struct {
-	KubeformOutput *BucketLifecycleConfigurationSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *BucketLifecycleConfigurationSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource BucketLifecycleConfigurationSpecResource `json:"resource" tf:"resource"`
 

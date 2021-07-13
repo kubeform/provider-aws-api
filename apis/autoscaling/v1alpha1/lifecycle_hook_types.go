@@ -42,7 +42,7 @@ type LifecycleHook struct {
 }
 
 type LifecycleHookSpec struct {
-	KubeformOutput *LifecycleHookSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *LifecycleHookSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource LifecycleHookSpecResource `json:"resource" tf:"resource"`
 

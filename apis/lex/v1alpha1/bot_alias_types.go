@@ -58,7 +58,7 @@ type BotAliasSpecConversationLogs struct {
 }
 
 type BotAliasSpec struct {
-	KubeformOutput *BotAliasSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *BotAliasSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource BotAliasSpecResource `json:"resource" tf:"resource"`
 

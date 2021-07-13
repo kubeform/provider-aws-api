@@ -42,7 +42,7 @@ type ReceiptFilter struct {
 }
 
 type ReceiptFilterSpec struct {
-	KubeformOutput *ReceiptFilterSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *ReceiptFilterSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource ReceiptFilterSpecResource `json:"resource" tf:"resource"`
 

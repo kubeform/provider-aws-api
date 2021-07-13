@@ -42,7 +42,7 @@ type SqsQueue struct {
 }
 
 type SqsQueueSpec struct {
-	KubeformOutput *SqsQueueSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *SqsQueueSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource SqsQueueSpecResource `json:"resource" tf:"resource"`
 

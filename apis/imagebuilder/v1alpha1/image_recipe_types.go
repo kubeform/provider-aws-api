@@ -74,7 +74,7 @@ type ImageRecipeSpecComponent struct {
 }
 
 type ImageRecipeSpec struct {
-	KubeformOutput *ImageRecipeSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *ImageRecipeSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource ImageRecipeSpecResource `json:"resource" tf:"resource"`
 

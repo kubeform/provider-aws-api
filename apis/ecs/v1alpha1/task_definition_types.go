@@ -120,7 +120,7 @@ type TaskDefinitionSpecVolume struct {
 }
 
 type TaskDefinitionSpec struct {
-	KubeformOutput *TaskDefinitionSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *TaskDefinitionSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource TaskDefinitionSpecResource `json:"resource" tf:"resource"`
 

@@ -49,7 +49,7 @@ type RestAPISpecEndpointConfiguration struct {
 }
 
 type RestAPISpec struct {
-	KubeformOutput *RestAPISpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *RestAPISpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource RestAPISpecResource `json:"resource" tf:"resource"`
 

@@ -48,7 +48,7 @@ type IpGroupSpecRules struct {
 }
 
 type IpGroupSpec struct {
-	KubeformOutput *IpGroupSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *IpGroupSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource IpGroupSpecResource `json:"resource" tf:"resource"`
 

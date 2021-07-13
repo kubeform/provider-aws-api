@@ -42,7 +42,7 @@ type Detector struct {
 }
 
 type DetectorSpec struct {
-	KubeformOutput *DetectorSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *DetectorSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource DetectorSpecResource `json:"resource" tf:"resource"`
 

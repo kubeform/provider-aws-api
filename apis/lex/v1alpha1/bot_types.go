@@ -78,7 +78,7 @@ type BotSpecIntent struct {
 }
 
 type BotSpec struct {
-	KubeformOutput *BotSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *BotSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource BotSpecResource `json:"resource" tf:"resource"`
 

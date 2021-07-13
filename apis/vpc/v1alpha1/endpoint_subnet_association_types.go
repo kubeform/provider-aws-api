@@ -42,7 +42,7 @@ type EndpointSubnetAssociation struct {
 }
 
 type EndpointSubnetAssociationSpec struct {
-	KubeformOutput *EndpointSubnetAssociationSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *EndpointSubnetAssociationSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource EndpointSubnetAssociationSpecResource `json:"resource" tf:"resource"`
 

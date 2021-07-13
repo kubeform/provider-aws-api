@@ -69,7 +69,7 @@ type ElbSpecListener struct {
 }
 
 type ElbSpec struct {
-	KubeformOutput *ElbSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *ElbSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource ElbSpecResource `json:"resource" tf:"resource"`
 

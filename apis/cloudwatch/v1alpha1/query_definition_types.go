@@ -42,7 +42,7 @@ type QueryDefinition struct {
 }
 
 type QueryDefinitionSpec struct {
-	KubeformOutput *QueryDefinitionSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *QueryDefinitionSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource QueryDefinitionSpecResource `json:"resource" tf:"resource"`
 

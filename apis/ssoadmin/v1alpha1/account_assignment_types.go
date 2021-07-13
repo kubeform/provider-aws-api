@@ -42,7 +42,7 @@ type AccountAssignment struct {
 }
 
 type AccountAssignmentSpec struct {
-	KubeformOutput *AccountAssignmentSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *AccountAssignmentSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource AccountAssignmentSpecResource `json:"resource" tf:"resource"`
 

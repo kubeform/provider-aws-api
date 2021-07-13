@@ -42,7 +42,7 @@ type RdsDbInstance struct {
 }
 
 type RdsDbInstanceSpec struct {
-	KubeformOutput *RdsDbInstanceSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *RdsDbInstanceSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource RdsDbInstanceSpecResource `json:"resource" tf:"resource"`
 

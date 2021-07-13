@@ -42,7 +42,7 @@ type ThingPrincipalAttachment struct {
 }
 
 type ThingPrincipalAttachmentSpec struct {
-	KubeformOutput *ThingPrincipalAttachmentSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *ThingPrincipalAttachmentSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource ThingPrincipalAttachmentSpecResource `json:"resource" tf:"resource"`
 

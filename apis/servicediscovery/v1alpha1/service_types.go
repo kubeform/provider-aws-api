@@ -68,7 +68,7 @@ type ServiceSpecHealthCheckCustomConfig struct {
 }
 
 type ServiceSpec struct {
-	KubeformOutput *ServiceSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *ServiceSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource ServiceSpecResource `json:"resource" tf:"resource"`
 

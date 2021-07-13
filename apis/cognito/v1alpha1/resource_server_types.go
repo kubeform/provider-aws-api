@@ -47,7 +47,7 @@ type ResourceServerSpecScope struct {
 }
 
 type ResourceServerSpec struct {
-	KubeformOutput *ResourceServerSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *ResourceServerSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource ResourceServerSpecResource `json:"resource" tf:"resource"`
 

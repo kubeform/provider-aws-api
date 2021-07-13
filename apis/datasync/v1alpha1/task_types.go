@@ -82,7 +82,7 @@ type TaskSpecSchedule struct {
 }
 
 type TaskSpec struct {
-	KubeformOutput *TaskSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *TaskSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource TaskSpecResource `json:"resource" tf:"resource"`
 

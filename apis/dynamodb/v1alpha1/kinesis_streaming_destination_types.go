@@ -42,7 +42,7 @@ type KinesisStreamingDestination struct {
 }
 
 type KinesisStreamingDestinationSpec struct {
-	KubeformOutput *KinesisStreamingDestinationSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *KinesisStreamingDestinationSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource KinesisStreamingDestinationSpecResource `json:"resource" tf:"resource"`
 

@@ -42,7 +42,7 @@ type Activity struct {
 }
 
 type ActivitySpec struct {
-	KubeformOutput *ActivitySpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *ActivitySpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource ActivitySpecResource `json:"resource" tf:"resource"`
 

@@ -42,7 +42,7 @@ type EventBus struct {
 }
 
 type EventBusSpec struct {
-	KubeformOutput *EventBusSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *EventBusSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource EventBusSpecResource `json:"resource" tf:"resource"`
 

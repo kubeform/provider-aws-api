@@ -42,7 +42,7 @@ type LakeformationResource struct {
 }
 
 type LakeformationResourceSpec struct {
-	KubeformOutput *LakeformationResourceSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *LakeformationResourceSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource LakeformationResourceSpecResource `json:"resource" tf:"resource"`
 

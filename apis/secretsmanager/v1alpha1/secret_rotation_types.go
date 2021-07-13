@@ -46,7 +46,7 @@ type SecretRotationSpecRotationRules struct {
 }
 
 type SecretRotationSpec struct {
-	KubeformOutput *SecretRotationSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *SecretRotationSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource SecretRotationSpecResource `json:"resource" tf:"resource"`
 

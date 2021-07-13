@@ -50,7 +50,7 @@ type ThingTypeSpecProperties struct {
 }
 
 type ThingTypeSpec struct {
-	KubeformOutput *ThingTypeSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *ThingTypeSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource ThingTypeSpecResource `json:"resource" tf:"resource"`
 

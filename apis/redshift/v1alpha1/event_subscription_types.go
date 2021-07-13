@@ -42,7 +42,7 @@ type EventSubscription struct {
 }
 
 type EventSubscriptionSpec struct {
-	KubeformOutput *EventSubscriptionSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *EventSubscriptionSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource EventSubscriptionSpecResource `json:"resource" tf:"resource"`
 

@@ -48,7 +48,7 @@ type ConvertQueueSpecReservationPlanSettings struct {
 }
 
 type ConvertQueueSpec struct {
-	KubeformOutput *ConvertQueueSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *ConvertQueueSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource ConvertQueueSpecResource `json:"resource" tf:"resource"`
 

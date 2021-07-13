@@ -53,7 +53,7 @@ type SecurityGroupSpecIngress struct {
 }
 
 type SecurityGroupSpec struct {
-	KubeformOutput *SecurityGroupSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *SecurityGroupSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource SecurityGroupSpecResource `json:"resource" tf:"resource"`
 

@@ -49,7 +49,7 @@ type GlobalClusterSpecGlobalClusterMembers struct {
 }
 
 type GlobalClusterSpec struct {
-	KubeformOutput *GlobalClusterSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *GlobalClusterSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource GlobalClusterSpecResource `json:"resource" tf:"resource"`
 

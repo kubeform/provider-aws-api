@@ -42,7 +42,7 @@ type EventArchive struct {
 }
 
 type EventArchiveSpec struct {
-	KubeformOutput *EventArchiveSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *EventArchiveSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource EventArchiveSpecResource `json:"resource" tf:"resource"`
 

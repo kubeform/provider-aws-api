@@ -54,7 +54,7 @@ type RegexMatchSetSpecRegexMatchTuple struct {
 }
 
 type RegexMatchSetSpec struct {
-	KubeformOutput *RegexMatchSetSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *RegexMatchSetSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource RegexMatchSetSpecResource `json:"resource" tf:"resource"`
 

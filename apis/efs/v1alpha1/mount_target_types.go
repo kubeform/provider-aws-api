@@ -42,7 +42,7 @@ type MountTarget struct {
 }
 
 type MountTargetSpec struct {
-	KubeformOutput *MountTargetSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *MountTargetSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource MountTargetSpecResource `json:"resource" tf:"resource"`
 

@@ -83,7 +83,7 @@ type CodepipelineSpecStage struct {
 }
 
 type CodepipelineSpec struct {
-	KubeformOutput *CodepipelineSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *CodepipelineSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource CodepipelineSpecResource `json:"resource" tf:"resource"`
 

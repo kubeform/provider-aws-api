@@ -42,7 +42,7 @@ type PublicKey struct {
 }
 
 type PublicKeySpec struct {
-	KubeformOutput *PublicKeySpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *PublicKeySpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource PublicKeySpecResource `json:"resource" tf:"resource"`
 

@@ -51,7 +51,7 @@ type DomainAssociationSpecSubDomain struct {
 }
 
 type DomainAssociationSpec struct {
-	KubeformOutput *DomainAssociationSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *DomainAssociationSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource DomainAssociationSpecResource `json:"resource" tf:"resource"`
 

@@ -42,7 +42,7 @@ type InvitationAccepter struct {
 }
 
 type InvitationAccepterSpec struct {
-	KubeformOutput *InvitationAccepterSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *InvitationAccepterSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource InvitationAccepterSpecResource `json:"resource" tf:"resource"`
 

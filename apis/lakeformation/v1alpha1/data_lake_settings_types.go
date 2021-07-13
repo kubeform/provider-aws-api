@@ -56,7 +56,7 @@ type DataLakeSettingsSpecCreateTableDefaultPermissions struct {
 }
 
 type DataLakeSettingsSpec struct {
-	KubeformOutput *DataLakeSettingsSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *DataLakeSettingsSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource DataLakeSettingsSpecResource `json:"resource" tf:"resource"`
 

@@ -42,7 +42,7 @@ type SecretVersion struct {
 }
 
 type SecretVersionSpec struct {
-	KubeformOutput *SecretVersionSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *SecretVersionSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource SecretVersionSpecResource `json:"resource" tf:"resource"`
 

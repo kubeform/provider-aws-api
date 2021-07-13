@@ -56,7 +56,7 @@ type HaproxyLayerSpecEbsVolume struct {
 }
 
 type HaproxyLayerSpec struct {
-	KubeformOutput *HaproxyLayerSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *HaproxyLayerSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource HaproxyLayerSpecResource `json:"resource" tf:"resource"`
 

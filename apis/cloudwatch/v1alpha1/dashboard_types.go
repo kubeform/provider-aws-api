@@ -42,7 +42,7 @@ type Dashboard struct {
 }
 
 type DashboardSpec struct {
-	KubeformOutput *DashboardSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *DashboardSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource DashboardSpecResource `json:"resource" tf:"resource"`
 

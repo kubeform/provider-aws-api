@@ -42,7 +42,7 @@ type TransitVirtualInterface struct {
 }
 
 type TransitVirtualInterfaceSpec struct {
-	KubeformOutput *TransitVirtualInterfaceSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *TransitVirtualInterfaceSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource TransitVirtualInterfaceSpecResource `json:"resource" tf:"resource"`
 

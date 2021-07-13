@@ -100,7 +100,7 @@ type ReceiptRuleSpecWorkmailAction struct {
 }
 
 type ReceiptRuleSpec struct {
-	KubeformOutput *ReceiptRuleSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *ReceiptRuleSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource ReceiptRuleSpecResource `json:"resource" tf:"resource"`
 

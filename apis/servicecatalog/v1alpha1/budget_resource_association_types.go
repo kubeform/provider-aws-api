@@ -42,7 +42,7 @@ type BudgetResourceAssociation struct {
 }
 
 type BudgetResourceAssociationSpec struct {
-	KubeformOutput *BudgetResourceAssociationSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *BudgetResourceAssociationSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource BudgetResourceAssociationSpecResource `json:"resource" tf:"resource"`
 

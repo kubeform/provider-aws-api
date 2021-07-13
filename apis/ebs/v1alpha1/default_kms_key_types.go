@@ -42,7 +42,7 @@ type DefaultKmsKey struct {
 }
 
 type DefaultKmsKeySpec struct {
-	KubeformOutput *DefaultKmsKeySpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *DefaultKmsKeySpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource DefaultKmsKeySpecResource `json:"resource" tf:"resource"`
 

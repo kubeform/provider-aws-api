@@ -42,7 +42,7 @@ type OpenidConnectProvider struct {
 }
 
 type OpenidConnectProviderSpec struct {
-	KubeformOutput *OpenidConnectProviderSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *OpenidConnectProviderSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource OpenidConnectProviderSpecResource `json:"resource" tf:"resource"`
 

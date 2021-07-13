@@ -53,7 +53,7 @@ type RepositorySpecImageScanningConfiguration struct {
 }
 
 type RepositorySpec struct {
-	KubeformOutput *RepositorySpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *RepositorySpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource RepositorySpecResource `json:"resource" tf:"resource"`
 

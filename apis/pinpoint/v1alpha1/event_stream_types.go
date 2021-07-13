@@ -42,7 +42,7 @@ type EventStream struct {
 }
 
 type EventStreamSpec struct {
-	KubeformOutput *EventStreamSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *EventStreamSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource EventStreamSpecResource `json:"resource" tf:"resource"`
 

@@ -52,7 +52,7 @@ type MeshSpecSpec struct {
 }
 
 type MeshSpec struct {
-	KubeformOutput *MeshSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *MeshSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource MeshSpecResource `json:"resource" tf:"resource"`
 

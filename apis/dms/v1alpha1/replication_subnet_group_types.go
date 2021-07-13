@@ -42,7 +42,7 @@ type ReplicationSubnetGroup struct {
 }
 
 type ReplicationSubnetGroupSpec struct {
-	KubeformOutput *ReplicationSubnetGroupSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *ReplicationSubnetGroupSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource ReplicationSubnetGroupSpecResource `json:"resource" tf:"resource"`
 

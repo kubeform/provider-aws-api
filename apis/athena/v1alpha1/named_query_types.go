@@ -42,7 +42,7 @@ type NamedQuery struct {
 }
 
 type NamedQuerySpec struct {
-	KubeformOutput *NamedQuerySpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *NamedQuerySpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource NamedQuerySpecResource `json:"resource" tf:"resource"`
 

@@ -94,7 +94,7 @@ type CrawlerSpecSchemaChangePolicy struct {
 }
 
 type CrawlerSpec struct {
-	KubeformOutput *CrawlerSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *CrawlerSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource CrawlerSpecResource `json:"resource" tf:"resource"`
 

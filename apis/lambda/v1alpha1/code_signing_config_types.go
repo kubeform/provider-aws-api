@@ -52,7 +52,7 @@ type CodeSigningConfigSpecPolicies struct {
 }
 
 type CodeSigningConfigSpec struct {
-	KubeformOutput *CodeSigningConfigSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *CodeSigningConfigSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource CodeSigningConfigSpecResource `json:"resource" tf:"resource"`
 

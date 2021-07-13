@@ -49,7 +49,7 @@ type ScheduledActionSpecScalableTargetAction struct {
 }
 
 type ScheduledActionSpec struct {
-	KubeformOutput *ScheduledActionSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *ScheduledActionSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource ScheduledActionSpecResource `json:"resource" tf:"resource"`
 

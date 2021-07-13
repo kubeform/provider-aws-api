@@ -42,7 +42,7 @@ type AvailabilityZoneGroup struct {
 }
 
 type AvailabilityZoneGroupSpec struct {
-	KubeformOutput *AvailabilityZoneGroupSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *AvailabilityZoneGroupSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource AvailabilityZoneGroupSpecResource `json:"resource" tf:"resource"`
 

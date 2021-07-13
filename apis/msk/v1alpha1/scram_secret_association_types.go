@@ -42,7 +42,7 @@ type ScramSecretAssociation struct {
 }
 
 type ScramSecretAssociationSpec struct {
-	KubeformOutput *ScramSecretAssociationSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *ScramSecretAssociationSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource ScramSecretAssociationSpecResource `json:"resource" tf:"resource"`
 

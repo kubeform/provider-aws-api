@@ -74,7 +74,7 @@ type MlTransformSpecSchema struct {
 }
 
 type MlTransformSpec struct {
-	KubeformOutput *MlTransformSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *MlTransformSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource MlTransformSpecResource `json:"resource" tf:"resource"`
 

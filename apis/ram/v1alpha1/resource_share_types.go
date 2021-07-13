@@ -42,7 +42,7 @@ type ResourceShare struct {
 }
 
 type ResourceShareSpec struct {
-	KubeformOutput *ResourceShareSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *ResourceShareSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource ResourceShareSpecResource `json:"resource" tf:"resource"`
 

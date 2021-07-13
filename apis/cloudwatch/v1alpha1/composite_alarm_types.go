@@ -42,7 +42,7 @@ type CompositeAlarm struct {
 }
 
 type CompositeAlarmSpec struct {
-	KubeformOutput *CompositeAlarmSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *CompositeAlarmSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource CompositeAlarmSpecResource `json:"resource" tf:"resource"`
 

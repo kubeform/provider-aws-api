@@ -42,7 +42,7 @@ type BgpPeer struct {
 }
 
 type BgpPeerSpec struct {
-	KubeformOutput *BgpPeerSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *BgpPeerSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource BgpPeerSpecResource `json:"resource" tf:"resource"`
 

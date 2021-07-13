@@ -137,7 +137,7 @@ type ListenerSpecDefaultAction struct {
 }
 
 type ListenerSpec struct {
-	KubeformOutput *ListenerSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *ListenerSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource ListenerSpecResource `json:"resource" tf:"resource"`
 

@@ -68,7 +68,7 @@ type CopySpecEphemeralBlockDevice struct {
 }
 
 type CopySpec struct {
-	KubeformOutput *CopySpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *CopySpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource CopySpecResource `json:"resource" tf:"resource"`
 

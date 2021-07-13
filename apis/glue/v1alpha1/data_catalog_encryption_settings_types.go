@@ -59,7 +59,7 @@ type DataCatalogEncryptionSettingsSpecDataCatalogEncryptionSettings struct {
 }
 
 type DataCatalogEncryptionSettingsSpec struct {
-	KubeformOutput *DataCatalogEncryptionSettingsSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *DataCatalogEncryptionSettingsSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource DataCatalogEncryptionSettingsSpecResource `json:"resource" tf:"resource"`
 

@@ -55,7 +55,7 @@ type ImagePipelineSpecSchedule struct {
 }
 
 type ImagePipelineSpec struct {
-	KubeformOutput *ImagePipelineSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *ImagePipelineSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource ImagePipelineSpecResource `json:"resource" tf:"resource"`
 

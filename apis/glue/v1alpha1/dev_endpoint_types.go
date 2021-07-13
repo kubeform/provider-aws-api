@@ -42,7 +42,7 @@ type DevEndpoint struct {
 }
 
 type DevEndpointSpec struct {
-	KubeformOutput *DevEndpointSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *DevEndpointSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource DevEndpointSpecResource `json:"resource" tf:"resource"`
 

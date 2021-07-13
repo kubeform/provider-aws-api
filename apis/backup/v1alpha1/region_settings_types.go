@@ -42,7 +42,7 @@ type RegionSettings struct {
 }
 
 type RegionSettingsSpec struct {
-	KubeformOutput *RegionSettingsSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *RegionSettingsSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource RegionSettingsSpecResource `json:"resource" tf:"resource"`
 

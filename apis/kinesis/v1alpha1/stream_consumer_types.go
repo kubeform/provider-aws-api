@@ -42,7 +42,7 @@ type StreamConsumer struct {
 }
 
 type StreamConsumerSpec struct {
-	KubeformOutput *StreamConsumerSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *StreamConsumerSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource StreamConsumerSpecResource `json:"resource" tf:"resource"`
 

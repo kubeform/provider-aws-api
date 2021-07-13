@@ -79,7 +79,7 @@ type BucketInventorySpecSchedule struct {
 }
 
 type BucketInventorySpec struct {
-	KubeformOutput *BucketInventorySpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *BucketInventorySpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource BucketInventorySpecResource `json:"resource" tf:"resource"`
 

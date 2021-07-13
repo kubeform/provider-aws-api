@@ -61,7 +61,7 @@ type UsagePlanSpecThrottleSettings struct {
 }
 
 type UsagePlanSpec struct {
-	KubeformOutput *UsagePlanSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *UsagePlanSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource UsagePlanSpecResource `json:"resource" tf:"resource"`
 

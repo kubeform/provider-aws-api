@@ -42,7 +42,7 @@ type StoredIscsiVolume struct {
 }
 
 type StoredIscsiVolumeSpec struct {
-	KubeformOutput *StoredIscsiVolumeSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *StoredIscsiVolumeSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource StoredIscsiVolumeSpecResource `json:"resource" tf:"resource"`
 

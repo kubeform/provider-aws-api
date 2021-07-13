@@ -42,7 +42,7 @@ type DatafeedSubscription struct {
 }
 
 type DatafeedSubscriptionSpec struct {
-	KubeformOutput *DatafeedSubscriptionSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *DatafeedSubscriptionSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource DatafeedSubscriptionSpecResource `json:"resource" tf:"resource"`
 

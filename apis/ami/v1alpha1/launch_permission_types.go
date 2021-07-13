@@ -42,7 +42,7 @@ type LaunchPermission struct {
 }
 
 type LaunchPermissionSpec struct {
-	KubeformOutput *LaunchPermissionSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *LaunchPermissionSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource LaunchPermissionSpecResource `json:"resource" tf:"resource"`
 

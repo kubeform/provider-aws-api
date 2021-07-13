@@ -56,7 +56,7 @@ type GangliaLayerSpecEbsVolume struct {
 }
 
 type GangliaLayerSpec struct {
-	KubeformOutput *GangliaLayerSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *GangliaLayerSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource GangliaLayerSpecResource `json:"resource" tf:"resource"`
 

@@ -42,7 +42,7 @@ type StaticIP struct {
 }
 
 type StaticIPSpec struct {
-	KubeformOutput *StaticIPSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *StaticIPSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource StaticIPSpecResource `json:"resource" tf:"resource"`
 

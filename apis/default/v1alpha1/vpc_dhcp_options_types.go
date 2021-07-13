@@ -42,7 +42,7 @@ type VpcDHCPOptions struct {
 }
 
 type VpcDHCPOptionsSpec struct {
-	KubeformOutput *VpcDHCPOptionsSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *VpcDHCPOptionsSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource VpcDHCPOptionsSpecResource `json:"resource" tf:"resource"`
 

@@ -73,7 +73,7 @@ type ClassifierSpecXmlClassifier struct {
 }
 
 type ClassifierSpec struct {
-	KubeformOutput *ClassifierSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *ClassifierSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource ClassifierSpecResource `json:"resource" tf:"resource"`
 

@@ -53,7 +53,7 @@ type EndpointServiceSpecPrivateDNSNameConfiguration struct {
 }
 
 type EndpointServiceSpec struct {
-	KubeformOutput *EndpointServiceSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *EndpointServiceSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource EndpointServiceSpecResource `json:"resource" tf:"resource"`
 

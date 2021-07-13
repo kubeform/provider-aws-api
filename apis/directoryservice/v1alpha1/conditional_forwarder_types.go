@@ -42,7 +42,7 @@ type ConditionalForwarder struct {
 }
 
 type ConditionalForwarderSpec struct {
-	KubeformOutput *ConditionalForwarderSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *ConditionalForwarderSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource ConditionalForwarderSpecResource `json:"resource" tf:"resource"`
 

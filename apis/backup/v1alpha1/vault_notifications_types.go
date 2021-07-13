@@ -42,7 +42,7 @@ type VaultNotifications struct {
 }
 
 type VaultNotificationsSpec struct {
-	KubeformOutput *VaultNotificationsSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *VaultNotificationsSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource VaultNotificationsSpecResource `json:"resource" tf:"resource"`
 

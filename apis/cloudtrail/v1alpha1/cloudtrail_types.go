@@ -61,7 +61,7 @@ type CloudtrailSpecInsightSelector struct {
 }
 
 type CloudtrailSpec struct {
-	KubeformOutput *CloudtrailSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *CloudtrailSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource CloudtrailSpecResource `json:"resource" tf:"resource"`
 

@@ -42,7 +42,7 @@ type TapePool struct {
 }
 
 type TapePoolSpec struct {
-	KubeformOutput *TapePoolSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *TapePoolSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource TapePoolSpecResource `json:"resource" tf:"resource"`
 

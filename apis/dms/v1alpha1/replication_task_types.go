@@ -42,7 +42,7 @@ type ReplicationTask struct {
 }
 
 type ReplicationTaskSpec struct {
-	KubeformOutput *ReplicationTaskSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *ReplicationTaskSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource ReplicationTaskSpecResource `json:"resource" tf:"resource"`
 

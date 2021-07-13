@@ -42,7 +42,7 @@ type SamplingRule struct {
 }
 
 type SamplingRuleSpec struct {
-	KubeformOutput *SamplingRuleSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *SamplingRuleSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource SamplingRuleSpecResource `json:"resource" tf:"resource"`
 

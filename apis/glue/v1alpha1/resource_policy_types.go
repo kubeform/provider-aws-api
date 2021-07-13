@@ -42,7 +42,7 @@ type ResourcePolicy struct {
 }
 
 type ResourcePolicySpec struct {
-	KubeformOutput *ResourcePolicySpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *ResourcePolicySpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource ResourcePolicySpecResource `json:"resource" tf:"resource"`
 

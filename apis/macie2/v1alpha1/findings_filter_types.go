@@ -66,7 +66,7 @@ type FindingsFilterSpecFindingCriteria struct {
 }
 
 type FindingsFilterSpec struct {
-	KubeformOutput *FindingsFilterSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *FindingsFilterSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource FindingsFilterSpecResource `json:"resource" tf:"resource"`
 

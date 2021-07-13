@@ -42,7 +42,7 @@ type Pipeline struct {
 }
 
 type PipelineSpec struct {
-	KubeformOutput *PipelineSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *PipelineSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource PipelineSpecResource `json:"resource" tf:"resource"`
 

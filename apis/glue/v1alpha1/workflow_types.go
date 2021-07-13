@@ -42,7 +42,7 @@ type Workflow struct {
 }
 
 type WorkflowSpec struct {
-	KubeformOutput *WorkflowSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *WorkflowSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource WorkflowSpecResource `json:"resource" tf:"resource"`
 

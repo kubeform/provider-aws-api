@@ -3777,7 +3777,7 @@ type RuleGroupSpecVisibilityConfig struct {
 }
 
 type RuleGroupSpec struct {
-	KubeformOutput *RuleGroupSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *RuleGroupSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource RuleGroupSpecResource `json:"resource" tf:"resource"`
 

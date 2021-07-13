@@ -56,7 +56,7 @@ type EndpointGroupSpecPortOverride struct {
 }
 
 type EndpointGroupSpec struct {
-	KubeformOutput *EndpointGroupSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *EndpointGroupSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource EndpointGroupSpecResource `json:"resource" tf:"resource"`
 

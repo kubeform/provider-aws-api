@@ -50,7 +50,7 @@ type RemediationConfigurationSpecParameter struct {
 }
 
 type RemediationConfigurationSpec struct {
-	KubeformOutput *RemediationConfigurationSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *RemediationConfigurationSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource RemediationConfigurationSpecResource `json:"resource" tf:"resource"`
 

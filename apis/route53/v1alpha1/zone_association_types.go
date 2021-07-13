@@ -42,7 +42,7 @@ type ZoneAssociation struct {
 }
 
 type ZoneAssociationSpec struct {
-	KubeformOutput *ZoneAssociationSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *ZoneAssociationSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource ZoneAssociationSpecResource `json:"resource" tf:"resource"`
 

@@ -55,7 +55,7 @@ type StackSpecCustomCookbooksSource struct {
 }
 
 type StackSpec struct {
-	KubeformOutput *StackSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *StackSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource StackSpecResource `json:"resource" tf:"resource"`
 

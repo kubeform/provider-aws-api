@@ -15145,7 +15145,7 @@ type WebACLSpecVisibilityConfig struct {
 }
 
 type WebACLSpec struct {
-	KubeformOutput *WebACLSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *WebACLSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource WebACLSpecResource `json:"resource" tf:"resource"`
 

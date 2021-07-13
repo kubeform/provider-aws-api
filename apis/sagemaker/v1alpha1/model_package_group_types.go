@@ -42,7 +42,7 @@ type ModelPackageGroup struct {
 }
 
 type ModelPackageGroupSpec struct {
-	KubeformOutput *ModelPackageGroupSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *ModelPackageGroupSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource ModelPackageGroupSpecResource `json:"resource" tf:"resource"`
 

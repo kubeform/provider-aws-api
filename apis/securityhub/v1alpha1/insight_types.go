@@ -877,7 +877,7 @@ type InsightSpecFilters struct {
 }
 
 type InsightSpec struct {
-	KubeformOutput *InsightSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *InsightSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource InsightSpecResource `json:"resource" tf:"resource"`
 

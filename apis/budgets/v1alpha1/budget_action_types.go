@@ -87,7 +87,7 @@ type BudgetActionSpecSubscriber struct {
 }
 
 type BudgetActionSpec struct {
-	KubeformOutput *BudgetActionSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *BudgetActionSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource BudgetActionSpecResource `json:"resource" tf:"resource"`
 

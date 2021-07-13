@@ -53,7 +53,7 @@ type LoggingConfigurationSpecLoggingConfiguration struct {
 }
 
 type LoggingConfigurationSpec struct {
-	KubeformOutput *LoggingConfigurationSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *LoggingConfigurationSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource LoggingConfigurationSpecResource `json:"resource" tf:"resource"`
 

@@ -78,7 +78,7 @@ type GroupSpecIngress struct {
 }
 
 type GroupSpec struct {
-	KubeformOutput *GroupSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *GroupSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource GroupSpecResource `json:"resource" tf:"resource"`
 

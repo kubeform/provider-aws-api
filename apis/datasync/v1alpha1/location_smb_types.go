@@ -47,7 +47,7 @@ type LocationSmbSpecMountOptions struct {
 }
 
 type LocationSmbSpec struct {
-	KubeformOutput *LocationSmbSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *LocationSmbSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource LocationSmbSpecResource `json:"resource" tf:"resource"`
 

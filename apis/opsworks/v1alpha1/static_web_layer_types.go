@@ -56,7 +56,7 @@ type StaticWebLayerSpecEbsVolume struct {
 }
 
 type StaticWebLayerSpec struct {
-	KubeformOutput *StaticWebLayerSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *StaticWebLayerSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource StaticWebLayerSpecResource `json:"resource" tf:"resource"`
 

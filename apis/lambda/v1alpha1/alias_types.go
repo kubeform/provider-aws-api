@@ -47,7 +47,7 @@ type AliasSpecRoutingConfig struct {
 }
 
 type AliasSpec struct {
-	KubeformOutput *AliasSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *AliasSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource AliasSpecResource `json:"resource" tf:"resource"`
 

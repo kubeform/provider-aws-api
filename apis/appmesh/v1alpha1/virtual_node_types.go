@@ -442,7 +442,7 @@ type VirtualNodeSpecSpec struct {
 }
 
 type VirtualNodeSpec struct {
-	KubeformOutput *VirtualNodeSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *VirtualNodeSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource VirtualNodeSpecResource `json:"resource" tf:"resource"`
 

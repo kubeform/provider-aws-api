@@ -42,7 +42,7 @@ type Ledger struct {
 }
 
 type LedgerSpec struct {
-	KubeformOutput *LedgerSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *LedgerSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource LedgerSpecResource `json:"resource" tf:"resource"`
 

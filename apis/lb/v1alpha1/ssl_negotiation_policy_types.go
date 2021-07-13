@@ -47,7 +47,7 @@ type SslNegotiationPolicySpecAttribute struct {
 }
 
 type SslNegotiationPolicySpec struct {
-	KubeformOutput *SslNegotiationPolicySpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *SslNegotiationPolicySpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource SslNegotiationPolicySpecResource `json:"resource" tf:"resource"`
 

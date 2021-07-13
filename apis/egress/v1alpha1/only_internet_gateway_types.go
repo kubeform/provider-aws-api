@@ -42,7 +42,7 @@ type OnlyInternetGateway struct {
 }
 
 type OnlyInternetGatewaySpec struct {
-	KubeformOutput *OnlyInternetGatewaySpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *OnlyInternetGatewaySpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource OnlyInternetGatewaySpecResource `json:"resource" tf:"resource"`
 

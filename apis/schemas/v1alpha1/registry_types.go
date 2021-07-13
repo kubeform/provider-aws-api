@@ -42,7 +42,7 @@ type Registry struct {
 }
 
 type RegistrySpec struct {
-	KubeformOutput *RegistrySpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *RegistrySpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource RegistrySpecResource `json:"resource" tf:"resource"`
 

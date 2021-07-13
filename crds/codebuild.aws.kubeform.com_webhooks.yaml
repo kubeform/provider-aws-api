@@ -37,40 +37,6 @@ spec:
             type: object
           spec:
             properties:
-              kubeformOutput:
-                properties:
-                  branchFilter:
-                    type: string
-                  filterGroup:
-                    items:
-                      properties:
-                        filter:
-                          items:
-                            properties:
-                              excludeMatchedPattern:
-                                type: boolean
-                              pattern:
-                                type: string
-                              type:
-                                type: string
-                            required:
-                            - pattern
-                            - type
-                            type: object
-                          type: array
-                      type: object
-                    type: array
-                  id:
-                    type: string
-                  payloadURL:
-                    type: string
-                  projectName:
-                    type: string
-                  url:
-                    type: string
-                required:
-                - projectName
-                type: object
               providerRef:
                 description: LocalObjectReference contains enough information to let
                   you locate the referenced object inside the same namespace.
@@ -122,6 +88,40 @@ spec:
                     description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
                       TODO: Add other useful fields. apiVersion, kind, uid?'
                     type: string
+                type: object
+              state:
+                properties:
+                  branchFilter:
+                    type: string
+                  filterGroup:
+                    items:
+                      properties:
+                        filter:
+                          items:
+                            properties:
+                              excludeMatchedPattern:
+                                type: boolean
+                              pattern:
+                                type: string
+                              type:
+                                type: string
+                            required:
+                            - pattern
+                            - type
+                            type: object
+                          type: array
+                      type: object
+                    type: array
+                  id:
+                    type: string
+                  payloadURL:
+                    type: string
+                  projectName:
+                    type: string
+                  url:
+                    type: string
+                required:
+                - projectName
                 type: object
               terminationPolicy:
                 enum:

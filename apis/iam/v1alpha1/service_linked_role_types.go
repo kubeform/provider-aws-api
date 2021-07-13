@@ -42,7 +42,7 @@ type ServiceLinkedRole struct {
 }
 
 type ServiceLinkedRoleSpec struct {
-	KubeformOutput *ServiceLinkedRoleSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *ServiceLinkedRoleSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource ServiceLinkedRoleSpecResource `json:"resource" tf:"resource"`
 

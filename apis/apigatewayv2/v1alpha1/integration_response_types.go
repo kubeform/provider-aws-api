@@ -42,7 +42,7 @@ type IntegrationResponse struct {
 }
 
 type IntegrationResponseSpec struct {
-	KubeformOutput *IntegrationResponseSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *IntegrationResponseSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource IntegrationResponseSpecResource `json:"resource" tf:"resource"`
 

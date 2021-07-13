@@ -56,7 +56,7 @@ type StateMachineSpecTracingConfiguration struct {
 }
 
 type StateMachineSpec struct {
-	KubeformOutput *StateMachineSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *StateMachineSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource StateMachineSpecResource `json:"resource" tf:"resource"`
 

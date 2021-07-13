@@ -42,7 +42,7 @@ type Webhook struct {
 }
 
 type WebhookSpec struct {
-	KubeformOutput *WebhookSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *WebhookSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource WebhookSpecResource `json:"resource" tf:"resource"`
 

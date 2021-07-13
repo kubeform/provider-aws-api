@@ -64,7 +64,7 @@ type SamlOptionsSpecSamlOptions struct {
 }
 
 type SamlOptionsSpec struct {
-	KubeformOutput *SamlOptionsSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *SamlOptionsSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource SamlOptionsSpecResource `json:"resource" tf:"resource"`
 

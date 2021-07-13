@@ -42,7 +42,7 @@ type WorkingStorage struct {
 }
 
 type WorkingStorageSpec struct {
-	KubeformOutput *WorkingStorageSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *WorkingStorageSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource WorkingStorageSpecResource `json:"resource" tf:"resource"`
 

@@ -42,7 +42,7 @@ type LocationFsxWindowsFileSystem struct {
 }
 
 type LocationFsxWindowsFileSystemSpec struct {
-	KubeformOutput *LocationFsxWindowsFileSystemSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *LocationFsxWindowsFileSystemSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource LocationFsxWindowsFileSystemSpecResource `json:"resource" tf:"resource"`
 

@@ -51,7 +51,7 @@ type LocationNfsSpecOnPremConfig struct {
 }
 
 type LocationNfsSpec struct {
-	KubeformOutput *LocationNfsSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *LocationNfsSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource LocationNfsSpecResource `json:"resource" tf:"resource"`
 

@@ -42,7 +42,7 @@ type TagOptionResourceAssociation struct {
 }
 
 type TagOptionResourceAssociationSpec struct {
-	KubeformOutput *TagOptionResourceAssociationSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *TagOptionResourceAssociationSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource TagOptionResourceAssociationSpecResource `json:"resource" tf:"resource"`
 

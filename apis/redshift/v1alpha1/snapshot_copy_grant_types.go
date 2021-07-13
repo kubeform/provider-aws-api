@@ -42,7 +42,7 @@ type SnapshotCopyGrant struct {
 }
 
 type SnapshotCopyGrantSpec struct {
-	KubeformOutput *SnapshotCopyGrantSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *SnapshotCopyGrantSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource SnapshotCopyGrantSpecResource `json:"resource" tf:"resource"`
 

@@ -48,7 +48,7 @@ type SelectionSpecSelectionTag struct {
 }
 
 type SelectionSpec struct {
-	KubeformOutput *SelectionSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *SelectionSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource SelectionSpecResource `json:"resource" tf:"resource"`
 

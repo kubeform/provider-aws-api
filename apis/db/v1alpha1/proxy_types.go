@@ -53,7 +53,7 @@ type ProxySpecAuth struct {
 }
 
 type ProxySpec struct {
-	KubeformOutput *ProxySpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *ProxySpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource ProxySpecResource `json:"resource" tf:"resource"`
 

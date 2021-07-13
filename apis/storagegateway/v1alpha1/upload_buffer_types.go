@@ -42,7 +42,7 @@ type UploadBuffer struct {
 }
 
 type UploadBufferSpec struct {
-	KubeformOutput *UploadBufferSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *UploadBufferSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource UploadBufferSpecResource `json:"resource" tf:"resource"`
 

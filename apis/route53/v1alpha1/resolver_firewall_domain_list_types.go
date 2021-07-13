@@ -42,7 +42,7 @@ type ResolverFirewallDomainList struct {
 }
 
 type ResolverFirewallDomainListSpec struct {
-	KubeformOutput *ResolverFirewallDomainListSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *ResolverFirewallDomainListSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource ResolverFirewallDomainListSpecResource `json:"resource" tf:"resource"`
 

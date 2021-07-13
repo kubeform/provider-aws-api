@@ -42,7 +42,7 @@ type ListenerCertificate struct {
 }
 
 type ListenerCertificateSpec struct {
-	KubeformOutput *ListenerCertificateSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *ListenerCertificateSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource ListenerCertificateSpecResource `json:"resource" tf:"resource"`
 

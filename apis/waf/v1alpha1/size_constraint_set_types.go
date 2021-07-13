@@ -55,7 +55,7 @@ type SizeConstraintSetSpecSizeConstraints struct {
 }
 
 type SizeConstraintSetSpec struct {
-	KubeformOutput *SizeConstraintSetSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *SizeConstraintSetSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource SizeConstraintSetSpecResource `json:"resource" tf:"resource"`
 

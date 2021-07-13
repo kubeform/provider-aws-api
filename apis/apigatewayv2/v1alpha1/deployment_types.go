@@ -42,7 +42,7 @@ type Deployment struct {
 }
 
 type DeploymentSpec struct {
-	KubeformOutput *DeploymentSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *DeploymentSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource DeploymentSpecResource `json:"resource" tf:"resource"`
 

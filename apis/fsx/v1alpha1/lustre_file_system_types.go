@@ -42,7 +42,7 @@ type LustreFileSystem struct {
 }
 
 type LustreFileSystemSpec struct {
-	KubeformOutput *LustreFileSystemSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *LustreFileSystemSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource LustreFileSystemSpecResource `json:"resource" tf:"resource"`
 

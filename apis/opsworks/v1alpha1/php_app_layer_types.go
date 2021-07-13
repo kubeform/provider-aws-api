@@ -56,7 +56,7 @@ type PhpAppLayerSpecEbsVolume struct {
 }
 
 type PhpAppLayerSpec struct {
-	KubeformOutput *PhpAppLayerSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *PhpAppLayerSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource PhpAppLayerSpecResource `json:"resource" tf:"resource"`
 

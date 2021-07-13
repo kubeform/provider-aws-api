@@ -51,7 +51,7 @@ type ConfigurationRecorderSpecRecordingGroup struct {
 }
 
 type ConfigurationRecorderSpec struct {
-	KubeformOutput *ConfigurationRecorderSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *ConfigurationRecorderSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource ConfigurationRecorderSpecResource `json:"resource" tf:"resource"`
 

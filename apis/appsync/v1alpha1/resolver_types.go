@@ -54,7 +54,7 @@ type ResolverSpecPipelineConfig struct {
 }
 
 type ResolverSpec struct {
-	KubeformOutput *ResolverSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *ResolverSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource ResolverSpecResource `json:"resource" tf:"resource"`
 

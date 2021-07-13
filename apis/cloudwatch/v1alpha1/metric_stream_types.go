@@ -50,7 +50,7 @@ type MetricStreamSpecIncludeFilter struct {
 }
 
 type MetricStreamSpec struct {
-	KubeformOutput *MetricStreamSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *MetricStreamSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource MetricStreamSpecResource `json:"resource" tf:"resource"`
 

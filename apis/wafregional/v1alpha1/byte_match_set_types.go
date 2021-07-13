@@ -56,7 +56,7 @@ type ByteMatchSetSpecByteMatchTuples struct {
 }
 
 type ByteMatchSetSpec struct {
-	KubeformOutput *ByteMatchSetSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *ByteMatchSetSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource ByteMatchSetSpecResource `json:"resource" tf:"resource"`
 

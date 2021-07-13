@@ -42,7 +42,7 @@ type PrincipalPortfolioAssociation struct {
 }
 
 type PrincipalPortfolioAssociationSpec struct {
-	KubeformOutput *PrincipalPortfolioAssociationSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *PrincipalPortfolioAssociationSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource PrincipalPortfolioAssociationSpecResource `json:"resource" tf:"resource"`
 

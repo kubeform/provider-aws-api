@@ -42,7 +42,7 @@ type RoleAlias struct {
 }
 
 type RoleAliasSpec struct {
-	KubeformOutput *RoleAliasSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *RoleAliasSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource RoleAliasSpecResource `json:"resource" tf:"resource"`
 

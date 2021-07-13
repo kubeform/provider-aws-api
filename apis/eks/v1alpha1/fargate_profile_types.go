@@ -48,7 +48,7 @@ type FargateProfileSpecSelector struct {
 }
 
 type FargateProfileSpec struct {
-	KubeformOutput *FargateProfileSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *FargateProfileSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource FargateProfileSpecResource `json:"resource" tf:"resource"`
 

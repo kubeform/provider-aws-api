@@ -42,7 +42,7 @@ type SourceCredential struct {
 }
 
 type SourceCredentialSpec struct {
-	KubeformOutput *SourceCredentialSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *SourceCredentialSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource SourceCredentialSpecResource `json:"resource" tf:"resource"`
 

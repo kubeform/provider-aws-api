@@ -42,7 +42,7 @@ type AccessKey struct {
 }
 
 type AccessKeySpec struct {
-	KubeformOutput *AccessKeySpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *AccessKeySpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource AccessKeySpecResource `json:"resource" tf:"resource"`
 

@@ -42,7 +42,7 @@ type UserProfile struct {
 }
 
 type UserProfileSpec struct {
-	KubeformOutput *UserProfileSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *UserProfileSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource UserProfileSpecResource `json:"resource" tf:"resource"`
 

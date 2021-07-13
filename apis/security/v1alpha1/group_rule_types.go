@@ -42,7 +42,7 @@ type GroupRule struct {
 }
 
 type GroupRuleSpec struct {
-	KubeformOutput *GroupRuleSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *GroupRuleSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource GroupRuleSpecResource `json:"resource" tf:"resource"`
 

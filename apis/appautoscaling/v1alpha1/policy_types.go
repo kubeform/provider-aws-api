@@ -98,7 +98,7 @@ type PolicySpecTargetTrackingScalingPolicyConfiguration struct {
 }
 
 type PolicySpec struct {
-	KubeformOutput *PolicySpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *PolicySpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource PolicySpecResource `json:"resource" tf:"resource"`
 

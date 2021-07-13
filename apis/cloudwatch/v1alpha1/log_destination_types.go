@@ -42,7 +42,7 @@ type LogDestination struct {
 }
 
 type LogDestinationSpec struct {
-	KubeformOutput *LogDestinationSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *LogDestinationSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource LogDestinationSpecResource `json:"resource" tf:"resource"`
 

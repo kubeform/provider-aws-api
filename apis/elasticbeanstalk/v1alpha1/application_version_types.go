@@ -42,7 +42,7 @@ type ApplicationVersion struct {
 }
 
 type ApplicationVersionSpec struct {
-	KubeformOutput *ApplicationVersionSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *ApplicationVersionSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource ApplicationVersionSpecResource `json:"resource" tf:"resource"`
 

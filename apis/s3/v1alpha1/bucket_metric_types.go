@@ -49,7 +49,7 @@ type BucketMetricSpecFilter struct {
 }
 
 type BucketMetricSpec struct {
-	KubeformOutput *BucketMetricSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *BucketMetricSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource BucketMetricSpecResource `json:"resource" tf:"resource"`
 

@@ -53,7 +53,7 @@ type ServiceActionSpecDefinition struct {
 }
 
 type ServiceActionSpec struct {
-	KubeformOutput *ServiceActionSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *ServiceActionSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource ServiceActionSpecResource `json:"resource" tf:"resource"`
 

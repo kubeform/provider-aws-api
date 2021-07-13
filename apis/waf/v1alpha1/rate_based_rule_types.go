@@ -48,7 +48,7 @@ type RateBasedRuleSpecPredicates struct {
 }
 
 type RateBasedRuleSpec struct {
-	KubeformOutput *RateBasedRuleSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *RateBasedRuleSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource RateBasedRuleSpecResource `json:"resource" tf:"resource"`
 

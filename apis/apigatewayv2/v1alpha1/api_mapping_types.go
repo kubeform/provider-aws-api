@@ -42,7 +42,7 @@ type ApiMapping struct {
 }
 
 type ApiMappingSpec struct {
-	KubeformOutput *ApiMappingSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *ApiMappingSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource ApiMappingSpecResource `json:"resource" tf:"resource"`
 

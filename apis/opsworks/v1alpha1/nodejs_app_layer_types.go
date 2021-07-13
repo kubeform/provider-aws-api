@@ -56,7 +56,7 @@ type NodejsAppLayerSpecEbsVolume struct {
 }
 
 type NodejsAppLayerSpec struct {
-	KubeformOutput *NodejsAppLayerSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *NodejsAppLayerSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource NodejsAppLayerSpecResource `json:"resource" tf:"resource"`
 

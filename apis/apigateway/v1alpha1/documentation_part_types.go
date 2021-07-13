@@ -54,7 +54,7 @@ type DocumentationPartSpecLocation struct {
 }
 
 type DocumentationPartSpec struct {
-	KubeformOutput *DocumentationPartSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *DocumentationPartSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource DocumentationPartSpecResource `json:"resource" tf:"resource"`
 

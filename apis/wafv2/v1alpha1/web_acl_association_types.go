@@ -42,7 +42,7 @@ type WebACLAssociation struct {
 }
 
 type WebACLAssociationSpec struct {
-	KubeformOutput *WebACLAssociationSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *WebACLAssociationSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource WebACLAssociationSpecResource `json:"resource" tf:"resource"`
 

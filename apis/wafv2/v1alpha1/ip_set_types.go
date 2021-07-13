@@ -42,7 +42,7 @@ type IpSet struct {
 }
 
 type IpSetSpec struct {
-	KubeformOutput *IpSetSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *IpSetSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource IpSetSpecResource `json:"resource" tf:"resource"`
 

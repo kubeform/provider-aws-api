@@ -42,7 +42,7 @@ type BaiduChannel struct {
 }
 
 type BaiduChannelSpec struct {
-	KubeformOutput *BaiduChannelSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *BaiduChannelSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource BaiduChannelSpecResource `json:"resource" tf:"resource"`
 

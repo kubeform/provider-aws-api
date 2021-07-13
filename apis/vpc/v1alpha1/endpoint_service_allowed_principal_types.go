@@ -42,7 +42,7 @@ type EndpointServiceAllowedPrincipal struct {
 }
 
 type EndpointServiceAllowedPrincipalSpec struct {
-	KubeformOutput *EndpointServiceAllowedPrincipalSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *EndpointServiceAllowedPrincipalSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource EndpointServiceAllowedPrincipalSpecResource `json:"resource" tf:"resource"`
 

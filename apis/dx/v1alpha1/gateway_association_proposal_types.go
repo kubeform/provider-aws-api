@@ -42,7 +42,7 @@ type GatewayAssociationProposal struct {
 }
 
 type GatewayAssociationProposalSpec struct {
-	KubeformOutput *GatewayAssociationProposalSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *GatewayAssociationProposalSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource GatewayAssociationProposalSpecResource `json:"resource" tf:"resource"`
 

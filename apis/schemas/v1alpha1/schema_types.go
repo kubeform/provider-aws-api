@@ -42,7 +42,7 @@ type Schema struct {
 }
 
 type SchemaSpec struct {
-	KubeformOutput *SchemaSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *SchemaSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource SchemaSpecResource `json:"resource" tf:"resource"`
 

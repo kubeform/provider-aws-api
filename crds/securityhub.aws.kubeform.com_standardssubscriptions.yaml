@@ -37,15 +37,6 @@ spec:
             type: object
           spec:
             properties:
-              kubeformOutput:
-                properties:
-                  id:
-                    type: string
-                  standardsArn:
-                    type: string
-                required:
-                - standardsArn
-                type: object
               providerRef:
                 description: LocalObjectReference contains enough information to let
                   you locate the referenced object inside the same namespace.
@@ -56,6 +47,15 @@ spec:
                     type: string
                 type: object
               resource:
+                properties:
+                  id:
+                    type: string
+                  standardsArn:
+                    type: string
+                required:
+                - standardsArn
+                type: object
+              state:
                 properties:
                   id:
                     type: string

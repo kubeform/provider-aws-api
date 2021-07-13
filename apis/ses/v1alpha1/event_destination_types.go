@@ -57,7 +57,7 @@ type EventDestinationSpecSnsDestination struct {
 }
 
 type EventDestinationSpec struct {
-	KubeformOutput *EventDestinationSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *EventDestinationSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource EventDestinationSpecResource `json:"resource" tf:"resource"`
 

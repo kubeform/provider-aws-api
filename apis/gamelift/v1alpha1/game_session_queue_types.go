@@ -48,7 +48,7 @@ type GameSessionQueueSpecPlayerLatencyPolicy struct {
 }
 
 type GameSessionQueueSpec struct {
-	KubeformOutput *GameSessionQueueSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *GameSessionQueueSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource GameSessionQueueSpecResource `json:"resource" tf:"resource"`
 

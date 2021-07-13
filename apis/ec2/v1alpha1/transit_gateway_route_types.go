@@ -42,7 +42,7 @@ type TransitGatewayRoute struct {
 }
 
 type TransitGatewayRouteSpec struct {
-	KubeformOutput *TransitGatewayRouteSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *TransitGatewayRouteSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource TransitGatewayRouteSpecResource `json:"resource" tf:"resource"`
 

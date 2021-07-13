@@ -42,7 +42,7 @@ type Constraint struct {
 }
 
 type ConstraintSpec struct {
-	KubeformOutput *ConstraintSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *ConstraintSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource ConstraintSpecResource `json:"resource" tf:"resource"`
 

@@ -48,7 +48,7 @@ type EventPermissionSpecCondition struct {
 }
 
 type EventPermissionSpec struct {
-	KubeformOutput *EventPermissionSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *EventPermissionSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource EventPermissionSpecResource `json:"resource" tf:"resource"`
 

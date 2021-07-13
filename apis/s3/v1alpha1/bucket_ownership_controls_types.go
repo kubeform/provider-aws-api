@@ -46,7 +46,7 @@ type BucketOwnershipControlsSpecRule struct {
 }
 
 type BucketOwnershipControlsSpec struct {
-	KubeformOutput *BucketOwnershipControlsSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *BucketOwnershipControlsSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource BucketOwnershipControlsSpecResource `json:"resource" tf:"resource"`
 

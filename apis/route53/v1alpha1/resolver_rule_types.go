@@ -48,7 +48,7 @@ type ResolverRuleSpecTargetIP struct {
 }
 
 type ResolverRuleSpec struct {
-	KubeformOutput *ResolverRuleSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *ResolverRuleSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource ResolverRuleSpecResource `json:"resource" tf:"resource"`
 

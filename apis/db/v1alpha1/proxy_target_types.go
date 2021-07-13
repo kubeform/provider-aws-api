@@ -42,7 +42,7 @@ type ProxyTarget struct {
 }
 
 type ProxyTargetSpec struct {
-	KubeformOutput *ProxyTargetSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *ProxyTargetSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource ProxyTargetSpecResource `json:"resource" tf:"resource"`
 

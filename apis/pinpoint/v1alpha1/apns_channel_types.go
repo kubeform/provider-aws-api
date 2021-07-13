@@ -42,7 +42,7 @@ type ApnsChannel struct {
 }
 
 type ApnsChannelSpec struct {
-	KubeformOutput *ApnsChannelSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *ApnsChannelSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource ApnsChannelSpecResource `json:"resource" tf:"resource"`
 

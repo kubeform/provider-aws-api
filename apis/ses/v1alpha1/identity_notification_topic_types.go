@@ -42,7 +42,7 @@ type IdentityNotificationTopic struct {
 }
 
 type IdentityNotificationTopicSpec struct {
-	KubeformOutput *IdentityNotificationTopicSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *IdentityNotificationTopicSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource IdentityNotificationTopicSpecResource `json:"resource" tf:"resource"`
 

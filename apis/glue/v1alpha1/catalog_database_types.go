@@ -47,7 +47,7 @@ type CatalogDatabaseSpecTargetDatabase struct {
 }
 
 type CatalogDatabaseSpec struct {
-	KubeformOutput *CatalogDatabaseSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *CatalogDatabaseSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource CatalogDatabaseSpecResource `json:"resource" tf:"resource"`
 

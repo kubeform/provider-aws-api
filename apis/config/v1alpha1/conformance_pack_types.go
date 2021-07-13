@@ -47,7 +47,7 @@ type ConformancePackSpecInputParameter struct {
 }
 
 type ConformancePackSpec struct {
-	KubeformOutput *ConformancePackSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *ConformancePackSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource ConformancePackSpecResource `json:"resource" tf:"resource"`
 

@@ -350,7 +350,7 @@ type RouteSpecSpec struct {
 }
 
 type RouteSpec struct {
-	KubeformOutput *RouteSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *RouteSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource RouteSpecResource `json:"resource" tf:"resource"`
 

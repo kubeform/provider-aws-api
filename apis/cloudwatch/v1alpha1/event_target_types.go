@@ -115,7 +115,7 @@ type EventTargetSpecSqsTarget struct {
 }
 
 type EventTargetSpec struct {
-	KubeformOutput *EventTargetSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *EventTargetSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource EventTargetSpecResource `json:"resource" tf:"resource"`
 

@@ -47,7 +47,7 @@ type DeliveryChannelSpecSnapshotDeliveryProperties struct {
 }
 
 type DeliveryChannelSpec struct {
-	KubeformOutput *DeliveryChannelSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *DeliveryChannelSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource DeliveryChannelSpecResource `json:"resource" tf:"resource"`
 

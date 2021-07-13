@@ -42,7 +42,7 @@ type VpcAssociationAuthorization struct {
 }
 
 type VpcAssociationAuthorizationSpec struct {
-	KubeformOutput *VpcAssociationAuthorizationSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *VpcAssociationAuthorizationSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource VpcAssociationAuthorizationSpecResource `json:"resource" tf:"resource"`
 

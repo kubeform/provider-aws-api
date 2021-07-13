@@ -47,7 +47,7 @@ type UserDefinedFunctionSpecResourceUris struct {
 }
 
 type UserDefinedFunctionSpec struct {
-	KubeformOutput *UserDefinedFunctionSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *UserDefinedFunctionSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource UserDefinedFunctionSpecResource `json:"resource" tf:"resource"`
 

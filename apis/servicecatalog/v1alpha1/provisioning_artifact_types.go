@@ -42,7 +42,7 @@ type ProvisioningArtifact struct {
 }
 
 type ProvisioningArtifactSpec struct {
-	KubeformOutput *ProvisioningArtifactSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *ProvisioningArtifactSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource ProvisioningArtifactSpecResource `json:"resource" tf:"resource"`
 

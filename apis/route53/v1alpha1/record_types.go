@@ -69,7 +69,7 @@ type RecordSpecWeightedRoutingPolicy struct {
 }
 
 type RecordSpec struct {
-	KubeformOutput *RecordSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *RecordSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource RecordSpecResource `json:"resource" tf:"resource"`
 

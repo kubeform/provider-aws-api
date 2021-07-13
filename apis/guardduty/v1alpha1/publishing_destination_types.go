@@ -42,7 +42,7 @@ type PublishingDestination struct {
 }
 
 type PublishingDestinationSpec struct {
-	KubeformOutput *PublishingDestinationSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *PublishingDestinationSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource PublishingDestinationSpecResource `json:"resource" tf:"resource"`
 

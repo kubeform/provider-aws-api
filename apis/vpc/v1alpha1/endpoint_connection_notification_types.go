@@ -42,7 +42,7 @@ type EndpointConnectionNotification struct {
 }
 
 type EndpointConnectionNotificationSpec struct {
-	KubeformOutput *EndpointConnectionNotificationSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *EndpointConnectionNotificationSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource EndpointConnectionNotificationSpecResource `json:"resource" tf:"resource"`
 

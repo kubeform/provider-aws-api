@@ -55,7 +55,7 @@ type ReplicationConfigurationSpecReplicationConfiguration struct {
 }
 
 type ReplicationConfigurationSpec struct {
-	KubeformOutput *ReplicationConfigurationSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *ReplicationConfigurationSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource ReplicationConfigurationSpecResource `json:"resource" tf:"resource"`
 

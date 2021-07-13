@@ -68,7 +68,7 @@ type FromInstanceSpecEphemeralBlockDevice struct {
 }
 
 type FromInstanceSpec struct {
-	KubeformOutput *FromInstanceSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *FromInstanceSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource FromInstanceSpecResource `json:"resource" tf:"resource"`
 

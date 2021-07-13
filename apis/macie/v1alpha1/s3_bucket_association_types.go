@@ -49,7 +49,7 @@ type S3BucketAssociationSpecClassificationType struct {
 }
 
 type S3BucketAssociationSpec struct {
-	KubeformOutput *S3BucketAssociationSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *S3BucketAssociationSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource S3BucketAssociationSpecResource `json:"resource" tf:"resource"`
 

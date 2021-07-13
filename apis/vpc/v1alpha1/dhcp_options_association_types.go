@@ -42,7 +42,7 @@ type DhcpOptionsAssociation struct {
 }
 
 type DhcpOptionsAssociationSpec struct {
-	KubeformOutput *DhcpOptionsAssociationSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *DhcpOptionsAssociationSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource DhcpOptionsAssociationSpecResource `json:"resource" tf:"resource"`
 

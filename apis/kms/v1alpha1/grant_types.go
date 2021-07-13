@@ -49,7 +49,7 @@ type GrantSpecConstraints struct {
 }
 
 type GrantSpec struct {
-	KubeformOutput *GrantSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *GrantSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource GrantSpecResource `json:"resource" tf:"resource"`
 

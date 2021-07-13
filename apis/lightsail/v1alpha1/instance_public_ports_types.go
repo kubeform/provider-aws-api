@@ -50,7 +50,7 @@ type InstancePublicPortsSpecPortInfo struct {
 }
 
 type InstancePublicPortsSpec struct {
-	KubeformOutput *InstancePublicPortsSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *InstancePublicPortsSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource InstancePublicPortsSpecResource `json:"resource" tf:"resource"`
 

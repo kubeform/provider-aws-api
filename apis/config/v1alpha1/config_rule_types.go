@@ -71,7 +71,7 @@ type ConfigRuleSpecSource struct {
 }
 
 type ConfigRuleSpec struct {
-	KubeformOutput *ConfigRuleSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *ConfigRuleSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource ConfigRuleSpecResource `json:"resource" tf:"resource"`
 

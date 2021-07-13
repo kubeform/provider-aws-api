@@ -243,7 +243,7 @@ type VirtualGatewaySpecSpec struct {
 }
 
 type VirtualGatewaySpec struct {
-	KubeformOutput *VirtualGatewaySpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *VirtualGatewaySpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource VirtualGatewaySpecResource `json:"resource" tf:"resource"`
 

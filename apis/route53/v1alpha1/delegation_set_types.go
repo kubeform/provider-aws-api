@@ -42,7 +42,7 @@ type DelegationSet struct {
 }
 
 type DelegationSetSpec struct {
-	KubeformOutput *DelegationSetSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *DelegationSetSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource DelegationSetSpecResource `json:"resource" tf:"resource"`
 

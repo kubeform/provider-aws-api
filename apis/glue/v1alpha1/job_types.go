@@ -60,7 +60,7 @@ type JobSpecNotificationProperty struct {
 }
 
 type JobSpec struct {
-	KubeformOutput *JobSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *JobSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource JobSpecResource `json:"resource" tf:"resource"`
 

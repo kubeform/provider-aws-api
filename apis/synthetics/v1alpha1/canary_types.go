@@ -77,7 +77,7 @@ type CanarySpecVpcConfig struct {
 }
 
 type CanarySpec struct {
-	KubeformOutput *CanarySpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *CanarySpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource CanarySpecResource `json:"resource" tf:"resource"`
 

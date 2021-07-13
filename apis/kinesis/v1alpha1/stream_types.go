@@ -42,7 +42,7 @@ type Stream struct {
 }
 
 type StreamSpec struct {
-	KubeformOutput *StreamSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *StreamSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource StreamSpecResource `json:"resource" tf:"resource"`
 

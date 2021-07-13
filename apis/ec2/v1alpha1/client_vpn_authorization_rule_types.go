@@ -42,7 +42,7 @@ type ClientVPNAuthorizationRule struct {
 }
 
 type ClientVPNAuthorizationRuleSpec struct {
-	KubeformOutput *ClientVPNAuthorizationRuleSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *ClientVPNAuthorizationRuleSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource ClientVPNAuthorizationRuleSpecResource `json:"resource" tf:"resource"`
 

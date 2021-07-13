@@ -42,7 +42,7 @@ type TrafficMirrorSession struct {
 }
 
 type TrafficMirrorSessionSpec struct {
-	KubeformOutput *TrafficMirrorSessionSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *TrafficMirrorSessionSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource TrafficMirrorSessionSpecResource `json:"resource" tf:"resource"`
 

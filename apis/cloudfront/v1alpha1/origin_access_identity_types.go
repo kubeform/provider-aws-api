@@ -42,7 +42,7 @@ type OriginAccessIdentity struct {
 }
 
 type OriginAccessIdentitySpec struct {
-	KubeformOutput *OriginAccessIdentitySpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *OriginAccessIdentitySpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource OriginAccessIdentitySpecResource `json:"resource" tf:"resource"`
 

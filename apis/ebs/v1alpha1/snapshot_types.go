@@ -42,7 +42,7 @@ type Snapshot struct {
 }
 
 type SnapshotSpec struct {
-	KubeformOutput *SnapshotSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *SnapshotSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource SnapshotSpecResource `json:"resource" tf:"resource"`
 

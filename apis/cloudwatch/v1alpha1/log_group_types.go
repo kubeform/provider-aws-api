@@ -42,7 +42,7 @@ type LogGroup struct {
 }
 
 type LogGroupSpec struct {
-	KubeformOutput *LogGroupSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *LogGroupSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource LogGroupSpecResource `json:"resource" tf:"resource"`
 

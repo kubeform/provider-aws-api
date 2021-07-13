@@ -42,7 +42,7 @@ type VpcLink struct {
 }
 
 type VpcLinkSpec struct {
-	KubeformOutput *VpcLinkSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *VpcLinkSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource VpcLinkSpecResource `json:"resource" tf:"resource"`
 

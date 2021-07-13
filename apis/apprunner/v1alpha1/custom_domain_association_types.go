@@ -53,7 +53,7 @@ type CustomDomainAssociationSpecCertificateValidationRecords struct {
 }
 
 type CustomDomainAssociationSpec struct {
-	KubeformOutput *CustomDomainAssociationSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *CustomDomainAssociationSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource CustomDomainAssociationSpecResource `json:"resource" tf:"resource"`
 

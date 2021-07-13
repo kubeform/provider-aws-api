@@ -42,7 +42,7 @@ type ClientVPNRoute struct {
 }
 
 type ClientVPNRouteSpec struct {
-	KubeformOutput *ClientVPNRouteSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *ClientVPNRouteSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource ClientVPNRouteSpecResource `json:"resource" tf:"resource"`
 

@@ -42,7 +42,7 @@ type OrganizationManagedRule struct {
 }
 
 type OrganizationManagedRuleSpec struct {
-	KubeformOutput *OrganizationManagedRuleSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *OrganizationManagedRuleSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource OrganizationManagedRuleSpecResource `json:"resource" tf:"resource"`
 

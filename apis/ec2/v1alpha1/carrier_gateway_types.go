@@ -42,7 +42,7 @@ type CarrierGateway struct {
 }
 
 type CarrierGatewaySpec struct {
-	KubeformOutput *CarrierGatewaySpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *CarrierGatewaySpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource CarrierGatewaySpecResource `json:"resource" tf:"resource"`
 

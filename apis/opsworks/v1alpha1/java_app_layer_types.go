@@ -56,7 +56,7 @@ type JavaAppLayerSpecEbsVolume struct {
 }
 
 type JavaAppLayerSpec struct {
-	KubeformOutput *JavaAppLayerSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *JavaAppLayerSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource JavaAppLayerSpecResource `json:"resource" tf:"resource"`
 

@@ -42,7 +42,7 @@ type LocalGatewayRoute struct {
 }
 
 type LocalGatewayRouteSpec struct {
-	KubeformOutput *LocalGatewayRouteSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *LocalGatewayRouteSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource LocalGatewayRouteSpecResource `json:"resource" tf:"resource"`
 

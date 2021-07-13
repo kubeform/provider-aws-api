@@ -42,7 +42,7 @@ type Hsm struct {
 }
 
 type HsmSpec struct {
-	KubeformOutput *HsmSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *HsmSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource HsmSpecResource `json:"resource" tf:"resource"`
 

@@ -60,7 +60,7 @@ type DirectorySpecVpcSettings struct {
 }
 
 type DirectorySpec struct {
-	KubeformOutput *DirectorySpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *DirectorySpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource DirectorySpecResource `json:"resource" tf:"resource"`
 

@@ -42,7 +42,7 @@ type KeyGroup struct {
 }
 
 type KeyGroupSpec struct {
-	KubeformOutput *KeyGroupSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *KeyGroupSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource KeyGroupSpecResource `json:"resource" tf:"resource"`
 

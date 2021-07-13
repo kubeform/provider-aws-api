@@ -42,7 +42,7 @@ type CapacityReservation struct {
 }
 
 type CapacityReservationSpec struct {
-	KubeformOutput *CapacityReservationSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *CapacityReservationSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource CapacityReservationSpecResource `json:"resource" tf:"resource"`
 

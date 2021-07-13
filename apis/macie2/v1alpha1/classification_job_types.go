@@ -157,7 +157,7 @@ type ClassificationJobSpecUserPausedDetails struct {
 }
 
 type ClassificationJobSpec struct {
-	KubeformOutput *ClassificationJobSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *ClassificationJobSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource ClassificationJobSpecResource `json:"resource" tf:"resource"`
 

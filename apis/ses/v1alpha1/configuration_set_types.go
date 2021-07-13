@@ -47,7 +47,7 @@ type ConfigurationSetSpecDeliveryOptions struct {
 }
 
 type ConfigurationSetSpec struct {
-	KubeformOutput *ConfigurationSetSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *ConfigurationSetSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource ConfigurationSetSpecResource `json:"resource" tf:"resource"`
 

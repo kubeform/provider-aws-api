@@ -42,7 +42,7 @@ type AutoScalingConfigurationVersion struct {
 }
 
 type AutoScalingConfigurationVersionSpec struct {
-	KubeformOutput *AutoScalingConfigurationVersionSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *AutoScalingConfigurationVersionSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource AutoScalingConfigurationVersionSpecResource `json:"resource" tf:"resource"`
 

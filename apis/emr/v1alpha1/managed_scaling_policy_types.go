@@ -52,7 +52,7 @@ type ManagedScalingPolicySpecComputeLimits struct {
 }
 
 type ManagedScalingPolicySpec struct {
-	KubeformOutput *ManagedScalingPolicySpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *ManagedScalingPolicySpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource ManagedScalingPolicySpecResource `json:"resource" tf:"resource"`
 

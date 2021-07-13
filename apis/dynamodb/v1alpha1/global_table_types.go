@@ -46,7 +46,7 @@ type GlobalTableSpecReplica struct {
 }
 
 type GlobalTableSpec struct {
-	KubeformOutput *GlobalTableSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *GlobalTableSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource GlobalTableSpecResource `json:"resource" tf:"resource"`
 

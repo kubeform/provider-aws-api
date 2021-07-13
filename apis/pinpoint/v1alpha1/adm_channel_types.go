@@ -42,7 +42,7 @@ type AdmChannel struct {
 }
 
 type AdmChannelSpec struct {
-	KubeformOutput *AdmChannelSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *AdmChannelSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource AdmChannelSpecResource `json:"resource" tf:"resource"`
 

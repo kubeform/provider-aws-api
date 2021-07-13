@@ -148,7 +148,7 @@ type EventConnectionSpecAuthParameters struct {
 }
 
 type EventConnectionSpec struct {
-	KubeformOutput *EventConnectionSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *EventConnectionSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource EventConnectionSpecResource `json:"resource" tf:"resource"`
 

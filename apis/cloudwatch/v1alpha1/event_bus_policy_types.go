@@ -42,7 +42,7 @@ type EventBusPolicy struct {
 }
 
 type EventBusPolicySpec struct {
-	KubeformOutput *EventBusPolicySpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *EventBusPolicySpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource EventBusPolicySpecResource `json:"resource" tf:"resource"`
 

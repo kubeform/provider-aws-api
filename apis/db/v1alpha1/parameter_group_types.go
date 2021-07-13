@@ -49,7 +49,7 @@ type ParameterGroupSpecParameter struct {
 }
 
 type ParameterGroupSpec struct {
-	KubeformOutput *ParameterGroupSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *ParameterGroupSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource ParameterGroupSpecResource `json:"resource" tf:"resource"`
 

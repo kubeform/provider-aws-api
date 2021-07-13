@@ -42,7 +42,7 @@ type Lag struct {
 }
 
 type LagSpec struct {
-	KubeformOutput *LagSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *LagSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource LagSpecResource `json:"resource" tf:"resource"`
 

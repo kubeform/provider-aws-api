@@ -55,7 +55,7 @@ type VirtualRouterSpecSpec struct {
 }
 
 type VirtualRouterSpec struct {
-	KubeformOutput *VirtualRouterSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *VirtualRouterSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource VirtualRouterSpecResource `json:"resource" tf:"resource"`
 

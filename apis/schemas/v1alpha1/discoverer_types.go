@@ -42,7 +42,7 @@ type Discoverer struct {
 }
 
 type DiscovererSpec struct {
-	KubeformOutput *DiscovererSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *DiscovererSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource DiscovererSpecResource `json:"resource" tf:"resource"`
 

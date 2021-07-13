@@ -83,7 +83,7 @@ type SigningJobSpecSource struct {
 }
 
 type SigningJobSpec struct {
-	KubeformOutput *SigningJobSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *SigningJobSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource SigningJobSpecResource `json:"resource" tf:"resource"`
 

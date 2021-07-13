@@ -52,7 +52,7 @@ type HostSpecVpcConfiguration struct {
 }
 
 type HostSpec struct {
-	KubeformOutput *HostSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *HostSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource HostSpecResource `json:"resource" tf:"resource"`
 

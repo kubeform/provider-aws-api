@@ -65,7 +65,7 @@ type MethodSettingsSpecSettings struct {
 }
 
 type MethodSettingsSpec struct {
-	KubeformOutput *MethodSettingsSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *MethodSettingsSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource MethodSettingsSpecResource `json:"resource" tf:"resource"`
 

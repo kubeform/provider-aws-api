@@ -42,7 +42,7 @@ type AccountPublicAccessBlock struct {
 }
 
 type AccountPublicAccessBlockSpec struct {
-	KubeformOutput *AccountPublicAccessBlockSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *AccountPublicAccessBlockSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource AccountPublicAccessBlockSpecResource `json:"resource" tf:"resource"`
 
