@@ -20,9 +20,12 @@ package v1alpha1
 
 import (
 	"fmt"
+	"strings"
 
 	base "kubeform.dev/apimachinery/api/v1alpha1"
+	"kubeform.dev/apimachinery/pkg/util"
 
+	jsoniter "github.com/json-iterator/go"
 	"k8s.io/apimachinery/pkg/runtime"
 	ctrl "sigs.k8s.io/controller-runtime"
 	"sigs.k8s.io/controller-runtime/pkg/webhook"
@@ -38,6 +41,42 @@ func (r *Instance) SetupWebhookWithManager(mgr ctrl.Manager) error {
 
 var _ webhook.Validator = &Instance{}
 
+var instanceForceNewList = map[string]bool{
+	"/ami":                         true,
+	"/associate_public_ip_address": true,
+	"/availability_zone":           true,
+	"/cpu_core_count":              true,
+	"/cpu_threads_per_core":        true,
+	"/ebs_block_device/*/delete_on_termination":  true,
+	"/ebs_block_device/*/device_name":            true,
+	"/ebs_block_device/*/encrypted":              true,
+	"/ebs_block_device/*/iops":                   true,
+	"/ebs_block_device/*/kms_key_id":             true,
+	"/ebs_block_device/*/snapshot_id":            true,
+	"/ebs_block_device/*/throughput":             true,
+	"/ebs_block_device/*/volume_size":            true,
+	"/ebs_block_device/*/volume_type":            true,
+	"/ebs_optimized":                             true,
+	"/enclave_options/*/enabled":                 true,
+	"/hibernation":                               true,
+	"/host_id":                                   true,
+	"/ipv6_address_count":                        true,
+	"/ipv6_addresses":                            true,
+	"/key_name":                                  true,
+	"/network_interface/*/delete_on_termination": true,
+	"/network_interface/*/device_index":          true,
+	"/network_interface/*/network_interface_id":  true,
+	"/placement_group":                           true,
+	"/private_ip":                                true,
+	"/root_block_device/*/encrypted":             true,
+	"/root_block_device/*/kms_key_id":            true,
+	"/security_groups":                           true,
+	"/subnet_id":                                 true,
+	"/tenancy":                                   true,
+	"/user_data":                                 true,
+	"/user_data_base64":                          true,
+}
+
 // ValidateCreate implements webhook.Validator so a webhook will be registered for the type
 func (r *Instance) ValidateCreate() error {
 	return nil
@@ -45,6 +84,53 @@ func (r *Instance) ValidateCreate() error {
 
 // ValidateUpdate implements webhook.Validator so a webhook will be registered for the type
 func (r *Instance) ValidateUpdate(old runtime.Object) error {
+	if r.Spec.Resource.ID == "" {
+		return nil
+	}
+	newObj := r.Spec.Resource
+	res := old.(*Instance)
+	oldObj := res.Spec.Resource
+
+	jsnitr := jsoniter.Config{
+		EscapeHTML:             true,
+		SortMapKeys:            true,
+		TagKey:                 "tf",
+		ValidateJsonRawMessage: true,
+		TypeEncoders:           GetEncoder(),
+		TypeDecoders:           GetDecoder(),
+	}.Froze()
+
+	byteNew, err := jsnitr.Marshal(newObj)
+	if err != nil {
+		return err
+	}
+	tempNew := make(map[string]interface{})
+	err = jsnitr.Unmarshal(byteNew, &tempNew)
+	if err != nil {
+		return err
+	}
+
+	byteOld, err := jsnitr.Marshal(oldObj)
+	if err != nil {
+		return err
+	}
+	tempOld := make(map[string]interface{})
+	err = jsnitr.Unmarshal(byteOld, &tempOld)
+	if err != nil {
+		return err
+	}
+
+	for key := range instanceForceNewList {
+		keySplit := strings.Split(key, "/*")
+		length := len(keySplit)
+		checkIfAnyDif := false
+		util.CheckIfAnyDifference("", keySplit, 0, length, &checkIfAnyDif, tempOld, tempOld, tempNew)
+		util.CheckIfAnyDifference("", keySplit, 0, length, &checkIfAnyDif, tempNew, tempOld, tempNew)
+
+		if checkIfAnyDif && r.Spec.UpdatePolicy == base.UpdatePolicyDoNotDestroy {
+			return fmt.Errorf(`instance "%v/%v" immutable field can't be updated. To update, change spec.updatePolicy to Destroy`, r.Namespace, r.Name)
+		}
+	}
 	return nil
 }
 
