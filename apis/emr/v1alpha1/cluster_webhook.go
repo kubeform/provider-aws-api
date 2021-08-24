@@ -20,9 +20,12 @@ package v1alpha1
 
 import (
 	"fmt"
+	"strings"
 
 	base "kubeform.dev/apimachinery/api/v1alpha1"
+	"kubeform.dev/provider-aws-api/util"
 
+	jsoniter "github.com/json-iterator/go"
 	"k8s.io/apimachinery/pkg/runtime"
 	ctrl "sigs.k8s.io/controller-runtime"
 	"sigs.k8s.io/controller-runtime/pkg/webhook"
@@ -38,6 +41,92 @@ func (r *Cluster) SetupWebhookWithManager(mgr ctrl.Manager) error {
 
 var _ webhook.Validator = &Cluster{}
 
+var clusterForceNewList = map[string]bool{
+	"/additional_info":         true,
+	"/applications":            true,
+	"/autoscaling_role":        true,
+	"/bootstrap_action/*/args": true,
+	"/configurations":          true,
+	"/configurations_json":     true,
+	"/core_instance_fleet/*/instance_type_configs/*/bid_price":                                     true,
+	"/core_instance_fleet/*/instance_type_configs/*/bid_price_as_percentage_of_on_demand_price":    true,
+	"/core_instance_fleet/*/instance_type_configs/*/configurations/*/classification":               true,
+	"/core_instance_fleet/*/instance_type_configs/*/configurations/*/properties":                   true,
+	"/core_instance_fleet/*/instance_type_configs/*/ebs_config/*/iops":                             true,
+	"/core_instance_fleet/*/instance_type_configs/*/ebs_config/*/size":                             true,
+	"/core_instance_fleet/*/instance_type_configs/*/ebs_config/*/type":                             true,
+	"/core_instance_fleet/*/instance_type_configs/*/ebs_config/*/volumes_per_instance":             true,
+	"/core_instance_fleet/*/instance_type_configs/*/instance_type":                                 true,
+	"/core_instance_fleet/*/instance_type_configs/*/weighted_capacity":                             true,
+	"/core_instance_fleet/*/launch_specifications/*/on_demand_specification/*/allocation_strategy": true,
+	"/core_instance_fleet/*/launch_specifications/*/spot_specification/*/allocation_strategy":      true,
+	"/core_instance_fleet/*/launch_specifications/*/spot_specification/*/block_duration_minutes":   true,
+	"/core_instance_fleet/*/launch_specifications/*/spot_specification/*/timeout_action":           true,
+	"/core_instance_fleet/*/launch_specifications/*/spot_specification/*/timeout_duration_minutes": true,
+	"/core_instance_fleet/*/name":                                true,
+	"/core_instance_fleet/*/target_on_demand_capacity":           true,
+	"/core_instance_fleet/*/target_spot_capacity":                true,
+	"/core_instance_group/*/bid_price":                           true,
+	"/core_instance_group/*/ebs_config/*/iops":                   true,
+	"/core_instance_group/*/ebs_config/*/size":                   true,
+	"/core_instance_group/*/ebs_config/*/type":                   true,
+	"/core_instance_group/*/ebs_config/*/volumes_per_instance":   true,
+	"/core_instance_group/*/instance_type":                       true,
+	"/core_instance_group/*/name":                                true,
+	"/custom_ami_id":                                             true,
+	"/ebs_root_volume_size":                                      true,
+	"/ec2_attributes/*/additional_master_security_groups":        true,
+	"/ec2_attributes/*/additional_slave_security_groups":         true,
+	"/ec2_attributes/*/emr_managed_master_security_group":        true,
+	"/ec2_attributes/*/emr_managed_slave_security_group":         true,
+	"/ec2_attributes/*/instance_profile":                         true,
+	"/ec2_attributes/*/key_name":                                 true,
+	"/ec2_attributes/*/service_access_security_group":            true,
+	"/ec2_attributes/*/subnet_id":                                true,
+	"/ec2_attributes/*/subnet_ids":                               true,
+	"/keep_job_flow_alive_when_no_steps":                         true,
+	"/kerberos_attributes/*/ad_domain_join_user":                 true,
+	"/kerberos_attributes/*/realm":                               true,
+	"/log_uri":                                                   true,
+	"/master_instance_fleet/*/instance_type_configs/*/bid_price": true,
+	"/master_instance_fleet/*/instance_type_configs/*/bid_price_as_percentage_of_on_demand_price":    true,
+	"/master_instance_fleet/*/instance_type_configs/*/configurations/*/classification":               true,
+	"/master_instance_fleet/*/instance_type_configs/*/configurations/*/properties":                   true,
+	"/master_instance_fleet/*/instance_type_configs/*/ebs_config/*/iops":                             true,
+	"/master_instance_fleet/*/instance_type_configs/*/ebs_config/*/size":                             true,
+	"/master_instance_fleet/*/instance_type_configs/*/ebs_config/*/type":                             true,
+	"/master_instance_fleet/*/instance_type_configs/*/ebs_config/*/volumes_per_instance":             true,
+	"/master_instance_fleet/*/instance_type_configs/*/instance_type":                                 true,
+	"/master_instance_fleet/*/instance_type_configs/*/weighted_capacity":                             true,
+	"/master_instance_fleet/*/launch_specifications/*/on_demand_specification/*/allocation_strategy": true,
+	"/master_instance_fleet/*/launch_specifications/*/spot_specification/*/allocation_strategy":      true,
+	"/master_instance_fleet/*/launch_specifications/*/spot_specification/*/block_duration_minutes":   true,
+	"/master_instance_fleet/*/launch_specifications/*/spot_specification/*/timeout_action":           true,
+	"/master_instance_fleet/*/launch_specifications/*/spot_specification/*/timeout_duration_minutes": true,
+	"/master_instance_fleet/*/name":                              true,
+	"/master_instance_fleet/*/target_on_demand_capacity":         true,
+	"/master_instance_fleet/*/target_spot_capacity":              true,
+	"/master_instance_group/*/bid_price":                         true,
+	"/master_instance_group/*/ebs_config/*/iops":                 true,
+	"/master_instance_group/*/ebs_config/*/size":                 true,
+	"/master_instance_group/*/ebs_config/*/type":                 true,
+	"/master_instance_group/*/ebs_config/*/volumes_per_instance": true,
+	"/master_instance_group/*/instance_count":                    true,
+	"/master_instance_group/*/instance_type":                     true,
+	"/master_instance_group/*/name":                              true,
+	"/name":                                                      true,
+	"/release_label":                                             true,
+	"/scale_down_behavior":                                       true,
+	"/security_configuration":                                    true,
+	"/service_role":                                              true,
+	"/step/*/action_on_failure":                                  true,
+	"/step/*/hadoop_jar_step/*/args":                             true,
+	"/step/*/hadoop_jar_step/*/jar":                              true,
+	"/step/*/hadoop_jar_step/*/main_class":                       true,
+	"/step/*/hadoop_jar_step/*/properties":                       true,
+	"/step/*/name":                                               true,
+}
+
 // ValidateCreate implements webhook.Validator so a webhook will be registered for the type
 func (r *Cluster) ValidateCreate() error {
 	return nil
@@ -45,6 +134,53 @@ func (r *Cluster) ValidateCreate() error {
 
 // ValidateUpdate implements webhook.Validator so a webhook will be registered for the type
 func (r *Cluster) ValidateUpdate(old runtime.Object) error {
+	if r.Spec.Resource.ID == "" {
+		return nil
+	}
+	newObj := r.Spec.Resource
+	res := old.(*Cluster)
+	oldObj := res.Spec.Resource
+
+	jsnitr := jsoniter.Config{
+		EscapeHTML:             true,
+		SortMapKeys:            true,
+		TagKey:                 "tf",
+		ValidateJsonRawMessage: true,
+		TypeEncoders:           GetEncoder(),
+		TypeDecoders:           GetDecoder(),
+	}.Froze()
+
+	byteNew, err := jsnitr.Marshal(newObj)
+	if err != nil {
+		return err
+	}
+	tempNew := make(map[string]interface{})
+	err = jsnitr.Unmarshal(byteNew, &tempNew)
+	if err != nil {
+		return err
+	}
+
+	byteOld, err := jsnitr.Marshal(oldObj)
+	if err != nil {
+		return err
+	}
+	tempOld := make(map[string]interface{})
+	err = jsnitr.Unmarshal(byteOld, &tempOld)
+	if err != nil {
+		return err
+	}
+
+	for key := range clusterForceNewList {
+		keySplit := strings.Split(key, "/*")
+		length := len(keySplit)
+		checkIfAnyDif := false
+		util.CheckIfAnyDifference("", keySplit, 0, length, &checkIfAnyDif, tempOld, tempOld, tempNew)
+		util.CheckIfAnyDifference("", keySplit, 0, length, &checkIfAnyDif, tempNew, tempOld, tempNew)
+
+		if checkIfAnyDif && r.Spec.UpdatePolicy == base.UpdatePolicyDoNotDestroy {
+			return fmt.Errorf(`cluster "%v/%v" immutable field can't be updated. To update, change spec.updatePolicy to Destroy`, r.Namespace, r.Name)
+		}
+	}
 	return nil
 }
 

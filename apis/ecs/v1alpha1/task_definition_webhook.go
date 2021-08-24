@@ -20,9 +20,12 @@ package v1alpha1
 
 import (
 	"fmt"
+	"strings"
 
 	base "kubeform.dev/apimachinery/api/v1alpha1"
+	"kubeform.dev/provider-aws-api/util"
 
+	jsoniter "github.com/json-iterator/go"
 	"k8s.io/apimachinery/pkg/runtime"
 	ctrl "sigs.k8s.io/controller-runtime"
 	"sigs.k8s.io/controller-runtime/pkg/webhook"
@@ -38,6 +41,44 @@ func (r *TaskDefinition) SetupWebhookWithManager(mgr ctrl.Manager) error {
 
 var _ webhook.Validator = &TaskDefinition{}
 
+var taskdefinitionForceNewList = map[string]bool{
+	"/container_definitions":                true,
+	"/cpu":                                  true,
+	"/ephemeral_storage/*/size_in_gib":      true,
+	"/execution_role_arn":                   true,
+	"/family":                               true,
+	"/inference_accelerator/*/device_name":  true,
+	"/inference_accelerator/*/device_type":  true,
+	"/ipc_mode":                             true,
+	"/memory":                               true,
+	"/network_mode":                         true,
+	"/pid_mode":                             true,
+	"/placement_constraints/*/expression":   true,
+	"/placement_constraints/*/type":         true,
+	"/proxy_configuration/*/container_name": true,
+	"/proxy_configuration/*/properties":     true,
+	"/proxy_configuration/*/type":           true,
+	"/requires_compatibilities":             true,
+	"/task_role_arn":                        true,
+	"/volume/*/docker_volume_configuration/*/autoprovision":                                                 true,
+	"/volume/*/docker_volume_configuration/*/driver":                                                        true,
+	"/volume/*/docker_volume_configuration/*/driver_opts":                                                   true,
+	"/volume/*/docker_volume_configuration/*/labels":                                                        true,
+	"/volume/*/docker_volume_configuration/*/scope":                                                         true,
+	"/volume/*/efs_volume_configuration/*/authorization_config/*/access_point_id":                           true,
+	"/volume/*/efs_volume_configuration/*/authorization_config/*/iam":                                       true,
+	"/volume/*/efs_volume_configuration/*/file_system_id":                                                   true,
+	"/volume/*/efs_volume_configuration/*/root_directory":                                                   true,
+	"/volume/*/efs_volume_configuration/*/transit_encryption":                                               true,
+	"/volume/*/efs_volume_configuration/*/transit_encryption_port":                                          true,
+	"/volume/*/fsx_windows_file_server_volume_configuration/*/authorization_config/*/credentials_parameter": true,
+	"/volume/*/fsx_windows_file_server_volume_configuration/*/authorization_config/*/domain":                true,
+	"/volume/*/fsx_windows_file_server_volume_configuration/*/file_system_id":                               true,
+	"/volume/*/fsx_windows_file_server_volume_configuration/*/root_directory":                               true,
+	"/volume/*/host_path": true,
+	"/volume/*/name":      true,
+}
+
 // ValidateCreate implements webhook.Validator so a webhook will be registered for the type
 func (r *TaskDefinition) ValidateCreate() error {
 	return nil
@@ -45,6 +86,53 @@ func (r *TaskDefinition) ValidateCreate() error {
 
 // ValidateUpdate implements webhook.Validator so a webhook will be registered for the type
 func (r *TaskDefinition) ValidateUpdate(old runtime.Object) error {
+	if r.Spec.Resource.ID == "" {
+		return nil
+	}
+	newObj := r.Spec.Resource
+	res := old.(*TaskDefinition)
+	oldObj := res.Spec.Resource
+
+	jsnitr := jsoniter.Config{
+		EscapeHTML:             true,
+		SortMapKeys:            true,
+		TagKey:                 "tf",
+		ValidateJsonRawMessage: true,
+		TypeEncoders:           GetEncoder(),
+		TypeDecoders:           GetDecoder(),
+	}.Froze()
+
+	byteNew, err := jsnitr.Marshal(newObj)
+	if err != nil {
+		return err
+	}
+	tempNew := make(map[string]interface{})
+	err = jsnitr.Unmarshal(byteNew, &tempNew)
+	if err != nil {
+		return err
+	}
+
+	byteOld, err := jsnitr.Marshal(oldObj)
+	if err != nil {
+		return err
+	}
+	tempOld := make(map[string]interface{})
+	err = jsnitr.Unmarshal(byteOld, &tempOld)
+	if err != nil {
+		return err
+	}
+
+	for key := range taskdefinitionForceNewList {
+		keySplit := strings.Split(key, "/*")
+		length := len(keySplit)
+		checkIfAnyDif := false
+		util.CheckIfAnyDifference("", keySplit, 0, length, &checkIfAnyDif, tempOld, tempOld, tempNew)
+		util.CheckIfAnyDifference("", keySplit, 0, length, &checkIfAnyDif, tempNew, tempOld, tempNew)
+
+		if checkIfAnyDif && r.Spec.UpdatePolicy == base.UpdatePolicyDoNotDestroy {
+			return fmt.Errorf(`taskdefinition "%v/%v" immutable field can't be updated. To update, change spec.updatePolicy to Destroy`, r.Namespace, r.Name)
+		}
+	}
 	return nil
 }
 

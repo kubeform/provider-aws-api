@@ -20,9 +20,12 @@ package v1alpha1
 
 import (
 	"fmt"
+	"strings"
 
 	base "kubeform.dev/apimachinery/api/v1alpha1"
+	"kubeform.dev/provider-aws-api/util"
 
+	jsoniter "github.com/json-iterator/go"
 	"k8s.io/apimachinery/pkg/runtime"
 	ctrl "sigs.k8s.io/controller-runtime"
 	"sigs.k8s.io/controller-runtime/pkg/webhook"
@@ -38,6 +41,62 @@ func (r *FleetRequest) SetupWebhookWithManager(mgr ctrl.Manager) error {
 
 var _ webhook.Validator = &FleetRequest{}
 
+var fleetrequestForceNewList = map[string]bool{
+	"/allocation_strategy":                      true,
+	"/fleet_type":                               true,
+	"/iam_fleet_role":                           true,
+	"/instance_interruption_behaviour":          true,
+	"/instance_pools_to_use_count":              true,
+	"/launch_specification/*/ami":               true,
+	"/launch_specification/*/availability_zone": true,
+	"/launch_specification/*/ebs_block_device/*/delete_on_termination":  true,
+	"/launch_specification/*/ebs_block_device/*/device_name":            true,
+	"/launch_specification/*/ebs_block_device/*/encrypted":              true,
+	"/launch_specification/*/ebs_block_device/*/iops":                   true,
+	"/launch_specification/*/ebs_block_device/*/kms_key_id":             true,
+	"/launch_specification/*/ebs_block_device/*/snapshot_id":            true,
+	"/launch_specification/*/ebs_block_device/*/throughput":             true,
+	"/launch_specification/*/ebs_block_device/*/volume_size":            true,
+	"/launch_specification/*/ebs_block_device/*/volume_type":            true,
+	"/launch_specification/*/iam_instance_profile":                      true,
+	"/launch_specification/*/iam_instance_profile_arn":                  true,
+	"/launch_specification/*/instance_type":                             true,
+	"/launch_specification/*/key_name":                                  true,
+	"/launch_specification/*/placement_group":                           true,
+	"/launch_specification/*/placement_tenancy":                         true,
+	"/launch_specification/*/root_block_device/*/delete_on_termination": true,
+	"/launch_specification/*/root_block_device/*/encrypted":             true,
+	"/launch_specification/*/root_block_device/*/iops":                  true,
+	"/launch_specification/*/root_block_device/*/kms_key_id":            true,
+	"/launch_specification/*/root_block_device/*/throughput":            true,
+	"/launch_specification/*/root_block_device/*/volume_size":           true,
+	"/launch_specification/*/root_block_device/*/volume_type":           true,
+	"/launch_specification/*/spot_price":                                true,
+	"/launch_specification/*/subnet_id":                                 true,
+	"/launch_specification/*/tags":                                      true,
+	"/launch_specification/*/user_data":                                 true,
+	"/launch_specification/*/weighted_capacity":                         true,
+	"/launch_template_config/*/launch_template_specification/*/id":      true,
+	"/launch_template_config/*/launch_template_specification/*/name":    true,
+	"/launch_template_config/*/launch_template_specification/*/version": true,
+	"/launch_template_config/*/overrides/*/availability_zone":           true,
+	"/launch_template_config/*/overrides/*/instance_type":               true,
+	"/launch_template_config/*/overrides/*/priority":                    true,
+	"/launch_template_config/*/overrides/*/spot_price":                  true,
+	"/launch_template_config/*/overrides/*/subnet_id":                   true,
+	"/launch_template_config/*/overrides/*/weighted_capacity":           true,
+	"/load_balancers":                true,
+	"/on_demand_allocation_strategy": true,
+	"/on_demand_max_total_price":     true,
+	"/replace_unhealthy_instances":   true,
+	"/spot_maintenance_strategies/*/capacity_rebalance/*/replacement_strategy": true,
+	"/spot_price":                          true,
+	"/target_group_arns":                   true,
+	"/terminate_instances_with_expiration": true,
+	"/valid_from":                          true,
+	"/valid_until":                         true,
+}
+
 // ValidateCreate implements webhook.Validator so a webhook will be registered for the type
 func (r *FleetRequest) ValidateCreate() error {
 	return nil
@@ -45,6 +104,53 @@ func (r *FleetRequest) ValidateCreate() error {
 
 // ValidateUpdate implements webhook.Validator so a webhook will be registered for the type
 func (r *FleetRequest) ValidateUpdate(old runtime.Object) error {
+	if r.Spec.Resource.ID == "" {
+		return nil
+	}
+	newObj := r.Spec.Resource
+	res := old.(*FleetRequest)
+	oldObj := res.Spec.Resource
+
+	jsnitr := jsoniter.Config{
+		EscapeHTML:             true,
+		SortMapKeys:            true,
+		TagKey:                 "tf",
+		ValidateJsonRawMessage: true,
+		TypeEncoders:           GetEncoder(),
+		TypeDecoders:           GetDecoder(),
+	}.Froze()
+
+	byteNew, err := jsnitr.Marshal(newObj)
+	if err != nil {
+		return err
+	}
+	tempNew := make(map[string]interface{})
+	err = jsnitr.Unmarshal(byteNew, &tempNew)
+	if err != nil {
+		return err
+	}
+
+	byteOld, err := jsnitr.Marshal(oldObj)
+	if err != nil {
+		return err
+	}
+	tempOld := make(map[string]interface{})
+	err = jsnitr.Unmarshal(byteOld, &tempOld)
+	if err != nil {
+		return err
+	}
+
+	for key := range fleetrequestForceNewList {
+		keySplit := strings.Split(key, "/*")
+		length := len(keySplit)
+		checkIfAnyDif := false
+		util.CheckIfAnyDifference("", keySplit, 0, length, &checkIfAnyDif, tempOld, tempOld, tempNew)
+		util.CheckIfAnyDifference("", keySplit, 0, length, &checkIfAnyDif, tempNew, tempOld, tempNew)
+
+		if checkIfAnyDif && r.Spec.UpdatePolicy == base.UpdatePolicyDoNotDestroy {
+			return fmt.Errorf(`fleetrequest "%v/%v" immutable field can't be updated. To update, change spec.updatePolicy to Destroy`, r.Namespace, r.Name)
+		}
+	}
 	return nil
 }
 
