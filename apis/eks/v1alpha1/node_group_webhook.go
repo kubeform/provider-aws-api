@@ -20,9 +20,12 @@ package v1alpha1
 
 import (
 	"fmt"
+	"strings"
 
 	base "kubeform.dev/apimachinery/api/v1alpha1"
+	"kubeform.dev/apimachinery/pkg/util"
 
+	jsoniter "github.com/json-iterator/go"
 	"k8s.io/apimachinery/pkg/runtime"
 	ctrl "sigs.k8s.io/controller-runtime"
 	"sigs.k8s.io/controller-runtime/pkg/webhook"
@@ -38,6 +41,22 @@ func (r *NodeGroup) SetupWebhookWithManager(mgr ctrl.Manager) error {
 
 var _ webhook.Validator = &NodeGroup{}
 
+var nodegroupForceNewList = map[string]bool{
+	"/ami_type":                                  true,
+	"/capacity_type":                             true,
+	"/cluster_name":                              true,
+	"/disk_size":                                 true,
+	"/instance_types":                            true,
+	"/launch_template/*/id":                      true,
+	"/launch_template/*/name":                    true,
+	"/node_group_name":                           true,
+	"/node_group_name_prefix":                    true,
+	"/node_role_arn":                             true,
+	"/remote_access/*/ec2_ssh_key":               true,
+	"/remote_access/*/source_security_group_ids": true,
+	"/subnet_ids":                                true,
+}
+
 // ValidateCreate implements webhook.Validator so a webhook will be registered for the type
 func (r *NodeGroup) ValidateCreate() error {
 	return nil
@@ -45,6 +64,53 @@ func (r *NodeGroup) ValidateCreate() error {
 
 // ValidateUpdate implements webhook.Validator so a webhook will be registered for the type
 func (r *NodeGroup) ValidateUpdate(old runtime.Object) error {
+	if r.Spec.Resource.ID == "" {
+		return nil
+	}
+	newObj := r.Spec.Resource
+	res := old.(*NodeGroup)
+	oldObj := res.Spec.Resource
+
+	jsnitr := jsoniter.Config{
+		EscapeHTML:             true,
+		SortMapKeys:            true,
+		TagKey:                 "tf",
+		ValidateJsonRawMessage: true,
+		TypeEncoders:           GetEncoder(),
+		TypeDecoders:           GetDecoder(),
+	}.Froze()
+
+	byteNew, err := jsnitr.Marshal(newObj)
+	if err != nil {
+		return err
+	}
+	tempNew := make(map[string]interface{})
+	err = jsnitr.Unmarshal(byteNew, &tempNew)
+	if err != nil {
+		return err
+	}
+
+	byteOld, err := jsnitr.Marshal(oldObj)
+	if err != nil {
+		return err
+	}
+	tempOld := make(map[string]interface{})
+	err = jsnitr.Unmarshal(byteOld, &tempOld)
+	if err != nil {
+		return err
+	}
+
+	for key := range nodegroupForceNewList {
+		keySplit := strings.Split(key, "/*")
+		length := len(keySplit)
+		checkIfAnyDif := false
+		util.CheckIfAnyDifference("", keySplit, 0, length, &checkIfAnyDif, tempOld, tempOld, tempNew)
+		util.CheckIfAnyDifference("", keySplit, 0, length, &checkIfAnyDif, tempNew, tempOld, tempNew)
+
+		if checkIfAnyDif && r.Spec.UpdatePolicy == base.UpdatePolicyDoNotDestroy {
+			return fmt.Errorf(`nodegroup "%v/%v" immutable field can't be updated. To update, change spec.updatePolicy to Destroy`, r.Namespace, r.Name)
+		}
+	}
 	return nil
 }
 

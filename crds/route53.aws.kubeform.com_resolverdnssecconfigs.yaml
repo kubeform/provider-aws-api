@@ -48,9 +48,9 @@ spec:
                 type: object
               resource:
                 properties:
-                  ID:
-                    type: string
                   arn:
+                    type: string
+                  id:
                     type: string
                   ownerID:
                     type: string
@@ -63,9 +63,9 @@ spec:
                 type: object
               state:
                 properties:
-                  ID:
-                    type: string
                   arn:
+                    type: string
+                  id:
                     type: string
                   ownerID:
                     type: string

@@ -1284,11 +1284,6 @@ func (in *ResolverDnssecConfigSpecResource) DeepCopyInto(out *ResolverDnssecConf
 		*out = new(string)
 		**out = **in
 	}
-	if in.ID != nil {
-		in, out := &in.ID, &out.ID
-		*out = new(string)
-		**out = **in
-	}
 	if in.OwnerID != nil {
 		in, out := &in.OwnerID, &out.OwnerID
 		*out = new(string)
@@ -2143,11 +2138,6 @@ func (in *ResolverFirewallRuleGroupSpecResource) DeepCopyInto(out *ResolverFirew
 	*out = *in
 	if in.Arn != nil {
 		in, out := &in.Arn, &out.Arn
-		*out = new(string)
-		**out = **in
-	}
-	if in.ID != nil {
-		in, out := &in.ID, &out.ID
 		*out = new(string)
 		**out = **in
 	}

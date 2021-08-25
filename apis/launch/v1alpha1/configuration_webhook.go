@@ -20,9 +20,12 @@ package v1alpha1
 
 import (
 	"fmt"
+	"strings"
 
 	base "kubeform.dev/apimachinery/api/v1alpha1"
+	"kubeform.dev/apimachinery/pkg/util"
 
+	jsoniter "github.com/json-iterator/go"
 	"k8s.io/apimachinery/pkg/runtime"
 	ctrl "sigs.k8s.io/controller-runtime"
 	"sigs.k8s.io/controller-runtime/pkg/webhook"
@@ -38,6 +41,43 @@ func (r *Configuration) SetupWebhookWithManager(mgr ctrl.Manager) error {
 
 var _ webhook.Validator = &Configuration{}
 
+var configurationForceNewList = map[string]bool{
+	"/associate_public_ip_address":                    true,
+	"/ebs_block_device/*/delete_on_termination":       true,
+	"/ebs_block_device/*/device_name":                 true,
+	"/ebs_block_device/*/encrypted":                   true,
+	"/ebs_block_device/*/iops":                        true,
+	"/ebs_block_device/*/no_device":                   true,
+	"/ebs_block_device/*/snapshot_id":                 true,
+	"/ebs_block_device/*/throughput":                  true,
+	"/ebs_block_device/*/volume_size":                 true,
+	"/ebs_block_device/*/volume_type":                 true,
+	"/ebs_optimized":                                  true,
+	"/enable_monitoring":                              true,
+	"/iam_instance_profile":                           true,
+	"/image_id":                                       true,
+	"/instance_type":                                  true,
+	"/key_name":                                       true,
+	"/metadata_options/*/http_endpoint":               true,
+	"/metadata_options/*/http_put_response_hop_limit": true,
+	"/metadata_options/*/http_tokens":                 true,
+	"/name":                                           true,
+	"/name_prefix":                                    true,
+	"/placement_tenancy":                              true,
+	"/root_block_device/*/delete_on_termination":      true,
+	"/root_block_device/*/encrypted":                  true,
+	"/root_block_device/*/iops":                       true,
+	"/root_block_device/*/throughput":                 true,
+	"/root_block_device/*/volume_size":                true,
+	"/root_block_device/*/volume_type":                true,
+	"/security_groups":                                true,
+	"/spot_price":                                     true,
+	"/user_data":                                      true,
+	"/user_data_base64":                               true,
+	"/vpc_classic_link_id":                            true,
+	"/vpc_classic_link_security_groups":               true,
+}
+
 // ValidateCreate implements webhook.Validator so a webhook will be registered for the type
 func (r *Configuration) ValidateCreate() error {
 	return nil
@@ -45,6 +85,53 @@ func (r *Configuration) ValidateCreate() error {
 
 // ValidateUpdate implements webhook.Validator so a webhook will be registered for the type
 func (r *Configuration) ValidateUpdate(old runtime.Object) error {
+	if r.Spec.Resource.ID == "" {
+		return nil
+	}
+	newObj := r.Spec.Resource
+	res := old.(*Configuration)
+	oldObj := res.Spec.Resource
+
+	jsnitr := jsoniter.Config{
+		EscapeHTML:             true,
+		SortMapKeys:            true,
+		TagKey:                 "tf",
+		ValidateJsonRawMessage: true,
+		TypeEncoders:           GetEncoder(),
+		TypeDecoders:           GetDecoder(),
+	}.Froze()
+
+	byteNew, err := jsnitr.Marshal(newObj)
+	if err != nil {
+		return err
+	}
+	tempNew := make(map[string]interface{})
+	err = jsnitr.Unmarshal(byteNew, &tempNew)
+	if err != nil {
+		return err
+	}
+
+	byteOld, err := jsnitr.Marshal(oldObj)
+	if err != nil {
+		return err
+	}
+	tempOld := make(map[string]interface{})
+	err = jsnitr.Unmarshal(byteOld, &tempOld)
+	if err != nil {
+		return err
+	}
+
+	for key := range configurationForceNewList {
+		keySplit := strings.Split(key, "/*")
+		length := len(keySplit)
+		checkIfAnyDif := false
+		util.CheckIfAnyDifference("", keySplit, 0, length, &checkIfAnyDif, tempOld, tempOld, tempNew)
+		util.CheckIfAnyDifference("", keySplit, 0, length, &checkIfAnyDif, tempNew, tempOld, tempNew)
+
+		if checkIfAnyDif && r.Spec.UpdatePolicy == base.UpdatePolicyDoNotDestroy {
+			return fmt.Errorf(`configuration "%v/%v" immutable field can't be updated. To update, change spec.updatePolicy to Destroy`, r.Namespace, r.Name)
+		}
+	}
 	return nil
 }
 

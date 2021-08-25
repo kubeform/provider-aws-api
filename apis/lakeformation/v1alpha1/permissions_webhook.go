@@ -20,9 +20,12 @@ package v1alpha1
 
 import (
 	"fmt"
+	"strings"
 
 	base "kubeform.dev/apimachinery/api/v1alpha1"
+	"kubeform.dev/apimachinery/pkg/util"
 
+	jsoniter "github.com/json-iterator/go"
 	"k8s.io/apimachinery/pkg/runtime"
 	ctrl "sigs.k8s.io/controller-runtime"
 	"sigs.k8s.io/controller-runtime/pkg/webhook"
@@ -38,6 +41,28 @@ func (r *Permissions) SetupWebhookWithManager(mgr ctrl.Manager) error {
 
 var _ webhook.Validator = &Permissions{}
 
+var permissionsForceNewList = map[string]bool{
+	"/catalog_id":                                 true,
+	"/catalog_resource":                           true,
+	"/data_location/*/arn":                        true,
+	"/data_location/*/catalog_id":                 true,
+	"/database/*/catalog_id":                      true,
+	"/database/*/name":                            true,
+	"/permissions":                                true,
+	"/permissions_with_grant_option":              true,
+	"/principal":                                  true,
+	"/table/*/catalog_id":                         true,
+	"/table/*/database_name":                      true,
+	"/table/*/name":                               true,
+	"/table/*/wildcard":                           true,
+	"/table_with_columns/*/catalog_id":            true,
+	"/table_with_columns/*/column_names":          true,
+	"/table_with_columns/*/database_name":         true,
+	"/table_with_columns/*/excluded_column_names": true,
+	"/table_with_columns/*/name":                  true,
+	"/table_with_columns/*/wildcard":              true,
+}
+
 // ValidateCreate implements webhook.Validator so a webhook will be registered for the type
 func (r *Permissions) ValidateCreate() error {
 	return nil
@@ -45,6 +70,53 @@ func (r *Permissions) ValidateCreate() error {
 
 // ValidateUpdate implements webhook.Validator so a webhook will be registered for the type
 func (r *Permissions) ValidateUpdate(old runtime.Object) error {
+	if r.Spec.Resource.ID == "" {
+		return nil
+	}
+	newObj := r.Spec.Resource
+	res := old.(*Permissions)
+	oldObj := res.Spec.Resource
+
+	jsnitr := jsoniter.Config{
+		EscapeHTML:             true,
+		SortMapKeys:            true,
+		TagKey:                 "tf",
+		ValidateJsonRawMessage: true,
+		TypeEncoders:           GetEncoder(),
+		TypeDecoders:           GetDecoder(),
+	}.Froze()
+
+	byteNew, err := jsnitr.Marshal(newObj)
+	if err != nil {
+		return err
+	}
+	tempNew := make(map[string]interface{})
+	err = jsnitr.Unmarshal(byteNew, &tempNew)
+	if err != nil {
+		return err
+	}
+
+	byteOld, err := jsnitr.Marshal(oldObj)
+	if err != nil {
+		return err
+	}
+	tempOld := make(map[string]interface{})
+	err = jsnitr.Unmarshal(byteOld, &tempOld)
+	if err != nil {
+		return err
+	}
+
+	for key := range permissionsForceNewList {
+		keySplit := strings.Split(key, "/*")
+		length := len(keySplit)
+		checkIfAnyDif := false
+		util.CheckIfAnyDifference("", keySplit, 0, length, &checkIfAnyDif, tempOld, tempOld, tempNew)
+		util.CheckIfAnyDifference("", keySplit, 0, length, &checkIfAnyDif, tempNew, tempOld, tempNew)
+
+		if checkIfAnyDif && r.Spec.UpdatePolicy == base.UpdatePolicyDoNotDestroy {
+			return fmt.Errorf(`permissions "%v/%v" immutable field can't be updated. To update, change spec.updatePolicy to Destroy`, r.Namespace, r.Name)
+		}
+	}
 	return nil
 }
 
