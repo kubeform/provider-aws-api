@@ -54,10 +54,10 @@ type ResolverDnssecConfigSpec struct {
 }
 
 type ResolverDnssecConfigSpecResource struct {
+	ID string `json:"id,omitempty" tf:"id,omitempty"`
+
 	// +optional
 	Arn *string `json:"arn,omitempty" tf:"arn"`
-	// +optional
-	ID *string `json:"ID,omitempty" tf:"id"`
 	// +optional
 	OwnerID    *string `json:"ownerID,omitempty" tf:"owner_id"`
 	ResourceID *string `json:"resourceID" tf:"resource_id"`

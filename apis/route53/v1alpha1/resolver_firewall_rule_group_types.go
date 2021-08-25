@@ -54,10 +54,10 @@ type ResolverFirewallRuleGroupSpec struct {
 }
 
 type ResolverFirewallRuleGroupSpecResource struct {
+	ID string `json:"id,omitempty" tf:"id,omitempty"`
+
 	// +optional
-	Arn *string `json:"arn,omitempty" tf:"arn"`
-	// +optional
-	ID   *string `json:"ID,omitempty" tf:"id"`
+	Arn  *string `json:"arn,omitempty" tf:"arn"`
 	Name *string `json:"name" tf:"name"`
 	// +optional
 	OwnerID *string `json:"ownerID,omitempty" tf:"owner_id"`
