@@ -103,6 +103,11 @@ func (in *ServerSpec) DeepCopyInto(out *ServerSpec) {
 		*out = new(v1.LocalObjectReference)
 		**out = **in
 	}
+	if in.BackendRef != nil {
+		in, out := &in.BackendRef, &out.BackendRef
+		*out = new(v1.LocalObjectReference)
+		**out = **in
+	}
 	return
 }
 
@@ -359,6 +364,11 @@ func (in *SshKeySpec) DeepCopyInto(out *SshKeySpec) {
 	}
 	in.Resource.DeepCopyInto(&out.Resource)
 	out.ProviderRef = in.ProviderRef
+	if in.BackendRef != nil {
+		in, out := &in.BackendRef, &out.BackendRef
+		*out = new(v1.LocalObjectReference)
+		**out = **in
+	}
 	return
 }
 
@@ -497,6 +507,11 @@ func (in *UserSpec) DeepCopyInto(out *UserSpec) {
 	}
 	in.Resource.DeepCopyInto(&out.Resource)
 	out.ProviderRef = in.ProviderRef
+	if in.BackendRef != nil {
+		in, out := &in.BackendRef, &out.BackendRef
+		*out = new(v1.LocalObjectReference)
+		**out = **in
+	}
 	return
 }
 

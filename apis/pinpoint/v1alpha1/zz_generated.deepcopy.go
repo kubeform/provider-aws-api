@@ -103,6 +103,11 @@ func (in *AdmChannelSpec) DeepCopyInto(out *AdmChannelSpec) {
 		*out = new(v1.LocalObjectReference)
 		**out = **in
 	}
+	if in.BackendRef != nil {
+		in, out := &in.BackendRef, &out.BackendRef
+		*out = new(v1.LocalObjectReference)
+		**out = **in
+	}
 	return
 }
 
@@ -248,6 +253,11 @@ func (in *ApnsChannelSpec) DeepCopyInto(out *ApnsChannelSpec) {
 	out.ProviderRef = in.ProviderRef
 	if in.SecretRef != nil {
 		in, out := &in.SecretRef, &out.SecretRef
+		*out = new(v1.LocalObjectReference)
+		**out = **in
+	}
+	if in.BackendRef != nil {
+		in, out := &in.BackendRef, &out.BackendRef
 		*out = new(v1.LocalObjectReference)
 		**out = **in
 	}
@@ -424,6 +434,11 @@ func (in *ApnsSandboxChannelSpec) DeepCopyInto(out *ApnsSandboxChannelSpec) {
 		*out = new(v1.LocalObjectReference)
 		**out = **in
 	}
+	if in.BackendRef != nil {
+		in, out := &in.BackendRef, &out.BackendRef
+		*out = new(v1.LocalObjectReference)
+		**out = **in
+	}
 	return
 }
 
@@ -594,6 +609,11 @@ func (in *ApnsVoipChannelSpec) DeepCopyInto(out *ApnsVoipChannelSpec) {
 	out.ProviderRef = in.ProviderRef
 	if in.SecretRef != nil {
 		in, out := &in.SecretRef, &out.SecretRef
+		*out = new(v1.LocalObjectReference)
+		**out = **in
+	}
+	if in.BackendRef != nil {
+		in, out := &in.BackendRef, &out.BackendRef
 		*out = new(v1.LocalObjectReference)
 		**out = **in
 	}
@@ -770,6 +790,11 @@ func (in *ApnsVoipSandboxChannelSpec) DeepCopyInto(out *ApnsVoipSandboxChannelSp
 		*out = new(v1.LocalObjectReference)
 		**out = **in
 	}
+	if in.BackendRef != nil {
+		in, out := &in.BackendRef, &out.BackendRef
+		*out = new(v1.LocalObjectReference)
+		**out = **in
+	}
 	return
 }
 
@@ -938,6 +963,11 @@ func (in *AppSpec) DeepCopyInto(out *AppSpec) {
 	}
 	in.Resource.DeepCopyInto(&out.Resource)
 	out.ProviderRef = in.ProviderRef
+	if in.BackendRef != nil {
+		in, out := &in.BackendRef, &out.BackendRef
+		*out = new(v1.LocalObjectReference)
+		**out = **in
+	}
 	return
 }
 
@@ -1216,6 +1246,11 @@ func (in *BaiduChannelSpec) DeepCopyInto(out *BaiduChannelSpec) {
 		*out = new(v1.LocalObjectReference)
 		**out = **in
 	}
+	if in.BackendRef != nil {
+		in, out := &in.BackendRef, &out.BackendRef
+		*out = new(v1.LocalObjectReference)
+		**out = **in
+	}
 	return
 }
 
@@ -1359,6 +1394,11 @@ func (in *EmailChannelSpec) DeepCopyInto(out *EmailChannelSpec) {
 	}
 	in.Resource.DeepCopyInto(&out.Resource)
 	out.ProviderRef = in.ProviderRef
+	if in.BackendRef != nil {
+		in, out := &in.BackendRef, &out.BackendRef
+		*out = new(v1.LocalObjectReference)
+		**out = **in
+	}
 	return
 }
 
@@ -1517,6 +1557,11 @@ func (in *EventStreamSpec) DeepCopyInto(out *EventStreamSpec) {
 	}
 	in.Resource.DeepCopyInto(&out.Resource)
 	out.ProviderRef = in.ProviderRef
+	if in.BackendRef != nil {
+		in, out := &in.BackendRef, &out.BackendRef
+		*out = new(v1.LocalObjectReference)
+		**out = **in
+	}
 	return
 }
 
@@ -1660,6 +1705,11 @@ func (in *GcmChannelSpec) DeepCopyInto(out *GcmChannelSpec) {
 		*out = new(v1.LocalObjectReference)
 		**out = **in
 	}
+	if in.BackendRef != nil {
+		in, out := &in.BackendRef, &out.BackendRef
+		*out = new(v1.LocalObjectReference)
+		**out = **in
+	}
 	return
 }
 
@@ -1798,6 +1848,11 @@ func (in *SmsChannelSpec) DeepCopyInto(out *SmsChannelSpec) {
 	}
 	in.Resource.DeepCopyInto(&out.Resource)
 	out.ProviderRef = in.ProviderRef
+	if in.BackendRef != nil {
+		in, out := &in.BackendRef, &out.BackendRef
+		*out = new(v1.LocalObjectReference)
+		**out = **in
+	}
 	return
 }
 

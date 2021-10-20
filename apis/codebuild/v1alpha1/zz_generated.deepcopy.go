@@ -103,6 +103,11 @@ func (in *ProjectSpec) DeepCopyInto(out *ProjectSpec) {
 		*out = new(v1.LocalObjectReference)
 		**out = **in
 	}
+	if in.BackendRef != nil {
+		in, out := &in.BackendRef, &out.BackendRef
+		*out = new(v1.LocalObjectReference)
+		**out = **in
+	}
 	return
 }
 
@@ -1122,6 +1127,11 @@ func (in *ReportGroupSpec) DeepCopyInto(out *ReportGroupSpec) {
 	}
 	in.Resource.DeepCopyInto(&out.Resource)
 	out.ProviderRef = in.ProviderRef
+	if in.BackendRef != nil {
+		in, out := &in.BackendRef, &out.BackendRef
+		*out = new(v1.LocalObjectReference)
+		**out = **in
+	}
 	return
 }
 
@@ -1369,6 +1379,11 @@ func (in *SourceCredentialSpec) DeepCopyInto(out *SourceCredentialSpec) {
 		*out = new(v1.LocalObjectReference)
 		**out = **in
 	}
+	if in.BackendRef != nil {
+		in, out := &in.BackendRef, &out.BackendRef
+		*out = new(v1.LocalObjectReference)
+		**out = **in
+	}
 	return
 }
 
@@ -1519,6 +1534,11 @@ func (in *WebhookSpec) DeepCopyInto(out *WebhookSpec) {
 	out.ProviderRef = in.ProviderRef
 	if in.SecretRef != nil {
 		in, out := &in.SecretRef, &out.SecretRef
+		*out = new(v1.LocalObjectReference)
+		**out = **in
+	}
+	if in.BackendRef != nil {
+		in, out := &in.BackendRef, &out.BackendRef
 		*out = new(v1.LocalObjectReference)
 		**out = **in
 	}

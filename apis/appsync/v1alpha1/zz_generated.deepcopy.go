@@ -103,6 +103,11 @@ func (in *ApiKeySpec) DeepCopyInto(out *ApiKeySpec) {
 		*out = new(v1.LocalObjectReference)
 		**out = **in
 	}
+	if in.BackendRef != nil {
+		in, out := &in.BackendRef, &out.BackendRef
+		*out = new(v1.LocalObjectReference)
+		**out = **in
+	}
 	return
 }
 
@@ -246,6 +251,11 @@ func (in *DatasourceSpec) DeepCopyInto(out *DatasourceSpec) {
 	}
 	in.Resource.DeepCopyInto(&out.Resource)
 	out.ProviderRef = in.ProviderRef
+	if in.BackendRef != nil {
+		in, out := &in.BackendRef, &out.BackendRef
+		*out = new(v1.LocalObjectReference)
+		**out = **in
+	}
 	return
 }
 
@@ -518,6 +528,11 @@ func (in *FunctionSpec) DeepCopyInto(out *FunctionSpec) {
 	}
 	in.Resource.DeepCopyInto(&out.Resource)
 	out.ProviderRef = in.ProviderRef
+	if in.BackendRef != nil {
+		in, out := &in.BackendRef, &out.BackendRef
+		*out = new(v1.LocalObjectReference)
+		**out = **in
+	}
 	return
 }
 
@@ -686,6 +701,11 @@ func (in *GraphqlAPISpec) DeepCopyInto(out *GraphqlAPISpec) {
 	}
 	in.Resource.DeepCopyInto(&out.Resource)
 	out.ProviderRef = in.ProviderRef
+	if in.BackendRef != nil {
+		in, out := &in.BackendRef, &out.BackendRef
+		*out = new(v1.LocalObjectReference)
+		**out = **in
+	}
 	return
 }
 
@@ -1090,6 +1110,11 @@ func (in *ResolverSpec) DeepCopyInto(out *ResolverSpec) {
 	}
 	in.Resource.DeepCopyInto(&out.Resource)
 	out.ProviderRef = in.ProviderRef
+	if in.BackendRef != nil {
+		in, out := &in.BackendRef, &out.BackendRef
+		*out = new(v1.LocalObjectReference)
+		**out = **in
+	}
 	return
 }
 
