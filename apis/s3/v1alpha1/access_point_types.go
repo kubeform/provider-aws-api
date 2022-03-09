@@ -76,10 +76,14 @@ type AccessPointSpecResource struct {
 	// +optional
 	AccountID *string `json:"accountID,omitempty" tf:"account_id"`
 	// +optional
+	Alias *string `json:"alias,omitempty" tf:"alias"`
+	// +optional
 	Arn    *string `json:"arn,omitempty" tf:"arn"`
 	Bucket *string `json:"bucket" tf:"bucket"`
 	// +optional
 	DomainName *string `json:"domainName,omitempty" tf:"domain_name"`
+	// +optional
+	Endpoints *map[string]string `json:"endpoints,omitempty" tf:"endpoints"`
 	// +optional
 	HasPublicAccessPolicy *bool   `json:"hasPublicAccessPolicy,omitempty" tf:"has_public_access_policy"`
 	Name                  *string `json:"name" tf:"name"`

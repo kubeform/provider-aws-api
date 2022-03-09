@@ -314,6 +314,11 @@ func (in *PolicySpecResource) DeepCopyInto(out *PolicySpecResource) {
 		*out = new(bool)
 		**out = **in
 	}
+	if in.DeleteUnusedFmManagedResources != nil {
+		in, out := &in.DeleteUnusedFmManagedResources, &out.DeleteUnusedFmManagedResources
+		*out = new(bool)
+		**out = **in
+	}
 	if in.ExcludeMap != nil {
 		in, out := &in.ExcludeMap, &out.ExcludeMap
 		*out = new(PolicySpecExcludeMap)
@@ -369,6 +374,28 @@ func (in *PolicySpecResource) DeepCopyInto(out *PolicySpecResource) {
 		in, out := &in.SecurityServicePolicyData, &out.SecurityServicePolicyData
 		*out = new(PolicySpecSecurityServicePolicyData)
 		(*in).DeepCopyInto(*out)
+	}
+	if in.Tags != nil {
+		in, out := &in.Tags, &out.Tags
+		*out = new(map[string]string)
+		if **in != nil {
+			in, out := *in, *out
+			*out = make(map[string]string, len(*in))
+			for key, val := range *in {
+				(*out)[key] = val
+			}
+		}
+	}
+	if in.TagsAll != nil {
+		in, out := &in.TagsAll, &out.TagsAll
+		*out = new(map[string]string)
+		if **in != nil {
+			in, out := *in, *out
+			*out = make(map[string]string, len(*in))
+			for key, val := range *in {
+				(*out)[key] = val
+			}
+		}
 	}
 	return
 }

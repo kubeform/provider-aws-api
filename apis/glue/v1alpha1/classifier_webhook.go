@@ -88,7 +88,7 @@ func (r *Classifier) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range classifierForceNewList {
+	for key, _ := range classifierForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

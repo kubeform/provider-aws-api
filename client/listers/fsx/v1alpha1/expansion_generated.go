@@ -18,6 +18,22 @@ limitations under the License.
 
 package v1alpha1
 
+// BackupListerExpansion allows custom methods to be added to
+// BackupLister.
+type BackupListerExpansion interface{}
+
+// BackupNamespaceListerExpansion allows custom methods to be added to
+// BackupNamespaceLister.
+type BackupNamespaceListerExpansion interface{}
+
+// DataRepositoryAssociationListerExpansion allows custom methods to be added to
+// DataRepositoryAssociationLister.
+type DataRepositoryAssociationListerExpansion interface{}
+
+// DataRepositoryAssociationNamespaceListerExpansion allows custom methods to be added to
+// DataRepositoryAssociationNamespaceLister.
+type DataRepositoryAssociationNamespaceListerExpansion interface{}
+
 // LustreFileSystemListerExpansion allows custom methods to be added to
 // LustreFileSystemLister.
 type LustreFileSystemListerExpansion interface{}
@@ -25,6 +41,54 @@ type LustreFileSystemListerExpansion interface{}
 // LustreFileSystemNamespaceListerExpansion allows custom methods to be added to
 // LustreFileSystemNamespaceLister.
 type LustreFileSystemNamespaceListerExpansion interface{}
+
+// OntapFileSystemListerExpansion allows custom methods to be added to
+// OntapFileSystemLister.
+type OntapFileSystemListerExpansion interface{}
+
+// OntapFileSystemNamespaceListerExpansion allows custom methods to be added to
+// OntapFileSystemNamespaceLister.
+type OntapFileSystemNamespaceListerExpansion interface{}
+
+// OntapStorageVirtualMachineListerExpansion allows custom methods to be added to
+// OntapStorageVirtualMachineLister.
+type OntapStorageVirtualMachineListerExpansion interface{}
+
+// OntapStorageVirtualMachineNamespaceListerExpansion allows custom methods to be added to
+// OntapStorageVirtualMachineNamespaceLister.
+type OntapStorageVirtualMachineNamespaceListerExpansion interface{}
+
+// OntapVolumeListerExpansion allows custom methods to be added to
+// OntapVolumeLister.
+type OntapVolumeListerExpansion interface{}
+
+// OntapVolumeNamespaceListerExpansion allows custom methods to be added to
+// OntapVolumeNamespaceLister.
+type OntapVolumeNamespaceListerExpansion interface{}
+
+// OpenzfsFileSystemListerExpansion allows custom methods to be added to
+// OpenzfsFileSystemLister.
+type OpenzfsFileSystemListerExpansion interface{}
+
+// OpenzfsFileSystemNamespaceListerExpansion allows custom methods to be added to
+// OpenzfsFileSystemNamespaceLister.
+type OpenzfsFileSystemNamespaceListerExpansion interface{}
+
+// OpenzfsSnapshotListerExpansion allows custom methods to be added to
+// OpenzfsSnapshotLister.
+type OpenzfsSnapshotListerExpansion interface{}
+
+// OpenzfsSnapshotNamespaceListerExpansion allows custom methods to be added to
+// OpenzfsSnapshotNamespaceLister.
+type OpenzfsSnapshotNamespaceListerExpansion interface{}
+
+// OpenzfsVolumeListerExpansion allows custom methods to be added to
+// OpenzfsVolumeLister.
+type OpenzfsVolumeListerExpansion interface{}
+
+// OpenzfsVolumeNamespaceListerExpansion allows custom methods to be added to
+// OpenzfsVolumeNamespaceLister.
+type OpenzfsVolumeNamespaceListerExpansion interface{}
 
 // WindowsFileSystemListerExpansion allows custom methods to be added to
 // WindowsFileSystemLister.

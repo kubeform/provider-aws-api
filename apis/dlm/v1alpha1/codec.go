@@ -27,17 +27,21 @@ import (
 
 func GetEncoder() map[string]jsoniter.ValEncoder {
 	return map[string]jsoniter.ValEncoder{
-		jsoniter.MustGetKind(reflect2.TypeOf(LifecyclePolicySpecPolicyDetails{}).Type1()):                   LifecyclePolicySpecPolicyDetailsCodec{},
-		jsoniter.MustGetKind(reflect2.TypeOf(LifecyclePolicySpecPolicyDetailsScheduleCreateRule{}).Type1()): LifecyclePolicySpecPolicyDetailsScheduleCreateRuleCodec{},
-		jsoniter.MustGetKind(reflect2.TypeOf(LifecyclePolicySpecPolicyDetailsScheduleRetainRule{}).Type1()): LifecyclePolicySpecPolicyDetailsScheduleRetainRuleCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(LifecyclePolicySpecPolicyDetails{}).Type1()):                                         LifecyclePolicySpecPolicyDetailsCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(LifecyclePolicySpecPolicyDetailsScheduleCreateRule{}).Type1()):                       LifecyclePolicySpecPolicyDetailsScheduleCreateRuleCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(LifecyclePolicySpecPolicyDetailsScheduleCrossRegionCopyRuleDeprecateRule{}).Type1()): LifecyclePolicySpecPolicyDetailsScheduleCrossRegionCopyRuleDeprecateRuleCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(LifecyclePolicySpecPolicyDetailsScheduleCrossRegionCopyRuleRetainRule{}).Type1()):    LifecyclePolicySpecPolicyDetailsScheduleCrossRegionCopyRuleRetainRuleCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(LifecyclePolicySpecPolicyDetailsScheduleRetainRule{}).Type1()):                       LifecyclePolicySpecPolicyDetailsScheduleRetainRuleCodec{},
 	}
 }
 
 func GetDecoder() map[string]jsoniter.ValDecoder {
 	return map[string]jsoniter.ValDecoder{
-		jsoniter.MustGetKind(reflect2.TypeOf(LifecyclePolicySpecPolicyDetails{}).Type1()):                   LifecyclePolicySpecPolicyDetailsCodec{},
-		jsoniter.MustGetKind(reflect2.TypeOf(LifecyclePolicySpecPolicyDetailsScheduleCreateRule{}).Type1()): LifecyclePolicySpecPolicyDetailsScheduleCreateRuleCodec{},
-		jsoniter.MustGetKind(reflect2.TypeOf(LifecyclePolicySpecPolicyDetailsScheduleRetainRule{}).Type1()): LifecyclePolicySpecPolicyDetailsScheduleRetainRuleCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(LifecyclePolicySpecPolicyDetails{}).Type1()):                                         LifecyclePolicySpecPolicyDetailsCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(LifecyclePolicySpecPolicyDetailsScheduleCreateRule{}).Type1()):                       LifecyclePolicySpecPolicyDetailsScheduleCreateRuleCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(LifecyclePolicySpecPolicyDetailsScheduleCrossRegionCopyRuleDeprecateRule{}).Type1()): LifecyclePolicySpecPolicyDetailsScheduleCrossRegionCopyRuleDeprecateRuleCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(LifecyclePolicySpecPolicyDetailsScheduleCrossRegionCopyRuleRetainRule{}).Type1()):    LifecyclePolicySpecPolicyDetailsScheduleCrossRegionCopyRuleRetainRuleCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(LifecyclePolicySpecPolicyDetailsScheduleRetainRule{}).Type1()):                       LifecyclePolicySpecPolicyDetailsScheduleRetainRuleCodec{},
 	}
 }
 
@@ -208,6 +212,164 @@ func (LifecyclePolicySpecPolicyDetailsScheduleCreateRuleCodec) Decode(ptr unsafe
 		}
 	default:
 		iter.ReportError("decode LifecyclePolicySpecPolicyDetailsScheduleCreateRule", "unexpected JSON type")
+	}
+}
+
+// +k8s:deepcopy-gen=false
+type LifecyclePolicySpecPolicyDetailsScheduleCrossRegionCopyRuleDeprecateRuleCodec struct {
+}
+
+func (LifecyclePolicySpecPolicyDetailsScheduleCrossRegionCopyRuleDeprecateRuleCodec) IsEmpty(ptr unsafe.Pointer) bool {
+	return (*LifecyclePolicySpecPolicyDetailsScheduleCrossRegionCopyRuleDeprecateRule)(ptr) == nil
+}
+
+func (LifecyclePolicySpecPolicyDetailsScheduleCrossRegionCopyRuleDeprecateRuleCodec) Encode(ptr unsafe.Pointer, stream *jsoniter.Stream) {
+	obj := (*LifecyclePolicySpecPolicyDetailsScheduleCrossRegionCopyRuleDeprecateRule)(ptr)
+	var objs []LifecyclePolicySpecPolicyDetailsScheduleCrossRegionCopyRuleDeprecateRule
+	if obj != nil {
+		objs = []LifecyclePolicySpecPolicyDetailsScheduleCrossRegionCopyRuleDeprecateRule{*obj}
+	}
+
+	jsonit := jsoniter.Config{
+		EscapeHTML:             true,
+		SortMapKeys:            true,
+		ValidateJsonRawMessage: true,
+		TagKey:                 "tf",
+		TypeEncoders:           getEncodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(LifecyclePolicySpecPolicyDetailsScheduleCrossRegionCopyRuleDeprecateRule{}).Type1())),
+	}.Froze()
+
+	byt, _ := jsonit.Marshal(objs)
+
+	stream.Write(byt)
+}
+
+func (LifecyclePolicySpecPolicyDetailsScheduleCrossRegionCopyRuleDeprecateRuleCodec) Decode(ptr unsafe.Pointer, iter *jsoniter.Iterator) {
+	switch iter.WhatIsNext() {
+	case jsoniter.NilValue:
+		iter.Skip()
+		*(*LifecyclePolicySpecPolicyDetailsScheduleCrossRegionCopyRuleDeprecateRule)(ptr) = LifecyclePolicySpecPolicyDetailsScheduleCrossRegionCopyRuleDeprecateRule{}
+		return
+	case jsoniter.ArrayValue:
+		objsByte := iter.SkipAndReturnBytes()
+		if len(objsByte) > 0 {
+			var objs []LifecyclePolicySpecPolicyDetailsScheduleCrossRegionCopyRuleDeprecateRule
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(LifecyclePolicySpecPolicyDetailsScheduleCrossRegionCopyRuleDeprecateRule{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objsByte, &objs)
+
+			if len(objs) > 0 {
+				*(*LifecyclePolicySpecPolicyDetailsScheduleCrossRegionCopyRuleDeprecateRule)(ptr) = objs[0]
+			} else {
+				*(*LifecyclePolicySpecPolicyDetailsScheduleCrossRegionCopyRuleDeprecateRule)(ptr) = LifecyclePolicySpecPolicyDetailsScheduleCrossRegionCopyRuleDeprecateRule{}
+			}
+		} else {
+			*(*LifecyclePolicySpecPolicyDetailsScheduleCrossRegionCopyRuleDeprecateRule)(ptr) = LifecyclePolicySpecPolicyDetailsScheduleCrossRegionCopyRuleDeprecateRule{}
+		}
+	case jsoniter.ObjectValue:
+		objByte := iter.SkipAndReturnBytes()
+		if len(objByte) > 0 {
+			var obj LifecyclePolicySpecPolicyDetailsScheduleCrossRegionCopyRuleDeprecateRule
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(LifecyclePolicySpecPolicyDetailsScheduleCrossRegionCopyRuleDeprecateRule{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objByte, &obj)
+
+			*(*LifecyclePolicySpecPolicyDetailsScheduleCrossRegionCopyRuleDeprecateRule)(ptr) = obj
+		} else {
+			*(*LifecyclePolicySpecPolicyDetailsScheduleCrossRegionCopyRuleDeprecateRule)(ptr) = LifecyclePolicySpecPolicyDetailsScheduleCrossRegionCopyRuleDeprecateRule{}
+		}
+	default:
+		iter.ReportError("decode LifecyclePolicySpecPolicyDetailsScheduleCrossRegionCopyRuleDeprecateRule", "unexpected JSON type")
+	}
+}
+
+// +k8s:deepcopy-gen=false
+type LifecyclePolicySpecPolicyDetailsScheduleCrossRegionCopyRuleRetainRuleCodec struct {
+}
+
+func (LifecyclePolicySpecPolicyDetailsScheduleCrossRegionCopyRuleRetainRuleCodec) IsEmpty(ptr unsafe.Pointer) bool {
+	return (*LifecyclePolicySpecPolicyDetailsScheduleCrossRegionCopyRuleRetainRule)(ptr) == nil
+}
+
+func (LifecyclePolicySpecPolicyDetailsScheduleCrossRegionCopyRuleRetainRuleCodec) Encode(ptr unsafe.Pointer, stream *jsoniter.Stream) {
+	obj := (*LifecyclePolicySpecPolicyDetailsScheduleCrossRegionCopyRuleRetainRule)(ptr)
+	var objs []LifecyclePolicySpecPolicyDetailsScheduleCrossRegionCopyRuleRetainRule
+	if obj != nil {
+		objs = []LifecyclePolicySpecPolicyDetailsScheduleCrossRegionCopyRuleRetainRule{*obj}
+	}
+
+	jsonit := jsoniter.Config{
+		EscapeHTML:             true,
+		SortMapKeys:            true,
+		ValidateJsonRawMessage: true,
+		TagKey:                 "tf",
+		TypeEncoders:           getEncodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(LifecyclePolicySpecPolicyDetailsScheduleCrossRegionCopyRuleRetainRule{}).Type1())),
+	}.Froze()
+
+	byt, _ := jsonit.Marshal(objs)
+
+	stream.Write(byt)
+}
+
+func (LifecyclePolicySpecPolicyDetailsScheduleCrossRegionCopyRuleRetainRuleCodec) Decode(ptr unsafe.Pointer, iter *jsoniter.Iterator) {
+	switch iter.WhatIsNext() {
+	case jsoniter.NilValue:
+		iter.Skip()
+		*(*LifecyclePolicySpecPolicyDetailsScheduleCrossRegionCopyRuleRetainRule)(ptr) = LifecyclePolicySpecPolicyDetailsScheduleCrossRegionCopyRuleRetainRule{}
+		return
+	case jsoniter.ArrayValue:
+		objsByte := iter.SkipAndReturnBytes()
+		if len(objsByte) > 0 {
+			var objs []LifecyclePolicySpecPolicyDetailsScheduleCrossRegionCopyRuleRetainRule
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(LifecyclePolicySpecPolicyDetailsScheduleCrossRegionCopyRuleRetainRule{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objsByte, &objs)
+
+			if len(objs) > 0 {
+				*(*LifecyclePolicySpecPolicyDetailsScheduleCrossRegionCopyRuleRetainRule)(ptr) = objs[0]
+			} else {
+				*(*LifecyclePolicySpecPolicyDetailsScheduleCrossRegionCopyRuleRetainRule)(ptr) = LifecyclePolicySpecPolicyDetailsScheduleCrossRegionCopyRuleRetainRule{}
+			}
+		} else {
+			*(*LifecyclePolicySpecPolicyDetailsScheduleCrossRegionCopyRuleRetainRule)(ptr) = LifecyclePolicySpecPolicyDetailsScheduleCrossRegionCopyRuleRetainRule{}
+		}
+	case jsoniter.ObjectValue:
+		objByte := iter.SkipAndReturnBytes()
+		if len(objByte) > 0 {
+			var obj LifecyclePolicySpecPolicyDetailsScheduleCrossRegionCopyRuleRetainRule
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(LifecyclePolicySpecPolicyDetailsScheduleCrossRegionCopyRuleRetainRule{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objByte, &obj)
+
+			*(*LifecyclePolicySpecPolicyDetailsScheduleCrossRegionCopyRuleRetainRule)(ptr) = obj
+		} else {
+			*(*LifecyclePolicySpecPolicyDetailsScheduleCrossRegionCopyRuleRetainRule)(ptr) = LifecyclePolicySpecPolicyDetailsScheduleCrossRegionCopyRuleRetainRule{}
+		}
+	default:
+		iter.ReportError("decode LifecyclePolicySpecPolicyDetailsScheduleCrossRegionCopyRuleRetainRule", "unexpected JSON type")
 	}
 }
 

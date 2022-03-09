@@ -87,6 +87,8 @@ spec:
                     type: integer
                   name:
                     type: string
+                  sitelinkEnabled:
+                    type: boolean
                   tags:
                     additionalProperties:
                       type: string
@@ -177,6 +179,8 @@ spec:
                     type: integer
                   name:
                     type: string
+                  sitelinkEnabled:
+                    type: boolean
                   tags:
                     additionalProperties:
                       type: string

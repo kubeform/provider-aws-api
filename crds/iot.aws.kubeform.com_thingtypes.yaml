@@ -75,6 +75,14 @@ spec:
                         maxItems: 3
                         type: array
                     type: object
+                  tags:
+                    additionalProperties:
+                      type: string
+                    type: object
+                  tagsAll:
+                    additionalProperties:
+                      type: string
+                    type: object
                 required:
                 - name
                 type: object
@@ -97,6 +105,14 @@ spec:
                           type: string
                         maxItems: 3
                         type: array
+                    type: object
+                  tags:
+                    additionalProperties:
+                      type: string
+                    type: object
+                  tagsAll:
+                    additionalProperties:
+                      type: string
                     type: object
                 required:
                 - name

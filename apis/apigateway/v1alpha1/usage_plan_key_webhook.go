@@ -90,7 +90,7 @@ func (r *UsagePlanKey) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range usageplankeyForceNewList {
+	for key, _ := range usageplankeyForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

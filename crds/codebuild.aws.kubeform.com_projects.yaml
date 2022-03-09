@@ -63,6 +63,8 @@ spec:
                     properties:
                       artifactIdentifier:
                         type: string
+                      bucketOwnerAccess:
+                        type: string
                       encryptionDisabled:
                         type: boolean
                       location:
@@ -202,6 +204,8 @@ spec:
                         type: object
                       s3Logs:
                         properties:
+                          bucketOwnerAccess:
+                            type: string
                           encryptionDisabled:
                             type: boolean
                           location:
@@ -212,13 +216,21 @@ spec:
                     type: object
                   name:
                     type: string
+                  projectVisibility:
+                    type: string
+                  publicProjectAlias:
+                    type: string
                   queuedTimeout:
                     format: int64
                     type: integer
+                  resourceAccessRole:
+                    type: string
                   secondaryArtifacts:
                     items:
                       properties:
                         artifactIdentifier:
+                          type: string
+                        bucketOwnerAccess:
                           type: string
                         encryptionDisabled:
                           type: boolean
@@ -239,6 +251,19 @@ spec:
                       required:
                       - artifactIdentifier
                       - type
+                      type: object
+                    maxItems: 12
+                    type: array
+                  secondarySourceVersion:
+                    items:
+                      properties:
+                        sourceIdentifier:
+                          type: string
+                        sourceVersion:
+                          type: string
+                      required:
+                      - sourceIdentifier
+                      - sourceVersion
                       type: object
                     maxItems: 12
                     type: array
@@ -385,6 +410,8 @@ spec:
                     properties:
                       artifactIdentifier:
                         type: string
+                      bucketOwnerAccess:
+                        type: string
                       encryptionDisabled:
                         type: boolean
                       location:
@@ -524,6 +551,8 @@ spec:
                         type: object
                       s3Logs:
                         properties:
+                          bucketOwnerAccess:
+                            type: string
                           encryptionDisabled:
                             type: boolean
                           location:
@@ -534,13 +563,21 @@ spec:
                     type: object
                   name:
                     type: string
+                  projectVisibility:
+                    type: string
+                  publicProjectAlias:
+                    type: string
                   queuedTimeout:
                     format: int64
                     type: integer
+                  resourceAccessRole:
+                    type: string
                   secondaryArtifacts:
                     items:
                       properties:
                         artifactIdentifier:
+                          type: string
+                        bucketOwnerAccess:
                           type: string
                         encryptionDisabled:
                           type: boolean
@@ -561,6 +598,19 @@ spec:
                       required:
                       - artifactIdentifier
                       - type
+                      type: object
+                    maxItems: 12
+                    type: array
+                  secondarySourceVersion:
+                    items:
+                      properties:
+                        sourceIdentifier:
+                          type: string
+                        sourceVersion:
+                          type: string
+                      required:
+                      - sourceIdentifier
+                      - sourceVersion
                       type: object
                     maxItems: 12
                     type: array

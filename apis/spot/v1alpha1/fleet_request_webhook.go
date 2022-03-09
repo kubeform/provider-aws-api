@@ -140,7 +140,7 @@ func (r *FleetRequest) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range fleetrequestForceNewList {
+	for key, _ := range fleetrequestForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

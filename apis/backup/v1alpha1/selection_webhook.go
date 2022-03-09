@@ -42,13 +42,22 @@ func (r *Selection) SetupWebhookWithManager(mgr ctrl.Manager) error {
 var _ webhook.Validator = &Selection{}
 
 var selectionForceNewList = map[string]bool{
-	"/iam_role_arn":          true,
-	"/name":                  true,
-	"/plan_id":               true,
-	"/resources":             true,
-	"/selection_tag/*/key":   true,
-	"/selection_tag/*/type":  true,
-	"/selection_tag/*/value": true,
+	"/condition/*/string_equals/*/key":       true,
+	"/condition/*/string_equals/*/value":     true,
+	"/condition/*/string_like/*/key":         true,
+	"/condition/*/string_like/*/value":       true,
+	"/condition/*/string_not_equals/*/key":   true,
+	"/condition/*/string_not_equals/*/value": true,
+	"/condition/*/string_not_like/*/key":     true,
+	"/condition/*/string_not_like/*/value":   true,
+	"/iam_role_arn":                          true,
+	"/name":                                  true,
+	"/not_resources":                         true,
+	"/plan_id":                               true,
+	"/resources":                             true,
+	"/selection_tag/*/key":                   true,
+	"/selection_tag/*/type":                  true,
+	"/selection_tag/*/value":                 true,
 }
 
 // ValidateCreate implements webhook.Validator so a webhook will be registered for the type
@@ -94,7 +103,7 @@ func (r *Selection) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range selectionForceNewList {
+	for key, _ := range selectionForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

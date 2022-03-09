@@ -89,7 +89,7 @@ func (r *Table) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range tableForceNewList {
+	for key, _ := range tableForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

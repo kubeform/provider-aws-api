@@ -45,6 +45,10 @@ func (c *FakeApprunnerV1alpha1) Services(namespace string) v1alpha1.ServiceInter
 	return &FakeServices{c, namespace}
 }
 
+func (c *FakeApprunnerV1alpha1) VpcConnectors(namespace string) v1alpha1.VpcConnectorInterface {
+	return &FakeVpcConnectors{c, namespace}
+}
+
 // RESTClient returns a RESTClient that is used to communicate
 // with API server by this client implementation.
 func (c *FakeApprunnerV1alpha1) RESTClient() rest.Interface {

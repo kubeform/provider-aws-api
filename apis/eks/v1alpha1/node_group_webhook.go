@@ -100,7 +100,7 @@ func (r *NodeGroup) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range nodegroupForceNewList {
+	for key, _ := range nodegroupForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

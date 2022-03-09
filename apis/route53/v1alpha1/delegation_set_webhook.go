@@ -88,7 +88,7 @@ func (r *DelegationSet) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range delegationsetForceNewList {
+	for key, _ := range delegationsetForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

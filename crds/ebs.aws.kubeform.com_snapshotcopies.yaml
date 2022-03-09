@@ -69,13 +69,19 @@ spec:
                     type: string
                   kmsKeyID:
                     type: string
+                  outpostArn:
+                    type: string
                   ownerAlias:
                     type: string
                   ownerID:
                     type: string
+                  permanentRestore:
+                    type: boolean
                   sourceRegion:
                     type: string
                   sourceSnapshotID:
+                    type: string
+                  storageTier:
                     type: string
                   tags:
                     additionalProperties:
@@ -85,6 +91,9 @@ spec:
                     additionalProperties:
                       type: string
                     type: object
+                  temporaryRestoreDays:
+                    format: int64
+                    type: integer
                   volumeID:
                     type: string
                   volumeSize:
@@ -108,13 +117,19 @@ spec:
                     type: string
                   kmsKeyID:
                     type: string
+                  outpostArn:
+                    type: string
                   ownerAlias:
                     type: string
                   ownerID:
                     type: string
+                  permanentRestore:
+                    type: boolean
                   sourceRegion:
                     type: string
                   sourceSnapshotID:
+                    type: string
+                  storageTier:
                     type: string
                   tags:
                     additionalProperties:
@@ -124,6 +139,9 @@ spec:
                     additionalProperties:
                       type: string
                     type: object
+                  temporaryRestoreDays:
+                    format: int64
+                    type: integer
                   volumeID:
                     type: string
                   volumeSize:

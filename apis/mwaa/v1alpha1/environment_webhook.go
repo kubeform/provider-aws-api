@@ -42,6 +42,7 @@ func (r *Environment) SetupWebhookWithManager(mgr ctrl.Manager) error {
 var _ webhook.Validator = &Environment{}
 
 var environmentForceNewList = map[string]bool{
+	"/kms_key":                            true,
 	"/name":                               true,
 	"/network_configuration/*/subnet_ids": true,
 }
@@ -89,7 +90,7 @@ func (r *Environment) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range environmentForceNewList {
+	for key, _ := range environmentForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

@@ -92,8 +92,12 @@ spec:
                   receiveWaitTimeSeconds:
                     format: int64
                     type: integer
+                  redriveAllowPolicy:
+                    type: string
                   redrivePolicy:
                     type: string
+                  sqsManagedSseEnabled:
+                    type: boolean
                   tags:
                     additionalProperties:
                       type: string
@@ -145,8 +149,12 @@ spec:
                   receiveWaitTimeSeconds:
                     format: int64
                     type: integer
+                  redriveAllowPolicy:
+                    type: string
                   redrivePolicy:
                     type: string
+                  sqsManagedSseEnabled:
+                    type: boolean
                   tags:
                     additionalProperties:
                       type: string

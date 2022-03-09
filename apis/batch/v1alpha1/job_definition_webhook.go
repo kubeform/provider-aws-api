@@ -99,7 +99,7 @@ func (r *JobDefinition) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range jobdefinitionForceNewList {
+	for key, _ := range jobdefinitionForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

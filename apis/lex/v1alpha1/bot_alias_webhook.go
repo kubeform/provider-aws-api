@@ -89,7 +89,7 @@ func (r *BotAlias) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range botaliasForceNewList {
+	for key, _ := range botaliasForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

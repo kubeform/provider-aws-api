@@ -97,7 +97,7 @@ func (r *HostedPrivateVirtualInterface) ValidateUpdate(old runtime.Object) error
 		return err
 	}
 
-	for key := range hostedprivatevirtualinterfaceForceNewList {
+	for key, _ := range hostedprivatevirtualinterfaceForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

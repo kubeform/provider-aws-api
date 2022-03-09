@@ -83,10 +83,22 @@ spec:
                     type: string
                   instanceTenancy:
                     type: string
+                  ipv4IpamPoolID:
+                    type: string
+                  ipv4NetmaskLength:
+                    format: int64
+                    type: integer
                   ipv6AssociationID:
                     type: string
                   ipv6CIDRBlock:
                     type: string
+                  ipv6CIDRBlockNetworkBorderGroup:
+                    type: string
+                  ipv6IpamPoolID:
+                    type: string
+                  ipv6NetmaskLength:
+                    format: int64
+                    type: integer
                   mainRouteTableID:
                     type: string
                   ownerID:
@@ -99,8 +111,6 @@ spec:
                     additionalProperties:
                       type: string
                     type: object
-                required:
-                - cidrBlock
                 type: object
               state:
                 properties:
@@ -130,10 +140,22 @@ spec:
                     type: string
                   instanceTenancy:
                     type: string
+                  ipv4IpamPoolID:
+                    type: string
+                  ipv4NetmaskLength:
+                    format: int64
+                    type: integer
                   ipv6AssociationID:
                     type: string
                   ipv6CIDRBlock:
                     type: string
+                  ipv6CIDRBlockNetworkBorderGroup:
+                    type: string
+                  ipv6IpamPoolID:
+                    type: string
+                  ipv6NetmaskLength:
+                    format: int64
+                    type: integer
                   mainRouteTableID:
                     type: string
                   ownerID:
@@ -146,8 +168,6 @@ spec:
                     additionalProperties:
                       type: string
                     type: object
-                required:
-                - cidrBlock
                 type: object
               terminationPolicy:
                 enum:

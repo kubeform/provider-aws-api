@@ -58,12 +58,15 @@ spec:
               resource:
                 properties:
                   albTargetGroupArn:
+                    description: Deprecated
                     type: string
                   autoscalingGroupName:
                     type: string
                   elb:
                     type: string
                   id:
+                    type: string
+                  lbTargetGroupArn:
                     type: string
                 required:
                 - autoscalingGroupName
@@ -71,12 +74,15 @@ spec:
               state:
                 properties:
                   albTargetGroupArn:
+                    description: Deprecated
                     type: string
                   autoscalingGroupName:
                     type: string
                   elb:
                     type: string
                   id:
+                    type: string
+                  lbTargetGroupArn:
                     type: string
                 required:
                 - autoscalingGroupName

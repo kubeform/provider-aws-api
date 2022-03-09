@@ -89,7 +89,7 @@ func (r *ConvertQueue) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range convertqueueForceNewList {
+	for key, _ := range convertqueueForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

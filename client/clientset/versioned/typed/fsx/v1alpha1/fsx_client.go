@@ -27,7 +27,15 @@ import (
 
 type FsxV1alpha1Interface interface {
 	RESTClient() rest.Interface
+	BackupsGetter
+	DataRepositoryAssociationsGetter
 	LustreFileSystemsGetter
+	OntapFileSystemsGetter
+	OntapStorageVirtualMachinesGetter
+	OntapVolumesGetter
+	OpenzfsFileSystemsGetter
+	OpenzfsSnapshotsGetter
+	OpenzfsVolumesGetter
 	WindowsFileSystemsGetter
 }
 
@@ -36,8 +44,40 @@ type FsxV1alpha1Client struct {
 	restClient rest.Interface
 }
 
+func (c *FsxV1alpha1Client) Backups(namespace string) BackupInterface {
+	return newBackups(c, namespace)
+}
+
+func (c *FsxV1alpha1Client) DataRepositoryAssociations(namespace string) DataRepositoryAssociationInterface {
+	return newDataRepositoryAssociations(c, namespace)
+}
+
 func (c *FsxV1alpha1Client) LustreFileSystems(namespace string) LustreFileSystemInterface {
 	return newLustreFileSystems(c, namespace)
+}
+
+func (c *FsxV1alpha1Client) OntapFileSystems(namespace string) OntapFileSystemInterface {
+	return newOntapFileSystems(c, namespace)
+}
+
+func (c *FsxV1alpha1Client) OntapStorageVirtualMachines(namespace string) OntapStorageVirtualMachineInterface {
+	return newOntapStorageVirtualMachines(c, namespace)
+}
+
+func (c *FsxV1alpha1Client) OntapVolumes(namespace string) OntapVolumeInterface {
+	return newOntapVolumes(c, namespace)
+}
+
+func (c *FsxV1alpha1Client) OpenzfsFileSystems(namespace string) OpenzfsFileSystemInterface {
+	return newOpenzfsFileSystems(c, namespace)
+}
+
+func (c *FsxV1alpha1Client) OpenzfsSnapshots(namespace string) OpenzfsSnapshotInterface {
+	return newOpenzfsSnapshots(c, namespace)
+}
+
+func (c *FsxV1alpha1Client) OpenzfsVolumes(namespace string) OpenzfsVolumeInterface {
+	return newOpenzfsVolumes(c, namespace)
 }
 
 func (c *FsxV1alpha1Client) WindowsFileSystems(namespace string) WindowsFileSystemInterface {

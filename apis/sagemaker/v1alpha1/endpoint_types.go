@@ -41,6 +41,50 @@ type Endpoint struct {
 	Status            EndpointStatus `json:"status,omitempty"`
 }
 
+type EndpointSpecDeploymentConfigAutoRollbackConfigurationAlarms struct {
+	AlarmName *string `json:"alarmName" tf:"alarm_name"`
+}
+
+type EndpointSpecDeploymentConfigAutoRollbackConfiguration struct {
+	// +optional
+	// +kubebuilder:validation:MaxItems=10
+	// +kubebuilder:validation:MinItems=1
+	Alarms []EndpointSpecDeploymentConfigAutoRollbackConfigurationAlarms `json:"alarms,omitempty" tf:"alarms"`
+}
+
+type EndpointSpecDeploymentConfigBlueGreenUpdatePolicyTrafficRoutingConfigurationCanarySize struct {
+	Type  *string `json:"type" tf:"type"`
+	Value *int64  `json:"value" tf:"value"`
+}
+
+type EndpointSpecDeploymentConfigBlueGreenUpdatePolicyTrafficRoutingConfigurationLinearStepSize struct {
+	Type  *string `json:"type" tf:"type"`
+	Value *int64  `json:"value" tf:"value"`
+}
+
+type EndpointSpecDeploymentConfigBlueGreenUpdatePolicyTrafficRoutingConfiguration struct {
+	// +optional
+	CanarySize *EndpointSpecDeploymentConfigBlueGreenUpdatePolicyTrafficRoutingConfigurationCanarySize `json:"canarySize,omitempty" tf:"canary_size"`
+	// +optional
+	LinearStepSize        *EndpointSpecDeploymentConfigBlueGreenUpdatePolicyTrafficRoutingConfigurationLinearStepSize `json:"linearStepSize,omitempty" tf:"linear_step_size"`
+	Type                  *string                                                                                     `json:"type" tf:"type"`
+	WaitIntervalInSeconds *int64                                                                                      `json:"waitIntervalInSeconds" tf:"wait_interval_in_seconds"`
+}
+
+type EndpointSpecDeploymentConfigBlueGreenUpdatePolicy struct {
+	// +optional
+	MaximumExecutionTimeoutInSeconds *int64 `json:"maximumExecutionTimeoutInSeconds,omitempty" tf:"maximum_execution_timeout_in_seconds"`
+	// +optional
+	TerminationWaitInSeconds    *int64                                                                        `json:"terminationWaitInSeconds,omitempty" tf:"termination_wait_in_seconds"`
+	TrafficRoutingConfiguration *EndpointSpecDeploymentConfigBlueGreenUpdatePolicyTrafficRoutingConfiguration `json:"trafficRoutingConfiguration" tf:"traffic_routing_configuration"`
+}
+
+type EndpointSpecDeploymentConfig struct {
+	// +optional
+	AutoRollbackConfiguration *EndpointSpecDeploymentConfigAutoRollbackConfiguration `json:"autoRollbackConfiguration,omitempty" tf:"auto_rollback_configuration"`
+	BlueGreenUpdatePolicy     *EndpointSpecDeploymentConfigBlueGreenUpdatePolicy     `json:"blueGreenUpdatePolicy" tf:"blue_green_update_policy"`
+}
+
 type EndpointSpec struct {
 	State *EndpointSpecResource `json:"state,omitempty" tf:"-"`
 
@@ -59,8 +103,10 @@ type EndpointSpecResource struct {
 	ID string `json:"id,omitempty" tf:"id,omitempty"`
 
 	// +optional
-	Arn                *string `json:"arn,omitempty" tf:"arn"`
-	EndpointConfigName *string `json:"endpointConfigName" tf:"endpoint_config_name"`
+	Arn *string `json:"arn,omitempty" tf:"arn"`
+	// +optional
+	DeploymentConfig   *EndpointSpecDeploymentConfig `json:"deploymentConfig,omitempty" tf:"deployment_config"`
+	EndpointConfigName *string                       `json:"endpointConfigName" tf:"endpoint_config_name"`
 	// +optional
 	Name *string `json:"name,omitempty" tf:"name"`
 	// +optional

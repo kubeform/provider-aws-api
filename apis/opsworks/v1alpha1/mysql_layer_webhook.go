@@ -88,7 +88,7 @@ func (r *MysqlLayer) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range mysqllayerForceNewList {
+	for key, _ := range mysqllayerForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

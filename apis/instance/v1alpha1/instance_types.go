@@ -95,6 +95,15 @@ type InstanceSpecEphemeralBlockDevice struct {
 	VirtualName *string `json:"virtualName,omitempty" tf:"virtual_name"`
 }
 
+type InstanceSpecLaunchTemplate struct {
+	// +optional
+	ID *string `json:"ID,omitempty" tf:"id"`
+	// +optional
+	Name *string `json:"name,omitempty" tf:"name"`
+	// +optional
+	Version *string `json:"version,omitempty" tf:"version"`
+}
+
 type InstanceSpecMetadataOptions struct {
 	// +optional
 	HttpEndpoint *string `json:"httpEndpoint,omitempty" tf:"http_endpoint"`
@@ -102,6 +111,8 @@ type InstanceSpecMetadataOptions struct {
 	HttpPutResponseHopLimit *int64 `json:"httpPutResponseHopLimit,omitempty" tf:"http_put_response_hop_limit"`
 	// +optional
 	HttpTokens *string `json:"httpTokens,omitempty" tf:"http_tokens"`
+	// +optional
+	InstanceMetadataTags *string `json:"instanceMetadataTags,omitempty" tf:"instance_metadata_tags"`
 }
 
 type InstanceSpecNetworkInterface struct {
@@ -153,7 +164,8 @@ type InstanceSpecResource struct {
 
 	ID string `json:"id,omitempty" tf:"id,omitempty"`
 
-	Ami *string `json:"ami" tf:"ami"`
+	// +optional
+	Ami *string `json:"ami,omitempty" tf:"ami"`
 	// +optional
 	Arn *string `json:"arn,omitempty" tf:"arn"`
 	// +optional
@@ -190,13 +202,16 @@ type InstanceSpecResource struct {
 	InstanceInitiatedShutdownBehavior *string `json:"instanceInitiatedShutdownBehavior,omitempty" tf:"instance_initiated_shutdown_behavior"`
 	// +optional
 	InstanceState *string `json:"instanceState,omitempty" tf:"instance_state"`
-	InstanceType  *string `json:"instanceType" tf:"instance_type"`
+	// +optional
+	InstanceType *string `json:"instanceType,omitempty" tf:"instance_type"`
 	// +optional
 	Ipv6AddressCount *int64 `json:"ipv6AddressCount,omitempty" tf:"ipv6_address_count"`
 	// +optional
 	Ipv6Addresses []string `json:"ipv6Addresses,omitempty" tf:"ipv6_addresses"`
 	// +optional
 	KeyName *string `json:"keyName,omitempty" tf:"key_name"`
+	// +optional
+	LaunchTemplate *InstanceSpecLaunchTemplate `json:"launchTemplate,omitempty" tf:"launch_template"`
 	// +optional
 	MetadataOptions *InstanceSpecMetadataOptions `json:"metadataOptions,omitempty" tf:"metadata_options"`
 	// +optional
@@ -209,6 +224,8 @@ type InstanceSpecResource struct {
 	PasswordData *string `json:"passwordData,omitempty" tf:"password_data"`
 	// +optional
 	PlacementGroup *string `json:"placementGroup,omitempty" tf:"placement_group"`
+	// +optional
+	PlacementPartitionNumber *int64 `json:"placementPartitionNumber,omitempty" tf:"placement_partition_number"`
 	// +optional
 	PrimaryNetworkInterfaceID *string `json:"primaryNetworkInterfaceID,omitempty" tf:"primary_network_interface_id"`
 	// +optional

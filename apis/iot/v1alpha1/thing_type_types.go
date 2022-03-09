@@ -73,6 +73,10 @@ type ThingTypeSpecResource struct {
 	Name       *string `json:"name" tf:"name"`
 	// +optional
 	Properties *ThingTypeSpecProperties `json:"properties,omitempty" tf:"properties"`
+	// +optional
+	Tags *map[string]string `json:"tags,omitempty" tf:"tags"`
+	// +optional
+	TagsAll *map[string]string `json:"tagsAll,omitempty" tf:"tags_all"`
 }
 
 type ThingTypeStatus struct {

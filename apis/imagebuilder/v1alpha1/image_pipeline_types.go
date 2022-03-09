@@ -52,6 +52,8 @@ type ImagePipelineSpecSchedule struct {
 	// +optional
 	PipelineExecutionStartCondition *string `json:"pipelineExecutionStartCondition,omitempty" tf:"pipeline_execution_start_condition"`
 	ScheduleExpression              *string `json:"scheduleExpression" tf:"schedule_expression"`
+	// +optional
+	Timezone *string `json:"timezone,omitempty" tf:"timezone"`
 }
 
 type ImagePipelineSpec struct {
@@ -74,6 +76,8 @@ type ImagePipelineSpecResource struct {
 	// +optional
 	Arn *string `json:"arn,omitempty" tf:"arn"`
 	// +optional
+	ContainerRecipeArn *string `json:"containerRecipeArn,omitempty" tf:"container_recipe_arn"`
+	// +optional
 	DateCreated *string `json:"dateCreated,omitempty" tf:"date_created"`
 	// +optional
 	DateLastRun *string `json:"dateLastRun,omitempty" tf:"date_last_run"`
@@ -86,8 +90,9 @@ type ImagePipelineSpecResource struct {
 	// +optional
 	DistributionConfigurationArn *string `json:"distributionConfigurationArn,omitempty" tf:"distribution_configuration_arn"`
 	// +optional
-	EnhancedImageMetadataEnabled *bool   `json:"enhancedImageMetadataEnabled,omitempty" tf:"enhanced_image_metadata_enabled"`
-	ImageRecipeArn               *string `json:"imageRecipeArn" tf:"image_recipe_arn"`
+	EnhancedImageMetadataEnabled *bool `json:"enhancedImageMetadataEnabled,omitempty" tf:"enhanced_image_metadata_enabled"`
+	// +optional
+	ImageRecipeArn *string `json:"imageRecipeArn,omitempty" tf:"image_recipe_arn"`
 	// +optional
 	ImageTestsConfiguration        *ImagePipelineSpecImageTestsConfiguration `json:"imageTestsConfiguration,omitempty" tf:"image_tests_configuration"`
 	InfrastructureConfigurationArn *string                                   `json:"infrastructureConfigurationArn" tf:"infrastructure_configuration_arn"`

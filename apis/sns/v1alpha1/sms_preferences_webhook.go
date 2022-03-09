@@ -86,7 +86,7 @@ func (r *SmsPreferences) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range smspreferencesForceNewList {
+	for key, _ := range smspreferencesForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

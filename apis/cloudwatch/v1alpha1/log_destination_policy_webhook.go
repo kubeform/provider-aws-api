@@ -88,7 +88,7 @@ func (r *LogDestinationPolicy) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range logdestinationpolicyForceNewList {
+	for key, _ := range logdestinationpolicyForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

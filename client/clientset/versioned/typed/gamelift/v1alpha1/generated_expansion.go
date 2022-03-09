@@ -25,3 +25,5 @@ type BuildExpansion interface{}
 type FleetExpansion interface{}
 
 type GameSessionQueueExpansion interface{}
+
+type ScriptExpansion interface{}

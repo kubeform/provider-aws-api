@@ -34,6 +34,14 @@ type LocationEfsListerExpansion interface{}
 // LocationEfsNamespaceLister.
 type LocationEfsNamespaceListerExpansion interface{}
 
+// LocationFsxLustreFileSystemListerExpansion allows custom methods to be added to
+// LocationFsxLustreFileSystemLister.
+type LocationFsxLustreFileSystemListerExpansion interface{}
+
+// LocationFsxLustreFileSystemNamespaceListerExpansion allows custom methods to be added to
+// LocationFsxLustreFileSystemNamespaceLister.
+type LocationFsxLustreFileSystemNamespaceListerExpansion interface{}
+
 // LocationFsxWindowsFileSystemListerExpansion allows custom methods to be added to
 // LocationFsxWindowsFileSystemLister.
 type LocationFsxWindowsFileSystemListerExpansion interface{}
@@ -41,6 +49,14 @@ type LocationFsxWindowsFileSystemListerExpansion interface{}
 // LocationFsxWindowsFileSystemNamespaceListerExpansion allows custom methods to be added to
 // LocationFsxWindowsFileSystemNamespaceLister.
 type LocationFsxWindowsFileSystemNamespaceListerExpansion interface{}
+
+// LocationHdfsListerExpansion allows custom methods to be added to
+// LocationHdfsLister.
+type LocationHdfsListerExpansion interface{}
+
+// LocationHdfsNamespaceListerExpansion allows custom methods to be added to
+// LocationHdfsNamespaceLister.
+type LocationHdfsNamespaceListerExpansion interface{}
 
 // LocationNfsListerExpansion allows custom methods to be added to
 // LocationNfsLister.

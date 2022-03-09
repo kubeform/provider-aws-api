@@ -58,6 +58,8 @@ func addKnownTypes(scheme *runtime.Scheme) error {
 	scheme.AddKnownTypes(SchemeGroupVersion,
 		&Gateway{},
 		&GatewayList{},
+		&GatewayAttachment{},
+		&GatewayAttachmentList{},
 	)
 
 	scheme.AddKnownTypes(SchemeGroupVersion,

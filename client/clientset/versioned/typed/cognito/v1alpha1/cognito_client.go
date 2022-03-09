@@ -28,9 +28,11 @@ import (
 type CognitoV1alpha1Interface interface {
 	RESTClient() rest.Interface
 	IdentityPoolsGetter
+	IdentityPoolProviderPrincipalTagsGetter
 	IdentityPoolRolesAttachmentsGetter
 	IdentityProvidersGetter
 	ResourceServersGetter
+	UsersGetter
 	UserGroupsGetter
 	UserPoolsGetter
 	UserPoolClientsGetter
@@ -47,6 +49,10 @@ func (c *CognitoV1alpha1Client) IdentityPools(namespace string) IdentityPoolInte
 	return newIdentityPools(c, namespace)
 }
 
+func (c *CognitoV1alpha1Client) IdentityPoolProviderPrincipalTags(namespace string) IdentityPoolProviderPrincipalTagInterface {
+	return newIdentityPoolProviderPrincipalTags(c, namespace)
+}
+
 func (c *CognitoV1alpha1Client) IdentityPoolRolesAttachments(namespace string) IdentityPoolRolesAttachmentInterface {
 	return newIdentityPoolRolesAttachments(c, namespace)
 }
@@ -57,6 +63,10 @@ func (c *CognitoV1alpha1Client) IdentityProviders(namespace string) IdentityProv
 
 func (c *CognitoV1alpha1Client) ResourceServers(namespace string) ResourceServerInterface {
 	return newResourceServers(c, namespace)
+}
+
+func (c *CognitoV1alpha1Client) Users(namespace string) UserInterface {
+	return newUsers(c, namespace)
 }
 
 func (c *CognitoV1alpha1Client) UserGroups(namespace string) UserGroupInterface {

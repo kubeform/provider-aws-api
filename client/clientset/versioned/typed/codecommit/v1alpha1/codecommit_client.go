@@ -27,6 +27,8 @@ import (
 
 type CodecommitV1alpha1Interface interface {
 	RESTClient() rest.Interface
+	ApprovalRuleTemplatesGetter
+	ApprovalRuleTemplateAssociationsGetter
 	RepositoriesGetter
 	TriggersGetter
 }
@@ -34,6 +36,14 @@ type CodecommitV1alpha1Interface interface {
 // CodecommitV1alpha1Client is used to interact with features provided by the codecommit.aws.kubeform.com group.
 type CodecommitV1alpha1Client struct {
 	restClient rest.Interface
+}
+
+func (c *CodecommitV1alpha1Client) ApprovalRuleTemplates(namespace string) ApprovalRuleTemplateInterface {
+	return newApprovalRuleTemplates(c, namespace)
+}
+
+func (c *CodecommitV1alpha1Client) ApprovalRuleTemplateAssociations(namespace string) ApprovalRuleTemplateAssociationInterface {
+	return newApprovalRuleTemplateAssociations(c, namespace)
 }
 
 func (c *CodecommitV1alpha1Client) Repositories(namespace string) RepositoryInterface {

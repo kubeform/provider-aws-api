@@ -89,7 +89,7 @@ func (r *PublicDNSNamespace) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range publicdnsnamespaceForceNewList {
+	for key, _ := range publicdnsnamespaceForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

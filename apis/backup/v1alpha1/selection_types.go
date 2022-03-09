@@ -41,6 +41,37 @@ type Selection struct {
 	Status            SelectionStatus `json:"status,omitempty"`
 }
 
+type SelectionSpecConditionStringEquals struct {
+	Key   *string `json:"key" tf:"key"`
+	Value *string `json:"value" tf:"value"`
+}
+
+type SelectionSpecConditionStringLike struct {
+	Key   *string `json:"key" tf:"key"`
+	Value *string `json:"value" tf:"value"`
+}
+
+type SelectionSpecConditionStringNotEquals struct {
+	Key   *string `json:"key" tf:"key"`
+	Value *string `json:"value" tf:"value"`
+}
+
+type SelectionSpecConditionStringNotLike struct {
+	Key   *string `json:"key" tf:"key"`
+	Value *string `json:"value" tf:"value"`
+}
+
+type SelectionSpecCondition struct {
+	// +optional
+	StringEquals []SelectionSpecConditionStringEquals `json:"stringEquals,omitempty" tf:"string_equals"`
+	// +optional
+	StringLike []SelectionSpecConditionStringLike `json:"stringLike,omitempty" tf:"string_like"`
+	// +optional
+	StringNotEquals []SelectionSpecConditionStringNotEquals `json:"stringNotEquals,omitempty" tf:"string_not_equals"`
+	// +optional
+	StringNotLike []SelectionSpecConditionStringNotLike `json:"stringNotLike,omitempty" tf:"string_not_like"`
+}
+
 type SelectionSpecSelectionTag struct {
 	Key   *string `json:"key" tf:"key"`
 	Type  *string `json:"type" tf:"type"`
@@ -64,9 +95,13 @@ type SelectionSpec struct {
 type SelectionSpecResource struct {
 	ID string `json:"id,omitempty" tf:"id,omitempty"`
 
-	IamRoleArn *string `json:"iamRoleArn" tf:"iam_role_arn"`
-	Name       *string `json:"name" tf:"name"`
-	PlanID     *string `json:"planID" tf:"plan_id"`
+	// +optional
+	Condition  []SelectionSpecCondition `json:"condition,omitempty" tf:"condition"`
+	IamRoleArn *string                  `json:"iamRoleArn" tf:"iam_role_arn"`
+	Name       *string                  `json:"name" tf:"name"`
+	// +optional
+	NotResources []string `json:"notResources,omitempty" tf:"not_resources"`
+	PlanID       *string  `json:"planID" tf:"plan_id"`
 	// +optional
 	Resources []string `json:"resources,omitempty" tf:"resources"`
 	// +optional

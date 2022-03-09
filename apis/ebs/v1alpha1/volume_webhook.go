@@ -93,7 +93,7 @@ func (r *Volume) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range volumeForceNewList {
+	for key, _ := range volumeForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

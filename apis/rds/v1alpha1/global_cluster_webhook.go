@@ -92,7 +92,7 @@ func (r *GlobalCluster) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range globalclusterForceNewList {
+	for key, _ := range globalclusterForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

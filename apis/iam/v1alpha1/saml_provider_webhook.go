@@ -88,7 +88,7 @@ func (r *SamlProvider) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range samlproviderForceNewList {
+	for key, _ := range samlproviderForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

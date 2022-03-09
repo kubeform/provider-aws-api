@@ -92,7 +92,7 @@ func (r *SnapshotCopy) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range snapshotcopyForceNewList {
+	for key, _ := range snapshotcopyForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

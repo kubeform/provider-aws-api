@@ -88,7 +88,7 @@ func (r *LifecycleHook) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range lifecyclehookForceNewList {
+	for key, _ := range lifecyclehookForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

@@ -72,6 +72,7 @@ spec:
                   id:
                     type: string
                   instanceID:
+                    description: Deprecated
                     type: string
                   instanceOwnerID:
                     type: string
@@ -151,6 +152,7 @@ spec:
                   id:
                     type: string
                   instanceID:
+                    description: Deprecated
                     type: string
                   instanceOwnerID:
                     type: string

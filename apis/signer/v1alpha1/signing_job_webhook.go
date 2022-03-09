@@ -94,7 +94,7 @@ func (r *SigningJob) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range signingjobForceNewList {
+	for key, _ := range signingjobForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

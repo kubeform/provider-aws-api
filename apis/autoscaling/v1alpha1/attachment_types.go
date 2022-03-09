@@ -59,10 +59,13 @@ type AttachmentSpecResource struct {
 	ID string `json:"id,omitempty" tf:"id,omitempty"`
 
 	// +optional
+	// Deprecated
 	AlbTargetGroupArn    *string `json:"albTargetGroupArn,omitempty" tf:"alb_target_group_arn"`
 	AutoscalingGroupName *string `json:"autoscalingGroupName" tf:"autoscaling_group_name"`
 	// +optional
 	Elb *string `json:"elb,omitempty" tf:"elb"`
+	// +optional
+	LbTargetGroupArn *string `json:"lbTargetGroupArn,omitempty" tf:"lb_target_group_arn"`
 }
 
 type AttachmentStatus struct {

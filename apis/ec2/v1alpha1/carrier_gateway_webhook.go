@@ -88,7 +88,7 @@ func (r *CarrierGateway) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range carriergatewayForceNewList {
+	for key, _ := range carriergatewayForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

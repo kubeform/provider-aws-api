@@ -90,7 +90,7 @@ func (r *Environment) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range environmentForceNewList {
+	for key, _ := range environmentForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

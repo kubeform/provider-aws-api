@@ -41,6 +41,18 @@ type Canary struct {
 	Status            CanaryStatus `json:"status,omitempty"`
 }
 
+type CanarySpecArtifactConfigS3Encryption struct {
+	// +optional
+	EncryptionMode *string `json:"encryptionMode,omitempty" tf:"encryption_mode"`
+	// +optional
+	KmsKeyArn *string `json:"kmsKeyArn,omitempty" tf:"kms_key_arn"`
+}
+
+type CanarySpecArtifactConfig struct {
+	// +optional
+	S3Encryption *CanarySpecArtifactConfigS3Encryption `json:"s3Encryption,omitempty" tf:"s3_encryption"`
+}
+
 type CanarySpecRunConfig struct {
 	// +optional
 	ActiveTracing *bool `json:"activeTracing,omitempty" tf:"active_tracing"`
@@ -94,8 +106,10 @@ type CanarySpecResource struct {
 	ID string `json:"id,omitempty" tf:"id,omitempty"`
 
 	// +optional
-	Arn                *string `json:"arn,omitempty" tf:"arn"`
-	ArtifactS3Location *string `json:"artifactS3Location" tf:"artifact_s3_location"`
+	Arn *string `json:"arn,omitempty" tf:"arn"`
+	// +optional
+	ArtifactConfig     *CanarySpecArtifactConfig `json:"artifactConfig,omitempty" tf:"artifact_config"`
+	ArtifactS3Location *string                   `json:"artifactS3Location" tf:"artifact_s3_location"`
 	// +optional
 	EngineArn        *string `json:"engineArn,omitempty" tf:"engine_arn"`
 	ExecutionRoleArn *string `json:"executionRoleArn" tf:"execution_role_arn"`

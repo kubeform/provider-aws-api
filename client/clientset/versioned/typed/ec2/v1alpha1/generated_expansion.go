@@ -34,11 +34,21 @@ type ClientVPNRouteExpansion interface{}
 
 type FleetExpansion interface{}
 
+type HostExpansion interface{}
+
 type LocalGatewayRouteExpansion interface{}
 
 type LocalGatewayRouteTableVpcAssociationExpansion interface{}
 
 type ManagedPrefixListExpansion interface{}
+
+type ManagedPrefixListEntryExpansion interface{}
+
+type NetworkInsightsPathExpansion interface{}
+
+type SerialConsoleAccessExpansion interface{}
+
+type SubnetCIDRReservationExpansion interface{}
 
 type TagExpansion interface{}
 
@@ -51,6 +61,18 @@ type TrafficMirrorSessionExpansion interface{}
 type TrafficMirrorTargetExpansion interface{}
 
 type TransitGatewayExpansion interface{}
+
+type TransitGatewayConnectExpansion interface{}
+
+type TransitGatewayConnectPeerExpansion interface{}
+
+type TransitGatewayMulticastDomainExpansion interface{}
+
+type TransitGatewayMulticastDomainAssociationExpansion interface{}
+
+type TransitGatewayMulticastGroupMemberExpansion interface{}
+
+type TransitGatewayMulticastGroupSourceExpansion interface{}
 
 type TransitGatewayPeeringAttachmentExpansion interface{}
 

@@ -24,6 +24,10 @@ import (
 
 // Interface provides access to all the informers in this group version.
 type Interface interface {
+	// ApprovalRuleTemplates returns a ApprovalRuleTemplateInformer.
+	ApprovalRuleTemplates() ApprovalRuleTemplateInformer
+	// ApprovalRuleTemplateAssociations returns a ApprovalRuleTemplateAssociationInformer.
+	ApprovalRuleTemplateAssociations() ApprovalRuleTemplateAssociationInformer
 	// Repositories returns a RepositoryInformer.
 	Repositories() RepositoryInformer
 	// Triggers returns a TriggerInformer.
@@ -39,6 +43,16 @@ type version struct {
 // New returns a new Interface.
 func New(f internalinterfaces.SharedInformerFactory, namespace string, tweakListOptions internalinterfaces.TweakListOptionsFunc) Interface {
 	return &version{factory: f, namespace: namespace, tweakListOptions: tweakListOptions}
+}
+
+// ApprovalRuleTemplates returns a ApprovalRuleTemplateInformer.
+func (v *version) ApprovalRuleTemplates() ApprovalRuleTemplateInformer {
+	return &approvalRuleTemplateInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
+// ApprovalRuleTemplateAssociations returns a ApprovalRuleTemplateAssociationInformer.
+func (v *version) ApprovalRuleTemplateAssociations() ApprovalRuleTemplateAssociationInformer {
+	return &approvalRuleTemplateAssociationInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
 }
 
 // Repositories returns a RepositoryInformer.

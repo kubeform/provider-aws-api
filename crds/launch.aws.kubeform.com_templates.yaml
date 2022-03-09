@@ -207,10 +207,14 @@ spec:
                     properties:
                       httpEndpoint:
                         type: string
+                      httpProtocolIpv6:
+                        type: string
                       httpPutResponseHopLimit:
                         format: int64
                         type: integer
                       httpTokens:
+                        type: string
+                      instanceMetadataTags:
                         type: string
                     type: object
                   monitoring:
@@ -252,6 +256,9 @@ spec:
                           items:
                             type: string
                           type: array
+                        networkCardIndex:
+                          format: int64
+                          type: integer
                         networkInterfaceID:
                           type: string
                         privateIPAddress:
@@ -470,10 +477,14 @@ spec:
                     properties:
                       httpEndpoint:
                         type: string
+                      httpProtocolIpv6:
+                        type: string
                       httpPutResponseHopLimit:
                         format: int64
                         type: integer
                       httpTokens:
+                        type: string
+                      instanceMetadataTags:
                         type: string
                     type: object
                   monitoring:
@@ -515,6 +526,9 @@ spec:
                           items:
                             type: string
                           type: array
+                        networkCardIndex:
+                          format: int64
+                          type: integer
                         networkInterfaceID:
                           type: string
                         privateIPAddress:

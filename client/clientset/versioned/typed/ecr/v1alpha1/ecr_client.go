@@ -28,7 +28,9 @@ import (
 type EcrV1alpha1Interface interface {
 	RESTClient() rest.Interface
 	LifecyclePoliciesGetter
+	PullThroughCacheRulesGetter
 	RegistryPoliciesGetter
+	RegistryScanningConfigurationsGetter
 	ReplicationConfigurationsGetter
 	RepositoriesGetter
 	RepositoryPoliciesGetter
@@ -43,8 +45,16 @@ func (c *EcrV1alpha1Client) LifecyclePolicies(namespace string) LifecyclePolicyI
 	return newLifecyclePolicies(c, namespace)
 }
 
+func (c *EcrV1alpha1Client) PullThroughCacheRules(namespace string) PullThroughCacheRuleInterface {
+	return newPullThroughCacheRules(c, namespace)
+}
+
 func (c *EcrV1alpha1Client) RegistryPolicies(namespace string) RegistryPolicyInterface {
 	return newRegistryPolicies(c, namespace)
+}
+
+func (c *EcrV1alpha1Client) RegistryScanningConfigurations(namespace string) RegistryScanningConfigurationInterface {
+	return newRegistryScanningConfigurations(c, namespace)
 }
 
 func (c *EcrV1alpha1Client) ReplicationConfigurations(namespace string) ReplicationConfigurationInterface {

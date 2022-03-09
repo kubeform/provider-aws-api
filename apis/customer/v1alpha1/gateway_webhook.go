@@ -42,10 +42,11 @@ func (r *Gateway) SetupWebhookWithManager(mgr ctrl.Manager) error {
 var _ webhook.Validator = &Gateway{}
 
 var gatewayForceNewList = map[string]bool{
-	"/bgp_asn":     true,
-	"/device_name": true,
-	"/ip_address":  true,
-	"/type":        true,
+	"/bgp_asn":         true,
+	"/certificate_arn": true,
+	"/device_name":     true,
+	"/ip_address":      true,
+	"/type":            true,
 }
 
 // ValidateCreate implements webhook.Validator so a webhook will be registered for the type
@@ -91,7 +92,7 @@ func (r *Gateway) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range gatewayForceNewList {
+	for key, _ := range gatewayForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

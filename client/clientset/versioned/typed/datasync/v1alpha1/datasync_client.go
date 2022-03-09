@@ -29,7 +29,9 @@ type DatasyncV1alpha1Interface interface {
 	RESTClient() rest.Interface
 	AgentsGetter
 	LocationEfsesGetter
+	LocationFsxLustreFileSystemsGetter
 	LocationFsxWindowsFileSystemsGetter
+	LocationHdfsesGetter
 	LocationNfsesGetter
 	LocationS3sGetter
 	LocationSmbsGetter
@@ -49,8 +51,16 @@ func (c *DatasyncV1alpha1Client) LocationEfses(namespace string) LocationEfsInte
 	return newLocationEfses(c, namespace)
 }
 
+func (c *DatasyncV1alpha1Client) LocationFsxLustreFileSystems(namespace string) LocationFsxLustreFileSystemInterface {
+	return newLocationFsxLustreFileSystems(c, namespace)
+}
+
 func (c *DatasyncV1alpha1Client) LocationFsxWindowsFileSystems(namespace string) LocationFsxWindowsFileSystemInterface {
 	return newLocationFsxWindowsFileSystems(c, namespace)
+}
+
+func (c *DatasyncV1alpha1Client) LocationHdfses(namespace string) LocationHdfsInterface {
+	return newLocationHdfses(c, namespace)
 }
 
 func (c *DatasyncV1alpha1Client) LocationNfses(namespace string) LocationNfsInterface {

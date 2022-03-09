@@ -88,7 +88,7 @@ func (r *VaultPolicy) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range vaultpolicyForceNewList {
+	for key, _ := range vaultpolicyForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

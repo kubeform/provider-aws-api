@@ -44,12 +44,15 @@ type IamV1alpha1Interface interface {
 	SamlProvidersGetter
 	ServerCertificatesGetter
 	ServiceLinkedRolesGetter
+	ServiceSpecificCredentialsGetter
+	SigningCertificatesGetter
 	UsersGetter
 	UserGroupMembershipsGetter
 	UserLoginProfilesGetter
 	UserPoliciesGetter
 	UserPolicyAttachmentsGetter
 	UserSSHKeysGetter
+	VirtualMfaDevicesGetter
 }
 
 // IamV1alpha1Client is used to interact with features provided by the iam.aws.kubeform.com group.
@@ -125,6 +128,14 @@ func (c *IamV1alpha1Client) ServiceLinkedRoles(namespace string) ServiceLinkedRo
 	return newServiceLinkedRoles(c, namespace)
 }
 
+func (c *IamV1alpha1Client) ServiceSpecificCredentials(namespace string) ServiceSpecificCredentialInterface {
+	return newServiceSpecificCredentials(c, namespace)
+}
+
+func (c *IamV1alpha1Client) SigningCertificates(namespace string) SigningCertificateInterface {
+	return newSigningCertificates(c, namespace)
+}
+
 func (c *IamV1alpha1Client) Users(namespace string) UserInterface {
 	return newUsers(c, namespace)
 }
@@ -147,6 +158,10 @@ func (c *IamV1alpha1Client) UserPolicyAttachments(namespace string) UserPolicyAt
 
 func (c *IamV1alpha1Client) UserSSHKeys(namespace string) UserSSHKeyInterface {
 	return newUserSSHKeys(c, namespace)
+}
+
+func (c *IamV1alpha1Client) VirtualMfaDevices(namespace string) VirtualMfaDeviceInterface {
+	return newVirtualMfaDevices(c, namespace)
 }
 
 // NewForConfig creates a new IamV1alpha1Client for the given config.

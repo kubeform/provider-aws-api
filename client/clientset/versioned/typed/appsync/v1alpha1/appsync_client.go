@@ -27,8 +27,11 @@ import (
 
 type AppsyncV1alpha1Interface interface {
 	RESTClient() rest.Interface
+	ApiCachesGetter
 	ApiKeysGetter
 	DatasourcesGetter
+	DomainNamesGetter
+	DomainNameAPIAssociationsGetter
 	FunctionsGetter
 	GraphqlAPIsGetter
 	ResolversGetter
@@ -39,12 +42,24 @@ type AppsyncV1alpha1Client struct {
 	restClient rest.Interface
 }
 
+func (c *AppsyncV1alpha1Client) ApiCaches(namespace string) ApiCacheInterface {
+	return newApiCaches(c, namespace)
+}
+
 func (c *AppsyncV1alpha1Client) ApiKeys(namespace string) ApiKeyInterface {
 	return newApiKeys(c, namespace)
 }
 
 func (c *AppsyncV1alpha1Client) Datasources(namespace string) DatasourceInterface {
 	return newDatasources(c, namespace)
+}
+
+func (c *AppsyncV1alpha1Client) DomainNames(namespace string) DomainNameInterface {
+	return newDomainNames(c, namespace)
+}
+
+func (c *AppsyncV1alpha1Client) DomainNameAPIAssociations(namespace string) DomainNameAPIAssociationInterface {
+	return newDomainNameAPIAssociations(c, namespace)
 }
 
 func (c *AppsyncV1alpha1Client) Functions(namespace string) FunctionInterface {

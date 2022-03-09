@@ -64,6 +64,8 @@ func addKnownTypes(scheme *runtime.Scheme) error {
 		&ClusterInstanceList{},
 		&ClusterParameterGroup{},
 		&ClusterParameterGroupList{},
+		&ClusterRoleAssociation{},
+		&ClusterRoleAssociationList{},
 		&GlobalCluster{},
 		&GlobalClusterList{},
 	)

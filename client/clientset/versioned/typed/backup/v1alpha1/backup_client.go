@@ -27,11 +27,14 @@ import (
 
 type BackupV1alpha1Interface interface {
 	RESTClient() rest.Interface
+	FrameworksGetter
 	GlobalSettingsesGetter
 	PlansGetter
 	RegionSettingsesGetter
+	ReportPlansGetter
 	SelectionsGetter
 	VaultsGetter
+	VaultLockConfigurationsGetter
 	VaultNotificationsesGetter
 	VaultPoliciesGetter
 }
@@ -39,6 +42,10 @@ type BackupV1alpha1Interface interface {
 // BackupV1alpha1Client is used to interact with features provided by the backup.aws.kubeform.com group.
 type BackupV1alpha1Client struct {
 	restClient rest.Interface
+}
+
+func (c *BackupV1alpha1Client) Frameworks(namespace string) FrameworkInterface {
+	return newFrameworks(c, namespace)
 }
 
 func (c *BackupV1alpha1Client) GlobalSettingses(namespace string) GlobalSettingsInterface {
@@ -53,12 +60,20 @@ func (c *BackupV1alpha1Client) RegionSettingses(namespace string) RegionSettings
 	return newRegionSettingses(c, namespace)
 }
 
+func (c *BackupV1alpha1Client) ReportPlans(namespace string) ReportPlanInterface {
+	return newReportPlans(c, namespace)
+}
+
 func (c *BackupV1alpha1Client) Selections(namespace string) SelectionInterface {
 	return newSelections(c, namespace)
 }
 
 func (c *BackupV1alpha1Client) Vaults(namespace string) VaultInterface {
 	return newVaults(c, namespace)
+}
+
+func (c *BackupV1alpha1Client) VaultLockConfigurations(namespace string) VaultLockConfigurationInterface {
+	return newVaultLockConfigurations(c, namespace)
 }
 
 func (c *BackupV1alpha1Client) VaultNotificationses(namespace string) VaultNotificationsInterface {

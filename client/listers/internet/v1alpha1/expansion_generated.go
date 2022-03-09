@@ -25,3 +25,11 @@ type GatewayListerExpansion interface{}
 // GatewayNamespaceListerExpansion allows custom methods to be added to
 // GatewayNamespaceLister.
 type GatewayNamespaceListerExpansion interface{}
+
+// GatewayAttachmentListerExpansion allows custom methods to be added to
+// GatewayAttachmentLister.
+type GatewayAttachmentListerExpansion interface{}
+
+// GatewayAttachmentNamespaceListerExpansion allows custom methods to be added to
+// GatewayAttachmentNamespaceLister.
+type GatewayAttachmentNamespaceListerExpansion interface{}

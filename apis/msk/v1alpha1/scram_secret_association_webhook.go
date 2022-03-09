@@ -88,7 +88,7 @@ func (r *ScramSecretAssociation) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range scramsecretassociationForceNewList {
+	for key, _ := range scramsecretassociationForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

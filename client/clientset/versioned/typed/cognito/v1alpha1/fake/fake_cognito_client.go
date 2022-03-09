@@ -33,6 +33,10 @@ func (c *FakeCognitoV1alpha1) IdentityPools(namespace string) v1alpha1.IdentityP
 	return &FakeIdentityPools{c, namespace}
 }
 
+func (c *FakeCognitoV1alpha1) IdentityPoolProviderPrincipalTags(namespace string) v1alpha1.IdentityPoolProviderPrincipalTagInterface {
+	return &FakeIdentityPoolProviderPrincipalTags{c, namespace}
+}
+
 func (c *FakeCognitoV1alpha1) IdentityPoolRolesAttachments(namespace string) v1alpha1.IdentityPoolRolesAttachmentInterface {
 	return &FakeIdentityPoolRolesAttachments{c, namespace}
 }
@@ -43,6 +47,10 @@ func (c *FakeCognitoV1alpha1) IdentityProviders(namespace string) v1alpha1.Ident
 
 func (c *FakeCognitoV1alpha1) ResourceServers(namespace string) v1alpha1.ResourceServerInterface {
 	return &FakeResourceServers{c, namespace}
+}
+
+func (c *FakeCognitoV1alpha1) Users(namespace string) v1alpha1.UserInterface {
+	return &FakeUsers{c, namespace}
 }
 
 func (c *FakeCognitoV1alpha1) UserGroups(namespace string) v1alpha1.UserGroupInterface {

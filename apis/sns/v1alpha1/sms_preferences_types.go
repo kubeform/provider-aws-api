@@ -67,7 +67,7 @@ type SmsPreferencesSpecResource struct {
 	// +optional
 	DeliveryStatusSuccessSamplingRate *string `json:"deliveryStatusSuccessSamplingRate,omitempty" tf:"delivery_status_success_sampling_rate"`
 	// +optional
-	MonthlySpendLimit *string `json:"monthlySpendLimit,omitempty" tf:"monthly_spend_limit"`
+	MonthlySpendLimit *int64 `json:"monthlySpendLimit,omitempty" tf:"monthly_spend_limit"`
 	// +optional
 	UsageReportS3Bucket *string `json:"usageReportS3Bucket,omitempty" tf:"usage_report_s3_bucket"`
 }

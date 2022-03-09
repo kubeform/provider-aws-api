@@ -91,6 +91,13 @@ spec:
                     type: string
                   id:
                     type: string
+                  inferenceExecutionConfig:
+                    properties:
+                      mode:
+                        type: string
+                    required:
+                    - mode
+                    type: object
                   name:
                     type: string
                   primaryContainer:
@@ -130,10 +137,12 @@ spec:
                       securityGroupIDS:
                         items:
                           type: string
+                        maxItems: 5
                         type: array
                       subnets:
                         items:
                           type: string
+                        maxItems: 16
                         type: array
                     required:
                     - securityGroupIDS
@@ -178,6 +187,13 @@ spec:
                     type: string
                   id:
                     type: string
+                  inferenceExecutionConfig:
+                    properties:
+                      mode:
+                        type: string
+                    required:
+                    - mode
+                    type: object
                   name:
                     type: string
                   primaryContainer:
@@ -217,10 +233,12 @@ spec:
                       securityGroupIDS:
                         items:
                           type: string
+                        maxItems: 5
                         type: array
                       subnets:
                         items:
                           type: string
+                        maxItems: 16
                         type: array
                     required:
                     - securityGroupIDS

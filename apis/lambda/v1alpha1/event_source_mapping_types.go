@@ -50,6 +50,17 @@ type EventSourceMappingSpecDestinationConfig struct {
 	OnFailure *EventSourceMappingSpecDestinationConfigOnFailure `json:"onFailure,omitempty" tf:"on_failure"`
 }
 
+type EventSourceMappingSpecFilterCriteriaFilter struct {
+	// +optional
+	Pattern *string `json:"pattern,omitempty" tf:"pattern"`
+}
+
+type EventSourceMappingSpecFilterCriteria struct {
+	// +optional
+	// +kubebuilder:validation:MaxItems=5
+	Filter []EventSourceMappingSpecFilterCriteriaFilter `json:"filter,omitempty" tf:"filter"`
+}
+
 type EventSourceMappingSpecSelfManagedEventSource struct {
 	Endpoints *map[string]string `json:"endpoints" tf:"endpoints"`
 }
@@ -86,6 +97,8 @@ type EventSourceMappingSpecResource struct {
 	Enabled *bool `json:"enabled,omitempty" tf:"enabled"`
 	// +optional
 	EventSourceArn *string `json:"eventSourceArn,omitempty" tf:"event_source_arn"`
+	// +optional
+	FilterCriteria *EventSourceMappingSpecFilterCriteria `json:"filterCriteria,omitempty" tf:"filter_criteria"`
 	// +optional
 	FunctionArn  *string `json:"functionArn,omitempty" tf:"function_arn"`
 	FunctionName *string `json:"functionName" tf:"function_name"`

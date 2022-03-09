@@ -88,7 +88,7 @@ func (r *OrganizationManagedRule) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range organizationmanagedruleForceNewList {
+	for key, _ := range organizationmanagedruleForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

@@ -59,6 +59,10 @@ type ModelSpecContainer struct {
 	ModelDataURL *string `json:"modelDataURL,omitempty" tf:"model_data_url"`
 }
 
+type ModelSpecInferenceExecutionConfig struct {
+	Mode *string `json:"mode" tf:"mode"`
+}
+
 type ModelSpecPrimaryContainerImageConfig struct {
 	RepositoryAccessMode *string `json:"repositoryAccessMode" tf:"repository_access_mode"`
 }
@@ -78,8 +82,10 @@ type ModelSpecPrimaryContainer struct {
 }
 
 type ModelSpecVpcConfig struct {
+	// +kubebuilder:validation:MaxItems=5
 	SecurityGroupIDS []string `json:"securityGroupIDS" tf:"security_group_ids"`
-	Subnets          []string `json:"subnets" tf:"subnets"`
+	// +kubebuilder:validation:MaxItems=16
+	Subnets []string `json:"subnets" tf:"subnets"`
 }
 
 type ModelSpec struct {
@@ -106,6 +112,8 @@ type ModelSpecResource struct {
 	// +optional
 	EnableNetworkIsolation *bool   `json:"enableNetworkIsolation,omitempty" tf:"enable_network_isolation"`
 	ExecutionRoleArn       *string `json:"executionRoleArn" tf:"execution_role_arn"`
+	// +optional
+	InferenceExecutionConfig *ModelSpecInferenceExecutionConfig `json:"inferenceExecutionConfig,omitempty" tf:"inference_execution_config"`
 	// +optional
 	Name *string `json:"name,omitempty" tf:"name"`
 	// +optional

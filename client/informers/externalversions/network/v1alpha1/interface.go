@@ -37,6 +37,8 @@ import (
 type Interface interface {
 	// Acls returns a AclInformer.
 	Acls() AclInformer
+	// AclAssociations returns a AclAssociationInformer.
+	AclAssociations() AclAssociationInformer
 	// AclRules returns a AclRuleInformer.
 	AclRules() AclRuleInformer
 	// Interfaces returns a InterfaceInformer.
@@ -61,6 +63,11 @@ func New(f internalinterfaces.SharedInformerFactory, namespace string, tweakList
 // Acls returns a AclInformer.
 func (v *version) Acls() AclInformer {
 	return &aclInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
+// AclAssociations returns a AclAssociationInformer.
+func (v *version) AclAssociations() AclAssociationInformer {
+	return &aclAssociationInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
 }
 
 // AclRules returns a AclRuleInformer.

@@ -54,6 +54,7 @@ var imagerecipeForceNewList = map[string]bool{
 	"/block_device_mapping/*/virtual_name":                true,
 	"/name":                                               true,
 	"/parent_image":                                       true,
+	"/user_data_base64":                                   true,
 	"/version":                                            true,
 	"/working_directory":                                  true,
 }
@@ -101,7 +102,7 @@ func (r *ImageRecipe) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range imagerecipeForceNewList {
+	for key, _ := range imagerecipeForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

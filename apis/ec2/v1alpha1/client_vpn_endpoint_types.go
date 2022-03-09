@@ -48,7 +48,23 @@ type ClientVPNEndpointSpecAuthenticationOptions struct {
 	RootCertificateChainArn *string `json:"rootCertificateChainArn,omitempty" tf:"root_certificate_chain_arn"`
 	// +optional
 	SamlProviderArn *string `json:"samlProviderArn,omitempty" tf:"saml_provider_arn"`
-	Type            *string `json:"type" tf:"type"`
+	// +optional
+	SelfServiceSamlProviderArn *string `json:"selfServiceSamlProviderArn,omitempty" tf:"self_service_saml_provider_arn"`
+	Type                       *string `json:"type" tf:"type"`
+}
+
+type ClientVPNEndpointSpecClientConnectOptions struct {
+	// +optional
+	Enabled *bool `json:"enabled,omitempty" tf:"enabled"`
+	// +optional
+	LambdaFunctionArn *string `json:"lambdaFunctionArn,omitempty" tf:"lambda_function_arn"`
+}
+
+type ClientVPNEndpointSpecClientLoginBannerOptions struct {
+	// +optional
+	BannerText *string `json:"bannerText,omitempty" tf:"banner_text"`
+	// +optional
+	Enabled *bool `json:"enabled,omitempty" tf:"enabled"`
 }
 
 type ClientVPNEndpointSpecConnectionLogOptions struct {
@@ -81,17 +97,30 @@ type ClientVPNEndpointSpecResource struct {
 	// +kubebuilder:validation:MaxItems=2
 	AuthenticationOptions []ClientVPNEndpointSpecAuthenticationOptions `json:"authenticationOptions" tf:"authentication_options"`
 	ClientCIDRBlock       *string                                      `json:"clientCIDRBlock" tf:"client_cidr_block"`
-	ConnectionLogOptions  *ClientVPNEndpointSpecConnectionLogOptions   `json:"connectionLogOptions" tf:"connection_log_options"`
+	// +optional
+	ClientConnectOptions *ClientVPNEndpointSpecClientConnectOptions `json:"clientConnectOptions,omitempty" tf:"client_connect_options"`
+	// +optional
+	ClientLoginBannerOptions *ClientVPNEndpointSpecClientLoginBannerOptions `json:"clientLoginBannerOptions,omitempty" tf:"client_login_banner_options"`
+	ConnectionLogOptions     *ClientVPNEndpointSpecConnectionLogOptions     `json:"connectionLogOptions" tf:"connection_log_options"`
 	// +optional
 	Description *string `json:"description,omitempty" tf:"description"`
 	// +optional
 	DnsName *string `json:"dnsName,omitempty" tf:"dns_name"`
 	// +optional
-	DnsServers           []string `json:"dnsServers,omitempty" tf:"dns_servers"`
-	ServerCertificateArn *string  `json:"serverCertificateArn" tf:"server_certificate_arn"`
+	DnsServers []string `json:"dnsServers,omitempty" tf:"dns_servers"`
+	// +optional
+	// +kubebuilder:validation:MaxItems=5
+	// +kubebuilder:validation:MinItems=1
+	SecurityGroupIDS []string `json:"securityGroupIDS,omitempty" tf:"security_group_ids"`
+	// +optional
+	SelfServicePortal    *string `json:"selfServicePortal,omitempty" tf:"self_service_portal"`
+	ServerCertificateArn *string `json:"serverCertificateArn" tf:"server_certificate_arn"`
+	// +optional
+	SessionTimeoutHours *int64 `json:"sessionTimeoutHours,omitempty" tf:"session_timeout_hours"`
 	// +optional
 	SplitTunnel *bool `json:"splitTunnel,omitempty" tf:"split_tunnel"`
 	// +optional
+	// Deprecated
 	Status *string `json:"status,omitempty" tf:"status"`
 	// +optional
 	Tags *map[string]string `json:"tags,omitempty" tf:"tags"`
@@ -99,6 +128,10 @@ type ClientVPNEndpointSpecResource struct {
 	TagsAll *map[string]string `json:"tagsAll,omitempty" tf:"tags_all"`
 	// +optional
 	TransportProtocol *string `json:"transportProtocol,omitempty" tf:"transport_protocol"`
+	// +optional
+	VpcID *string `json:"vpcID,omitempty" tf:"vpc_id"`
+	// +optional
+	VpnPort *int64 `json:"vpnPort,omitempty" tf:"vpn_port"`
 }
 
 type ClientVPNEndpointStatus struct {

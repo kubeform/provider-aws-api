@@ -89,7 +89,7 @@ func (r *Attachment) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range attachmentForceNewList {
+	for key, _ := range attachmentForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

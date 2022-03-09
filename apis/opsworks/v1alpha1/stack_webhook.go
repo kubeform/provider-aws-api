@@ -90,7 +90,7 @@ func (r *Stack) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range stackForceNewList {
+	for key, _ := range stackForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

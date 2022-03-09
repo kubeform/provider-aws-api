@@ -34,6 +34,14 @@ type GroupListerExpansion interface{}
 // GroupNamespaceLister.
 type GroupNamespaceListerExpansion interface{}
 
+// GroupTagListerExpansion allows custom methods to be added to
+// GroupTagLister.
+type GroupTagListerExpansion interface{}
+
+// GroupTagNamespaceListerExpansion allows custom methods to be added to
+// GroupTagNamespaceLister.
+type GroupTagNamespaceListerExpansion interface{}
+
 // LifecycleHookListerExpansion allows custom methods to be added to
 // LifecycleHookLister.
 type LifecycleHookListerExpansion interface{}

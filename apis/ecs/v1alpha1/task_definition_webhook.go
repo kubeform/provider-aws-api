@@ -42,29 +42,31 @@ func (r *TaskDefinition) SetupWebhookWithManager(mgr ctrl.Manager) error {
 var _ webhook.Validator = &TaskDefinition{}
 
 var taskdefinitionForceNewList = map[string]bool{
-	"/container_definitions":                true,
-	"/cpu":                                  true,
-	"/ephemeral_storage/*/size_in_gib":      true,
-	"/execution_role_arn":                   true,
-	"/family":                               true,
-	"/inference_accelerator/*/device_name":  true,
-	"/inference_accelerator/*/device_type":  true,
-	"/ipc_mode":                             true,
-	"/memory":                               true,
-	"/network_mode":                         true,
-	"/pid_mode":                             true,
-	"/placement_constraints/*/expression":   true,
-	"/placement_constraints/*/type":         true,
-	"/proxy_configuration/*/container_name": true,
-	"/proxy_configuration/*/properties":     true,
-	"/proxy_configuration/*/type":           true,
-	"/requires_compatibilities":             true,
-	"/task_role_arn":                        true,
-	"/volume/*/docker_volume_configuration/*/autoprovision":                                                 true,
-	"/volume/*/docker_volume_configuration/*/driver":                                                        true,
-	"/volume/*/docker_volume_configuration/*/driver_opts":                                                   true,
-	"/volume/*/docker_volume_configuration/*/labels":                                                        true,
-	"/volume/*/docker_volume_configuration/*/scope":                                                         true,
+	"/container_definitions":                                true,
+	"/cpu":                                                  true,
+	"/ephemeral_storage/*/size_in_gib":                      true,
+	"/execution_role_arn":                                   true,
+	"/family":                                               true,
+	"/inference_accelerator/*/device_name":                  true,
+	"/inference_accelerator/*/device_type":                  true,
+	"/ipc_mode":                                             true,
+	"/memory":                                               true,
+	"/network_mode":                                         true,
+	"/pid_mode":                                             true,
+	"/placement_constraints/*/expression":                   true,
+	"/placement_constraints/*/type":                         true,
+	"/proxy_configuration/*/container_name":                 true,
+	"/proxy_configuration/*/properties":                     true,
+	"/proxy_configuration/*/type":                           true,
+	"/requires_compatibilities":                             true,
+	"/runtime_platform/*/cpu_architecture":                  true,
+	"/runtime_platform/*/operating_system_family":           true,
+	"/task_role_arn":                                        true,
+	"/volume/*/docker_volume_configuration/*/autoprovision": true,
+	"/volume/*/docker_volume_configuration/*/driver":        true,
+	"/volume/*/docker_volume_configuration/*/driver_opts":   true,
+	"/volume/*/docker_volume_configuration/*/labels":        true,
+	"/volume/*/docker_volume_configuration/*/scope":         true,
 	"/volume/*/efs_volume_configuration/*/authorization_config/*/access_point_id":                           true,
 	"/volume/*/efs_volume_configuration/*/authorization_config/*/iam":                                       true,
 	"/volume/*/efs_volume_configuration/*/file_system_id":                                                   true,
@@ -122,7 +124,7 @@ func (r *TaskDefinition) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range taskdefinitionForceNewList {
+	for key, _ := range taskdefinitionForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

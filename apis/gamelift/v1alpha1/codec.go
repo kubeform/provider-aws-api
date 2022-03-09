@@ -29,8 +29,10 @@ func GetEncoder() map[string]jsoniter.ValEncoder {
 	return map[string]jsoniter.ValEncoder{
 		jsoniter.MustGetKind(reflect2.TypeOf(AliasSpecRoutingStrategy{}).Type1()):             AliasSpecRoutingStrategyCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(BuildSpecStorageLocation{}).Type1()):             BuildSpecStorageLocationCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(FleetSpecCertificateConfiguration{}).Type1()):    FleetSpecCertificateConfigurationCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(FleetSpecResourceCreationLimitPolicy{}).Type1()): FleetSpecResourceCreationLimitPolicyCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(FleetSpecRuntimeConfiguration{}).Type1()):        FleetSpecRuntimeConfigurationCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(ScriptSpecStorageLocation{}).Type1()):            ScriptSpecStorageLocationCodec{},
 	}
 }
 
@@ -38,8 +40,10 @@ func GetDecoder() map[string]jsoniter.ValDecoder {
 	return map[string]jsoniter.ValDecoder{
 		jsoniter.MustGetKind(reflect2.TypeOf(AliasSpecRoutingStrategy{}).Type1()):             AliasSpecRoutingStrategyCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(BuildSpecStorageLocation{}).Type1()):             BuildSpecStorageLocationCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(FleetSpecCertificateConfiguration{}).Type1()):    FleetSpecCertificateConfigurationCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(FleetSpecResourceCreationLimitPolicy{}).Type1()): FleetSpecResourceCreationLimitPolicyCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(FleetSpecRuntimeConfiguration{}).Type1()):        FleetSpecRuntimeConfigurationCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(ScriptSpecStorageLocation{}).Type1()):            ScriptSpecStorageLocationCodec{},
 	}
 }
 
@@ -214,6 +218,85 @@ func (BuildSpecStorageLocationCodec) Decode(ptr unsafe.Pointer, iter *jsoniter.I
 }
 
 // +k8s:deepcopy-gen=false
+type FleetSpecCertificateConfigurationCodec struct {
+}
+
+func (FleetSpecCertificateConfigurationCodec) IsEmpty(ptr unsafe.Pointer) bool {
+	return (*FleetSpecCertificateConfiguration)(ptr) == nil
+}
+
+func (FleetSpecCertificateConfigurationCodec) Encode(ptr unsafe.Pointer, stream *jsoniter.Stream) {
+	obj := (*FleetSpecCertificateConfiguration)(ptr)
+	var objs []FleetSpecCertificateConfiguration
+	if obj != nil {
+		objs = []FleetSpecCertificateConfiguration{*obj}
+	}
+
+	jsonit := jsoniter.Config{
+		EscapeHTML:             true,
+		SortMapKeys:            true,
+		ValidateJsonRawMessage: true,
+		TagKey:                 "tf",
+		TypeEncoders:           getEncodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(FleetSpecCertificateConfiguration{}).Type1())),
+	}.Froze()
+
+	byt, _ := jsonit.Marshal(objs)
+
+	stream.Write(byt)
+}
+
+func (FleetSpecCertificateConfigurationCodec) Decode(ptr unsafe.Pointer, iter *jsoniter.Iterator) {
+	switch iter.WhatIsNext() {
+	case jsoniter.NilValue:
+		iter.Skip()
+		*(*FleetSpecCertificateConfiguration)(ptr) = FleetSpecCertificateConfiguration{}
+		return
+	case jsoniter.ArrayValue:
+		objsByte := iter.SkipAndReturnBytes()
+		if len(objsByte) > 0 {
+			var objs []FleetSpecCertificateConfiguration
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(FleetSpecCertificateConfiguration{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objsByte, &objs)
+
+			if len(objs) > 0 {
+				*(*FleetSpecCertificateConfiguration)(ptr) = objs[0]
+			} else {
+				*(*FleetSpecCertificateConfiguration)(ptr) = FleetSpecCertificateConfiguration{}
+			}
+		} else {
+			*(*FleetSpecCertificateConfiguration)(ptr) = FleetSpecCertificateConfiguration{}
+		}
+	case jsoniter.ObjectValue:
+		objByte := iter.SkipAndReturnBytes()
+		if len(objByte) > 0 {
+			var obj FleetSpecCertificateConfiguration
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(FleetSpecCertificateConfiguration{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objByte, &obj)
+
+			*(*FleetSpecCertificateConfiguration)(ptr) = obj
+		} else {
+			*(*FleetSpecCertificateConfiguration)(ptr) = FleetSpecCertificateConfiguration{}
+		}
+	default:
+		iter.ReportError("decode FleetSpecCertificateConfiguration", "unexpected JSON type")
+	}
+}
+
+// +k8s:deepcopy-gen=false
 type FleetSpecResourceCreationLimitPolicyCodec struct {
 }
 
@@ -368,5 +451,84 @@ func (FleetSpecRuntimeConfigurationCodec) Decode(ptr unsafe.Pointer, iter *jsoni
 		}
 	default:
 		iter.ReportError("decode FleetSpecRuntimeConfiguration", "unexpected JSON type")
+	}
+}
+
+// +k8s:deepcopy-gen=false
+type ScriptSpecStorageLocationCodec struct {
+}
+
+func (ScriptSpecStorageLocationCodec) IsEmpty(ptr unsafe.Pointer) bool {
+	return (*ScriptSpecStorageLocation)(ptr) == nil
+}
+
+func (ScriptSpecStorageLocationCodec) Encode(ptr unsafe.Pointer, stream *jsoniter.Stream) {
+	obj := (*ScriptSpecStorageLocation)(ptr)
+	var objs []ScriptSpecStorageLocation
+	if obj != nil {
+		objs = []ScriptSpecStorageLocation{*obj}
+	}
+
+	jsonit := jsoniter.Config{
+		EscapeHTML:             true,
+		SortMapKeys:            true,
+		ValidateJsonRawMessage: true,
+		TagKey:                 "tf",
+		TypeEncoders:           getEncodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(ScriptSpecStorageLocation{}).Type1())),
+	}.Froze()
+
+	byt, _ := jsonit.Marshal(objs)
+
+	stream.Write(byt)
+}
+
+func (ScriptSpecStorageLocationCodec) Decode(ptr unsafe.Pointer, iter *jsoniter.Iterator) {
+	switch iter.WhatIsNext() {
+	case jsoniter.NilValue:
+		iter.Skip()
+		*(*ScriptSpecStorageLocation)(ptr) = ScriptSpecStorageLocation{}
+		return
+	case jsoniter.ArrayValue:
+		objsByte := iter.SkipAndReturnBytes()
+		if len(objsByte) > 0 {
+			var objs []ScriptSpecStorageLocation
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(ScriptSpecStorageLocation{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objsByte, &objs)
+
+			if len(objs) > 0 {
+				*(*ScriptSpecStorageLocation)(ptr) = objs[0]
+			} else {
+				*(*ScriptSpecStorageLocation)(ptr) = ScriptSpecStorageLocation{}
+			}
+		} else {
+			*(*ScriptSpecStorageLocation)(ptr) = ScriptSpecStorageLocation{}
+		}
+	case jsoniter.ObjectValue:
+		objByte := iter.SkipAndReturnBytes()
+		if len(objByte) > 0 {
+			var obj ScriptSpecStorageLocation
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(ScriptSpecStorageLocation{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objByte, &obj)
+
+			*(*ScriptSpecStorageLocation)(ptr) = obj
+		} else {
+			*(*ScriptSpecStorageLocation)(ptr) = ScriptSpecStorageLocation{}
+		}
+	default:
+		iter.ReportError("decode ScriptSpecStorageLocation", "unexpected JSON type")
 	}
 }

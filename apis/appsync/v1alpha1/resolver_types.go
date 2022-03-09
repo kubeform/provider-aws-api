@@ -53,6 +53,20 @@ type ResolverSpecPipelineConfig struct {
 	Functions []string `json:"functions,omitempty" tf:"functions"`
 }
 
+type ResolverSpecSyncConfigLambdaConflictHandlerConfig struct {
+	// +optional
+	LambdaConflictHandlerArn *string `json:"lambdaConflictHandlerArn,omitempty" tf:"lambda_conflict_handler_arn"`
+}
+
+type ResolverSpecSyncConfig struct {
+	// +optional
+	ConflictDetection *string `json:"conflictDetection,omitempty" tf:"conflict_detection"`
+	// +optional
+	ConflictHandler *string `json:"conflictHandler,omitempty" tf:"conflict_handler"`
+	// +optional
+	LambdaConflictHandlerConfig *ResolverSpecSyncConfigLambdaConflictHandlerConfig `json:"lambdaConflictHandlerConfig,omitempty" tf:"lambda_conflict_handler_config"`
+}
+
 type ResolverSpec struct {
 	State *ResolverSpecResource `json:"state,omitempty" tf:"-"`
 
@@ -81,12 +95,16 @@ type ResolverSpecResource struct {
 	// +optional
 	Kind *string `json:"kind,omitempty" tf:"kind"`
 	// +optional
+	MaxBatchSize *int64 `json:"maxBatchSize,omitempty" tf:"max_batch_size"`
+	// +optional
 	PipelineConfig *ResolverSpecPipelineConfig `json:"pipelineConfig,omitempty" tf:"pipeline_config"`
 	// +optional
 	RequestTemplate *string `json:"requestTemplate,omitempty" tf:"request_template"`
 	// +optional
 	ResponseTemplate *string `json:"responseTemplate,omitempty" tf:"response_template"`
-	Type             *string `json:"type" tf:"type"`
+	// +optional
+	SyncConfig *ResolverSpecSyncConfig `json:"syncConfig,omitempty" tf:"sync_config"`
+	Type       *string                 `json:"type" tf:"type"`
 }
 
 type ResolverStatus struct {

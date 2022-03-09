@@ -58,6 +58,8 @@ func addKnownTypes(scheme *runtime.Scheme) error {
 	scheme.AddKnownTypes(SchemeGroupVersion,
 		&Component{},
 		&ComponentList{},
+		&ContainerRecipe{},
+		&ContainerRecipeList{},
 		&DistributionConfiguration{},
 		&DistributionConfigurationList{},
 		&Image{},

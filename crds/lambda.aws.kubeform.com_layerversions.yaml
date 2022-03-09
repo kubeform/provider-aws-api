@@ -59,10 +59,15 @@ spec:
                 properties:
                   arn:
                     type: string
+                  compatibleArchitectures:
+                    items:
+                      type: string
+                    maxItems: 2
+                    type: array
                   compatibleRuntimes:
                     items:
                       type: string
-                    maxItems: 5
+                    maxItems: 15
                     type: array
                   createdDate:
                     type: string
@@ -88,6 +93,8 @@ spec:
                     type: string
                   signingProfileVersionArn:
                     type: string
+                  skipDestroy:
+                    type: boolean
                   sourceCodeHash:
                     type: string
                   sourceCodeSize:
@@ -102,10 +109,15 @@ spec:
                 properties:
                   arn:
                     type: string
+                  compatibleArchitectures:
+                    items:
+                      type: string
+                    maxItems: 2
+                    type: array
                   compatibleRuntimes:
                     items:
                       type: string
-                    maxItems: 5
+                    maxItems: 15
                     type: array
                   createdDate:
                     type: string
@@ -131,6 +143,8 @@ spec:
                     type: string
                   signingProfileVersionArn:
                     type: string
+                  skipDestroy:
+                    type: boolean
                   sourceCodeHash:
                     type: string
                   sourceCodeSize:

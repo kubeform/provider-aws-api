@@ -87,7 +87,11 @@ type SqsQueueSpecResource struct {
 	// +optional
 	ReceiveWaitTimeSeconds *int64 `json:"receiveWaitTimeSeconds,omitempty" tf:"receive_wait_time_seconds"`
 	// +optional
+	RedriveAllowPolicy *string `json:"redriveAllowPolicy,omitempty" tf:"redrive_allow_policy"`
+	// +optional
 	RedrivePolicy *string `json:"redrivePolicy,omitempty" tf:"redrive_policy"`
+	// +optional
+	SqsManagedSseEnabled *bool `json:"sqsManagedSseEnabled,omitempty" tf:"sqs_managed_sse_enabled"`
 	// +optional
 	Tags *map[string]string `json:"tags,omitempty" tf:"tags"`
 	// +optional

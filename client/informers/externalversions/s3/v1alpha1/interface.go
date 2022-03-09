@@ -30,22 +30,48 @@ type Interface interface {
 	AccountPublicAccessBlocks() AccountPublicAccessBlockInformer
 	// Buckets returns a BucketInformer.
 	Buckets() BucketInformer
+	// BucketACLs returns a BucketACLInformer.
+	BucketACLs() BucketACLInformer
+	// BucketAccelerateConfigurations returns a BucketAccelerateConfigurationInformer.
+	BucketAccelerateConfigurations() BucketAccelerateConfigurationInformer
 	// BucketAnalyticsConfigurations returns a BucketAnalyticsConfigurationInformer.
 	BucketAnalyticsConfigurations() BucketAnalyticsConfigurationInformer
+	// BucketCorsConfigurations returns a BucketCorsConfigurationInformer.
+	BucketCorsConfigurations() BucketCorsConfigurationInformer
+	// BucketIntelligentTieringConfigurations returns a BucketIntelligentTieringConfigurationInformer.
+	BucketIntelligentTieringConfigurations() BucketIntelligentTieringConfigurationInformer
 	// BucketInventories returns a BucketInventoryInformer.
 	BucketInventories() BucketInventoryInformer
+	// BucketLifecycleConfigurations returns a BucketLifecycleConfigurationInformer.
+	BucketLifecycleConfigurations() BucketLifecycleConfigurationInformer
+	// BucketLoggings returns a BucketLoggingInformer.
+	BucketLoggings() BucketLoggingInformer
 	// BucketMetrics returns a BucketMetricInformer.
 	BucketMetrics() BucketMetricInformer
 	// BucketNotifications returns a BucketNotificationInformer.
 	BucketNotifications() BucketNotificationInformer
 	// BucketObjects returns a BucketObjectInformer.
 	BucketObjects() BucketObjectInformer
+	// BucketObjectLockConfigurations returns a BucketObjectLockConfigurationInformer.
+	BucketObjectLockConfigurations() BucketObjectLockConfigurationInformer
 	// BucketOwnershipControlses returns a BucketOwnershipControlsInformer.
 	BucketOwnershipControlses() BucketOwnershipControlsInformer
 	// BucketPolicies returns a BucketPolicyInformer.
 	BucketPolicies() BucketPolicyInformer
 	// BucketPublicAccessBlocks returns a BucketPublicAccessBlockInformer.
 	BucketPublicAccessBlocks() BucketPublicAccessBlockInformer
+	// BucketReplicationConfigurations returns a BucketReplicationConfigurationInformer.
+	BucketReplicationConfigurations() BucketReplicationConfigurationInformer
+	// BucketRequestPaymentConfigurations returns a BucketRequestPaymentConfigurationInformer.
+	BucketRequestPaymentConfigurations() BucketRequestPaymentConfigurationInformer
+	// BucketServerSideEncryptionConfigurations returns a BucketServerSideEncryptionConfigurationInformer.
+	BucketServerSideEncryptionConfigurations() BucketServerSideEncryptionConfigurationInformer
+	// BucketVersionings returns a BucketVersioningInformer.
+	BucketVersionings() BucketVersioningInformer
+	// BucketWebsiteConfigurations returns a BucketWebsiteConfigurationInformer.
+	BucketWebsiteConfigurations() BucketWebsiteConfigurationInformer
+	// Objects returns a ObjectInformer.
+	Objects() ObjectInformer
 	// ObjectCopies returns a ObjectCopyInformer.
 	ObjectCopies() ObjectCopyInformer
 }
@@ -76,14 +102,44 @@ func (v *version) Buckets() BucketInformer {
 	return &bucketInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
 }
 
+// BucketACLs returns a BucketACLInformer.
+func (v *version) BucketACLs() BucketACLInformer {
+	return &bucketACLInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
+// BucketAccelerateConfigurations returns a BucketAccelerateConfigurationInformer.
+func (v *version) BucketAccelerateConfigurations() BucketAccelerateConfigurationInformer {
+	return &bucketAccelerateConfigurationInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
 // BucketAnalyticsConfigurations returns a BucketAnalyticsConfigurationInformer.
 func (v *version) BucketAnalyticsConfigurations() BucketAnalyticsConfigurationInformer {
 	return &bucketAnalyticsConfigurationInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
 }
 
+// BucketCorsConfigurations returns a BucketCorsConfigurationInformer.
+func (v *version) BucketCorsConfigurations() BucketCorsConfigurationInformer {
+	return &bucketCorsConfigurationInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
+// BucketIntelligentTieringConfigurations returns a BucketIntelligentTieringConfigurationInformer.
+func (v *version) BucketIntelligentTieringConfigurations() BucketIntelligentTieringConfigurationInformer {
+	return &bucketIntelligentTieringConfigurationInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
 // BucketInventories returns a BucketInventoryInformer.
 func (v *version) BucketInventories() BucketInventoryInformer {
 	return &bucketInventoryInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
+// BucketLifecycleConfigurations returns a BucketLifecycleConfigurationInformer.
+func (v *version) BucketLifecycleConfigurations() BucketLifecycleConfigurationInformer {
+	return &bucketLifecycleConfigurationInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
+// BucketLoggings returns a BucketLoggingInformer.
+func (v *version) BucketLoggings() BucketLoggingInformer {
+	return &bucketLoggingInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
 }
 
 // BucketMetrics returns a BucketMetricInformer.
@@ -101,6 +157,11 @@ func (v *version) BucketObjects() BucketObjectInformer {
 	return &bucketObjectInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
 }
 
+// BucketObjectLockConfigurations returns a BucketObjectLockConfigurationInformer.
+func (v *version) BucketObjectLockConfigurations() BucketObjectLockConfigurationInformer {
+	return &bucketObjectLockConfigurationInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
 // BucketOwnershipControlses returns a BucketOwnershipControlsInformer.
 func (v *version) BucketOwnershipControlses() BucketOwnershipControlsInformer {
 	return &bucketOwnershipControlsInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
@@ -114,6 +175,36 @@ func (v *version) BucketPolicies() BucketPolicyInformer {
 // BucketPublicAccessBlocks returns a BucketPublicAccessBlockInformer.
 func (v *version) BucketPublicAccessBlocks() BucketPublicAccessBlockInformer {
 	return &bucketPublicAccessBlockInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
+// BucketReplicationConfigurations returns a BucketReplicationConfigurationInformer.
+func (v *version) BucketReplicationConfigurations() BucketReplicationConfigurationInformer {
+	return &bucketReplicationConfigurationInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
+// BucketRequestPaymentConfigurations returns a BucketRequestPaymentConfigurationInformer.
+func (v *version) BucketRequestPaymentConfigurations() BucketRequestPaymentConfigurationInformer {
+	return &bucketRequestPaymentConfigurationInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
+// BucketServerSideEncryptionConfigurations returns a BucketServerSideEncryptionConfigurationInformer.
+func (v *version) BucketServerSideEncryptionConfigurations() BucketServerSideEncryptionConfigurationInformer {
+	return &bucketServerSideEncryptionConfigurationInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
+// BucketVersionings returns a BucketVersioningInformer.
+func (v *version) BucketVersionings() BucketVersioningInformer {
+	return &bucketVersioningInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
+// BucketWebsiteConfigurations returns a BucketWebsiteConfigurationInformer.
+func (v *version) BucketWebsiteConfigurations() BucketWebsiteConfigurationInformer {
+	return &bucketWebsiteConfigurationInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
+// Objects returns a ObjectInformer.
+func (v *version) Objects() ObjectInformer {
+	return &objectInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
 }
 
 // ObjectCopies returns a ObjectCopyInformer.

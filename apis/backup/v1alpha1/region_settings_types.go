@@ -58,7 +58,9 @@ type RegionSettingsSpec struct {
 type RegionSettingsSpecResource struct {
 	ID string `json:"id,omitempty" tf:"id,omitempty"`
 
-	ResourceTypeOptInPreference *map[string]bool `json:"resourceTypeOptInPreference" tf:"resource_type_opt_in_preference"`
+	// +optional
+	ResourceTypeManagementPreference *map[string]bool `json:"resourceTypeManagementPreference,omitempty" tf:"resource_type_management_preference"`
+	ResourceTypeOptInPreference      *map[string]bool `json:"resourceTypeOptInPreference" tf:"resource_type_opt_in_preference"`
 }
 
 type RegionSettingsStatus struct {

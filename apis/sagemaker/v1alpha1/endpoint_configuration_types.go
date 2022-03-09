@@ -41,6 +41,32 @@ type EndpointConfiguration struct {
 	Status            EndpointConfigurationStatus `json:"status,omitempty"`
 }
 
+type EndpointConfigurationSpecAsyncInferenceConfigClientConfig struct {
+	// +optional
+	MaxConcurrentInvocationsPerInstance *int64 `json:"maxConcurrentInvocationsPerInstance,omitempty" tf:"max_concurrent_invocations_per_instance"`
+}
+
+type EndpointConfigurationSpecAsyncInferenceConfigOutputConfigNotificationConfig struct {
+	// +optional
+	ErrorTopic *string `json:"errorTopic,omitempty" tf:"error_topic"`
+	// +optional
+	SuccessTopic *string `json:"successTopic,omitempty" tf:"success_topic"`
+}
+
+type EndpointConfigurationSpecAsyncInferenceConfigOutputConfig struct {
+	// +optional
+	KmsKeyID *string `json:"kmsKeyID,omitempty" tf:"kms_key_id"`
+	// +optional
+	NotificationConfig *EndpointConfigurationSpecAsyncInferenceConfigOutputConfigNotificationConfig `json:"notificationConfig,omitempty" tf:"notification_config"`
+	S3OutputPath       *string                                                                      `json:"s3OutputPath" tf:"s3_output_path"`
+}
+
+type EndpointConfigurationSpecAsyncInferenceConfig struct {
+	// +optional
+	ClientConfig *EndpointConfigurationSpecAsyncInferenceConfigClientConfig `json:"clientConfig,omitempty" tf:"client_config"`
+	OutputConfig *EndpointConfigurationSpecAsyncInferenceConfigOutputConfig `json:"outputConfig" tf:"output_config"`
+}
+
 type EndpointConfigurationSpecDataCaptureConfigCaptureContentTypeHeader struct {
 	// +optional
 	// +kubebuilder:validation:MaxItems=10
@@ -101,6 +127,8 @@ type EndpointConfigurationSpecResource struct {
 
 	// +optional
 	Arn *string `json:"arn,omitempty" tf:"arn"`
+	// +optional
+	AsyncInferenceConfig *EndpointConfigurationSpecAsyncInferenceConfig `json:"asyncInferenceConfig,omitempty" tf:"async_inference_config"`
 	// +optional
 	DataCaptureConfig *EndpointConfigurationSpecDataCaptureConfig `json:"dataCaptureConfig,omitempty" tf:"data_capture_config"`
 	// +optional

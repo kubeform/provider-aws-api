@@ -88,7 +88,7 @@ func (r *ResolverFirewallRuleGroup) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range resolverfirewallrulegroupForceNewList {
+	for key, _ := range resolverfirewallrulegroupForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

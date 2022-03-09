@@ -88,7 +88,7 @@ func (r *GlobalTable) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range globaltableForceNewList {
+	for key, _ := range globaltableForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

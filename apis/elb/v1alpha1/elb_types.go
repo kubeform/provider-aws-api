@@ -98,6 +98,8 @@ type ElbSpecResource struct {
 	// +optional
 	CrossZoneLoadBalancing *bool `json:"crossZoneLoadBalancing,omitempty" tf:"cross_zone_load_balancing"`
 	// +optional
+	DesyncMitigationMode *string `json:"desyncMitigationMode,omitempty" tf:"desync_mitigation_mode"`
+	// +optional
 	DnsName *string `json:"dnsName,omitempty" tf:"dns_name"`
 	// +optional
 	HealthCheck *ElbSpecHealthCheck `json:"healthCheck,omitempty" tf:"health_check"`

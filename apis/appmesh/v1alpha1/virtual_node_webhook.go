@@ -90,7 +90,7 @@ func (r *VirtualNode) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range virtualnodeForceNewList {
+	for key, _ := range virtualnodeForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

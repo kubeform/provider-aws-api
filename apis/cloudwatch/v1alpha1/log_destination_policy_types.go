@@ -60,6 +60,8 @@ type LogDestinationPolicySpecResource struct {
 
 	AccessPolicy    *string `json:"accessPolicy" tf:"access_policy"`
 	DestinationName *string `json:"destinationName" tf:"destination_name"`
+	// +optional
+	ForceUpdate *bool `json:"forceUpdate,omitempty" tf:"force_update"`
 }
 
 type LogDestinationPolicyStatus struct {

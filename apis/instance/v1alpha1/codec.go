@@ -31,6 +31,7 @@ func GetEncoder() map[string]jsoniter.ValEncoder {
 		jsoniter.MustGetKind(reflect2.TypeOf(InstanceSpecCapacityReservationSpecificationCapacityReservationTarget{}).Type1()): InstanceSpecCapacityReservationSpecificationCapacityReservationTargetCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(InstanceSpecCreditSpecification{}).Type1()):                                       InstanceSpecCreditSpecificationCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(InstanceSpecEnclaveOptions{}).Type1()):                                            InstanceSpecEnclaveOptionsCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(InstanceSpecLaunchTemplate{}).Type1()):                                            InstanceSpecLaunchTemplateCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(InstanceSpecMetadataOptions{}).Type1()):                                           InstanceSpecMetadataOptionsCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(InstanceSpecRootBlockDevice{}).Type1()):                                           InstanceSpecRootBlockDeviceCodec{},
 	}
@@ -42,6 +43,7 @@ func GetDecoder() map[string]jsoniter.ValDecoder {
 		jsoniter.MustGetKind(reflect2.TypeOf(InstanceSpecCapacityReservationSpecificationCapacityReservationTarget{}).Type1()): InstanceSpecCapacityReservationSpecificationCapacityReservationTargetCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(InstanceSpecCreditSpecification{}).Type1()):                                       InstanceSpecCreditSpecificationCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(InstanceSpecEnclaveOptions{}).Type1()):                                            InstanceSpecEnclaveOptionsCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(InstanceSpecLaunchTemplate{}).Type1()):                                            InstanceSpecLaunchTemplateCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(InstanceSpecMetadataOptions{}).Type1()):                                           InstanceSpecMetadataOptionsCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(InstanceSpecRootBlockDevice{}).Type1()):                                           InstanceSpecRootBlockDeviceCodec{},
 	}
@@ -372,6 +374,85 @@ func (InstanceSpecEnclaveOptionsCodec) Decode(ptr unsafe.Pointer, iter *jsoniter
 		}
 	default:
 		iter.ReportError("decode InstanceSpecEnclaveOptions", "unexpected JSON type")
+	}
+}
+
+// +k8s:deepcopy-gen=false
+type InstanceSpecLaunchTemplateCodec struct {
+}
+
+func (InstanceSpecLaunchTemplateCodec) IsEmpty(ptr unsafe.Pointer) bool {
+	return (*InstanceSpecLaunchTemplate)(ptr) == nil
+}
+
+func (InstanceSpecLaunchTemplateCodec) Encode(ptr unsafe.Pointer, stream *jsoniter.Stream) {
+	obj := (*InstanceSpecLaunchTemplate)(ptr)
+	var objs []InstanceSpecLaunchTemplate
+	if obj != nil {
+		objs = []InstanceSpecLaunchTemplate{*obj}
+	}
+
+	jsonit := jsoniter.Config{
+		EscapeHTML:             true,
+		SortMapKeys:            true,
+		ValidateJsonRawMessage: true,
+		TagKey:                 "tf",
+		TypeEncoders:           getEncodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(InstanceSpecLaunchTemplate{}).Type1())),
+	}.Froze()
+
+	byt, _ := jsonit.Marshal(objs)
+
+	stream.Write(byt)
+}
+
+func (InstanceSpecLaunchTemplateCodec) Decode(ptr unsafe.Pointer, iter *jsoniter.Iterator) {
+	switch iter.WhatIsNext() {
+	case jsoniter.NilValue:
+		iter.Skip()
+		*(*InstanceSpecLaunchTemplate)(ptr) = InstanceSpecLaunchTemplate{}
+		return
+	case jsoniter.ArrayValue:
+		objsByte := iter.SkipAndReturnBytes()
+		if len(objsByte) > 0 {
+			var objs []InstanceSpecLaunchTemplate
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(InstanceSpecLaunchTemplate{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objsByte, &objs)
+
+			if len(objs) > 0 {
+				*(*InstanceSpecLaunchTemplate)(ptr) = objs[0]
+			} else {
+				*(*InstanceSpecLaunchTemplate)(ptr) = InstanceSpecLaunchTemplate{}
+			}
+		} else {
+			*(*InstanceSpecLaunchTemplate)(ptr) = InstanceSpecLaunchTemplate{}
+		}
+	case jsoniter.ObjectValue:
+		objByte := iter.SkipAndReturnBytes()
+		if len(objByte) > 0 {
+			var obj InstanceSpecLaunchTemplate
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(InstanceSpecLaunchTemplate{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objByte, &obj)
+
+			*(*InstanceSpecLaunchTemplate)(ptr) = obj
+		} else {
+			*(*InstanceSpecLaunchTemplate)(ptr) = InstanceSpecLaunchTemplate{}
+		}
+	default:
+		iter.ReportError("decode InstanceSpecLaunchTemplate", "unexpected JSON type")
 	}
 }
 

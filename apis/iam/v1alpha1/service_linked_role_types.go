@@ -72,6 +72,10 @@ type ServiceLinkedRoleSpecResource struct {
 	// +optional
 	Path *string `json:"path,omitempty" tf:"path"`
 	// +optional
+	Tags *map[string]string `json:"tags,omitempty" tf:"tags"`
+	// +optional
+	TagsAll *map[string]string `json:"tagsAll,omitempty" tf:"tags_all"`
+	// +optional
 	UniqueID *string `json:"uniqueID,omitempty" tf:"unique_id"`
 }
 

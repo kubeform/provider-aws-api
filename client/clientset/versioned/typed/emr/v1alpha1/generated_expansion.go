@@ -27,3 +27,7 @@ type InstanceGroupExpansion interface{}
 type ManagedScalingPolicyExpansion interface{}
 
 type SecurityConfigurationExpansion interface{}
+
+type StudioExpansion interface{}
+
+type StudioSessionMappingExpansion interface{}

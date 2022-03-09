@@ -30,6 +30,7 @@ type RedshiftV1alpha1Interface interface {
 	ClustersGetter
 	EventSubscriptionsGetter
 	ParameterGroupsGetter
+	ScheduledActionsGetter
 	SecurityGroupsGetter
 	SnapshotCopyGrantsGetter
 	SnapshotSchedulesGetter
@@ -52,6 +53,10 @@ func (c *RedshiftV1alpha1Client) EventSubscriptions(namespace string) EventSubsc
 
 func (c *RedshiftV1alpha1Client) ParameterGroups(namespace string) ParameterGroupInterface {
 	return newParameterGroups(c, namespace)
+}
+
+func (c *RedshiftV1alpha1Client) ScheduledActions(namespace string) ScheduledActionInterface {
+	return newScheduledActions(c, namespace)
 }
 
 func (c *RedshiftV1alpha1Client) SecurityGroups(namespace string) SecurityGroupInterface {

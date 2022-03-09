@@ -41,6 +41,13 @@ type ComputeEnvironment struct {
 	Status            ComputeEnvironmentStatus `json:"status,omitempty"`
 }
 
+type ComputeEnvironmentSpecComputeResourcesEc2Configuration struct {
+	// +optional
+	ImageIDOverride *string `json:"imageIDOverride,omitempty" tf:"image_id_override"`
+	// +optional
+	ImageType *string `json:"imageType,omitempty" tf:"image_type"`
+}
+
 type ComputeEnvironmentSpecComputeResourcesLaunchTemplate struct {
 	// +optional
 	LaunchTemplateID *string `json:"launchTemplateID,omitempty" tf:"launch_template_id"`
@@ -57,6 +64,8 @@ type ComputeEnvironmentSpecComputeResources struct {
 	BidPercentage *int64 `json:"bidPercentage,omitempty" tf:"bid_percentage"`
 	// +optional
 	DesiredVcpus *int64 `json:"desiredVcpus,omitempty" tf:"desired_vcpus"`
+	// +optional
+	Ec2Configuration *ComputeEnvironmentSpecComputeResourcesEc2Configuration `json:"ec2Configuration,omitempty" tf:"ec2_configuration"`
 	// +optional
 	Ec2KeyPair *string `json:"ec2KeyPair,omitempty" tf:"ec2_key_pair"`
 	// +optional

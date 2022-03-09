@@ -59,6 +59,8 @@ spec:
                 properties:
                   arn:
                     type: string
+                  containerRecipeArn:
+                    type: string
                   dateCreated:
                     type: string
                   dateLastRun:
@@ -97,6 +99,8 @@ spec:
                         type: string
                       scheduleExpression:
                         type: string
+                      timezone:
+                        type: string
                     required:
                     - scheduleExpression
                     type: object
@@ -111,7 +115,6 @@ spec:
                       type: string
                     type: object
                 required:
-                - imageRecipeArn
                 - infrastructureConfigurationArn
                 - name
                 type: object
@@ -119,6 +122,8 @@ spec:
                 properties:
                   arn:
                     type: string
+                  containerRecipeArn:
+                    type: string
                   dateCreated:
                     type: string
                   dateLastRun:
@@ -157,6 +162,8 @@ spec:
                         type: string
                       scheduleExpression:
                         type: string
+                      timezone:
+                        type: string
                     required:
                     - scheduleExpression
                     type: object
@@ -171,7 +178,6 @@ spec:
                       type: string
                     type: object
                 required:
-                - imageRecipeArn
                 - infrastructureConfigurationArn
                 - name
                 type: object

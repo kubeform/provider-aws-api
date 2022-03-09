@@ -34,6 +34,7 @@ type ConfigV1alpha1Interface interface {
 	ConfigurationRecorderStatusesGetter
 	ConformancePacksGetter
 	DeliveryChannelsGetter
+	OrganizationConformancePacksGetter
 	OrganizationCustomRulesGetter
 	OrganizationManagedRulesGetter
 	RemediationConfigurationsGetter
@@ -70,6 +71,10 @@ func (c *ConfigV1alpha1Client) ConformancePacks(namespace string) ConformancePac
 
 func (c *ConfigV1alpha1Client) DeliveryChannels(namespace string) DeliveryChannelInterface {
 	return newDeliveryChannels(c, namespace)
+}
+
+func (c *ConfigV1alpha1Client) OrganizationConformancePacks(namespace string) OrganizationConformancePackInterface {
+	return newOrganizationConformancePacks(c, namespace)
 }
 
 func (c *ConfigV1alpha1Client) OrganizationCustomRules(namespace string) OrganizationCustomRuleInterface {

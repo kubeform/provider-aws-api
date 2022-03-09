@@ -918,6 +918,11 @@ func (in *DomainNameSpecDomainNameConfiguration) DeepCopyInto(out *DomainNameSpe
 		*out = new(string)
 		**out = **in
 	}
+	if in.OwnershipVerificationCertificateArn != nil {
+		in, out := &in.OwnershipVerificationCertificateArn, &out.OwnershipVerificationCertificateArn
+		*out = new(string)
+		**out = **in
+	}
 	if in.SecurityPolicy != nil {
 		in, out := &in.SecurityPolicy, &out.SecurityPolicy
 		*out = new(string)

@@ -64,22 +64,40 @@ spec:
                   replicationConfiguration:
                     properties:
                       rule:
-                        properties:
-                          destination:
-                            items:
-                              properties:
-                                region:
-                                  type: string
-                                registryID:
-                                  type: string
-                              required:
-                              - region
-                              - registryID
-                              type: object
-                            type: array
-                        required:
-                        - destination
-                        type: object
+                        items:
+                          properties:
+                            destination:
+                              items:
+                                properties:
+                                  region:
+                                    type: string
+                                  registryID:
+                                    type: string
+                                required:
+                                - region
+                                - registryID
+                                type: object
+                              maxItems: 25
+                              type: array
+                            repositoryFilter:
+                              items:
+                                properties:
+                                  filter:
+                                    type: string
+                                  filterType:
+                                    type: string
+                                required:
+                                - filter
+                                - filterType
+                                type: object
+                              maxItems: 100
+                              minItems: 1
+                              type: array
+                          required:
+                          - destination
+                          type: object
+                        maxItems: 10
+                        type: array
                     required:
                     - rule
                     type: object
@@ -93,22 +111,40 @@ spec:
                   replicationConfiguration:
                     properties:
                       rule:
-                        properties:
-                          destination:
-                            items:
-                              properties:
-                                region:
-                                  type: string
-                                registryID:
-                                  type: string
-                              required:
-                              - region
-                              - registryID
-                              type: object
-                            type: array
-                        required:
-                        - destination
-                        type: object
+                        items:
+                          properties:
+                            destination:
+                              items:
+                                properties:
+                                  region:
+                                    type: string
+                                  registryID:
+                                    type: string
+                                required:
+                                - region
+                                - registryID
+                                type: object
+                              maxItems: 25
+                              type: array
+                            repositoryFilter:
+                              items:
+                                properties:
+                                  filter:
+                                    type: string
+                                  filterType:
+                                    type: string
+                                required:
+                                - filter
+                                - filterType
+                                type: object
+                              maxItems: 100
+                              minItems: 1
+                              type: array
+                          required:
+                          - destination
+                          type: object
+                        maxItems: 10
+                        type: array
                     required:
                     - rule
                     type: object

@@ -29,8 +29,16 @@ type FakeQuicksightV1alpha1 struct {
 	*testing.Fake
 }
 
+func (c *FakeQuicksightV1alpha1) DataSources(namespace string) v1alpha1.DataSourceInterface {
+	return &FakeDataSources{c, namespace}
+}
+
 func (c *FakeQuicksightV1alpha1) Groups(namespace string) v1alpha1.GroupInterface {
 	return &FakeGroups{c, namespace}
+}
+
+func (c *FakeQuicksightV1alpha1) GroupMemberships(namespace string) v1alpha1.GroupMembershipInterface {
+	return &FakeGroupMemberships{c, namespace}
 }
 
 func (c *FakeQuicksightV1alpha1) Users(namespace string) v1alpha1.UserInterface {

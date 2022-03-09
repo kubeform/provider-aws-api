@@ -92,7 +92,7 @@ func (r *LocationFsxWindowsFileSystem) ValidateUpdate(old runtime.Object) error 
 		return err
 	}
 
-	for key := range locationfsxwindowsfilesystemForceNewList {
+	for key, _ := range locationfsxwindowsfilesystemForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

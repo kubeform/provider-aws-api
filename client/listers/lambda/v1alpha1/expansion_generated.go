@@ -58,6 +58,14 @@ type FunctionEventInvokeConfigListerExpansion interface{}
 // FunctionEventInvokeConfigNamespaceLister.
 type FunctionEventInvokeConfigNamespaceListerExpansion interface{}
 
+// InvocationListerExpansion allows custom methods to be added to
+// InvocationLister.
+type InvocationListerExpansion interface{}
+
+// InvocationNamespaceListerExpansion allows custom methods to be added to
+// InvocationNamespaceLister.
+type InvocationNamespaceListerExpansion interface{}
+
 // LayerVersionListerExpansion allows custom methods to be added to
 // LayerVersionLister.
 type LayerVersionListerExpansion interface{}
@@ -65,6 +73,14 @@ type LayerVersionListerExpansion interface{}
 // LayerVersionNamespaceListerExpansion allows custom methods to be added to
 // LayerVersionNamespaceLister.
 type LayerVersionNamespaceListerExpansion interface{}
+
+// LayerVersionPermissionListerExpansion allows custom methods to be added to
+// LayerVersionPermissionLister.
+type LayerVersionPermissionListerExpansion interface{}
+
+// LayerVersionPermissionNamespaceListerExpansion allows custom methods to be added to
+// LayerVersionPermissionNamespaceLister.
+type LayerVersionPermissionNamespaceListerExpansion interface{}
 
 // PermissionListerExpansion allows custom methods to be added to
 // PermissionLister.

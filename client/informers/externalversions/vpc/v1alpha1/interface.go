@@ -30,8 +30,12 @@ type Interface interface {
 	DhcpOptionsAssociations() DhcpOptionsAssociationInformer
 	// Endpoints returns a EndpointInformer.
 	Endpoints() EndpointInformer
+	// EndpointConnectionAccepters returns a EndpointConnectionAccepterInformer.
+	EndpointConnectionAccepters() EndpointConnectionAccepterInformer
 	// EndpointConnectionNotifications returns a EndpointConnectionNotificationInformer.
 	EndpointConnectionNotifications() EndpointConnectionNotificationInformer
+	// EndpointPolicies returns a EndpointPolicyInformer.
+	EndpointPolicies() EndpointPolicyInformer
 	// EndpointRouteTableAssociations returns a EndpointRouteTableAssociationInformer.
 	EndpointRouteTableAssociations() EndpointRouteTableAssociationInformer
 	// EndpointServices returns a EndpointServiceInformer.
@@ -40,8 +44,24 @@ type Interface interface {
 	EndpointServiceAllowedPrincipals() EndpointServiceAllowedPrincipalInformer
 	// EndpointSubnetAssociations returns a EndpointSubnetAssociationInformer.
 	EndpointSubnetAssociations() EndpointSubnetAssociationInformer
+	// Ipams returns a IpamInformer.
+	Ipams() IpamInformer
+	// IpamOrganizationAdminAccounts returns a IpamOrganizationAdminAccountInformer.
+	IpamOrganizationAdminAccounts() IpamOrganizationAdminAccountInformer
+	// IpamPools returns a IpamPoolInformer.
+	IpamPools() IpamPoolInformer
+	// IpamPoolCIDRs returns a IpamPoolCIDRInformer.
+	IpamPoolCIDRs() IpamPoolCIDRInformer
+	// IpamPoolCIDRAllocations returns a IpamPoolCIDRAllocationInformer.
+	IpamPoolCIDRAllocations() IpamPoolCIDRAllocationInformer
+	// IpamPreviewNextCIDRs returns a IpamPreviewNextCIDRInformer.
+	IpamPreviewNextCIDRs() IpamPreviewNextCIDRInformer
+	// IpamScopes returns a IpamScopeInformer.
+	IpamScopes() IpamScopeInformer
 	// Ipv4CIDRBlockAssociations returns a Ipv4CIDRBlockAssociationInformer.
 	Ipv4CIDRBlockAssociations() Ipv4CIDRBlockAssociationInformer
+	// Ipv6CIDRBlockAssociations returns a Ipv6CIDRBlockAssociationInformer.
+	Ipv6CIDRBlockAssociations() Ipv6CIDRBlockAssociationInformer
 	// PeeringConnections returns a PeeringConnectionInformer.
 	PeeringConnections() PeeringConnectionInformer
 	// PeeringConnectionAccepters returns a PeeringConnectionAccepterInformer.
@@ -78,9 +98,19 @@ func (v *version) Endpoints() EndpointInformer {
 	return &endpointInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
 }
 
+// EndpointConnectionAccepters returns a EndpointConnectionAccepterInformer.
+func (v *version) EndpointConnectionAccepters() EndpointConnectionAccepterInformer {
+	return &endpointConnectionAccepterInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
 // EndpointConnectionNotifications returns a EndpointConnectionNotificationInformer.
 func (v *version) EndpointConnectionNotifications() EndpointConnectionNotificationInformer {
 	return &endpointConnectionNotificationInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
+// EndpointPolicies returns a EndpointPolicyInformer.
+func (v *version) EndpointPolicies() EndpointPolicyInformer {
+	return &endpointPolicyInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
 }
 
 // EndpointRouteTableAssociations returns a EndpointRouteTableAssociationInformer.
@@ -103,9 +133,49 @@ func (v *version) EndpointSubnetAssociations() EndpointSubnetAssociationInformer
 	return &endpointSubnetAssociationInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
 }
 
+// Ipams returns a IpamInformer.
+func (v *version) Ipams() IpamInformer {
+	return &ipamInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
+// IpamOrganizationAdminAccounts returns a IpamOrganizationAdminAccountInformer.
+func (v *version) IpamOrganizationAdminAccounts() IpamOrganizationAdminAccountInformer {
+	return &ipamOrganizationAdminAccountInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
+// IpamPools returns a IpamPoolInformer.
+func (v *version) IpamPools() IpamPoolInformer {
+	return &ipamPoolInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
+// IpamPoolCIDRs returns a IpamPoolCIDRInformer.
+func (v *version) IpamPoolCIDRs() IpamPoolCIDRInformer {
+	return &ipamPoolCIDRInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
+// IpamPoolCIDRAllocations returns a IpamPoolCIDRAllocationInformer.
+func (v *version) IpamPoolCIDRAllocations() IpamPoolCIDRAllocationInformer {
+	return &ipamPoolCIDRAllocationInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
+// IpamPreviewNextCIDRs returns a IpamPreviewNextCIDRInformer.
+func (v *version) IpamPreviewNextCIDRs() IpamPreviewNextCIDRInformer {
+	return &ipamPreviewNextCIDRInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
+// IpamScopes returns a IpamScopeInformer.
+func (v *version) IpamScopes() IpamScopeInformer {
+	return &ipamScopeInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
 // Ipv4CIDRBlockAssociations returns a Ipv4CIDRBlockAssociationInformer.
 func (v *version) Ipv4CIDRBlockAssociations() Ipv4CIDRBlockAssociationInformer {
 	return &ipv4CIDRBlockAssociationInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
+// Ipv6CIDRBlockAssociations returns a Ipv6CIDRBlockAssociationInformer.
+func (v *version) Ipv6CIDRBlockAssociations() Ipv6CIDRBlockAssociationInformer {
+	return &ipv6CIDRBlockAssociationInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
 }
 
 // PeeringConnections returns a PeeringConnectionInformer.

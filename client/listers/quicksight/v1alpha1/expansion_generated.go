@@ -18,6 +18,14 @@ limitations under the License.
 
 package v1alpha1
 
+// DataSourceListerExpansion allows custom methods to be added to
+// DataSourceLister.
+type DataSourceListerExpansion interface{}
+
+// DataSourceNamespaceListerExpansion allows custom methods to be added to
+// DataSourceNamespaceLister.
+type DataSourceNamespaceListerExpansion interface{}
+
 // GroupListerExpansion allows custom methods to be added to
 // GroupLister.
 type GroupListerExpansion interface{}
@@ -25,6 +33,14 @@ type GroupListerExpansion interface{}
 // GroupNamespaceListerExpansion allows custom methods to be added to
 // GroupNamespaceLister.
 type GroupNamespaceListerExpansion interface{}
+
+// GroupMembershipListerExpansion allows custom methods to be added to
+// GroupMembershipLister.
+type GroupMembershipListerExpansion interface{}
+
+// GroupMembershipNamespaceListerExpansion allows custom methods to be added to
+// GroupMembershipNamespaceLister.
+type GroupMembershipNamespaceListerExpansion interface{}
 
 // UserListerExpansion allows custom methods to be added to
 // UserLister.

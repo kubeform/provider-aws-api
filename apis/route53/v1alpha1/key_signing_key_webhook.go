@@ -89,7 +89,7 @@ func (r *KeySigningKey) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range keysigningkeyForceNewList {
+	for key, _ := range keysigningkeyForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

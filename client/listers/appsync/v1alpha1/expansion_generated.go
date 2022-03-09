@@ -18,6 +18,14 @@ limitations under the License.
 
 package v1alpha1
 
+// ApiCacheListerExpansion allows custom methods to be added to
+// ApiCacheLister.
+type ApiCacheListerExpansion interface{}
+
+// ApiCacheNamespaceListerExpansion allows custom methods to be added to
+// ApiCacheNamespaceLister.
+type ApiCacheNamespaceListerExpansion interface{}
+
 // ApiKeyListerExpansion allows custom methods to be added to
 // ApiKeyLister.
 type ApiKeyListerExpansion interface{}
@@ -33,6 +41,22 @@ type DatasourceListerExpansion interface{}
 // DatasourceNamespaceListerExpansion allows custom methods to be added to
 // DatasourceNamespaceLister.
 type DatasourceNamespaceListerExpansion interface{}
+
+// DomainNameListerExpansion allows custom methods to be added to
+// DomainNameLister.
+type DomainNameListerExpansion interface{}
+
+// DomainNameNamespaceListerExpansion allows custom methods to be added to
+// DomainNameNamespaceLister.
+type DomainNameNamespaceListerExpansion interface{}
+
+// DomainNameAPIAssociationListerExpansion allows custom methods to be added to
+// DomainNameAPIAssociationLister.
+type DomainNameAPIAssociationListerExpansion interface{}
+
+// DomainNameAPIAssociationNamespaceListerExpansion allows custom methods to be added to
+// DomainNameAPIAssociationNamespaceLister.
+type DomainNameAPIAssociationNamespaceListerExpansion interface{}
 
 // FunctionListerExpansion allows custom methods to be added to
 // FunctionLister.

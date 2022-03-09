@@ -37,6 +37,10 @@ func (c *FakeCodebuildV1alpha1) ReportGroups(namespace string) v1alpha1.ReportGr
 	return &FakeReportGroups{c, namespace}
 }
 
+func (c *FakeCodebuildV1alpha1) ResourcePolicies(namespace string) v1alpha1.ResourcePolicyInterface {
+	return &FakeResourcePolicies{c, namespace}
+}
+
 func (c *FakeCodebuildV1alpha1) SourceCredentials(namespace string) v1alpha1.SourceCredentialInterface {
 	return &FakeSourceCredentials{c, namespace}
 }

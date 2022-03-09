@@ -88,7 +88,7 @@ func (r *SizeConstraintSet) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range sizeconstraintsetForceNewList {
+	for key, _ := range sizeconstraintsetForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

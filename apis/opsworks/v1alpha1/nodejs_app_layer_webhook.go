@@ -88,7 +88,7 @@ func (r *NodejsAppLayer) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range nodejsapplayerForceNewList {
+	for key, _ := range nodejsapplayerForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

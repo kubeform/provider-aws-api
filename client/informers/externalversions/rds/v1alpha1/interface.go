@@ -32,6 +32,8 @@ type Interface interface {
 	ClusterInstances() ClusterInstanceInformer
 	// ClusterParameterGroups returns a ClusterParameterGroupInformer.
 	ClusterParameterGroups() ClusterParameterGroupInformer
+	// ClusterRoleAssociations returns a ClusterRoleAssociationInformer.
+	ClusterRoleAssociations() ClusterRoleAssociationInformer
 	// GlobalClusters returns a GlobalClusterInformer.
 	GlobalClusters() GlobalClusterInformer
 }
@@ -65,6 +67,11 @@ func (v *version) ClusterInstances() ClusterInstanceInformer {
 // ClusterParameterGroups returns a ClusterParameterGroupInformer.
 func (v *version) ClusterParameterGroups() ClusterParameterGroupInformer {
 	return &clusterParameterGroupInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
+// ClusterRoleAssociations returns a ClusterRoleAssociationInformer.
+func (v *version) ClusterRoleAssociations() ClusterRoleAssociationInformer {
+	return &clusterRoleAssociationInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
 }
 
 // GlobalClusters returns a GlobalClusterInformer.

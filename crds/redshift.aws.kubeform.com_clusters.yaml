@@ -68,6 +68,17 @@ spec:
                     type: string
                   clusterIdentifier:
                     type: string
+                  clusterNodes:
+                    items:
+                      properties:
+                        nodeRole:
+                          type: string
+                        privateIPAddress:
+                          type: string
+                        publicIPAddress:
+                          type: string
+                      type: object
+                    type: array
                   clusterParameterGroupName:
                     type: string
                   clusterPublicKey:
@@ -227,6 +238,17 @@ spec:
                     type: string
                   clusterIdentifier:
                     type: string
+                  clusterNodes:
+                    items:
+                      properties:
+                        nodeRole:
+                          type: string
+                        privateIPAddress:
+                          type: string
+                        publicIPAddress:
+                          type: string
+                      type: object
+                    type: array
                   clusterParameterGroupName:
                     type: string
                   clusterPublicKey:

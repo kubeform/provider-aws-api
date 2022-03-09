@@ -41,3 +41,11 @@ type JobQueueListerExpansion interface{}
 // JobQueueNamespaceListerExpansion allows custom methods to be added to
 // JobQueueNamespaceLister.
 type JobQueueNamespaceListerExpansion interface{}
+
+// SchedulingPolicyListerExpansion allows custom methods to be added to
+// SchedulingPolicyLister.
+type SchedulingPolicyListerExpansion interface{}
+
+// SchedulingPolicyNamespaceListerExpansion allows custom methods to be added to
+// SchedulingPolicyNamespaceLister.
+type SchedulingPolicyNamespaceListerExpansion interface{}

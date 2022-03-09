@@ -113,6 +113,13 @@ spec:
                     properties:
                       preferences:
                         properties:
+                          checkpointDelay:
+                            type: string
+                          checkpointPercentages:
+                            items:
+                              format: int64
+                              type: integer
+                            type: array
                           instanceWarmup:
                             type: string
                           minHealthyPercentage:
@@ -242,6 +249,7 @@ spec:
                       type: object
                     type: array
                   targetGroupArns:
+                    description: Deprecated
                     items:
                       type: string
                     type: array
@@ -369,6 +377,13 @@ spec:
                     properties:
                       preferences:
                         properties:
+                          checkpointDelay:
+                            type: string
+                          checkpointPercentages:
+                            items:
+                              format: int64
+                              type: integer
+                            type: array
                           instanceWarmup:
                             type: string
                           minHealthyPercentage:
@@ -498,6 +513,7 @@ spec:
                       type: object
                     type: array
                   targetGroupArns:
+                    description: Deprecated
                     items:
                       type: string
                     type: array

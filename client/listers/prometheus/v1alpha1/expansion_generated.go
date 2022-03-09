@@ -18,6 +18,22 @@ limitations under the License.
 
 package v1alpha1
 
+// AlertManagerDefinitionListerExpansion allows custom methods to be added to
+// AlertManagerDefinitionLister.
+type AlertManagerDefinitionListerExpansion interface{}
+
+// AlertManagerDefinitionNamespaceListerExpansion allows custom methods to be added to
+// AlertManagerDefinitionNamespaceLister.
+type AlertManagerDefinitionNamespaceListerExpansion interface{}
+
+// RuleGroupNamespaceListerExpansion allows custom methods to be added to
+// RuleGroupNamespaceLister.
+type RuleGroupNamespaceListerExpansion interface{}
+
+// RuleGroupNamespaceNamespaceListerExpansion allows custom methods to be added to
+// RuleGroupNamespaceNamespaceLister.
+type RuleGroupNamespaceNamespaceListerExpansion interface{}
+
 // WorkspaceListerExpansion allows custom methods to be added to
 // WorkspaceLister.
 type WorkspaceListerExpansion interface{}

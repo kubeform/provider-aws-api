@@ -80,6 +80,8 @@ spec:
                     type: string
                   startTime:
                     type: string
+                  timeZone:
+                    type: string
                 required:
                 - autoscalingGroupName
                 - scheduledActionName
@@ -108,6 +110,8 @@ spec:
                   scheduledActionName:
                     type: string
                   startTime:
+                    type: string
+                  timeZone:
                     type: string
                 required:
                 - autoscalingGroupName

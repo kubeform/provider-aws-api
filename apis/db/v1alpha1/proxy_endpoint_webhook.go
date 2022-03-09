@@ -91,7 +91,7 @@ func (r *ProxyEndpoint) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range proxyendpointForceNewList {
+	for key, _ := range proxyendpointForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

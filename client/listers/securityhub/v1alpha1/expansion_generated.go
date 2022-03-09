@@ -34,6 +34,14 @@ type ActionTargetListerExpansion interface{}
 // ActionTargetNamespaceLister.
 type ActionTargetNamespaceListerExpansion interface{}
 
+// FindingAggregatorListerExpansion allows custom methods to be added to
+// FindingAggregatorLister.
+type FindingAggregatorListerExpansion interface{}
+
+// FindingAggregatorNamespaceListerExpansion allows custom methods to be added to
+// FindingAggregatorNamespaceLister.
+type FindingAggregatorNamespaceListerExpansion interface{}
+
 // InsightListerExpansion allows custom methods to be added to
 // InsightLister.
 type InsightListerExpansion interface{}
@@ -66,6 +74,14 @@ type OrganizationAdminAccountListerExpansion interface{}
 // OrganizationAdminAccountNamespaceLister.
 type OrganizationAdminAccountNamespaceListerExpansion interface{}
 
+// OrganizationConfigurationListerExpansion allows custom methods to be added to
+// OrganizationConfigurationLister.
+type OrganizationConfigurationListerExpansion interface{}
+
+// OrganizationConfigurationNamespaceListerExpansion allows custom methods to be added to
+// OrganizationConfigurationNamespaceLister.
+type OrganizationConfigurationNamespaceListerExpansion interface{}
+
 // ProductSubscriptionListerExpansion allows custom methods to be added to
 // ProductSubscriptionLister.
 type ProductSubscriptionListerExpansion interface{}
@@ -73,6 +89,14 @@ type ProductSubscriptionListerExpansion interface{}
 // ProductSubscriptionNamespaceListerExpansion allows custom methods to be added to
 // ProductSubscriptionNamespaceLister.
 type ProductSubscriptionNamespaceListerExpansion interface{}
+
+// StandardsControlListerExpansion allows custom methods to be added to
+// StandardsControlLister.
+type StandardsControlListerExpansion interface{}
+
+// StandardsControlNamespaceListerExpansion allows custom methods to be added to
+// StandardsControlNamespaceLister.
+type StandardsControlNamespaceListerExpansion interface{}
 
 // StandardsSubscriptionListerExpansion allows custom methods to be added to
 // StandardsSubscriptionLister.

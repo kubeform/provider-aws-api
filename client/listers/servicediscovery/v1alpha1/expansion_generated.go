@@ -26,6 +26,14 @@ type HttpNamespaceListerExpansion interface{}
 // HttpNamespaceNamespaceLister.
 type HttpNamespaceNamespaceListerExpansion interface{}
 
+// InstanceListerExpansion allows custom methods to be added to
+// InstanceLister.
+type InstanceListerExpansion interface{}
+
+// InstanceNamespaceListerExpansion allows custom methods to be added to
+// InstanceNamespaceLister.
+type InstanceNamespaceListerExpansion interface{}
+
 // PrivateDNSNamespaceListerExpansion allows custom methods to be added to
 // PrivateDNSNamespaceLister.
 type PrivateDNSNamespaceListerExpansion interface{}

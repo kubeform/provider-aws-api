@@ -27,3 +27,7 @@ type ExternalKeyExpansion interface{}
 type GrantExpansion interface{}
 
 type KeyExpansion interface{}
+
+type ReplicaExternalKeyExpansion interface{}
+
+type ReplicaKeyExpansion interface{}

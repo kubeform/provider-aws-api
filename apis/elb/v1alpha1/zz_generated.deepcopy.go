@@ -405,6 +405,11 @@ func (in *ElbSpecResource) DeepCopyInto(out *ElbSpecResource) {
 		*out = new(bool)
 		**out = **in
 	}
+	if in.DesyncMitigationMode != nil {
+		in, out := &in.DesyncMitigationMode, &out.DesyncMitigationMode
+		*out = new(string)
+		**out = **in
+	}
 	if in.DnsName != nil {
 		in, out := &in.DnsName, &out.DnsName
 		*out = new(string)

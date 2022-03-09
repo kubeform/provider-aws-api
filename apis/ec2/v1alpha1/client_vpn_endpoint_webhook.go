@@ -42,12 +42,13 @@ func (r *ClientVPNEndpoint) SetupWebhookWithManager(mgr ctrl.Manager) error {
 var _ webhook.Validator = &ClientVPNEndpoint{}
 
 var clientvpnendpointForceNewList = map[string]bool{
-	"/authentication_options/*/active_directory_id":        true,
-	"/authentication_options/*/root_certificate_chain_arn": true,
-	"/authentication_options/*/saml_provider_arn":          true,
-	"/authentication_options/*/type":                       true,
-	"/client_cidr_block":                                   true,
-	"/transport_protocol":                                  true,
+	"/authentication_options/*/active_directory_id":            true,
+	"/authentication_options/*/root_certificate_chain_arn":     true,
+	"/authentication_options/*/saml_provider_arn":              true,
+	"/authentication_options/*/self_service_saml_provider_arn": true,
+	"/authentication_options/*/type":                           true,
+	"/client_cidr_block":                                       true,
+	"/transport_protocol":                                      true,
 }
 
 // ValidateCreate implements webhook.Validator so a webhook will be registered for the type
@@ -93,7 +94,7 @@ func (r *ClientVPNEndpoint) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range clientvpnendpointForceNewList {
+	for key, _ := range clientvpnendpointForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

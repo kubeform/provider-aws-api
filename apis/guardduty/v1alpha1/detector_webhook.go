@@ -86,7 +86,7 @@ func (r *Detector) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range detectorForceNewList {
+	for key, _ := range detectorForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

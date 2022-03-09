@@ -59,8 +59,15 @@ spec:
                 properties:
                   arn:
                     type: string
+                  buildArn:
+                    type: string
                   buildID:
                     type: string
+                  certificateConfiguration:
+                    properties:
+                      certificateType:
+                        type: string
+                    type: object
                   description:
                     type: string
                   ec2InboundPermission:
@@ -140,6 +147,10 @@ spec:
                         maxItems: 50
                         type: array
                     type: object
+                  scriptArn:
+                    type: string
+                  scriptID:
+                    type: string
                   tags:
                     additionalProperties:
                       type: string
@@ -187,7 +198,6 @@ spec:
                         type: integer
                     type: object
                 required:
-                - buildID
                 - ec2InstanceType
                 - name
                 type: object
@@ -195,8 +205,15 @@ spec:
                 properties:
                   arn:
                     type: string
+                  buildArn:
+                    type: string
                   buildID:
                     type: string
+                  certificateConfiguration:
+                    properties:
+                      certificateType:
+                        type: string
+                    type: object
                   description:
                     type: string
                   ec2InboundPermission:
@@ -276,6 +293,10 @@ spec:
                         maxItems: 50
                         type: array
                     type: object
+                  scriptArn:
+                    type: string
+                  scriptID:
+                    type: string
                   tags:
                     additionalProperties:
                       type: string
@@ -323,7 +344,6 @@ spec:
                         type: integer
                     type: object
                 required:
-                - buildID
                 - ec2InstanceType
                 - name
                 type: object

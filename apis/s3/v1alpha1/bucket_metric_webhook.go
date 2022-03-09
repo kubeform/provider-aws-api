@@ -89,7 +89,7 @@ func (r *BucketMetric) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range bucketmetricForceNewList {
+	for key, _ := range bucketmetricForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

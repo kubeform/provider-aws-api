@@ -59,12 +59,18 @@ spec:
                 properties:
                   accountID:
                     type: string
+                  alias:
+                    type: string
                   arn:
                     type: string
                   bucket:
                     type: string
                   domainName:
                     type: string
+                  endpoints:
+                    additionalProperties:
+                      type: string
+                    type: object
                   hasPublicAccessPolicy:
                     type: boolean
                   id:
@@ -101,12 +107,18 @@ spec:
                 properties:
                   accountID:
                     type: string
+                  alias:
+                    type: string
                   arn:
                     type: string
                   bucket:
                     type: string
                   domainName:
                     type: string
+                  endpoints:
+                    additionalProperties:
+                      type: string
+                    type: object
                   hasPublicAccessPolicy:
                     type: boolean
                   id:

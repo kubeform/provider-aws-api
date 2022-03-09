@@ -33,6 +33,10 @@ func (c *FakeNetworkV1alpha1) Acls(namespace string) v1alpha1.AclInterface {
 	return &FakeAcls{c, namespace}
 }
 
+func (c *FakeNetworkV1alpha1) AclAssociations(namespace string) v1alpha1.AclAssociationInterface {
+	return &FakeAclAssociations{c, namespace}
+}
+
 func (c *FakeNetworkV1alpha1) AclRules(namespace string) v1alpha1.AclRuleInterface {
 	return &FakeAclRules{c, namespace}
 }

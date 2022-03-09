@@ -90,7 +90,7 @@ func (r *LogSubscriptionFilter) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range logsubscriptionfilterForceNewList {
+	for key, _ := range logsubscriptionfilterForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

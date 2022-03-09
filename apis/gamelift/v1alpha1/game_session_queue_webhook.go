@@ -88,7 +88,7 @@ func (r *GameSessionQueue) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range gamesessionqueueForceNewList {
+	for key, _ := range gamesessionqueueForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

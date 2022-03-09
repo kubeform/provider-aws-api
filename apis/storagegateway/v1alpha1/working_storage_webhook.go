@@ -89,7 +89,7 @@ func (r *WorkingStorage) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range workingstorageForceNewList {
+	for key, _ := range workingstorageForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

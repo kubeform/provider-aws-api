@@ -42,7 +42,8 @@ func (r *TransitGateway) SetupWebhookWithManager(mgr ctrl.Manager) error {
 var _ webhook.Validator = &TransitGateway{}
 
 var transitgatewayForceNewList = map[string]bool{
-	"/amazon_side_asn": true,
+	"/amazon_side_asn":   true,
+	"/multicast_support": true,
 }
 
 // ValidateCreate implements webhook.Validator so a webhook will be registered for the type
@@ -88,7 +89,7 @@ func (r *TransitGateway) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range transitgatewayForceNewList {
+	for key, _ := range transitgatewayForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

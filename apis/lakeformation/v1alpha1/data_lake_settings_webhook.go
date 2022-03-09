@@ -88,7 +88,7 @@ func (r *DataLakeSettings) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range datalakesettingsForceNewList {
+	for key, _ := range datalakesettingsForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

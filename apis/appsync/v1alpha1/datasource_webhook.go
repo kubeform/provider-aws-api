@@ -86,7 +86,7 @@ func (r *Datasource) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range datasourceForceNewList {
+	for key, _ := range datasourceForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

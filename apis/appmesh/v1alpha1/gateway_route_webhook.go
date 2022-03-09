@@ -91,7 +91,7 @@ func (r *GatewayRoute) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range gatewayrouteForceNewList {
+	for key, _ := range gatewayrouteForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

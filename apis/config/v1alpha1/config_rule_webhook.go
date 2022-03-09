@@ -86,7 +86,7 @@ func (r *ConfigRule) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range configruleForceNewList {
+	for key, _ := range configruleForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

@@ -42,10 +42,12 @@ func (r *SmbFileShare) SetupWebhookWithManager(mgr ctrl.Manager) error {
 var _ webhook.Validator = &SmbFileShare{}
 
 var smbfileshareForceNewList = map[string]bool{
-	"/authentication": true,
-	"/gateway_arn":    true,
-	"/location_arn":   true,
-	"/role_arn":       true,
+	"/authentication":        true,
+	"/bucket_region":         true,
+	"/gateway_arn":           true,
+	"/location_arn":          true,
+	"/role_arn":              true,
+	"/vpc_endpoint_dns_name": true,
 }
 
 // ValidateCreate implements webhook.Validator so a webhook will be registered for the type
@@ -91,7 +93,7 @@ func (r *SmbFileShare) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range smbfileshareForceNewList {
+	for key, _ := range smbfileshareForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

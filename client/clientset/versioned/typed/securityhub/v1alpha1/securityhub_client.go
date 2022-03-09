@@ -29,11 +29,14 @@ type SecurityhubV1alpha1Interface interface {
 	RESTClient() rest.Interface
 	AccountsGetter
 	ActionTargetsGetter
+	FindingAggregatorsGetter
 	InsightsGetter
 	InviteAcceptersGetter
 	MembersGetter
 	OrganizationAdminAccountsGetter
+	OrganizationConfigurationsGetter
 	ProductSubscriptionsGetter
+	StandardsControlsGetter
 	StandardsSubscriptionsGetter
 }
 
@@ -48,6 +51,10 @@ func (c *SecurityhubV1alpha1Client) Accounts(namespace string) AccountInterface 
 
 func (c *SecurityhubV1alpha1Client) ActionTargets(namespace string) ActionTargetInterface {
 	return newActionTargets(c, namespace)
+}
+
+func (c *SecurityhubV1alpha1Client) FindingAggregators(namespace string) FindingAggregatorInterface {
+	return newFindingAggregators(c, namespace)
 }
 
 func (c *SecurityhubV1alpha1Client) Insights(namespace string) InsightInterface {
@@ -66,8 +73,16 @@ func (c *SecurityhubV1alpha1Client) OrganizationAdminAccounts(namespace string) 
 	return newOrganizationAdminAccounts(c, namespace)
 }
 
+func (c *SecurityhubV1alpha1Client) OrganizationConfigurations(namespace string) OrganizationConfigurationInterface {
+	return newOrganizationConfigurations(c, namespace)
+}
+
 func (c *SecurityhubV1alpha1Client) ProductSubscriptions(namespace string) ProductSubscriptionInterface {
 	return newProductSubscriptions(c, namespace)
+}
+
+func (c *SecurityhubV1alpha1Client) StandardsControls(namespace string) StandardsControlInterface {
+	return newStandardsControls(c, namespace)
 }
 
 func (c *SecurityhubV1alpha1Client) StandardsSubscriptions(namespace string) StandardsSubscriptionInterface {

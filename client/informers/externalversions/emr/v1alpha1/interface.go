@@ -34,6 +34,10 @@ type Interface interface {
 	ManagedScalingPolicies() ManagedScalingPolicyInformer
 	// SecurityConfigurations returns a SecurityConfigurationInformer.
 	SecurityConfigurations() SecurityConfigurationInformer
+	// Studios returns a StudioInformer.
+	Studios() StudioInformer
+	// StudioSessionMappings returns a StudioSessionMappingInformer.
+	StudioSessionMappings() StudioSessionMappingInformer
 }
 
 type version struct {
@@ -70,4 +74,14 @@ func (v *version) ManagedScalingPolicies() ManagedScalingPolicyInformer {
 // SecurityConfigurations returns a SecurityConfigurationInformer.
 func (v *version) SecurityConfigurations() SecurityConfigurationInformer {
 	return &securityConfigurationInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
+// Studios returns a StudioInformer.
+func (v *version) Studios() StudioInformer {
+	return &studioInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
+// StudioSessionMappings returns a StudioSessionMappingInformer.
+func (v *version) StudioSessionMappings() StudioSessionMappingInformer {
+	return &studioSessionMappingInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
 }

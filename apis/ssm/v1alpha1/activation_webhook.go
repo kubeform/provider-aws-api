@@ -93,7 +93,7 @@ func (r *Activation) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range activationForceNewList {
+	for key, _ := range activationForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

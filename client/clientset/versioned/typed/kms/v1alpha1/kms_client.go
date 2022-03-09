@@ -32,6 +32,8 @@ type KmsV1alpha1Interface interface {
 	ExternalKeysGetter
 	GrantsGetter
 	KeysGetter
+	ReplicaExternalKeysGetter
+	ReplicaKeysGetter
 }
 
 // KmsV1alpha1Client is used to interact with features provided by the kms.aws.kubeform.com group.
@@ -57,6 +59,14 @@ func (c *KmsV1alpha1Client) Grants(namespace string) GrantInterface {
 
 func (c *KmsV1alpha1Client) Keys(namespace string) KeyInterface {
 	return newKeys(c, namespace)
+}
+
+func (c *KmsV1alpha1Client) ReplicaExternalKeys(namespace string) ReplicaExternalKeyInterface {
+	return newReplicaExternalKeys(c, namespace)
+}
+
+func (c *KmsV1alpha1Client) ReplicaKeys(namespace string) ReplicaKeyInterface {
+	return newReplicaKeys(c, namespace)
 }
 
 // NewForConfig creates a new KmsV1alpha1Client for the given config.

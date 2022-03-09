@@ -57,6 +57,55 @@ spec:
                 type: object
               resource:
                 properties:
+                  advancedEventSelector:
+                    items:
+                      properties:
+                        fieldSelector:
+                          items:
+                            properties:
+                              endsWith:
+                                items:
+                                  type: string
+                                minItems: 1
+                                type: array
+                              equals:
+                                items:
+                                  type: string
+                                minItems: 1
+                                type: array
+                              field:
+                                type: string
+                              notEndsWith:
+                                items:
+                                  type: string
+                                minItems: 1
+                                type: array
+                              notEquals:
+                                items:
+                                  type: string
+                                minItems: 1
+                                type: array
+                              notStartsWith:
+                                items:
+                                  type: string
+                                minItems: 1
+                                type: array
+                              startsWith:
+                                items:
+                                  type: string
+                                minItems: 1
+                                type: array
+                            required:
+                            - field
+                            type: object
+                          minItems: 1
+                          type: array
+                        name:
+                          type: string
+                      required:
+                      - fieldSelector
+                      type: object
+                    type: array
                   arn:
                     type: string
                   cloudWatchLogsGroupArn:
@@ -84,6 +133,10 @@ spec:
                             - type
                             - values
                             type: object
+                          type: array
+                        excludeManagementEventSources:
+                          items:
+                            type: string
                           type: array
                         includeManagementEvents:
                           type: boolean
@@ -135,6 +188,55 @@ spec:
                 type: object
               state:
                 properties:
+                  advancedEventSelector:
+                    items:
+                      properties:
+                        fieldSelector:
+                          items:
+                            properties:
+                              endsWith:
+                                items:
+                                  type: string
+                                minItems: 1
+                                type: array
+                              equals:
+                                items:
+                                  type: string
+                                minItems: 1
+                                type: array
+                              field:
+                                type: string
+                              notEndsWith:
+                                items:
+                                  type: string
+                                minItems: 1
+                                type: array
+                              notEquals:
+                                items:
+                                  type: string
+                                minItems: 1
+                                type: array
+                              notStartsWith:
+                                items:
+                                  type: string
+                                minItems: 1
+                                type: array
+                              startsWith:
+                                items:
+                                  type: string
+                                minItems: 1
+                                type: array
+                            required:
+                            - field
+                            type: object
+                          minItems: 1
+                          type: array
+                        name:
+                          type: string
+                      required:
+                      - fieldSelector
+                      type: object
+                    type: array
                   arn:
                     type: string
                   cloudWatchLogsGroupArn:
@@ -162,6 +264,10 @@ spec:
                             - type
                             - values
                             type: object
+                          type: array
+                        excludeManagementEventSources:
+                          items:
+                            type: string
                           type: array
                         includeManagementEvents:
                           type: boolean

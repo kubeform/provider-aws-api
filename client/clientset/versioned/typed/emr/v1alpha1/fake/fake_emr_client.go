@@ -49,6 +49,14 @@ func (c *FakeEmrV1alpha1) SecurityConfigurations(namespace string) v1alpha1.Secu
 	return &FakeSecurityConfigurations{c, namespace}
 }
 
+func (c *FakeEmrV1alpha1) Studios(namespace string) v1alpha1.StudioInterface {
+	return &FakeStudios{c, namespace}
+}
+
+func (c *FakeEmrV1alpha1) StudioSessionMappings(namespace string) v1alpha1.StudioSessionMappingInterface {
+	return &FakeStudioSessionMappings{c, namespace}
+}
+
 // RESTClient returns a RESTClient that is used to communicate
 // with API server by this client implementation.
 func (c *FakeEmrV1alpha1) RESTClient() rest.Interface {

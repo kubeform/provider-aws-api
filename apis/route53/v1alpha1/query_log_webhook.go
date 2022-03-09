@@ -89,7 +89,7 @@ func (r *QueryLog) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range querylogForceNewList {
+	for key, _ := range querylogForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

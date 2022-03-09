@@ -41,6 +41,15 @@ type Cluster struct {
 	Status            ClusterStatus `json:"status,omitempty"`
 }
 
+type ClusterSpecClusterNodes struct {
+	// +optional
+	NodeRole *string `json:"nodeRole,omitempty" tf:"node_role"`
+	// +optional
+	PrivateIPAddress *string `json:"privateIPAddress,omitempty" tf:"private_ip_address"`
+	// +optional
+	PublicIPAddress *string `json:"publicIPAddress,omitempty" tf:"public_ip_address"`
+}
+
 type ClusterSpecLogging struct {
 	// +optional
 	BucketName *string `json:"bucketName,omitempty" tf:"bucket_name"`
@@ -87,6 +96,8 @@ type ClusterSpecResource struct {
 	// +optional
 	AvailabilityZone  *string `json:"availabilityZone,omitempty" tf:"availability_zone"`
 	ClusterIdentifier *string `json:"clusterIdentifier" tf:"cluster_identifier"`
+	// +optional
+	ClusterNodes []ClusterSpecClusterNodes `json:"clusterNodes,omitempty" tf:"cluster_nodes"`
 	// +optional
 	ClusterParameterGroupName *string `json:"clusterParameterGroupName,omitempty" tf:"cluster_parameter_group_name"`
 	// +optional

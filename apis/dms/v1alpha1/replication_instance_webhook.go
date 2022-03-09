@@ -92,7 +92,7 @@ func (r *ReplicationInstance) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range replicationinstanceForceNewList {
+	for key, _ := range replicationinstanceForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

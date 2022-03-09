@@ -104,7 +104,7 @@ func (r *InstanceFleet) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range instancefleetForceNewList {
+	for key, _ := range instancefleetForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

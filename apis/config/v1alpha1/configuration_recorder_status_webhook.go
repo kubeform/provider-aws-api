@@ -86,7 +86,7 @@ func (r *ConfigurationRecorderStatus) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range configurationrecorderstatusForceNewList {
+	for key, _ := range configurationrecorderstatusForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

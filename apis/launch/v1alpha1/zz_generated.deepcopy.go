@@ -909,6 +909,11 @@ func (in *TemplateSpecMetadataOptions) DeepCopyInto(out *TemplateSpecMetadataOpt
 		*out = new(string)
 		**out = **in
 	}
+	if in.HttpProtocolIpv6 != nil {
+		in, out := &in.HttpProtocolIpv6, &out.HttpProtocolIpv6
+		*out = new(string)
+		**out = **in
+	}
 	if in.HttpPutResponseHopLimit != nil {
 		in, out := &in.HttpPutResponseHopLimit, &out.HttpPutResponseHopLimit
 		*out = new(int64)
@@ -916,6 +921,11 @@ func (in *TemplateSpecMetadataOptions) DeepCopyInto(out *TemplateSpecMetadataOpt
 	}
 	if in.HttpTokens != nil {
 		in, out := &in.HttpTokens, &out.HttpTokens
+		*out = new(string)
+		**out = **in
+	}
+	if in.InstanceMetadataTags != nil {
+		in, out := &in.InstanceMetadataTags, &out.InstanceMetadataTags
 		*out = new(string)
 		**out = **in
 	}
@@ -1005,6 +1015,11 @@ func (in *TemplateSpecNetworkInterfaces) DeepCopyInto(out *TemplateSpecNetworkIn
 		in, out := &in.Ipv6Addresses, &out.Ipv6Addresses
 		*out = make([]string, len(*in))
 		copy(*out, *in)
+	}
+	if in.NetworkCardIndex != nil {
+		in, out := &in.NetworkCardIndex, &out.NetworkCardIndex
+		*out = new(int64)
+		**out = **in
 	}
 	if in.NetworkInterfaceID != nil {
 		in, out := &in.NetworkInterfaceID, &out.NetworkInterfaceID

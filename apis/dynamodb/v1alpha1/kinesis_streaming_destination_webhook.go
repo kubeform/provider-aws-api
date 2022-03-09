@@ -89,7 +89,7 @@ func (r *KinesisStreamingDestination) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range kinesisstreamingdestinationForceNewList {
+	for key, _ := range kinesisstreamingdestinationForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

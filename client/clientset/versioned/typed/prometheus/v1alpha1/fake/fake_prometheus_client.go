@@ -29,6 +29,14 @@ type FakePrometheusV1alpha1 struct {
 	*testing.Fake
 }
 
+func (c *FakePrometheusV1alpha1) AlertManagerDefinitions(namespace string) v1alpha1.AlertManagerDefinitionInterface {
+	return &FakeAlertManagerDefinitions{c, namespace}
+}
+
+func (c *FakePrometheusV1alpha1) RuleGroupNamespaces(namespace string) v1alpha1.RuleGroupNamespaceInterface {
+	return &FakeRuleGroupNamespaces{c, namespace}
+}
+
 func (c *FakePrometheusV1alpha1) Workspaces(namespace string) v1alpha1.WorkspaceInterface {
 	return &FakeWorkspaces{c, namespace}
 }

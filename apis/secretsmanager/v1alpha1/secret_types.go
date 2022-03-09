@@ -41,6 +41,18 @@ type Secret struct {
 	Status            SecretStatus `json:"status,omitempty"`
 }
 
+type SecretSpecReplica struct {
+	// +optional
+	KmsKeyID *string `json:"kmsKeyID,omitempty" tf:"kms_key_id"`
+	// +optional
+	LastAccessedDate *string `json:"lastAccessedDate,omitempty" tf:"last_accessed_date"`
+	Region           *string `json:"region" tf:"region"`
+	// +optional
+	Status *string `json:"status,omitempty" tf:"status"`
+	// +optional
+	StatusMessage *string `json:"statusMessage,omitempty" tf:"status_message"`
+}
+
 type SecretSpecRotationRules struct {
 	AutomaticallyAfterDays *int64 `json:"automaticallyAfterDays" tf:"automatically_after_days"`
 }
@@ -67,6 +79,8 @@ type SecretSpecResource struct {
 	// +optional
 	Description *string `json:"description,omitempty" tf:"description"`
 	// +optional
+	ForceOverwriteReplicaSecret *bool `json:"forceOverwriteReplicaSecret,omitempty" tf:"force_overwrite_replica_secret"`
+	// +optional
 	KmsKeyID *string `json:"kmsKeyID,omitempty" tf:"kms_key_id"`
 	// +optional
 	Name *string `json:"name,omitempty" tf:"name"`
@@ -76,6 +90,8 @@ type SecretSpecResource struct {
 	Policy *string `json:"policy,omitempty" tf:"policy"`
 	// +optional
 	RecoveryWindowInDays *int64 `json:"recoveryWindowInDays,omitempty" tf:"recovery_window_in_days"`
+	// +optional
+	Replica []SecretSpecReplica `json:"replica,omitempty" tf:"replica"`
 	// +optional
 	// Deprecated
 	RotationEnabled *bool `json:"rotationEnabled,omitempty" tf:"rotation_enabled"`

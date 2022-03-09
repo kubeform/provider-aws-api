@@ -95,7 +95,7 @@ func (r *FirehoseDeliveryStream) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range firehosedeliverystreamForceNewList {
+	for key, _ := range firehosedeliverystreamForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

@@ -50,6 +50,14 @@ type ClusterParameterGroupListerExpansion interface{}
 // ClusterParameterGroupNamespaceLister.
 type ClusterParameterGroupNamespaceListerExpansion interface{}
 
+// ClusterRoleAssociationListerExpansion allows custom methods to be added to
+// ClusterRoleAssociationLister.
+type ClusterRoleAssociationListerExpansion interface{}
+
+// ClusterRoleAssociationNamespaceListerExpansion allows custom methods to be added to
+// ClusterRoleAssociationNamespaceLister.
+type ClusterRoleAssociationNamespaceListerExpansion interface{}
+
 // GlobalClusterListerExpansion allows custom methods to be added to
 // GlobalClusterLister.
 type GlobalClusterListerExpansion interface{}

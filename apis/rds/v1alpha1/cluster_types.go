@@ -121,9 +121,13 @@ type ClusterSpecResource struct {
 	// +optional
 	DbClusterParameterGroupName *string `json:"dbClusterParameterGroupName,omitempty" tf:"db_cluster_parameter_group_name"`
 	// +optional
+	DbInstanceParameterGroupName *string `json:"dbInstanceParameterGroupName,omitempty" tf:"db_instance_parameter_group_name"`
+	// +optional
 	DbSubnetGroupName *string `json:"dbSubnetGroupName,omitempty" tf:"db_subnet_group_name"`
 	// +optional
 	DeletionProtection *bool `json:"deletionProtection,omitempty" tf:"deletion_protection"`
+	// +optional
+	EnableGlobalWriteForwarding *bool `json:"enableGlobalWriteForwarding,omitempty" tf:"enable_global_write_forwarding"`
 	// +optional
 	EnableHTTPEndpoint *bool `json:"enableHTTPEndpoint,omitempty" tf:"enable_http_endpoint"`
 	// +optional
@@ -136,6 +140,8 @@ type ClusterSpecResource struct {
 	EngineMode *string `json:"engineMode,omitempty" tf:"engine_mode"`
 	// +optional
 	EngineVersion *string `json:"engineVersion,omitempty" tf:"engine_version"`
+	// +optional
+	EngineVersionActual *string `json:"engineVersionActual,omitempty" tf:"engine_version_actual"`
 	// +optional
 	FinalSnapshotIdentifier *string `json:"finalSnapshotIdentifier,omitempty" tf:"final_snapshot_identifier"`
 	// +optional

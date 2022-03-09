@@ -90,7 +90,7 @@ func (r *BudgetAction) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range budgetactionForceNewList {
+	for key, _ := range budgetactionForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

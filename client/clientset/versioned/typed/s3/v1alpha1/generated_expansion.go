@@ -24,9 +24,21 @@ type AccountPublicAccessBlockExpansion interface{}
 
 type BucketExpansion interface{}
 
+type BucketACLExpansion interface{}
+
+type BucketAccelerateConfigurationExpansion interface{}
+
 type BucketAnalyticsConfigurationExpansion interface{}
 
+type BucketCorsConfigurationExpansion interface{}
+
+type BucketIntelligentTieringConfigurationExpansion interface{}
+
 type BucketInventoryExpansion interface{}
+
+type BucketLifecycleConfigurationExpansion interface{}
+
+type BucketLoggingExpansion interface{}
 
 type BucketMetricExpansion interface{}
 
@@ -34,10 +46,24 @@ type BucketNotificationExpansion interface{}
 
 type BucketObjectExpansion interface{}
 
+type BucketObjectLockConfigurationExpansion interface{}
+
 type BucketOwnershipControlsExpansion interface{}
 
 type BucketPolicyExpansion interface{}
 
 type BucketPublicAccessBlockExpansion interface{}
+
+type BucketReplicationConfigurationExpansion interface{}
+
+type BucketRequestPaymentConfigurationExpansion interface{}
+
+type BucketServerSideEncryptionConfigurationExpansion interface{}
+
+type BucketVersioningExpansion interface{}
+
+type BucketWebsiteConfigurationExpansion interface{}
+
+type ObjectExpansion interface{}
 
 type ObjectCopyExpansion interface{}

@@ -60,13 +60,36 @@ type DistributionConfigurationSpecDistributionAmiDistributionConfiguration struc
 	// +optional
 	Name *string `json:"name,omitempty" tf:"name"`
 	// +optional
-	// +kubebuilder:validation:MaxItems=50
 	TargetAccountIDS []string `json:"targetAccountIDS,omitempty" tf:"target_account_ids"`
+}
+
+type DistributionConfigurationSpecDistributionContainerDistributionConfigurationTargetRepository struct {
+	RepositoryName *string `json:"repositoryName" tf:"repository_name"`
+	Service        *string `json:"service" tf:"service"`
+}
+
+type DistributionConfigurationSpecDistributionContainerDistributionConfiguration struct {
+	// +optional
+	ContainerTags []string `json:"containerTags,omitempty" tf:"container_tags"`
+	// +optional
+	Description      *string                                                                                      `json:"description,omitempty" tf:"description"`
+	TargetRepository *DistributionConfigurationSpecDistributionContainerDistributionConfigurationTargetRepository `json:"targetRepository" tf:"target_repository"`
+}
+
+type DistributionConfigurationSpecDistributionLaunchTemplateConfiguration struct {
+	// +optional
+	Default          *bool   `json:"default,omitempty" tf:"default"`
+	LaunchTemplateID *string `json:"launchTemplateID" tf:"launch_template_id"`
 }
 
 type DistributionConfigurationSpecDistribution struct {
 	// +optional
 	AmiDistributionConfiguration *DistributionConfigurationSpecDistributionAmiDistributionConfiguration `json:"amiDistributionConfiguration,omitempty" tf:"ami_distribution_configuration"`
+	// +optional
+	ContainerDistributionConfiguration *DistributionConfigurationSpecDistributionContainerDistributionConfiguration `json:"containerDistributionConfiguration,omitempty" tf:"container_distribution_configuration"`
+	// +optional
+	// +kubebuilder:validation:MaxItems=100
+	LaunchTemplateConfiguration []DistributionConfigurationSpecDistributionLaunchTemplateConfiguration `json:"launchTemplateConfiguration,omitempty" tf:"launch_template_configuration"`
 	// +optional
 	LicenseConfigurationArns []string `json:"licenseConfigurationArns,omitempty" tf:"license_configuration_arns"`
 	Region                   *string  `json:"region" tf:"region"`

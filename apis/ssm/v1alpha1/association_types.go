@@ -45,10 +45,13 @@ type AssociationSpecOutputLocation struct {
 	S3BucketName *string `json:"s3BucketName" tf:"s3_bucket_name"`
 	// +optional
 	S3KeyPrefix *string `json:"s3KeyPrefix,omitempty" tf:"s3_key_prefix"`
+	// +optional
+	S3Region *string `json:"s3Region,omitempty" tf:"s3_region"`
 }
 
 type AssociationSpecTargets struct {
-	Key    *string  `json:"key" tf:"key"`
+	Key *string `json:"key" tf:"key"`
+	// +kubebuilder:validation:MaxItems=50
 	Values []string `json:"values" tf:"values"`
 }
 
@@ -72,6 +75,8 @@ type AssociationSpecResource struct {
 	// +optional
 	ApplyOnlyAtCronInterval *bool `json:"applyOnlyAtCronInterval,omitempty" tf:"apply_only_at_cron_interval"`
 	// +optional
+	Arn *string `json:"arn,omitempty" tf:"arn"`
+	// +optional
 	AssociationID *string `json:"associationID,omitempty" tf:"association_id"`
 	// +optional
 	AssociationName *string `json:"associationName,omitempty" tf:"association_name"`
@@ -82,6 +87,7 @@ type AssociationSpecResource struct {
 	// +optional
 	DocumentVersion *string `json:"documentVersion,omitempty" tf:"document_version"`
 	// +optional
+	// Deprecated
 	InstanceID *string `json:"instanceID,omitempty" tf:"instance_id"`
 	// +optional
 	MaxConcurrency *string `json:"maxConcurrency,omitempty" tf:"max_concurrency"`
@@ -97,6 +103,8 @@ type AssociationSpecResource struct {
 	// +optional
 	// +kubebuilder:validation:MaxItems=5
 	Targets []AssociationSpecTargets `json:"targets,omitempty" tf:"targets"`
+	// +optional
+	WaitForSuccessTimeoutSeconds *int64 `json:"waitForSuccessTimeoutSeconds,omitempty" tf:"wait_for_success_timeout_seconds"`
 }
 
 type AssociationStatus struct {

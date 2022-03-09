@@ -73,6 +73,7 @@ type RouteSpecResource struct {
 	// +optional
 	GatewayID *string `json:"gatewayID,omitempty" tf:"gateway_id"`
 	// +optional
+	// Deprecated
 	InstanceID *string `json:"instanceID,omitempty" tf:"instance_id"`
 	// +optional
 	InstanceOwnerID *string `json:"instanceOwnerID,omitempty" tf:"instance_owner_id"`

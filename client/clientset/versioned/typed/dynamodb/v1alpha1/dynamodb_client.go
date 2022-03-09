@@ -31,6 +31,7 @@ type DynamodbV1alpha1Interface interface {
 	KinesisStreamingDestinationsGetter
 	TablesGetter
 	TableItemsGetter
+	TagsGetter
 }
 
 // DynamodbV1alpha1Client is used to interact with features provided by the dynamodb.aws.kubeform.com group.
@@ -52,6 +53,10 @@ func (c *DynamodbV1alpha1Client) Tables(namespace string) TableInterface {
 
 func (c *DynamodbV1alpha1Client) TableItems(namespace string) TableItemInterface {
 	return newTableItems(c, namespace)
+}
+
+func (c *DynamodbV1alpha1Client) Tags(namespace string) TagInterface {
+	return newTags(c, namespace)
 }
 
 // NewForConfig creates a new DynamodbV1alpha1Client for the given config.

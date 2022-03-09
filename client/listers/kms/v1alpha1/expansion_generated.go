@@ -57,3 +57,19 @@ type KeyListerExpansion interface{}
 // KeyNamespaceListerExpansion allows custom methods to be added to
 // KeyNamespaceLister.
 type KeyNamespaceListerExpansion interface{}
+
+// ReplicaExternalKeyListerExpansion allows custom methods to be added to
+// ReplicaExternalKeyLister.
+type ReplicaExternalKeyListerExpansion interface{}
+
+// ReplicaExternalKeyNamespaceListerExpansion allows custom methods to be added to
+// ReplicaExternalKeyNamespaceLister.
+type ReplicaExternalKeyNamespaceListerExpansion interface{}
+
+// ReplicaKeyListerExpansion allows custom methods to be added to
+// ReplicaKeyLister.
+type ReplicaKeyListerExpansion interface{}
+
+// ReplicaKeyNamespaceListerExpansion allows custom methods to be added to
+// ReplicaKeyNamespaceLister.
+type ReplicaKeyNamespaceListerExpansion interface{}

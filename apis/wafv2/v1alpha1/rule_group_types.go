@@ -41,6 +41,12 @@ type RuleGroup struct {
 	Status            RuleGroupStatus `json:"status,omitempty"`
 }
 
+type RuleGroupSpecCustomResponseBody struct {
+	Content     *string `json:"content" tf:"content"`
+	ContentType *string `json:"contentType" tf:"content_type"`
+	Key         *string `json:"key" tf:"key"`
+}
+
 type RuleGroupSpecRuleActionAllowCustomRequestHandlingInsertHeader struct {
 	Name  *string `json:"name" tf:"name"`
 	Value *string `json:"value" tf:"value"`
@@ -62,7 +68,9 @@ type RuleGroupSpecRuleActionBlockCustomResponseResponseHeader struct {
 }
 
 type RuleGroupSpecRuleActionBlockCustomResponse struct {
-	ResponseCode *int64 `json:"responseCode" tf:"response_code"`
+	// +optional
+	CustomResponseBodyKey *string `json:"customResponseBodyKey,omitempty" tf:"custom_response_body_key"`
+	ResponseCode          *int64  `json:"responseCode" tf:"response_code"`
 	// +optional
 	ResponseHeader []RuleGroupSpecRuleActionBlockCustomResponseResponseHeader `json:"responseHeader,omitempty" tf:"response_header"`
 }
@@ -94,6 +102,10 @@ type RuleGroupSpecRuleAction struct {
 	Block *RuleGroupSpecRuleActionBlock `json:"block,omitempty" tf:"block"`
 	// +optional
 	Count *RuleGroupSpecRuleActionCount `json:"count,omitempty" tf:"count"`
+}
+
+type RuleGroupSpecRuleRuleLabel struct {
+	Name *string `json:"name" tf:"name"`
 }
 
 type RuleGroupSpecRuleStatementAndStatementStatementAndStatementStatementByteMatchStatementFieldToMatchAllQueryArguments struct{}
@@ -166,6 +178,11 @@ type RuleGroupSpecRuleStatementAndStatementStatementAndStatementStatementIpSetRe
 	Arn *string `json:"arn" tf:"arn"`
 	// +optional
 	IpSetForwardedIPConfig *RuleGroupSpecRuleStatementAndStatementStatementAndStatementStatementIpSetReferenceStatementIpSetForwardedIPConfig `json:"ipSetForwardedIPConfig,omitempty" tf:"ip_set_forwarded_ip_config"`
+}
+
+type RuleGroupSpecRuleStatementAndStatementStatementAndStatementStatementLabelMatchStatement struct {
+	Key   *string `json:"key" tf:"key"`
+	Scope *string `json:"scope" tf:"scope"`
 }
 
 type RuleGroupSpecRuleStatementAndStatementStatementAndStatementStatementRegexPatternSetReferenceStatementFieldToMatchAllQueryArguments struct{}
@@ -363,6 +380,8 @@ type RuleGroupSpecRuleStatementAndStatementStatementAndStatementStatement struct
 	// +optional
 	IpSetReferenceStatement *RuleGroupSpecRuleStatementAndStatementStatementAndStatementStatementIpSetReferenceStatement `json:"ipSetReferenceStatement,omitempty" tf:"ip_set_reference_statement"`
 	// +optional
+	LabelMatchStatement *RuleGroupSpecRuleStatementAndStatementStatementAndStatementStatementLabelMatchStatement `json:"labelMatchStatement,omitempty" tf:"label_match_statement"`
+	// +optional
 	RegexPatternSetReferenceStatement *RuleGroupSpecRuleStatementAndStatementStatementAndStatementStatementRegexPatternSetReferenceStatement `json:"regexPatternSetReferenceStatement,omitempty" tf:"regex_pattern_set_reference_statement"`
 	// +optional
 	SizeConstraintStatement *RuleGroupSpecRuleStatementAndStatementStatementAndStatementStatementSizeConstraintStatement `json:"sizeConstraintStatement,omitempty" tf:"size_constraint_statement"`
@@ -448,6 +467,11 @@ type RuleGroupSpecRuleStatementAndStatementStatementIpSetReferenceStatement stru
 	IpSetForwardedIPConfig *RuleGroupSpecRuleStatementAndStatementStatementIpSetReferenceStatementIpSetForwardedIPConfig `json:"ipSetForwardedIPConfig,omitempty" tf:"ip_set_forwarded_ip_config"`
 }
 
+type RuleGroupSpecRuleStatementAndStatementStatementLabelMatchStatement struct {
+	Key   *string `json:"key" tf:"key"`
+	Scope *string `json:"scope" tf:"scope"`
+}
+
 type RuleGroupSpecRuleStatementAndStatementStatementNotStatementStatementByteMatchStatementFieldToMatchAllQueryArguments struct{}
 
 type RuleGroupSpecRuleStatementAndStatementStatementNotStatementStatementByteMatchStatementFieldToMatchBody struct{}
@@ -518,6 +542,11 @@ type RuleGroupSpecRuleStatementAndStatementStatementNotStatementStatementIpSetRe
 	Arn *string `json:"arn" tf:"arn"`
 	// +optional
 	IpSetForwardedIPConfig *RuleGroupSpecRuleStatementAndStatementStatementNotStatementStatementIpSetReferenceStatementIpSetForwardedIPConfig `json:"ipSetForwardedIPConfig,omitempty" tf:"ip_set_forwarded_ip_config"`
+}
+
+type RuleGroupSpecRuleStatementAndStatementStatementNotStatementStatementLabelMatchStatement struct {
+	Key   *string `json:"key" tf:"key"`
+	Scope *string `json:"scope" tf:"scope"`
 }
 
 type RuleGroupSpecRuleStatementAndStatementStatementNotStatementStatementRegexPatternSetReferenceStatementFieldToMatchAllQueryArguments struct{}
@@ -715,6 +744,8 @@ type RuleGroupSpecRuleStatementAndStatementStatementNotStatementStatement struct
 	// +optional
 	IpSetReferenceStatement *RuleGroupSpecRuleStatementAndStatementStatementNotStatementStatementIpSetReferenceStatement `json:"ipSetReferenceStatement,omitempty" tf:"ip_set_reference_statement"`
 	// +optional
+	LabelMatchStatement *RuleGroupSpecRuleStatementAndStatementStatementNotStatementStatementLabelMatchStatement `json:"labelMatchStatement,omitempty" tf:"label_match_statement"`
+	// +optional
 	RegexPatternSetReferenceStatement *RuleGroupSpecRuleStatementAndStatementStatementNotStatementStatementRegexPatternSetReferenceStatement `json:"regexPatternSetReferenceStatement,omitempty" tf:"regex_pattern_set_reference_statement"`
 	// +optional
 	SizeConstraintStatement *RuleGroupSpecRuleStatementAndStatementStatementNotStatementStatementSizeConstraintStatement `json:"sizeConstraintStatement,omitempty" tf:"size_constraint_statement"`
@@ -798,6 +829,11 @@ type RuleGroupSpecRuleStatementAndStatementStatementOrStatementStatementIpSetRef
 	Arn *string `json:"arn" tf:"arn"`
 	// +optional
 	IpSetForwardedIPConfig *RuleGroupSpecRuleStatementAndStatementStatementOrStatementStatementIpSetReferenceStatementIpSetForwardedIPConfig `json:"ipSetForwardedIPConfig,omitempty" tf:"ip_set_forwarded_ip_config"`
+}
+
+type RuleGroupSpecRuleStatementAndStatementStatementOrStatementStatementLabelMatchStatement struct {
+	Key   *string `json:"key" tf:"key"`
+	Scope *string `json:"scope" tf:"scope"`
 }
 
 type RuleGroupSpecRuleStatementAndStatementStatementOrStatementStatementRegexPatternSetReferenceStatementFieldToMatchAllQueryArguments struct{}
@@ -994,6 +1030,8 @@ type RuleGroupSpecRuleStatementAndStatementStatementOrStatementStatement struct 
 	GeoMatchStatement *RuleGroupSpecRuleStatementAndStatementStatementOrStatementStatementGeoMatchStatement `json:"geoMatchStatement,omitempty" tf:"geo_match_statement"`
 	// +optional
 	IpSetReferenceStatement *RuleGroupSpecRuleStatementAndStatementStatementOrStatementStatementIpSetReferenceStatement `json:"ipSetReferenceStatement,omitempty" tf:"ip_set_reference_statement"`
+	// +optional
+	LabelMatchStatement *RuleGroupSpecRuleStatementAndStatementStatementOrStatementStatementLabelMatchStatement `json:"labelMatchStatement,omitempty" tf:"label_match_statement"`
 	// +optional
 	RegexPatternSetReferenceStatement *RuleGroupSpecRuleStatementAndStatementStatementOrStatementStatementRegexPatternSetReferenceStatement `json:"regexPatternSetReferenceStatement,omitempty" tf:"regex_pattern_set_reference_statement"`
 	// +optional
@@ -1205,6 +1243,8 @@ type RuleGroupSpecRuleStatementAndStatementStatement struct {
 	// +optional
 	IpSetReferenceStatement *RuleGroupSpecRuleStatementAndStatementStatementIpSetReferenceStatement `json:"ipSetReferenceStatement,omitempty" tf:"ip_set_reference_statement"`
 	// +optional
+	LabelMatchStatement *RuleGroupSpecRuleStatementAndStatementStatementLabelMatchStatement `json:"labelMatchStatement,omitempty" tf:"label_match_statement"`
+	// +optional
 	NotStatement *RuleGroupSpecRuleStatementAndStatementStatementNotStatement `json:"notStatement,omitempty" tf:"not_statement"`
 	// +optional
 	OrStatement *RuleGroupSpecRuleStatementAndStatementStatementOrStatement `json:"orStatement,omitempty" tf:"or_statement"`
@@ -1294,6 +1334,11 @@ type RuleGroupSpecRuleStatementIpSetReferenceStatement struct {
 	IpSetForwardedIPConfig *RuleGroupSpecRuleStatementIpSetReferenceStatementIpSetForwardedIPConfig `json:"ipSetForwardedIPConfig,omitempty" tf:"ip_set_forwarded_ip_config"`
 }
 
+type RuleGroupSpecRuleStatementLabelMatchStatement struct {
+	Key   *string `json:"key" tf:"key"`
+	Scope *string `json:"scope" tf:"scope"`
+}
+
 type RuleGroupSpecRuleStatementNotStatementStatementAndStatementStatementByteMatchStatementFieldToMatchAllQueryArguments struct{}
 
 type RuleGroupSpecRuleStatementNotStatementStatementAndStatementStatementByteMatchStatementFieldToMatchBody struct{}
@@ -1364,6 +1409,11 @@ type RuleGroupSpecRuleStatementNotStatementStatementAndStatementStatementIpSetRe
 	Arn *string `json:"arn" tf:"arn"`
 	// +optional
 	IpSetForwardedIPConfig *RuleGroupSpecRuleStatementNotStatementStatementAndStatementStatementIpSetReferenceStatementIpSetForwardedIPConfig `json:"ipSetForwardedIPConfig,omitempty" tf:"ip_set_forwarded_ip_config"`
+}
+
+type RuleGroupSpecRuleStatementNotStatementStatementAndStatementStatementLabelMatchStatement struct {
+	Key   *string `json:"key" tf:"key"`
+	Scope *string `json:"scope" tf:"scope"`
 }
 
 type RuleGroupSpecRuleStatementNotStatementStatementAndStatementStatementRegexPatternSetReferenceStatementFieldToMatchAllQueryArguments struct{}
@@ -1561,6 +1611,8 @@ type RuleGroupSpecRuleStatementNotStatementStatementAndStatementStatement struct
 	// +optional
 	IpSetReferenceStatement *RuleGroupSpecRuleStatementNotStatementStatementAndStatementStatementIpSetReferenceStatement `json:"ipSetReferenceStatement,omitempty" tf:"ip_set_reference_statement"`
 	// +optional
+	LabelMatchStatement *RuleGroupSpecRuleStatementNotStatementStatementAndStatementStatementLabelMatchStatement `json:"labelMatchStatement,omitempty" tf:"label_match_statement"`
+	// +optional
 	RegexPatternSetReferenceStatement *RuleGroupSpecRuleStatementNotStatementStatementAndStatementStatementRegexPatternSetReferenceStatement `json:"regexPatternSetReferenceStatement,omitempty" tf:"regex_pattern_set_reference_statement"`
 	// +optional
 	SizeConstraintStatement *RuleGroupSpecRuleStatementNotStatementStatementAndStatementStatementSizeConstraintStatement `json:"sizeConstraintStatement,omitempty" tf:"size_constraint_statement"`
@@ -1646,6 +1698,11 @@ type RuleGroupSpecRuleStatementNotStatementStatementIpSetReferenceStatement stru
 	IpSetForwardedIPConfig *RuleGroupSpecRuleStatementNotStatementStatementIpSetReferenceStatementIpSetForwardedIPConfig `json:"ipSetForwardedIPConfig,omitempty" tf:"ip_set_forwarded_ip_config"`
 }
 
+type RuleGroupSpecRuleStatementNotStatementStatementLabelMatchStatement struct {
+	Key   *string `json:"key" tf:"key"`
+	Scope *string `json:"scope" tf:"scope"`
+}
+
 type RuleGroupSpecRuleStatementNotStatementStatementNotStatementStatementByteMatchStatementFieldToMatchAllQueryArguments struct{}
 
 type RuleGroupSpecRuleStatementNotStatementStatementNotStatementStatementByteMatchStatementFieldToMatchBody struct{}
@@ -1716,6 +1773,11 @@ type RuleGroupSpecRuleStatementNotStatementStatementNotStatementStatementIpSetRe
 	Arn *string `json:"arn" tf:"arn"`
 	// +optional
 	IpSetForwardedIPConfig *RuleGroupSpecRuleStatementNotStatementStatementNotStatementStatementIpSetReferenceStatementIpSetForwardedIPConfig `json:"ipSetForwardedIPConfig,omitempty" tf:"ip_set_forwarded_ip_config"`
+}
+
+type RuleGroupSpecRuleStatementNotStatementStatementNotStatementStatementLabelMatchStatement struct {
+	Key   *string `json:"key" tf:"key"`
+	Scope *string `json:"scope" tf:"scope"`
 }
 
 type RuleGroupSpecRuleStatementNotStatementStatementNotStatementStatementRegexPatternSetReferenceStatementFieldToMatchAllQueryArguments struct{}
@@ -1913,6 +1975,8 @@ type RuleGroupSpecRuleStatementNotStatementStatementNotStatementStatement struct
 	// +optional
 	IpSetReferenceStatement *RuleGroupSpecRuleStatementNotStatementStatementNotStatementStatementIpSetReferenceStatement `json:"ipSetReferenceStatement,omitempty" tf:"ip_set_reference_statement"`
 	// +optional
+	LabelMatchStatement *RuleGroupSpecRuleStatementNotStatementStatementNotStatementStatementLabelMatchStatement `json:"labelMatchStatement,omitempty" tf:"label_match_statement"`
+	// +optional
 	RegexPatternSetReferenceStatement *RuleGroupSpecRuleStatementNotStatementStatementNotStatementStatementRegexPatternSetReferenceStatement `json:"regexPatternSetReferenceStatement,omitempty" tf:"regex_pattern_set_reference_statement"`
 	// +optional
 	SizeConstraintStatement *RuleGroupSpecRuleStatementNotStatementStatementNotStatementStatementSizeConstraintStatement `json:"sizeConstraintStatement,omitempty" tf:"size_constraint_statement"`
@@ -1996,6 +2060,11 @@ type RuleGroupSpecRuleStatementNotStatementStatementOrStatementStatementIpSetRef
 	Arn *string `json:"arn" tf:"arn"`
 	// +optional
 	IpSetForwardedIPConfig *RuleGroupSpecRuleStatementNotStatementStatementOrStatementStatementIpSetReferenceStatementIpSetForwardedIPConfig `json:"ipSetForwardedIPConfig,omitempty" tf:"ip_set_forwarded_ip_config"`
+}
+
+type RuleGroupSpecRuleStatementNotStatementStatementOrStatementStatementLabelMatchStatement struct {
+	Key   *string `json:"key" tf:"key"`
+	Scope *string `json:"scope" tf:"scope"`
 }
 
 type RuleGroupSpecRuleStatementNotStatementStatementOrStatementStatementRegexPatternSetReferenceStatementFieldToMatchAllQueryArguments struct{}
@@ -2192,6 +2261,8 @@ type RuleGroupSpecRuleStatementNotStatementStatementOrStatementStatement struct 
 	GeoMatchStatement *RuleGroupSpecRuleStatementNotStatementStatementOrStatementStatementGeoMatchStatement `json:"geoMatchStatement,omitempty" tf:"geo_match_statement"`
 	// +optional
 	IpSetReferenceStatement *RuleGroupSpecRuleStatementNotStatementStatementOrStatementStatementIpSetReferenceStatement `json:"ipSetReferenceStatement,omitempty" tf:"ip_set_reference_statement"`
+	// +optional
+	LabelMatchStatement *RuleGroupSpecRuleStatementNotStatementStatementOrStatementStatementLabelMatchStatement `json:"labelMatchStatement,omitempty" tf:"label_match_statement"`
 	// +optional
 	RegexPatternSetReferenceStatement *RuleGroupSpecRuleStatementNotStatementStatementOrStatementStatementRegexPatternSetReferenceStatement `json:"regexPatternSetReferenceStatement,omitempty" tf:"regex_pattern_set_reference_statement"`
 	// +optional
@@ -2403,6 +2474,8 @@ type RuleGroupSpecRuleStatementNotStatementStatement struct {
 	// +optional
 	IpSetReferenceStatement *RuleGroupSpecRuleStatementNotStatementStatementIpSetReferenceStatement `json:"ipSetReferenceStatement,omitempty" tf:"ip_set_reference_statement"`
 	// +optional
+	LabelMatchStatement *RuleGroupSpecRuleStatementNotStatementStatementLabelMatchStatement `json:"labelMatchStatement,omitempty" tf:"label_match_statement"`
+	// +optional
 	NotStatement *RuleGroupSpecRuleStatementNotStatementStatementNotStatement `json:"notStatement,omitempty" tf:"not_statement"`
 	// +optional
 	OrStatement *RuleGroupSpecRuleStatementNotStatementStatementOrStatement `json:"orStatement,omitempty" tf:"or_statement"`
@@ -2490,6 +2563,11 @@ type RuleGroupSpecRuleStatementOrStatementStatementAndStatementStatementIpSetRef
 	Arn *string `json:"arn" tf:"arn"`
 	// +optional
 	IpSetForwardedIPConfig *RuleGroupSpecRuleStatementOrStatementStatementAndStatementStatementIpSetReferenceStatementIpSetForwardedIPConfig `json:"ipSetForwardedIPConfig,omitempty" tf:"ip_set_forwarded_ip_config"`
+}
+
+type RuleGroupSpecRuleStatementOrStatementStatementAndStatementStatementLabelMatchStatement struct {
+	Key   *string `json:"key" tf:"key"`
+	Scope *string `json:"scope" tf:"scope"`
 }
 
 type RuleGroupSpecRuleStatementOrStatementStatementAndStatementStatementRegexPatternSetReferenceStatementFieldToMatchAllQueryArguments struct{}
@@ -2687,6 +2765,8 @@ type RuleGroupSpecRuleStatementOrStatementStatementAndStatementStatement struct 
 	// +optional
 	IpSetReferenceStatement *RuleGroupSpecRuleStatementOrStatementStatementAndStatementStatementIpSetReferenceStatement `json:"ipSetReferenceStatement,omitempty" tf:"ip_set_reference_statement"`
 	// +optional
+	LabelMatchStatement *RuleGroupSpecRuleStatementOrStatementStatementAndStatementStatementLabelMatchStatement `json:"labelMatchStatement,omitempty" tf:"label_match_statement"`
+	// +optional
 	RegexPatternSetReferenceStatement *RuleGroupSpecRuleStatementOrStatementStatementAndStatementStatementRegexPatternSetReferenceStatement `json:"regexPatternSetReferenceStatement,omitempty" tf:"regex_pattern_set_reference_statement"`
 	// +optional
 	SizeConstraintStatement *RuleGroupSpecRuleStatementOrStatementStatementAndStatementStatementSizeConstraintStatement `json:"sizeConstraintStatement,omitempty" tf:"size_constraint_statement"`
@@ -2772,6 +2852,11 @@ type RuleGroupSpecRuleStatementOrStatementStatementIpSetReferenceStatement struc
 	IpSetForwardedIPConfig *RuleGroupSpecRuleStatementOrStatementStatementIpSetReferenceStatementIpSetForwardedIPConfig `json:"ipSetForwardedIPConfig,omitempty" tf:"ip_set_forwarded_ip_config"`
 }
 
+type RuleGroupSpecRuleStatementOrStatementStatementLabelMatchStatement struct {
+	Key   *string `json:"key" tf:"key"`
+	Scope *string `json:"scope" tf:"scope"`
+}
+
 type RuleGroupSpecRuleStatementOrStatementStatementNotStatementStatementByteMatchStatementFieldToMatchAllQueryArguments struct{}
 
 type RuleGroupSpecRuleStatementOrStatementStatementNotStatementStatementByteMatchStatementFieldToMatchBody struct{}
@@ -2842,6 +2927,11 @@ type RuleGroupSpecRuleStatementOrStatementStatementNotStatementStatementIpSetRef
 	Arn *string `json:"arn" tf:"arn"`
 	// +optional
 	IpSetForwardedIPConfig *RuleGroupSpecRuleStatementOrStatementStatementNotStatementStatementIpSetReferenceStatementIpSetForwardedIPConfig `json:"ipSetForwardedIPConfig,omitempty" tf:"ip_set_forwarded_ip_config"`
+}
+
+type RuleGroupSpecRuleStatementOrStatementStatementNotStatementStatementLabelMatchStatement struct {
+	Key   *string `json:"key" tf:"key"`
+	Scope *string `json:"scope" tf:"scope"`
 }
 
 type RuleGroupSpecRuleStatementOrStatementStatementNotStatementStatementRegexPatternSetReferenceStatementFieldToMatchAllQueryArguments struct{}
@@ -3039,6 +3129,8 @@ type RuleGroupSpecRuleStatementOrStatementStatementNotStatementStatement struct 
 	// +optional
 	IpSetReferenceStatement *RuleGroupSpecRuleStatementOrStatementStatementNotStatementStatementIpSetReferenceStatement `json:"ipSetReferenceStatement,omitempty" tf:"ip_set_reference_statement"`
 	// +optional
+	LabelMatchStatement *RuleGroupSpecRuleStatementOrStatementStatementNotStatementStatementLabelMatchStatement `json:"labelMatchStatement,omitempty" tf:"label_match_statement"`
+	// +optional
 	RegexPatternSetReferenceStatement *RuleGroupSpecRuleStatementOrStatementStatementNotStatementStatementRegexPatternSetReferenceStatement `json:"regexPatternSetReferenceStatement,omitempty" tf:"regex_pattern_set_reference_statement"`
 	// +optional
 	SizeConstraintStatement *RuleGroupSpecRuleStatementOrStatementStatementNotStatementStatementSizeConstraintStatement `json:"sizeConstraintStatement,omitempty" tf:"size_constraint_statement"`
@@ -3122,6 +3214,11 @@ type RuleGroupSpecRuleStatementOrStatementStatementOrStatementStatementIpSetRefe
 	Arn *string `json:"arn" tf:"arn"`
 	// +optional
 	IpSetForwardedIPConfig *RuleGroupSpecRuleStatementOrStatementStatementOrStatementStatementIpSetReferenceStatementIpSetForwardedIPConfig `json:"ipSetForwardedIPConfig,omitempty" tf:"ip_set_forwarded_ip_config"`
+}
+
+type RuleGroupSpecRuleStatementOrStatementStatementOrStatementStatementLabelMatchStatement struct {
+	Key   *string `json:"key" tf:"key"`
+	Scope *string `json:"scope" tf:"scope"`
 }
 
 type RuleGroupSpecRuleStatementOrStatementStatementOrStatementStatementRegexPatternSetReferenceStatementFieldToMatchAllQueryArguments struct{}
@@ -3318,6 +3415,8 @@ type RuleGroupSpecRuleStatementOrStatementStatementOrStatementStatement struct {
 	GeoMatchStatement *RuleGroupSpecRuleStatementOrStatementStatementOrStatementStatementGeoMatchStatement `json:"geoMatchStatement,omitempty" tf:"geo_match_statement"`
 	// +optional
 	IpSetReferenceStatement *RuleGroupSpecRuleStatementOrStatementStatementOrStatementStatementIpSetReferenceStatement `json:"ipSetReferenceStatement,omitempty" tf:"ip_set_reference_statement"`
+	// +optional
+	LabelMatchStatement *RuleGroupSpecRuleStatementOrStatementStatementOrStatementStatementLabelMatchStatement `json:"labelMatchStatement,omitempty" tf:"label_match_statement"`
 	// +optional
 	RegexPatternSetReferenceStatement *RuleGroupSpecRuleStatementOrStatementStatementOrStatementStatementRegexPatternSetReferenceStatement `json:"regexPatternSetReferenceStatement,omitempty" tf:"regex_pattern_set_reference_statement"`
 	// +optional
@@ -3528,6 +3627,8 @@ type RuleGroupSpecRuleStatementOrStatementStatement struct {
 	GeoMatchStatement *RuleGroupSpecRuleStatementOrStatementStatementGeoMatchStatement `json:"geoMatchStatement,omitempty" tf:"geo_match_statement"`
 	// +optional
 	IpSetReferenceStatement *RuleGroupSpecRuleStatementOrStatementStatementIpSetReferenceStatement `json:"ipSetReferenceStatement,omitempty" tf:"ip_set_reference_statement"`
+	// +optional
+	LabelMatchStatement *RuleGroupSpecRuleStatementOrStatementStatementLabelMatchStatement `json:"labelMatchStatement,omitempty" tf:"label_match_statement"`
 	// +optional
 	NotStatement *RuleGroupSpecRuleStatementOrStatementStatementNotStatement `json:"notStatement,omitempty" tf:"not_statement"`
 	// +optional
@@ -3743,6 +3844,8 @@ type RuleGroupSpecRuleStatement struct {
 	// +optional
 	IpSetReferenceStatement *RuleGroupSpecRuleStatementIpSetReferenceStatement `json:"ipSetReferenceStatement,omitempty" tf:"ip_set_reference_statement"`
 	// +optional
+	LabelMatchStatement *RuleGroupSpecRuleStatementLabelMatchStatement `json:"labelMatchStatement,omitempty" tf:"label_match_statement"`
+	// +optional
 	NotStatement *RuleGroupSpecRuleStatementNotStatement `json:"notStatement,omitempty" tf:"not_statement"`
 	// +optional
 	OrStatement *RuleGroupSpecRuleStatementOrStatement `json:"orStatement,omitempty" tf:"or_statement"`
@@ -3763,9 +3866,11 @@ type RuleGroupSpecRuleVisibilityConfig struct {
 }
 
 type RuleGroupSpecRule struct {
-	Action           *RuleGroupSpecRuleAction           `json:"action" tf:"action"`
-	Name             *string                            `json:"name" tf:"name"`
-	Priority         *int64                             `json:"priority" tf:"priority"`
+	Action   *RuleGroupSpecRuleAction `json:"action" tf:"action"`
+	Name     *string                  `json:"name" tf:"name"`
+	Priority *int64                   `json:"priority" tf:"priority"`
+	// +optional
+	RuleLabel        []RuleGroupSpecRuleRuleLabel       `json:"ruleLabel,omitempty" tf:"rule_label"`
 	Statement        *RuleGroupSpecRuleStatement        `json:"statement" tf:"statement"`
 	VisibilityConfig *RuleGroupSpecRuleVisibilityConfig `json:"visibilityConfig" tf:"visibility_config"`
 }
@@ -3796,6 +3901,8 @@ type RuleGroupSpecResource struct {
 	// +optional
 	Arn      *string `json:"arn,omitempty" tf:"arn"`
 	Capacity *int64  `json:"capacity" tf:"capacity"`
+	// +optional
+	CustomResponseBody []RuleGroupSpecCustomResponseBody `json:"customResponseBody,omitempty" tf:"custom_response_body"`
 	// +optional
 	Description *string `json:"description,omitempty" tf:"description"`
 	// +optional

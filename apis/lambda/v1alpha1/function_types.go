@@ -95,6 +95,8 @@ type FunctionSpecResource struct {
 	ID string `json:"id,omitempty" tf:"id,omitempty"`
 
 	// +optional
+	Architectures []string `json:"architectures,omitempty" tf:"architectures"`
+	// +optional
 	Arn *string `json:"arn,omitempty" tf:"arn"`
 	// +optional
 	CodeSigningConfigArn *string `json:"codeSigningConfigArn,omitempty" tf:"code_signing_config_arn"`

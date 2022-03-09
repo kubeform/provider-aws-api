@@ -73,9 +73,17 @@ spec:
                             properties:
                               instanceType:
                                 type: string
+                              lifecycleConfigArn:
+                                type: string
                               sagemakerImageArn:
                                 type: string
+                              sagemakerImageVersionArn:
+                                type: string
                             type: object
+                          lifecycleConfigArns:
+                            items:
+                              type: string
+                            type: array
                         type: object
                       kernelGatewayAppSettings:
                         properties:
@@ -99,9 +107,17 @@ spec:
                             properties:
                               instanceType:
                                 type: string
+                              lifecycleConfigArn:
+                                type: string
                               sagemakerImageArn:
                                 type: string
+                              sagemakerImageVersionArn:
+                                type: string
                             type: object
+                          lifecycleConfigArns:
+                            items:
+                              type: string
+                            type: array
                         type: object
                       securityGroups:
                         items:
@@ -123,7 +139,11 @@ spec:
                             properties:
                               instanceType:
                                 type: string
+                              lifecycleConfigArn:
+                                type: string
                               sagemakerImageArn:
+                                type: string
+                              sagemakerImageVersionArn:
                                 type: string
                             type: object
                         type: object
@@ -138,6 +158,11 @@ spec:
                     type: string
                   kmsKeyID:
                     type: string
+                  retentionPolicy:
+                    properties:
+                      homeEfsFileSystem:
+                        type: string
+                    type: object
                   singleSignOnManagedApplicationInstanceID:
                     type: string
                   subnetIDS:
@@ -182,9 +207,17 @@ spec:
                             properties:
                               instanceType:
                                 type: string
+                              lifecycleConfigArn:
+                                type: string
                               sagemakerImageArn:
                                 type: string
+                              sagemakerImageVersionArn:
+                                type: string
                             type: object
+                          lifecycleConfigArns:
+                            items:
+                              type: string
+                            type: array
                         type: object
                       kernelGatewayAppSettings:
                         properties:
@@ -208,9 +241,17 @@ spec:
                             properties:
                               instanceType:
                                 type: string
+                              lifecycleConfigArn:
+                                type: string
                               sagemakerImageArn:
                                 type: string
+                              sagemakerImageVersionArn:
+                                type: string
                             type: object
+                          lifecycleConfigArns:
+                            items:
+                              type: string
+                            type: array
                         type: object
                       securityGroups:
                         items:
@@ -232,7 +273,11 @@ spec:
                             properties:
                               instanceType:
                                 type: string
+                              lifecycleConfigArn:
+                                type: string
                               sagemakerImageArn:
+                                type: string
+                              sagemakerImageVersionArn:
                                 type: string
                             type: object
                         type: object
@@ -247,6 +292,11 @@ spec:
                     type: string
                   kmsKeyID:
                     type: string
+                  retentionPolicy:
+                    properties:
+                      homeEfsFileSystem:
+                        type: string
+                    type: object
                   singleSignOnManagedApplicationInstanceID:
                     type: string
                   subnetIDS:

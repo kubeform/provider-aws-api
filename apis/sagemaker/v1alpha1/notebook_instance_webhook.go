@@ -45,6 +45,7 @@ var notebookinstanceForceNewList = map[string]bool{
 	"/direct_internet_access": true,
 	"/kms_key_id":             true,
 	"/name":                   true,
+	"/platform_identifier":    true,
 	"/security_groups":        true,
 	"/subnet_id":              true,
 }
@@ -92,7 +93,7 @@ func (r *NotebookInstance) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range notebookinstanceForceNewList {
+	for key, _ := range notebookinstanceForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

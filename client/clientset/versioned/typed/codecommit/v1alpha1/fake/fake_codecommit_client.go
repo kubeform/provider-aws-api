@@ -29,6 +29,14 @@ type FakeCodecommitV1alpha1 struct {
 	*testing.Fake
 }
 
+func (c *FakeCodecommitV1alpha1) ApprovalRuleTemplates(namespace string) v1alpha1.ApprovalRuleTemplateInterface {
+	return &FakeApprovalRuleTemplates{c, namespace}
+}
+
+func (c *FakeCodecommitV1alpha1) ApprovalRuleTemplateAssociations(namespace string) v1alpha1.ApprovalRuleTemplateAssociationInterface {
+	return &FakeApprovalRuleTemplateAssociations{c, namespace}
+}
+
 func (c *FakeCodecommitV1alpha1) Repositories(namespace string) v1alpha1.RepositoryInterface {
 	return &FakeRepositories{c, namespace}
 }

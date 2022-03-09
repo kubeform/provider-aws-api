@@ -75,6 +75,8 @@ type NotebookInstanceSpecResource struct {
 	Name                *string `json:"name" tf:"name"`
 	// +optional
 	NetworkInterfaceID *string `json:"networkInterfaceID,omitempty" tf:"network_interface_id"`
+	// +optional
+	PlatformIdentifier *string `json:"platformIdentifier,omitempty" tf:"platform_identifier"`
 	RoleArn            *string `json:"roleArn" tf:"role_arn"`
 	// +optional
 	RootAccess *string `json:"rootAccess,omitempty" tf:"root_access"`

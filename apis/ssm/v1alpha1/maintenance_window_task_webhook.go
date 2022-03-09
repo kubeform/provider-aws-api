@@ -89,7 +89,7 @@ func (r *MaintenanceWindowTask) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range maintenancewindowtaskForceNewList {
+	for key, _ := range maintenancewindowtaskForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

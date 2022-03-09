@@ -33,6 +33,10 @@ func (c *FakeEcrpublicV1alpha1) Repositories(namespace string) v1alpha1.Reposito
 	return &FakeRepositories{c, namespace}
 }
 
+func (c *FakeEcrpublicV1alpha1) RepositoryPolicies(namespace string) v1alpha1.RepositoryPolicyInterface {
+	return &FakeRepositoryPolicies{c, namespace}
+}
+
 // RESTClient returns a RESTClient that is used to communicate
 // with API server by this client implementation.
 func (c *FakeEcrpublicV1alpha1) RESTClient() rest.Interface {

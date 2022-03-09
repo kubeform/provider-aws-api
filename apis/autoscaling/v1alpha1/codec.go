@@ -27,45 +27,65 @@ import (
 
 func GetEncoder() map[string]jsoniter.ValEncoder {
 	return map[string]jsoniter.ValEncoder{
-		jsoniter.MustGetKind(reflect2.TypeOf(GroupSpecInstanceRefresh{}).Type1()):                                                                        GroupSpecInstanceRefreshCodec{},
-		jsoniter.MustGetKind(reflect2.TypeOf(GroupSpecInstanceRefreshPreferences{}).Type1()):                                                             GroupSpecInstanceRefreshPreferencesCodec{},
-		jsoniter.MustGetKind(reflect2.TypeOf(GroupSpecLaunchTemplate{}).Type1()):                                                                         GroupSpecLaunchTemplateCodec{},
-		jsoniter.MustGetKind(reflect2.TypeOf(GroupSpecMixedInstancesPolicy{}).Type1()):                                                                   GroupSpecMixedInstancesPolicyCodec{},
-		jsoniter.MustGetKind(reflect2.TypeOf(GroupSpecMixedInstancesPolicyInstancesDistribution{}).Type1()):                                              GroupSpecMixedInstancesPolicyInstancesDistributionCodec{},
-		jsoniter.MustGetKind(reflect2.TypeOf(GroupSpecMixedInstancesPolicyLaunchTemplate{}).Type1()):                                                     GroupSpecMixedInstancesPolicyLaunchTemplateCodec{},
-		jsoniter.MustGetKind(reflect2.TypeOf(GroupSpecMixedInstancesPolicyLaunchTemplateLaunchTemplateSpecification{}).Type1()):                          GroupSpecMixedInstancesPolicyLaunchTemplateLaunchTemplateSpecificationCodec{},
-		jsoniter.MustGetKind(reflect2.TypeOf(GroupSpecMixedInstancesPolicyLaunchTemplateOverrideLaunchTemplateSpecification{}).Type1()):                  GroupSpecMixedInstancesPolicyLaunchTemplateOverrideLaunchTemplateSpecificationCodec{},
-		jsoniter.MustGetKind(reflect2.TypeOf(GroupSpecWarmPool{}).Type1()):                                                                               GroupSpecWarmPoolCodec{},
-		jsoniter.MustGetKind(reflect2.TypeOf(PolicySpecPredictiveScalingConfiguration{}).Type1()):                                                        PolicySpecPredictiveScalingConfigurationCodec{},
-		jsoniter.MustGetKind(reflect2.TypeOf(PolicySpecPredictiveScalingConfigurationMetricSpecification{}).Type1()):                                     PolicySpecPredictiveScalingConfigurationMetricSpecificationCodec{},
-		jsoniter.MustGetKind(reflect2.TypeOf(PolicySpecPredictiveScalingConfigurationMetricSpecificationPredefinedLoadMetricSpecification{}).Type1()):    PolicySpecPredictiveScalingConfigurationMetricSpecificationPredefinedLoadMetricSpecificationCodec{},
-		jsoniter.MustGetKind(reflect2.TypeOf(PolicySpecPredictiveScalingConfigurationMetricSpecificationPredefinedMetricPairSpecification{}).Type1()):    PolicySpecPredictiveScalingConfigurationMetricSpecificationPredefinedMetricPairSpecificationCodec{},
-		jsoniter.MustGetKind(reflect2.TypeOf(PolicySpecPredictiveScalingConfigurationMetricSpecificationPredefinedScalingMetricSpecification{}).Type1()): PolicySpecPredictiveScalingConfigurationMetricSpecificationPredefinedScalingMetricSpecificationCodec{},
-		jsoniter.MustGetKind(reflect2.TypeOf(PolicySpecTargetTrackingConfiguration{}).Type1()):                                                           PolicySpecTargetTrackingConfigurationCodec{},
-		jsoniter.MustGetKind(reflect2.TypeOf(PolicySpecTargetTrackingConfigurationCustomizedMetricSpecification{}).Type1()):                              PolicySpecTargetTrackingConfigurationCustomizedMetricSpecificationCodec{},
-		jsoniter.MustGetKind(reflect2.TypeOf(PolicySpecTargetTrackingConfigurationPredefinedMetricSpecification{}).Type1()):                              PolicySpecTargetTrackingConfigurationPredefinedMetricSpecificationCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(GroupSpecInstanceRefresh{}).Type1()):                                                                                                          GroupSpecInstanceRefreshCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(GroupSpecInstanceRefreshPreferences{}).Type1()):                                                                                               GroupSpecInstanceRefreshPreferencesCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(GroupSpecLaunchTemplate{}).Type1()):                                                                                                           GroupSpecLaunchTemplateCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(GroupSpecMixedInstancesPolicy{}).Type1()):                                                                                                     GroupSpecMixedInstancesPolicyCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(GroupSpecMixedInstancesPolicyInstancesDistribution{}).Type1()):                                                                                GroupSpecMixedInstancesPolicyInstancesDistributionCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(GroupSpecMixedInstancesPolicyLaunchTemplate{}).Type1()):                                                                                       GroupSpecMixedInstancesPolicyLaunchTemplateCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(GroupSpecMixedInstancesPolicyLaunchTemplateLaunchTemplateSpecification{}).Type1()):                                                            GroupSpecMixedInstancesPolicyLaunchTemplateLaunchTemplateSpecificationCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(GroupSpecMixedInstancesPolicyLaunchTemplateOverrideLaunchTemplateSpecification{}).Type1()):                                                    GroupSpecMixedInstancesPolicyLaunchTemplateOverrideLaunchTemplateSpecificationCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(GroupSpecWarmPool{}).Type1()):                                                                                                                 GroupSpecWarmPoolCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(GroupTagSpecTag{}).Type1()):                                                                                                                   GroupTagSpecTagCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(PolicySpecPredictiveScalingConfiguration{}).Type1()):                                                                                          PolicySpecPredictiveScalingConfigurationCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(PolicySpecPredictiveScalingConfigurationMetricSpecification{}).Type1()):                                                                       PolicySpecPredictiveScalingConfigurationMetricSpecificationCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(PolicySpecPredictiveScalingConfigurationMetricSpecificationCustomizedCapacityMetricSpecification{}).Type1()):                                  PolicySpecPredictiveScalingConfigurationMetricSpecificationCustomizedCapacityMetricSpecificationCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(PolicySpecPredictiveScalingConfigurationMetricSpecificationCustomizedCapacityMetricSpecificationMetricDataQueriesMetricStat{}).Type1()):       PolicySpecPredictiveScalingConfigurationMetricSpecificationCustomizedCapacityMetricSpecificationMetricDataQueriesMetricStatCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(PolicySpecPredictiveScalingConfigurationMetricSpecificationCustomizedCapacityMetricSpecificationMetricDataQueriesMetricStatMetric{}).Type1()): PolicySpecPredictiveScalingConfigurationMetricSpecificationCustomizedCapacityMetricSpecificationMetricDataQueriesMetricStatMetricCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(PolicySpecPredictiveScalingConfigurationMetricSpecificationCustomizedLoadMetricSpecification{}).Type1()):                                      PolicySpecPredictiveScalingConfigurationMetricSpecificationCustomizedLoadMetricSpecificationCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(PolicySpecPredictiveScalingConfigurationMetricSpecificationCustomizedLoadMetricSpecificationMetricDataQueriesMetricStat{}).Type1()):           PolicySpecPredictiveScalingConfigurationMetricSpecificationCustomizedLoadMetricSpecificationMetricDataQueriesMetricStatCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(PolicySpecPredictiveScalingConfigurationMetricSpecificationCustomizedLoadMetricSpecificationMetricDataQueriesMetricStatMetric{}).Type1()):     PolicySpecPredictiveScalingConfigurationMetricSpecificationCustomizedLoadMetricSpecificationMetricDataQueriesMetricStatMetricCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(PolicySpecPredictiveScalingConfigurationMetricSpecificationCustomizedScalingMetricSpecification{}).Type1()):                                   PolicySpecPredictiveScalingConfigurationMetricSpecificationCustomizedScalingMetricSpecificationCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(PolicySpecPredictiveScalingConfigurationMetricSpecificationCustomizedScalingMetricSpecificationMetricDataQueriesMetricStat{}).Type1()):        PolicySpecPredictiveScalingConfigurationMetricSpecificationCustomizedScalingMetricSpecificationMetricDataQueriesMetricStatCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(PolicySpecPredictiveScalingConfigurationMetricSpecificationCustomizedScalingMetricSpecificationMetricDataQueriesMetricStatMetric{}).Type1()):  PolicySpecPredictiveScalingConfigurationMetricSpecificationCustomizedScalingMetricSpecificationMetricDataQueriesMetricStatMetricCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(PolicySpecPredictiveScalingConfigurationMetricSpecificationPredefinedLoadMetricSpecification{}).Type1()):                                      PolicySpecPredictiveScalingConfigurationMetricSpecificationPredefinedLoadMetricSpecificationCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(PolicySpecPredictiveScalingConfigurationMetricSpecificationPredefinedMetricPairSpecification{}).Type1()):                                      PolicySpecPredictiveScalingConfigurationMetricSpecificationPredefinedMetricPairSpecificationCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(PolicySpecPredictiveScalingConfigurationMetricSpecificationPredefinedScalingMetricSpecification{}).Type1()):                                   PolicySpecPredictiveScalingConfigurationMetricSpecificationPredefinedScalingMetricSpecificationCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(PolicySpecTargetTrackingConfiguration{}).Type1()):                                                                                             PolicySpecTargetTrackingConfigurationCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(PolicySpecTargetTrackingConfigurationCustomizedMetricSpecification{}).Type1()):                                                                PolicySpecTargetTrackingConfigurationCustomizedMetricSpecificationCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(PolicySpecTargetTrackingConfigurationPredefinedMetricSpecification{}).Type1()):                                                                PolicySpecTargetTrackingConfigurationPredefinedMetricSpecificationCodec{},
 	}
 }
 
 func GetDecoder() map[string]jsoniter.ValDecoder {
 	return map[string]jsoniter.ValDecoder{
-		jsoniter.MustGetKind(reflect2.TypeOf(GroupSpecInstanceRefresh{}).Type1()):                                                                        GroupSpecInstanceRefreshCodec{},
-		jsoniter.MustGetKind(reflect2.TypeOf(GroupSpecInstanceRefreshPreferences{}).Type1()):                                                             GroupSpecInstanceRefreshPreferencesCodec{},
-		jsoniter.MustGetKind(reflect2.TypeOf(GroupSpecLaunchTemplate{}).Type1()):                                                                         GroupSpecLaunchTemplateCodec{},
-		jsoniter.MustGetKind(reflect2.TypeOf(GroupSpecMixedInstancesPolicy{}).Type1()):                                                                   GroupSpecMixedInstancesPolicyCodec{},
-		jsoniter.MustGetKind(reflect2.TypeOf(GroupSpecMixedInstancesPolicyInstancesDistribution{}).Type1()):                                              GroupSpecMixedInstancesPolicyInstancesDistributionCodec{},
-		jsoniter.MustGetKind(reflect2.TypeOf(GroupSpecMixedInstancesPolicyLaunchTemplate{}).Type1()):                                                     GroupSpecMixedInstancesPolicyLaunchTemplateCodec{},
-		jsoniter.MustGetKind(reflect2.TypeOf(GroupSpecMixedInstancesPolicyLaunchTemplateLaunchTemplateSpecification{}).Type1()):                          GroupSpecMixedInstancesPolicyLaunchTemplateLaunchTemplateSpecificationCodec{},
-		jsoniter.MustGetKind(reflect2.TypeOf(GroupSpecMixedInstancesPolicyLaunchTemplateOverrideLaunchTemplateSpecification{}).Type1()):                  GroupSpecMixedInstancesPolicyLaunchTemplateOverrideLaunchTemplateSpecificationCodec{},
-		jsoniter.MustGetKind(reflect2.TypeOf(GroupSpecWarmPool{}).Type1()):                                                                               GroupSpecWarmPoolCodec{},
-		jsoniter.MustGetKind(reflect2.TypeOf(PolicySpecPredictiveScalingConfiguration{}).Type1()):                                                        PolicySpecPredictiveScalingConfigurationCodec{},
-		jsoniter.MustGetKind(reflect2.TypeOf(PolicySpecPredictiveScalingConfigurationMetricSpecification{}).Type1()):                                     PolicySpecPredictiveScalingConfigurationMetricSpecificationCodec{},
-		jsoniter.MustGetKind(reflect2.TypeOf(PolicySpecPredictiveScalingConfigurationMetricSpecificationPredefinedLoadMetricSpecification{}).Type1()):    PolicySpecPredictiveScalingConfigurationMetricSpecificationPredefinedLoadMetricSpecificationCodec{},
-		jsoniter.MustGetKind(reflect2.TypeOf(PolicySpecPredictiveScalingConfigurationMetricSpecificationPredefinedMetricPairSpecification{}).Type1()):    PolicySpecPredictiveScalingConfigurationMetricSpecificationPredefinedMetricPairSpecificationCodec{},
-		jsoniter.MustGetKind(reflect2.TypeOf(PolicySpecPredictiveScalingConfigurationMetricSpecificationPredefinedScalingMetricSpecification{}).Type1()): PolicySpecPredictiveScalingConfigurationMetricSpecificationPredefinedScalingMetricSpecificationCodec{},
-		jsoniter.MustGetKind(reflect2.TypeOf(PolicySpecTargetTrackingConfiguration{}).Type1()):                                                           PolicySpecTargetTrackingConfigurationCodec{},
-		jsoniter.MustGetKind(reflect2.TypeOf(PolicySpecTargetTrackingConfigurationCustomizedMetricSpecification{}).Type1()):                              PolicySpecTargetTrackingConfigurationCustomizedMetricSpecificationCodec{},
-		jsoniter.MustGetKind(reflect2.TypeOf(PolicySpecTargetTrackingConfigurationPredefinedMetricSpecification{}).Type1()):                              PolicySpecTargetTrackingConfigurationPredefinedMetricSpecificationCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(GroupSpecInstanceRefresh{}).Type1()):                                                                                                          GroupSpecInstanceRefreshCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(GroupSpecInstanceRefreshPreferences{}).Type1()):                                                                                               GroupSpecInstanceRefreshPreferencesCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(GroupSpecLaunchTemplate{}).Type1()):                                                                                                           GroupSpecLaunchTemplateCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(GroupSpecMixedInstancesPolicy{}).Type1()):                                                                                                     GroupSpecMixedInstancesPolicyCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(GroupSpecMixedInstancesPolicyInstancesDistribution{}).Type1()):                                                                                GroupSpecMixedInstancesPolicyInstancesDistributionCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(GroupSpecMixedInstancesPolicyLaunchTemplate{}).Type1()):                                                                                       GroupSpecMixedInstancesPolicyLaunchTemplateCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(GroupSpecMixedInstancesPolicyLaunchTemplateLaunchTemplateSpecification{}).Type1()):                                                            GroupSpecMixedInstancesPolicyLaunchTemplateLaunchTemplateSpecificationCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(GroupSpecMixedInstancesPolicyLaunchTemplateOverrideLaunchTemplateSpecification{}).Type1()):                                                    GroupSpecMixedInstancesPolicyLaunchTemplateOverrideLaunchTemplateSpecificationCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(GroupSpecWarmPool{}).Type1()):                                                                                                                 GroupSpecWarmPoolCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(GroupTagSpecTag{}).Type1()):                                                                                                                   GroupTagSpecTagCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(PolicySpecPredictiveScalingConfiguration{}).Type1()):                                                                                          PolicySpecPredictiveScalingConfigurationCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(PolicySpecPredictiveScalingConfigurationMetricSpecification{}).Type1()):                                                                       PolicySpecPredictiveScalingConfigurationMetricSpecificationCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(PolicySpecPredictiveScalingConfigurationMetricSpecificationCustomizedCapacityMetricSpecification{}).Type1()):                                  PolicySpecPredictiveScalingConfigurationMetricSpecificationCustomizedCapacityMetricSpecificationCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(PolicySpecPredictiveScalingConfigurationMetricSpecificationCustomizedCapacityMetricSpecificationMetricDataQueriesMetricStat{}).Type1()):       PolicySpecPredictiveScalingConfigurationMetricSpecificationCustomizedCapacityMetricSpecificationMetricDataQueriesMetricStatCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(PolicySpecPredictiveScalingConfigurationMetricSpecificationCustomizedCapacityMetricSpecificationMetricDataQueriesMetricStatMetric{}).Type1()): PolicySpecPredictiveScalingConfigurationMetricSpecificationCustomizedCapacityMetricSpecificationMetricDataQueriesMetricStatMetricCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(PolicySpecPredictiveScalingConfigurationMetricSpecificationCustomizedLoadMetricSpecification{}).Type1()):                                      PolicySpecPredictiveScalingConfigurationMetricSpecificationCustomizedLoadMetricSpecificationCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(PolicySpecPredictiveScalingConfigurationMetricSpecificationCustomizedLoadMetricSpecificationMetricDataQueriesMetricStat{}).Type1()):           PolicySpecPredictiveScalingConfigurationMetricSpecificationCustomizedLoadMetricSpecificationMetricDataQueriesMetricStatCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(PolicySpecPredictiveScalingConfigurationMetricSpecificationCustomizedLoadMetricSpecificationMetricDataQueriesMetricStatMetric{}).Type1()):     PolicySpecPredictiveScalingConfigurationMetricSpecificationCustomizedLoadMetricSpecificationMetricDataQueriesMetricStatMetricCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(PolicySpecPredictiveScalingConfigurationMetricSpecificationCustomizedScalingMetricSpecification{}).Type1()):                                   PolicySpecPredictiveScalingConfigurationMetricSpecificationCustomizedScalingMetricSpecificationCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(PolicySpecPredictiveScalingConfigurationMetricSpecificationCustomizedScalingMetricSpecificationMetricDataQueriesMetricStat{}).Type1()):        PolicySpecPredictiveScalingConfigurationMetricSpecificationCustomizedScalingMetricSpecificationMetricDataQueriesMetricStatCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(PolicySpecPredictiveScalingConfigurationMetricSpecificationCustomizedScalingMetricSpecificationMetricDataQueriesMetricStatMetric{}).Type1()):  PolicySpecPredictiveScalingConfigurationMetricSpecificationCustomizedScalingMetricSpecificationMetricDataQueriesMetricStatMetricCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(PolicySpecPredictiveScalingConfigurationMetricSpecificationPredefinedLoadMetricSpecification{}).Type1()):                                      PolicySpecPredictiveScalingConfigurationMetricSpecificationPredefinedLoadMetricSpecificationCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(PolicySpecPredictiveScalingConfigurationMetricSpecificationPredefinedMetricPairSpecification{}).Type1()):                                      PolicySpecPredictiveScalingConfigurationMetricSpecificationPredefinedMetricPairSpecificationCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(PolicySpecPredictiveScalingConfigurationMetricSpecificationPredefinedScalingMetricSpecification{}).Type1()):                                   PolicySpecPredictiveScalingConfigurationMetricSpecificationPredefinedScalingMetricSpecificationCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(PolicySpecTargetTrackingConfiguration{}).Type1()):                                                                                             PolicySpecTargetTrackingConfigurationCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(PolicySpecTargetTrackingConfigurationCustomizedMetricSpecification{}).Type1()):                                                                PolicySpecTargetTrackingConfigurationCustomizedMetricSpecificationCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(PolicySpecTargetTrackingConfigurationPredefinedMetricSpecification{}).Type1()):                                                                PolicySpecTargetTrackingConfigurationPredefinedMetricSpecificationCodec{},
 	}
 }
 
@@ -793,6 +813,85 @@ func (GroupSpecWarmPoolCodec) Decode(ptr unsafe.Pointer, iter *jsoniter.Iterator
 }
 
 // +k8s:deepcopy-gen=false
+type GroupTagSpecTagCodec struct {
+}
+
+func (GroupTagSpecTagCodec) IsEmpty(ptr unsafe.Pointer) bool {
+	return (*GroupTagSpecTag)(ptr) == nil
+}
+
+func (GroupTagSpecTagCodec) Encode(ptr unsafe.Pointer, stream *jsoniter.Stream) {
+	obj := (*GroupTagSpecTag)(ptr)
+	var objs []GroupTagSpecTag
+	if obj != nil {
+		objs = []GroupTagSpecTag{*obj}
+	}
+
+	jsonit := jsoniter.Config{
+		EscapeHTML:             true,
+		SortMapKeys:            true,
+		ValidateJsonRawMessage: true,
+		TagKey:                 "tf",
+		TypeEncoders:           getEncodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(GroupTagSpecTag{}).Type1())),
+	}.Froze()
+
+	byt, _ := jsonit.Marshal(objs)
+
+	stream.Write(byt)
+}
+
+func (GroupTagSpecTagCodec) Decode(ptr unsafe.Pointer, iter *jsoniter.Iterator) {
+	switch iter.WhatIsNext() {
+	case jsoniter.NilValue:
+		iter.Skip()
+		*(*GroupTagSpecTag)(ptr) = GroupTagSpecTag{}
+		return
+	case jsoniter.ArrayValue:
+		objsByte := iter.SkipAndReturnBytes()
+		if len(objsByte) > 0 {
+			var objs []GroupTagSpecTag
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(GroupTagSpecTag{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objsByte, &objs)
+
+			if len(objs) > 0 {
+				*(*GroupTagSpecTag)(ptr) = objs[0]
+			} else {
+				*(*GroupTagSpecTag)(ptr) = GroupTagSpecTag{}
+			}
+		} else {
+			*(*GroupTagSpecTag)(ptr) = GroupTagSpecTag{}
+		}
+	case jsoniter.ObjectValue:
+		objByte := iter.SkipAndReturnBytes()
+		if len(objByte) > 0 {
+			var obj GroupTagSpecTag
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(GroupTagSpecTag{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objByte, &obj)
+
+			*(*GroupTagSpecTag)(ptr) = obj
+		} else {
+			*(*GroupTagSpecTag)(ptr) = GroupTagSpecTag{}
+		}
+	default:
+		iter.ReportError("decode GroupTagSpecTag", "unexpected JSON type")
+	}
+}
+
+// +k8s:deepcopy-gen=false
 type PolicySpecPredictiveScalingConfigurationCodec struct {
 }
 
@@ -947,6 +1046,717 @@ func (PolicySpecPredictiveScalingConfigurationMetricSpecificationCodec) Decode(p
 		}
 	default:
 		iter.ReportError("decode PolicySpecPredictiveScalingConfigurationMetricSpecification", "unexpected JSON type")
+	}
+}
+
+// +k8s:deepcopy-gen=false
+type PolicySpecPredictiveScalingConfigurationMetricSpecificationCustomizedCapacityMetricSpecificationCodec struct {
+}
+
+func (PolicySpecPredictiveScalingConfigurationMetricSpecificationCustomizedCapacityMetricSpecificationCodec) IsEmpty(ptr unsafe.Pointer) bool {
+	return (*PolicySpecPredictiveScalingConfigurationMetricSpecificationCustomizedCapacityMetricSpecification)(ptr) == nil
+}
+
+func (PolicySpecPredictiveScalingConfigurationMetricSpecificationCustomizedCapacityMetricSpecificationCodec) Encode(ptr unsafe.Pointer, stream *jsoniter.Stream) {
+	obj := (*PolicySpecPredictiveScalingConfigurationMetricSpecificationCustomizedCapacityMetricSpecification)(ptr)
+	var objs []PolicySpecPredictiveScalingConfigurationMetricSpecificationCustomizedCapacityMetricSpecification
+	if obj != nil {
+		objs = []PolicySpecPredictiveScalingConfigurationMetricSpecificationCustomizedCapacityMetricSpecification{*obj}
+	}
+
+	jsonit := jsoniter.Config{
+		EscapeHTML:             true,
+		SortMapKeys:            true,
+		ValidateJsonRawMessage: true,
+		TagKey:                 "tf",
+		TypeEncoders:           getEncodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(PolicySpecPredictiveScalingConfigurationMetricSpecificationCustomizedCapacityMetricSpecification{}).Type1())),
+	}.Froze()
+
+	byt, _ := jsonit.Marshal(objs)
+
+	stream.Write(byt)
+}
+
+func (PolicySpecPredictiveScalingConfigurationMetricSpecificationCustomizedCapacityMetricSpecificationCodec) Decode(ptr unsafe.Pointer, iter *jsoniter.Iterator) {
+	switch iter.WhatIsNext() {
+	case jsoniter.NilValue:
+		iter.Skip()
+		*(*PolicySpecPredictiveScalingConfigurationMetricSpecificationCustomizedCapacityMetricSpecification)(ptr) = PolicySpecPredictiveScalingConfigurationMetricSpecificationCustomizedCapacityMetricSpecification{}
+		return
+	case jsoniter.ArrayValue:
+		objsByte := iter.SkipAndReturnBytes()
+		if len(objsByte) > 0 {
+			var objs []PolicySpecPredictiveScalingConfigurationMetricSpecificationCustomizedCapacityMetricSpecification
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(PolicySpecPredictiveScalingConfigurationMetricSpecificationCustomizedCapacityMetricSpecification{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objsByte, &objs)
+
+			if len(objs) > 0 {
+				*(*PolicySpecPredictiveScalingConfigurationMetricSpecificationCustomizedCapacityMetricSpecification)(ptr) = objs[0]
+			} else {
+				*(*PolicySpecPredictiveScalingConfigurationMetricSpecificationCustomizedCapacityMetricSpecification)(ptr) = PolicySpecPredictiveScalingConfigurationMetricSpecificationCustomizedCapacityMetricSpecification{}
+			}
+		} else {
+			*(*PolicySpecPredictiveScalingConfigurationMetricSpecificationCustomizedCapacityMetricSpecification)(ptr) = PolicySpecPredictiveScalingConfigurationMetricSpecificationCustomizedCapacityMetricSpecification{}
+		}
+	case jsoniter.ObjectValue:
+		objByte := iter.SkipAndReturnBytes()
+		if len(objByte) > 0 {
+			var obj PolicySpecPredictiveScalingConfigurationMetricSpecificationCustomizedCapacityMetricSpecification
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(PolicySpecPredictiveScalingConfigurationMetricSpecificationCustomizedCapacityMetricSpecification{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objByte, &obj)
+
+			*(*PolicySpecPredictiveScalingConfigurationMetricSpecificationCustomizedCapacityMetricSpecification)(ptr) = obj
+		} else {
+			*(*PolicySpecPredictiveScalingConfigurationMetricSpecificationCustomizedCapacityMetricSpecification)(ptr) = PolicySpecPredictiveScalingConfigurationMetricSpecificationCustomizedCapacityMetricSpecification{}
+		}
+	default:
+		iter.ReportError("decode PolicySpecPredictiveScalingConfigurationMetricSpecificationCustomizedCapacityMetricSpecification", "unexpected JSON type")
+	}
+}
+
+// +k8s:deepcopy-gen=false
+type PolicySpecPredictiveScalingConfigurationMetricSpecificationCustomizedCapacityMetricSpecificationMetricDataQueriesMetricStatCodec struct {
+}
+
+func (PolicySpecPredictiveScalingConfigurationMetricSpecificationCustomizedCapacityMetricSpecificationMetricDataQueriesMetricStatCodec) IsEmpty(ptr unsafe.Pointer) bool {
+	return (*PolicySpecPredictiveScalingConfigurationMetricSpecificationCustomizedCapacityMetricSpecificationMetricDataQueriesMetricStat)(ptr) == nil
+}
+
+func (PolicySpecPredictiveScalingConfigurationMetricSpecificationCustomizedCapacityMetricSpecificationMetricDataQueriesMetricStatCodec) Encode(ptr unsafe.Pointer, stream *jsoniter.Stream) {
+	obj := (*PolicySpecPredictiveScalingConfigurationMetricSpecificationCustomizedCapacityMetricSpecificationMetricDataQueriesMetricStat)(ptr)
+	var objs []PolicySpecPredictiveScalingConfigurationMetricSpecificationCustomizedCapacityMetricSpecificationMetricDataQueriesMetricStat
+	if obj != nil {
+		objs = []PolicySpecPredictiveScalingConfigurationMetricSpecificationCustomizedCapacityMetricSpecificationMetricDataQueriesMetricStat{*obj}
+	}
+
+	jsonit := jsoniter.Config{
+		EscapeHTML:             true,
+		SortMapKeys:            true,
+		ValidateJsonRawMessage: true,
+		TagKey:                 "tf",
+		TypeEncoders:           getEncodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(PolicySpecPredictiveScalingConfigurationMetricSpecificationCustomizedCapacityMetricSpecificationMetricDataQueriesMetricStat{}).Type1())),
+	}.Froze()
+
+	byt, _ := jsonit.Marshal(objs)
+
+	stream.Write(byt)
+}
+
+func (PolicySpecPredictiveScalingConfigurationMetricSpecificationCustomizedCapacityMetricSpecificationMetricDataQueriesMetricStatCodec) Decode(ptr unsafe.Pointer, iter *jsoniter.Iterator) {
+	switch iter.WhatIsNext() {
+	case jsoniter.NilValue:
+		iter.Skip()
+		*(*PolicySpecPredictiveScalingConfigurationMetricSpecificationCustomizedCapacityMetricSpecificationMetricDataQueriesMetricStat)(ptr) = PolicySpecPredictiveScalingConfigurationMetricSpecificationCustomizedCapacityMetricSpecificationMetricDataQueriesMetricStat{}
+		return
+	case jsoniter.ArrayValue:
+		objsByte := iter.SkipAndReturnBytes()
+		if len(objsByte) > 0 {
+			var objs []PolicySpecPredictiveScalingConfigurationMetricSpecificationCustomizedCapacityMetricSpecificationMetricDataQueriesMetricStat
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(PolicySpecPredictiveScalingConfigurationMetricSpecificationCustomizedCapacityMetricSpecificationMetricDataQueriesMetricStat{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objsByte, &objs)
+
+			if len(objs) > 0 {
+				*(*PolicySpecPredictiveScalingConfigurationMetricSpecificationCustomizedCapacityMetricSpecificationMetricDataQueriesMetricStat)(ptr) = objs[0]
+			} else {
+				*(*PolicySpecPredictiveScalingConfigurationMetricSpecificationCustomizedCapacityMetricSpecificationMetricDataQueriesMetricStat)(ptr) = PolicySpecPredictiveScalingConfigurationMetricSpecificationCustomizedCapacityMetricSpecificationMetricDataQueriesMetricStat{}
+			}
+		} else {
+			*(*PolicySpecPredictiveScalingConfigurationMetricSpecificationCustomizedCapacityMetricSpecificationMetricDataQueriesMetricStat)(ptr) = PolicySpecPredictiveScalingConfigurationMetricSpecificationCustomizedCapacityMetricSpecificationMetricDataQueriesMetricStat{}
+		}
+	case jsoniter.ObjectValue:
+		objByte := iter.SkipAndReturnBytes()
+		if len(objByte) > 0 {
+			var obj PolicySpecPredictiveScalingConfigurationMetricSpecificationCustomizedCapacityMetricSpecificationMetricDataQueriesMetricStat
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(PolicySpecPredictiveScalingConfigurationMetricSpecificationCustomizedCapacityMetricSpecificationMetricDataQueriesMetricStat{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objByte, &obj)
+
+			*(*PolicySpecPredictiveScalingConfigurationMetricSpecificationCustomizedCapacityMetricSpecificationMetricDataQueriesMetricStat)(ptr) = obj
+		} else {
+			*(*PolicySpecPredictiveScalingConfigurationMetricSpecificationCustomizedCapacityMetricSpecificationMetricDataQueriesMetricStat)(ptr) = PolicySpecPredictiveScalingConfigurationMetricSpecificationCustomizedCapacityMetricSpecificationMetricDataQueriesMetricStat{}
+		}
+	default:
+		iter.ReportError("decode PolicySpecPredictiveScalingConfigurationMetricSpecificationCustomizedCapacityMetricSpecificationMetricDataQueriesMetricStat", "unexpected JSON type")
+	}
+}
+
+// +k8s:deepcopy-gen=false
+type PolicySpecPredictiveScalingConfigurationMetricSpecificationCustomizedCapacityMetricSpecificationMetricDataQueriesMetricStatMetricCodec struct {
+}
+
+func (PolicySpecPredictiveScalingConfigurationMetricSpecificationCustomizedCapacityMetricSpecificationMetricDataQueriesMetricStatMetricCodec) IsEmpty(ptr unsafe.Pointer) bool {
+	return (*PolicySpecPredictiveScalingConfigurationMetricSpecificationCustomizedCapacityMetricSpecificationMetricDataQueriesMetricStatMetric)(ptr) == nil
+}
+
+func (PolicySpecPredictiveScalingConfigurationMetricSpecificationCustomizedCapacityMetricSpecificationMetricDataQueriesMetricStatMetricCodec) Encode(ptr unsafe.Pointer, stream *jsoniter.Stream) {
+	obj := (*PolicySpecPredictiveScalingConfigurationMetricSpecificationCustomizedCapacityMetricSpecificationMetricDataQueriesMetricStatMetric)(ptr)
+	var objs []PolicySpecPredictiveScalingConfigurationMetricSpecificationCustomizedCapacityMetricSpecificationMetricDataQueriesMetricStatMetric
+	if obj != nil {
+		objs = []PolicySpecPredictiveScalingConfigurationMetricSpecificationCustomizedCapacityMetricSpecificationMetricDataQueriesMetricStatMetric{*obj}
+	}
+
+	jsonit := jsoniter.Config{
+		EscapeHTML:             true,
+		SortMapKeys:            true,
+		ValidateJsonRawMessage: true,
+		TagKey:                 "tf",
+		TypeEncoders:           getEncodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(PolicySpecPredictiveScalingConfigurationMetricSpecificationCustomizedCapacityMetricSpecificationMetricDataQueriesMetricStatMetric{}).Type1())),
+	}.Froze()
+
+	byt, _ := jsonit.Marshal(objs)
+
+	stream.Write(byt)
+}
+
+func (PolicySpecPredictiveScalingConfigurationMetricSpecificationCustomizedCapacityMetricSpecificationMetricDataQueriesMetricStatMetricCodec) Decode(ptr unsafe.Pointer, iter *jsoniter.Iterator) {
+	switch iter.WhatIsNext() {
+	case jsoniter.NilValue:
+		iter.Skip()
+		*(*PolicySpecPredictiveScalingConfigurationMetricSpecificationCustomizedCapacityMetricSpecificationMetricDataQueriesMetricStatMetric)(ptr) = PolicySpecPredictiveScalingConfigurationMetricSpecificationCustomizedCapacityMetricSpecificationMetricDataQueriesMetricStatMetric{}
+		return
+	case jsoniter.ArrayValue:
+		objsByte := iter.SkipAndReturnBytes()
+		if len(objsByte) > 0 {
+			var objs []PolicySpecPredictiveScalingConfigurationMetricSpecificationCustomizedCapacityMetricSpecificationMetricDataQueriesMetricStatMetric
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(PolicySpecPredictiveScalingConfigurationMetricSpecificationCustomizedCapacityMetricSpecificationMetricDataQueriesMetricStatMetric{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objsByte, &objs)
+
+			if len(objs) > 0 {
+				*(*PolicySpecPredictiveScalingConfigurationMetricSpecificationCustomizedCapacityMetricSpecificationMetricDataQueriesMetricStatMetric)(ptr) = objs[0]
+			} else {
+				*(*PolicySpecPredictiveScalingConfigurationMetricSpecificationCustomizedCapacityMetricSpecificationMetricDataQueriesMetricStatMetric)(ptr) = PolicySpecPredictiveScalingConfigurationMetricSpecificationCustomizedCapacityMetricSpecificationMetricDataQueriesMetricStatMetric{}
+			}
+		} else {
+			*(*PolicySpecPredictiveScalingConfigurationMetricSpecificationCustomizedCapacityMetricSpecificationMetricDataQueriesMetricStatMetric)(ptr) = PolicySpecPredictiveScalingConfigurationMetricSpecificationCustomizedCapacityMetricSpecificationMetricDataQueriesMetricStatMetric{}
+		}
+	case jsoniter.ObjectValue:
+		objByte := iter.SkipAndReturnBytes()
+		if len(objByte) > 0 {
+			var obj PolicySpecPredictiveScalingConfigurationMetricSpecificationCustomizedCapacityMetricSpecificationMetricDataQueriesMetricStatMetric
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(PolicySpecPredictiveScalingConfigurationMetricSpecificationCustomizedCapacityMetricSpecificationMetricDataQueriesMetricStatMetric{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objByte, &obj)
+
+			*(*PolicySpecPredictiveScalingConfigurationMetricSpecificationCustomizedCapacityMetricSpecificationMetricDataQueriesMetricStatMetric)(ptr) = obj
+		} else {
+			*(*PolicySpecPredictiveScalingConfigurationMetricSpecificationCustomizedCapacityMetricSpecificationMetricDataQueriesMetricStatMetric)(ptr) = PolicySpecPredictiveScalingConfigurationMetricSpecificationCustomizedCapacityMetricSpecificationMetricDataQueriesMetricStatMetric{}
+		}
+	default:
+		iter.ReportError("decode PolicySpecPredictiveScalingConfigurationMetricSpecificationCustomizedCapacityMetricSpecificationMetricDataQueriesMetricStatMetric", "unexpected JSON type")
+	}
+}
+
+// +k8s:deepcopy-gen=false
+type PolicySpecPredictiveScalingConfigurationMetricSpecificationCustomizedLoadMetricSpecificationCodec struct {
+}
+
+func (PolicySpecPredictiveScalingConfigurationMetricSpecificationCustomizedLoadMetricSpecificationCodec) IsEmpty(ptr unsafe.Pointer) bool {
+	return (*PolicySpecPredictiveScalingConfigurationMetricSpecificationCustomizedLoadMetricSpecification)(ptr) == nil
+}
+
+func (PolicySpecPredictiveScalingConfigurationMetricSpecificationCustomizedLoadMetricSpecificationCodec) Encode(ptr unsafe.Pointer, stream *jsoniter.Stream) {
+	obj := (*PolicySpecPredictiveScalingConfigurationMetricSpecificationCustomizedLoadMetricSpecification)(ptr)
+	var objs []PolicySpecPredictiveScalingConfigurationMetricSpecificationCustomizedLoadMetricSpecification
+	if obj != nil {
+		objs = []PolicySpecPredictiveScalingConfigurationMetricSpecificationCustomizedLoadMetricSpecification{*obj}
+	}
+
+	jsonit := jsoniter.Config{
+		EscapeHTML:             true,
+		SortMapKeys:            true,
+		ValidateJsonRawMessage: true,
+		TagKey:                 "tf",
+		TypeEncoders:           getEncodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(PolicySpecPredictiveScalingConfigurationMetricSpecificationCustomizedLoadMetricSpecification{}).Type1())),
+	}.Froze()
+
+	byt, _ := jsonit.Marshal(objs)
+
+	stream.Write(byt)
+}
+
+func (PolicySpecPredictiveScalingConfigurationMetricSpecificationCustomizedLoadMetricSpecificationCodec) Decode(ptr unsafe.Pointer, iter *jsoniter.Iterator) {
+	switch iter.WhatIsNext() {
+	case jsoniter.NilValue:
+		iter.Skip()
+		*(*PolicySpecPredictiveScalingConfigurationMetricSpecificationCustomizedLoadMetricSpecification)(ptr) = PolicySpecPredictiveScalingConfigurationMetricSpecificationCustomizedLoadMetricSpecification{}
+		return
+	case jsoniter.ArrayValue:
+		objsByte := iter.SkipAndReturnBytes()
+		if len(objsByte) > 0 {
+			var objs []PolicySpecPredictiveScalingConfigurationMetricSpecificationCustomizedLoadMetricSpecification
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(PolicySpecPredictiveScalingConfigurationMetricSpecificationCustomizedLoadMetricSpecification{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objsByte, &objs)
+
+			if len(objs) > 0 {
+				*(*PolicySpecPredictiveScalingConfigurationMetricSpecificationCustomizedLoadMetricSpecification)(ptr) = objs[0]
+			} else {
+				*(*PolicySpecPredictiveScalingConfigurationMetricSpecificationCustomizedLoadMetricSpecification)(ptr) = PolicySpecPredictiveScalingConfigurationMetricSpecificationCustomizedLoadMetricSpecification{}
+			}
+		} else {
+			*(*PolicySpecPredictiveScalingConfigurationMetricSpecificationCustomizedLoadMetricSpecification)(ptr) = PolicySpecPredictiveScalingConfigurationMetricSpecificationCustomizedLoadMetricSpecification{}
+		}
+	case jsoniter.ObjectValue:
+		objByte := iter.SkipAndReturnBytes()
+		if len(objByte) > 0 {
+			var obj PolicySpecPredictiveScalingConfigurationMetricSpecificationCustomizedLoadMetricSpecification
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(PolicySpecPredictiveScalingConfigurationMetricSpecificationCustomizedLoadMetricSpecification{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objByte, &obj)
+
+			*(*PolicySpecPredictiveScalingConfigurationMetricSpecificationCustomizedLoadMetricSpecification)(ptr) = obj
+		} else {
+			*(*PolicySpecPredictiveScalingConfigurationMetricSpecificationCustomizedLoadMetricSpecification)(ptr) = PolicySpecPredictiveScalingConfigurationMetricSpecificationCustomizedLoadMetricSpecification{}
+		}
+	default:
+		iter.ReportError("decode PolicySpecPredictiveScalingConfigurationMetricSpecificationCustomizedLoadMetricSpecification", "unexpected JSON type")
+	}
+}
+
+// +k8s:deepcopy-gen=false
+type PolicySpecPredictiveScalingConfigurationMetricSpecificationCustomizedLoadMetricSpecificationMetricDataQueriesMetricStatCodec struct {
+}
+
+func (PolicySpecPredictiveScalingConfigurationMetricSpecificationCustomizedLoadMetricSpecificationMetricDataQueriesMetricStatCodec) IsEmpty(ptr unsafe.Pointer) bool {
+	return (*PolicySpecPredictiveScalingConfigurationMetricSpecificationCustomizedLoadMetricSpecificationMetricDataQueriesMetricStat)(ptr) == nil
+}
+
+func (PolicySpecPredictiveScalingConfigurationMetricSpecificationCustomizedLoadMetricSpecificationMetricDataQueriesMetricStatCodec) Encode(ptr unsafe.Pointer, stream *jsoniter.Stream) {
+	obj := (*PolicySpecPredictiveScalingConfigurationMetricSpecificationCustomizedLoadMetricSpecificationMetricDataQueriesMetricStat)(ptr)
+	var objs []PolicySpecPredictiveScalingConfigurationMetricSpecificationCustomizedLoadMetricSpecificationMetricDataQueriesMetricStat
+	if obj != nil {
+		objs = []PolicySpecPredictiveScalingConfigurationMetricSpecificationCustomizedLoadMetricSpecificationMetricDataQueriesMetricStat{*obj}
+	}
+
+	jsonit := jsoniter.Config{
+		EscapeHTML:             true,
+		SortMapKeys:            true,
+		ValidateJsonRawMessage: true,
+		TagKey:                 "tf",
+		TypeEncoders:           getEncodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(PolicySpecPredictiveScalingConfigurationMetricSpecificationCustomizedLoadMetricSpecificationMetricDataQueriesMetricStat{}).Type1())),
+	}.Froze()
+
+	byt, _ := jsonit.Marshal(objs)
+
+	stream.Write(byt)
+}
+
+func (PolicySpecPredictiveScalingConfigurationMetricSpecificationCustomizedLoadMetricSpecificationMetricDataQueriesMetricStatCodec) Decode(ptr unsafe.Pointer, iter *jsoniter.Iterator) {
+	switch iter.WhatIsNext() {
+	case jsoniter.NilValue:
+		iter.Skip()
+		*(*PolicySpecPredictiveScalingConfigurationMetricSpecificationCustomizedLoadMetricSpecificationMetricDataQueriesMetricStat)(ptr) = PolicySpecPredictiveScalingConfigurationMetricSpecificationCustomizedLoadMetricSpecificationMetricDataQueriesMetricStat{}
+		return
+	case jsoniter.ArrayValue:
+		objsByte := iter.SkipAndReturnBytes()
+		if len(objsByte) > 0 {
+			var objs []PolicySpecPredictiveScalingConfigurationMetricSpecificationCustomizedLoadMetricSpecificationMetricDataQueriesMetricStat
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(PolicySpecPredictiveScalingConfigurationMetricSpecificationCustomizedLoadMetricSpecificationMetricDataQueriesMetricStat{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objsByte, &objs)
+
+			if len(objs) > 0 {
+				*(*PolicySpecPredictiveScalingConfigurationMetricSpecificationCustomizedLoadMetricSpecificationMetricDataQueriesMetricStat)(ptr) = objs[0]
+			} else {
+				*(*PolicySpecPredictiveScalingConfigurationMetricSpecificationCustomizedLoadMetricSpecificationMetricDataQueriesMetricStat)(ptr) = PolicySpecPredictiveScalingConfigurationMetricSpecificationCustomizedLoadMetricSpecificationMetricDataQueriesMetricStat{}
+			}
+		} else {
+			*(*PolicySpecPredictiveScalingConfigurationMetricSpecificationCustomizedLoadMetricSpecificationMetricDataQueriesMetricStat)(ptr) = PolicySpecPredictiveScalingConfigurationMetricSpecificationCustomizedLoadMetricSpecificationMetricDataQueriesMetricStat{}
+		}
+	case jsoniter.ObjectValue:
+		objByte := iter.SkipAndReturnBytes()
+		if len(objByte) > 0 {
+			var obj PolicySpecPredictiveScalingConfigurationMetricSpecificationCustomizedLoadMetricSpecificationMetricDataQueriesMetricStat
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(PolicySpecPredictiveScalingConfigurationMetricSpecificationCustomizedLoadMetricSpecificationMetricDataQueriesMetricStat{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objByte, &obj)
+
+			*(*PolicySpecPredictiveScalingConfigurationMetricSpecificationCustomizedLoadMetricSpecificationMetricDataQueriesMetricStat)(ptr) = obj
+		} else {
+			*(*PolicySpecPredictiveScalingConfigurationMetricSpecificationCustomizedLoadMetricSpecificationMetricDataQueriesMetricStat)(ptr) = PolicySpecPredictiveScalingConfigurationMetricSpecificationCustomizedLoadMetricSpecificationMetricDataQueriesMetricStat{}
+		}
+	default:
+		iter.ReportError("decode PolicySpecPredictiveScalingConfigurationMetricSpecificationCustomizedLoadMetricSpecificationMetricDataQueriesMetricStat", "unexpected JSON type")
+	}
+}
+
+// +k8s:deepcopy-gen=false
+type PolicySpecPredictiveScalingConfigurationMetricSpecificationCustomizedLoadMetricSpecificationMetricDataQueriesMetricStatMetricCodec struct {
+}
+
+func (PolicySpecPredictiveScalingConfigurationMetricSpecificationCustomizedLoadMetricSpecificationMetricDataQueriesMetricStatMetricCodec) IsEmpty(ptr unsafe.Pointer) bool {
+	return (*PolicySpecPredictiveScalingConfigurationMetricSpecificationCustomizedLoadMetricSpecificationMetricDataQueriesMetricStatMetric)(ptr) == nil
+}
+
+func (PolicySpecPredictiveScalingConfigurationMetricSpecificationCustomizedLoadMetricSpecificationMetricDataQueriesMetricStatMetricCodec) Encode(ptr unsafe.Pointer, stream *jsoniter.Stream) {
+	obj := (*PolicySpecPredictiveScalingConfigurationMetricSpecificationCustomizedLoadMetricSpecificationMetricDataQueriesMetricStatMetric)(ptr)
+	var objs []PolicySpecPredictiveScalingConfigurationMetricSpecificationCustomizedLoadMetricSpecificationMetricDataQueriesMetricStatMetric
+	if obj != nil {
+		objs = []PolicySpecPredictiveScalingConfigurationMetricSpecificationCustomizedLoadMetricSpecificationMetricDataQueriesMetricStatMetric{*obj}
+	}
+
+	jsonit := jsoniter.Config{
+		EscapeHTML:             true,
+		SortMapKeys:            true,
+		ValidateJsonRawMessage: true,
+		TagKey:                 "tf",
+		TypeEncoders:           getEncodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(PolicySpecPredictiveScalingConfigurationMetricSpecificationCustomizedLoadMetricSpecificationMetricDataQueriesMetricStatMetric{}).Type1())),
+	}.Froze()
+
+	byt, _ := jsonit.Marshal(objs)
+
+	stream.Write(byt)
+}
+
+func (PolicySpecPredictiveScalingConfigurationMetricSpecificationCustomizedLoadMetricSpecificationMetricDataQueriesMetricStatMetricCodec) Decode(ptr unsafe.Pointer, iter *jsoniter.Iterator) {
+	switch iter.WhatIsNext() {
+	case jsoniter.NilValue:
+		iter.Skip()
+		*(*PolicySpecPredictiveScalingConfigurationMetricSpecificationCustomizedLoadMetricSpecificationMetricDataQueriesMetricStatMetric)(ptr) = PolicySpecPredictiveScalingConfigurationMetricSpecificationCustomizedLoadMetricSpecificationMetricDataQueriesMetricStatMetric{}
+		return
+	case jsoniter.ArrayValue:
+		objsByte := iter.SkipAndReturnBytes()
+		if len(objsByte) > 0 {
+			var objs []PolicySpecPredictiveScalingConfigurationMetricSpecificationCustomizedLoadMetricSpecificationMetricDataQueriesMetricStatMetric
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(PolicySpecPredictiveScalingConfigurationMetricSpecificationCustomizedLoadMetricSpecificationMetricDataQueriesMetricStatMetric{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objsByte, &objs)
+
+			if len(objs) > 0 {
+				*(*PolicySpecPredictiveScalingConfigurationMetricSpecificationCustomizedLoadMetricSpecificationMetricDataQueriesMetricStatMetric)(ptr) = objs[0]
+			} else {
+				*(*PolicySpecPredictiveScalingConfigurationMetricSpecificationCustomizedLoadMetricSpecificationMetricDataQueriesMetricStatMetric)(ptr) = PolicySpecPredictiveScalingConfigurationMetricSpecificationCustomizedLoadMetricSpecificationMetricDataQueriesMetricStatMetric{}
+			}
+		} else {
+			*(*PolicySpecPredictiveScalingConfigurationMetricSpecificationCustomizedLoadMetricSpecificationMetricDataQueriesMetricStatMetric)(ptr) = PolicySpecPredictiveScalingConfigurationMetricSpecificationCustomizedLoadMetricSpecificationMetricDataQueriesMetricStatMetric{}
+		}
+	case jsoniter.ObjectValue:
+		objByte := iter.SkipAndReturnBytes()
+		if len(objByte) > 0 {
+			var obj PolicySpecPredictiveScalingConfigurationMetricSpecificationCustomizedLoadMetricSpecificationMetricDataQueriesMetricStatMetric
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(PolicySpecPredictiveScalingConfigurationMetricSpecificationCustomizedLoadMetricSpecificationMetricDataQueriesMetricStatMetric{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objByte, &obj)
+
+			*(*PolicySpecPredictiveScalingConfigurationMetricSpecificationCustomizedLoadMetricSpecificationMetricDataQueriesMetricStatMetric)(ptr) = obj
+		} else {
+			*(*PolicySpecPredictiveScalingConfigurationMetricSpecificationCustomizedLoadMetricSpecificationMetricDataQueriesMetricStatMetric)(ptr) = PolicySpecPredictiveScalingConfigurationMetricSpecificationCustomizedLoadMetricSpecificationMetricDataQueriesMetricStatMetric{}
+		}
+	default:
+		iter.ReportError("decode PolicySpecPredictiveScalingConfigurationMetricSpecificationCustomizedLoadMetricSpecificationMetricDataQueriesMetricStatMetric", "unexpected JSON type")
+	}
+}
+
+// +k8s:deepcopy-gen=false
+type PolicySpecPredictiveScalingConfigurationMetricSpecificationCustomizedScalingMetricSpecificationCodec struct {
+}
+
+func (PolicySpecPredictiveScalingConfigurationMetricSpecificationCustomizedScalingMetricSpecificationCodec) IsEmpty(ptr unsafe.Pointer) bool {
+	return (*PolicySpecPredictiveScalingConfigurationMetricSpecificationCustomizedScalingMetricSpecification)(ptr) == nil
+}
+
+func (PolicySpecPredictiveScalingConfigurationMetricSpecificationCustomizedScalingMetricSpecificationCodec) Encode(ptr unsafe.Pointer, stream *jsoniter.Stream) {
+	obj := (*PolicySpecPredictiveScalingConfigurationMetricSpecificationCustomizedScalingMetricSpecification)(ptr)
+	var objs []PolicySpecPredictiveScalingConfigurationMetricSpecificationCustomizedScalingMetricSpecification
+	if obj != nil {
+		objs = []PolicySpecPredictiveScalingConfigurationMetricSpecificationCustomizedScalingMetricSpecification{*obj}
+	}
+
+	jsonit := jsoniter.Config{
+		EscapeHTML:             true,
+		SortMapKeys:            true,
+		ValidateJsonRawMessage: true,
+		TagKey:                 "tf",
+		TypeEncoders:           getEncodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(PolicySpecPredictiveScalingConfigurationMetricSpecificationCustomizedScalingMetricSpecification{}).Type1())),
+	}.Froze()
+
+	byt, _ := jsonit.Marshal(objs)
+
+	stream.Write(byt)
+}
+
+func (PolicySpecPredictiveScalingConfigurationMetricSpecificationCustomizedScalingMetricSpecificationCodec) Decode(ptr unsafe.Pointer, iter *jsoniter.Iterator) {
+	switch iter.WhatIsNext() {
+	case jsoniter.NilValue:
+		iter.Skip()
+		*(*PolicySpecPredictiveScalingConfigurationMetricSpecificationCustomizedScalingMetricSpecification)(ptr) = PolicySpecPredictiveScalingConfigurationMetricSpecificationCustomizedScalingMetricSpecification{}
+		return
+	case jsoniter.ArrayValue:
+		objsByte := iter.SkipAndReturnBytes()
+		if len(objsByte) > 0 {
+			var objs []PolicySpecPredictiveScalingConfigurationMetricSpecificationCustomizedScalingMetricSpecification
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(PolicySpecPredictiveScalingConfigurationMetricSpecificationCustomizedScalingMetricSpecification{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objsByte, &objs)
+
+			if len(objs) > 0 {
+				*(*PolicySpecPredictiveScalingConfigurationMetricSpecificationCustomizedScalingMetricSpecification)(ptr) = objs[0]
+			} else {
+				*(*PolicySpecPredictiveScalingConfigurationMetricSpecificationCustomizedScalingMetricSpecification)(ptr) = PolicySpecPredictiveScalingConfigurationMetricSpecificationCustomizedScalingMetricSpecification{}
+			}
+		} else {
+			*(*PolicySpecPredictiveScalingConfigurationMetricSpecificationCustomizedScalingMetricSpecification)(ptr) = PolicySpecPredictiveScalingConfigurationMetricSpecificationCustomizedScalingMetricSpecification{}
+		}
+	case jsoniter.ObjectValue:
+		objByte := iter.SkipAndReturnBytes()
+		if len(objByte) > 0 {
+			var obj PolicySpecPredictiveScalingConfigurationMetricSpecificationCustomizedScalingMetricSpecification
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(PolicySpecPredictiveScalingConfigurationMetricSpecificationCustomizedScalingMetricSpecification{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objByte, &obj)
+
+			*(*PolicySpecPredictiveScalingConfigurationMetricSpecificationCustomizedScalingMetricSpecification)(ptr) = obj
+		} else {
+			*(*PolicySpecPredictiveScalingConfigurationMetricSpecificationCustomizedScalingMetricSpecification)(ptr) = PolicySpecPredictiveScalingConfigurationMetricSpecificationCustomizedScalingMetricSpecification{}
+		}
+	default:
+		iter.ReportError("decode PolicySpecPredictiveScalingConfigurationMetricSpecificationCustomizedScalingMetricSpecification", "unexpected JSON type")
+	}
+}
+
+// +k8s:deepcopy-gen=false
+type PolicySpecPredictiveScalingConfigurationMetricSpecificationCustomizedScalingMetricSpecificationMetricDataQueriesMetricStatCodec struct {
+}
+
+func (PolicySpecPredictiveScalingConfigurationMetricSpecificationCustomizedScalingMetricSpecificationMetricDataQueriesMetricStatCodec) IsEmpty(ptr unsafe.Pointer) bool {
+	return (*PolicySpecPredictiveScalingConfigurationMetricSpecificationCustomizedScalingMetricSpecificationMetricDataQueriesMetricStat)(ptr) == nil
+}
+
+func (PolicySpecPredictiveScalingConfigurationMetricSpecificationCustomizedScalingMetricSpecificationMetricDataQueriesMetricStatCodec) Encode(ptr unsafe.Pointer, stream *jsoniter.Stream) {
+	obj := (*PolicySpecPredictiveScalingConfigurationMetricSpecificationCustomizedScalingMetricSpecificationMetricDataQueriesMetricStat)(ptr)
+	var objs []PolicySpecPredictiveScalingConfigurationMetricSpecificationCustomizedScalingMetricSpecificationMetricDataQueriesMetricStat
+	if obj != nil {
+		objs = []PolicySpecPredictiveScalingConfigurationMetricSpecificationCustomizedScalingMetricSpecificationMetricDataQueriesMetricStat{*obj}
+	}
+
+	jsonit := jsoniter.Config{
+		EscapeHTML:             true,
+		SortMapKeys:            true,
+		ValidateJsonRawMessage: true,
+		TagKey:                 "tf",
+		TypeEncoders:           getEncodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(PolicySpecPredictiveScalingConfigurationMetricSpecificationCustomizedScalingMetricSpecificationMetricDataQueriesMetricStat{}).Type1())),
+	}.Froze()
+
+	byt, _ := jsonit.Marshal(objs)
+
+	stream.Write(byt)
+}
+
+func (PolicySpecPredictiveScalingConfigurationMetricSpecificationCustomizedScalingMetricSpecificationMetricDataQueriesMetricStatCodec) Decode(ptr unsafe.Pointer, iter *jsoniter.Iterator) {
+	switch iter.WhatIsNext() {
+	case jsoniter.NilValue:
+		iter.Skip()
+		*(*PolicySpecPredictiveScalingConfigurationMetricSpecificationCustomizedScalingMetricSpecificationMetricDataQueriesMetricStat)(ptr) = PolicySpecPredictiveScalingConfigurationMetricSpecificationCustomizedScalingMetricSpecificationMetricDataQueriesMetricStat{}
+		return
+	case jsoniter.ArrayValue:
+		objsByte := iter.SkipAndReturnBytes()
+		if len(objsByte) > 0 {
+			var objs []PolicySpecPredictiveScalingConfigurationMetricSpecificationCustomizedScalingMetricSpecificationMetricDataQueriesMetricStat
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(PolicySpecPredictiveScalingConfigurationMetricSpecificationCustomizedScalingMetricSpecificationMetricDataQueriesMetricStat{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objsByte, &objs)
+
+			if len(objs) > 0 {
+				*(*PolicySpecPredictiveScalingConfigurationMetricSpecificationCustomizedScalingMetricSpecificationMetricDataQueriesMetricStat)(ptr) = objs[0]
+			} else {
+				*(*PolicySpecPredictiveScalingConfigurationMetricSpecificationCustomizedScalingMetricSpecificationMetricDataQueriesMetricStat)(ptr) = PolicySpecPredictiveScalingConfigurationMetricSpecificationCustomizedScalingMetricSpecificationMetricDataQueriesMetricStat{}
+			}
+		} else {
+			*(*PolicySpecPredictiveScalingConfigurationMetricSpecificationCustomizedScalingMetricSpecificationMetricDataQueriesMetricStat)(ptr) = PolicySpecPredictiveScalingConfigurationMetricSpecificationCustomizedScalingMetricSpecificationMetricDataQueriesMetricStat{}
+		}
+	case jsoniter.ObjectValue:
+		objByte := iter.SkipAndReturnBytes()
+		if len(objByte) > 0 {
+			var obj PolicySpecPredictiveScalingConfigurationMetricSpecificationCustomizedScalingMetricSpecificationMetricDataQueriesMetricStat
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(PolicySpecPredictiveScalingConfigurationMetricSpecificationCustomizedScalingMetricSpecificationMetricDataQueriesMetricStat{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objByte, &obj)
+
+			*(*PolicySpecPredictiveScalingConfigurationMetricSpecificationCustomizedScalingMetricSpecificationMetricDataQueriesMetricStat)(ptr) = obj
+		} else {
+			*(*PolicySpecPredictiveScalingConfigurationMetricSpecificationCustomizedScalingMetricSpecificationMetricDataQueriesMetricStat)(ptr) = PolicySpecPredictiveScalingConfigurationMetricSpecificationCustomizedScalingMetricSpecificationMetricDataQueriesMetricStat{}
+		}
+	default:
+		iter.ReportError("decode PolicySpecPredictiveScalingConfigurationMetricSpecificationCustomizedScalingMetricSpecificationMetricDataQueriesMetricStat", "unexpected JSON type")
+	}
+}
+
+// +k8s:deepcopy-gen=false
+type PolicySpecPredictiveScalingConfigurationMetricSpecificationCustomizedScalingMetricSpecificationMetricDataQueriesMetricStatMetricCodec struct {
+}
+
+func (PolicySpecPredictiveScalingConfigurationMetricSpecificationCustomizedScalingMetricSpecificationMetricDataQueriesMetricStatMetricCodec) IsEmpty(ptr unsafe.Pointer) bool {
+	return (*PolicySpecPredictiveScalingConfigurationMetricSpecificationCustomizedScalingMetricSpecificationMetricDataQueriesMetricStatMetric)(ptr) == nil
+}
+
+func (PolicySpecPredictiveScalingConfigurationMetricSpecificationCustomizedScalingMetricSpecificationMetricDataQueriesMetricStatMetricCodec) Encode(ptr unsafe.Pointer, stream *jsoniter.Stream) {
+	obj := (*PolicySpecPredictiveScalingConfigurationMetricSpecificationCustomizedScalingMetricSpecificationMetricDataQueriesMetricStatMetric)(ptr)
+	var objs []PolicySpecPredictiveScalingConfigurationMetricSpecificationCustomizedScalingMetricSpecificationMetricDataQueriesMetricStatMetric
+	if obj != nil {
+		objs = []PolicySpecPredictiveScalingConfigurationMetricSpecificationCustomizedScalingMetricSpecificationMetricDataQueriesMetricStatMetric{*obj}
+	}
+
+	jsonit := jsoniter.Config{
+		EscapeHTML:             true,
+		SortMapKeys:            true,
+		ValidateJsonRawMessage: true,
+		TagKey:                 "tf",
+		TypeEncoders:           getEncodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(PolicySpecPredictiveScalingConfigurationMetricSpecificationCustomizedScalingMetricSpecificationMetricDataQueriesMetricStatMetric{}).Type1())),
+	}.Froze()
+
+	byt, _ := jsonit.Marshal(objs)
+
+	stream.Write(byt)
+}
+
+func (PolicySpecPredictiveScalingConfigurationMetricSpecificationCustomizedScalingMetricSpecificationMetricDataQueriesMetricStatMetricCodec) Decode(ptr unsafe.Pointer, iter *jsoniter.Iterator) {
+	switch iter.WhatIsNext() {
+	case jsoniter.NilValue:
+		iter.Skip()
+		*(*PolicySpecPredictiveScalingConfigurationMetricSpecificationCustomizedScalingMetricSpecificationMetricDataQueriesMetricStatMetric)(ptr) = PolicySpecPredictiveScalingConfigurationMetricSpecificationCustomizedScalingMetricSpecificationMetricDataQueriesMetricStatMetric{}
+		return
+	case jsoniter.ArrayValue:
+		objsByte := iter.SkipAndReturnBytes()
+		if len(objsByte) > 0 {
+			var objs []PolicySpecPredictiveScalingConfigurationMetricSpecificationCustomizedScalingMetricSpecificationMetricDataQueriesMetricStatMetric
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(PolicySpecPredictiveScalingConfigurationMetricSpecificationCustomizedScalingMetricSpecificationMetricDataQueriesMetricStatMetric{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objsByte, &objs)
+
+			if len(objs) > 0 {
+				*(*PolicySpecPredictiveScalingConfigurationMetricSpecificationCustomizedScalingMetricSpecificationMetricDataQueriesMetricStatMetric)(ptr) = objs[0]
+			} else {
+				*(*PolicySpecPredictiveScalingConfigurationMetricSpecificationCustomizedScalingMetricSpecificationMetricDataQueriesMetricStatMetric)(ptr) = PolicySpecPredictiveScalingConfigurationMetricSpecificationCustomizedScalingMetricSpecificationMetricDataQueriesMetricStatMetric{}
+			}
+		} else {
+			*(*PolicySpecPredictiveScalingConfigurationMetricSpecificationCustomizedScalingMetricSpecificationMetricDataQueriesMetricStatMetric)(ptr) = PolicySpecPredictiveScalingConfigurationMetricSpecificationCustomizedScalingMetricSpecificationMetricDataQueriesMetricStatMetric{}
+		}
+	case jsoniter.ObjectValue:
+		objByte := iter.SkipAndReturnBytes()
+		if len(objByte) > 0 {
+			var obj PolicySpecPredictiveScalingConfigurationMetricSpecificationCustomizedScalingMetricSpecificationMetricDataQueriesMetricStatMetric
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(PolicySpecPredictiveScalingConfigurationMetricSpecificationCustomizedScalingMetricSpecificationMetricDataQueriesMetricStatMetric{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objByte, &obj)
+
+			*(*PolicySpecPredictiveScalingConfigurationMetricSpecificationCustomizedScalingMetricSpecificationMetricDataQueriesMetricStatMetric)(ptr) = obj
+		} else {
+			*(*PolicySpecPredictiveScalingConfigurationMetricSpecificationCustomizedScalingMetricSpecificationMetricDataQueriesMetricStatMetric)(ptr) = PolicySpecPredictiveScalingConfigurationMetricSpecificationCustomizedScalingMetricSpecificationMetricDataQueriesMetricStatMetric{}
+		}
+	default:
+		iter.ReportError("decode PolicySpecPredictiveScalingConfigurationMetricSpecificationCustomizedScalingMetricSpecificationMetricDataQueriesMetricStatMetric", "unexpected JSON type")
 	}
 }
 

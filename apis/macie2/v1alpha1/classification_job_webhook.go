@@ -94,7 +94,7 @@ func (r *ClassificationJob) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range classificationjobForceNewList {
+	for key, _ := range classificationjobForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

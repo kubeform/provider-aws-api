@@ -20,11 +20,15 @@ package v1alpha1
 
 type IdentityPoolExpansion interface{}
 
+type IdentityPoolProviderPrincipalTagExpansion interface{}
+
 type IdentityPoolRolesAttachmentExpansion interface{}
 
 type IdentityProviderExpansion interface{}
 
 type ResourceServerExpansion interface{}
+
+type UserExpansion interface{}
 
 type UserGroupExpansion interface{}
 

@@ -41,6 +41,35 @@ type Cloudtrail struct {
 	Status            CloudtrailStatus `json:"status,omitempty"`
 }
 
+type CloudtrailSpecAdvancedEventSelectorFieldSelector struct {
+	// +optional
+	// +kubebuilder:validation:MinItems=1
+	EndsWith []string `json:"endsWith,omitempty" tf:"ends_with"`
+	// +optional
+	// +kubebuilder:validation:MinItems=1
+	Equals []string `json:"equals,omitempty" tf:"equals"`
+	Field  *string  `json:"field" tf:"field"`
+	// +optional
+	// +kubebuilder:validation:MinItems=1
+	NotEndsWith []string `json:"notEndsWith,omitempty" tf:"not_ends_with"`
+	// +optional
+	// +kubebuilder:validation:MinItems=1
+	NotEquals []string `json:"notEquals,omitempty" tf:"not_equals"`
+	// +optional
+	// +kubebuilder:validation:MinItems=1
+	NotStartsWith []string `json:"notStartsWith,omitempty" tf:"not_starts_with"`
+	// +optional
+	// +kubebuilder:validation:MinItems=1
+	StartsWith []string `json:"startsWith,omitempty" tf:"starts_with"`
+}
+
+type CloudtrailSpecAdvancedEventSelector struct {
+	// +kubebuilder:validation:MinItems=1
+	FieldSelector []CloudtrailSpecAdvancedEventSelectorFieldSelector `json:"fieldSelector" tf:"field_selector"`
+	// +optional
+	Name *string `json:"name,omitempty" tf:"name"`
+}
+
 type CloudtrailSpecEventSelectorDataResource struct {
 	Type *string `json:"type" tf:"type"`
 	// +kubebuilder:validation:MaxItems=250
@@ -50,6 +79,8 @@ type CloudtrailSpecEventSelectorDataResource struct {
 type CloudtrailSpecEventSelector struct {
 	// +optional
 	DataResource []CloudtrailSpecEventSelectorDataResource `json:"dataResource,omitempty" tf:"data_resource"`
+	// +optional
+	ExcludeManagementEventSources []string `json:"excludeManagementEventSources,omitempty" tf:"exclude_management_event_sources"`
 	// +optional
 	IncludeManagementEvents *bool `json:"includeManagementEvents,omitempty" tf:"include_management_events"`
 	// +optional
@@ -77,6 +108,8 @@ type CloudtrailSpec struct {
 type CloudtrailSpecResource struct {
 	ID string `json:"id,omitempty" tf:"id,omitempty"`
 
+	// +optional
+	AdvancedEventSelector []CloudtrailSpecAdvancedEventSelector `json:"advancedEventSelector,omitempty" tf:"advanced_event_selector"`
 	// +optional
 	Arn *string `json:"arn,omitempty" tf:"arn"`
 	// +optional

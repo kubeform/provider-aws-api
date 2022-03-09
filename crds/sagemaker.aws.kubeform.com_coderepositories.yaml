@@ -74,6 +74,14 @@ spec:
                     type: object
                   id:
                     type: string
+                  tags:
+                    additionalProperties:
+                      type: string
+                    type: object
+                  tagsAll:
+                    additionalProperties:
+                      type: string
+                    type: object
                 required:
                 - codeRepositoryName
                 - gitConfig
@@ -97,6 +105,14 @@ spec:
                     type: object
                   id:
                     type: string
+                  tags:
+                    additionalProperties:
+                      type: string
+                    type: object
+                  tagsAll:
+                    additionalProperties:
+                      type: string
+                    type: object
                 required:
                 - codeRepositoryName
                 - gitConfig

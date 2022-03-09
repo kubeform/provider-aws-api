@@ -24,12 +24,22 @@ import (
 
 // Interface provides access to all the informers in this group version.
 type Interface interface {
+	// AccessPointPolicies returns a AccessPointPolicyInformer.
+	AccessPointPolicies() AccessPointPolicyInformer
 	// Buckets returns a BucketInformer.
 	Buckets() BucketInformer
 	// BucketLifecycleConfigurations returns a BucketLifecycleConfigurationInformer.
 	BucketLifecycleConfigurations() BucketLifecycleConfigurationInformer
 	// BucketPolicies returns a BucketPolicyInformer.
 	BucketPolicies() BucketPolicyInformer
+	// MultiRegionAccessPoints returns a MultiRegionAccessPointInformer.
+	MultiRegionAccessPoints() MultiRegionAccessPointInformer
+	// MultiRegionAccessPointPolicies returns a MultiRegionAccessPointPolicyInformer.
+	MultiRegionAccessPointPolicies() MultiRegionAccessPointPolicyInformer
+	// ObjectLambdaAccessPoints returns a ObjectLambdaAccessPointInformer.
+	ObjectLambdaAccessPoints() ObjectLambdaAccessPointInformer
+	// ObjectLambdaAccessPointPolicies returns a ObjectLambdaAccessPointPolicyInformer.
+	ObjectLambdaAccessPointPolicies() ObjectLambdaAccessPointPolicyInformer
 }
 
 type version struct {
@@ -41,6 +51,11 @@ type version struct {
 // New returns a new Interface.
 func New(f internalinterfaces.SharedInformerFactory, namespace string, tweakListOptions internalinterfaces.TweakListOptionsFunc) Interface {
 	return &version{factory: f, namespace: namespace, tweakListOptions: tweakListOptions}
+}
+
+// AccessPointPolicies returns a AccessPointPolicyInformer.
+func (v *version) AccessPointPolicies() AccessPointPolicyInformer {
+	return &accessPointPolicyInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
 }
 
 // Buckets returns a BucketInformer.
@@ -56,4 +71,24 @@ func (v *version) BucketLifecycleConfigurations() BucketLifecycleConfigurationIn
 // BucketPolicies returns a BucketPolicyInformer.
 func (v *version) BucketPolicies() BucketPolicyInformer {
 	return &bucketPolicyInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
+// MultiRegionAccessPoints returns a MultiRegionAccessPointInformer.
+func (v *version) MultiRegionAccessPoints() MultiRegionAccessPointInformer {
+	return &multiRegionAccessPointInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
+// MultiRegionAccessPointPolicies returns a MultiRegionAccessPointPolicyInformer.
+func (v *version) MultiRegionAccessPointPolicies() MultiRegionAccessPointPolicyInformer {
+	return &multiRegionAccessPointPolicyInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
+// ObjectLambdaAccessPoints returns a ObjectLambdaAccessPointInformer.
+func (v *version) ObjectLambdaAccessPoints() ObjectLambdaAccessPointInformer {
+	return &objectLambdaAccessPointInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
+// ObjectLambdaAccessPointPolicies returns a ObjectLambdaAccessPointPolicyInformer.
+func (v *version) ObjectLambdaAccessPointPolicies() ObjectLambdaAccessPointPolicyInformer {
+	return &objectLambdaAccessPointPolicyInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
 }

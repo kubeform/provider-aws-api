@@ -50,6 +50,14 @@ type SnapshotCopyListerExpansion interface{}
 // SnapshotCopyNamespaceLister.
 type SnapshotCopyNamespaceListerExpansion interface{}
 
+// SnapshotImportListerExpansion allows custom methods to be added to
+// SnapshotImportLister.
+type SnapshotImportListerExpansion interface{}
+
+// SnapshotImportNamespaceListerExpansion allows custom methods to be added to
+// SnapshotImportNamespaceLister.
+type SnapshotImportNamespaceListerExpansion interface{}
+
 // VolumeListerExpansion allows custom methods to be added to
 // VolumeLister.
 type VolumeListerExpansion interface{}

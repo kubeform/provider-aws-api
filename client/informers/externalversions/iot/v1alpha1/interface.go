@@ -24,6 +24,8 @@ import (
 
 // Interface provides access to all the informers in this group version.
 type Interface interface {
+	// Authorizers returns a AuthorizerInformer.
+	Authorizers() AuthorizerInformer
 	// Certificates returns a CertificateInformer.
 	Certificates() CertificateInformer
 	// Policies returns a PolicyInformer.
@@ -34,6 +36,10 @@ type Interface interface {
 	RoleAliases() RoleAliasInformer
 	// Things returns a ThingInformer.
 	Things() ThingInformer
+	// ThingGroups returns a ThingGroupInformer.
+	ThingGroups() ThingGroupInformer
+	// ThingGroupMemberships returns a ThingGroupMembershipInformer.
+	ThingGroupMemberships() ThingGroupMembershipInformer
 	// ThingPrincipalAttachments returns a ThingPrincipalAttachmentInformer.
 	ThingPrincipalAttachments() ThingPrincipalAttachmentInformer
 	// ThingTypes returns a ThingTypeInformer.
@@ -51,6 +57,11 @@ type version struct {
 // New returns a new Interface.
 func New(f internalinterfaces.SharedInformerFactory, namespace string, tweakListOptions internalinterfaces.TweakListOptionsFunc) Interface {
 	return &version{factory: f, namespace: namespace, tweakListOptions: tweakListOptions}
+}
+
+// Authorizers returns a AuthorizerInformer.
+func (v *version) Authorizers() AuthorizerInformer {
+	return &authorizerInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
 }
 
 // Certificates returns a CertificateInformer.
@@ -76,6 +87,16 @@ func (v *version) RoleAliases() RoleAliasInformer {
 // Things returns a ThingInformer.
 func (v *version) Things() ThingInformer {
 	return &thingInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
+// ThingGroups returns a ThingGroupInformer.
+func (v *version) ThingGroups() ThingGroupInformer {
+	return &thingGroupInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
+// ThingGroupMemberships returns a ThingGroupMembershipInformer.
+func (v *version) ThingGroupMemberships() ThingGroupMembershipInformer {
+	return &thingGroupMembershipInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
 }
 
 // ThingPrincipalAttachments returns a ThingPrincipalAttachmentInformer.

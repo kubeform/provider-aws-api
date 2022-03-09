@@ -31,6 +31,7 @@ type GameliftV1alpha1Interface interface {
 	BuildsGetter
 	FleetsGetter
 	GameSessionQueuesGetter
+	ScriptsGetter
 }
 
 // GameliftV1alpha1Client is used to interact with features provided by the gamelift.aws.kubeform.com group.
@@ -52,6 +53,10 @@ func (c *GameliftV1alpha1Client) Fleets(namespace string) FleetInterface {
 
 func (c *GameliftV1alpha1Client) GameSessionQueues(namespace string) GameSessionQueueInterface {
 	return newGameSessionQueues(c, namespace)
+}
+
+func (c *GameliftV1alpha1Client) Scripts(namespace string) ScriptInterface {
+	return newScripts(c, namespace)
 }
 
 // NewForConfig creates a new GameliftV1alpha1Client for the given config.

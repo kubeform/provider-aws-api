@@ -81,6 +81,13 @@ type NodeGroupSpecTaint struct {
 	Value *string `json:"value,omitempty" tf:"value"`
 }
 
+type NodeGroupSpecUpdateConfig struct {
+	// +optional
+	MaxUnavailable *int64 `json:"maxUnavailable,omitempty" tf:"max_unavailable"`
+	// +optional
+	MaxUnavailablePercentage *int64 `json:"maxUnavailablePercentage,omitempty" tf:"max_unavailable_percentage"`
+}
+
 type NodeGroupSpec struct {
 	State *NodeGroupSpecResource `json:"state,omitempty" tf:"-"`
 
@@ -140,6 +147,8 @@ type NodeGroupSpecResource struct {
 	// +optional
 	// +kubebuilder:validation:MaxItems=50
 	Taint []NodeGroupSpecTaint `json:"taint,omitempty" tf:"taint"`
+	// +optional
+	UpdateConfig *NodeGroupSpecUpdateConfig `json:"updateConfig,omitempty" tf:"update_config"`
 	// +optional
 	Version *string `json:"version,omitempty" tf:"version"`
 }

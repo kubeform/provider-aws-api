@@ -28,6 +28,7 @@ import (
 type InternetV1alpha1Interface interface {
 	RESTClient() rest.Interface
 	GatewaysGetter
+	GatewayAttachmentsGetter
 }
 
 // InternetV1alpha1Client is used to interact with features provided by the internet.aws.kubeform.com group.
@@ -37,6 +38,10 @@ type InternetV1alpha1Client struct {
 
 func (c *InternetV1alpha1Client) Gateways(namespace string) GatewayInterface {
 	return newGateways(c, namespace)
+}
+
+func (c *InternetV1alpha1Client) GatewayAttachments(namespace string) GatewayAttachmentInterface {
+	return newGatewayAttachments(c, namespace)
 }
 
 // NewForConfig creates a new InternetV1alpha1Client for the given config.

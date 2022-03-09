@@ -44,6 +44,8 @@ type Interface interface {
 	MlTransforms() MlTransformInformer
 	// Partitions returns a PartitionInformer.
 	Partitions() PartitionInformer
+	// PartitionIndexes returns a PartitionIndexInformer.
+	PartitionIndexes() PartitionIndexInformer
 	// Registries returns a RegistryInformer.
 	Registries() RegistryInformer
 	// ResourcePolicies returns a ResourcePolicyInformer.
@@ -119,6 +121,11 @@ func (v *version) MlTransforms() MlTransformInformer {
 // Partitions returns a PartitionInformer.
 func (v *version) Partitions() PartitionInformer {
 	return &partitionInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
+// PartitionIndexes returns a PartitionIndexInformer.
+func (v *version) PartitionIndexes() PartitionIndexInformer {
+	return &partitionIndexInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
 }
 
 // Registries returns a RegistryInformer.

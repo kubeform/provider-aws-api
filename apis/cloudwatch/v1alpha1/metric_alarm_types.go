@@ -55,6 +55,8 @@ type MetricAlarmSpecMetricQueryMetric struct {
 
 type MetricAlarmSpecMetricQuery struct {
 	// +optional
+	AccountID *string `json:"accountID,omitempty" tf:"account_id"`
+	// +optional
 	Expression *string `json:"expression,omitempty" tf:"expression"`
 	ID         *string `json:"ID" tf:"id"`
 	// +optional

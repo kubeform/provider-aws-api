@@ -88,7 +88,7 @@ func (r *DhcpOptionsAssociation) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range dhcpoptionsassociationForceNewList {
+	for key, _ := range dhcpoptionsassociationForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

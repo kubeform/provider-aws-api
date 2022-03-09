@@ -25,3 +25,11 @@ type CloudtrailListerExpansion interface{}
 // CloudtrailNamespaceListerExpansion allows custom methods to be added to
 // CloudtrailNamespaceLister.
 type CloudtrailNamespaceListerExpansion interface{}
+
+// EventDataStoreListerExpansion allows custom methods to be added to
+// EventDataStoreLister.
+type EventDataStoreListerExpansion interface{}
+
+// EventDataStoreNamespaceListerExpansion allows custom methods to be added to
+// EventDataStoreNamespaceLister.
+type EventDataStoreNamespaceListerExpansion interface{}

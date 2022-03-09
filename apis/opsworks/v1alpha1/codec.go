@@ -19,15 +19,42 @@ limitations under the License.
 package v1alpha1
 
 import (
+	"unsafe"
+
 	jsoniter "github.com/json-iterator/go"
+	"github.com/modern-go/reflect2"
 )
 
 func GetEncoder() map[string]jsoniter.ValEncoder {
-	return map[string]jsoniter.ValEncoder{}
+	return map[string]jsoniter.ValEncoder{
+		jsoniter.MustGetKind(reflect2.TypeOf(CustomLayerSpecCloudwatchConfiguration{}).Type1()):     CustomLayerSpecCloudwatchConfigurationCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(EcsClusterLayerSpecCloudwatchConfiguration{}).Type1()): EcsClusterLayerSpecCloudwatchConfigurationCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(GangliaLayerSpecCloudwatchConfiguration{}).Type1()):    GangliaLayerSpecCloudwatchConfigurationCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(HaproxyLayerSpecCloudwatchConfiguration{}).Type1()):    HaproxyLayerSpecCloudwatchConfigurationCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(JavaAppLayerSpecCloudwatchConfiguration{}).Type1()):    JavaAppLayerSpecCloudwatchConfigurationCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(MemcachedLayerSpecCloudwatchConfiguration{}).Type1()):  MemcachedLayerSpecCloudwatchConfigurationCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(MysqlLayerSpecCloudwatchConfiguration{}).Type1()):      MysqlLayerSpecCloudwatchConfigurationCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(NodejsAppLayerSpecCloudwatchConfiguration{}).Type1()):  NodejsAppLayerSpecCloudwatchConfigurationCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(PhpAppLayerSpecCloudwatchConfiguration{}).Type1()):     PhpAppLayerSpecCloudwatchConfigurationCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(RailsAppLayerSpecCloudwatchConfiguration{}).Type1()):   RailsAppLayerSpecCloudwatchConfigurationCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(StaticWebLayerSpecCloudwatchConfiguration{}).Type1()):  StaticWebLayerSpecCloudwatchConfigurationCodec{},
+	}
 }
 
 func GetDecoder() map[string]jsoniter.ValDecoder {
-	return map[string]jsoniter.ValDecoder{}
+	return map[string]jsoniter.ValDecoder{
+		jsoniter.MustGetKind(reflect2.TypeOf(CustomLayerSpecCloudwatchConfiguration{}).Type1()):     CustomLayerSpecCloudwatchConfigurationCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(EcsClusterLayerSpecCloudwatchConfiguration{}).Type1()): EcsClusterLayerSpecCloudwatchConfigurationCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(GangliaLayerSpecCloudwatchConfiguration{}).Type1()):    GangliaLayerSpecCloudwatchConfigurationCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(HaproxyLayerSpecCloudwatchConfiguration{}).Type1()):    HaproxyLayerSpecCloudwatchConfigurationCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(JavaAppLayerSpecCloudwatchConfiguration{}).Type1()):    JavaAppLayerSpecCloudwatchConfigurationCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(MemcachedLayerSpecCloudwatchConfiguration{}).Type1()):  MemcachedLayerSpecCloudwatchConfigurationCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(MysqlLayerSpecCloudwatchConfiguration{}).Type1()):      MysqlLayerSpecCloudwatchConfigurationCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(NodejsAppLayerSpecCloudwatchConfiguration{}).Type1()):  NodejsAppLayerSpecCloudwatchConfigurationCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(PhpAppLayerSpecCloudwatchConfiguration{}).Type1()):     PhpAppLayerSpecCloudwatchConfigurationCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(RailsAppLayerSpecCloudwatchConfiguration{}).Type1()):   RailsAppLayerSpecCloudwatchConfigurationCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(StaticWebLayerSpecCloudwatchConfiguration{}).Type1()):  StaticWebLayerSpecCloudwatchConfigurationCodec{},
+	}
 }
 
 func getEncodersWithout(typ string) map[string]jsoniter.ValEncoder {
@@ -40,4 +67,873 @@ func getDecodersWithout(typ string) map[string]jsoniter.ValDecoder {
 	origMap := GetDecoder()
 	delete(origMap, typ)
 	return origMap
+}
+
+// +k8s:deepcopy-gen=false
+type CustomLayerSpecCloudwatchConfigurationCodec struct {
+}
+
+func (CustomLayerSpecCloudwatchConfigurationCodec) IsEmpty(ptr unsafe.Pointer) bool {
+	return (*CustomLayerSpecCloudwatchConfiguration)(ptr) == nil
+}
+
+func (CustomLayerSpecCloudwatchConfigurationCodec) Encode(ptr unsafe.Pointer, stream *jsoniter.Stream) {
+	obj := (*CustomLayerSpecCloudwatchConfiguration)(ptr)
+	var objs []CustomLayerSpecCloudwatchConfiguration
+	if obj != nil {
+		objs = []CustomLayerSpecCloudwatchConfiguration{*obj}
+	}
+
+	jsonit := jsoniter.Config{
+		EscapeHTML:             true,
+		SortMapKeys:            true,
+		ValidateJsonRawMessage: true,
+		TagKey:                 "tf",
+		TypeEncoders:           getEncodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(CustomLayerSpecCloudwatchConfiguration{}).Type1())),
+	}.Froze()
+
+	byt, _ := jsonit.Marshal(objs)
+
+	stream.Write(byt)
+}
+
+func (CustomLayerSpecCloudwatchConfigurationCodec) Decode(ptr unsafe.Pointer, iter *jsoniter.Iterator) {
+	switch iter.WhatIsNext() {
+	case jsoniter.NilValue:
+		iter.Skip()
+		*(*CustomLayerSpecCloudwatchConfiguration)(ptr) = CustomLayerSpecCloudwatchConfiguration{}
+		return
+	case jsoniter.ArrayValue:
+		objsByte := iter.SkipAndReturnBytes()
+		if len(objsByte) > 0 {
+			var objs []CustomLayerSpecCloudwatchConfiguration
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(CustomLayerSpecCloudwatchConfiguration{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objsByte, &objs)
+
+			if len(objs) > 0 {
+				*(*CustomLayerSpecCloudwatchConfiguration)(ptr) = objs[0]
+			} else {
+				*(*CustomLayerSpecCloudwatchConfiguration)(ptr) = CustomLayerSpecCloudwatchConfiguration{}
+			}
+		} else {
+			*(*CustomLayerSpecCloudwatchConfiguration)(ptr) = CustomLayerSpecCloudwatchConfiguration{}
+		}
+	case jsoniter.ObjectValue:
+		objByte := iter.SkipAndReturnBytes()
+		if len(objByte) > 0 {
+			var obj CustomLayerSpecCloudwatchConfiguration
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(CustomLayerSpecCloudwatchConfiguration{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objByte, &obj)
+
+			*(*CustomLayerSpecCloudwatchConfiguration)(ptr) = obj
+		} else {
+			*(*CustomLayerSpecCloudwatchConfiguration)(ptr) = CustomLayerSpecCloudwatchConfiguration{}
+		}
+	default:
+		iter.ReportError("decode CustomLayerSpecCloudwatchConfiguration", "unexpected JSON type")
+	}
+}
+
+// +k8s:deepcopy-gen=false
+type EcsClusterLayerSpecCloudwatchConfigurationCodec struct {
+}
+
+func (EcsClusterLayerSpecCloudwatchConfigurationCodec) IsEmpty(ptr unsafe.Pointer) bool {
+	return (*EcsClusterLayerSpecCloudwatchConfiguration)(ptr) == nil
+}
+
+func (EcsClusterLayerSpecCloudwatchConfigurationCodec) Encode(ptr unsafe.Pointer, stream *jsoniter.Stream) {
+	obj := (*EcsClusterLayerSpecCloudwatchConfiguration)(ptr)
+	var objs []EcsClusterLayerSpecCloudwatchConfiguration
+	if obj != nil {
+		objs = []EcsClusterLayerSpecCloudwatchConfiguration{*obj}
+	}
+
+	jsonit := jsoniter.Config{
+		EscapeHTML:             true,
+		SortMapKeys:            true,
+		ValidateJsonRawMessage: true,
+		TagKey:                 "tf",
+		TypeEncoders:           getEncodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(EcsClusterLayerSpecCloudwatchConfiguration{}).Type1())),
+	}.Froze()
+
+	byt, _ := jsonit.Marshal(objs)
+
+	stream.Write(byt)
+}
+
+func (EcsClusterLayerSpecCloudwatchConfigurationCodec) Decode(ptr unsafe.Pointer, iter *jsoniter.Iterator) {
+	switch iter.WhatIsNext() {
+	case jsoniter.NilValue:
+		iter.Skip()
+		*(*EcsClusterLayerSpecCloudwatchConfiguration)(ptr) = EcsClusterLayerSpecCloudwatchConfiguration{}
+		return
+	case jsoniter.ArrayValue:
+		objsByte := iter.SkipAndReturnBytes()
+		if len(objsByte) > 0 {
+			var objs []EcsClusterLayerSpecCloudwatchConfiguration
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(EcsClusterLayerSpecCloudwatchConfiguration{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objsByte, &objs)
+
+			if len(objs) > 0 {
+				*(*EcsClusterLayerSpecCloudwatchConfiguration)(ptr) = objs[0]
+			} else {
+				*(*EcsClusterLayerSpecCloudwatchConfiguration)(ptr) = EcsClusterLayerSpecCloudwatchConfiguration{}
+			}
+		} else {
+			*(*EcsClusterLayerSpecCloudwatchConfiguration)(ptr) = EcsClusterLayerSpecCloudwatchConfiguration{}
+		}
+	case jsoniter.ObjectValue:
+		objByte := iter.SkipAndReturnBytes()
+		if len(objByte) > 0 {
+			var obj EcsClusterLayerSpecCloudwatchConfiguration
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(EcsClusterLayerSpecCloudwatchConfiguration{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objByte, &obj)
+
+			*(*EcsClusterLayerSpecCloudwatchConfiguration)(ptr) = obj
+		} else {
+			*(*EcsClusterLayerSpecCloudwatchConfiguration)(ptr) = EcsClusterLayerSpecCloudwatchConfiguration{}
+		}
+	default:
+		iter.ReportError("decode EcsClusterLayerSpecCloudwatchConfiguration", "unexpected JSON type")
+	}
+}
+
+// +k8s:deepcopy-gen=false
+type GangliaLayerSpecCloudwatchConfigurationCodec struct {
+}
+
+func (GangliaLayerSpecCloudwatchConfigurationCodec) IsEmpty(ptr unsafe.Pointer) bool {
+	return (*GangliaLayerSpecCloudwatchConfiguration)(ptr) == nil
+}
+
+func (GangliaLayerSpecCloudwatchConfigurationCodec) Encode(ptr unsafe.Pointer, stream *jsoniter.Stream) {
+	obj := (*GangliaLayerSpecCloudwatchConfiguration)(ptr)
+	var objs []GangliaLayerSpecCloudwatchConfiguration
+	if obj != nil {
+		objs = []GangliaLayerSpecCloudwatchConfiguration{*obj}
+	}
+
+	jsonit := jsoniter.Config{
+		EscapeHTML:             true,
+		SortMapKeys:            true,
+		ValidateJsonRawMessage: true,
+		TagKey:                 "tf",
+		TypeEncoders:           getEncodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(GangliaLayerSpecCloudwatchConfiguration{}).Type1())),
+	}.Froze()
+
+	byt, _ := jsonit.Marshal(objs)
+
+	stream.Write(byt)
+}
+
+func (GangliaLayerSpecCloudwatchConfigurationCodec) Decode(ptr unsafe.Pointer, iter *jsoniter.Iterator) {
+	switch iter.WhatIsNext() {
+	case jsoniter.NilValue:
+		iter.Skip()
+		*(*GangliaLayerSpecCloudwatchConfiguration)(ptr) = GangliaLayerSpecCloudwatchConfiguration{}
+		return
+	case jsoniter.ArrayValue:
+		objsByte := iter.SkipAndReturnBytes()
+		if len(objsByte) > 0 {
+			var objs []GangliaLayerSpecCloudwatchConfiguration
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(GangliaLayerSpecCloudwatchConfiguration{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objsByte, &objs)
+
+			if len(objs) > 0 {
+				*(*GangliaLayerSpecCloudwatchConfiguration)(ptr) = objs[0]
+			} else {
+				*(*GangliaLayerSpecCloudwatchConfiguration)(ptr) = GangliaLayerSpecCloudwatchConfiguration{}
+			}
+		} else {
+			*(*GangliaLayerSpecCloudwatchConfiguration)(ptr) = GangliaLayerSpecCloudwatchConfiguration{}
+		}
+	case jsoniter.ObjectValue:
+		objByte := iter.SkipAndReturnBytes()
+		if len(objByte) > 0 {
+			var obj GangliaLayerSpecCloudwatchConfiguration
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(GangliaLayerSpecCloudwatchConfiguration{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objByte, &obj)
+
+			*(*GangliaLayerSpecCloudwatchConfiguration)(ptr) = obj
+		} else {
+			*(*GangliaLayerSpecCloudwatchConfiguration)(ptr) = GangliaLayerSpecCloudwatchConfiguration{}
+		}
+	default:
+		iter.ReportError("decode GangliaLayerSpecCloudwatchConfiguration", "unexpected JSON type")
+	}
+}
+
+// +k8s:deepcopy-gen=false
+type HaproxyLayerSpecCloudwatchConfigurationCodec struct {
+}
+
+func (HaproxyLayerSpecCloudwatchConfigurationCodec) IsEmpty(ptr unsafe.Pointer) bool {
+	return (*HaproxyLayerSpecCloudwatchConfiguration)(ptr) == nil
+}
+
+func (HaproxyLayerSpecCloudwatchConfigurationCodec) Encode(ptr unsafe.Pointer, stream *jsoniter.Stream) {
+	obj := (*HaproxyLayerSpecCloudwatchConfiguration)(ptr)
+	var objs []HaproxyLayerSpecCloudwatchConfiguration
+	if obj != nil {
+		objs = []HaproxyLayerSpecCloudwatchConfiguration{*obj}
+	}
+
+	jsonit := jsoniter.Config{
+		EscapeHTML:             true,
+		SortMapKeys:            true,
+		ValidateJsonRawMessage: true,
+		TagKey:                 "tf",
+		TypeEncoders:           getEncodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(HaproxyLayerSpecCloudwatchConfiguration{}).Type1())),
+	}.Froze()
+
+	byt, _ := jsonit.Marshal(objs)
+
+	stream.Write(byt)
+}
+
+func (HaproxyLayerSpecCloudwatchConfigurationCodec) Decode(ptr unsafe.Pointer, iter *jsoniter.Iterator) {
+	switch iter.WhatIsNext() {
+	case jsoniter.NilValue:
+		iter.Skip()
+		*(*HaproxyLayerSpecCloudwatchConfiguration)(ptr) = HaproxyLayerSpecCloudwatchConfiguration{}
+		return
+	case jsoniter.ArrayValue:
+		objsByte := iter.SkipAndReturnBytes()
+		if len(objsByte) > 0 {
+			var objs []HaproxyLayerSpecCloudwatchConfiguration
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(HaproxyLayerSpecCloudwatchConfiguration{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objsByte, &objs)
+
+			if len(objs) > 0 {
+				*(*HaproxyLayerSpecCloudwatchConfiguration)(ptr) = objs[0]
+			} else {
+				*(*HaproxyLayerSpecCloudwatchConfiguration)(ptr) = HaproxyLayerSpecCloudwatchConfiguration{}
+			}
+		} else {
+			*(*HaproxyLayerSpecCloudwatchConfiguration)(ptr) = HaproxyLayerSpecCloudwatchConfiguration{}
+		}
+	case jsoniter.ObjectValue:
+		objByte := iter.SkipAndReturnBytes()
+		if len(objByte) > 0 {
+			var obj HaproxyLayerSpecCloudwatchConfiguration
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(HaproxyLayerSpecCloudwatchConfiguration{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objByte, &obj)
+
+			*(*HaproxyLayerSpecCloudwatchConfiguration)(ptr) = obj
+		} else {
+			*(*HaproxyLayerSpecCloudwatchConfiguration)(ptr) = HaproxyLayerSpecCloudwatchConfiguration{}
+		}
+	default:
+		iter.ReportError("decode HaproxyLayerSpecCloudwatchConfiguration", "unexpected JSON type")
+	}
+}
+
+// +k8s:deepcopy-gen=false
+type JavaAppLayerSpecCloudwatchConfigurationCodec struct {
+}
+
+func (JavaAppLayerSpecCloudwatchConfigurationCodec) IsEmpty(ptr unsafe.Pointer) bool {
+	return (*JavaAppLayerSpecCloudwatchConfiguration)(ptr) == nil
+}
+
+func (JavaAppLayerSpecCloudwatchConfigurationCodec) Encode(ptr unsafe.Pointer, stream *jsoniter.Stream) {
+	obj := (*JavaAppLayerSpecCloudwatchConfiguration)(ptr)
+	var objs []JavaAppLayerSpecCloudwatchConfiguration
+	if obj != nil {
+		objs = []JavaAppLayerSpecCloudwatchConfiguration{*obj}
+	}
+
+	jsonit := jsoniter.Config{
+		EscapeHTML:             true,
+		SortMapKeys:            true,
+		ValidateJsonRawMessage: true,
+		TagKey:                 "tf",
+		TypeEncoders:           getEncodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(JavaAppLayerSpecCloudwatchConfiguration{}).Type1())),
+	}.Froze()
+
+	byt, _ := jsonit.Marshal(objs)
+
+	stream.Write(byt)
+}
+
+func (JavaAppLayerSpecCloudwatchConfigurationCodec) Decode(ptr unsafe.Pointer, iter *jsoniter.Iterator) {
+	switch iter.WhatIsNext() {
+	case jsoniter.NilValue:
+		iter.Skip()
+		*(*JavaAppLayerSpecCloudwatchConfiguration)(ptr) = JavaAppLayerSpecCloudwatchConfiguration{}
+		return
+	case jsoniter.ArrayValue:
+		objsByte := iter.SkipAndReturnBytes()
+		if len(objsByte) > 0 {
+			var objs []JavaAppLayerSpecCloudwatchConfiguration
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(JavaAppLayerSpecCloudwatchConfiguration{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objsByte, &objs)
+
+			if len(objs) > 0 {
+				*(*JavaAppLayerSpecCloudwatchConfiguration)(ptr) = objs[0]
+			} else {
+				*(*JavaAppLayerSpecCloudwatchConfiguration)(ptr) = JavaAppLayerSpecCloudwatchConfiguration{}
+			}
+		} else {
+			*(*JavaAppLayerSpecCloudwatchConfiguration)(ptr) = JavaAppLayerSpecCloudwatchConfiguration{}
+		}
+	case jsoniter.ObjectValue:
+		objByte := iter.SkipAndReturnBytes()
+		if len(objByte) > 0 {
+			var obj JavaAppLayerSpecCloudwatchConfiguration
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(JavaAppLayerSpecCloudwatchConfiguration{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objByte, &obj)
+
+			*(*JavaAppLayerSpecCloudwatchConfiguration)(ptr) = obj
+		} else {
+			*(*JavaAppLayerSpecCloudwatchConfiguration)(ptr) = JavaAppLayerSpecCloudwatchConfiguration{}
+		}
+	default:
+		iter.ReportError("decode JavaAppLayerSpecCloudwatchConfiguration", "unexpected JSON type")
+	}
+}
+
+// +k8s:deepcopy-gen=false
+type MemcachedLayerSpecCloudwatchConfigurationCodec struct {
+}
+
+func (MemcachedLayerSpecCloudwatchConfigurationCodec) IsEmpty(ptr unsafe.Pointer) bool {
+	return (*MemcachedLayerSpecCloudwatchConfiguration)(ptr) == nil
+}
+
+func (MemcachedLayerSpecCloudwatchConfigurationCodec) Encode(ptr unsafe.Pointer, stream *jsoniter.Stream) {
+	obj := (*MemcachedLayerSpecCloudwatchConfiguration)(ptr)
+	var objs []MemcachedLayerSpecCloudwatchConfiguration
+	if obj != nil {
+		objs = []MemcachedLayerSpecCloudwatchConfiguration{*obj}
+	}
+
+	jsonit := jsoniter.Config{
+		EscapeHTML:             true,
+		SortMapKeys:            true,
+		ValidateJsonRawMessage: true,
+		TagKey:                 "tf",
+		TypeEncoders:           getEncodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(MemcachedLayerSpecCloudwatchConfiguration{}).Type1())),
+	}.Froze()
+
+	byt, _ := jsonit.Marshal(objs)
+
+	stream.Write(byt)
+}
+
+func (MemcachedLayerSpecCloudwatchConfigurationCodec) Decode(ptr unsafe.Pointer, iter *jsoniter.Iterator) {
+	switch iter.WhatIsNext() {
+	case jsoniter.NilValue:
+		iter.Skip()
+		*(*MemcachedLayerSpecCloudwatchConfiguration)(ptr) = MemcachedLayerSpecCloudwatchConfiguration{}
+		return
+	case jsoniter.ArrayValue:
+		objsByte := iter.SkipAndReturnBytes()
+		if len(objsByte) > 0 {
+			var objs []MemcachedLayerSpecCloudwatchConfiguration
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(MemcachedLayerSpecCloudwatchConfiguration{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objsByte, &objs)
+
+			if len(objs) > 0 {
+				*(*MemcachedLayerSpecCloudwatchConfiguration)(ptr) = objs[0]
+			} else {
+				*(*MemcachedLayerSpecCloudwatchConfiguration)(ptr) = MemcachedLayerSpecCloudwatchConfiguration{}
+			}
+		} else {
+			*(*MemcachedLayerSpecCloudwatchConfiguration)(ptr) = MemcachedLayerSpecCloudwatchConfiguration{}
+		}
+	case jsoniter.ObjectValue:
+		objByte := iter.SkipAndReturnBytes()
+		if len(objByte) > 0 {
+			var obj MemcachedLayerSpecCloudwatchConfiguration
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(MemcachedLayerSpecCloudwatchConfiguration{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objByte, &obj)
+
+			*(*MemcachedLayerSpecCloudwatchConfiguration)(ptr) = obj
+		} else {
+			*(*MemcachedLayerSpecCloudwatchConfiguration)(ptr) = MemcachedLayerSpecCloudwatchConfiguration{}
+		}
+	default:
+		iter.ReportError("decode MemcachedLayerSpecCloudwatchConfiguration", "unexpected JSON type")
+	}
+}
+
+// +k8s:deepcopy-gen=false
+type MysqlLayerSpecCloudwatchConfigurationCodec struct {
+}
+
+func (MysqlLayerSpecCloudwatchConfigurationCodec) IsEmpty(ptr unsafe.Pointer) bool {
+	return (*MysqlLayerSpecCloudwatchConfiguration)(ptr) == nil
+}
+
+func (MysqlLayerSpecCloudwatchConfigurationCodec) Encode(ptr unsafe.Pointer, stream *jsoniter.Stream) {
+	obj := (*MysqlLayerSpecCloudwatchConfiguration)(ptr)
+	var objs []MysqlLayerSpecCloudwatchConfiguration
+	if obj != nil {
+		objs = []MysqlLayerSpecCloudwatchConfiguration{*obj}
+	}
+
+	jsonit := jsoniter.Config{
+		EscapeHTML:             true,
+		SortMapKeys:            true,
+		ValidateJsonRawMessage: true,
+		TagKey:                 "tf",
+		TypeEncoders:           getEncodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(MysqlLayerSpecCloudwatchConfiguration{}).Type1())),
+	}.Froze()
+
+	byt, _ := jsonit.Marshal(objs)
+
+	stream.Write(byt)
+}
+
+func (MysqlLayerSpecCloudwatchConfigurationCodec) Decode(ptr unsafe.Pointer, iter *jsoniter.Iterator) {
+	switch iter.WhatIsNext() {
+	case jsoniter.NilValue:
+		iter.Skip()
+		*(*MysqlLayerSpecCloudwatchConfiguration)(ptr) = MysqlLayerSpecCloudwatchConfiguration{}
+		return
+	case jsoniter.ArrayValue:
+		objsByte := iter.SkipAndReturnBytes()
+		if len(objsByte) > 0 {
+			var objs []MysqlLayerSpecCloudwatchConfiguration
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(MysqlLayerSpecCloudwatchConfiguration{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objsByte, &objs)
+
+			if len(objs) > 0 {
+				*(*MysqlLayerSpecCloudwatchConfiguration)(ptr) = objs[0]
+			} else {
+				*(*MysqlLayerSpecCloudwatchConfiguration)(ptr) = MysqlLayerSpecCloudwatchConfiguration{}
+			}
+		} else {
+			*(*MysqlLayerSpecCloudwatchConfiguration)(ptr) = MysqlLayerSpecCloudwatchConfiguration{}
+		}
+	case jsoniter.ObjectValue:
+		objByte := iter.SkipAndReturnBytes()
+		if len(objByte) > 0 {
+			var obj MysqlLayerSpecCloudwatchConfiguration
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(MysqlLayerSpecCloudwatchConfiguration{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objByte, &obj)
+
+			*(*MysqlLayerSpecCloudwatchConfiguration)(ptr) = obj
+		} else {
+			*(*MysqlLayerSpecCloudwatchConfiguration)(ptr) = MysqlLayerSpecCloudwatchConfiguration{}
+		}
+	default:
+		iter.ReportError("decode MysqlLayerSpecCloudwatchConfiguration", "unexpected JSON type")
+	}
+}
+
+// +k8s:deepcopy-gen=false
+type NodejsAppLayerSpecCloudwatchConfigurationCodec struct {
+}
+
+func (NodejsAppLayerSpecCloudwatchConfigurationCodec) IsEmpty(ptr unsafe.Pointer) bool {
+	return (*NodejsAppLayerSpecCloudwatchConfiguration)(ptr) == nil
+}
+
+func (NodejsAppLayerSpecCloudwatchConfigurationCodec) Encode(ptr unsafe.Pointer, stream *jsoniter.Stream) {
+	obj := (*NodejsAppLayerSpecCloudwatchConfiguration)(ptr)
+	var objs []NodejsAppLayerSpecCloudwatchConfiguration
+	if obj != nil {
+		objs = []NodejsAppLayerSpecCloudwatchConfiguration{*obj}
+	}
+
+	jsonit := jsoniter.Config{
+		EscapeHTML:             true,
+		SortMapKeys:            true,
+		ValidateJsonRawMessage: true,
+		TagKey:                 "tf",
+		TypeEncoders:           getEncodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(NodejsAppLayerSpecCloudwatchConfiguration{}).Type1())),
+	}.Froze()
+
+	byt, _ := jsonit.Marshal(objs)
+
+	stream.Write(byt)
+}
+
+func (NodejsAppLayerSpecCloudwatchConfigurationCodec) Decode(ptr unsafe.Pointer, iter *jsoniter.Iterator) {
+	switch iter.WhatIsNext() {
+	case jsoniter.NilValue:
+		iter.Skip()
+		*(*NodejsAppLayerSpecCloudwatchConfiguration)(ptr) = NodejsAppLayerSpecCloudwatchConfiguration{}
+		return
+	case jsoniter.ArrayValue:
+		objsByte := iter.SkipAndReturnBytes()
+		if len(objsByte) > 0 {
+			var objs []NodejsAppLayerSpecCloudwatchConfiguration
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(NodejsAppLayerSpecCloudwatchConfiguration{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objsByte, &objs)
+
+			if len(objs) > 0 {
+				*(*NodejsAppLayerSpecCloudwatchConfiguration)(ptr) = objs[0]
+			} else {
+				*(*NodejsAppLayerSpecCloudwatchConfiguration)(ptr) = NodejsAppLayerSpecCloudwatchConfiguration{}
+			}
+		} else {
+			*(*NodejsAppLayerSpecCloudwatchConfiguration)(ptr) = NodejsAppLayerSpecCloudwatchConfiguration{}
+		}
+	case jsoniter.ObjectValue:
+		objByte := iter.SkipAndReturnBytes()
+		if len(objByte) > 0 {
+			var obj NodejsAppLayerSpecCloudwatchConfiguration
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(NodejsAppLayerSpecCloudwatchConfiguration{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objByte, &obj)
+
+			*(*NodejsAppLayerSpecCloudwatchConfiguration)(ptr) = obj
+		} else {
+			*(*NodejsAppLayerSpecCloudwatchConfiguration)(ptr) = NodejsAppLayerSpecCloudwatchConfiguration{}
+		}
+	default:
+		iter.ReportError("decode NodejsAppLayerSpecCloudwatchConfiguration", "unexpected JSON type")
+	}
+}
+
+// +k8s:deepcopy-gen=false
+type PhpAppLayerSpecCloudwatchConfigurationCodec struct {
+}
+
+func (PhpAppLayerSpecCloudwatchConfigurationCodec) IsEmpty(ptr unsafe.Pointer) bool {
+	return (*PhpAppLayerSpecCloudwatchConfiguration)(ptr) == nil
+}
+
+func (PhpAppLayerSpecCloudwatchConfigurationCodec) Encode(ptr unsafe.Pointer, stream *jsoniter.Stream) {
+	obj := (*PhpAppLayerSpecCloudwatchConfiguration)(ptr)
+	var objs []PhpAppLayerSpecCloudwatchConfiguration
+	if obj != nil {
+		objs = []PhpAppLayerSpecCloudwatchConfiguration{*obj}
+	}
+
+	jsonit := jsoniter.Config{
+		EscapeHTML:             true,
+		SortMapKeys:            true,
+		ValidateJsonRawMessage: true,
+		TagKey:                 "tf",
+		TypeEncoders:           getEncodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(PhpAppLayerSpecCloudwatchConfiguration{}).Type1())),
+	}.Froze()
+
+	byt, _ := jsonit.Marshal(objs)
+
+	stream.Write(byt)
+}
+
+func (PhpAppLayerSpecCloudwatchConfigurationCodec) Decode(ptr unsafe.Pointer, iter *jsoniter.Iterator) {
+	switch iter.WhatIsNext() {
+	case jsoniter.NilValue:
+		iter.Skip()
+		*(*PhpAppLayerSpecCloudwatchConfiguration)(ptr) = PhpAppLayerSpecCloudwatchConfiguration{}
+		return
+	case jsoniter.ArrayValue:
+		objsByte := iter.SkipAndReturnBytes()
+		if len(objsByte) > 0 {
+			var objs []PhpAppLayerSpecCloudwatchConfiguration
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(PhpAppLayerSpecCloudwatchConfiguration{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objsByte, &objs)
+
+			if len(objs) > 0 {
+				*(*PhpAppLayerSpecCloudwatchConfiguration)(ptr) = objs[0]
+			} else {
+				*(*PhpAppLayerSpecCloudwatchConfiguration)(ptr) = PhpAppLayerSpecCloudwatchConfiguration{}
+			}
+		} else {
+			*(*PhpAppLayerSpecCloudwatchConfiguration)(ptr) = PhpAppLayerSpecCloudwatchConfiguration{}
+		}
+	case jsoniter.ObjectValue:
+		objByte := iter.SkipAndReturnBytes()
+		if len(objByte) > 0 {
+			var obj PhpAppLayerSpecCloudwatchConfiguration
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(PhpAppLayerSpecCloudwatchConfiguration{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objByte, &obj)
+
+			*(*PhpAppLayerSpecCloudwatchConfiguration)(ptr) = obj
+		} else {
+			*(*PhpAppLayerSpecCloudwatchConfiguration)(ptr) = PhpAppLayerSpecCloudwatchConfiguration{}
+		}
+	default:
+		iter.ReportError("decode PhpAppLayerSpecCloudwatchConfiguration", "unexpected JSON type")
+	}
+}
+
+// +k8s:deepcopy-gen=false
+type RailsAppLayerSpecCloudwatchConfigurationCodec struct {
+}
+
+func (RailsAppLayerSpecCloudwatchConfigurationCodec) IsEmpty(ptr unsafe.Pointer) bool {
+	return (*RailsAppLayerSpecCloudwatchConfiguration)(ptr) == nil
+}
+
+func (RailsAppLayerSpecCloudwatchConfigurationCodec) Encode(ptr unsafe.Pointer, stream *jsoniter.Stream) {
+	obj := (*RailsAppLayerSpecCloudwatchConfiguration)(ptr)
+	var objs []RailsAppLayerSpecCloudwatchConfiguration
+	if obj != nil {
+		objs = []RailsAppLayerSpecCloudwatchConfiguration{*obj}
+	}
+
+	jsonit := jsoniter.Config{
+		EscapeHTML:             true,
+		SortMapKeys:            true,
+		ValidateJsonRawMessage: true,
+		TagKey:                 "tf",
+		TypeEncoders:           getEncodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(RailsAppLayerSpecCloudwatchConfiguration{}).Type1())),
+	}.Froze()
+
+	byt, _ := jsonit.Marshal(objs)
+
+	stream.Write(byt)
+}
+
+func (RailsAppLayerSpecCloudwatchConfigurationCodec) Decode(ptr unsafe.Pointer, iter *jsoniter.Iterator) {
+	switch iter.WhatIsNext() {
+	case jsoniter.NilValue:
+		iter.Skip()
+		*(*RailsAppLayerSpecCloudwatchConfiguration)(ptr) = RailsAppLayerSpecCloudwatchConfiguration{}
+		return
+	case jsoniter.ArrayValue:
+		objsByte := iter.SkipAndReturnBytes()
+		if len(objsByte) > 0 {
+			var objs []RailsAppLayerSpecCloudwatchConfiguration
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(RailsAppLayerSpecCloudwatchConfiguration{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objsByte, &objs)
+
+			if len(objs) > 0 {
+				*(*RailsAppLayerSpecCloudwatchConfiguration)(ptr) = objs[0]
+			} else {
+				*(*RailsAppLayerSpecCloudwatchConfiguration)(ptr) = RailsAppLayerSpecCloudwatchConfiguration{}
+			}
+		} else {
+			*(*RailsAppLayerSpecCloudwatchConfiguration)(ptr) = RailsAppLayerSpecCloudwatchConfiguration{}
+		}
+	case jsoniter.ObjectValue:
+		objByte := iter.SkipAndReturnBytes()
+		if len(objByte) > 0 {
+			var obj RailsAppLayerSpecCloudwatchConfiguration
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(RailsAppLayerSpecCloudwatchConfiguration{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objByte, &obj)
+
+			*(*RailsAppLayerSpecCloudwatchConfiguration)(ptr) = obj
+		} else {
+			*(*RailsAppLayerSpecCloudwatchConfiguration)(ptr) = RailsAppLayerSpecCloudwatchConfiguration{}
+		}
+	default:
+		iter.ReportError("decode RailsAppLayerSpecCloudwatchConfiguration", "unexpected JSON type")
+	}
+}
+
+// +k8s:deepcopy-gen=false
+type StaticWebLayerSpecCloudwatchConfigurationCodec struct {
+}
+
+func (StaticWebLayerSpecCloudwatchConfigurationCodec) IsEmpty(ptr unsafe.Pointer) bool {
+	return (*StaticWebLayerSpecCloudwatchConfiguration)(ptr) == nil
+}
+
+func (StaticWebLayerSpecCloudwatchConfigurationCodec) Encode(ptr unsafe.Pointer, stream *jsoniter.Stream) {
+	obj := (*StaticWebLayerSpecCloudwatchConfiguration)(ptr)
+	var objs []StaticWebLayerSpecCloudwatchConfiguration
+	if obj != nil {
+		objs = []StaticWebLayerSpecCloudwatchConfiguration{*obj}
+	}
+
+	jsonit := jsoniter.Config{
+		EscapeHTML:             true,
+		SortMapKeys:            true,
+		ValidateJsonRawMessage: true,
+		TagKey:                 "tf",
+		TypeEncoders:           getEncodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(StaticWebLayerSpecCloudwatchConfiguration{}).Type1())),
+	}.Froze()
+
+	byt, _ := jsonit.Marshal(objs)
+
+	stream.Write(byt)
+}
+
+func (StaticWebLayerSpecCloudwatchConfigurationCodec) Decode(ptr unsafe.Pointer, iter *jsoniter.Iterator) {
+	switch iter.WhatIsNext() {
+	case jsoniter.NilValue:
+		iter.Skip()
+		*(*StaticWebLayerSpecCloudwatchConfiguration)(ptr) = StaticWebLayerSpecCloudwatchConfiguration{}
+		return
+	case jsoniter.ArrayValue:
+		objsByte := iter.SkipAndReturnBytes()
+		if len(objsByte) > 0 {
+			var objs []StaticWebLayerSpecCloudwatchConfiguration
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(StaticWebLayerSpecCloudwatchConfiguration{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objsByte, &objs)
+
+			if len(objs) > 0 {
+				*(*StaticWebLayerSpecCloudwatchConfiguration)(ptr) = objs[0]
+			} else {
+				*(*StaticWebLayerSpecCloudwatchConfiguration)(ptr) = StaticWebLayerSpecCloudwatchConfiguration{}
+			}
+		} else {
+			*(*StaticWebLayerSpecCloudwatchConfiguration)(ptr) = StaticWebLayerSpecCloudwatchConfiguration{}
+		}
+	case jsoniter.ObjectValue:
+		objByte := iter.SkipAndReturnBytes()
+		if len(objByte) > 0 {
+			var obj StaticWebLayerSpecCloudwatchConfiguration
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(StaticWebLayerSpecCloudwatchConfiguration{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objByte, &obj)
+
+			*(*StaticWebLayerSpecCloudwatchConfiguration)(ptr) = obj
+		} else {
+			*(*StaticWebLayerSpecCloudwatchConfiguration)(ptr) = StaticWebLayerSpecCloudwatchConfiguration{}
+		}
+	default:
+		iter.ReportError("decode StaticWebLayerSpecCloudwatchConfiguration", "unexpected JSON type")
+	}
 }

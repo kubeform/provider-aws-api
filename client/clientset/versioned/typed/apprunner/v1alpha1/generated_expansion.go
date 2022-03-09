@@ -25,3 +25,5 @@ type ConnectionExpansion interface{}
 type CustomDomainAssociationExpansion interface{}
 
 type ServiceExpansion interface{}
+
+type VpcConnectorExpansion interface{}

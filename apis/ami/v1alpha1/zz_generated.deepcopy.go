@@ -141,6 +141,11 @@ func (in *AmiSpecEbsBlockDevice) DeepCopyInto(out *AmiSpecEbsBlockDevice) {
 		*out = new(int64)
 		**out = **in
 	}
+	if in.OutpostArn != nil {
+		in, out := &in.OutpostArn, &out.OutpostArn
+		*out = new(string)
+		**out = **in
+	}
 	if in.SnapshotID != nil {
 		in, out := &in.SnapshotID, &out.SnapshotID
 		*out = new(string)
@@ -215,6 +220,11 @@ func (in *AmiSpecResource) DeepCopyInto(out *AmiSpecResource) {
 	}
 	if in.Arn != nil {
 		in, out := &in.Arn, &out.Arn
+		*out = new(string)
+		**out = **in
+	}
+	if in.BootMode != nil {
+		in, out := &in.BootMode, &out.BootMode
 		*out = new(string)
 		**out = **in
 	}
@@ -497,6 +507,11 @@ func (in *CopySpecEbsBlockDevice) DeepCopyInto(out *CopySpecEbsBlockDevice) {
 		*out = new(int64)
 		**out = **in
 	}
+	if in.OutpostArn != nil {
+		in, out := &in.OutpostArn, &out.OutpostArn
+		*out = new(string)
+		**out = **in
+	}
 	if in.SnapshotID != nil {
 		in, out := &in.SnapshotID, &out.SnapshotID
 		*out = new(string)
@@ -571,6 +586,11 @@ func (in *CopySpecResource) DeepCopyInto(out *CopySpecResource) {
 	}
 	if in.Arn != nil {
 		in, out := &in.Arn, &out.Arn
+		*out = new(string)
+		**out = **in
+	}
+	if in.BootMode != nil {
+		in, out := &in.BootMode, &out.BootMode
 		*out = new(string)
 		**out = **in
 	}
@@ -878,6 +898,11 @@ func (in *FromInstanceSpecEbsBlockDevice) DeepCopyInto(out *FromInstanceSpecEbsB
 		*out = new(int64)
 		**out = **in
 	}
+	if in.OutpostArn != nil {
+		in, out := &in.OutpostArn, &out.OutpostArn
+		*out = new(string)
+		**out = **in
+	}
 	if in.SnapshotID != nil {
 		in, out := &in.SnapshotID, &out.SnapshotID
 		*out = new(string)
@@ -952,6 +977,11 @@ func (in *FromInstanceSpecResource) DeepCopyInto(out *FromInstanceSpecResource) 
 	}
 	if in.Arn != nil {
 		in, out := &in.Arn, &out.Arn
+		*out = new(string)
+		**out = **in
+	}
+	if in.BootMode != nil {
+		in, out := &in.BootMode, &out.BootMode
 		*out = new(string)
 		**out = **in
 	}

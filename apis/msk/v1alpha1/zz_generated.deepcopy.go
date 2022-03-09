@@ -649,6 +649,11 @@ func (in *ClusterSpecResource) DeepCopyInto(out *ClusterSpecResource) {
 		*out = new(string)
 		**out = **in
 	}
+	if in.ZookeeperConnectStringTls != nil {
+		in, out := &in.ZookeeperConnectStringTls, &out.ZookeeperConnectStringTls
+		*out = new(string)
+		**out = **in
+	}
 	return
 }
 

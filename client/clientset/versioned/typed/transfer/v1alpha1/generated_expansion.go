@@ -18,6 +18,8 @@ limitations under the License.
 
 package v1alpha1
 
+type AccessExpansion interface{}
+
 type ServerExpansion interface{}
 
 type SshKeyExpansion interface{}

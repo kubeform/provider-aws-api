@@ -30,14 +30,27 @@ type S3V1alpha1Interface interface {
 	AccessPointsGetter
 	AccountPublicAccessBlocksGetter
 	BucketsGetter
+	BucketACLsGetter
+	BucketAccelerateConfigurationsGetter
 	BucketAnalyticsConfigurationsGetter
+	BucketCorsConfigurationsGetter
+	BucketIntelligentTieringConfigurationsGetter
 	BucketInventoriesGetter
+	BucketLifecycleConfigurationsGetter
+	BucketLoggingsGetter
 	BucketMetricsGetter
 	BucketNotificationsGetter
 	BucketObjectsGetter
+	BucketObjectLockConfigurationsGetter
 	BucketOwnershipControlsesGetter
 	BucketPoliciesGetter
 	BucketPublicAccessBlocksGetter
+	BucketReplicationConfigurationsGetter
+	BucketRequestPaymentConfigurationsGetter
+	BucketServerSideEncryptionConfigurationsGetter
+	BucketVersioningsGetter
+	BucketWebsiteConfigurationsGetter
+	ObjectsGetter
 	ObjectCopiesGetter
 }
 
@@ -58,12 +71,36 @@ func (c *S3V1alpha1Client) Buckets(namespace string) BucketInterface {
 	return newBuckets(c, namespace)
 }
 
+func (c *S3V1alpha1Client) BucketACLs(namespace string) BucketACLInterface {
+	return newBucketACLs(c, namespace)
+}
+
+func (c *S3V1alpha1Client) BucketAccelerateConfigurations(namespace string) BucketAccelerateConfigurationInterface {
+	return newBucketAccelerateConfigurations(c, namespace)
+}
+
 func (c *S3V1alpha1Client) BucketAnalyticsConfigurations(namespace string) BucketAnalyticsConfigurationInterface {
 	return newBucketAnalyticsConfigurations(c, namespace)
 }
 
+func (c *S3V1alpha1Client) BucketCorsConfigurations(namespace string) BucketCorsConfigurationInterface {
+	return newBucketCorsConfigurations(c, namespace)
+}
+
+func (c *S3V1alpha1Client) BucketIntelligentTieringConfigurations(namespace string) BucketIntelligentTieringConfigurationInterface {
+	return newBucketIntelligentTieringConfigurations(c, namespace)
+}
+
 func (c *S3V1alpha1Client) BucketInventories(namespace string) BucketInventoryInterface {
 	return newBucketInventories(c, namespace)
+}
+
+func (c *S3V1alpha1Client) BucketLifecycleConfigurations(namespace string) BucketLifecycleConfigurationInterface {
+	return newBucketLifecycleConfigurations(c, namespace)
+}
+
+func (c *S3V1alpha1Client) BucketLoggings(namespace string) BucketLoggingInterface {
+	return newBucketLoggings(c, namespace)
 }
 
 func (c *S3V1alpha1Client) BucketMetrics(namespace string) BucketMetricInterface {
@@ -78,6 +115,10 @@ func (c *S3V1alpha1Client) BucketObjects(namespace string) BucketObjectInterface
 	return newBucketObjects(c, namespace)
 }
 
+func (c *S3V1alpha1Client) BucketObjectLockConfigurations(namespace string) BucketObjectLockConfigurationInterface {
+	return newBucketObjectLockConfigurations(c, namespace)
+}
+
 func (c *S3V1alpha1Client) BucketOwnershipControlses(namespace string) BucketOwnershipControlsInterface {
 	return newBucketOwnershipControlses(c, namespace)
 }
@@ -88,6 +129,30 @@ func (c *S3V1alpha1Client) BucketPolicies(namespace string) BucketPolicyInterfac
 
 func (c *S3V1alpha1Client) BucketPublicAccessBlocks(namespace string) BucketPublicAccessBlockInterface {
 	return newBucketPublicAccessBlocks(c, namespace)
+}
+
+func (c *S3V1alpha1Client) BucketReplicationConfigurations(namespace string) BucketReplicationConfigurationInterface {
+	return newBucketReplicationConfigurations(c, namespace)
+}
+
+func (c *S3V1alpha1Client) BucketRequestPaymentConfigurations(namespace string) BucketRequestPaymentConfigurationInterface {
+	return newBucketRequestPaymentConfigurations(c, namespace)
+}
+
+func (c *S3V1alpha1Client) BucketServerSideEncryptionConfigurations(namespace string) BucketServerSideEncryptionConfigurationInterface {
+	return newBucketServerSideEncryptionConfigurations(c, namespace)
+}
+
+func (c *S3V1alpha1Client) BucketVersionings(namespace string) BucketVersioningInterface {
+	return newBucketVersionings(c, namespace)
+}
+
+func (c *S3V1alpha1Client) BucketWebsiteConfigurations(namespace string) BucketWebsiteConfigurationInterface {
+	return newBucketWebsiteConfigurations(c, namespace)
+}
+
+func (c *S3V1alpha1Client) Objects(namespace string) ObjectInterface {
+	return newObjects(c, namespace)
 }
 
 func (c *S3V1alpha1Client) ObjectCopies(namespace string) ObjectCopyInterface {

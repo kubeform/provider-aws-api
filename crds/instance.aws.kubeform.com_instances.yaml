@@ -167,6 +167,15 @@ spec:
                     type: array
                   keyName:
                     type: string
+                  launchTemplate:
+                    properties:
+                      ID:
+                        type: string
+                      name:
+                        type: string
+                      version:
+                        type: string
+                    type: object
                   metadataOptions:
                     properties:
                       httpEndpoint:
@@ -175,6 +184,8 @@ spec:
                         format: int64
                         type: integer
                       httpTokens:
+                        type: string
+                      instanceMetadataTags:
                         type: string
                     type: object
                   monitoring:
@@ -200,6 +211,9 @@ spec:
                     type: string
                   placementGroup:
                     type: string
+                  placementPartitionNumber:
+                    format: int64
+                    type: integer
                   primaryNetworkInterfaceID:
                     type: string
                   privateDNS:
@@ -310,9 +324,6 @@ spec:
                     items:
                       type: string
                     type: array
-                required:
-                - ami
-                - instanceType
                 type: object
               state:
                 properties:
@@ -426,6 +437,15 @@ spec:
                     type: array
                   keyName:
                     type: string
+                  launchTemplate:
+                    properties:
+                      ID:
+                        type: string
+                      name:
+                        type: string
+                      version:
+                        type: string
+                    type: object
                   metadataOptions:
                     properties:
                       httpEndpoint:
@@ -434,6 +454,8 @@ spec:
                         format: int64
                         type: integer
                       httpTokens:
+                        type: string
+                      instanceMetadataTags:
                         type: string
                     type: object
                   monitoring:
@@ -459,6 +481,9 @@ spec:
                     type: string
                   placementGroup:
                     type: string
+                  placementPartitionNumber:
+                    format: int64
+                    type: integer
                   primaryNetworkInterfaceID:
                     type: string
                   privateDNS:
@@ -569,9 +594,6 @@ spec:
                     items:
                       type: string
                     type: array
-                required:
-                - ami
-                - instanceType
                 type: object
               terminationPolicy:
                 enum:

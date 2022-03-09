@@ -177,6 +177,11 @@ func (in *ClusterSpecResource) DeepCopyInto(out *ClusterSpecResource) {
 		*out = new(string)
 		**out = **in
 	}
+	if in.ClusterEndpointEncryptionType != nil {
+		in, out := &in.ClusterEndpointEncryptionType, &out.ClusterEndpointEncryptionType
+		*out = new(string)
+		**out = **in
+	}
 	if in.ClusterName != nil {
 		in, out := &in.ClusterName, &out.ClusterName
 		*out = new(string)

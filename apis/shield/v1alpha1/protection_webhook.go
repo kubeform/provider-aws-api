@@ -89,7 +89,7 @@ func (r *Protection) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range protectionForceNewList {
+	for key, _ := range protectionForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

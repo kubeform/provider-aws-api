@@ -84,6 +84,10 @@ type AppImageConfigSpecResource struct {
 	Arn *string `json:"arn,omitempty" tf:"arn"`
 	// +optional
 	KernelGatewayImageConfig *AppImageConfigSpecKernelGatewayImageConfig `json:"kernelGatewayImageConfig,omitempty" tf:"kernel_gateway_image_config"`
+	// +optional
+	Tags *map[string]string `json:"tags,omitempty" tf:"tags"`
+	// +optional
+	TagsAll *map[string]string `json:"tagsAll,omitempty" tf:"tags_all"`
 }
 
 type AppImageConfigStatus struct {

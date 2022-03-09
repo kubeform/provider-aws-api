@@ -68,6 +68,10 @@ func addKnownTypes(scheme *runtime.Scheme) error {
 		&SecurityGroupList{},
 		&SubnetGroup{},
 		&SubnetGroupList{},
+		&User{},
+		&UserList{},
+		&UserGroup{},
+		&UserGroupList{},
 	)
 
 	scheme.AddKnownTypes(SchemeGroupVersion,

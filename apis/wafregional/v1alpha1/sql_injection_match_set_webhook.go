@@ -88,7 +88,7 @@ func (r *SqlInjectionMatchSet) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range sqlinjectionmatchsetForceNewList {
+	for key, _ := range sqlinjectionmatchsetForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

@@ -33,6 +33,14 @@ func (c *FakeShieldV1alpha1) Protections(namespace string) v1alpha1.ProtectionIn
 	return &FakeProtections{c, namespace}
 }
 
+func (c *FakeShieldV1alpha1) ProtectionGroups(namespace string) v1alpha1.ProtectionGroupInterface {
+	return &FakeProtectionGroups{c, namespace}
+}
+
+func (c *FakeShieldV1alpha1) ProtectionHealthCheckAssociations(namespace string) v1alpha1.ProtectionHealthCheckAssociationInterface {
+	return &FakeProtectionHealthCheckAssociations{c, namespace}
+}
+
 // RESTClient returns a RESTClient that is used to communicate
 // with API server by this client implementation.
 func (c *FakeShieldV1alpha1) RESTClient() rest.Interface {

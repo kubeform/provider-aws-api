@@ -41,6 +41,15 @@ type Log struct {
 	Status            LogStatus `json:"status,omitempty"`
 }
 
+type LogSpecDestinationOptions struct {
+	// +optional
+	FileFormat *string `json:"fileFormat,omitempty" tf:"file_format"`
+	// +optional
+	HiveCompatiblePartitions *bool `json:"hiveCompatiblePartitions,omitempty" tf:"hive_compatible_partitions"`
+	// +optional
+	PerHourPartition *bool `json:"perHourPartition,omitempty" tf:"per_hour_partition"`
+}
+
 type LogSpec struct {
 	State *LogSpecResource `json:"state,omitempty" tf:"-"`
 
@@ -60,6 +69,8 @@ type LogSpecResource struct {
 
 	// +optional
 	Arn *string `json:"arn,omitempty" tf:"arn"`
+	// +optional
+	DestinationOptions *LogSpecDestinationOptions `json:"destinationOptions,omitempty" tf:"destination_options"`
 	// +optional
 	EniID *string `json:"eniID,omitempty" tf:"eni_id"`
 	// +optional

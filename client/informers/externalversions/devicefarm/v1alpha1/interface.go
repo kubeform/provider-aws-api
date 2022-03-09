@@ -24,8 +24,18 @@ import (
 
 // Interface provides access to all the informers in this group version.
 type Interface interface {
+	// DevicePools returns a DevicePoolInformer.
+	DevicePools() DevicePoolInformer
+	// InstanceProfiles returns a InstanceProfileInformer.
+	InstanceProfiles() InstanceProfileInformer
+	// NetworkProfiles returns a NetworkProfileInformer.
+	NetworkProfiles() NetworkProfileInformer
 	// Projects returns a ProjectInformer.
 	Projects() ProjectInformer
+	// TestGridProjects returns a TestGridProjectInformer.
+	TestGridProjects() TestGridProjectInformer
+	// Uploads returns a UploadInformer.
+	Uploads() UploadInformer
 }
 
 type version struct {
@@ -39,7 +49,32 @@ func New(f internalinterfaces.SharedInformerFactory, namespace string, tweakList
 	return &version{factory: f, namespace: namespace, tweakListOptions: tweakListOptions}
 }
 
+// DevicePools returns a DevicePoolInformer.
+func (v *version) DevicePools() DevicePoolInformer {
+	return &devicePoolInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
+// InstanceProfiles returns a InstanceProfileInformer.
+func (v *version) InstanceProfiles() InstanceProfileInformer {
+	return &instanceProfileInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
+// NetworkProfiles returns a NetworkProfileInformer.
+func (v *version) NetworkProfiles() NetworkProfileInformer {
+	return &networkProfileInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
 // Projects returns a ProjectInformer.
 func (v *version) Projects() ProjectInformer {
 	return &projectInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
+// TestGridProjects returns a TestGridProjectInformer.
+func (v *version) TestGridProjects() TestGridProjectInformer {
+	return &testGridProjectInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
+// Uploads returns a UploadInformer.
+func (v *version) Uploads() UploadInformer {
+	return &uploadInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
 }

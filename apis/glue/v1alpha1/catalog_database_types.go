@@ -41,6 +41,18 @@ type CatalogDatabase struct {
 	Status            CatalogDatabaseStatus `json:"status,omitempty"`
 }
 
+type CatalogDatabaseSpecCreateTableDefaultPermissionPrincipal struct {
+	// +optional
+	DataLakePrincipalIdentifier *string `json:"dataLakePrincipalIdentifier,omitempty" tf:"data_lake_principal_identifier"`
+}
+
+type CatalogDatabaseSpecCreateTableDefaultPermission struct {
+	// +optional
+	Permissions []string `json:"permissions,omitempty" tf:"permissions"`
+	// +optional
+	Principal *CatalogDatabaseSpecCreateTableDefaultPermissionPrincipal `json:"principal,omitempty" tf:"principal"`
+}
+
 type CatalogDatabaseSpecTargetDatabase struct {
 	CatalogID    *string `json:"catalogID" tf:"catalog_id"`
 	DatabaseName *string `json:"databaseName" tf:"database_name"`
@@ -67,6 +79,8 @@ type CatalogDatabaseSpecResource struct {
 	Arn *string `json:"arn,omitempty" tf:"arn"`
 	// +optional
 	CatalogID *string `json:"catalogID,omitempty" tf:"catalog_id"`
+	// +optional
+	CreateTableDefaultPermission []CatalogDatabaseSpecCreateTableDefaultPermission `json:"createTableDefaultPermission,omitempty" tf:"create_table_default_permission"`
 	// +optional
 	Description *string `json:"description,omitempty" tf:"description"`
 	// +optional

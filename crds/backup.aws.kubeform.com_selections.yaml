@@ -57,12 +57,69 @@ spec:
                 type: object
               resource:
                 properties:
+                  condition:
+                    items:
+                      properties:
+                        stringEquals:
+                          items:
+                            properties:
+                              key:
+                                type: string
+                              value:
+                                type: string
+                            required:
+                            - key
+                            - value
+                            type: object
+                          type: array
+                        stringLike:
+                          items:
+                            properties:
+                              key:
+                                type: string
+                              value:
+                                type: string
+                            required:
+                            - key
+                            - value
+                            type: object
+                          type: array
+                        stringNotEquals:
+                          items:
+                            properties:
+                              key:
+                                type: string
+                              value:
+                                type: string
+                            required:
+                            - key
+                            - value
+                            type: object
+                          type: array
+                        stringNotLike:
+                          items:
+                            properties:
+                              key:
+                                type: string
+                              value:
+                                type: string
+                            required:
+                            - key
+                            - value
+                            type: object
+                          type: array
+                      type: object
+                    type: array
                   iamRoleArn:
                     type: string
                   id:
                     type: string
                   name:
                     type: string
+                  notResources:
+                    items:
+                      type: string
+                    type: array
                   planID:
                     type: string
                   resources:
@@ -91,12 +148,69 @@ spec:
                 type: object
               state:
                 properties:
+                  condition:
+                    items:
+                      properties:
+                        stringEquals:
+                          items:
+                            properties:
+                              key:
+                                type: string
+                              value:
+                                type: string
+                            required:
+                            - key
+                            - value
+                            type: object
+                          type: array
+                        stringLike:
+                          items:
+                            properties:
+                              key:
+                                type: string
+                              value:
+                                type: string
+                            required:
+                            - key
+                            - value
+                            type: object
+                          type: array
+                        stringNotEquals:
+                          items:
+                            properties:
+                              key:
+                                type: string
+                              value:
+                                type: string
+                            required:
+                            - key
+                            - value
+                            type: object
+                          type: array
+                        stringNotLike:
+                          items:
+                            properties:
+                              key:
+                                type: string
+                              value:
+                                type: string
+                            required:
+                            - key
+                            - value
+                            type: object
+                          type: array
+                      type: object
+                    type: array
                   iamRoleArn:
                     type: string
                   id:
                     type: string
                   name:
                     type: string
+                  notResources:
+                    items:
+                      type: string
+                    type: array
                   planID:
                     type: string
                   resources:

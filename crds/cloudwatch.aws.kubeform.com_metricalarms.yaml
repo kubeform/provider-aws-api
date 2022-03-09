@@ -99,6 +99,8 @@ spec:
                       properties:
                         ID:
                           type: string
+                        accountID:
+                          type: string
                         expression:
                           type: string
                         label:
@@ -208,6 +210,8 @@ spec:
                     items:
                       properties:
                         ID:
+                          type: string
+                        accountID:
                           type: string
                         expression:
                           type: string

@@ -65,3 +65,19 @@ type SubnetGroupListerExpansion interface{}
 // SubnetGroupNamespaceListerExpansion allows custom methods to be added to
 // SubnetGroupNamespaceLister.
 type SubnetGroupNamespaceListerExpansion interface{}
+
+// UserListerExpansion allows custom methods to be added to
+// UserLister.
+type UserListerExpansion interface{}
+
+// UserNamespaceListerExpansion allows custom methods to be added to
+// UserNamespaceLister.
+type UserNamespaceListerExpansion interface{}
+
+// UserGroupListerExpansion allows custom methods to be added to
+// UserGroupLister.
+type UserGroupListerExpansion interface{}
+
+// UserGroupNamespaceListerExpansion allows custom methods to be added to
+// UserGroupNamespaceLister.
+type UserGroupNamespaceListerExpansion interface{}

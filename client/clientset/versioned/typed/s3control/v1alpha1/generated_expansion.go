@@ -18,8 +18,18 @@ limitations under the License.
 
 package v1alpha1
 
+type AccessPointPolicyExpansion interface{}
+
 type BucketExpansion interface{}
 
 type BucketLifecycleConfigurationExpansion interface{}
 
 type BucketPolicyExpansion interface{}
+
+type MultiRegionAccessPointExpansion interface{}
+
+type MultiRegionAccessPointPolicyExpansion interface{}
+
+type ObjectLambdaAccessPointExpansion interface{}
+
+type ObjectLambdaAccessPointPolicyExpansion interface{}

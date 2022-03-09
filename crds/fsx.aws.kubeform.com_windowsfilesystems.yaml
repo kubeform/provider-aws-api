@@ -59,11 +59,27 @@ spec:
                 properties:
                   activeDirectoryID:
                     type: string
+                  aliases:
+                    items:
+                      type: string
+                    maxItems: 50
+                    type: array
                   arn:
                     type: string
+                  auditLogConfiguration:
+                    properties:
+                      auditLogDestination:
+                        type: string
+                      fileAccessAuditLogLevel:
+                        type: string
+                      fileShareAccessAuditLogLevel:
+                        type: string
+                    type: object
                   automaticBackupRetentionDays:
                     format: int64
                     type: integer
+                  backupID:
+                    type: string
                   copyTagsToBackups:
                     type: boolean
                   dailyAutomaticBackupStartTime:
@@ -180,7 +196,6 @@ spec:
                   weeklyMaintenanceStartTime:
                     type: string
                 required:
-                - storageCapacity
                 - subnetIDS
                 - throughputCapacity
                 type: object
@@ -197,11 +212,27 @@ spec:
                 properties:
                   activeDirectoryID:
                     type: string
+                  aliases:
+                    items:
+                      type: string
+                    maxItems: 50
+                    type: array
                   arn:
                     type: string
+                  auditLogConfiguration:
+                    properties:
+                      auditLogDestination:
+                        type: string
+                      fileAccessAuditLogLevel:
+                        type: string
+                      fileShareAccessAuditLogLevel:
+                        type: string
+                    type: object
                   automaticBackupRetentionDays:
                     format: int64
                     type: integer
+                  backupID:
+                    type: string
                   copyTagsToBackups:
                     type: boolean
                   dailyAutomaticBackupStartTime:
@@ -318,7 +349,6 @@ spec:
                   weeklyMaintenanceStartTime:
                     type: string
                 required:
-                - storageCapacity
                 - subnetIDS
                 - throughputCapacity
                 type: object

@@ -91,7 +91,7 @@ func (r *InstancePublicPorts) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range instancepublicportsForceNewList {
+	for key, _ := range instancepublicportsForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

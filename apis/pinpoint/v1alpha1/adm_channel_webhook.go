@@ -88,7 +88,7 @@ func (r *AdmChannel) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range admchannelForceNewList {
+	for key, _ := range admchannelForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

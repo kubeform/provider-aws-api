@@ -22,6 +22,8 @@ type ProjectExpansion interface{}
 
 type ReportGroupExpansion interface{}
 
+type ResourcePolicyExpansion interface{}
+
 type SourceCredentialExpansion interface{}
 
 type WebhookExpansion interface{}

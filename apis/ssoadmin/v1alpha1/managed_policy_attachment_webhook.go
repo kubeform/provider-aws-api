@@ -90,7 +90,7 @@ func (r *ManagedPolicyAttachment) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range managedpolicyattachmentForceNewList {
+	for key, _ := range managedpolicyattachmentForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

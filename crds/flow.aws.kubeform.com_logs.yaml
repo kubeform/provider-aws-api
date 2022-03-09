@@ -59,6 +59,15 @@ spec:
                 properties:
                   arn:
                     type: string
+                  destinationOptions:
+                    properties:
+                      fileFormat:
+                        type: string
+                      hiveCompatiblePartitions:
+                        type: boolean
+                      perHourPartition:
+                        type: boolean
+                    type: object
                   eniID:
                     type: string
                   iamRoleArn:
@@ -98,6 +107,15 @@ spec:
                 properties:
                   arn:
                     type: string
+                  destinationOptions:
+                    properties:
+                      fileFormat:
+                        type: string
+                      hiveCompatiblePartitions:
+                        type: boolean
+                      perHourPartition:
+                        type: boolean
+                    type: object
                   eniID:
                     type: string
                   iamRoleArn:

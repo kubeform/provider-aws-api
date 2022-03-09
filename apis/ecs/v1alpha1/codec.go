@@ -38,11 +38,15 @@ func GetEncoder() map[string]jsoniter.ValEncoder {
 		jsoniter.MustGetKind(reflect2.TypeOf(ServiceSpecServiceRegistries{}).Type1()):                                                       ServiceSpecServiceRegistriesCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(TaskDefinitionSpecEphemeralStorage{}).Type1()):                                                 TaskDefinitionSpecEphemeralStorageCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(TaskDefinitionSpecProxyConfiguration{}).Type1()):                                               TaskDefinitionSpecProxyConfigurationCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(TaskDefinitionSpecRuntimePlatform{}).Type1()):                                                  TaskDefinitionSpecRuntimePlatformCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(TaskDefinitionSpecVolumeDockerVolumeConfiguration{}).Type1()):                                  TaskDefinitionSpecVolumeDockerVolumeConfigurationCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(TaskDefinitionSpecVolumeEfsVolumeConfiguration{}).Type1()):                                     TaskDefinitionSpecVolumeEfsVolumeConfigurationCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(TaskDefinitionSpecVolumeEfsVolumeConfigurationAuthorizationConfig{}).Type1()):                  TaskDefinitionSpecVolumeEfsVolumeConfigurationAuthorizationConfigCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(TaskDefinitionSpecVolumeFsxWindowsFileServerVolumeConfiguration{}).Type1()):                    TaskDefinitionSpecVolumeFsxWindowsFileServerVolumeConfigurationCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(TaskDefinitionSpecVolumeFsxWindowsFileServerVolumeConfigurationAuthorizationConfig{}).Type1()): TaskDefinitionSpecVolumeFsxWindowsFileServerVolumeConfigurationAuthorizationConfigCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(TaskSetSpecNetworkConfiguration{}).Type1()):                                                    TaskSetSpecNetworkConfigurationCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(TaskSetSpecScale{}).Type1()):                                                                   TaskSetSpecScaleCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(TaskSetSpecServiceRegistries{}).Type1()):                                                       TaskSetSpecServiceRegistriesCodec{},
 	}
 }
 
@@ -59,11 +63,15 @@ func GetDecoder() map[string]jsoniter.ValDecoder {
 		jsoniter.MustGetKind(reflect2.TypeOf(ServiceSpecServiceRegistries{}).Type1()):                                                       ServiceSpecServiceRegistriesCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(TaskDefinitionSpecEphemeralStorage{}).Type1()):                                                 TaskDefinitionSpecEphemeralStorageCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(TaskDefinitionSpecProxyConfiguration{}).Type1()):                                               TaskDefinitionSpecProxyConfigurationCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(TaskDefinitionSpecRuntimePlatform{}).Type1()):                                                  TaskDefinitionSpecRuntimePlatformCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(TaskDefinitionSpecVolumeDockerVolumeConfiguration{}).Type1()):                                  TaskDefinitionSpecVolumeDockerVolumeConfigurationCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(TaskDefinitionSpecVolumeEfsVolumeConfiguration{}).Type1()):                                     TaskDefinitionSpecVolumeEfsVolumeConfigurationCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(TaskDefinitionSpecVolumeEfsVolumeConfigurationAuthorizationConfig{}).Type1()):                  TaskDefinitionSpecVolumeEfsVolumeConfigurationAuthorizationConfigCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(TaskDefinitionSpecVolumeFsxWindowsFileServerVolumeConfiguration{}).Type1()):                    TaskDefinitionSpecVolumeFsxWindowsFileServerVolumeConfigurationCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(TaskDefinitionSpecVolumeFsxWindowsFileServerVolumeConfigurationAuthorizationConfig{}).Type1()): TaskDefinitionSpecVolumeFsxWindowsFileServerVolumeConfigurationAuthorizationConfigCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(TaskSetSpecNetworkConfiguration{}).Type1()):                                                    TaskSetSpecNetworkConfigurationCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(TaskSetSpecScale{}).Type1()):                                                                   TaskSetSpecScaleCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(TaskSetSpecServiceRegistries{}).Type1()):                                                       TaskSetSpecServiceRegistriesCodec{},
 	}
 }
 
@@ -949,6 +957,85 @@ func (TaskDefinitionSpecProxyConfigurationCodec) Decode(ptr unsafe.Pointer, iter
 }
 
 // +k8s:deepcopy-gen=false
+type TaskDefinitionSpecRuntimePlatformCodec struct {
+}
+
+func (TaskDefinitionSpecRuntimePlatformCodec) IsEmpty(ptr unsafe.Pointer) bool {
+	return (*TaskDefinitionSpecRuntimePlatform)(ptr) == nil
+}
+
+func (TaskDefinitionSpecRuntimePlatformCodec) Encode(ptr unsafe.Pointer, stream *jsoniter.Stream) {
+	obj := (*TaskDefinitionSpecRuntimePlatform)(ptr)
+	var objs []TaskDefinitionSpecRuntimePlatform
+	if obj != nil {
+		objs = []TaskDefinitionSpecRuntimePlatform{*obj}
+	}
+
+	jsonit := jsoniter.Config{
+		EscapeHTML:             true,
+		SortMapKeys:            true,
+		ValidateJsonRawMessage: true,
+		TagKey:                 "tf",
+		TypeEncoders:           getEncodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(TaskDefinitionSpecRuntimePlatform{}).Type1())),
+	}.Froze()
+
+	byt, _ := jsonit.Marshal(objs)
+
+	stream.Write(byt)
+}
+
+func (TaskDefinitionSpecRuntimePlatformCodec) Decode(ptr unsafe.Pointer, iter *jsoniter.Iterator) {
+	switch iter.WhatIsNext() {
+	case jsoniter.NilValue:
+		iter.Skip()
+		*(*TaskDefinitionSpecRuntimePlatform)(ptr) = TaskDefinitionSpecRuntimePlatform{}
+		return
+	case jsoniter.ArrayValue:
+		objsByte := iter.SkipAndReturnBytes()
+		if len(objsByte) > 0 {
+			var objs []TaskDefinitionSpecRuntimePlatform
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(TaskDefinitionSpecRuntimePlatform{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objsByte, &objs)
+
+			if len(objs) > 0 {
+				*(*TaskDefinitionSpecRuntimePlatform)(ptr) = objs[0]
+			} else {
+				*(*TaskDefinitionSpecRuntimePlatform)(ptr) = TaskDefinitionSpecRuntimePlatform{}
+			}
+		} else {
+			*(*TaskDefinitionSpecRuntimePlatform)(ptr) = TaskDefinitionSpecRuntimePlatform{}
+		}
+	case jsoniter.ObjectValue:
+		objByte := iter.SkipAndReturnBytes()
+		if len(objByte) > 0 {
+			var obj TaskDefinitionSpecRuntimePlatform
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(TaskDefinitionSpecRuntimePlatform{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objByte, &obj)
+
+			*(*TaskDefinitionSpecRuntimePlatform)(ptr) = obj
+		} else {
+			*(*TaskDefinitionSpecRuntimePlatform)(ptr) = TaskDefinitionSpecRuntimePlatform{}
+		}
+	default:
+		iter.ReportError("decode TaskDefinitionSpecRuntimePlatform", "unexpected JSON type")
+	}
+}
+
+// +k8s:deepcopy-gen=false
 type TaskDefinitionSpecVolumeDockerVolumeConfigurationCodec struct {
 }
 
@@ -1340,5 +1427,242 @@ func (TaskDefinitionSpecVolumeFsxWindowsFileServerVolumeConfigurationAuthorizati
 		}
 	default:
 		iter.ReportError("decode TaskDefinitionSpecVolumeFsxWindowsFileServerVolumeConfigurationAuthorizationConfig", "unexpected JSON type")
+	}
+}
+
+// +k8s:deepcopy-gen=false
+type TaskSetSpecNetworkConfigurationCodec struct {
+}
+
+func (TaskSetSpecNetworkConfigurationCodec) IsEmpty(ptr unsafe.Pointer) bool {
+	return (*TaskSetSpecNetworkConfiguration)(ptr) == nil
+}
+
+func (TaskSetSpecNetworkConfigurationCodec) Encode(ptr unsafe.Pointer, stream *jsoniter.Stream) {
+	obj := (*TaskSetSpecNetworkConfiguration)(ptr)
+	var objs []TaskSetSpecNetworkConfiguration
+	if obj != nil {
+		objs = []TaskSetSpecNetworkConfiguration{*obj}
+	}
+
+	jsonit := jsoniter.Config{
+		EscapeHTML:             true,
+		SortMapKeys:            true,
+		ValidateJsonRawMessage: true,
+		TagKey:                 "tf",
+		TypeEncoders:           getEncodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(TaskSetSpecNetworkConfiguration{}).Type1())),
+	}.Froze()
+
+	byt, _ := jsonit.Marshal(objs)
+
+	stream.Write(byt)
+}
+
+func (TaskSetSpecNetworkConfigurationCodec) Decode(ptr unsafe.Pointer, iter *jsoniter.Iterator) {
+	switch iter.WhatIsNext() {
+	case jsoniter.NilValue:
+		iter.Skip()
+		*(*TaskSetSpecNetworkConfiguration)(ptr) = TaskSetSpecNetworkConfiguration{}
+		return
+	case jsoniter.ArrayValue:
+		objsByte := iter.SkipAndReturnBytes()
+		if len(objsByte) > 0 {
+			var objs []TaskSetSpecNetworkConfiguration
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(TaskSetSpecNetworkConfiguration{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objsByte, &objs)
+
+			if len(objs) > 0 {
+				*(*TaskSetSpecNetworkConfiguration)(ptr) = objs[0]
+			} else {
+				*(*TaskSetSpecNetworkConfiguration)(ptr) = TaskSetSpecNetworkConfiguration{}
+			}
+		} else {
+			*(*TaskSetSpecNetworkConfiguration)(ptr) = TaskSetSpecNetworkConfiguration{}
+		}
+	case jsoniter.ObjectValue:
+		objByte := iter.SkipAndReturnBytes()
+		if len(objByte) > 0 {
+			var obj TaskSetSpecNetworkConfiguration
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(TaskSetSpecNetworkConfiguration{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objByte, &obj)
+
+			*(*TaskSetSpecNetworkConfiguration)(ptr) = obj
+		} else {
+			*(*TaskSetSpecNetworkConfiguration)(ptr) = TaskSetSpecNetworkConfiguration{}
+		}
+	default:
+		iter.ReportError("decode TaskSetSpecNetworkConfiguration", "unexpected JSON type")
+	}
+}
+
+// +k8s:deepcopy-gen=false
+type TaskSetSpecScaleCodec struct {
+}
+
+func (TaskSetSpecScaleCodec) IsEmpty(ptr unsafe.Pointer) bool {
+	return (*TaskSetSpecScale)(ptr) == nil
+}
+
+func (TaskSetSpecScaleCodec) Encode(ptr unsafe.Pointer, stream *jsoniter.Stream) {
+	obj := (*TaskSetSpecScale)(ptr)
+	var objs []TaskSetSpecScale
+	if obj != nil {
+		objs = []TaskSetSpecScale{*obj}
+	}
+
+	jsonit := jsoniter.Config{
+		EscapeHTML:             true,
+		SortMapKeys:            true,
+		ValidateJsonRawMessage: true,
+		TagKey:                 "tf",
+		TypeEncoders:           getEncodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(TaskSetSpecScale{}).Type1())),
+	}.Froze()
+
+	byt, _ := jsonit.Marshal(objs)
+
+	stream.Write(byt)
+}
+
+func (TaskSetSpecScaleCodec) Decode(ptr unsafe.Pointer, iter *jsoniter.Iterator) {
+	switch iter.WhatIsNext() {
+	case jsoniter.NilValue:
+		iter.Skip()
+		*(*TaskSetSpecScale)(ptr) = TaskSetSpecScale{}
+		return
+	case jsoniter.ArrayValue:
+		objsByte := iter.SkipAndReturnBytes()
+		if len(objsByte) > 0 {
+			var objs []TaskSetSpecScale
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(TaskSetSpecScale{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objsByte, &objs)
+
+			if len(objs) > 0 {
+				*(*TaskSetSpecScale)(ptr) = objs[0]
+			} else {
+				*(*TaskSetSpecScale)(ptr) = TaskSetSpecScale{}
+			}
+		} else {
+			*(*TaskSetSpecScale)(ptr) = TaskSetSpecScale{}
+		}
+	case jsoniter.ObjectValue:
+		objByte := iter.SkipAndReturnBytes()
+		if len(objByte) > 0 {
+			var obj TaskSetSpecScale
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(TaskSetSpecScale{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objByte, &obj)
+
+			*(*TaskSetSpecScale)(ptr) = obj
+		} else {
+			*(*TaskSetSpecScale)(ptr) = TaskSetSpecScale{}
+		}
+	default:
+		iter.ReportError("decode TaskSetSpecScale", "unexpected JSON type")
+	}
+}
+
+// +k8s:deepcopy-gen=false
+type TaskSetSpecServiceRegistriesCodec struct {
+}
+
+func (TaskSetSpecServiceRegistriesCodec) IsEmpty(ptr unsafe.Pointer) bool {
+	return (*TaskSetSpecServiceRegistries)(ptr) == nil
+}
+
+func (TaskSetSpecServiceRegistriesCodec) Encode(ptr unsafe.Pointer, stream *jsoniter.Stream) {
+	obj := (*TaskSetSpecServiceRegistries)(ptr)
+	var objs []TaskSetSpecServiceRegistries
+	if obj != nil {
+		objs = []TaskSetSpecServiceRegistries{*obj}
+	}
+
+	jsonit := jsoniter.Config{
+		EscapeHTML:             true,
+		SortMapKeys:            true,
+		ValidateJsonRawMessage: true,
+		TagKey:                 "tf",
+		TypeEncoders:           getEncodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(TaskSetSpecServiceRegistries{}).Type1())),
+	}.Froze()
+
+	byt, _ := jsonit.Marshal(objs)
+
+	stream.Write(byt)
+}
+
+func (TaskSetSpecServiceRegistriesCodec) Decode(ptr unsafe.Pointer, iter *jsoniter.Iterator) {
+	switch iter.WhatIsNext() {
+	case jsoniter.NilValue:
+		iter.Skip()
+		*(*TaskSetSpecServiceRegistries)(ptr) = TaskSetSpecServiceRegistries{}
+		return
+	case jsoniter.ArrayValue:
+		objsByte := iter.SkipAndReturnBytes()
+		if len(objsByte) > 0 {
+			var objs []TaskSetSpecServiceRegistries
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(TaskSetSpecServiceRegistries{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objsByte, &objs)
+
+			if len(objs) > 0 {
+				*(*TaskSetSpecServiceRegistries)(ptr) = objs[0]
+			} else {
+				*(*TaskSetSpecServiceRegistries)(ptr) = TaskSetSpecServiceRegistries{}
+			}
+		} else {
+			*(*TaskSetSpecServiceRegistries)(ptr) = TaskSetSpecServiceRegistries{}
+		}
+	case jsoniter.ObjectValue:
+		objByte := iter.SkipAndReturnBytes()
+		if len(objByte) > 0 {
+			var obj TaskSetSpecServiceRegistries
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(TaskSetSpecServiceRegistries{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objByte, &obj)
+
+			*(*TaskSetSpecServiceRegistries)(ptr) = obj
+		} else {
+			*(*TaskSetSpecServiceRegistries)(ptr) = TaskSetSpecServiceRegistries{}
+		}
+	default:
+		iter.ReportError("decode TaskSetSpecServiceRegistries", "unexpected JSON type")
 	}
 }

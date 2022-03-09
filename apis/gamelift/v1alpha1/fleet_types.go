@@ -41,6 +41,11 @@ type Fleet struct {
 	Status            FleetStatus `json:"status,omitempty"`
 }
 
+type FleetSpecCertificateConfiguration struct {
+	// +optional
+	CertificateType *string `json:"certificateType,omitempty" tf:"certificate_type"`
+}
+
 type FleetSpecEc2InboundPermission struct {
 	FromPort *int64  `json:"fromPort" tf:"from_port"`
 	IpRange  *string `json:"ipRange" tf:"ip_range"`
@@ -92,8 +97,13 @@ type FleetSpecResource struct {
 	ID string `json:"id,omitempty" tf:"id,omitempty"`
 
 	// +optional
-	Arn     *string `json:"arn,omitempty" tf:"arn"`
-	BuildID *string `json:"buildID" tf:"build_id"`
+	Arn *string `json:"arn,omitempty" tf:"arn"`
+	// +optional
+	BuildArn *string `json:"buildArn,omitempty" tf:"build_arn"`
+	// +optional
+	BuildID *string `json:"buildID,omitempty" tf:"build_id"`
+	// +optional
+	CertificateConfiguration *FleetSpecCertificateConfiguration `json:"certificateConfiguration,omitempty" tf:"certificate_configuration"`
 	// +optional
 	Description *string `json:"description,omitempty" tf:"description"`
 	// +optional
@@ -117,6 +127,10 @@ type FleetSpecResource struct {
 	ResourceCreationLimitPolicy *FleetSpecResourceCreationLimitPolicy `json:"resourceCreationLimitPolicy,omitempty" tf:"resource_creation_limit_policy"`
 	// +optional
 	RuntimeConfiguration *FleetSpecRuntimeConfiguration `json:"runtimeConfiguration,omitempty" tf:"runtime_configuration"`
+	// +optional
+	ScriptArn *string `json:"scriptArn,omitempty" tf:"script_arn"`
+	// +optional
+	ScriptID *string `json:"scriptID,omitempty" tf:"script_id"`
 	// +optional
 	Tags *map[string]string `json:"tags,omitempty" tf:"tags"`
 	// +optional

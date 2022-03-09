@@ -94,6 +94,18 @@ spec:
                       properties:
                         componentArn:
                           type: string
+                        parameter:
+                          items:
+                            properties:
+                              name:
+                                type: string
+                              value:
+                                type: string
+                            required:
+                            - name
+                            - value
+                            type: object
+                          type: array
                       required:
                       - componentArn
                       type: object
@@ -113,6 +125,13 @@ spec:
                     type: string
                   platform:
                     type: string
+                  systemsManagerAgent:
+                    properties:
+                      uninstallAfterBuild:
+                        type: boolean
+                    required:
+                    - uninstallAfterBuild
+                    type: object
                   tags:
                     additionalProperties:
                       type: string
@@ -121,6 +140,8 @@ spec:
                     additionalProperties:
                       type: string
                     type: object
+                  userDataBase64:
+                    type: string
                   version:
                     type: string
                   workingDirectory:
@@ -170,6 +191,18 @@ spec:
                       properties:
                         componentArn:
                           type: string
+                        parameter:
+                          items:
+                            properties:
+                              name:
+                                type: string
+                              value:
+                                type: string
+                            required:
+                            - name
+                            - value
+                            type: object
+                          type: array
                       required:
                       - componentArn
                       type: object
@@ -189,6 +222,13 @@ spec:
                     type: string
                   platform:
                     type: string
+                  systemsManagerAgent:
+                    properties:
+                      uninstallAfterBuild:
+                        type: boolean
+                    required:
+                    - uninstallAfterBuild
+                    type: object
                   tags:
                     additionalProperties:
                       type: string
@@ -197,6 +237,8 @@ spec:
                     additionalProperties:
                       type: string
                     type: object
+                  userDataBase64:
+                    type: string
                   version:
                     type: string
                   workingDirectory:

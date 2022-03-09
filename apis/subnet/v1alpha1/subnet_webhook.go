@@ -45,6 +45,7 @@ var subnetForceNewList = map[string]bool{
 	"/availability_zone":    true,
 	"/availability_zone_id": true,
 	"/cidr_block":           true,
+	"/ipv6_native":          true,
 	"/outpost_arn":          true,
 	"/vpc_id":               true,
 }
@@ -92,7 +93,7 @@ func (r *Subnet) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range subnetForceNewList {
+	for key, _ := range subnetForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

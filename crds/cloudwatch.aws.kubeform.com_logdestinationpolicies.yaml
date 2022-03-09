@@ -61,6 +61,8 @@ spec:
                     type: string
                   destinationName:
                     type: string
+                  forceUpdate:
+                    type: boolean
                   id:
                     type: string
                 required:
@@ -73,6 +75,8 @@ spec:
                     type: string
                   destinationName:
                     type: string
+                  forceUpdate:
+                    type: boolean
                   id:
                     type: string
                 required:

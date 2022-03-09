@@ -37,8 +37,16 @@ func (c *FakeDatasyncV1alpha1) LocationEfses(namespace string) v1alpha1.Location
 	return &FakeLocationEfses{c, namespace}
 }
 
+func (c *FakeDatasyncV1alpha1) LocationFsxLustreFileSystems(namespace string) v1alpha1.LocationFsxLustreFileSystemInterface {
+	return &FakeLocationFsxLustreFileSystems{c, namespace}
+}
+
 func (c *FakeDatasyncV1alpha1) LocationFsxWindowsFileSystems(namespace string) v1alpha1.LocationFsxWindowsFileSystemInterface {
 	return &FakeLocationFsxWindowsFileSystems{c, namespace}
+}
+
+func (c *FakeDatasyncV1alpha1) LocationHdfses(namespace string) v1alpha1.LocationHdfsInterface {
+	return &FakeLocationHdfses{c, namespace}
 }
 
 func (c *FakeDatasyncV1alpha1) LocationNfses(namespace string) v1alpha1.LocationNfsInterface {

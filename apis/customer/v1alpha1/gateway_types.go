@@ -62,6 +62,8 @@ type GatewaySpecResource struct {
 	Arn    *string `json:"arn,omitempty" tf:"arn"`
 	BgpAsn *string `json:"bgpAsn" tf:"bgp_asn"`
 	// +optional
+	CertificateArn *string `json:"certificateArn,omitempty" tf:"certificate_arn"`
+	// +optional
 	DeviceName *string `json:"deviceName,omitempty" tf:"device_name"`
 	IpAddress  *string `json:"ipAddress" tf:"ip_address"`
 	// +optional

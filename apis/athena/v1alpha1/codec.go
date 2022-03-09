@@ -29,6 +29,7 @@ func GetEncoder() map[string]jsoniter.ValEncoder {
 	return map[string]jsoniter.ValEncoder{
 		jsoniter.MustGetKind(reflect2.TypeOf(DatabaseSpecEncryptionConfiguration{}).Type1()):                                  DatabaseSpecEncryptionConfigurationCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(WorkgroupSpecConfiguration{}).Type1()):                                           WorkgroupSpecConfigurationCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(WorkgroupSpecConfigurationEngineVersion{}).Type1()):                              WorkgroupSpecConfigurationEngineVersionCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(WorkgroupSpecConfigurationResultConfiguration{}).Type1()):                        WorkgroupSpecConfigurationResultConfigurationCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(WorkgroupSpecConfigurationResultConfigurationEncryptionConfiguration{}).Type1()): WorkgroupSpecConfigurationResultConfigurationEncryptionConfigurationCodec{},
 	}
@@ -38,6 +39,7 @@ func GetDecoder() map[string]jsoniter.ValDecoder {
 	return map[string]jsoniter.ValDecoder{
 		jsoniter.MustGetKind(reflect2.TypeOf(DatabaseSpecEncryptionConfiguration{}).Type1()):                                  DatabaseSpecEncryptionConfigurationCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(WorkgroupSpecConfiguration{}).Type1()):                                           WorkgroupSpecConfigurationCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(WorkgroupSpecConfigurationEngineVersion{}).Type1()):                              WorkgroupSpecConfigurationEngineVersionCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(WorkgroupSpecConfigurationResultConfiguration{}).Type1()):                        WorkgroupSpecConfigurationResultConfigurationCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(WorkgroupSpecConfigurationResultConfigurationEncryptionConfiguration{}).Type1()): WorkgroupSpecConfigurationResultConfigurationEncryptionConfigurationCodec{},
 	}
@@ -210,6 +212,85 @@ func (WorkgroupSpecConfigurationCodec) Decode(ptr unsafe.Pointer, iter *jsoniter
 		}
 	default:
 		iter.ReportError("decode WorkgroupSpecConfiguration", "unexpected JSON type")
+	}
+}
+
+// +k8s:deepcopy-gen=false
+type WorkgroupSpecConfigurationEngineVersionCodec struct {
+}
+
+func (WorkgroupSpecConfigurationEngineVersionCodec) IsEmpty(ptr unsafe.Pointer) bool {
+	return (*WorkgroupSpecConfigurationEngineVersion)(ptr) == nil
+}
+
+func (WorkgroupSpecConfigurationEngineVersionCodec) Encode(ptr unsafe.Pointer, stream *jsoniter.Stream) {
+	obj := (*WorkgroupSpecConfigurationEngineVersion)(ptr)
+	var objs []WorkgroupSpecConfigurationEngineVersion
+	if obj != nil {
+		objs = []WorkgroupSpecConfigurationEngineVersion{*obj}
+	}
+
+	jsonit := jsoniter.Config{
+		EscapeHTML:             true,
+		SortMapKeys:            true,
+		ValidateJsonRawMessage: true,
+		TagKey:                 "tf",
+		TypeEncoders:           getEncodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(WorkgroupSpecConfigurationEngineVersion{}).Type1())),
+	}.Froze()
+
+	byt, _ := jsonit.Marshal(objs)
+
+	stream.Write(byt)
+}
+
+func (WorkgroupSpecConfigurationEngineVersionCodec) Decode(ptr unsafe.Pointer, iter *jsoniter.Iterator) {
+	switch iter.WhatIsNext() {
+	case jsoniter.NilValue:
+		iter.Skip()
+		*(*WorkgroupSpecConfigurationEngineVersion)(ptr) = WorkgroupSpecConfigurationEngineVersion{}
+		return
+	case jsoniter.ArrayValue:
+		objsByte := iter.SkipAndReturnBytes()
+		if len(objsByte) > 0 {
+			var objs []WorkgroupSpecConfigurationEngineVersion
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(WorkgroupSpecConfigurationEngineVersion{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objsByte, &objs)
+
+			if len(objs) > 0 {
+				*(*WorkgroupSpecConfigurationEngineVersion)(ptr) = objs[0]
+			} else {
+				*(*WorkgroupSpecConfigurationEngineVersion)(ptr) = WorkgroupSpecConfigurationEngineVersion{}
+			}
+		} else {
+			*(*WorkgroupSpecConfigurationEngineVersion)(ptr) = WorkgroupSpecConfigurationEngineVersion{}
+		}
+	case jsoniter.ObjectValue:
+		objByte := iter.SkipAndReturnBytes()
+		if len(objByte) > 0 {
+			var obj WorkgroupSpecConfigurationEngineVersion
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(WorkgroupSpecConfigurationEngineVersion{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objByte, &obj)
+
+			*(*WorkgroupSpecConfigurationEngineVersion)(ptr) = obj
+		} else {
+			*(*WorkgroupSpecConfigurationEngineVersion)(ptr) = WorkgroupSpecConfigurationEngineVersion{}
+		}
+	default:
+		iter.ReportError("decode WorkgroupSpecConfigurationEngineVersion", "unexpected JSON type")
 	}
 }
 

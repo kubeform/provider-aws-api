@@ -86,7 +86,7 @@ func (r *UserPoolUiCustomization) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range userpooluicustomizationForceNewList {
+	for key, _ := range userpooluicustomizationForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

@@ -42,17 +42,14 @@ func (r *Connection) SetupWebhookWithManager(mgr ctrl.Manager) error {
 var _ webhook.Validator = &Connection{}
 
 var connectionForceNewList = map[string]bool{
-	"/customer_gateway_id":      true,
 	"/enable_acceleration":      true,
 	"/static_routes_only":       true,
-	"/transit_gateway_id":       true,
 	"/tunnel1_inside_cidr":      true,
 	"/tunnel1_inside_ipv6_cidr": true,
 	"/tunnel2_inside_cidr":      true,
 	"/tunnel2_inside_ipv6_cidr": true,
 	"/tunnel_inside_ip_version": true,
 	"/type":                     true,
-	"/vpn_gateway_id":           true,
 }
 
 // ValidateCreate implements webhook.Validator so a webhook will be registered for the type
@@ -98,7 +95,7 @@ func (r *Connection) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range connectionForceNewList {
+	for key, _ := range connectionForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

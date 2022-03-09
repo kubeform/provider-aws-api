@@ -43,7 +43,6 @@ var _ webhook.Validator = &ManagedPrefixList{}
 
 var managedprefixlistForceNewList = map[string]bool{
 	"/address_family": true,
-	"/max_entries":    true,
 }
 
 // ValidateCreate implements webhook.Validator so a webhook will be registered for the type
@@ -89,7 +88,7 @@ func (r *ManagedPrefixList) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range managedprefixlistForceNewList {
+	for key, _ := range managedprefixlistForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

@@ -89,7 +89,7 @@ func (r *EventPermission) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range eventpermissionForceNewList {
+	for key, _ := range eventpermissionForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

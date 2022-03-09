@@ -88,7 +88,7 @@ func (r *Registry) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range registryForceNewList {
+	for key, _ := range registryForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

@@ -61,6 +61,8 @@ spec:
                     type: string
                   certificate:
                     type: string
+                  directoryID:
+                    type: string
                   domain:
                     type: string
                   endpoint:
@@ -68,6 +70,10 @@ spec:
                   endpointDetails:
                     properties:
                       addressAllocationIDS:
+                        items:
+                          type: string
+                        type: array
+                      securityGroupIDS:
                         items:
                           type: string
                         type: array
@@ -84,6 +90,8 @@ spec:
                     type: string
                   forceDestroy:
                     type: boolean
+                  function:
+                    type: string
                   hostKeyFingerprint:
                     type: string
                   id:
@@ -128,6 +136,8 @@ spec:
                     type: string
                   certificate:
                     type: string
+                  directoryID:
+                    type: string
                   domain:
                     type: string
                   endpoint:
@@ -135,6 +145,10 @@ spec:
                   endpointDetails:
                     properties:
                       addressAllocationIDS:
+                        items:
+                          type: string
+                        type: array
+                      securityGroupIDS:
                         items:
                           type: string
                         type: array
@@ -151,6 +165,8 @@ spec:
                     type: string
                   forceDestroy:
                     type: boolean
+                  function:
+                    type: string
                   hostKeyFingerprint:
                     type: string
                   id:

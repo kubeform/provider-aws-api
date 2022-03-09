@@ -72,9 +72,12 @@ type WebhookSpec struct {
 type WebhookSpecResource struct {
 	ID string `json:"id,omitempty" tf:"id,omitempty"`
 
+	// +optional
+	Arn            *string `json:"arn,omitempty" tf:"arn"`
 	Authentication *string `json:"authentication" tf:"authentication"`
 	// +optional
 	AuthenticationConfiguration *WebhookSpecAuthenticationConfiguration `json:"authenticationConfiguration,omitempty" tf:"authentication_configuration"`
+	// +kubebuilder:validation:MaxItems=5
 	// +kubebuilder:validation:MinItems=1
 	Filter []WebhookSpecFilter `json:"filter" tf:"filter"`
 	Name   *string             `json:"name" tf:"name"`

@@ -25,3 +25,11 @@ type EnvironmentEc2ListerExpansion interface{}
 // EnvironmentEc2NamespaceListerExpansion allows custom methods to be added to
 // EnvironmentEc2NamespaceLister.
 type EnvironmentEc2NamespaceListerExpansion interface{}
+
+// EnvironmentMembershipListerExpansion allows custom methods to be added to
+// EnvironmentMembershipLister.
+type EnvironmentMembershipListerExpansion interface{}
+
+// EnvironmentMembershipNamespaceListerExpansion allows custom methods to be added to
+// EnvironmentMembershipNamespaceLister.
+type EnvironmentMembershipNamespaceListerExpansion interface{}

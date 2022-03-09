@@ -89,6 +89,8 @@ type LbSpecResource struct {
 	// +optional
 	CustomerOwnedIpv4Pool *string `json:"customerOwnedIpv4Pool,omitempty" tf:"customer_owned_ipv4_pool"`
 	// +optional
+	DesyncMitigationMode *string `json:"desyncMitigationMode,omitempty" tf:"desync_mitigation_mode"`
+	// +optional
 	DnsName *string `json:"dnsName,omitempty" tf:"dns_name"`
 	// +optional
 	DropInvalidHeaderFields *bool `json:"dropInvalidHeaderFields,omitempty" tf:"drop_invalid_header_fields"`
@@ -98,6 +100,8 @@ type LbSpecResource struct {
 	EnableDeletionProtection *bool `json:"enableDeletionProtection,omitempty" tf:"enable_deletion_protection"`
 	// +optional
 	EnableHttp2 *bool `json:"enableHttp2,omitempty" tf:"enable_http2"`
+	// +optional
+	EnableWafFailOpen *bool `json:"enableWafFailOpen,omitempty" tf:"enable_waf_fail_open"`
 	// +optional
 	IdleTimeout *int64 `json:"idleTimeout,omitempty" tf:"idle_timeout"`
 	// +optional

@@ -61,6 +61,12 @@ type TriggerSpecActions struct {
 	Timeout *int64 `json:"timeout,omitempty" tf:"timeout"`
 }
 
+type TriggerSpecEventBatchingCondition struct {
+	BatchSize *int64 `json:"batchSize" tf:"batch_size"`
+	// +optional
+	BatchWindow *int64 `json:"batchWindow,omitempty" tf:"batch_window"`
+}
+
 type TriggerSpecPredicateConditions struct {
 	// +optional
 	CrawlState *string `json:"crawlState,omitempty" tf:"crawl_state"`
@@ -107,12 +113,17 @@ type TriggerSpecResource struct {
 	// +optional
 	Description *string `json:"description,omitempty" tf:"description"`
 	// +optional
-	Enabled *bool   `json:"enabled,omitempty" tf:"enabled"`
-	Name    *string `json:"name" tf:"name"`
+	Enabled *bool `json:"enabled,omitempty" tf:"enabled"`
+	// +optional
+	// +kubebuilder:validation:MinItems=1
+	EventBatchingCondition []TriggerSpecEventBatchingCondition `json:"eventBatchingCondition,omitempty" tf:"event_batching_condition"`
+	Name                   *string                             `json:"name" tf:"name"`
 	// +optional
 	Predicate *TriggerSpecPredicate `json:"predicate,omitempty" tf:"predicate"`
 	// +optional
 	Schedule *string `json:"schedule,omitempty" tf:"schedule"`
+	// +optional
+	StartOnCreation *bool `json:"startOnCreation,omitempty" tf:"start_on_creation"`
 	// +optional
 	State *string `json:"state,omitempty" tf:"state"`
 	// +optional

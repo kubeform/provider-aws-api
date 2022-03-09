@@ -88,7 +88,7 @@ func (r *RestAPIPolicy) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range restapipolicyForceNewList {
+	for key, _ := range restapipolicyForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

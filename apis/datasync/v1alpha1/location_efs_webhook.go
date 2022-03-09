@@ -91,7 +91,7 @@ func (r *LocationEfs) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range locationefsForceNewList {
+	for key, _ := range locationefsForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

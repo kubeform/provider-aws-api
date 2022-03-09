@@ -83,6 +83,8 @@ type PolicySpecResource struct {
 	// +optional
 	DeleteAllPolicyResources *bool `json:"deleteAllPolicyResources,omitempty" tf:"delete_all_policy_resources"`
 	// +optional
+	DeleteUnusedFmManagedResources *bool `json:"deleteUnusedFmManagedResources,omitempty" tf:"delete_unused_fm_managed_resources"`
+	// +optional
 	ExcludeMap          *PolicySpecExcludeMap `json:"excludeMap,omitempty" tf:"exclude_map"`
 	ExcludeResourceTags *bool                 `json:"excludeResourceTags" tf:"exclude_resource_tags"`
 	// +optional
@@ -99,6 +101,10 @@ type PolicySpecResource struct {
 	// +optional
 	ResourceTypeList          []string                             `json:"resourceTypeList,omitempty" tf:"resource_type_list"`
 	SecurityServicePolicyData *PolicySpecSecurityServicePolicyData `json:"securityServicePolicyData" tf:"security_service_policy_data"`
+	// +optional
+	Tags *map[string]string `json:"tags,omitempty" tf:"tags"`
+	// +optional
+	TagsAll *map[string]string `json:"tagsAll,omitempty" tf:"tags_all"`
 }
 
 type PolicyStatus struct {

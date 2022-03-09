@@ -90,6 +90,45 @@ spec:
                               required:
                               - interval
                               type: object
+                            crossRegionCopyRule:
+                              items:
+                                properties:
+                                  cmkArn:
+                                    type: string
+                                  copyTags:
+                                    type: boolean
+                                  deprecateRule:
+                                    properties:
+                                      interval:
+                                        format: int64
+                                        type: integer
+                                      intervalUnit:
+                                        type: string
+                                    required:
+                                    - interval
+                                    - intervalUnit
+                                    type: object
+                                  encrypted:
+                                    type: boolean
+                                  retainRule:
+                                    properties:
+                                      interval:
+                                        format: int64
+                                        type: integer
+                                      intervalUnit:
+                                        type: string
+                                    required:
+                                    - interval
+                                    - intervalUnit
+                                    type: object
+                                  target:
+                                    type: string
+                                required:
+                                - encrypted
+                                - target
+                                type: object
+                              maxItems: 3
+                              type: array
                             name:
                               type: string
                             retainRule:
@@ -169,6 +208,45 @@ spec:
                               required:
                               - interval
                               type: object
+                            crossRegionCopyRule:
+                              items:
+                                properties:
+                                  cmkArn:
+                                    type: string
+                                  copyTags:
+                                    type: boolean
+                                  deprecateRule:
+                                    properties:
+                                      interval:
+                                        format: int64
+                                        type: integer
+                                      intervalUnit:
+                                        type: string
+                                    required:
+                                    - interval
+                                    - intervalUnit
+                                    type: object
+                                  encrypted:
+                                    type: boolean
+                                  retainRule:
+                                    properties:
+                                      interval:
+                                        format: int64
+                                        type: integer
+                                      intervalUnit:
+                                        type: string
+                                    required:
+                                    - interval
+                                    - intervalUnit
+                                    type: object
+                                  target:
+                                    type: string
+                                required:
+                                - encrypted
+                                - target
+                                type: object
+                              maxItems: 3
+                              type: array
                             name:
                               type: string
                             retainRule:

@@ -61,7 +61,6 @@ type ResolverFirewallDomainListSpecResource struct {
 	// +optional
 	Arn *string `json:"arn,omitempty" tf:"arn"`
 	// +optional
-	// +kubebuilder:validation:MaxItems=255
 	Domains []string `json:"domains,omitempty" tf:"domains"`
 	Name    *string  `json:"name" tf:"name"`
 	// +optional

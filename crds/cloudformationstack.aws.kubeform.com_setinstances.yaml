@@ -59,7 +59,17 @@ spec:
                 properties:
                   accountID:
                     type: string
+                  deploymentTargets:
+                    properties:
+                      organizationalUnitIDS:
+                        items:
+                          type: string
+                        minItems: 1
+                        type: array
+                    type: object
                   id:
+                    type: string
+                  organizationalUnitID:
                     type: string
                   parameterOverrides:
                     additionalProperties:
@@ -118,7 +128,17 @@ spec:
                 properties:
                   accountID:
                     type: string
+                  deploymentTargets:
+                    properties:
+                      organizationalUnitIDS:
+                        items:
+                          type: string
+                        minItems: 1
+                        type: array
+                    type: object
                   id:
+                    type: string
+                  organizationalUnitID:
                     type: string
                   parameterOverrides:
                     additionalProperties:

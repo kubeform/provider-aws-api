@@ -33,6 +33,8 @@ type ElasticacheV1alpha1Interface interface {
 	ReplicationGroupsGetter
 	SecurityGroupsGetter
 	SubnetGroupsGetter
+	UsersGetter
+	UserGroupsGetter
 }
 
 // ElasticacheV1alpha1Client is used to interact with features provided by the elasticache.aws.kubeform.com group.
@@ -62,6 +64,14 @@ func (c *ElasticacheV1alpha1Client) SecurityGroups(namespace string) SecurityGro
 
 func (c *ElasticacheV1alpha1Client) SubnetGroups(namespace string) SubnetGroupInterface {
 	return newSubnetGroups(c, namespace)
+}
+
+func (c *ElasticacheV1alpha1Client) Users(namespace string) UserInterface {
+	return newUsers(c, namespace)
+}
+
+func (c *ElasticacheV1alpha1Client) UserGroups(namespace string) UserGroupInterface {
+	return newUserGroups(c, namespace)
 }
 
 // NewForConfig creates a new ElasticacheV1alpha1Client for the given config.

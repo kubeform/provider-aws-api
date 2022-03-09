@@ -81,6 +81,8 @@ type RouteTableSpec struct {
 }
 
 type RouteTableSpecResource struct {
+	Timeouts *base.ResourceTimeout `json:"timeouts,omitempty" tf:"timeouts"`
+
 	ID string `json:"id,omitempty" tf:"id,omitempty"`
 
 	// +optional

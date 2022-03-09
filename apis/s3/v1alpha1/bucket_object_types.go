@@ -59,7 +59,8 @@ type BucketObjectSpecResource struct {
 	ID string `json:"id,omitempty" tf:"id,omitempty"`
 
 	// +optional
-	Acl    *string `json:"acl,omitempty" tf:"acl"`
+	Acl *string `json:"acl,omitempty" tf:"acl"`
+	// Deprecated
 	Bucket *string `json:"bucket" tf:"bucket"`
 	// +optional
 	BucketKeyEnabled *bool `json:"bucketKeyEnabled,omitempty" tf:"bucket_key_enabled"`
@@ -80,8 +81,9 @@ type BucketObjectSpecResource struct {
 	// +optional
 	Etag *string `json:"etag,omitempty" tf:"etag"`
 	// +optional
-	ForceDestroy *bool   `json:"forceDestroy,omitempty" tf:"force_destroy"`
-	Key          *string `json:"key" tf:"key"`
+	ForceDestroy *bool `json:"forceDestroy,omitempty" tf:"force_destroy"`
+	// Deprecated
+	Key *string `json:"key" tf:"key"`
 	// +optional
 	KmsKeyID *string `json:"kmsKeyID,omitempty" tf:"kms_key_id"`
 	// +optional
@@ -96,6 +98,8 @@ type BucketObjectSpecResource struct {
 	ServerSideEncryption *string `json:"serverSideEncryption,omitempty" tf:"server_side_encryption"`
 	// +optional
 	Source *string `json:"source,omitempty" tf:"source"`
+	// +optional
+	SourceHash *string `json:"sourceHash,omitempty" tf:"source_hash"`
 	// +optional
 	StorageClass *string `json:"storageClass,omitempty" tf:"storage_class"`
 	// +optional

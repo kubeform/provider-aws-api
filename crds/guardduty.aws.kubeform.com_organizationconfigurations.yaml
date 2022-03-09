@@ -59,6 +59,16 @@ spec:
                 properties:
                   autoEnable:
                     type: boolean
+                  datasources:
+                    properties:
+                      s3Logs:
+                        properties:
+                          autoEnable:
+                            type: boolean
+                        required:
+                        - autoEnable
+                        type: object
+                    type: object
                   detectorID:
                     type: string
                   id:
@@ -71,6 +81,16 @@ spec:
                 properties:
                   autoEnable:
                     type: boolean
+                  datasources:
+                    properties:
+                      s3Logs:
+                        properties:
+                          autoEnable:
+                            type: boolean
+                        required:
+                        - autoEnable
+                        type: object
+                    type: object
                   detectorID:
                     type: string
                   id:

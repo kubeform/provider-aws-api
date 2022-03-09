@@ -24,6 +24,10 @@ import (
 
 // Interface provides access to all the informers in this group version.
 type Interface interface {
+	// AlertManagerDefinitions returns a AlertManagerDefinitionInformer.
+	AlertManagerDefinitions() AlertManagerDefinitionInformer
+	// RuleGroupNamespaces returns a RuleGroupNamespaceInformer.
+	RuleGroupNamespaces() RuleGroupNamespaceInformer
 	// Workspaces returns a WorkspaceInformer.
 	Workspaces() WorkspaceInformer
 }
@@ -37,6 +41,16 @@ type version struct {
 // New returns a new Interface.
 func New(f internalinterfaces.SharedInformerFactory, namespace string, tweakListOptions internalinterfaces.TweakListOptionsFunc) Interface {
 	return &version{factory: f, namespace: namespace, tweakListOptions: tweakListOptions}
+}
+
+// AlertManagerDefinitions returns a AlertManagerDefinitionInformer.
+func (v *version) AlertManagerDefinitions() AlertManagerDefinitionInformer {
+	return &alertManagerDefinitionInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
+// RuleGroupNamespaces returns a RuleGroupNamespaceInformer.
+func (v *version) RuleGroupNamespaces() RuleGroupNamespaceInformer {
+	return &ruleGroupNamespaceInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
 }
 
 // Workspaces returns a WorkspaceInformer.

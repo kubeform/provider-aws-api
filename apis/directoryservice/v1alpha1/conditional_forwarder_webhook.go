@@ -89,7 +89,7 @@ func (r *ConditionalForwarder) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range conditionalforwarderForceNewList {
+	for key, _ := range conditionalforwarderForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

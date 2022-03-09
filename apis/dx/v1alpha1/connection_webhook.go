@@ -42,9 +42,10 @@ func (r *Connection) SetupWebhookWithManager(mgr ctrl.Manager) error {
 var _ webhook.Validator = &Connection{}
 
 var connectionForceNewList = map[string]bool{
-	"/bandwidth": true,
-	"/location":  true,
-	"/name":      true,
+	"/bandwidth":     true,
+	"/location":      true,
+	"/name":          true,
+	"/provider_name": true,
 }
 
 // ValidateCreate implements webhook.Validator so a webhook will be registered for the type
@@ -90,7 +91,7 @@ func (r *Connection) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range connectionForceNewList {
+	for key, _ := range connectionForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

@@ -89,7 +89,7 @@ func (r *LogStream) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range logstreamForceNewList {
+	for key, _ := range logstreamForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

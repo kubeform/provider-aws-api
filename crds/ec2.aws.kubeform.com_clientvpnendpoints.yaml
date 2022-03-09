@@ -68,6 +68,8 @@ spec:
                           type: string
                         samlProviderArn:
                           type: string
+                        selfServiceSamlProviderArn:
+                          type: string
                         type:
                           type: string
                       required:
@@ -77,6 +79,20 @@ spec:
                     type: array
                   clientCIDRBlock:
                     type: string
+                  clientConnectOptions:
+                    properties:
+                      enabled:
+                        type: boolean
+                      lambdaFunctionArn:
+                        type: string
+                    type: object
+                  clientLoginBannerOptions:
+                    properties:
+                      bannerText:
+                        type: string
+                      enabled:
+                        type: boolean
+                    type: object
                   connectionLogOptions:
                     properties:
                       cloudwatchLogGroup:
@@ -98,11 +114,23 @@ spec:
                     type: array
                   id:
                     type: string
+                  securityGroupIDS:
+                    items:
+                      type: string
+                    maxItems: 5
+                    minItems: 1
+                    type: array
+                  selfServicePortal:
+                    type: string
                   serverCertificateArn:
                     type: string
+                  sessionTimeoutHours:
+                    format: int64
+                    type: integer
                   splitTunnel:
                     type: boolean
                   status:
+                    description: Deprecated
                     type: string
                   tags:
                     additionalProperties:
@@ -114,6 +142,11 @@ spec:
                     type: object
                   transportProtocol:
                     type: string
+                  vpcID:
+                    type: string
+                  vpnPort:
+                    format: int64
+                    type: integer
                 required:
                 - authenticationOptions
                 - clientCIDRBlock
@@ -133,6 +166,8 @@ spec:
                           type: string
                         samlProviderArn:
                           type: string
+                        selfServiceSamlProviderArn:
+                          type: string
                         type:
                           type: string
                       required:
@@ -142,6 +177,20 @@ spec:
                     type: array
                   clientCIDRBlock:
                     type: string
+                  clientConnectOptions:
+                    properties:
+                      enabled:
+                        type: boolean
+                      lambdaFunctionArn:
+                        type: string
+                    type: object
+                  clientLoginBannerOptions:
+                    properties:
+                      bannerText:
+                        type: string
+                      enabled:
+                        type: boolean
+                    type: object
                   connectionLogOptions:
                     properties:
                       cloudwatchLogGroup:
@@ -163,11 +212,23 @@ spec:
                     type: array
                   id:
                     type: string
+                  securityGroupIDS:
+                    items:
+                      type: string
+                    maxItems: 5
+                    minItems: 1
+                    type: array
+                  selfServicePortal:
+                    type: string
                   serverCertificateArn:
                     type: string
+                  sessionTimeoutHours:
+                    format: int64
+                    type: integer
                   splitTunnel:
                     type: boolean
                   status:
+                    description: Deprecated
                     type: string
                   tags:
                     additionalProperties:
@@ -179,6 +240,11 @@ spec:
                     type: object
                   transportProtocol:
                     type: string
+                  vpcID:
+                    type: string
+                  vpnPort:
+                    format: int64
+                    type: integer
                 required:
                 - authenticationOptions
                 - clientCIDRBlock

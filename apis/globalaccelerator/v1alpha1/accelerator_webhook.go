@@ -86,7 +86,7 @@ func (r *Accelerator) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range acceleratorForceNewList {
+	for key, _ := range acceleratorForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

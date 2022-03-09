@@ -59,6 +59,8 @@ spec:
                 properties:
                   arn:
                     type: string
+                  auditDestinationArn:
+                    type: string
                   cacheAttributes:
                     properties:
                       cacheStaleTimeoutInSeconds:
@@ -169,6 +171,8 @@ spec:
               state:
                 properties:
                   arn:
+                    type: string
+                  auditDestinationArn:
                     type: string
                   cacheAttributes:
                     properties:

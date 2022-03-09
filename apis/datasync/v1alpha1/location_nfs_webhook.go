@@ -90,7 +90,7 @@ func (r *LocationNfs) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range locationnfsForceNewList {
+	for key, _ := range locationnfsForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

@@ -80,6 +80,8 @@ spec:
                     type: string
                   networkInterfaceID:
                     type: string
+                  platformIdentifier:
+                    type: string
                   roleArn:
                     type: string
                   rootAccess:
@@ -133,6 +135,8 @@ spec:
                   name:
                     type: string
                   networkInterfaceID:
+                    type: string
+                  platformIdentifier:
                     type: string
                   roleArn:
                     type: string

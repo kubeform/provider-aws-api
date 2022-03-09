@@ -93,7 +93,7 @@ func (r *ManagedScalingPolicy) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range managedscalingpolicyForceNewList {
+	for key, _ := range managedscalingpolicyForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

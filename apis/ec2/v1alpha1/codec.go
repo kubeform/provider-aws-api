@@ -27,6 +27,8 @@ import (
 
 func GetEncoder() map[string]jsoniter.ValEncoder {
 	return map[string]jsoniter.ValEncoder{
+		jsoniter.MustGetKind(reflect2.TypeOf(ClientVPNEndpointSpecClientConnectOptions{}).Type1()):                  ClientVPNEndpointSpecClientConnectOptionsCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(ClientVPNEndpointSpecClientLoginBannerOptions{}).Type1()):              ClientVPNEndpointSpecClientLoginBannerOptionsCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(ClientVPNEndpointSpecConnectionLogOptions{}).Type1()):                  ClientVPNEndpointSpecConnectionLogOptionsCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(FleetSpecLaunchTemplateConfig{}).Type1()):                              FleetSpecLaunchTemplateConfigCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(FleetSpecLaunchTemplateConfigLaunchTemplateSpecification{}).Type1()):   FleetSpecLaunchTemplateConfigLaunchTemplateSpecificationCodec{},
@@ -42,6 +44,8 @@ func GetEncoder() map[string]jsoniter.ValEncoder {
 
 func GetDecoder() map[string]jsoniter.ValDecoder {
 	return map[string]jsoniter.ValDecoder{
+		jsoniter.MustGetKind(reflect2.TypeOf(ClientVPNEndpointSpecClientConnectOptions{}).Type1()):                  ClientVPNEndpointSpecClientConnectOptionsCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(ClientVPNEndpointSpecClientLoginBannerOptions{}).Type1()):              ClientVPNEndpointSpecClientLoginBannerOptionsCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(ClientVPNEndpointSpecConnectionLogOptions{}).Type1()):                  ClientVPNEndpointSpecConnectionLogOptionsCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(FleetSpecLaunchTemplateConfig{}).Type1()):                              FleetSpecLaunchTemplateConfigCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(FleetSpecLaunchTemplateConfigLaunchTemplateSpecification{}).Type1()):   FleetSpecLaunchTemplateConfigLaunchTemplateSpecificationCodec{},
@@ -65,6 +69,164 @@ func getDecodersWithout(typ string) map[string]jsoniter.ValDecoder {
 	origMap := GetDecoder()
 	delete(origMap, typ)
 	return origMap
+}
+
+// +k8s:deepcopy-gen=false
+type ClientVPNEndpointSpecClientConnectOptionsCodec struct {
+}
+
+func (ClientVPNEndpointSpecClientConnectOptionsCodec) IsEmpty(ptr unsafe.Pointer) bool {
+	return (*ClientVPNEndpointSpecClientConnectOptions)(ptr) == nil
+}
+
+func (ClientVPNEndpointSpecClientConnectOptionsCodec) Encode(ptr unsafe.Pointer, stream *jsoniter.Stream) {
+	obj := (*ClientVPNEndpointSpecClientConnectOptions)(ptr)
+	var objs []ClientVPNEndpointSpecClientConnectOptions
+	if obj != nil {
+		objs = []ClientVPNEndpointSpecClientConnectOptions{*obj}
+	}
+
+	jsonit := jsoniter.Config{
+		EscapeHTML:             true,
+		SortMapKeys:            true,
+		ValidateJsonRawMessage: true,
+		TagKey:                 "tf",
+		TypeEncoders:           getEncodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(ClientVPNEndpointSpecClientConnectOptions{}).Type1())),
+	}.Froze()
+
+	byt, _ := jsonit.Marshal(objs)
+
+	stream.Write(byt)
+}
+
+func (ClientVPNEndpointSpecClientConnectOptionsCodec) Decode(ptr unsafe.Pointer, iter *jsoniter.Iterator) {
+	switch iter.WhatIsNext() {
+	case jsoniter.NilValue:
+		iter.Skip()
+		*(*ClientVPNEndpointSpecClientConnectOptions)(ptr) = ClientVPNEndpointSpecClientConnectOptions{}
+		return
+	case jsoniter.ArrayValue:
+		objsByte := iter.SkipAndReturnBytes()
+		if len(objsByte) > 0 {
+			var objs []ClientVPNEndpointSpecClientConnectOptions
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(ClientVPNEndpointSpecClientConnectOptions{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objsByte, &objs)
+
+			if len(objs) > 0 {
+				*(*ClientVPNEndpointSpecClientConnectOptions)(ptr) = objs[0]
+			} else {
+				*(*ClientVPNEndpointSpecClientConnectOptions)(ptr) = ClientVPNEndpointSpecClientConnectOptions{}
+			}
+		} else {
+			*(*ClientVPNEndpointSpecClientConnectOptions)(ptr) = ClientVPNEndpointSpecClientConnectOptions{}
+		}
+	case jsoniter.ObjectValue:
+		objByte := iter.SkipAndReturnBytes()
+		if len(objByte) > 0 {
+			var obj ClientVPNEndpointSpecClientConnectOptions
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(ClientVPNEndpointSpecClientConnectOptions{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objByte, &obj)
+
+			*(*ClientVPNEndpointSpecClientConnectOptions)(ptr) = obj
+		} else {
+			*(*ClientVPNEndpointSpecClientConnectOptions)(ptr) = ClientVPNEndpointSpecClientConnectOptions{}
+		}
+	default:
+		iter.ReportError("decode ClientVPNEndpointSpecClientConnectOptions", "unexpected JSON type")
+	}
+}
+
+// +k8s:deepcopy-gen=false
+type ClientVPNEndpointSpecClientLoginBannerOptionsCodec struct {
+}
+
+func (ClientVPNEndpointSpecClientLoginBannerOptionsCodec) IsEmpty(ptr unsafe.Pointer) bool {
+	return (*ClientVPNEndpointSpecClientLoginBannerOptions)(ptr) == nil
+}
+
+func (ClientVPNEndpointSpecClientLoginBannerOptionsCodec) Encode(ptr unsafe.Pointer, stream *jsoniter.Stream) {
+	obj := (*ClientVPNEndpointSpecClientLoginBannerOptions)(ptr)
+	var objs []ClientVPNEndpointSpecClientLoginBannerOptions
+	if obj != nil {
+		objs = []ClientVPNEndpointSpecClientLoginBannerOptions{*obj}
+	}
+
+	jsonit := jsoniter.Config{
+		EscapeHTML:             true,
+		SortMapKeys:            true,
+		ValidateJsonRawMessage: true,
+		TagKey:                 "tf",
+		TypeEncoders:           getEncodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(ClientVPNEndpointSpecClientLoginBannerOptions{}).Type1())),
+	}.Froze()
+
+	byt, _ := jsonit.Marshal(objs)
+
+	stream.Write(byt)
+}
+
+func (ClientVPNEndpointSpecClientLoginBannerOptionsCodec) Decode(ptr unsafe.Pointer, iter *jsoniter.Iterator) {
+	switch iter.WhatIsNext() {
+	case jsoniter.NilValue:
+		iter.Skip()
+		*(*ClientVPNEndpointSpecClientLoginBannerOptions)(ptr) = ClientVPNEndpointSpecClientLoginBannerOptions{}
+		return
+	case jsoniter.ArrayValue:
+		objsByte := iter.SkipAndReturnBytes()
+		if len(objsByte) > 0 {
+			var objs []ClientVPNEndpointSpecClientLoginBannerOptions
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(ClientVPNEndpointSpecClientLoginBannerOptions{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objsByte, &objs)
+
+			if len(objs) > 0 {
+				*(*ClientVPNEndpointSpecClientLoginBannerOptions)(ptr) = objs[0]
+			} else {
+				*(*ClientVPNEndpointSpecClientLoginBannerOptions)(ptr) = ClientVPNEndpointSpecClientLoginBannerOptions{}
+			}
+		} else {
+			*(*ClientVPNEndpointSpecClientLoginBannerOptions)(ptr) = ClientVPNEndpointSpecClientLoginBannerOptions{}
+		}
+	case jsoniter.ObjectValue:
+		objByte := iter.SkipAndReturnBytes()
+		if len(objByte) > 0 {
+			var obj ClientVPNEndpointSpecClientLoginBannerOptions
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(ClientVPNEndpointSpecClientLoginBannerOptions{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objByte, &obj)
+
+			*(*ClientVPNEndpointSpecClientLoginBannerOptions)(ptr) = obj
+		} else {
+			*(*ClientVPNEndpointSpecClientLoginBannerOptions)(ptr) = ClientVPNEndpointSpecClientLoginBannerOptions{}
+		}
+	default:
+		iter.ReportError("decode ClientVPNEndpointSpecClientLoginBannerOptions", "unexpected JSON type")
+	}
 }
 
 // +k8s:deepcopy-gen=false

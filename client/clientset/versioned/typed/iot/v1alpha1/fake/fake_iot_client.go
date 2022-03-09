@@ -29,6 +29,10 @@ type FakeIotV1alpha1 struct {
 	*testing.Fake
 }
 
+func (c *FakeIotV1alpha1) Authorizers(namespace string) v1alpha1.AuthorizerInterface {
+	return &FakeAuthorizers{c, namespace}
+}
+
 func (c *FakeIotV1alpha1) Certificates(namespace string) v1alpha1.CertificateInterface {
 	return &FakeCertificates{c, namespace}
 }
@@ -47,6 +51,14 @@ func (c *FakeIotV1alpha1) RoleAliases(namespace string) v1alpha1.RoleAliasInterf
 
 func (c *FakeIotV1alpha1) Things(namespace string) v1alpha1.ThingInterface {
 	return &FakeThings{c, namespace}
+}
+
+func (c *FakeIotV1alpha1) ThingGroups(namespace string) v1alpha1.ThingGroupInterface {
+	return &FakeThingGroups{c, namespace}
+}
+
+func (c *FakeIotV1alpha1) ThingGroupMemberships(namespace string) v1alpha1.ThingGroupMembershipInterface {
+	return &FakeThingGroupMemberships{c, namespace}
 }
 
 func (c *FakeIotV1alpha1) ThingPrincipalAttachments(namespace string) v1alpha1.ThingPrincipalAttachmentInterface {

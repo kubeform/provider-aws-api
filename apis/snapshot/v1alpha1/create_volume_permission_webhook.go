@@ -89,7 +89,7 @@ func (r *CreateVolumePermission) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range createvolumepermissionForceNewList {
+	for key, _ := range createvolumepermissionForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

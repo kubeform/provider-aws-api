@@ -59,7 +59,9 @@ type LagSpecResource struct {
 	ID string `json:"id,omitempty" tf:"id,omitempty"`
 
 	// +optional
-	Arn                  *string `json:"arn,omitempty" tf:"arn"`
+	Arn *string `json:"arn,omitempty" tf:"arn"`
+	// +optional
+	ConnectionID         *string `json:"connectionID,omitempty" tf:"connection_id"`
 	ConnectionsBandwidth *string `json:"connectionsBandwidth" tf:"connections_bandwidth"`
 	// +optional
 	ForceDestroy *bool `json:"forceDestroy,omitempty" tf:"force_destroy"`
@@ -69,6 +71,10 @@ type LagSpecResource struct {
 	JumboFrameCapable *bool   `json:"jumboFrameCapable,omitempty" tf:"jumbo_frame_capable"`
 	Location          *string `json:"location" tf:"location"`
 	Name              *string `json:"name" tf:"name"`
+	// +optional
+	OwnerAccountID *string `json:"ownerAccountID,omitempty" tf:"owner_account_id"`
+	// +optional
+	ProviderName *string `json:"providerName,omitempty" tf:"provider_name"`
 	// +optional
 	Tags *map[string]string `json:"tags,omitempty" tf:"tags"`
 	// +optional

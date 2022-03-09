@@ -88,7 +88,7 @@ func (r *MemcachedLayer) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range memcachedlayerForceNewList {
+	for key, _ := range memcachedlayerForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

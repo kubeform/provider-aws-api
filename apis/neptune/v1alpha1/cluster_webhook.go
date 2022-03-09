@@ -46,7 +46,6 @@ var clusterForceNewList = map[string]bool{
 	"/cluster_identifier":        true,
 	"/cluster_identifier_prefix": true,
 	"/engine":                    true,
-	"/engine_version":            true,
 	"/kms_key_arn":               true,
 	"/neptune_subnet_group_name": true,
 	"/port":                      true,
@@ -96,7 +95,7 @@ func (r *Cluster) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range clusterForceNewList {
+	for key, _ := range clusterForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

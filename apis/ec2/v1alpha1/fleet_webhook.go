@@ -42,15 +42,6 @@ func (r *Fleet) SetupWebhookWithManager(mgr ctrl.Manager) error {
 var _ webhook.Validator = &Fleet{}
 
 var fleetForceNewList = map[string]bool{
-	"/launch_template_config/*/launch_template_specification/*/launch_template_id":       true,
-	"/launch_template_config/*/launch_template_specification/*/launch_template_name":     true,
-	"/launch_template_config/*/launch_template_specification/*/version":                  true,
-	"/launch_template_config/*/override/*/availability_zone":                             true,
-	"/launch_template_config/*/override/*/instance_type":                                 true,
-	"/launch_template_config/*/override/*/max_price":                                     true,
-	"/launch_template_config/*/override/*/priority":                                      true,
-	"/launch_template_config/*/override/*/subnet_id":                                     true,
-	"/launch_template_config/*/override/*/weighted_capacity":                             true,
 	"/on_demand_options/*/allocation_strategy":                                           true,
 	"/replace_unhealthy_instances":                                                       true,
 	"/spot_options/*/allocation_strategy":                                                true,
@@ -107,7 +98,7 @@ func (r *Fleet) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range fleetForceNewList {
+	for key, _ := range fleetForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

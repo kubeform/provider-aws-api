@@ -18,6 +18,14 @@ limitations under the License.
 
 package v1alpha1
 
+// AuthorizerListerExpansion allows custom methods to be added to
+// AuthorizerLister.
+type AuthorizerListerExpansion interface{}
+
+// AuthorizerNamespaceListerExpansion allows custom methods to be added to
+// AuthorizerNamespaceLister.
+type AuthorizerNamespaceListerExpansion interface{}
+
 // CertificateListerExpansion allows custom methods to be added to
 // CertificateLister.
 type CertificateListerExpansion interface{}
@@ -57,6 +65,22 @@ type ThingListerExpansion interface{}
 // ThingNamespaceListerExpansion allows custom methods to be added to
 // ThingNamespaceLister.
 type ThingNamespaceListerExpansion interface{}
+
+// ThingGroupListerExpansion allows custom methods to be added to
+// ThingGroupLister.
+type ThingGroupListerExpansion interface{}
+
+// ThingGroupNamespaceListerExpansion allows custom methods to be added to
+// ThingGroupNamespaceLister.
+type ThingGroupNamespaceListerExpansion interface{}
+
+// ThingGroupMembershipListerExpansion allows custom methods to be added to
+// ThingGroupMembershipLister.
+type ThingGroupMembershipListerExpansion interface{}
+
+// ThingGroupMembershipNamespaceListerExpansion allows custom methods to be added to
+// ThingGroupMembershipNamespaceLister.
+type ThingGroupMembershipNamespaceListerExpansion interface{}
 
 // ThingPrincipalAttachmentListerExpansion allows custom methods to be added to
 // ThingPrincipalAttachmentLister.

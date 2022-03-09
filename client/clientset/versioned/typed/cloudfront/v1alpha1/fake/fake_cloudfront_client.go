@@ -37,12 +37,24 @@ func (c *FakeCloudfrontV1alpha1) Distributions(namespace string) v1alpha1.Distri
 	return &FakeDistributions{c, namespace}
 }
 
+func (c *FakeCloudfrontV1alpha1) FieldLevelEncryptionConfigs(namespace string) v1alpha1.FieldLevelEncryptionConfigInterface {
+	return &FakeFieldLevelEncryptionConfigs{c, namespace}
+}
+
+func (c *FakeCloudfrontV1alpha1) FieldLevelEncryptionProfiles(namespace string) v1alpha1.FieldLevelEncryptionProfileInterface {
+	return &FakeFieldLevelEncryptionProfiles{c, namespace}
+}
+
 func (c *FakeCloudfrontV1alpha1) Functions(namespace string) v1alpha1.FunctionInterface {
 	return &FakeFunctions{c, namespace}
 }
 
 func (c *FakeCloudfrontV1alpha1) KeyGroups(namespace string) v1alpha1.KeyGroupInterface {
 	return &FakeKeyGroups{c, namespace}
+}
+
+func (c *FakeCloudfrontV1alpha1) MonitoringSubscriptions(namespace string) v1alpha1.MonitoringSubscriptionInterface {
+	return &FakeMonitoringSubscriptions{c, namespace}
 }
 
 func (c *FakeCloudfrontV1alpha1) OriginAccessIdentities(namespace string) v1alpha1.OriginAccessIdentityInterface {
@@ -59,6 +71,10 @@ func (c *FakeCloudfrontV1alpha1) PublicKeys(namespace string) v1alpha1.PublicKey
 
 func (c *FakeCloudfrontV1alpha1) RealtimeLogConfigs(namespace string) v1alpha1.RealtimeLogConfigInterface {
 	return &FakeRealtimeLogConfigs{c, namespace}
+}
+
+func (c *FakeCloudfrontV1alpha1) ResponseHeadersPolicies(namespace string) v1alpha1.ResponseHeadersPolicyInterface {
+	return &FakeResponseHeadersPolicies{c, namespace}
 }
 
 // RESTClient returns a RESTClient that is used to communicate

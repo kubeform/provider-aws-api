@@ -51,9 +51,8 @@ type ClusterSpecEncryptionConfigProvider struct {
 }
 
 type ClusterSpecEncryptionConfig struct {
-	Provider *ClusterSpecEncryptionConfigProvider `json:"provider" tf:"provider"`
-	// +kubebuilder:validation:MinItems=1
-	Resources []string `json:"resources" tf:"resources"`
+	Provider  *ClusterSpecEncryptionConfigProvider `json:"provider" tf:"provider"`
+	Resources []string                             `json:"resources" tf:"resources"`
 }
 
 type ClusterSpecIdentityOidc struct {
@@ -67,6 +66,8 @@ type ClusterSpecIdentity struct {
 }
 
 type ClusterSpecKubernetesNetworkConfig struct {
+	// +optional
+	IpFamily *string `json:"ipFamily,omitempty" tf:"ip_family"`
 	// +optional
 	ServiceIpv4CIDR *string `json:"serviceIpv4CIDR,omitempty" tf:"service_ipv4_cidr"`
 }

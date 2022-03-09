@@ -88,7 +88,7 @@ func (r *InfrastructureConfiguration) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range infrastructureconfigurationForceNewList {
+	for key, _ := range infrastructureconfigurationForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

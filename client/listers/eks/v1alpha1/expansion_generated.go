@@ -42,6 +42,14 @@ type FargateProfileListerExpansion interface{}
 // FargateProfileNamespaceLister.
 type FargateProfileNamespaceListerExpansion interface{}
 
+// IdentityProviderConfigListerExpansion allows custom methods to be added to
+// IdentityProviderConfigLister.
+type IdentityProviderConfigListerExpansion interface{}
+
+// IdentityProviderConfigNamespaceListerExpansion allows custom methods to be added to
+// IdentityProviderConfigNamespaceLister.
+type IdentityProviderConfigNamespaceListerExpansion interface{}
+
 // NodeGroupListerExpansion allows custom methods to be added to
 // NodeGroupLister.
 type NodeGroupListerExpansion interface{}

@@ -19,15 +19,26 @@ limitations under the License.
 package v1alpha1
 
 import (
+	"unsafe"
+
 	jsoniter "github.com/json-iterator/go"
+	"github.com/modern-go/reflect2"
 )
 
 func GetEncoder() map[string]jsoniter.ValEncoder {
-	return map[string]jsoniter.ValEncoder{}
+	return map[string]jsoniter.ValEncoder{
+		jsoniter.MustGetKind(reflect2.TypeOf(SnapshotImportSpecClientData{}).Type1()):              SnapshotImportSpecClientDataCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(SnapshotImportSpecDiskContainer{}).Type1()):           SnapshotImportSpecDiskContainerCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(SnapshotImportSpecDiskContainerUserBucket{}).Type1()): SnapshotImportSpecDiskContainerUserBucketCodec{},
+	}
 }
 
 func GetDecoder() map[string]jsoniter.ValDecoder {
-	return map[string]jsoniter.ValDecoder{}
+	return map[string]jsoniter.ValDecoder{
+		jsoniter.MustGetKind(reflect2.TypeOf(SnapshotImportSpecClientData{}).Type1()):              SnapshotImportSpecClientDataCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(SnapshotImportSpecDiskContainer{}).Type1()):           SnapshotImportSpecDiskContainerCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(SnapshotImportSpecDiskContainerUserBucket{}).Type1()): SnapshotImportSpecDiskContainerUserBucketCodec{},
+	}
 }
 
 func getEncodersWithout(typ string) map[string]jsoniter.ValEncoder {
@@ -40,4 +51,241 @@ func getDecodersWithout(typ string) map[string]jsoniter.ValDecoder {
 	origMap := GetDecoder()
 	delete(origMap, typ)
 	return origMap
+}
+
+// +k8s:deepcopy-gen=false
+type SnapshotImportSpecClientDataCodec struct {
+}
+
+func (SnapshotImportSpecClientDataCodec) IsEmpty(ptr unsafe.Pointer) bool {
+	return (*SnapshotImportSpecClientData)(ptr) == nil
+}
+
+func (SnapshotImportSpecClientDataCodec) Encode(ptr unsafe.Pointer, stream *jsoniter.Stream) {
+	obj := (*SnapshotImportSpecClientData)(ptr)
+	var objs []SnapshotImportSpecClientData
+	if obj != nil {
+		objs = []SnapshotImportSpecClientData{*obj}
+	}
+
+	jsonit := jsoniter.Config{
+		EscapeHTML:             true,
+		SortMapKeys:            true,
+		ValidateJsonRawMessage: true,
+		TagKey:                 "tf",
+		TypeEncoders:           getEncodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(SnapshotImportSpecClientData{}).Type1())),
+	}.Froze()
+
+	byt, _ := jsonit.Marshal(objs)
+
+	stream.Write(byt)
+}
+
+func (SnapshotImportSpecClientDataCodec) Decode(ptr unsafe.Pointer, iter *jsoniter.Iterator) {
+	switch iter.WhatIsNext() {
+	case jsoniter.NilValue:
+		iter.Skip()
+		*(*SnapshotImportSpecClientData)(ptr) = SnapshotImportSpecClientData{}
+		return
+	case jsoniter.ArrayValue:
+		objsByte := iter.SkipAndReturnBytes()
+		if len(objsByte) > 0 {
+			var objs []SnapshotImportSpecClientData
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(SnapshotImportSpecClientData{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objsByte, &objs)
+
+			if len(objs) > 0 {
+				*(*SnapshotImportSpecClientData)(ptr) = objs[0]
+			} else {
+				*(*SnapshotImportSpecClientData)(ptr) = SnapshotImportSpecClientData{}
+			}
+		} else {
+			*(*SnapshotImportSpecClientData)(ptr) = SnapshotImportSpecClientData{}
+		}
+	case jsoniter.ObjectValue:
+		objByte := iter.SkipAndReturnBytes()
+		if len(objByte) > 0 {
+			var obj SnapshotImportSpecClientData
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(SnapshotImportSpecClientData{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objByte, &obj)
+
+			*(*SnapshotImportSpecClientData)(ptr) = obj
+		} else {
+			*(*SnapshotImportSpecClientData)(ptr) = SnapshotImportSpecClientData{}
+		}
+	default:
+		iter.ReportError("decode SnapshotImportSpecClientData", "unexpected JSON type")
+	}
+}
+
+// +k8s:deepcopy-gen=false
+type SnapshotImportSpecDiskContainerCodec struct {
+}
+
+func (SnapshotImportSpecDiskContainerCodec) IsEmpty(ptr unsafe.Pointer) bool {
+	return (*SnapshotImportSpecDiskContainer)(ptr) == nil
+}
+
+func (SnapshotImportSpecDiskContainerCodec) Encode(ptr unsafe.Pointer, stream *jsoniter.Stream) {
+	obj := (*SnapshotImportSpecDiskContainer)(ptr)
+	var objs []SnapshotImportSpecDiskContainer
+	if obj != nil {
+		objs = []SnapshotImportSpecDiskContainer{*obj}
+	}
+
+	jsonit := jsoniter.Config{
+		EscapeHTML:             true,
+		SortMapKeys:            true,
+		ValidateJsonRawMessage: true,
+		TagKey:                 "tf",
+		TypeEncoders:           getEncodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(SnapshotImportSpecDiskContainer{}).Type1())),
+	}.Froze()
+
+	byt, _ := jsonit.Marshal(objs)
+
+	stream.Write(byt)
+}
+
+func (SnapshotImportSpecDiskContainerCodec) Decode(ptr unsafe.Pointer, iter *jsoniter.Iterator) {
+	switch iter.WhatIsNext() {
+	case jsoniter.NilValue:
+		iter.Skip()
+		*(*SnapshotImportSpecDiskContainer)(ptr) = SnapshotImportSpecDiskContainer{}
+		return
+	case jsoniter.ArrayValue:
+		objsByte := iter.SkipAndReturnBytes()
+		if len(objsByte) > 0 {
+			var objs []SnapshotImportSpecDiskContainer
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(SnapshotImportSpecDiskContainer{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objsByte, &objs)
+
+			if len(objs) > 0 {
+				*(*SnapshotImportSpecDiskContainer)(ptr) = objs[0]
+			} else {
+				*(*SnapshotImportSpecDiskContainer)(ptr) = SnapshotImportSpecDiskContainer{}
+			}
+		} else {
+			*(*SnapshotImportSpecDiskContainer)(ptr) = SnapshotImportSpecDiskContainer{}
+		}
+	case jsoniter.ObjectValue:
+		objByte := iter.SkipAndReturnBytes()
+		if len(objByte) > 0 {
+			var obj SnapshotImportSpecDiskContainer
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(SnapshotImportSpecDiskContainer{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objByte, &obj)
+
+			*(*SnapshotImportSpecDiskContainer)(ptr) = obj
+		} else {
+			*(*SnapshotImportSpecDiskContainer)(ptr) = SnapshotImportSpecDiskContainer{}
+		}
+	default:
+		iter.ReportError("decode SnapshotImportSpecDiskContainer", "unexpected JSON type")
+	}
+}
+
+// +k8s:deepcopy-gen=false
+type SnapshotImportSpecDiskContainerUserBucketCodec struct {
+}
+
+func (SnapshotImportSpecDiskContainerUserBucketCodec) IsEmpty(ptr unsafe.Pointer) bool {
+	return (*SnapshotImportSpecDiskContainerUserBucket)(ptr) == nil
+}
+
+func (SnapshotImportSpecDiskContainerUserBucketCodec) Encode(ptr unsafe.Pointer, stream *jsoniter.Stream) {
+	obj := (*SnapshotImportSpecDiskContainerUserBucket)(ptr)
+	var objs []SnapshotImportSpecDiskContainerUserBucket
+	if obj != nil {
+		objs = []SnapshotImportSpecDiskContainerUserBucket{*obj}
+	}
+
+	jsonit := jsoniter.Config{
+		EscapeHTML:             true,
+		SortMapKeys:            true,
+		ValidateJsonRawMessage: true,
+		TagKey:                 "tf",
+		TypeEncoders:           getEncodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(SnapshotImportSpecDiskContainerUserBucket{}).Type1())),
+	}.Froze()
+
+	byt, _ := jsonit.Marshal(objs)
+
+	stream.Write(byt)
+}
+
+func (SnapshotImportSpecDiskContainerUserBucketCodec) Decode(ptr unsafe.Pointer, iter *jsoniter.Iterator) {
+	switch iter.WhatIsNext() {
+	case jsoniter.NilValue:
+		iter.Skip()
+		*(*SnapshotImportSpecDiskContainerUserBucket)(ptr) = SnapshotImportSpecDiskContainerUserBucket{}
+		return
+	case jsoniter.ArrayValue:
+		objsByte := iter.SkipAndReturnBytes()
+		if len(objsByte) > 0 {
+			var objs []SnapshotImportSpecDiskContainerUserBucket
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(SnapshotImportSpecDiskContainerUserBucket{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objsByte, &objs)
+
+			if len(objs) > 0 {
+				*(*SnapshotImportSpecDiskContainerUserBucket)(ptr) = objs[0]
+			} else {
+				*(*SnapshotImportSpecDiskContainerUserBucket)(ptr) = SnapshotImportSpecDiskContainerUserBucket{}
+			}
+		} else {
+			*(*SnapshotImportSpecDiskContainerUserBucket)(ptr) = SnapshotImportSpecDiskContainerUserBucket{}
+		}
+	case jsoniter.ObjectValue:
+		objByte := iter.SkipAndReturnBytes()
+		if len(objByte) > 0 {
+			var obj SnapshotImportSpecDiskContainerUserBucket
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(SnapshotImportSpecDiskContainerUserBucket{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objByte, &obj)
+
+			*(*SnapshotImportSpecDiskContainerUserBucket)(ptr) = obj
+		} else {
+			*(*SnapshotImportSpecDiskContainerUserBucket)(ptr) = SnapshotImportSpecDiskContainerUserBucket{}
+		}
+	default:
+		iter.ReportError("decode SnapshotImportSpecDiskContainerUserBucket", "unexpected JSON type")
+	}
 }

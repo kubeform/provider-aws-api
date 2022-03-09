@@ -42,6 +42,22 @@ type BucketListerExpansion interface{}
 // BucketNamespaceLister.
 type BucketNamespaceListerExpansion interface{}
 
+// BucketACLListerExpansion allows custom methods to be added to
+// BucketACLLister.
+type BucketACLListerExpansion interface{}
+
+// BucketACLNamespaceListerExpansion allows custom methods to be added to
+// BucketACLNamespaceLister.
+type BucketACLNamespaceListerExpansion interface{}
+
+// BucketAccelerateConfigurationListerExpansion allows custom methods to be added to
+// BucketAccelerateConfigurationLister.
+type BucketAccelerateConfigurationListerExpansion interface{}
+
+// BucketAccelerateConfigurationNamespaceListerExpansion allows custom methods to be added to
+// BucketAccelerateConfigurationNamespaceLister.
+type BucketAccelerateConfigurationNamespaceListerExpansion interface{}
+
 // BucketAnalyticsConfigurationListerExpansion allows custom methods to be added to
 // BucketAnalyticsConfigurationLister.
 type BucketAnalyticsConfigurationListerExpansion interface{}
@@ -50,6 +66,22 @@ type BucketAnalyticsConfigurationListerExpansion interface{}
 // BucketAnalyticsConfigurationNamespaceLister.
 type BucketAnalyticsConfigurationNamespaceListerExpansion interface{}
 
+// BucketCorsConfigurationListerExpansion allows custom methods to be added to
+// BucketCorsConfigurationLister.
+type BucketCorsConfigurationListerExpansion interface{}
+
+// BucketCorsConfigurationNamespaceListerExpansion allows custom methods to be added to
+// BucketCorsConfigurationNamespaceLister.
+type BucketCorsConfigurationNamespaceListerExpansion interface{}
+
+// BucketIntelligentTieringConfigurationListerExpansion allows custom methods to be added to
+// BucketIntelligentTieringConfigurationLister.
+type BucketIntelligentTieringConfigurationListerExpansion interface{}
+
+// BucketIntelligentTieringConfigurationNamespaceListerExpansion allows custom methods to be added to
+// BucketIntelligentTieringConfigurationNamespaceLister.
+type BucketIntelligentTieringConfigurationNamespaceListerExpansion interface{}
+
 // BucketInventoryListerExpansion allows custom methods to be added to
 // BucketInventoryLister.
 type BucketInventoryListerExpansion interface{}
@@ -57,6 +89,22 @@ type BucketInventoryListerExpansion interface{}
 // BucketInventoryNamespaceListerExpansion allows custom methods to be added to
 // BucketInventoryNamespaceLister.
 type BucketInventoryNamespaceListerExpansion interface{}
+
+// BucketLifecycleConfigurationListerExpansion allows custom methods to be added to
+// BucketLifecycleConfigurationLister.
+type BucketLifecycleConfigurationListerExpansion interface{}
+
+// BucketLifecycleConfigurationNamespaceListerExpansion allows custom methods to be added to
+// BucketLifecycleConfigurationNamespaceLister.
+type BucketLifecycleConfigurationNamespaceListerExpansion interface{}
+
+// BucketLoggingListerExpansion allows custom methods to be added to
+// BucketLoggingLister.
+type BucketLoggingListerExpansion interface{}
+
+// BucketLoggingNamespaceListerExpansion allows custom methods to be added to
+// BucketLoggingNamespaceLister.
+type BucketLoggingNamespaceListerExpansion interface{}
 
 // BucketMetricListerExpansion allows custom methods to be added to
 // BucketMetricLister.
@@ -82,6 +130,14 @@ type BucketObjectListerExpansion interface{}
 // BucketObjectNamespaceLister.
 type BucketObjectNamespaceListerExpansion interface{}
 
+// BucketObjectLockConfigurationListerExpansion allows custom methods to be added to
+// BucketObjectLockConfigurationLister.
+type BucketObjectLockConfigurationListerExpansion interface{}
+
+// BucketObjectLockConfigurationNamespaceListerExpansion allows custom methods to be added to
+// BucketObjectLockConfigurationNamespaceLister.
+type BucketObjectLockConfigurationNamespaceListerExpansion interface{}
+
 // BucketOwnershipControlsListerExpansion allows custom methods to be added to
 // BucketOwnershipControlsLister.
 type BucketOwnershipControlsListerExpansion interface{}
@@ -105,6 +161,54 @@ type BucketPublicAccessBlockListerExpansion interface{}
 // BucketPublicAccessBlockNamespaceListerExpansion allows custom methods to be added to
 // BucketPublicAccessBlockNamespaceLister.
 type BucketPublicAccessBlockNamespaceListerExpansion interface{}
+
+// BucketReplicationConfigurationListerExpansion allows custom methods to be added to
+// BucketReplicationConfigurationLister.
+type BucketReplicationConfigurationListerExpansion interface{}
+
+// BucketReplicationConfigurationNamespaceListerExpansion allows custom methods to be added to
+// BucketReplicationConfigurationNamespaceLister.
+type BucketReplicationConfigurationNamespaceListerExpansion interface{}
+
+// BucketRequestPaymentConfigurationListerExpansion allows custom methods to be added to
+// BucketRequestPaymentConfigurationLister.
+type BucketRequestPaymentConfigurationListerExpansion interface{}
+
+// BucketRequestPaymentConfigurationNamespaceListerExpansion allows custom methods to be added to
+// BucketRequestPaymentConfigurationNamespaceLister.
+type BucketRequestPaymentConfigurationNamespaceListerExpansion interface{}
+
+// BucketServerSideEncryptionConfigurationListerExpansion allows custom methods to be added to
+// BucketServerSideEncryptionConfigurationLister.
+type BucketServerSideEncryptionConfigurationListerExpansion interface{}
+
+// BucketServerSideEncryptionConfigurationNamespaceListerExpansion allows custom methods to be added to
+// BucketServerSideEncryptionConfigurationNamespaceLister.
+type BucketServerSideEncryptionConfigurationNamespaceListerExpansion interface{}
+
+// BucketVersioningListerExpansion allows custom methods to be added to
+// BucketVersioningLister.
+type BucketVersioningListerExpansion interface{}
+
+// BucketVersioningNamespaceListerExpansion allows custom methods to be added to
+// BucketVersioningNamespaceLister.
+type BucketVersioningNamespaceListerExpansion interface{}
+
+// BucketWebsiteConfigurationListerExpansion allows custom methods to be added to
+// BucketWebsiteConfigurationLister.
+type BucketWebsiteConfigurationListerExpansion interface{}
+
+// BucketWebsiteConfigurationNamespaceListerExpansion allows custom methods to be added to
+// BucketWebsiteConfigurationNamespaceLister.
+type BucketWebsiteConfigurationNamespaceListerExpansion interface{}
+
+// ObjectListerExpansion allows custom methods to be added to
+// ObjectLister.
+type ObjectListerExpansion interface{}
+
+// ObjectNamespaceListerExpansion allows custom methods to be added to
+// ObjectNamespaceLister.
+type ObjectNamespaceListerExpansion interface{}
 
 // ObjectCopyListerExpansion allows custom methods to be added to
 // ObjectCopyLister.

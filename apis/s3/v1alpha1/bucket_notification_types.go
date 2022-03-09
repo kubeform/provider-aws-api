@@ -94,6 +94,8 @@ type BucketNotificationSpecResource struct {
 
 	Bucket *string `json:"bucket" tf:"bucket"`
 	// +optional
+	Eventbridge *bool `json:"eventbridge,omitempty" tf:"eventbridge"`
+	// +optional
 	LambdaFunction []BucketNotificationSpecLambdaFunction `json:"lambdaFunction,omitempty" tf:"lambda_function"`
 	// +optional
 	Queue []BucketNotificationSpecQueue `json:"queue,omitempty" tf:"queue"`

@@ -61,6 +61,11 @@ spec:
                     type: string
                   id:
                     type: string
+                  ipv4IpamPoolID:
+                    type: string
+                  ipv4NetmaskLength:
+                    format: int64
+                    type: integer
                   timeouts:
                     properties:
                       create:
@@ -102,7 +107,6 @@ spec:
                   vpcID:
                     type: string
                 required:
-                - cidrBlock
                 - vpcID
                 type: object
               state:
@@ -111,6 +115,11 @@ spec:
                     type: string
                   id:
                     type: string
+                  ipv4IpamPoolID:
+                    type: string
+                  ipv4NetmaskLength:
+                    format: int64
+                    type: integer
                   timeouts:
                     properties:
                       create:
@@ -152,7 +161,6 @@ spec:
                   vpcID:
                     type: string
                 required:
-                - cidrBlock
                 - vpcID
                 type: object
               terminationPolicy:

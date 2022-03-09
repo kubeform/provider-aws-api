@@ -74,12 +74,15 @@ spec:
                   kmsKeyID:
                     type: string
                   lifecyclePolicy:
-                    properties:
-                      transitionToIa:
-                        type: string
-                    required:
-                    - transitionToIa
-                    type: object
+                    items:
+                      properties:
+                        transitionToIa:
+                          type: string
+                        transitionToPrimaryStorageClass:
+                          type: string
+                      type: object
+                    maxItems: 2
+                    type: array
                   numberOfMountTargets:
                     format: int64
                     type: integer
@@ -134,12 +137,15 @@ spec:
                   kmsKeyID:
                     type: string
                   lifecyclePolicy:
-                    properties:
-                      transitionToIa:
-                        type: string
-                    required:
-                    - transitionToIa
-                    type: object
+                    items:
+                      properties:
+                        transitionToIa:
+                          type: string
+                        transitionToPrimaryStorageClass:
+                          type: string
+                      type: object
+                    maxItems: 2
+                    type: array
                   numberOfMountTargets:
                     format: int64
                     type: integer

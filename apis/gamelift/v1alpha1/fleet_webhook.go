@@ -46,6 +46,7 @@ var fleetForceNewList = map[string]bool{
 	"/ec2_instance_type": true,
 	"/fleet_type":        true,
 	"/instance_role_arn": true,
+	"/script_id":         true,
 }
 
 // ValidateCreate implements webhook.Validator so a webhook will be registered for the type
@@ -91,7 +92,7 @@ func (r *Fleet) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range fleetForceNewList {
+	for key, _ := range fleetForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

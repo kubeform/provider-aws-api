@@ -61,6 +61,10 @@ func (c *FakeEc2V1alpha1) Fleets(namespace string) v1alpha1.FleetInterface {
 	return &FakeFleets{c, namespace}
 }
 
+func (c *FakeEc2V1alpha1) Hosts(namespace string) v1alpha1.HostInterface {
+	return &FakeHosts{c, namespace}
+}
+
 func (c *FakeEc2V1alpha1) LocalGatewayRoutes(namespace string) v1alpha1.LocalGatewayRouteInterface {
 	return &FakeLocalGatewayRoutes{c, namespace}
 }
@@ -71,6 +75,22 @@ func (c *FakeEc2V1alpha1) LocalGatewayRouteTableVpcAssociations(namespace string
 
 func (c *FakeEc2V1alpha1) ManagedPrefixLists(namespace string) v1alpha1.ManagedPrefixListInterface {
 	return &FakeManagedPrefixLists{c, namespace}
+}
+
+func (c *FakeEc2V1alpha1) ManagedPrefixListEntries(namespace string) v1alpha1.ManagedPrefixListEntryInterface {
+	return &FakeManagedPrefixListEntries{c, namespace}
+}
+
+func (c *FakeEc2V1alpha1) NetworkInsightsPaths(namespace string) v1alpha1.NetworkInsightsPathInterface {
+	return &FakeNetworkInsightsPaths{c, namespace}
+}
+
+func (c *FakeEc2V1alpha1) SerialConsoleAccesses(namespace string) v1alpha1.SerialConsoleAccessInterface {
+	return &FakeSerialConsoleAccesses{c, namespace}
+}
+
+func (c *FakeEc2V1alpha1) SubnetCIDRReservations(namespace string) v1alpha1.SubnetCIDRReservationInterface {
+	return &FakeSubnetCIDRReservations{c, namespace}
 }
 
 func (c *FakeEc2V1alpha1) Tags(namespace string) v1alpha1.TagInterface {
@@ -95,6 +115,30 @@ func (c *FakeEc2V1alpha1) TrafficMirrorTargets(namespace string) v1alpha1.Traffi
 
 func (c *FakeEc2V1alpha1) TransitGateways(namespace string) v1alpha1.TransitGatewayInterface {
 	return &FakeTransitGateways{c, namespace}
+}
+
+func (c *FakeEc2V1alpha1) TransitGatewayConnects(namespace string) v1alpha1.TransitGatewayConnectInterface {
+	return &FakeTransitGatewayConnects{c, namespace}
+}
+
+func (c *FakeEc2V1alpha1) TransitGatewayConnectPeers(namespace string) v1alpha1.TransitGatewayConnectPeerInterface {
+	return &FakeTransitGatewayConnectPeers{c, namespace}
+}
+
+func (c *FakeEc2V1alpha1) TransitGatewayMulticastDomains(namespace string) v1alpha1.TransitGatewayMulticastDomainInterface {
+	return &FakeTransitGatewayMulticastDomains{c, namespace}
+}
+
+func (c *FakeEc2V1alpha1) TransitGatewayMulticastDomainAssociations(namespace string) v1alpha1.TransitGatewayMulticastDomainAssociationInterface {
+	return &FakeTransitGatewayMulticastDomainAssociations{c, namespace}
+}
+
+func (c *FakeEc2V1alpha1) TransitGatewayMulticastGroupMembers(namespace string) v1alpha1.TransitGatewayMulticastGroupMemberInterface {
+	return &FakeTransitGatewayMulticastGroupMembers{c, namespace}
+}
+
+func (c *FakeEc2V1alpha1) TransitGatewayMulticastGroupSources(namespace string) v1alpha1.TransitGatewayMulticastGroupSourceInterface {
+	return &FakeTransitGatewayMulticastGroupSources{c, namespace}
 }
 
 func (c *FakeEc2V1alpha1) TransitGatewayPeeringAttachments(namespace string) v1alpha1.TransitGatewayPeeringAttachmentInterface {

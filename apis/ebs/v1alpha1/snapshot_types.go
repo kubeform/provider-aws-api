@@ -71,14 +71,22 @@ type SnapshotSpecResource struct {
 	// +optional
 	KmsKeyID *string `json:"kmsKeyID,omitempty" tf:"kms_key_id"`
 	// +optional
+	OutpostArn *string `json:"outpostArn,omitempty" tf:"outpost_arn"`
+	// +optional
 	OwnerAlias *string `json:"ownerAlias,omitempty" tf:"owner_alias"`
 	// +optional
 	OwnerID *string `json:"ownerID,omitempty" tf:"owner_id"`
 	// +optional
+	PermanentRestore *bool `json:"permanentRestore,omitempty" tf:"permanent_restore"`
+	// +optional
+	StorageTier *string `json:"storageTier,omitempty" tf:"storage_tier"`
+	// +optional
 	Tags *map[string]string `json:"tags,omitempty" tf:"tags"`
 	// +optional
-	TagsAll  *map[string]string `json:"tagsAll,omitempty" tf:"tags_all"`
-	VolumeID *string            `json:"volumeID" tf:"volume_id"`
+	TagsAll *map[string]string `json:"tagsAll,omitempty" tf:"tags_all"`
+	// +optional
+	TemporaryRestoreDays *int64  `json:"temporaryRestoreDays,omitempty" tf:"temporary_restore_days"`
+	VolumeID             *string `json:"volumeID" tf:"volume_id"`
 	// +optional
 	VolumeSize *int64 `json:"volumeSize,omitempty" tf:"volume_size"`
 }

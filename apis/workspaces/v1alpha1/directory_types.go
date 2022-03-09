@@ -62,6 +62,8 @@ type DirectorySpecWorkspaceAccessProperties struct {
 	// +optional
 	DeviceTypeIos *string `json:"deviceTypeIos,omitempty" tf:"device_type_ios"`
 	// +optional
+	DeviceTypeLinux *string `json:"deviceTypeLinux,omitempty" tf:"device_type_linux"`
+	// +optional
 	DeviceTypeOsx *string `json:"deviceTypeOsx,omitempty" tf:"device_type_osx"`
 	// +optional
 	DeviceTypeWeb *string `json:"deviceTypeWeb,omitempty" tf:"device_type_web"`

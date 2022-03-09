@@ -86,7 +86,7 @@ func (r *QueryDefinition) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range querydefinitionForceNewList {
+	for key, _ := range querydefinitionForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

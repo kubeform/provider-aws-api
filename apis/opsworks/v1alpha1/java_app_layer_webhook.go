@@ -88,7 +88,7 @@ func (r *JavaAppLayer) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range javaapplayerForceNewList {
+	for key, _ := range javaapplayerForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

@@ -27,6 +27,7 @@ import (
 
 func GetEncoder() map[string]jsoniter.ValEncoder {
 	return map[string]jsoniter.ValEncoder{
+		jsoniter.MustGetKind(reflect2.TypeOf(ClusterSpecAutoTerminationPolicy{}).Type1()):                   ClusterSpecAutoTerminationPolicyCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(ClusterSpecCoreInstanceFleet{}).Type1()):                       ClusterSpecCoreInstanceFleetCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(ClusterSpecCoreInstanceFleetLaunchSpecifications{}).Type1()):   ClusterSpecCoreInstanceFleetLaunchSpecificationsCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(ClusterSpecCoreInstanceGroup{}).Type1()):                       ClusterSpecCoreInstanceGroupCodec{},
@@ -42,6 +43,7 @@ func GetEncoder() map[string]jsoniter.ValEncoder {
 
 func GetDecoder() map[string]jsoniter.ValDecoder {
 	return map[string]jsoniter.ValDecoder{
+		jsoniter.MustGetKind(reflect2.TypeOf(ClusterSpecAutoTerminationPolicy{}).Type1()):                   ClusterSpecAutoTerminationPolicyCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(ClusterSpecCoreInstanceFleet{}).Type1()):                       ClusterSpecCoreInstanceFleetCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(ClusterSpecCoreInstanceFleetLaunchSpecifications{}).Type1()):   ClusterSpecCoreInstanceFleetLaunchSpecificationsCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(ClusterSpecCoreInstanceGroup{}).Type1()):                       ClusterSpecCoreInstanceGroupCodec{},
@@ -65,6 +67,85 @@ func getDecodersWithout(typ string) map[string]jsoniter.ValDecoder {
 	origMap := GetDecoder()
 	delete(origMap, typ)
 	return origMap
+}
+
+// +k8s:deepcopy-gen=false
+type ClusterSpecAutoTerminationPolicyCodec struct {
+}
+
+func (ClusterSpecAutoTerminationPolicyCodec) IsEmpty(ptr unsafe.Pointer) bool {
+	return (*ClusterSpecAutoTerminationPolicy)(ptr) == nil
+}
+
+func (ClusterSpecAutoTerminationPolicyCodec) Encode(ptr unsafe.Pointer, stream *jsoniter.Stream) {
+	obj := (*ClusterSpecAutoTerminationPolicy)(ptr)
+	var objs []ClusterSpecAutoTerminationPolicy
+	if obj != nil {
+		objs = []ClusterSpecAutoTerminationPolicy{*obj}
+	}
+
+	jsonit := jsoniter.Config{
+		EscapeHTML:             true,
+		SortMapKeys:            true,
+		ValidateJsonRawMessage: true,
+		TagKey:                 "tf",
+		TypeEncoders:           getEncodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(ClusterSpecAutoTerminationPolicy{}).Type1())),
+	}.Froze()
+
+	byt, _ := jsonit.Marshal(objs)
+
+	stream.Write(byt)
+}
+
+func (ClusterSpecAutoTerminationPolicyCodec) Decode(ptr unsafe.Pointer, iter *jsoniter.Iterator) {
+	switch iter.WhatIsNext() {
+	case jsoniter.NilValue:
+		iter.Skip()
+		*(*ClusterSpecAutoTerminationPolicy)(ptr) = ClusterSpecAutoTerminationPolicy{}
+		return
+	case jsoniter.ArrayValue:
+		objsByte := iter.SkipAndReturnBytes()
+		if len(objsByte) > 0 {
+			var objs []ClusterSpecAutoTerminationPolicy
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(ClusterSpecAutoTerminationPolicy{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objsByte, &objs)
+
+			if len(objs) > 0 {
+				*(*ClusterSpecAutoTerminationPolicy)(ptr) = objs[0]
+			} else {
+				*(*ClusterSpecAutoTerminationPolicy)(ptr) = ClusterSpecAutoTerminationPolicy{}
+			}
+		} else {
+			*(*ClusterSpecAutoTerminationPolicy)(ptr) = ClusterSpecAutoTerminationPolicy{}
+		}
+	case jsoniter.ObjectValue:
+		objByte := iter.SkipAndReturnBytes()
+		if len(objByte) > 0 {
+			var obj ClusterSpecAutoTerminationPolicy
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(ClusterSpecAutoTerminationPolicy{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objByte, &obj)
+
+			*(*ClusterSpecAutoTerminationPolicy)(ptr) = obj
+		} else {
+			*(*ClusterSpecAutoTerminationPolicy)(ptr) = ClusterSpecAutoTerminationPolicy{}
+		}
+	default:
+		iter.ReportError("decode ClusterSpecAutoTerminationPolicy", "unexpected JSON type")
+	}
 }
 
 // +k8s:deepcopy-gen=false

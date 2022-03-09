@@ -57,6 +57,8 @@ spec:
                 type: object
               resource:
                 properties:
+                  arn:
+                    type: string
                   authentication:
                     type: string
                   authenticationConfiguration:
@@ -75,6 +77,7 @@ spec:
                       - jsonPath
                       - matchEquals
                       type: object
+                    maxItems: 5
                     minItems: 1
                     type: array
                   id:
@@ -113,6 +116,8 @@ spec:
                 type: object
               state:
                 properties:
+                  arn:
+                    type: string
                   authentication:
                     type: string
                   authenticationConfiguration:
@@ -131,6 +136,7 @@ spec:
                       - jsonPath
                       - matchEquals
                       type: object
+                    maxItems: 5
                     minItems: 1
                     type: array
                   id:

@@ -334,7 +334,7 @@ func (in *SmsPreferencesSpecResource) DeepCopyInto(out *SmsPreferencesSpecResour
 	}
 	if in.MonthlySpendLimit != nil {
 		in, out := &in.MonthlySpendLimit, &out.MonthlySpendLimit
-		*out = new(string)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.UsageReportS3Bucket != nil {

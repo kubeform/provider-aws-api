@@ -90,7 +90,7 @@ func (r *InstanceRoleAssociation) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range instanceroleassociationForceNewList {
+	for key, _ := range instanceroleassociationForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

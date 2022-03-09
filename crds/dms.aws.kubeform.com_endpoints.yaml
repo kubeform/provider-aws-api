@@ -93,6 +93,35 @@ spec:
                     properties:
                       broker:
                         type: string
+                      includeControlDetails:
+                        type: boolean
+                      includeNullAndEmpty:
+                        type: boolean
+                      includePartitionValue:
+                        type: boolean
+                      includeTableAlterOperations:
+                        type: boolean
+                      includeTransactionDetails:
+                        type: boolean
+                      messageFormat:
+                        type: string
+                      messageMaxBytes:
+                        format: int64
+                        type: integer
+                      noHexPrefix:
+                        type: boolean
+                      partitionIncludeSchemaTable:
+                        type: boolean
+                      saslUsername:
+                        type: string
+                      securityProtocol:
+                        type: string
+                      sslCaCertificateArn:
+                        type: string
+                      sslClientCertificateArn:
+                        type: string
+                      sslClientKeyArn:
+                        type: string
                       topic:
                         type: string
                     required:
@@ -100,8 +129,20 @@ spec:
                     type: object
                   kinesisSettings:
                     properties:
+                      includeControlDetails:
+                        type: boolean
+                      includeNullAndEmpty:
+                        type: boolean
+                      includePartitionValue:
+                        type: boolean
+                      includeTableAlterOperations:
+                        type: boolean
+                      includeTransactionDetails:
+                        type: boolean
                       messageFormat:
                         type: string
+                      partitionIncludeSchemaTable:
+                        type: boolean
                       serviceAccessRoleArn:
                         type: string
                       streamArn:
@@ -129,23 +170,90 @@ spec:
                     type: integer
                   s3Settings:
                     properties:
+                      addColumnName:
+                        type: boolean
                       bucketFolder:
                         type: string
                       bucketName:
+                        type: string
+                      cannedACLForObjects:
+                        type: string
+                      cdcInsertsAndUpdates:
+                        type: boolean
+                      cdcInsertsOnly:
+                        type: boolean
+                      cdcMaxBatchInterval:
+                        format: int64
+                        type: integer
+                      cdcMinFileSize:
+                        format: int64
+                        type: integer
+                      cdcPath:
                         type: string
                       compressionType:
                         type: string
                       csvDelimiter:
                         type: string
+                      csvNoSupValue:
+                        type: string
+                      csvNullValue:
+                        type: string
                       csvRowDelimiter:
+                        type: string
+                      dataFormat:
+                        type: string
+                      dataPageSize:
+                        format: int64
+                        type: integer
+                      datePartitionDelimiter:
                         type: string
                       datePartitionEnabled:
                         type: boolean
+                      datePartitionSequence:
+                        type: string
+                      dictPageSizeLimit:
+                        format: int64
+                        type: integer
+                      enableStatistics:
+                        type: boolean
+                      encodingType:
+                        type: string
+                      encryptionMode:
+                        type: string
                       externalTableDefinition:
+                        type: string
+                      ignoreHeadersRow:
+                        format: int64
+                        type: integer
+                      includeOpForFullLoad:
+                        type: boolean
+                      maxFileSize:
+                        format: int64
+                        type: integer
+                      parquetTimestampInMillisecond:
+                        type: boolean
+                      parquetVersion:
+                        type: string
+                      preserveTransactions:
+                        type: boolean
+                      rfc4180:
+                        type: boolean
+                      rowGroupLength:
+                        format: int64
+                        type: integer
+                      serverSideEncryptionKmsKeyID:
                         type: string
                       serviceAccessRoleArn:
                         type: string
+                      timestampColumnName:
+                        type: string
+                      useCsvNoSupValue:
+                        type: boolean
                     type: object
+                  secretsManagerAccessRoleArn:
+                    type: string
+                  secretsManagerArn:
+                    type: string
                   serverName:
                     type: string
                   serviceAccessRole:
@@ -214,6 +322,35 @@ spec:
                     properties:
                       broker:
                         type: string
+                      includeControlDetails:
+                        type: boolean
+                      includeNullAndEmpty:
+                        type: boolean
+                      includePartitionValue:
+                        type: boolean
+                      includeTableAlterOperations:
+                        type: boolean
+                      includeTransactionDetails:
+                        type: boolean
+                      messageFormat:
+                        type: string
+                      messageMaxBytes:
+                        format: int64
+                        type: integer
+                      noHexPrefix:
+                        type: boolean
+                      partitionIncludeSchemaTable:
+                        type: boolean
+                      saslUsername:
+                        type: string
+                      securityProtocol:
+                        type: string
+                      sslCaCertificateArn:
+                        type: string
+                      sslClientCertificateArn:
+                        type: string
+                      sslClientKeyArn:
+                        type: string
                       topic:
                         type: string
                     required:
@@ -221,8 +358,20 @@ spec:
                     type: object
                   kinesisSettings:
                     properties:
+                      includeControlDetails:
+                        type: boolean
+                      includeNullAndEmpty:
+                        type: boolean
+                      includePartitionValue:
+                        type: boolean
+                      includeTableAlterOperations:
+                        type: boolean
+                      includeTransactionDetails:
+                        type: boolean
                       messageFormat:
                         type: string
+                      partitionIncludeSchemaTable:
+                        type: boolean
                       serviceAccessRoleArn:
                         type: string
                       streamArn:
@@ -250,23 +399,90 @@ spec:
                     type: integer
                   s3Settings:
                     properties:
+                      addColumnName:
+                        type: boolean
                       bucketFolder:
                         type: string
                       bucketName:
+                        type: string
+                      cannedACLForObjects:
+                        type: string
+                      cdcInsertsAndUpdates:
+                        type: boolean
+                      cdcInsertsOnly:
+                        type: boolean
+                      cdcMaxBatchInterval:
+                        format: int64
+                        type: integer
+                      cdcMinFileSize:
+                        format: int64
+                        type: integer
+                      cdcPath:
                         type: string
                       compressionType:
                         type: string
                       csvDelimiter:
                         type: string
+                      csvNoSupValue:
+                        type: string
+                      csvNullValue:
+                        type: string
                       csvRowDelimiter:
+                        type: string
+                      dataFormat:
+                        type: string
+                      dataPageSize:
+                        format: int64
+                        type: integer
+                      datePartitionDelimiter:
                         type: string
                       datePartitionEnabled:
                         type: boolean
+                      datePartitionSequence:
+                        type: string
+                      dictPageSizeLimit:
+                        format: int64
+                        type: integer
+                      enableStatistics:
+                        type: boolean
+                      encodingType:
+                        type: string
+                      encryptionMode:
+                        type: string
                       externalTableDefinition:
+                        type: string
+                      ignoreHeadersRow:
+                        format: int64
+                        type: integer
+                      includeOpForFullLoad:
+                        type: boolean
+                      maxFileSize:
+                        format: int64
+                        type: integer
+                      parquetTimestampInMillisecond:
+                        type: boolean
+                      parquetVersion:
+                        type: string
+                      preserveTransactions:
+                        type: boolean
+                      rfc4180:
+                        type: boolean
+                      rowGroupLength:
+                        format: int64
+                        type: integer
+                      serverSideEncryptionKmsKeyID:
                         type: string
                       serviceAccessRoleArn:
                         type: string
+                      timestampColumnName:
+                        type: string
+                      useCsvNoSupValue:
+                        type: boolean
                     type: object
+                  secretsManagerAccessRoleArn:
+                    type: string
+                  secretsManagerArn:
+                    type: string
                   serverName:
                     type: string
                   serviceAccessRole:

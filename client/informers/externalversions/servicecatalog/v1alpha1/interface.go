@@ -40,6 +40,8 @@ type Interface interface {
 	Products() ProductInformer
 	// ProductPortfolioAssociations returns a ProductPortfolioAssociationInformer.
 	ProductPortfolioAssociations() ProductPortfolioAssociationInformer
+	// ProvisionedProducts returns a ProvisionedProductInformer.
+	ProvisionedProducts() ProvisionedProductInformer
 	// ProvisioningArtifacts returns a ProvisioningArtifactInformer.
 	ProvisioningArtifacts() ProvisioningArtifactInformer
 	// ServiceActions returns a ServiceActionInformer.
@@ -99,6 +101,11 @@ func (v *version) Products() ProductInformer {
 // ProductPortfolioAssociations returns a ProductPortfolioAssociationInformer.
 func (v *version) ProductPortfolioAssociations() ProductPortfolioAssociationInformer {
 	return &productPortfolioAssociationInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
+// ProvisionedProducts returns a ProvisionedProductInformer.
+func (v *version) ProvisionedProducts() ProvisionedProductInformer {
+	return &provisionedProductInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
 }
 
 // ProvisioningArtifacts returns a ProvisioningArtifactInformer.

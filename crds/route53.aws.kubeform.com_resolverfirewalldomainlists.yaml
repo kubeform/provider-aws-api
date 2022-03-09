@@ -62,7 +62,6 @@ spec:
                   domains:
                     items:
                       type: string
-                    maxItems: 255
                     type: array
                   id:
                     type: string
@@ -86,7 +85,6 @@ spec:
                   domains:
                     items:
                       type: string
-                    maxItems: 255
                     type: array
                   id:
                     type: string

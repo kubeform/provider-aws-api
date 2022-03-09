@@ -37,6 +37,10 @@ func (c *FakeAutoscalingV1alpha1) Groups(namespace string) v1alpha1.GroupInterfa
 	return &FakeGroups{c, namespace}
 }
 
+func (c *FakeAutoscalingV1alpha1) GroupTags(namespace string) v1alpha1.GroupTagInterface {
+	return &FakeGroupTags{c, namespace}
+}
+
 func (c *FakeAutoscalingV1alpha1) LifecycleHooks(namespace string) v1alpha1.LifecycleHookInterface {
 	return &FakeLifecycleHooks{c, namespace}
 }

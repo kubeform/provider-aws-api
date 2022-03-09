@@ -89,7 +89,7 @@ func (r *Threatintelset) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range threatintelsetForceNewList {
+	for key, _ := range threatintelsetForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

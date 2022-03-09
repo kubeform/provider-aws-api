@@ -30,6 +30,8 @@ type Interface interface {
 	Clusters() ClusterInformer
 	// FargateProfiles returns a FargateProfileInformer.
 	FargateProfiles() FargateProfileInformer
+	// IdentityProviderConfigs returns a IdentityProviderConfigInformer.
+	IdentityProviderConfigs() IdentityProviderConfigInformer
 	// NodeGroups returns a NodeGroupInformer.
 	NodeGroups() NodeGroupInformer
 }
@@ -58,6 +60,11 @@ func (v *version) Clusters() ClusterInformer {
 // FargateProfiles returns a FargateProfileInformer.
 func (v *version) FargateProfiles() FargateProfileInformer {
 	return &fargateProfileInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
+// IdentityProviderConfigs returns a IdentityProviderConfigInformer.
+func (v *version) IdentityProviderConfigs() IdentityProviderConfigInformer {
+	return &identityProviderConfigInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
 }
 
 // NodeGroups returns a NodeGroupInformer.

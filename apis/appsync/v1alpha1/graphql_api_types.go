@@ -41,6 +41,14 @@ type GraphqlAPI struct {
 	Status            GraphqlAPIStatus `json:"status,omitempty"`
 }
 
+type GraphqlAPISpecAdditionalAuthenticationProviderLambdaAuthorizerConfig struct {
+	// +optional
+	AuthorizerResultTtlInSeconds *int64  `json:"authorizerResultTtlInSeconds,omitempty" tf:"authorizer_result_ttl_in_seconds"`
+	AuthorizerURI                *string `json:"authorizerURI" tf:"authorizer_uri"`
+	// +optional
+	IdentityValidationExpression *string `json:"identityValidationExpression,omitempty" tf:"identity_validation_expression"`
+}
+
 type GraphqlAPISpecAdditionalAuthenticationProviderOpenidConnectConfig struct {
 	// +optional
 	AuthTtl *int64 `json:"authTtl,omitempty" tf:"auth_ttl"`
@@ -62,9 +70,19 @@ type GraphqlAPISpecAdditionalAuthenticationProviderUserPoolConfig struct {
 type GraphqlAPISpecAdditionalAuthenticationProvider struct {
 	AuthenticationType *string `json:"authenticationType" tf:"authentication_type"`
 	// +optional
+	LambdaAuthorizerConfig *GraphqlAPISpecAdditionalAuthenticationProviderLambdaAuthorizerConfig `json:"lambdaAuthorizerConfig,omitempty" tf:"lambda_authorizer_config"`
+	// +optional
 	OpenidConnectConfig *GraphqlAPISpecAdditionalAuthenticationProviderOpenidConnectConfig `json:"openidConnectConfig,omitempty" tf:"openid_connect_config"`
 	// +optional
 	UserPoolConfig *GraphqlAPISpecAdditionalAuthenticationProviderUserPoolConfig `json:"userPoolConfig,omitempty" tf:"user_pool_config"`
+}
+
+type GraphqlAPISpecLambdaAuthorizerConfig struct {
+	// +optional
+	AuthorizerResultTtlInSeconds *int64  `json:"authorizerResultTtlInSeconds,omitempty" tf:"authorizer_result_ttl_in_seconds"`
+	AuthorizerURI                *string `json:"authorizerURI" tf:"authorizer_uri"`
+	// +optional
+	IdentityValidationExpression *string `json:"identityValidationExpression,omitempty" tf:"identity_validation_expression"`
 }
 
 type GraphqlAPISpecLogConfig struct {
@@ -115,6 +133,8 @@ type GraphqlAPISpecResource struct {
 	// +optional
 	Arn                *string `json:"arn,omitempty" tf:"arn"`
 	AuthenticationType *string `json:"authenticationType" tf:"authentication_type"`
+	// +optional
+	LambdaAuthorizerConfig *GraphqlAPISpecLambdaAuthorizerConfig `json:"lambdaAuthorizerConfig,omitempty" tf:"lambda_authorizer_config"`
 	// +optional
 	LogConfig *GraphqlAPISpecLogConfig `json:"logConfig,omitempty" tf:"log_config"`
 	Name      *string                  `json:"name" tf:"name"`

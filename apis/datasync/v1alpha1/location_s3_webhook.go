@@ -92,7 +92,7 @@ func (r *LocationS3) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range locations3ForceNewList {
+	for key, _ := range locations3ForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

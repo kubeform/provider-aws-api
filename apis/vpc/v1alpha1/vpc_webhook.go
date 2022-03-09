@@ -42,7 +42,9 @@ func (r *Vpc) SetupWebhookWithManager(mgr ctrl.Manager) error {
 var _ webhook.Validator = &Vpc{}
 
 var vpcForceNewList = map[string]bool{
-	"/cidr_block": true,
+	"/cidr_block":          true,
+	"/ipv4_ipam_pool_id":   true,
+	"/ipv4_netmask_length": true,
 }
 
 // ValidateCreate implements webhook.Validator so a webhook will be registered for the type
@@ -88,7 +90,7 @@ func (r *Vpc) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range vpcForceNewList {
+	for key, _ := range vpcForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

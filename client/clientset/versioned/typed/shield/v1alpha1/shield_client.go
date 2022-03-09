@@ -28,6 +28,8 @@ import (
 type ShieldV1alpha1Interface interface {
 	RESTClient() rest.Interface
 	ProtectionsGetter
+	ProtectionGroupsGetter
+	ProtectionHealthCheckAssociationsGetter
 }
 
 // ShieldV1alpha1Client is used to interact with features provided by the shield.aws.kubeform.com group.
@@ -37,6 +39,14 @@ type ShieldV1alpha1Client struct {
 
 func (c *ShieldV1alpha1Client) Protections(namespace string) ProtectionInterface {
 	return newProtections(c, namespace)
+}
+
+func (c *ShieldV1alpha1Client) ProtectionGroups(namespace string) ProtectionGroupInterface {
+	return newProtectionGroups(c, namespace)
+}
+
+func (c *ShieldV1alpha1Client) ProtectionHealthCheckAssociations(namespace string) ProtectionHealthCheckAssociationInterface {
+	return newProtectionHealthCheckAssociations(c, namespace)
 }
 
 // NewForConfig creates a new ShieldV1alpha1Client for the given config.

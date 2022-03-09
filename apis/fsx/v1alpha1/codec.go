@@ -27,13 +27,41 @@ import (
 
 func GetEncoder() map[string]jsoniter.ValEncoder {
 	return map[string]jsoniter.ValEncoder{
-		jsoniter.MustGetKind(reflect2.TypeOf(WindowsFileSystemSpecSelfManagedActiveDirectory{}).Type1()): WindowsFileSystemSpecSelfManagedActiveDirectoryCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(DataRepositoryAssociationSpecS3{}).Type1()):                                                                   DataRepositoryAssociationSpecS3Codec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(DataRepositoryAssociationSpecS3AutoExportPolicy{}).Type1()):                                                   DataRepositoryAssociationSpecS3AutoExportPolicyCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(DataRepositoryAssociationSpecS3AutoImportPolicy{}).Type1()):                                                   DataRepositoryAssociationSpecS3AutoImportPolicyCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(LustreFileSystemSpecLogConfiguration{}).Type1()):                                                              LustreFileSystemSpecLogConfigurationCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(OntapFileSystemSpecDiskIopsConfiguration{}).Type1()):                                                          OntapFileSystemSpecDiskIopsConfigurationCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(OntapStorageVirtualMachineSpecActiveDirectoryConfiguration{}).Type1()):                                        OntapStorageVirtualMachineSpecActiveDirectoryConfigurationCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(OntapStorageVirtualMachineSpecActiveDirectoryConfigurationSelfManagedActiveDirectoryConfiguration{}).Type1()): OntapStorageVirtualMachineSpecActiveDirectoryConfigurationSelfManagedActiveDirectoryConfigurationCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(OntapVolumeSpecTieringPolicy{}).Type1()):                                                                      OntapVolumeSpecTieringPolicyCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(OpenzfsFileSystemSpecDiskIopsConfiguration{}).Type1()):                                                        OpenzfsFileSystemSpecDiskIopsConfigurationCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(OpenzfsFileSystemSpecRootVolumeConfiguration{}).Type1()):                                                      OpenzfsFileSystemSpecRootVolumeConfigurationCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(OpenzfsFileSystemSpecRootVolumeConfigurationNfsExports{}).Type1()):                                            OpenzfsFileSystemSpecRootVolumeConfigurationNfsExportsCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(OpenzfsVolumeSpecNfsExports{}).Type1()):                                                                       OpenzfsVolumeSpecNfsExportsCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(OpenzfsVolumeSpecOriginSnapshot{}).Type1()):                                                                   OpenzfsVolumeSpecOriginSnapshotCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(WindowsFileSystemSpecAuditLogConfiguration{}).Type1()):                                                        WindowsFileSystemSpecAuditLogConfigurationCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(WindowsFileSystemSpecSelfManagedActiveDirectory{}).Type1()):                                                   WindowsFileSystemSpecSelfManagedActiveDirectoryCodec{},
 	}
 }
 
 func GetDecoder() map[string]jsoniter.ValDecoder {
 	return map[string]jsoniter.ValDecoder{
-		jsoniter.MustGetKind(reflect2.TypeOf(WindowsFileSystemSpecSelfManagedActiveDirectory{}).Type1()): WindowsFileSystemSpecSelfManagedActiveDirectoryCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(DataRepositoryAssociationSpecS3{}).Type1()):                                                                   DataRepositoryAssociationSpecS3Codec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(DataRepositoryAssociationSpecS3AutoExportPolicy{}).Type1()):                                                   DataRepositoryAssociationSpecS3AutoExportPolicyCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(DataRepositoryAssociationSpecS3AutoImportPolicy{}).Type1()):                                                   DataRepositoryAssociationSpecS3AutoImportPolicyCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(LustreFileSystemSpecLogConfiguration{}).Type1()):                                                              LustreFileSystemSpecLogConfigurationCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(OntapFileSystemSpecDiskIopsConfiguration{}).Type1()):                                                          OntapFileSystemSpecDiskIopsConfigurationCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(OntapStorageVirtualMachineSpecActiveDirectoryConfiguration{}).Type1()):                                        OntapStorageVirtualMachineSpecActiveDirectoryConfigurationCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(OntapStorageVirtualMachineSpecActiveDirectoryConfigurationSelfManagedActiveDirectoryConfiguration{}).Type1()): OntapStorageVirtualMachineSpecActiveDirectoryConfigurationSelfManagedActiveDirectoryConfigurationCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(OntapVolumeSpecTieringPolicy{}).Type1()):                                                                      OntapVolumeSpecTieringPolicyCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(OpenzfsFileSystemSpecDiskIopsConfiguration{}).Type1()):                                                        OpenzfsFileSystemSpecDiskIopsConfigurationCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(OpenzfsFileSystemSpecRootVolumeConfiguration{}).Type1()):                                                      OpenzfsFileSystemSpecRootVolumeConfigurationCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(OpenzfsFileSystemSpecRootVolumeConfigurationNfsExports{}).Type1()):                                            OpenzfsFileSystemSpecRootVolumeConfigurationNfsExportsCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(OpenzfsVolumeSpecNfsExports{}).Type1()):                                                                       OpenzfsVolumeSpecNfsExportsCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(OpenzfsVolumeSpecOriginSnapshot{}).Type1()):                                                                   OpenzfsVolumeSpecOriginSnapshotCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(WindowsFileSystemSpecAuditLogConfiguration{}).Type1()):                                                        WindowsFileSystemSpecAuditLogConfigurationCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(WindowsFileSystemSpecSelfManagedActiveDirectory{}).Type1()):                                                   WindowsFileSystemSpecSelfManagedActiveDirectoryCodec{},
 	}
 }
 
@@ -47,6 +75,1112 @@ func getDecodersWithout(typ string) map[string]jsoniter.ValDecoder {
 	origMap := GetDecoder()
 	delete(origMap, typ)
 	return origMap
+}
+
+// +k8s:deepcopy-gen=false
+type DataRepositoryAssociationSpecS3Codec struct {
+}
+
+func (DataRepositoryAssociationSpecS3Codec) IsEmpty(ptr unsafe.Pointer) bool {
+	return (*DataRepositoryAssociationSpecS3)(ptr) == nil
+}
+
+func (DataRepositoryAssociationSpecS3Codec) Encode(ptr unsafe.Pointer, stream *jsoniter.Stream) {
+	obj := (*DataRepositoryAssociationSpecS3)(ptr)
+	var objs []DataRepositoryAssociationSpecS3
+	if obj != nil {
+		objs = []DataRepositoryAssociationSpecS3{*obj}
+	}
+
+	jsonit := jsoniter.Config{
+		EscapeHTML:             true,
+		SortMapKeys:            true,
+		ValidateJsonRawMessage: true,
+		TagKey:                 "tf",
+		TypeEncoders:           getEncodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(DataRepositoryAssociationSpecS3{}).Type1())),
+	}.Froze()
+
+	byt, _ := jsonit.Marshal(objs)
+
+	stream.Write(byt)
+}
+
+func (DataRepositoryAssociationSpecS3Codec) Decode(ptr unsafe.Pointer, iter *jsoniter.Iterator) {
+	switch iter.WhatIsNext() {
+	case jsoniter.NilValue:
+		iter.Skip()
+		*(*DataRepositoryAssociationSpecS3)(ptr) = DataRepositoryAssociationSpecS3{}
+		return
+	case jsoniter.ArrayValue:
+		objsByte := iter.SkipAndReturnBytes()
+		if len(objsByte) > 0 {
+			var objs []DataRepositoryAssociationSpecS3
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(DataRepositoryAssociationSpecS3{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objsByte, &objs)
+
+			if len(objs) > 0 {
+				*(*DataRepositoryAssociationSpecS3)(ptr) = objs[0]
+			} else {
+				*(*DataRepositoryAssociationSpecS3)(ptr) = DataRepositoryAssociationSpecS3{}
+			}
+		} else {
+			*(*DataRepositoryAssociationSpecS3)(ptr) = DataRepositoryAssociationSpecS3{}
+		}
+	case jsoniter.ObjectValue:
+		objByte := iter.SkipAndReturnBytes()
+		if len(objByte) > 0 {
+			var obj DataRepositoryAssociationSpecS3
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(DataRepositoryAssociationSpecS3{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objByte, &obj)
+
+			*(*DataRepositoryAssociationSpecS3)(ptr) = obj
+		} else {
+			*(*DataRepositoryAssociationSpecS3)(ptr) = DataRepositoryAssociationSpecS3{}
+		}
+	default:
+		iter.ReportError("decode DataRepositoryAssociationSpecS3", "unexpected JSON type")
+	}
+}
+
+// +k8s:deepcopy-gen=false
+type DataRepositoryAssociationSpecS3AutoExportPolicyCodec struct {
+}
+
+func (DataRepositoryAssociationSpecS3AutoExportPolicyCodec) IsEmpty(ptr unsafe.Pointer) bool {
+	return (*DataRepositoryAssociationSpecS3AutoExportPolicy)(ptr) == nil
+}
+
+func (DataRepositoryAssociationSpecS3AutoExportPolicyCodec) Encode(ptr unsafe.Pointer, stream *jsoniter.Stream) {
+	obj := (*DataRepositoryAssociationSpecS3AutoExportPolicy)(ptr)
+	var objs []DataRepositoryAssociationSpecS3AutoExportPolicy
+	if obj != nil {
+		objs = []DataRepositoryAssociationSpecS3AutoExportPolicy{*obj}
+	}
+
+	jsonit := jsoniter.Config{
+		EscapeHTML:             true,
+		SortMapKeys:            true,
+		ValidateJsonRawMessage: true,
+		TagKey:                 "tf",
+		TypeEncoders:           getEncodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(DataRepositoryAssociationSpecS3AutoExportPolicy{}).Type1())),
+	}.Froze()
+
+	byt, _ := jsonit.Marshal(objs)
+
+	stream.Write(byt)
+}
+
+func (DataRepositoryAssociationSpecS3AutoExportPolicyCodec) Decode(ptr unsafe.Pointer, iter *jsoniter.Iterator) {
+	switch iter.WhatIsNext() {
+	case jsoniter.NilValue:
+		iter.Skip()
+		*(*DataRepositoryAssociationSpecS3AutoExportPolicy)(ptr) = DataRepositoryAssociationSpecS3AutoExportPolicy{}
+		return
+	case jsoniter.ArrayValue:
+		objsByte := iter.SkipAndReturnBytes()
+		if len(objsByte) > 0 {
+			var objs []DataRepositoryAssociationSpecS3AutoExportPolicy
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(DataRepositoryAssociationSpecS3AutoExportPolicy{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objsByte, &objs)
+
+			if len(objs) > 0 {
+				*(*DataRepositoryAssociationSpecS3AutoExportPolicy)(ptr) = objs[0]
+			} else {
+				*(*DataRepositoryAssociationSpecS3AutoExportPolicy)(ptr) = DataRepositoryAssociationSpecS3AutoExportPolicy{}
+			}
+		} else {
+			*(*DataRepositoryAssociationSpecS3AutoExportPolicy)(ptr) = DataRepositoryAssociationSpecS3AutoExportPolicy{}
+		}
+	case jsoniter.ObjectValue:
+		objByte := iter.SkipAndReturnBytes()
+		if len(objByte) > 0 {
+			var obj DataRepositoryAssociationSpecS3AutoExportPolicy
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(DataRepositoryAssociationSpecS3AutoExportPolicy{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objByte, &obj)
+
+			*(*DataRepositoryAssociationSpecS3AutoExportPolicy)(ptr) = obj
+		} else {
+			*(*DataRepositoryAssociationSpecS3AutoExportPolicy)(ptr) = DataRepositoryAssociationSpecS3AutoExportPolicy{}
+		}
+	default:
+		iter.ReportError("decode DataRepositoryAssociationSpecS3AutoExportPolicy", "unexpected JSON type")
+	}
+}
+
+// +k8s:deepcopy-gen=false
+type DataRepositoryAssociationSpecS3AutoImportPolicyCodec struct {
+}
+
+func (DataRepositoryAssociationSpecS3AutoImportPolicyCodec) IsEmpty(ptr unsafe.Pointer) bool {
+	return (*DataRepositoryAssociationSpecS3AutoImportPolicy)(ptr) == nil
+}
+
+func (DataRepositoryAssociationSpecS3AutoImportPolicyCodec) Encode(ptr unsafe.Pointer, stream *jsoniter.Stream) {
+	obj := (*DataRepositoryAssociationSpecS3AutoImportPolicy)(ptr)
+	var objs []DataRepositoryAssociationSpecS3AutoImportPolicy
+	if obj != nil {
+		objs = []DataRepositoryAssociationSpecS3AutoImportPolicy{*obj}
+	}
+
+	jsonit := jsoniter.Config{
+		EscapeHTML:             true,
+		SortMapKeys:            true,
+		ValidateJsonRawMessage: true,
+		TagKey:                 "tf",
+		TypeEncoders:           getEncodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(DataRepositoryAssociationSpecS3AutoImportPolicy{}).Type1())),
+	}.Froze()
+
+	byt, _ := jsonit.Marshal(objs)
+
+	stream.Write(byt)
+}
+
+func (DataRepositoryAssociationSpecS3AutoImportPolicyCodec) Decode(ptr unsafe.Pointer, iter *jsoniter.Iterator) {
+	switch iter.WhatIsNext() {
+	case jsoniter.NilValue:
+		iter.Skip()
+		*(*DataRepositoryAssociationSpecS3AutoImportPolicy)(ptr) = DataRepositoryAssociationSpecS3AutoImportPolicy{}
+		return
+	case jsoniter.ArrayValue:
+		objsByte := iter.SkipAndReturnBytes()
+		if len(objsByte) > 0 {
+			var objs []DataRepositoryAssociationSpecS3AutoImportPolicy
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(DataRepositoryAssociationSpecS3AutoImportPolicy{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objsByte, &objs)
+
+			if len(objs) > 0 {
+				*(*DataRepositoryAssociationSpecS3AutoImportPolicy)(ptr) = objs[0]
+			} else {
+				*(*DataRepositoryAssociationSpecS3AutoImportPolicy)(ptr) = DataRepositoryAssociationSpecS3AutoImportPolicy{}
+			}
+		} else {
+			*(*DataRepositoryAssociationSpecS3AutoImportPolicy)(ptr) = DataRepositoryAssociationSpecS3AutoImportPolicy{}
+		}
+	case jsoniter.ObjectValue:
+		objByte := iter.SkipAndReturnBytes()
+		if len(objByte) > 0 {
+			var obj DataRepositoryAssociationSpecS3AutoImportPolicy
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(DataRepositoryAssociationSpecS3AutoImportPolicy{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objByte, &obj)
+
+			*(*DataRepositoryAssociationSpecS3AutoImportPolicy)(ptr) = obj
+		} else {
+			*(*DataRepositoryAssociationSpecS3AutoImportPolicy)(ptr) = DataRepositoryAssociationSpecS3AutoImportPolicy{}
+		}
+	default:
+		iter.ReportError("decode DataRepositoryAssociationSpecS3AutoImportPolicy", "unexpected JSON type")
+	}
+}
+
+// +k8s:deepcopy-gen=false
+type LustreFileSystemSpecLogConfigurationCodec struct {
+}
+
+func (LustreFileSystemSpecLogConfigurationCodec) IsEmpty(ptr unsafe.Pointer) bool {
+	return (*LustreFileSystemSpecLogConfiguration)(ptr) == nil
+}
+
+func (LustreFileSystemSpecLogConfigurationCodec) Encode(ptr unsafe.Pointer, stream *jsoniter.Stream) {
+	obj := (*LustreFileSystemSpecLogConfiguration)(ptr)
+	var objs []LustreFileSystemSpecLogConfiguration
+	if obj != nil {
+		objs = []LustreFileSystemSpecLogConfiguration{*obj}
+	}
+
+	jsonit := jsoniter.Config{
+		EscapeHTML:             true,
+		SortMapKeys:            true,
+		ValidateJsonRawMessage: true,
+		TagKey:                 "tf",
+		TypeEncoders:           getEncodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(LustreFileSystemSpecLogConfiguration{}).Type1())),
+	}.Froze()
+
+	byt, _ := jsonit.Marshal(objs)
+
+	stream.Write(byt)
+}
+
+func (LustreFileSystemSpecLogConfigurationCodec) Decode(ptr unsafe.Pointer, iter *jsoniter.Iterator) {
+	switch iter.WhatIsNext() {
+	case jsoniter.NilValue:
+		iter.Skip()
+		*(*LustreFileSystemSpecLogConfiguration)(ptr) = LustreFileSystemSpecLogConfiguration{}
+		return
+	case jsoniter.ArrayValue:
+		objsByte := iter.SkipAndReturnBytes()
+		if len(objsByte) > 0 {
+			var objs []LustreFileSystemSpecLogConfiguration
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(LustreFileSystemSpecLogConfiguration{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objsByte, &objs)
+
+			if len(objs) > 0 {
+				*(*LustreFileSystemSpecLogConfiguration)(ptr) = objs[0]
+			} else {
+				*(*LustreFileSystemSpecLogConfiguration)(ptr) = LustreFileSystemSpecLogConfiguration{}
+			}
+		} else {
+			*(*LustreFileSystemSpecLogConfiguration)(ptr) = LustreFileSystemSpecLogConfiguration{}
+		}
+	case jsoniter.ObjectValue:
+		objByte := iter.SkipAndReturnBytes()
+		if len(objByte) > 0 {
+			var obj LustreFileSystemSpecLogConfiguration
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(LustreFileSystemSpecLogConfiguration{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objByte, &obj)
+
+			*(*LustreFileSystemSpecLogConfiguration)(ptr) = obj
+		} else {
+			*(*LustreFileSystemSpecLogConfiguration)(ptr) = LustreFileSystemSpecLogConfiguration{}
+		}
+	default:
+		iter.ReportError("decode LustreFileSystemSpecLogConfiguration", "unexpected JSON type")
+	}
+}
+
+// +k8s:deepcopy-gen=false
+type OntapFileSystemSpecDiskIopsConfigurationCodec struct {
+}
+
+func (OntapFileSystemSpecDiskIopsConfigurationCodec) IsEmpty(ptr unsafe.Pointer) bool {
+	return (*OntapFileSystemSpecDiskIopsConfiguration)(ptr) == nil
+}
+
+func (OntapFileSystemSpecDiskIopsConfigurationCodec) Encode(ptr unsafe.Pointer, stream *jsoniter.Stream) {
+	obj := (*OntapFileSystemSpecDiskIopsConfiguration)(ptr)
+	var objs []OntapFileSystemSpecDiskIopsConfiguration
+	if obj != nil {
+		objs = []OntapFileSystemSpecDiskIopsConfiguration{*obj}
+	}
+
+	jsonit := jsoniter.Config{
+		EscapeHTML:             true,
+		SortMapKeys:            true,
+		ValidateJsonRawMessage: true,
+		TagKey:                 "tf",
+		TypeEncoders:           getEncodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(OntapFileSystemSpecDiskIopsConfiguration{}).Type1())),
+	}.Froze()
+
+	byt, _ := jsonit.Marshal(objs)
+
+	stream.Write(byt)
+}
+
+func (OntapFileSystemSpecDiskIopsConfigurationCodec) Decode(ptr unsafe.Pointer, iter *jsoniter.Iterator) {
+	switch iter.WhatIsNext() {
+	case jsoniter.NilValue:
+		iter.Skip()
+		*(*OntapFileSystemSpecDiskIopsConfiguration)(ptr) = OntapFileSystemSpecDiskIopsConfiguration{}
+		return
+	case jsoniter.ArrayValue:
+		objsByte := iter.SkipAndReturnBytes()
+		if len(objsByte) > 0 {
+			var objs []OntapFileSystemSpecDiskIopsConfiguration
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(OntapFileSystemSpecDiskIopsConfiguration{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objsByte, &objs)
+
+			if len(objs) > 0 {
+				*(*OntapFileSystemSpecDiskIopsConfiguration)(ptr) = objs[0]
+			} else {
+				*(*OntapFileSystemSpecDiskIopsConfiguration)(ptr) = OntapFileSystemSpecDiskIopsConfiguration{}
+			}
+		} else {
+			*(*OntapFileSystemSpecDiskIopsConfiguration)(ptr) = OntapFileSystemSpecDiskIopsConfiguration{}
+		}
+	case jsoniter.ObjectValue:
+		objByte := iter.SkipAndReturnBytes()
+		if len(objByte) > 0 {
+			var obj OntapFileSystemSpecDiskIopsConfiguration
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(OntapFileSystemSpecDiskIopsConfiguration{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objByte, &obj)
+
+			*(*OntapFileSystemSpecDiskIopsConfiguration)(ptr) = obj
+		} else {
+			*(*OntapFileSystemSpecDiskIopsConfiguration)(ptr) = OntapFileSystemSpecDiskIopsConfiguration{}
+		}
+	default:
+		iter.ReportError("decode OntapFileSystemSpecDiskIopsConfiguration", "unexpected JSON type")
+	}
+}
+
+// +k8s:deepcopy-gen=false
+type OntapStorageVirtualMachineSpecActiveDirectoryConfigurationCodec struct {
+}
+
+func (OntapStorageVirtualMachineSpecActiveDirectoryConfigurationCodec) IsEmpty(ptr unsafe.Pointer) bool {
+	return (*OntapStorageVirtualMachineSpecActiveDirectoryConfiguration)(ptr) == nil
+}
+
+func (OntapStorageVirtualMachineSpecActiveDirectoryConfigurationCodec) Encode(ptr unsafe.Pointer, stream *jsoniter.Stream) {
+	obj := (*OntapStorageVirtualMachineSpecActiveDirectoryConfiguration)(ptr)
+	var objs []OntapStorageVirtualMachineSpecActiveDirectoryConfiguration
+	if obj != nil {
+		objs = []OntapStorageVirtualMachineSpecActiveDirectoryConfiguration{*obj}
+	}
+
+	jsonit := jsoniter.Config{
+		EscapeHTML:             true,
+		SortMapKeys:            true,
+		ValidateJsonRawMessage: true,
+		TagKey:                 "tf",
+		TypeEncoders:           getEncodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(OntapStorageVirtualMachineSpecActiveDirectoryConfiguration{}).Type1())),
+	}.Froze()
+
+	byt, _ := jsonit.Marshal(objs)
+
+	stream.Write(byt)
+}
+
+func (OntapStorageVirtualMachineSpecActiveDirectoryConfigurationCodec) Decode(ptr unsafe.Pointer, iter *jsoniter.Iterator) {
+	switch iter.WhatIsNext() {
+	case jsoniter.NilValue:
+		iter.Skip()
+		*(*OntapStorageVirtualMachineSpecActiveDirectoryConfiguration)(ptr) = OntapStorageVirtualMachineSpecActiveDirectoryConfiguration{}
+		return
+	case jsoniter.ArrayValue:
+		objsByte := iter.SkipAndReturnBytes()
+		if len(objsByte) > 0 {
+			var objs []OntapStorageVirtualMachineSpecActiveDirectoryConfiguration
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(OntapStorageVirtualMachineSpecActiveDirectoryConfiguration{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objsByte, &objs)
+
+			if len(objs) > 0 {
+				*(*OntapStorageVirtualMachineSpecActiveDirectoryConfiguration)(ptr) = objs[0]
+			} else {
+				*(*OntapStorageVirtualMachineSpecActiveDirectoryConfiguration)(ptr) = OntapStorageVirtualMachineSpecActiveDirectoryConfiguration{}
+			}
+		} else {
+			*(*OntapStorageVirtualMachineSpecActiveDirectoryConfiguration)(ptr) = OntapStorageVirtualMachineSpecActiveDirectoryConfiguration{}
+		}
+	case jsoniter.ObjectValue:
+		objByte := iter.SkipAndReturnBytes()
+		if len(objByte) > 0 {
+			var obj OntapStorageVirtualMachineSpecActiveDirectoryConfiguration
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(OntapStorageVirtualMachineSpecActiveDirectoryConfiguration{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objByte, &obj)
+
+			*(*OntapStorageVirtualMachineSpecActiveDirectoryConfiguration)(ptr) = obj
+		} else {
+			*(*OntapStorageVirtualMachineSpecActiveDirectoryConfiguration)(ptr) = OntapStorageVirtualMachineSpecActiveDirectoryConfiguration{}
+		}
+	default:
+		iter.ReportError("decode OntapStorageVirtualMachineSpecActiveDirectoryConfiguration", "unexpected JSON type")
+	}
+}
+
+// +k8s:deepcopy-gen=false
+type OntapStorageVirtualMachineSpecActiveDirectoryConfigurationSelfManagedActiveDirectoryConfigurationCodec struct {
+}
+
+func (OntapStorageVirtualMachineSpecActiveDirectoryConfigurationSelfManagedActiveDirectoryConfigurationCodec) IsEmpty(ptr unsafe.Pointer) bool {
+	return (*OntapStorageVirtualMachineSpecActiveDirectoryConfigurationSelfManagedActiveDirectoryConfiguration)(ptr) == nil
+}
+
+func (OntapStorageVirtualMachineSpecActiveDirectoryConfigurationSelfManagedActiveDirectoryConfigurationCodec) Encode(ptr unsafe.Pointer, stream *jsoniter.Stream) {
+	obj := (*OntapStorageVirtualMachineSpecActiveDirectoryConfigurationSelfManagedActiveDirectoryConfiguration)(ptr)
+	var objs []OntapStorageVirtualMachineSpecActiveDirectoryConfigurationSelfManagedActiveDirectoryConfiguration
+	if obj != nil {
+		objs = []OntapStorageVirtualMachineSpecActiveDirectoryConfigurationSelfManagedActiveDirectoryConfiguration{*obj}
+	}
+
+	jsonit := jsoniter.Config{
+		EscapeHTML:             true,
+		SortMapKeys:            true,
+		ValidateJsonRawMessage: true,
+		TagKey:                 "tf",
+		TypeEncoders:           getEncodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(OntapStorageVirtualMachineSpecActiveDirectoryConfigurationSelfManagedActiveDirectoryConfiguration{}).Type1())),
+	}.Froze()
+
+	byt, _ := jsonit.Marshal(objs)
+
+	stream.Write(byt)
+}
+
+func (OntapStorageVirtualMachineSpecActiveDirectoryConfigurationSelfManagedActiveDirectoryConfigurationCodec) Decode(ptr unsafe.Pointer, iter *jsoniter.Iterator) {
+	switch iter.WhatIsNext() {
+	case jsoniter.NilValue:
+		iter.Skip()
+		*(*OntapStorageVirtualMachineSpecActiveDirectoryConfigurationSelfManagedActiveDirectoryConfiguration)(ptr) = OntapStorageVirtualMachineSpecActiveDirectoryConfigurationSelfManagedActiveDirectoryConfiguration{}
+		return
+	case jsoniter.ArrayValue:
+		objsByte := iter.SkipAndReturnBytes()
+		if len(objsByte) > 0 {
+			var objs []OntapStorageVirtualMachineSpecActiveDirectoryConfigurationSelfManagedActiveDirectoryConfiguration
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(OntapStorageVirtualMachineSpecActiveDirectoryConfigurationSelfManagedActiveDirectoryConfiguration{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objsByte, &objs)
+
+			if len(objs) > 0 {
+				*(*OntapStorageVirtualMachineSpecActiveDirectoryConfigurationSelfManagedActiveDirectoryConfiguration)(ptr) = objs[0]
+			} else {
+				*(*OntapStorageVirtualMachineSpecActiveDirectoryConfigurationSelfManagedActiveDirectoryConfiguration)(ptr) = OntapStorageVirtualMachineSpecActiveDirectoryConfigurationSelfManagedActiveDirectoryConfiguration{}
+			}
+		} else {
+			*(*OntapStorageVirtualMachineSpecActiveDirectoryConfigurationSelfManagedActiveDirectoryConfiguration)(ptr) = OntapStorageVirtualMachineSpecActiveDirectoryConfigurationSelfManagedActiveDirectoryConfiguration{}
+		}
+	case jsoniter.ObjectValue:
+		objByte := iter.SkipAndReturnBytes()
+		if len(objByte) > 0 {
+			var obj OntapStorageVirtualMachineSpecActiveDirectoryConfigurationSelfManagedActiveDirectoryConfiguration
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(OntapStorageVirtualMachineSpecActiveDirectoryConfigurationSelfManagedActiveDirectoryConfiguration{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objByte, &obj)
+
+			*(*OntapStorageVirtualMachineSpecActiveDirectoryConfigurationSelfManagedActiveDirectoryConfiguration)(ptr) = obj
+		} else {
+			*(*OntapStorageVirtualMachineSpecActiveDirectoryConfigurationSelfManagedActiveDirectoryConfiguration)(ptr) = OntapStorageVirtualMachineSpecActiveDirectoryConfigurationSelfManagedActiveDirectoryConfiguration{}
+		}
+	default:
+		iter.ReportError("decode OntapStorageVirtualMachineSpecActiveDirectoryConfigurationSelfManagedActiveDirectoryConfiguration", "unexpected JSON type")
+	}
+}
+
+// +k8s:deepcopy-gen=false
+type OntapVolumeSpecTieringPolicyCodec struct {
+}
+
+func (OntapVolumeSpecTieringPolicyCodec) IsEmpty(ptr unsafe.Pointer) bool {
+	return (*OntapVolumeSpecTieringPolicy)(ptr) == nil
+}
+
+func (OntapVolumeSpecTieringPolicyCodec) Encode(ptr unsafe.Pointer, stream *jsoniter.Stream) {
+	obj := (*OntapVolumeSpecTieringPolicy)(ptr)
+	var objs []OntapVolumeSpecTieringPolicy
+	if obj != nil {
+		objs = []OntapVolumeSpecTieringPolicy{*obj}
+	}
+
+	jsonit := jsoniter.Config{
+		EscapeHTML:             true,
+		SortMapKeys:            true,
+		ValidateJsonRawMessage: true,
+		TagKey:                 "tf",
+		TypeEncoders:           getEncodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(OntapVolumeSpecTieringPolicy{}).Type1())),
+	}.Froze()
+
+	byt, _ := jsonit.Marshal(objs)
+
+	stream.Write(byt)
+}
+
+func (OntapVolumeSpecTieringPolicyCodec) Decode(ptr unsafe.Pointer, iter *jsoniter.Iterator) {
+	switch iter.WhatIsNext() {
+	case jsoniter.NilValue:
+		iter.Skip()
+		*(*OntapVolumeSpecTieringPolicy)(ptr) = OntapVolumeSpecTieringPolicy{}
+		return
+	case jsoniter.ArrayValue:
+		objsByte := iter.SkipAndReturnBytes()
+		if len(objsByte) > 0 {
+			var objs []OntapVolumeSpecTieringPolicy
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(OntapVolumeSpecTieringPolicy{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objsByte, &objs)
+
+			if len(objs) > 0 {
+				*(*OntapVolumeSpecTieringPolicy)(ptr) = objs[0]
+			} else {
+				*(*OntapVolumeSpecTieringPolicy)(ptr) = OntapVolumeSpecTieringPolicy{}
+			}
+		} else {
+			*(*OntapVolumeSpecTieringPolicy)(ptr) = OntapVolumeSpecTieringPolicy{}
+		}
+	case jsoniter.ObjectValue:
+		objByte := iter.SkipAndReturnBytes()
+		if len(objByte) > 0 {
+			var obj OntapVolumeSpecTieringPolicy
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(OntapVolumeSpecTieringPolicy{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objByte, &obj)
+
+			*(*OntapVolumeSpecTieringPolicy)(ptr) = obj
+		} else {
+			*(*OntapVolumeSpecTieringPolicy)(ptr) = OntapVolumeSpecTieringPolicy{}
+		}
+	default:
+		iter.ReportError("decode OntapVolumeSpecTieringPolicy", "unexpected JSON type")
+	}
+}
+
+// +k8s:deepcopy-gen=false
+type OpenzfsFileSystemSpecDiskIopsConfigurationCodec struct {
+}
+
+func (OpenzfsFileSystemSpecDiskIopsConfigurationCodec) IsEmpty(ptr unsafe.Pointer) bool {
+	return (*OpenzfsFileSystemSpecDiskIopsConfiguration)(ptr) == nil
+}
+
+func (OpenzfsFileSystemSpecDiskIopsConfigurationCodec) Encode(ptr unsafe.Pointer, stream *jsoniter.Stream) {
+	obj := (*OpenzfsFileSystemSpecDiskIopsConfiguration)(ptr)
+	var objs []OpenzfsFileSystemSpecDiskIopsConfiguration
+	if obj != nil {
+		objs = []OpenzfsFileSystemSpecDiskIopsConfiguration{*obj}
+	}
+
+	jsonit := jsoniter.Config{
+		EscapeHTML:             true,
+		SortMapKeys:            true,
+		ValidateJsonRawMessage: true,
+		TagKey:                 "tf",
+		TypeEncoders:           getEncodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(OpenzfsFileSystemSpecDiskIopsConfiguration{}).Type1())),
+	}.Froze()
+
+	byt, _ := jsonit.Marshal(objs)
+
+	stream.Write(byt)
+}
+
+func (OpenzfsFileSystemSpecDiskIopsConfigurationCodec) Decode(ptr unsafe.Pointer, iter *jsoniter.Iterator) {
+	switch iter.WhatIsNext() {
+	case jsoniter.NilValue:
+		iter.Skip()
+		*(*OpenzfsFileSystemSpecDiskIopsConfiguration)(ptr) = OpenzfsFileSystemSpecDiskIopsConfiguration{}
+		return
+	case jsoniter.ArrayValue:
+		objsByte := iter.SkipAndReturnBytes()
+		if len(objsByte) > 0 {
+			var objs []OpenzfsFileSystemSpecDiskIopsConfiguration
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(OpenzfsFileSystemSpecDiskIopsConfiguration{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objsByte, &objs)
+
+			if len(objs) > 0 {
+				*(*OpenzfsFileSystemSpecDiskIopsConfiguration)(ptr) = objs[0]
+			} else {
+				*(*OpenzfsFileSystemSpecDiskIopsConfiguration)(ptr) = OpenzfsFileSystemSpecDiskIopsConfiguration{}
+			}
+		} else {
+			*(*OpenzfsFileSystemSpecDiskIopsConfiguration)(ptr) = OpenzfsFileSystemSpecDiskIopsConfiguration{}
+		}
+	case jsoniter.ObjectValue:
+		objByte := iter.SkipAndReturnBytes()
+		if len(objByte) > 0 {
+			var obj OpenzfsFileSystemSpecDiskIopsConfiguration
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(OpenzfsFileSystemSpecDiskIopsConfiguration{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objByte, &obj)
+
+			*(*OpenzfsFileSystemSpecDiskIopsConfiguration)(ptr) = obj
+		} else {
+			*(*OpenzfsFileSystemSpecDiskIopsConfiguration)(ptr) = OpenzfsFileSystemSpecDiskIopsConfiguration{}
+		}
+	default:
+		iter.ReportError("decode OpenzfsFileSystemSpecDiskIopsConfiguration", "unexpected JSON type")
+	}
+}
+
+// +k8s:deepcopy-gen=false
+type OpenzfsFileSystemSpecRootVolumeConfigurationCodec struct {
+}
+
+func (OpenzfsFileSystemSpecRootVolumeConfigurationCodec) IsEmpty(ptr unsafe.Pointer) bool {
+	return (*OpenzfsFileSystemSpecRootVolumeConfiguration)(ptr) == nil
+}
+
+func (OpenzfsFileSystemSpecRootVolumeConfigurationCodec) Encode(ptr unsafe.Pointer, stream *jsoniter.Stream) {
+	obj := (*OpenzfsFileSystemSpecRootVolumeConfiguration)(ptr)
+	var objs []OpenzfsFileSystemSpecRootVolumeConfiguration
+	if obj != nil {
+		objs = []OpenzfsFileSystemSpecRootVolumeConfiguration{*obj}
+	}
+
+	jsonit := jsoniter.Config{
+		EscapeHTML:             true,
+		SortMapKeys:            true,
+		ValidateJsonRawMessage: true,
+		TagKey:                 "tf",
+		TypeEncoders:           getEncodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(OpenzfsFileSystemSpecRootVolumeConfiguration{}).Type1())),
+	}.Froze()
+
+	byt, _ := jsonit.Marshal(objs)
+
+	stream.Write(byt)
+}
+
+func (OpenzfsFileSystemSpecRootVolumeConfigurationCodec) Decode(ptr unsafe.Pointer, iter *jsoniter.Iterator) {
+	switch iter.WhatIsNext() {
+	case jsoniter.NilValue:
+		iter.Skip()
+		*(*OpenzfsFileSystemSpecRootVolumeConfiguration)(ptr) = OpenzfsFileSystemSpecRootVolumeConfiguration{}
+		return
+	case jsoniter.ArrayValue:
+		objsByte := iter.SkipAndReturnBytes()
+		if len(objsByte) > 0 {
+			var objs []OpenzfsFileSystemSpecRootVolumeConfiguration
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(OpenzfsFileSystemSpecRootVolumeConfiguration{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objsByte, &objs)
+
+			if len(objs) > 0 {
+				*(*OpenzfsFileSystemSpecRootVolumeConfiguration)(ptr) = objs[0]
+			} else {
+				*(*OpenzfsFileSystemSpecRootVolumeConfiguration)(ptr) = OpenzfsFileSystemSpecRootVolumeConfiguration{}
+			}
+		} else {
+			*(*OpenzfsFileSystemSpecRootVolumeConfiguration)(ptr) = OpenzfsFileSystemSpecRootVolumeConfiguration{}
+		}
+	case jsoniter.ObjectValue:
+		objByte := iter.SkipAndReturnBytes()
+		if len(objByte) > 0 {
+			var obj OpenzfsFileSystemSpecRootVolumeConfiguration
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(OpenzfsFileSystemSpecRootVolumeConfiguration{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objByte, &obj)
+
+			*(*OpenzfsFileSystemSpecRootVolumeConfiguration)(ptr) = obj
+		} else {
+			*(*OpenzfsFileSystemSpecRootVolumeConfiguration)(ptr) = OpenzfsFileSystemSpecRootVolumeConfiguration{}
+		}
+	default:
+		iter.ReportError("decode OpenzfsFileSystemSpecRootVolumeConfiguration", "unexpected JSON type")
+	}
+}
+
+// +k8s:deepcopy-gen=false
+type OpenzfsFileSystemSpecRootVolumeConfigurationNfsExportsCodec struct {
+}
+
+func (OpenzfsFileSystemSpecRootVolumeConfigurationNfsExportsCodec) IsEmpty(ptr unsafe.Pointer) bool {
+	return (*OpenzfsFileSystemSpecRootVolumeConfigurationNfsExports)(ptr) == nil
+}
+
+func (OpenzfsFileSystemSpecRootVolumeConfigurationNfsExportsCodec) Encode(ptr unsafe.Pointer, stream *jsoniter.Stream) {
+	obj := (*OpenzfsFileSystemSpecRootVolumeConfigurationNfsExports)(ptr)
+	var objs []OpenzfsFileSystemSpecRootVolumeConfigurationNfsExports
+	if obj != nil {
+		objs = []OpenzfsFileSystemSpecRootVolumeConfigurationNfsExports{*obj}
+	}
+
+	jsonit := jsoniter.Config{
+		EscapeHTML:             true,
+		SortMapKeys:            true,
+		ValidateJsonRawMessage: true,
+		TagKey:                 "tf",
+		TypeEncoders:           getEncodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(OpenzfsFileSystemSpecRootVolumeConfigurationNfsExports{}).Type1())),
+	}.Froze()
+
+	byt, _ := jsonit.Marshal(objs)
+
+	stream.Write(byt)
+}
+
+func (OpenzfsFileSystemSpecRootVolumeConfigurationNfsExportsCodec) Decode(ptr unsafe.Pointer, iter *jsoniter.Iterator) {
+	switch iter.WhatIsNext() {
+	case jsoniter.NilValue:
+		iter.Skip()
+		*(*OpenzfsFileSystemSpecRootVolumeConfigurationNfsExports)(ptr) = OpenzfsFileSystemSpecRootVolumeConfigurationNfsExports{}
+		return
+	case jsoniter.ArrayValue:
+		objsByte := iter.SkipAndReturnBytes()
+		if len(objsByte) > 0 {
+			var objs []OpenzfsFileSystemSpecRootVolumeConfigurationNfsExports
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(OpenzfsFileSystemSpecRootVolumeConfigurationNfsExports{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objsByte, &objs)
+
+			if len(objs) > 0 {
+				*(*OpenzfsFileSystemSpecRootVolumeConfigurationNfsExports)(ptr) = objs[0]
+			} else {
+				*(*OpenzfsFileSystemSpecRootVolumeConfigurationNfsExports)(ptr) = OpenzfsFileSystemSpecRootVolumeConfigurationNfsExports{}
+			}
+		} else {
+			*(*OpenzfsFileSystemSpecRootVolumeConfigurationNfsExports)(ptr) = OpenzfsFileSystemSpecRootVolumeConfigurationNfsExports{}
+		}
+	case jsoniter.ObjectValue:
+		objByte := iter.SkipAndReturnBytes()
+		if len(objByte) > 0 {
+			var obj OpenzfsFileSystemSpecRootVolumeConfigurationNfsExports
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(OpenzfsFileSystemSpecRootVolumeConfigurationNfsExports{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objByte, &obj)
+
+			*(*OpenzfsFileSystemSpecRootVolumeConfigurationNfsExports)(ptr) = obj
+		} else {
+			*(*OpenzfsFileSystemSpecRootVolumeConfigurationNfsExports)(ptr) = OpenzfsFileSystemSpecRootVolumeConfigurationNfsExports{}
+		}
+	default:
+		iter.ReportError("decode OpenzfsFileSystemSpecRootVolumeConfigurationNfsExports", "unexpected JSON type")
+	}
+}
+
+// +k8s:deepcopy-gen=false
+type OpenzfsVolumeSpecNfsExportsCodec struct {
+}
+
+func (OpenzfsVolumeSpecNfsExportsCodec) IsEmpty(ptr unsafe.Pointer) bool {
+	return (*OpenzfsVolumeSpecNfsExports)(ptr) == nil
+}
+
+func (OpenzfsVolumeSpecNfsExportsCodec) Encode(ptr unsafe.Pointer, stream *jsoniter.Stream) {
+	obj := (*OpenzfsVolumeSpecNfsExports)(ptr)
+	var objs []OpenzfsVolumeSpecNfsExports
+	if obj != nil {
+		objs = []OpenzfsVolumeSpecNfsExports{*obj}
+	}
+
+	jsonit := jsoniter.Config{
+		EscapeHTML:             true,
+		SortMapKeys:            true,
+		ValidateJsonRawMessage: true,
+		TagKey:                 "tf",
+		TypeEncoders:           getEncodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(OpenzfsVolumeSpecNfsExports{}).Type1())),
+	}.Froze()
+
+	byt, _ := jsonit.Marshal(objs)
+
+	stream.Write(byt)
+}
+
+func (OpenzfsVolumeSpecNfsExportsCodec) Decode(ptr unsafe.Pointer, iter *jsoniter.Iterator) {
+	switch iter.WhatIsNext() {
+	case jsoniter.NilValue:
+		iter.Skip()
+		*(*OpenzfsVolumeSpecNfsExports)(ptr) = OpenzfsVolumeSpecNfsExports{}
+		return
+	case jsoniter.ArrayValue:
+		objsByte := iter.SkipAndReturnBytes()
+		if len(objsByte) > 0 {
+			var objs []OpenzfsVolumeSpecNfsExports
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(OpenzfsVolumeSpecNfsExports{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objsByte, &objs)
+
+			if len(objs) > 0 {
+				*(*OpenzfsVolumeSpecNfsExports)(ptr) = objs[0]
+			} else {
+				*(*OpenzfsVolumeSpecNfsExports)(ptr) = OpenzfsVolumeSpecNfsExports{}
+			}
+		} else {
+			*(*OpenzfsVolumeSpecNfsExports)(ptr) = OpenzfsVolumeSpecNfsExports{}
+		}
+	case jsoniter.ObjectValue:
+		objByte := iter.SkipAndReturnBytes()
+		if len(objByte) > 0 {
+			var obj OpenzfsVolumeSpecNfsExports
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(OpenzfsVolumeSpecNfsExports{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objByte, &obj)
+
+			*(*OpenzfsVolumeSpecNfsExports)(ptr) = obj
+		} else {
+			*(*OpenzfsVolumeSpecNfsExports)(ptr) = OpenzfsVolumeSpecNfsExports{}
+		}
+	default:
+		iter.ReportError("decode OpenzfsVolumeSpecNfsExports", "unexpected JSON type")
+	}
+}
+
+// +k8s:deepcopy-gen=false
+type OpenzfsVolumeSpecOriginSnapshotCodec struct {
+}
+
+func (OpenzfsVolumeSpecOriginSnapshotCodec) IsEmpty(ptr unsafe.Pointer) bool {
+	return (*OpenzfsVolumeSpecOriginSnapshot)(ptr) == nil
+}
+
+func (OpenzfsVolumeSpecOriginSnapshotCodec) Encode(ptr unsafe.Pointer, stream *jsoniter.Stream) {
+	obj := (*OpenzfsVolumeSpecOriginSnapshot)(ptr)
+	var objs []OpenzfsVolumeSpecOriginSnapshot
+	if obj != nil {
+		objs = []OpenzfsVolumeSpecOriginSnapshot{*obj}
+	}
+
+	jsonit := jsoniter.Config{
+		EscapeHTML:             true,
+		SortMapKeys:            true,
+		ValidateJsonRawMessage: true,
+		TagKey:                 "tf",
+		TypeEncoders:           getEncodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(OpenzfsVolumeSpecOriginSnapshot{}).Type1())),
+	}.Froze()
+
+	byt, _ := jsonit.Marshal(objs)
+
+	stream.Write(byt)
+}
+
+func (OpenzfsVolumeSpecOriginSnapshotCodec) Decode(ptr unsafe.Pointer, iter *jsoniter.Iterator) {
+	switch iter.WhatIsNext() {
+	case jsoniter.NilValue:
+		iter.Skip()
+		*(*OpenzfsVolumeSpecOriginSnapshot)(ptr) = OpenzfsVolumeSpecOriginSnapshot{}
+		return
+	case jsoniter.ArrayValue:
+		objsByte := iter.SkipAndReturnBytes()
+		if len(objsByte) > 0 {
+			var objs []OpenzfsVolumeSpecOriginSnapshot
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(OpenzfsVolumeSpecOriginSnapshot{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objsByte, &objs)
+
+			if len(objs) > 0 {
+				*(*OpenzfsVolumeSpecOriginSnapshot)(ptr) = objs[0]
+			} else {
+				*(*OpenzfsVolumeSpecOriginSnapshot)(ptr) = OpenzfsVolumeSpecOriginSnapshot{}
+			}
+		} else {
+			*(*OpenzfsVolumeSpecOriginSnapshot)(ptr) = OpenzfsVolumeSpecOriginSnapshot{}
+		}
+	case jsoniter.ObjectValue:
+		objByte := iter.SkipAndReturnBytes()
+		if len(objByte) > 0 {
+			var obj OpenzfsVolumeSpecOriginSnapshot
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(OpenzfsVolumeSpecOriginSnapshot{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objByte, &obj)
+
+			*(*OpenzfsVolumeSpecOriginSnapshot)(ptr) = obj
+		} else {
+			*(*OpenzfsVolumeSpecOriginSnapshot)(ptr) = OpenzfsVolumeSpecOriginSnapshot{}
+		}
+	default:
+		iter.ReportError("decode OpenzfsVolumeSpecOriginSnapshot", "unexpected JSON type")
+	}
+}
+
+// +k8s:deepcopy-gen=false
+type WindowsFileSystemSpecAuditLogConfigurationCodec struct {
+}
+
+func (WindowsFileSystemSpecAuditLogConfigurationCodec) IsEmpty(ptr unsafe.Pointer) bool {
+	return (*WindowsFileSystemSpecAuditLogConfiguration)(ptr) == nil
+}
+
+func (WindowsFileSystemSpecAuditLogConfigurationCodec) Encode(ptr unsafe.Pointer, stream *jsoniter.Stream) {
+	obj := (*WindowsFileSystemSpecAuditLogConfiguration)(ptr)
+	var objs []WindowsFileSystemSpecAuditLogConfiguration
+	if obj != nil {
+		objs = []WindowsFileSystemSpecAuditLogConfiguration{*obj}
+	}
+
+	jsonit := jsoniter.Config{
+		EscapeHTML:             true,
+		SortMapKeys:            true,
+		ValidateJsonRawMessage: true,
+		TagKey:                 "tf",
+		TypeEncoders:           getEncodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(WindowsFileSystemSpecAuditLogConfiguration{}).Type1())),
+	}.Froze()
+
+	byt, _ := jsonit.Marshal(objs)
+
+	stream.Write(byt)
+}
+
+func (WindowsFileSystemSpecAuditLogConfigurationCodec) Decode(ptr unsafe.Pointer, iter *jsoniter.Iterator) {
+	switch iter.WhatIsNext() {
+	case jsoniter.NilValue:
+		iter.Skip()
+		*(*WindowsFileSystemSpecAuditLogConfiguration)(ptr) = WindowsFileSystemSpecAuditLogConfiguration{}
+		return
+	case jsoniter.ArrayValue:
+		objsByte := iter.SkipAndReturnBytes()
+		if len(objsByte) > 0 {
+			var objs []WindowsFileSystemSpecAuditLogConfiguration
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(WindowsFileSystemSpecAuditLogConfiguration{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objsByte, &objs)
+
+			if len(objs) > 0 {
+				*(*WindowsFileSystemSpecAuditLogConfiguration)(ptr) = objs[0]
+			} else {
+				*(*WindowsFileSystemSpecAuditLogConfiguration)(ptr) = WindowsFileSystemSpecAuditLogConfiguration{}
+			}
+		} else {
+			*(*WindowsFileSystemSpecAuditLogConfiguration)(ptr) = WindowsFileSystemSpecAuditLogConfiguration{}
+		}
+	case jsoniter.ObjectValue:
+		objByte := iter.SkipAndReturnBytes()
+		if len(objByte) > 0 {
+			var obj WindowsFileSystemSpecAuditLogConfiguration
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(WindowsFileSystemSpecAuditLogConfiguration{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objByte, &obj)
+
+			*(*WindowsFileSystemSpecAuditLogConfiguration)(ptr) = obj
+		} else {
+			*(*WindowsFileSystemSpecAuditLogConfiguration)(ptr) = WindowsFileSystemSpecAuditLogConfiguration{}
+		}
+	default:
+		iter.ReportError("decode WindowsFileSystemSpecAuditLogConfiguration", "unexpected JSON type")
+	}
 }
 
 // +k8s:deepcopy-gen=false

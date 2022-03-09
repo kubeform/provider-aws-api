@@ -193,6 +193,8 @@ type ClusterSpecResource struct {
 	TagsAll *map[string]string `json:"tagsAll,omitempty" tf:"tags_all"`
 	// +optional
 	ZookeeperConnectString *string `json:"zookeeperConnectString,omitempty" tf:"zookeeper_connect_string"`
+	// +optional
+	ZookeeperConnectStringTls *string `json:"zookeeperConnectStringTls,omitempty" tf:"zookeeper_connect_string_tls"`
 }
 
 type ClusterStatus struct {

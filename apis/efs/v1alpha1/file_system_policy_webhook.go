@@ -88,7 +88,7 @@ func (r *FileSystemPolicy) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range filesystempolicyForceNewList {
+	for key, _ := range filesystempolicyForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

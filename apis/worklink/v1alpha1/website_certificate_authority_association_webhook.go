@@ -90,7 +90,7 @@ func (r *WebsiteCertificateAuthorityAssociation) ValidateUpdate(old runtime.Obje
 		return err
 	}
 
-	for key := range websitecertificateauthorityassociationForceNewList {
+	for key, _ := range websitecertificateauthorityassociationForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

@@ -18,6 +18,14 @@ limitations under the License.
 
 package v1alpha1
 
+// AccessPointPolicyListerExpansion allows custom methods to be added to
+// AccessPointPolicyLister.
+type AccessPointPolicyListerExpansion interface{}
+
+// AccessPointPolicyNamespaceListerExpansion allows custom methods to be added to
+// AccessPointPolicyNamespaceLister.
+type AccessPointPolicyNamespaceListerExpansion interface{}
+
 // BucketListerExpansion allows custom methods to be added to
 // BucketLister.
 type BucketListerExpansion interface{}
@@ -41,3 +49,35 @@ type BucketPolicyListerExpansion interface{}
 // BucketPolicyNamespaceListerExpansion allows custom methods to be added to
 // BucketPolicyNamespaceLister.
 type BucketPolicyNamespaceListerExpansion interface{}
+
+// MultiRegionAccessPointListerExpansion allows custom methods to be added to
+// MultiRegionAccessPointLister.
+type MultiRegionAccessPointListerExpansion interface{}
+
+// MultiRegionAccessPointNamespaceListerExpansion allows custom methods to be added to
+// MultiRegionAccessPointNamespaceLister.
+type MultiRegionAccessPointNamespaceListerExpansion interface{}
+
+// MultiRegionAccessPointPolicyListerExpansion allows custom methods to be added to
+// MultiRegionAccessPointPolicyLister.
+type MultiRegionAccessPointPolicyListerExpansion interface{}
+
+// MultiRegionAccessPointPolicyNamespaceListerExpansion allows custom methods to be added to
+// MultiRegionAccessPointPolicyNamespaceLister.
+type MultiRegionAccessPointPolicyNamespaceListerExpansion interface{}
+
+// ObjectLambdaAccessPointListerExpansion allows custom methods to be added to
+// ObjectLambdaAccessPointLister.
+type ObjectLambdaAccessPointListerExpansion interface{}
+
+// ObjectLambdaAccessPointNamespaceListerExpansion allows custom methods to be added to
+// ObjectLambdaAccessPointNamespaceLister.
+type ObjectLambdaAccessPointNamespaceListerExpansion interface{}
+
+// ObjectLambdaAccessPointPolicyListerExpansion allows custom methods to be added to
+// ObjectLambdaAccessPointPolicyLister.
+type ObjectLambdaAccessPointPolicyListerExpansion interface{}
+
+// ObjectLambdaAccessPointPolicyNamespaceListerExpansion allows custom methods to be added to
+// ObjectLambdaAccessPointPolicyNamespaceLister.
+type ObjectLambdaAccessPointPolicyNamespaceListerExpansion interface{}

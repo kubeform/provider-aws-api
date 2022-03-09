@@ -88,7 +88,7 @@ func (r *AdminAccount) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range adminaccountForceNewList {
+	for key, _ := range adminaccountForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

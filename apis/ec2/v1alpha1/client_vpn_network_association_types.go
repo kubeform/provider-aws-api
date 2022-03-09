@@ -56,6 +56,8 @@ type ClientVPNNetworkAssociationSpec struct {
 }
 
 type ClientVPNNetworkAssociationSpecResource struct {
+	Timeouts *base.ResourceTimeout `json:"timeouts,omitempty" tf:"timeouts"`
+
 	ID string `json:"id,omitempty" tf:"id,omitempty"`
 
 	// +optional
@@ -64,8 +66,10 @@ type ClientVPNNetworkAssociationSpecResource struct {
 	// +optional
 	// +kubebuilder:validation:MaxItems=5
 	// +kubebuilder:validation:MinItems=1
+	// Deprecated
 	SecurityGroups []string `json:"securityGroups,omitempty" tf:"security_groups"`
 	// +optional
+	// Deprecated
 	Status   *string `json:"status,omitempty" tf:"status"`
 	SubnetID *string `json:"subnetID" tf:"subnet_id"`
 	// +optional

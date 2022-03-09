@@ -41,7 +41,13 @@ type FirewallPolicy struct {
 	Status            FirewallPolicyStatus `json:"status,omitempty"`
 }
 
+type FirewallPolicySpecFirewallPolicyStatefulEngineOptions struct {
+	RuleOrder *string `json:"ruleOrder" tf:"rule_order"`
+}
+
 type FirewallPolicySpecFirewallPolicyStatefulRuleGroupReference struct {
+	// +optional
+	Priority    *int64  `json:"priority,omitempty" tf:"priority"`
 	ResourceArn *string `json:"resourceArn" tf:"resource_arn"`
 }
 
@@ -68,6 +74,10 @@ type FirewallPolicySpecFirewallPolicyStatelessRuleGroupReference struct {
 }
 
 type FirewallPolicySpecFirewallPolicy struct {
+	// +optional
+	StatefulDefaultActions []string `json:"statefulDefaultActions,omitempty" tf:"stateful_default_actions"`
+	// +optional
+	StatefulEngineOptions *FirewallPolicySpecFirewallPolicyStatefulEngineOptions `json:"statefulEngineOptions,omitempty" tf:"stateful_engine_options"`
 	// +optional
 	StatefulRuleGroupReference []FirewallPolicySpecFirewallPolicyStatefulRuleGroupReference `json:"statefulRuleGroupReference,omitempty" tf:"stateful_rule_group_reference"`
 	// +optional

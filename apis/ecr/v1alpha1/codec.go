@@ -27,17 +27,15 @@ import (
 
 func GetEncoder() map[string]jsoniter.ValEncoder {
 	return map[string]jsoniter.ValEncoder{
-		jsoniter.MustGetKind(reflect2.TypeOf(ReplicationConfigurationSpecReplicationConfiguration{}).Type1()):     ReplicationConfigurationSpecReplicationConfigurationCodec{},
-		jsoniter.MustGetKind(reflect2.TypeOf(ReplicationConfigurationSpecReplicationConfigurationRule{}).Type1()): ReplicationConfigurationSpecReplicationConfigurationRuleCodec{},
-		jsoniter.MustGetKind(reflect2.TypeOf(RepositorySpecImageScanningConfiguration{}).Type1()):                 RepositorySpecImageScanningConfigurationCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(ReplicationConfigurationSpecReplicationConfiguration{}).Type1()): ReplicationConfigurationSpecReplicationConfigurationCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(RepositorySpecImageScanningConfiguration{}).Type1()):             RepositorySpecImageScanningConfigurationCodec{},
 	}
 }
 
 func GetDecoder() map[string]jsoniter.ValDecoder {
 	return map[string]jsoniter.ValDecoder{
-		jsoniter.MustGetKind(reflect2.TypeOf(ReplicationConfigurationSpecReplicationConfiguration{}).Type1()):     ReplicationConfigurationSpecReplicationConfigurationCodec{},
-		jsoniter.MustGetKind(reflect2.TypeOf(ReplicationConfigurationSpecReplicationConfigurationRule{}).Type1()): ReplicationConfigurationSpecReplicationConfigurationRuleCodec{},
-		jsoniter.MustGetKind(reflect2.TypeOf(RepositorySpecImageScanningConfiguration{}).Type1()):                 RepositorySpecImageScanningConfigurationCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(ReplicationConfigurationSpecReplicationConfiguration{}).Type1()): ReplicationConfigurationSpecReplicationConfigurationCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(RepositorySpecImageScanningConfiguration{}).Type1()):             RepositorySpecImageScanningConfigurationCodec{},
 	}
 }
 
@@ -129,85 +127,6 @@ func (ReplicationConfigurationSpecReplicationConfigurationCodec) Decode(ptr unsa
 		}
 	default:
 		iter.ReportError("decode ReplicationConfigurationSpecReplicationConfiguration", "unexpected JSON type")
-	}
-}
-
-// +k8s:deepcopy-gen=false
-type ReplicationConfigurationSpecReplicationConfigurationRuleCodec struct {
-}
-
-func (ReplicationConfigurationSpecReplicationConfigurationRuleCodec) IsEmpty(ptr unsafe.Pointer) bool {
-	return (*ReplicationConfigurationSpecReplicationConfigurationRule)(ptr) == nil
-}
-
-func (ReplicationConfigurationSpecReplicationConfigurationRuleCodec) Encode(ptr unsafe.Pointer, stream *jsoniter.Stream) {
-	obj := (*ReplicationConfigurationSpecReplicationConfigurationRule)(ptr)
-	var objs []ReplicationConfigurationSpecReplicationConfigurationRule
-	if obj != nil {
-		objs = []ReplicationConfigurationSpecReplicationConfigurationRule{*obj}
-	}
-
-	jsonit := jsoniter.Config{
-		EscapeHTML:             true,
-		SortMapKeys:            true,
-		ValidateJsonRawMessage: true,
-		TagKey:                 "tf",
-		TypeEncoders:           getEncodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(ReplicationConfigurationSpecReplicationConfigurationRule{}).Type1())),
-	}.Froze()
-
-	byt, _ := jsonit.Marshal(objs)
-
-	stream.Write(byt)
-}
-
-func (ReplicationConfigurationSpecReplicationConfigurationRuleCodec) Decode(ptr unsafe.Pointer, iter *jsoniter.Iterator) {
-	switch iter.WhatIsNext() {
-	case jsoniter.NilValue:
-		iter.Skip()
-		*(*ReplicationConfigurationSpecReplicationConfigurationRule)(ptr) = ReplicationConfigurationSpecReplicationConfigurationRule{}
-		return
-	case jsoniter.ArrayValue:
-		objsByte := iter.SkipAndReturnBytes()
-		if len(objsByte) > 0 {
-			var objs []ReplicationConfigurationSpecReplicationConfigurationRule
-
-			jsonit := jsoniter.Config{
-				EscapeHTML:             true,
-				SortMapKeys:            true,
-				ValidateJsonRawMessage: true,
-				TagKey:                 "tf",
-				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(ReplicationConfigurationSpecReplicationConfigurationRule{}).Type1())),
-			}.Froze()
-			jsonit.Unmarshal(objsByte, &objs)
-
-			if len(objs) > 0 {
-				*(*ReplicationConfigurationSpecReplicationConfigurationRule)(ptr) = objs[0]
-			} else {
-				*(*ReplicationConfigurationSpecReplicationConfigurationRule)(ptr) = ReplicationConfigurationSpecReplicationConfigurationRule{}
-			}
-		} else {
-			*(*ReplicationConfigurationSpecReplicationConfigurationRule)(ptr) = ReplicationConfigurationSpecReplicationConfigurationRule{}
-		}
-	case jsoniter.ObjectValue:
-		objByte := iter.SkipAndReturnBytes()
-		if len(objByte) > 0 {
-			var obj ReplicationConfigurationSpecReplicationConfigurationRule
-
-			jsonit := jsoniter.Config{
-				EscapeHTML:             true,
-				SortMapKeys:            true,
-				ValidateJsonRawMessage: true,
-				TagKey:                 "tf",
-				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(ReplicationConfigurationSpecReplicationConfigurationRule{}).Type1())),
-			}.Froze()
-			jsonit.Unmarshal(objByte, &obj)
-
-			*(*ReplicationConfigurationSpecReplicationConfigurationRule)(ptr) = obj
-		} else {
-			*(*ReplicationConfigurationSpecReplicationConfigurationRule)(ptr) = ReplicationConfigurationSpecReplicationConfigurationRule{}
-		}
-	default:
-		iter.ReportError("decode ReplicationConfigurationSpecReplicationConfigurationRule", "unexpected JSON type")
 	}
 }
 

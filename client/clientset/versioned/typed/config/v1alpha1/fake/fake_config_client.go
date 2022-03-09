@@ -57,6 +57,10 @@ func (c *FakeConfigV1alpha1) DeliveryChannels(namespace string) v1alpha1.Deliver
 	return &FakeDeliveryChannels{c, namespace}
 }
 
+func (c *FakeConfigV1alpha1) OrganizationConformancePacks(namespace string) v1alpha1.OrganizationConformancePackInterface {
+	return &FakeOrganizationConformancePacks{c, namespace}
+}
+
 func (c *FakeConfigV1alpha1) OrganizationCustomRules(namespace string) v1alpha1.OrganizationCustomRuleInterface {
 	return &FakeOrganizationCustomRules{c, namespace}
 }

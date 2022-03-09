@@ -58,6 +58,8 @@ func addKnownTypes(scheme *runtime.Scheme) error {
 	scheme.AddKnownTypes(SchemeGroupVersion,
 		&Pipeline{},
 		&PipelineList{},
+		&PipelineDefinition{},
+		&PipelineDefinitionList{},
 	)
 
 	scheme.AddKnownTypes(SchemeGroupVersion,

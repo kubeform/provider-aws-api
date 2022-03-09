@@ -24,7 +24,11 @@ type DhcpOptionsAssociationExpansion interface{}
 
 type EndpointExpansion interface{}
 
+type EndpointConnectionAccepterExpansion interface{}
+
 type EndpointConnectionNotificationExpansion interface{}
+
+type EndpointPolicyExpansion interface{}
 
 type EndpointRouteTableAssociationExpansion interface{}
 
@@ -34,7 +38,23 @@ type EndpointServiceAllowedPrincipalExpansion interface{}
 
 type EndpointSubnetAssociationExpansion interface{}
 
+type IpamExpansion interface{}
+
+type IpamOrganizationAdminAccountExpansion interface{}
+
+type IpamPoolExpansion interface{}
+
+type IpamPoolCIDRExpansion interface{}
+
+type IpamPoolCIDRAllocationExpansion interface{}
+
+type IpamPreviewNextCIDRExpansion interface{}
+
+type IpamScopeExpansion interface{}
+
 type Ipv4CIDRBlockAssociationExpansion interface{}
+
+type Ipv6CIDRBlockAssociationExpansion interface{}
 
 type PeeringConnectionExpansion interface{}
 

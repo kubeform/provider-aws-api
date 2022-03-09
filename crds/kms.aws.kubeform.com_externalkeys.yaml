@@ -59,6 +59,8 @@ spec:
                 properties:
                   arn:
                     type: string
+                  bypassPolicyLockoutSafetyCheck:
+                    type: boolean
                   deletionWindowInDays:
                     format: int64
                     type: integer
@@ -74,6 +76,8 @@ spec:
                     type: string
                   keyUsage:
                     type: string
+                  multiRegion:
+                    type: boolean
                   policy:
                     type: string
                   tags:
@@ -100,6 +104,8 @@ spec:
                 properties:
                   arn:
                     type: string
+                  bypassPolicyLockoutSafetyCheck:
+                    type: boolean
                   deletionWindowInDays:
                     format: int64
                     type: integer
@@ -115,6 +121,8 @@ spec:
                     type: string
                   keyUsage:
                     type: string
+                  multiRegion:
+                    type: boolean
                   policy:
                     type: string
                   tags:

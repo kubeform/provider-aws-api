@@ -50,6 +50,8 @@ type AmiSpecEbsBlockDevice struct {
 	// +optional
 	Iops *int64 `json:"iops,omitempty" tf:"iops"`
 	// +optional
+	OutpostArn *string `json:"outpostArn,omitempty" tf:"outpost_arn"`
+	// +optional
 	SnapshotID *string `json:"snapshotID,omitempty" tf:"snapshot_id"`
 	// +optional
 	Throughput *int64 `json:"throughput,omitempty" tf:"throughput"`
@@ -87,6 +89,8 @@ type AmiSpecResource struct {
 	Architecture *string `json:"architecture,omitempty" tf:"architecture"`
 	// +optional
 	Arn *string `json:"arn,omitempty" tf:"arn"`
+	// +optional
+	BootMode *string `json:"bootMode,omitempty" tf:"boot_mode"`
 	// +optional
 	Description *string `json:"description,omitempty" tf:"description"`
 	// +optional

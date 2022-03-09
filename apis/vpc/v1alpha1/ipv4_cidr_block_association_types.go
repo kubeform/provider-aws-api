@@ -60,8 +60,13 @@ type Ipv4CIDRBlockAssociationSpecResource struct {
 
 	ID string `json:"id,omitempty" tf:"id,omitempty"`
 
-	CidrBlock *string `json:"cidrBlock" tf:"cidr_block"`
-	VpcID     *string `json:"vpcID" tf:"vpc_id"`
+	// +optional
+	CidrBlock *string `json:"cidrBlock,omitempty" tf:"cidr_block"`
+	// +optional
+	Ipv4IpamPoolID *string `json:"ipv4IpamPoolID,omitempty" tf:"ipv4_ipam_pool_id"`
+	// +optional
+	Ipv4NetmaskLength *int64  `json:"ipv4NetmaskLength,omitempty" tf:"ipv4_netmask_length"`
+	VpcID             *string `json:"vpcID" tf:"vpc_id"`
 }
 
 type Ipv4CIDRBlockAssociationStatus struct {

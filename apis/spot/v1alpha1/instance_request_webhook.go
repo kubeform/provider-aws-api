@@ -66,13 +66,15 @@ var instancerequestForceNewList = map[string]bool{
 	"/host_id":                                   true,
 	"/iam_instance_profile":                      true,
 	"/instance_initiated_shutdown_behavior":      true,
-	"/instance_interruption_behaviour":           true,
+	"/instance_interruption_behavior":            true,
 	"/instance_state":                            true,
 	"/instance_type":                             true,
 	"/ipv6_address_count":                        true,
 	"/ipv6_addresses":                            true,
 	"/key_name":                                  true,
 	"/launch_group":                              true,
+	"/launch_template/*/id":                      true,
+	"/launch_template/*/name":                    true,
 	"/monitoring":                                true,
 	"/network_interface/*/delete_on_termination": true,
 	"/network_interface/*/device_index":          true,
@@ -80,6 +82,7 @@ var instancerequestForceNewList = map[string]bool{
 	"/outpost_arn":                               true,
 	"/password_data":                             true,
 	"/placement_group":                           true,
+	"/placement_partition_number":                true,
 	"/primary_network_interface_id":              true,
 	"/private_dns":                               true,
 	"/private_ip":                                true,
@@ -143,7 +146,7 @@ func (r *InstanceRequest) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range instancerequestForceNewList {
+	for key, _ := range instancerequestForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

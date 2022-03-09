@@ -89,7 +89,7 @@ func (r *UserGroup) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range usergroupForceNewList {
+	for key, _ := range usergroupForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

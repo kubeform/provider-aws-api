@@ -18,6 +18,14 @@ limitations under the License.
 
 package v1alpha1
 
+// FrameworkListerExpansion allows custom methods to be added to
+// FrameworkLister.
+type FrameworkListerExpansion interface{}
+
+// FrameworkNamespaceListerExpansion allows custom methods to be added to
+// FrameworkNamespaceLister.
+type FrameworkNamespaceListerExpansion interface{}
+
 // GlobalSettingsListerExpansion allows custom methods to be added to
 // GlobalSettingsLister.
 type GlobalSettingsListerExpansion interface{}
@@ -42,6 +50,14 @@ type RegionSettingsListerExpansion interface{}
 // RegionSettingsNamespaceLister.
 type RegionSettingsNamespaceListerExpansion interface{}
 
+// ReportPlanListerExpansion allows custom methods to be added to
+// ReportPlanLister.
+type ReportPlanListerExpansion interface{}
+
+// ReportPlanNamespaceListerExpansion allows custom methods to be added to
+// ReportPlanNamespaceLister.
+type ReportPlanNamespaceListerExpansion interface{}
+
 // SelectionListerExpansion allows custom methods to be added to
 // SelectionLister.
 type SelectionListerExpansion interface{}
@@ -57,6 +73,14 @@ type VaultListerExpansion interface{}
 // VaultNamespaceListerExpansion allows custom methods to be added to
 // VaultNamespaceLister.
 type VaultNamespaceListerExpansion interface{}
+
+// VaultLockConfigurationListerExpansion allows custom methods to be added to
+// VaultLockConfigurationLister.
+type VaultLockConfigurationListerExpansion interface{}
+
+// VaultLockConfigurationNamespaceListerExpansion allows custom methods to be added to
+// VaultLockConfigurationNamespaceLister.
+type VaultLockConfigurationNamespaceListerExpansion interface{}
 
 // VaultNotificationsListerExpansion allows custom methods to be added to
 // VaultNotificationsLister.

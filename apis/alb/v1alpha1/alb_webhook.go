@@ -96,7 +96,7 @@ func (r *Alb) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range albForceNewList {
+	for key, _ := range albForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

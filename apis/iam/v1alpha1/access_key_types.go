@@ -65,6 +65,8 @@ type AccessKeySpecResource struct {
 	// +optional
 	EncryptedSecret *string `json:"encryptedSecret,omitempty" tf:"encrypted_secret"`
 	// +optional
+	EncryptedSesSMTPPasswordV4 *string `json:"encryptedSesSMTPPasswordV4,omitempty" tf:"encrypted_ses_smtp_password_v4"`
+	// +optional
 	KeyFingerprint *string `json:"keyFingerprint,omitempty" tf:"key_fingerprint"`
 	// +optional
 	PgpKey *string `json:"pgpKey,omitempty" tf:"pgp_key"`

@@ -18,6 +18,22 @@ limitations under the License.
 
 package v1alpha1
 
+type BackupExpansion interface{}
+
+type DataRepositoryAssociationExpansion interface{}
+
 type LustreFileSystemExpansion interface{}
+
+type OntapFileSystemExpansion interface{}
+
+type OntapStorageVirtualMachineExpansion interface{}
+
+type OntapVolumeExpansion interface{}
+
+type OpenzfsFileSystemExpansion interface{}
+
+type OpenzfsSnapshotExpansion interface{}
+
+type OpenzfsVolumeExpansion interface{}
 
 type WindowsFileSystemExpansion interface{}

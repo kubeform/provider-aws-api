@@ -42,10 +42,12 @@ func (r *LustreFileSystem) SetupWebhookWithManager(mgr ctrl.Manager) error {
 var _ webhook.Validator = &LustreFileSystem{}
 
 var lustrefilesystemForceNewList = map[string]bool{
+	"/backup_id":                   true,
 	"/copy_tags_to_backups":        true,
 	"/deployment_type":             true,
 	"/drive_cache_type":            true,
 	"/export_path":                 true,
+	"/file_system_type_version":    true,
 	"/import_path":                 true,
 	"/imported_file_chunk_size":    true,
 	"/kms_key_id":                  true,
@@ -98,7 +100,7 @@ func (r *LustreFileSystem) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range lustrefilesystemForceNewList {
+	for key, _ := range lustrefilesystemForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

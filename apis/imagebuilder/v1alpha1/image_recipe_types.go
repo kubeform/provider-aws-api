@@ -69,8 +69,19 @@ type ImageRecipeSpecBlockDeviceMapping struct {
 	VirtualName *string `json:"virtualName,omitempty" tf:"virtual_name"`
 }
 
+type ImageRecipeSpecComponentParameter struct {
+	Name  *string `json:"name" tf:"name"`
+	Value *string `json:"value" tf:"value"`
+}
+
 type ImageRecipeSpecComponent struct {
 	ComponentArn *string `json:"componentArn" tf:"component_arn"`
+	// +optional
+	Parameter []ImageRecipeSpecComponentParameter `json:"parameter,omitempty" tf:"parameter"`
+}
+
+type ImageRecipeSpecSystemsManagerAgent struct {
+	UninstallAfterBuild *bool `json:"uninstallAfterBuild" tf:"uninstall_after_build"`
 }
 
 type ImageRecipeSpec struct {
@@ -107,10 +118,14 @@ type ImageRecipeSpecResource struct {
 	// +optional
 	Platform *string `json:"platform,omitempty" tf:"platform"`
 	// +optional
+	SystemsManagerAgent *ImageRecipeSpecSystemsManagerAgent `json:"systemsManagerAgent,omitempty" tf:"systems_manager_agent"`
+	// +optional
 	Tags *map[string]string `json:"tags,omitempty" tf:"tags"`
 	// +optional
 	TagsAll *map[string]string `json:"tagsAll,omitempty" tf:"tags_all"`
-	Version *string            `json:"version" tf:"version"`
+	// +optional
+	UserDataBase64 *string `json:"userDataBase64,omitempty" tf:"user_data_base64"`
+	Version        *string `json:"version" tf:"version"`
 	// +optional
 	WorkingDirectory *string `json:"workingDirectory,omitempty" tf:"working_directory"`
 }

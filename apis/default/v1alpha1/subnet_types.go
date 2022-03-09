@@ -72,9 +72,21 @@ type SubnetSpecResource struct {
 	// +optional
 	CustomerOwnedIpv4Pool *string `json:"customerOwnedIpv4Pool,omitempty" tf:"customer_owned_ipv4_pool"`
 	// +optional
+	EnableDns64 *bool `json:"enableDns64,omitempty" tf:"enable_dns64"`
+	// +optional
+	EnableResourceNameDNSARecordOnLaunch *bool `json:"enableResourceNameDNSARecordOnLaunch,omitempty" tf:"enable_resource_name_dns_a_record_on_launch"`
+	// +optional
+	EnableResourceNameDNSAaaaRecordOnLaunch *bool `json:"enableResourceNameDNSAaaaRecordOnLaunch,omitempty" tf:"enable_resource_name_dns_aaaa_record_on_launch"`
+	// +optional
+	ExistingDefaultSubnet *bool `json:"existingDefaultSubnet,omitempty" tf:"existing_default_subnet"`
+	// +optional
+	ForceDestroy *bool `json:"forceDestroy,omitempty" tf:"force_destroy"`
+	// +optional
 	Ipv6CIDRBlock *string `json:"ipv6CIDRBlock,omitempty" tf:"ipv6_cidr_block"`
 	// +optional
 	Ipv6CIDRBlockAssociationID *string `json:"ipv6CIDRBlockAssociationID,omitempty" tf:"ipv6_cidr_block_association_id"`
+	// +optional
+	Ipv6Native *bool `json:"ipv6Native,omitempty" tf:"ipv6_native"`
 	// +optional
 	MapCustomerOwnedIPOnLaunch *bool `json:"mapCustomerOwnedIPOnLaunch,omitempty" tf:"map_customer_owned_ip_on_launch"`
 	// +optional
@@ -83,6 +95,8 @@ type SubnetSpecResource struct {
 	OutpostArn *string `json:"outpostArn,omitempty" tf:"outpost_arn"`
 	// +optional
 	OwnerID *string `json:"ownerID,omitempty" tf:"owner_id"`
+	// +optional
+	PrivateDNSHostnameTypeOnLaunch *string `json:"privateDNSHostnameTypeOnLaunch,omitempty" tf:"private_dns_hostname_type_on_launch"`
 	// +optional
 	Tags *map[string]string `json:"tags,omitempty" tf:"tags"`
 	// +optional

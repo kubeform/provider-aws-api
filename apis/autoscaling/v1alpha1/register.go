@@ -60,6 +60,8 @@ func addKnownTypes(scheme *runtime.Scheme) error {
 		&AttachmentList{},
 		&Group{},
 		&GroupList{},
+		&GroupTag{},
+		&GroupTagList{},
 		&LifecycleHook{},
 		&LifecycleHookList{},
 		&Notification{},

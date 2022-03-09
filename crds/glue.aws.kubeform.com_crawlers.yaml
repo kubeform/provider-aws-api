@@ -82,6 +82,24 @@ spec:
                     type: string
                   databaseName:
                     type: string
+                  deltaTarget:
+                    items:
+                      properties:
+                        connectionName:
+                          type: string
+                        deltaTables:
+                          items:
+                            type: string
+                          type: array
+                        writeManifest:
+                          type: boolean
+                      required:
+                      - connectionName
+                      - deltaTables
+                      - writeManifest
+                      type: object
+                    minItems: 1
+                    type: array
                   description:
                     type: string
                   dynamodbTarget:
@@ -152,12 +170,19 @@ spec:
                       properties:
                         connectionName:
                           type: string
+                        dlqEventQueueArn:
+                          type: string
+                        eventQueueArn:
+                          type: string
                         exclusions:
                           items:
                             type: string
                           type: array
                         path:
                           type: string
+                        sampleSize:
+                          format: int64
+                          type: integer
                       required:
                       - path
                       type: object
@@ -216,6 +241,24 @@ spec:
                     type: string
                   databaseName:
                     type: string
+                  deltaTarget:
+                    items:
+                      properties:
+                        connectionName:
+                          type: string
+                        deltaTables:
+                          items:
+                            type: string
+                          type: array
+                        writeManifest:
+                          type: boolean
+                      required:
+                      - connectionName
+                      - deltaTables
+                      - writeManifest
+                      type: object
+                    minItems: 1
+                    type: array
                   description:
                     type: string
                   dynamodbTarget:
@@ -286,12 +329,19 @@ spec:
                       properties:
                         connectionName:
                           type: string
+                        dlqEventQueueArn:
+                          type: string
+                        eventQueueArn:
+                          type: string
                         exclusions:
                           items:
                             type: string
                           type: array
                         path:
                           type: string
+                        sampleSize:
+                          format: int64
+                          type: integer
                       required:
                       - path
                       type: object

@@ -27,17 +27,29 @@ import (
 
 func GetEncoder() map[string]jsoniter.ValEncoder {
 	return map[string]jsoniter.ValEncoder{
-		jsoniter.MustGetKind(reflect2.TypeOf(BucketLifecycleConfigurationSpecRuleAbortIncompleteMultipartUpload{}).Type1()): BucketLifecycleConfigurationSpecRuleAbortIncompleteMultipartUploadCodec{},
-		jsoniter.MustGetKind(reflect2.TypeOf(BucketLifecycleConfigurationSpecRuleExpiration{}).Type1()):                     BucketLifecycleConfigurationSpecRuleExpirationCodec{},
-		jsoniter.MustGetKind(reflect2.TypeOf(BucketLifecycleConfigurationSpecRuleFilter{}).Type1()):                         BucketLifecycleConfigurationSpecRuleFilterCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(BucketLifecycleConfigurationSpecRuleAbortIncompleteMultipartUpload{}).Type1()):                                BucketLifecycleConfigurationSpecRuleAbortIncompleteMultipartUploadCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(BucketLifecycleConfigurationSpecRuleExpiration{}).Type1()):                                                    BucketLifecycleConfigurationSpecRuleExpirationCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(BucketLifecycleConfigurationSpecRuleFilter{}).Type1()):                                                        BucketLifecycleConfigurationSpecRuleFilterCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(MultiRegionAccessPointSpecDetails{}).Type1()):                                                                 MultiRegionAccessPointSpecDetailsCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(MultiRegionAccessPointSpecDetailsPublicAccessBlock{}).Type1()):                                                MultiRegionAccessPointSpecDetailsPublicAccessBlockCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(MultiRegionAccessPointPolicySpecDetails{}).Type1()):                                                           MultiRegionAccessPointPolicySpecDetailsCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(ObjectLambdaAccessPointSpecConfiguration{}).Type1()):                                                          ObjectLambdaAccessPointSpecConfigurationCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(ObjectLambdaAccessPointSpecConfigurationTransformationConfigurationContentTransformation{}).Type1()):          ObjectLambdaAccessPointSpecConfigurationTransformationConfigurationContentTransformationCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(ObjectLambdaAccessPointSpecConfigurationTransformationConfigurationContentTransformationAwsLambda{}).Type1()): ObjectLambdaAccessPointSpecConfigurationTransformationConfigurationContentTransformationAwsLambdaCodec{},
 	}
 }
 
 func GetDecoder() map[string]jsoniter.ValDecoder {
 	return map[string]jsoniter.ValDecoder{
-		jsoniter.MustGetKind(reflect2.TypeOf(BucketLifecycleConfigurationSpecRuleAbortIncompleteMultipartUpload{}).Type1()): BucketLifecycleConfigurationSpecRuleAbortIncompleteMultipartUploadCodec{},
-		jsoniter.MustGetKind(reflect2.TypeOf(BucketLifecycleConfigurationSpecRuleExpiration{}).Type1()):                     BucketLifecycleConfigurationSpecRuleExpirationCodec{},
-		jsoniter.MustGetKind(reflect2.TypeOf(BucketLifecycleConfigurationSpecRuleFilter{}).Type1()):                         BucketLifecycleConfigurationSpecRuleFilterCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(BucketLifecycleConfigurationSpecRuleAbortIncompleteMultipartUpload{}).Type1()):                                BucketLifecycleConfigurationSpecRuleAbortIncompleteMultipartUploadCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(BucketLifecycleConfigurationSpecRuleExpiration{}).Type1()):                                                    BucketLifecycleConfigurationSpecRuleExpirationCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(BucketLifecycleConfigurationSpecRuleFilter{}).Type1()):                                                        BucketLifecycleConfigurationSpecRuleFilterCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(MultiRegionAccessPointSpecDetails{}).Type1()):                                                                 MultiRegionAccessPointSpecDetailsCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(MultiRegionAccessPointSpecDetailsPublicAccessBlock{}).Type1()):                                                MultiRegionAccessPointSpecDetailsPublicAccessBlockCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(MultiRegionAccessPointPolicySpecDetails{}).Type1()):                                                           MultiRegionAccessPointPolicySpecDetailsCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(ObjectLambdaAccessPointSpecConfiguration{}).Type1()):                                                          ObjectLambdaAccessPointSpecConfigurationCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(ObjectLambdaAccessPointSpecConfigurationTransformationConfigurationContentTransformation{}).Type1()):          ObjectLambdaAccessPointSpecConfigurationTransformationConfigurationContentTransformationCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(ObjectLambdaAccessPointSpecConfigurationTransformationConfigurationContentTransformationAwsLambda{}).Type1()): ObjectLambdaAccessPointSpecConfigurationTransformationConfigurationContentTransformationAwsLambdaCodec{},
 	}
 }
 
@@ -287,5 +299,479 @@ func (BucketLifecycleConfigurationSpecRuleFilterCodec) Decode(ptr unsafe.Pointer
 		}
 	default:
 		iter.ReportError("decode BucketLifecycleConfigurationSpecRuleFilter", "unexpected JSON type")
+	}
+}
+
+// +k8s:deepcopy-gen=false
+type MultiRegionAccessPointSpecDetailsCodec struct {
+}
+
+func (MultiRegionAccessPointSpecDetailsCodec) IsEmpty(ptr unsafe.Pointer) bool {
+	return (*MultiRegionAccessPointSpecDetails)(ptr) == nil
+}
+
+func (MultiRegionAccessPointSpecDetailsCodec) Encode(ptr unsafe.Pointer, stream *jsoniter.Stream) {
+	obj := (*MultiRegionAccessPointSpecDetails)(ptr)
+	var objs []MultiRegionAccessPointSpecDetails
+	if obj != nil {
+		objs = []MultiRegionAccessPointSpecDetails{*obj}
+	}
+
+	jsonit := jsoniter.Config{
+		EscapeHTML:             true,
+		SortMapKeys:            true,
+		ValidateJsonRawMessage: true,
+		TagKey:                 "tf",
+		TypeEncoders:           getEncodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(MultiRegionAccessPointSpecDetails{}).Type1())),
+	}.Froze()
+
+	byt, _ := jsonit.Marshal(objs)
+
+	stream.Write(byt)
+}
+
+func (MultiRegionAccessPointSpecDetailsCodec) Decode(ptr unsafe.Pointer, iter *jsoniter.Iterator) {
+	switch iter.WhatIsNext() {
+	case jsoniter.NilValue:
+		iter.Skip()
+		*(*MultiRegionAccessPointSpecDetails)(ptr) = MultiRegionAccessPointSpecDetails{}
+		return
+	case jsoniter.ArrayValue:
+		objsByte := iter.SkipAndReturnBytes()
+		if len(objsByte) > 0 {
+			var objs []MultiRegionAccessPointSpecDetails
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(MultiRegionAccessPointSpecDetails{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objsByte, &objs)
+
+			if len(objs) > 0 {
+				*(*MultiRegionAccessPointSpecDetails)(ptr) = objs[0]
+			} else {
+				*(*MultiRegionAccessPointSpecDetails)(ptr) = MultiRegionAccessPointSpecDetails{}
+			}
+		} else {
+			*(*MultiRegionAccessPointSpecDetails)(ptr) = MultiRegionAccessPointSpecDetails{}
+		}
+	case jsoniter.ObjectValue:
+		objByte := iter.SkipAndReturnBytes()
+		if len(objByte) > 0 {
+			var obj MultiRegionAccessPointSpecDetails
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(MultiRegionAccessPointSpecDetails{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objByte, &obj)
+
+			*(*MultiRegionAccessPointSpecDetails)(ptr) = obj
+		} else {
+			*(*MultiRegionAccessPointSpecDetails)(ptr) = MultiRegionAccessPointSpecDetails{}
+		}
+	default:
+		iter.ReportError("decode MultiRegionAccessPointSpecDetails", "unexpected JSON type")
+	}
+}
+
+// +k8s:deepcopy-gen=false
+type MultiRegionAccessPointSpecDetailsPublicAccessBlockCodec struct {
+}
+
+func (MultiRegionAccessPointSpecDetailsPublicAccessBlockCodec) IsEmpty(ptr unsafe.Pointer) bool {
+	return (*MultiRegionAccessPointSpecDetailsPublicAccessBlock)(ptr) == nil
+}
+
+func (MultiRegionAccessPointSpecDetailsPublicAccessBlockCodec) Encode(ptr unsafe.Pointer, stream *jsoniter.Stream) {
+	obj := (*MultiRegionAccessPointSpecDetailsPublicAccessBlock)(ptr)
+	var objs []MultiRegionAccessPointSpecDetailsPublicAccessBlock
+	if obj != nil {
+		objs = []MultiRegionAccessPointSpecDetailsPublicAccessBlock{*obj}
+	}
+
+	jsonit := jsoniter.Config{
+		EscapeHTML:             true,
+		SortMapKeys:            true,
+		ValidateJsonRawMessage: true,
+		TagKey:                 "tf",
+		TypeEncoders:           getEncodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(MultiRegionAccessPointSpecDetailsPublicAccessBlock{}).Type1())),
+	}.Froze()
+
+	byt, _ := jsonit.Marshal(objs)
+
+	stream.Write(byt)
+}
+
+func (MultiRegionAccessPointSpecDetailsPublicAccessBlockCodec) Decode(ptr unsafe.Pointer, iter *jsoniter.Iterator) {
+	switch iter.WhatIsNext() {
+	case jsoniter.NilValue:
+		iter.Skip()
+		*(*MultiRegionAccessPointSpecDetailsPublicAccessBlock)(ptr) = MultiRegionAccessPointSpecDetailsPublicAccessBlock{}
+		return
+	case jsoniter.ArrayValue:
+		objsByte := iter.SkipAndReturnBytes()
+		if len(objsByte) > 0 {
+			var objs []MultiRegionAccessPointSpecDetailsPublicAccessBlock
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(MultiRegionAccessPointSpecDetailsPublicAccessBlock{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objsByte, &objs)
+
+			if len(objs) > 0 {
+				*(*MultiRegionAccessPointSpecDetailsPublicAccessBlock)(ptr) = objs[0]
+			} else {
+				*(*MultiRegionAccessPointSpecDetailsPublicAccessBlock)(ptr) = MultiRegionAccessPointSpecDetailsPublicAccessBlock{}
+			}
+		} else {
+			*(*MultiRegionAccessPointSpecDetailsPublicAccessBlock)(ptr) = MultiRegionAccessPointSpecDetailsPublicAccessBlock{}
+		}
+	case jsoniter.ObjectValue:
+		objByte := iter.SkipAndReturnBytes()
+		if len(objByte) > 0 {
+			var obj MultiRegionAccessPointSpecDetailsPublicAccessBlock
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(MultiRegionAccessPointSpecDetailsPublicAccessBlock{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objByte, &obj)
+
+			*(*MultiRegionAccessPointSpecDetailsPublicAccessBlock)(ptr) = obj
+		} else {
+			*(*MultiRegionAccessPointSpecDetailsPublicAccessBlock)(ptr) = MultiRegionAccessPointSpecDetailsPublicAccessBlock{}
+		}
+	default:
+		iter.ReportError("decode MultiRegionAccessPointSpecDetailsPublicAccessBlock", "unexpected JSON type")
+	}
+}
+
+// +k8s:deepcopy-gen=false
+type MultiRegionAccessPointPolicySpecDetailsCodec struct {
+}
+
+func (MultiRegionAccessPointPolicySpecDetailsCodec) IsEmpty(ptr unsafe.Pointer) bool {
+	return (*MultiRegionAccessPointPolicySpecDetails)(ptr) == nil
+}
+
+func (MultiRegionAccessPointPolicySpecDetailsCodec) Encode(ptr unsafe.Pointer, stream *jsoniter.Stream) {
+	obj := (*MultiRegionAccessPointPolicySpecDetails)(ptr)
+	var objs []MultiRegionAccessPointPolicySpecDetails
+	if obj != nil {
+		objs = []MultiRegionAccessPointPolicySpecDetails{*obj}
+	}
+
+	jsonit := jsoniter.Config{
+		EscapeHTML:             true,
+		SortMapKeys:            true,
+		ValidateJsonRawMessage: true,
+		TagKey:                 "tf",
+		TypeEncoders:           getEncodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(MultiRegionAccessPointPolicySpecDetails{}).Type1())),
+	}.Froze()
+
+	byt, _ := jsonit.Marshal(objs)
+
+	stream.Write(byt)
+}
+
+func (MultiRegionAccessPointPolicySpecDetailsCodec) Decode(ptr unsafe.Pointer, iter *jsoniter.Iterator) {
+	switch iter.WhatIsNext() {
+	case jsoniter.NilValue:
+		iter.Skip()
+		*(*MultiRegionAccessPointPolicySpecDetails)(ptr) = MultiRegionAccessPointPolicySpecDetails{}
+		return
+	case jsoniter.ArrayValue:
+		objsByte := iter.SkipAndReturnBytes()
+		if len(objsByte) > 0 {
+			var objs []MultiRegionAccessPointPolicySpecDetails
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(MultiRegionAccessPointPolicySpecDetails{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objsByte, &objs)
+
+			if len(objs) > 0 {
+				*(*MultiRegionAccessPointPolicySpecDetails)(ptr) = objs[0]
+			} else {
+				*(*MultiRegionAccessPointPolicySpecDetails)(ptr) = MultiRegionAccessPointPolicySpecDetails{}
+			}
+		} else {
+			*(*MultiRegionAccessPointPolicySpecDetails)(ptr) = MultiRegionAccessPointPolicySpecDetails{}
+		}
+	case jsoniter.ObjectValue:
+		objByte := iter.SkipAndReturnBytes()
+		if len(objByte) > 0 {
+			var obj MultiRegionAccessPointPolicySpecDetails
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(MultiRegionAccessPointPolicySpecDetails{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objByte, &obj)
+
+			*(*MultiRegionAccessPointPolicySpecDetails)(ptr) = obj
+		} else {
+			*(*MultiRegionAccessPointPolicySpecDetails)(ptr) = MultiRegionAccessPointPolicySpecDetails{}
+		}
+	default:
+		iter.ReportError("decode MultiRegionAccessPointPolicySpecDetails", "unexpected JSON type")
+	}
+}
+
+// +k8s:deepcopy-gen=false
+type ObjectLambdaAccessPointSpecConfigurationCodec struct {
+}
+
+func (ObjectLambdaAccessPointSpecConfigurationCodec) IsEmpty(ptr unsafe.Pointer) bool {
+	return (*ObjectLambdaAccessPointSpecConfiguration)(ptr) == nil
+}
+
+func (ObjectLambdaAccessPointSpecConfigurationCodec) Encode(ptr unsafe.Pointer, stream *jsoniter.Stream) {
+	obj := (*ObjectLambdaAccessPointSpecConfiguration)(ptr)
+	var objs []ObjectLambdaAccessPointSpecConfiguration
+	if obj != nil {
+		objs = []ObjectLambdaAccessPointSpecConfiguration{*obj}
+	}
+
+	jsonit := jsoniter.Config{
+		EscapeHTML:             true,
+		SortMapKeys:            true,
+		ValidateJsonRawMessage: true,
+		TagKey:                 "tf",
+		TypeEncoders:           getEncodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(ObjectLambdaAccessPointSpecConfiguration{}).Type1())),
+	}.Froze()
+
+	byt, _ := jsonit.Marshal(objs)
+
+	stream.Write(byt)
+}
+
+func (ObjectLambdaAccessPointSpecConfigurationCodec) Decode(ptr unsafe.Pointer, iter *jsoniter.Iterator) {
+	switch iter.WhatIsNext() {
+	case jsoniter.NilValue:
+		iter.Skip()
+		*(*ObjectLambdaAccessPointSpecConfiguration)(ptr) = ObjectLambdaAccessPointSpecConfiguration{}
+		return
+	case jsoniter.ArrayValue:
+		objsByte := iter.SkipAndReturnBytes()
+		if len(objsByte) > 0 {
+			var objs []ObjectLambdaAccessPointSpecConfiguration
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(ObjectLambdaAccessPointSpecConfiguration{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objsByte, &objs)
+
+			if len(objs) > 0 {
+				*(*ObjectLambdaAccessPointSpecConfiguration)(ptr) = objs[0]
+			} else {
+				*(*ObjectLambdaAccessPointSpecConfiguration)(ptr) = ObjectLambdaAccessPointSpecConfiguration{}
+			}
+		} else {
+			*(*ObjectLambdaAccessPointSpecConfiguration)(ptr) = ObjectLambdaAccessPointSpecConfiguration{}
+		}
+	case jsoniter.ObjectValue:
+		objByte := iter.SkipAndReturnBytes()
+		if len(objByte) > 0 {
+			var obj ObjectLambdaAccessPointSpecConfiguration
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(ObjectLambdaAccessPointSpecConfiguration{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objByte, &obj)
+
+			*(*ObjectLambdaAccessPointSpecConfiguration)(ptr) = obj
+		} else {
+			*(*ObjectLambdaAccessPointSpecConfiguration)(ptr) = ObjectLambdaAccessPointSpecConfiguration{}
+		}
+	default:
+		iter.ReportError("decode ObjectLambdaAccessPointSpecConfiguration", "unexpected JSON type")
+	}
+}
+
+// +k8s:deepcopy-gen=false
+type ObjectLambdaAccessPointSpecConfigurationTransformationConfigurationContentTransformationCodec struct {
+}
+
+func (ObjectLambdaAccessPointSpecConfigurationTransformationConfigurationContentTransformationCodec) IsEmpty(ptr unsafe.Pointer) bool {
+	return (*ObjectLambdaAccessPointSpecConfigurationTransformationConfigurationContentTransformation)(ptr) == nil
+}
+
+func (ObjectLambdaAccessPointSpecConfigurationTransformationConfigurationContentTransformationCodec) Encode(ptr unsafe.Pointer, stream *jsoniter.Stream) {
+	obj := (*ObjectLambdaAccessPointSpecConfigurationTransformationConfigurationContentTransformation)(ptr)
+	var objs []ObjectLambdaAccessPointSpecConfigurationTransformationConfigurationContentTransformation
+	if obj != nil {
+		objs = []ObjectLambdaAccessPointSpecConfigurationTransformationConfigurationContentTransformation{*obj}
+	}
+
+	jsonit := jsoniter.Config{
+		EscapeHTML:             true,
+		SortMapKeys:            true,
+		ValidateJsonRawMessage: true,
+		TagKey:                 "tf",
+		TypeEncoders:           getEncodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(ObjectLambdaAccessPointSpecConfigurationTransformationConfigurationContentTransformation{}).Type1())),
+	}.Froze()
+
+	byt, _ := jsonit.Marshal(objs)
+
+	stream.Write(byt)
+}
+
+func (ObjectLambdaAccessPointSpecConfigurationTransformationConfigurationContentTransformationCodec) Decode(ptr unsafe.Pointer, iter *jsoniter.Iterator) {
+	switch iter.WhatIsNext() {
+	case jsoniter.NilValue:
+		iter.Skip()
+		*(*ObjectLambdaAccessPointSpecConfigurationTransformationConfigurationContentTransformation)(ptr) = ObjectLambdaAccessPointSpecConfigurationTransformationConfigurationContentTransformation{}
+		return
+	case jsoniter.ArrayValue:
+		objsByte := iter.SkipAndReturnBytes()
+		if len(objsByte) > 0 {
+			var objs []ObjectLambdaAccessPointSpecConfigurationTransformationConfigurationContentTransformation
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(ObjectLambdaAccessPointSpecConfigurationTransformationConfigurationContentTransformation{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objsByte, &objs)
+
+			if len(objs) > 0 {
+				*(*ObjectLambdaAccessPointSpecConfigurationTransformationConfigurationContentTransformation)(ptr) = objs[0]
+			} else {
+				*(*ObjectLambdaAccessPointSpecConfigurationTransformationConfigurationContentTransformation)(ptr) = ObjectLambdaAccessPointSpecConfigurationTransformationConfigurationContentTransformation{}
+			}
+		} else {
+			*(*ObjectLambdaAccessPointSpecConfigurationTransformationConfigurationContentTransformation)(ptr) = ObjectLambdaAccessPointSpecConfigurationTransformationConfigurationContentTransformation{}
+		}
+	case jsoniter.ObjectValue:
+		objByte := iter.SkipAndReturnBytes()
+		if len(objByte) > 0 {
+			var obj ObjectLambdaAccessPointSpecConfigurationTransformationConfigurationContentTransformation
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(ObjectLambdaAccessPointSpecConfigurationTransformationConfigurationContentTransformation{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objByte, &obj)
+
+			*(*ObjectLambdaAccessPointSpecConfigurationTransformationConfigurationContentTransformation)(ptr) = obj
+		} else {
+			*(*ObjectLambdaAccessPointSpecConfigurationTransformationConfigurationContentTransformation)(ptr) = ObjectLambdaAccessPointSpecConfigurationTransformationConfigurationContentTransformation{}
+		}
+	default:
+		iter.ReportError("decode ObjectLambdaAccessPointSpecConfigurationTransformationConfigurationContentTransformation", "unexpected JSON type")
+	}
+}
+
+// +k8s:deepcopy-gen=false
+type ObjectLambdaAccessPointSpecConfigurationTransformationConfigurationContentTransformationAwsLambdaCodec struct {
+}
+
+func (ObjectLambdaAccessPointSpecConfigurationTransformationConfigurationContentTransformationAwsLambdaCodec) IsEmpty(ptr unsafe.Pointer) bool {
+	return (*ObjectLambdaAccessPointSpecConfigurationTransformationConfigurationContentTransformationAwsLambda)(ptr) == nil
+}
+
+func (ObjectLambdaAccessPointSpecConfigurationTransformationConfigurationContentTransformationAwsLambdaCodec) Encode(ptr unsafe.Pointer, stream *jsoniter.Stream) {
+	obj := (*ObjectLambdaAccessPointSpecConfigurationTransformationConfigurationContentTransformationAwsLambda)(ptr)
+	var objs []ObjectLambdaAccessPointSpecConfigurationTransformationConfigurationContentTransformationAwsLambda
+	if obj != nil {
+		objs = []ObjectLambdaAccessPointSpecConfigurationTransformationConfigurationContentTransformationAwsLambda{*obj}
+	}
+
+	jsonit := jsoniter.Config{
+		EscapeHTML:             true,
+		SortMapKeys:            true,
+		ValidateJsonRawMessage: true,
+		TagKey:                 "tf",
+		TypeEncoders:           getEncodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(ObjectLambdaAccessPointSpecConfigurationTransformationConfigurationContentTransformationAwsLambda{}).Type1())),
+	}.Froze()
+
+	byt, _ := jsonit.Marshal(objs)
+
+	stream.Write(byt)
+}
+
+func (ObjectLambdaAccessPointSpecConfigurationTransformationConfigurationContentTransformationAwsLambdaCodec) Decode(ptr unsafe.Pointer, iter *jsoniter.Iterator) {
+	switch iter.WhatIsNext() {
+	case jsoniter.NilValue:
+		iter.Skip()
+		*(*ObjectLambdaAccessPointSpecConfigurationTransformationConfigurationContentTransformationAwsLambda)(ptr) = ObjectLambdaAccessPointSpecConfigurationTransformationConfigurationContentTransformationAwsLambda{}
+		return
+	case jsoniter.ArrayValue:
+		objsByte := iter.SkipAndReturnBytes()
+		if len(objsByte) > 0 {
+			var objs []ObjectLambdaAccessPointSpecConfigurationTransformationConfigurationContentTransformationAwsLambda
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(ObjectLambdaAccessPointSpecConfigurationTransformationConfigurationContentTransformationAwsLambda{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objsByte, &objs)
+
+			if len(objs) > 0 {
+				*(*ObjectLambdaAccessPointSpecConfigurationTransformationConfigurationContentTransformationAwsLambda)(ptr) = objs[0]
+			} else {
+				*(*ObjectLambdaAccessPointSpecConfigurationTransformationConfigurationContentTransformationAwsLambda)(ptr) = ObjectLambdaAccessPointSpecConfigurationTransformationConfigurationContentTransformationAwsLambda{}
+			}
+		} else {
+			*(*ObjectLambdaAccessPointSpecConfigurationTransformationConfigurationContentTransformationAwsLambda)(ptr) = ObjectLambdaAccessPointSpecConfigurationTransformationConfigurationContentTransformationAwsLambda{}
+		}
+	case jsoniter.ObjectValue:
+		objByte := iter.SkipAndReturnBytes()
+		if len(objByte) > 0 {
+			var obj ObjectLambdaAccessPointSpecConfigurationTransformationConfigurationContentTransformationAwsLambda
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(ObjectLambdaAccessPointSpecConfigurationTransformationConfigurationContentTransformationAwsLambda{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objByte, &obj)
+
+			*(*ObjectLambdaAccessPointSpecConfigurationTransformationConfigurationContentTransformationAwsLambda)(ptr) = obj
+		} else {
+			*(*ObjectLambdaAccessPointSpecConfigurationTransformationConfigurationContentTransformationAwsLambda)(ptr) = ObjectLambdaAccessPointSpecConfigurationTransformationConfigurationContentTransformationAwsLambda{}
+		}
+	default:
+		iter.ReportError("decode ObjectLambdaAccessPointSpecConfigurationTransformationConfigurationContentTransformationAwsLambda", "unexpected JSON type")
 	}
 }

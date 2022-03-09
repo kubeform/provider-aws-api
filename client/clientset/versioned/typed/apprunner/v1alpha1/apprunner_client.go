@@ -31,6 +31,7 @@ type ApprunnerV1alpha1Interface interface {
 	ConnectionsGetter
 	CustomDomainAssociationsGetter
 	ServicesGetter
+	VpcConnectorsGetter
 }
 
 // ApprunnerV1alpha1Client is used to interact with features provided by the apprunner.aws.kubeform.com group.
@@ -52,6 +53,10 @@ func (c *ApprunnerV1alpha1Client) CustomDomainAssociations(namespace string) Cus
 
 func (c *ApprunnerV1alpha1Client) Services(namespace string) ServiceInterface {
 	return newServices(c, namespace)
+}
+
+func (c *ApprunnerV1alpha1Client) VpcConnectors(namespace string) VpcConnectorInterface {
+	return newVpcConnectors(c, namespace)
 }
 
 // NewForConfig creates a new ApprunnerV1alpha1Client for the given config.

@@ -43,179 +43,290 @@ type Bucket struct {
 
 type BucketSpecCorsRule struct {
 	// +optional
+	// Deprecated
 	AllowedHeaders []string `json:"allowedHeaders,omitempty" tf:"allowed_headers"`
-	AllowedMethods []string `json:"allowedMethods" tf:"allowed_methods"`
-	AllowedOrigins []string `json:"allowedOrigins" tf:"allowed_origins"`
 	// +optional
+	// Deprecated
+	AllowedMethods []string `json:"allowedMethods,omitempty" tf:"allowed_methods"`
+	// +optional
+	// Deprecated
+	AllowedOrigins []string `json:"allowedOrigins,omitempty" tf:"allowed_origins"`
+	// +optional
+	// Deprecated
 	ExposeHeaders []string `json:"exposeHeaders,omitempty" tf:"expose_headers"`
 	// +optional
+	// Deprecated
 	MaxAgeSeconds *int64 `json:"maxAgeSeconds,omitempty" tf:"max_age_seconds"`
 }
 
 type BucketSpecGrant struct {
 	// +optional
-	ID          *string  `json:"ID,omitempty" tf:"id"`
-	Permissions []string `json:"permissions" tf:"permissions"`
-	Type        *string  `json:"type" tf:"type"`
+	// Deprecated
+	ID *string `json:"ID,omitempty" tf:"id"`
 	// +optional
+	// Deprecated
+	Permissions []string `json:"permissions,omitempty" tf:"permissions"`
+	// +optional
+	// Deprecated
+	Type *string `json:"type,omitempty" tf:"type"`
+	// +optional
+	// Deprecated
 	Uri *string `json:"uri,omitempty" tf:"uri"`
 }
 
 type BucketSpecLifecycleRuleExpiration struct {
 	// +optional
+	// Deprecated
 	Date *string `json:"date,omitempty" tf:"date"`
 	// +optional
+	// Deprecated
 	Days *int64 `json:"days,omitempty" tf:"days"`
 	// +optional
+	// Deprecated
 	ExpiredObjectDeleteMarker *bool `json:"expiredObjectDeleteMarker,omitempty" tf:"expired_object_delete_marker"`
 }
 
 type BucketSpecLifecycleRuleNoncurrentVersionExpiration struct {
 	// +optional
+	// Deprecated
 	Days *int64 `json:"days,omitempty" tf:"days"`
 }
 
 type BucketSpecLifecycleRuleNoncurrentVersionTransition struct {
 	// +optional
-	Days         *int64  `json:"days,omitempty" tf:"days"`
-	StorageClass *string `json:"storageClass" tf:"storage_class"`
+	// Deprecated
+	Days *int64 `json:"days,omitempty" tf:"days"`
+	// +optional
+	// Deprecated
+	StorageClass *string `json:"storageClass,omitempty" tf:"storage_class"`
 }
 
 type BucketSpecLifecycleRuleTransition struct {
 	// +optional
+	// Deprecated
 	Date *string `json:"date,omitempty" tf:"date"`
 	// +optional
-	Days         *int64  `json:"days,omitempty" tf:"days"`
-	StorageClass *string `json:"storageClass" tf:"storage_class"`
+	// Deprecated
+	Days *int64 `json:"days,omitempty" tf:"days"`
+	// +optional
+	// Deprecated
+	StorageClass *string `json:"storageClass,omitempty" tf:"storage_class"`
 }
 
 type BucketSpecLifecycleRule struct {
 	// +optional
+	// Deprecated
 	AbortIncompleteMultipartUploadDays *int64 `json:"abortIncompleteMultipartUploadDays,omitempty" tf:"abort_incomplete_multipart_upload_days"`
-	Enabled                            *bool  `json:"enabled" tf:"enabled"`
 	// +optional
-	Expiration *BucketSpecLifecycleRuleExpiration `json:"expiration,omitempty" tf:"expiration"`
+	// Deprecated
+	Enabled *bool `json:"enabled,omitempty" tf:"enabled"`
 	// +optional
+	// Deprecated
+	Expiration []BucketSpecLifecycleRuleExpiration `json:"expiration,omitempty" tf:"expiration"`
+	// +optional
+	// Deprecated
 	ID *string `json:"ID,omitempty" tf:"id"`
 	// +optional
-	NoncurrentVersionExpiration *BucketSpecLifecycleRuleNoncurrentVersionExpiration `json:"noncurrentVersionExpiration,omitempty" tf:"noncurrent_version_expiration"`
+	// Deprecated
+	NoncurrentVersionExpiration []BucketSpecLifecycleRuleNoncurrentVersionExpiration `json:"noncurrentVersionExpiration,omitempty" tf:"noncurrent_version_expiration"`
 	// +optional
+	// Deprecated
 	NoncurrentVersionTransition []BucketSpecLifecycleRuleNoncurrentVersionTransition `json:"noncurrentVersionTransition,omitempty" tf:"noncurrent_version_transition"`
 	// +optional
+	// Deprecated
 	Prefix *string `json:"prefix,omitempty" tf:"prefix"`
 	// +optional
+	// Deprecated
 	Tags *map[string]string `json:"tags,omitempty" tf:"tags"`
 	// +optional
+	// Deprecated
 	Transition []BucketSpecLifecycleRuleTransition `json:"transition,omitempty" tf:"transition"`
 }
 
 type BucketSpecLogging struct {
-	TargetBucket *string `json:"targetBucket" tf:"target_bucket"`
 	// +optional
+	// Deprecated
+	TargetBucket *string `json:"targetBucket,omitempty" tf:"target_bucket"`
+	// +optional
+	// Deprecated
 	TargetPrefix *string `json:"targetPrefix,omitempty" tf:"target_prefix"`
 }
 
 type BucketSpecObjectLockConfigurationRuleDefaultRetention struct {
 	// +optional
-	Days *int64  `json:"days,omitempty" tf:"days"`
-	Mode *string `json:"mode" tf:"mode"`
+	// Deprecated
+	Days *int64 `json:"days,omitempty" tf:"days"`
 	// +optional
+	// Deprecated
+	Mode *string `json:"mode,omitempty" tf:"mode"`
+	// +optional
+	// Deprecated
 	Years *int64 `json:"years,omitempty" tf:"years"`
 }
 
 type BucketSpecObjectLockConfigurationRule struct {
-	DefaultRetention *BucketSpecObjectLockConfigurationRuleDefaultRetention `json:"defaultRetention" tf:"default_retention"`
+	// +optional
+	// Deprecated
+	DefaultRetention []BucketSpecObjectLockConfigurationRuleDefaultRetention `json:"defaultRetention,omitempty" tf:"default_retention"`
 }
 
 type BucketSpecObjectLockConfiguration struct {
 	ObjectLockEnabled *string `json:"objectLockEnabled" tf:"object_lock_enabled"`
 	// +optional
-	Rule *BucketSpecObjectLockConfigurationRule `json:"rule,omitempty" tf:"rule"`
+	// Deprecated
+	Rule []BucketSpecObjectLockConfigurationRule `json:"rule,omitempty" tf:"rule"`
 }
 
 type BucketSpecReplicationConfigurationRulesDestinationAccessControlTranslation struct {
-	Owner *string `json:"owner" tf:"owner"`
+	// +optional
+	// Deprecated
+	Owner *string `json:"owner,omitempty" tf:"owner"`
+}
+
+type BucketSpecReplicationConfigurationRulesDestinationMetrics struct {
+	// +optional
+	// Deprecated
+	Minutes *int64 `json:"minutes,omitempty" tf:"minutes"`
+	// +optional
+	// Deprecated
+	Status *string `json:"status,omitempty" tf:"status"`
+}
+
+type BucketSpecReplicationConfigurationRulesDestinationReplicationTime struct {
+	// +optional
+	// Deprecated
+	Minutes *int64 `json:"minutes,omitempty" tf:"minutes"`
+	// +optional
+	// Deprecated
+	Status *string `json:"status,omitempty" tf:"status"`
 }
 
 type BucketSpecReplicationConfigurationRulesDestination struct {
 	// +optional
-	AccessControlTranslation *BucketSpecReplicationConfigurationRulesDestinationAccessControlTranslation `json:"accessControlTranslation,omitempty" tf:"access_control_translation"`
+	// Deprecated
+	AccessControlTranslation []BucketSpecReplicationConfigurationRulesDestinationAccessControlTranslation `json:"accessControlTranslation,omitempty" tf:"access_control_translation"`
 	// +optional
+	// Deprecated
 	AccountID *string `json:"accountID,omitempty" tf:"account_id"`
-	Bucket    *string `json:"bucket" tf:"bucket"`
 	// +optional
+	// Deprecated
+	Bucket *string `json:"bucket,omitempty" tf:"bucket"`
+	// +optional
+	// Deprecated
+	Metrics []BucketSpecReplicationConfigurationRulesDestinationMetrics `json:"metrics,omitempty" tf:"metrics"`
+	// +optional
+	// Deprecated
 	ReplicaKmsKeyID *string `json:"replicaKmsKeyID,omitempty" tf:"replica_kms_key_id"`
 	// +optional
+	// Deprecated
+	ReplicationTime []BucketSpecReplicationConfigurationRulesDestinationReplicationTime `json:"replicationTime,omitempty" tf:"replication_time"`
+	// +optional
+	// Deprecated
 	StorageClass *string `json:"storageClass,omitempty" tf:"storage_class"`
 }
 
 type BucketSpecReplicationConfigurationRulesFilter struct {
 	// +optional
+	// Deprecated
 	Prefix *string `json:"prefix,omitempty" tf:"prefix"`
 	// +optional
+	// Deprecated
 	Tags *map[string]string `json:"tags,omitempty" tf:"tags"`
 }
 
 type BucketSpecReplicationConfigurationRulesSourceSelectionCriteriaSseKmsEncryptedObjects struct {
-	Enabled *bool `json:"enabled" tf:"enabled"`
+	// +optional
+	// Deprecated
+	Enabled *bool `json:"enabled,omitempty" tf:"enabled"`
 }
 
 type BucketSpecReplicationConfigurationRulesSourceSelectionCriteria struct {
 	// +optional
-	SseKmsEncryptedObjects *BucketSpecReplicationConfigurationRulesSourceSelectionCriteriaSseKmsEncryptedObjects `json:"sseKmsEncryptedObjects,omitempty" tf:"sse_kms_encrypted_objects"`
+	// Deprecated
+	SseKmsEncryptedObjects []BucketSpecReplicationConfigurationRulesSourceSelectionCriteriaSseKmsEncryptedObjects `json:"sseKmsEncryptedObjects,omitempty" tf:"sse_kms_encrypted_objects"`
 }
 
 type BucketSpecReplicationConfigurationRules struct {
-	Destination *BucketSpecReplicationConfigurationRulesDestination `json:"destination" tf:"destination"`
 	// +optional
-	Filter *BucketSpecReplicationConfigurationRulesFilter `json:"filter,omitempty" tf:"filter"`
+	// Deprecated
+	DeleteMarkerReplicationStatus *string `json:"deleteMarkerReplicationStatus,omitempty" tf:"delete_marker_replication_status"`
 	// +optional
+	// Deprecated
+	Destination []BucketSpecReplicationConfigurationRulesDestination `json:"destination,omitempty" tf:"destination"`
+	// +optional
+	// Deprecated
+	Filter []BucketSpecReplicationConfigurationRulesFilter `json:"filter,omitempty" tf:"filter"`
+	// +optional
+	// Deprecated
 	ID *string `json:"ID,omitempty" tf:"id"`
 	// +optional
+	// Deprecated
 	Prefix *string `json:"prefix,omitempty" tf:"prefix"`
 	// +optional
+	// Deprecated
 	Priority *int64 `json:"priority,omitempty" tf:"priority"`
 	// +optional
-	SourceSelectionCriteria *BucketSpecReplicationConfigurationRulesSourceSelectionCriteria `json:"sourceSelectionCriteria,omitempty" tf:"source_selection_criteria"`
-	Status                  *string                                                         `json:"status" tf:"status"`
+	// Deprecated
+	SourceSelectionCriteria []BucketSpecReplicationConfigurationRulesSourceSelectionCriteria `json:"sourceSelectionCriteria,omitempty" tf:"source_selection_criteria"`
+	// +optional
+	// Deprecated
+	Status *string `json:"status,omitempty" tf:"status"`
 }
 
 type BucketSpecReplicationConfiguration struct {
-	Role  *string                                   `json:"role" tf:"role"`
-	Rules []BucketSpecReplicationConfigurationRules `json:"rules" tf:"rules"`
+	// +optional
+	// Deprecated
+	Role *string `json:"role,omitempty" tf:"role"`
+	// +optional
+	// Deprecated
+	Rules []BucketSpecReplicationConfigurationRules `json:"rules,omitempty" tf:"rules"`
 }
 
 type BucketSpecServerSideEncryptionConfigurationRuleApplyServerSideEncryptionByDefault struct {
 	// +optional
+	// Deprecated
 	KmsMasterKeyID *string `json:"kmsMasterKeyID,omitempty" tf:"kms_master_key_id"`
-	SseAlgorithm   *string `json:"sseAlgorithm" tf:"sse_algorithm"`
+	// +optional
+	// Deprecated
+	SseAlgorithm *string `json:"sseAlgorithm,omitempty" tf:"sse_algorithm"`
 }
 
 type BucketSpecServerSideEncryptionConfigurationRule struct {
-	ApplyServerSideEncryptionByDefault *BucketSpecServerSideEncryptionConfigurationRuleApplyServerSideEncryptionByDefault `json:"applyServerSideEncryptionByDefault" tf:"apply_server_side_encryption_by_default"`
 	// +optional
+	// Deprecated
+	ApplyServerSideEncryptionByDefault []BucketSpecServerSideEncryptionConfigurationRuleApplyServerSideEncryptionByDefault `json:"applyServerSideEncryptionByDefault,omitempty" tf:"apply_server_side_encryption_by_default"`
+	// +optional
+	// Deprecated
 	BucketKeyEnabled *bool `json:"bucketKeyEnabled,omitempty" tf:"bucket_key_enabled"`
 }
 
 type BucketSpecServerSideEncryptionConfiguration struct {
-	Rule *BucketSpecServerSideEncryptionConfigurationRule `json:"rule" tf:"rule"`
+	// +optional
+	// Deprecated
+	Rule []BucketSpecServerSideEncryptionConfigurationRule `json:"rule,omitempty" tf:"rule"`
 }
 
 type BucketSpecVersioning struct {
 	// +optional
+	// Deprecated
 	Enabled *bool `json:"enabled,omitempty" tf:"enabled"`
 	// +optional
+	// Deprecated
 	MfaDelete *bool `json:"mfaDelete,omitempty" tf:"mfa_delete"`
 }
 
 type BucketSpecWebsite struct {
 	// +optional
+	// Deprecated
 	ErrorDocument *string `json:"errorDocument,omitempty" tf:"error_document"`
 	// +optional
+	// Deprecated
 	IndexDocument *string `json:"indexDocument,omitempty" tf:"index_document"`
 	// +optional
+	// Deprecated
 	RedirectAllRequestsTo *string `json:"redirectAllRequestsTo,omitempty" tf:"redirect_all_requests_to"`
 	// +optional
+	// Deprecated
 	RoutingRules *string `json:"routingRules,omitempty" tf:"routing_rules"`
 }
 
@@ -237,8 +348,10 @@ type BucketSpecResource struct {
 	ID string `json:"id,omitempty" tf:"id,omitempty"`
 
 	// +optional
+	// Deprecated
 	AccelerationStatus *string `json:"accelerationStatus,omitempty" tf:"acceleration_status"`
 	// +optional
+	// Deprecated
 	Acl *string `json:"acl,omitempty" tf:"acl"`
 	// +optional
 	Arn *string `json:"arn,omitempty" tf:"arn"`
@@ -251,40 +364,52 @@ type BucketSpecResource struct {
 	// +optional
 	BucketRegionalDomainName *string `json:"bucketRegionalDomainName,omitempty" tf:"bucket_regional_domain_name"`
 	// +optional
+	// Deprecated
 	CorsRule []BucketSpecCorsRule `json:"corsRule,omitempty" tf:"cors_rule"`
 	// +optional
 	ForceDestroy *bool `json:"forceDestroy,omitempty" tf:"force_destroy"`
 	// +optional
+	// Deprecated
 	Grant []BucketSpecGrant `json:"grant,omitempty" tf:"grant"`
 	// +optional
 	HostedZoneID *string `json:"hostedZoneID,omitempty" tf:"hosted_zone_id"`
 	// +optional
+	// Deprecated
 	LifecycleRule []BucketSpecLifecycleRule `json:"lifecycleRule,omitempty" tf:"lifecycle_rule"`
 	// +optional
+	// Deprecated
 	Logging []BucketSpecLogging `json:"logging,omitempty" tf:"logging"`
 	// +optional
 	ObjectLockConfiguration *BucketSpecObjectLockConfiguration `json:"objectLockConfiguration,omitempty" tf:"object_lock_configuration"`
 	// +optional
+	// Deprecated
 	Policy *string `json:"policy,omitempty" tf:"policy"`
 	// +optional
 	Region *string `json:"region,omitempty" tf:"region"`
 	// +optional
-	ReplicationConfiguration *BucketSpecReplicationConfiguration `json:"replicationConfiguration,omitempty" tf:"replication_configuration"`
+	// Deprecated
+	ReplicationConfiguration []BucketSpecReplicationConfiguration `json:"replicationConfiguration,omitempty" tf:"replication_configuration"`
 	// +optional
+	// Deprecated
 	RequestPayer *string `json:"requestPayer,omitempty" tf:"request_payer"`
 	// +optional
-	ServerSideEncryptionConfiguration *BucketSpecServerSideEncryptionConfiguration `json:"serverSideEncryptionConfiguration,omitempty" tf:"server_side_encryption_configuration"`
+	// Deprecated
+	ServerSideEncryptionConfiguration []BucketSpecServerSideEncryptionConfiguration `json:"serverSideEncryptionConfiguration,omitempty" tf:"server_side_encryption_configuration"`
 	// +optional
 	Tags *map[string]string `json:"tags,omitempty" tf:"tags"`
 	// +optional
 	TagsAll *map[string]string `json:"tagsAll,omitempty" tf:"tags_all"`
 	// +optional
-	Versioning *BucketSpecVersioning `json:"versioning,omitempty" tf:"versioning"`
+	// Deprecated
+	Versioning []BucketSpecVersioning `json:"versioning,omitempty" tf:"versioning"`
 	// +optional
-	Website *BucketSpecWebsite `json:"website,omitempty" tf:"website"`
+	// Deprecated
+	Website []BucketSpecWebsite `json:"website,omitempty" tf:"website"`
 	// +optional
+	// Deprecated
 	WebsiteDomain *string `json:"websiteDomain,omitempty" tf:"website_domain"`
 	// +optional
+	// Deprecated
 	WebsiteEndpoint *string `json:"websiteEndpoint,omitempty" tf:"website_endpoint"`
 }
 

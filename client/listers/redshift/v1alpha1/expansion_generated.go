@@ -42,6 +42,14 @@ type ParameterGroupListerExpansion interface{}
 // ParameterGroupNamespaceLister.
 type ParameterGroupNamespaceListerExpansion interface{}
 
+// ScheduledActionListerExpansion allows custom methods to be added to
+// ScheduledActionLister.
+type ScheduledActionListerExpansion interface{}
+
+// ScheduledActionNamespaceListerExpansion allows custom methods to be added to
+// ScheduledActionNamespaceLister.
+type ScheduledActionNamespaceListerExpansion interface{}
+
 // SecurityGroupListerExpansion allows custom methods to be added to
 // SecurityGroupLister.
 type SecurityGroupListerExpansion interface{}

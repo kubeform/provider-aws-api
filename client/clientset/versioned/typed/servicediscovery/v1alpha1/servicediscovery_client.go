@@ -28,6 +28,7 @@ import (
 type ServicediscoveryV1alpha1Interface interface {
 	RESTClient() rest.Interface
 	HttpNamespacesGetter
+	InstancesGetter
 	PrivateDNSNamespacesGetter
 	PublicDNSNamespacesGetter
 	ServicesGetter
@@ -40,6 +41,10 @@ type ServicediscoveryV1alpha1Client struct {
 
 func (c *ServicediscoveryV1alpha1Client) HttpNamespaces(namespace string) HttpNamespaceInterface {
 	return newHttpNamespaces(c, namespace)
+}
+
+func (c *ServicediscoveryV1alpha1Client) Instances(namespace string) InstanceInterface {
+	return newInstances(c, namespace)
 }
 
 func (c *ServicediscoveryV1alpha1Client) PrivateDNSNamespaces(namespace string) PrivateDNSNamespaceInterface {

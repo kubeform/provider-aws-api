@@ -90,7 +90,7 @@ func (r *SqsQueue) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range sqsqueueForceNewList {
+	for key, _ := range sqsqueueForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

@@ -90,7 +90,7 @@ func (r *VpcAssociationAuthorization) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range vpcassociationauthorizationForceNewList {
+	for key, _ := range vpcassociationauthorizationForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

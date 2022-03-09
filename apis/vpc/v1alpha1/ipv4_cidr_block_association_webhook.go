@@ -42,8 +42,10 @@ func (r *Ipv4CIDRBlockAssociation) SetupWebhookWithManager(mgr ctrl.Manager) err
 var _ webhook.Validator = &Ipv4CIDRBlockAssociation{}
 
 var ipv4cidrblockassociationForceNewList = map[string]bool{
-	"/cidr_block": true,
-	"/vpc_id":     true,
+	"/cidr_block":          true,
+	"/ipv4_ipam_pool_id":   true,
+	"/ipv4_netmask_length": true,
+	"/vpc_id":              true,
 }
 
 // ValidateCreate implements webhook.Validator so a webhook will be registered for the type
@@ -89,7 +91,7 @@ func (r *Ipv4CIDRBlockAssociation) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range ipv4cidrblockassociationForceNewList {
+	for key, _ := range ipv4cidrblockassociationForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

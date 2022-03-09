@@ -301,6 +301,13 @@ spec:
                             - statelessRule
                             type: object
                         type: object
+                      statefulRuleOptions:
+                        properties:
+                          ruleOrder:
+                            type: string
+                        required:
+                        - ruleOrder
+                        type: object
                     required:
                     - rulesSource
                     type: object
@@ -568,6 +575,13 @@ spec:
                             required:
                             - statelessRule
                             type: object
+                        type: object
+                      statefulRuleOptions:
+                        properties:
+                          ruleOrder:
+                            type: string
+                        required:
+                        - ruleOrder
                         type: object
                     required:
                     - rulesSource

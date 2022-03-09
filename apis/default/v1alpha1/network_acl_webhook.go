@@ -88,7 +88,7 @@ func (r *NetworkACL) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range networkaclForceNewList {
+	for key, _ := range networkaclForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

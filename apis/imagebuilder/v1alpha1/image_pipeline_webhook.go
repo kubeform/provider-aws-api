@@ -42,7 +42,9 @@ func (r *ImagePipeline) SetupWebhookWithManager(mgr ctrl.Manager) error {
 var _ webhook.Validator = &ImagePipeline{}
 
 var imagepipelineForceNewList = map[string]bool{
-	"/name": true,
+	"/container_recipe_arn": true,
+	"/image_recipe_arn":     true,
+	"/name":                 true,
 }
 
 // ValidateCreate implements webhook.Validator so a webhook will be registered for the type
@@ -88,7 +90,7 @@ func (r *ImagePipeline) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range imagepipelineForceNewList {
+	for key, _ := range imagepipelineForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

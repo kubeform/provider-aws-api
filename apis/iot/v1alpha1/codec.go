@@ -27,6 +27,8 @@ import (
 
 func GetEncoder() map[string]jsoniter.ValEncoder {
 	return map[string]jsoniter.ValEncoder{
+		jsoniter.MustGetKind(reflect2.TypeOf(ThingGroupSpecProperties{}).Type1()):                  ThingGroupSpecPropertiesCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(ThingGroupSpecPropertiesAttributePayload{}).Type1()):  ThingGroupSpecPropertiesAttributePayloadCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(ThingTypeSpecProperties{}).Type1()):                   ThingTypeSpecPropertiesCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(TopicRuleSpecDynamodbv2PutItem{}).Type1()):            TopicRuleSpecDynamodbv2PutItemCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(TopicRuleSpecErrorAction{}).Type1()):                  TopicRuleSpecErrorActionCodec{},
@@ -51,6 +53,8 @@ func GetEncoder() map[string]jsoniter.ValEncoder {
 
 func GetDecoder() map[string]jsoniter.ValDecoder {
 	return map[string]jsoniter.ValDecoder{
+		jsoniter.MustGetKind(reflect2.TypeOf(ThingGroupSpecProperties{}).Type1()):                  ThingGroupSpecPropertiesCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(ThingGroupSpecPropertiesAttributePayload{}).Type1()):  ThingGroupSpecPropertiesAttributePayloadCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(ThingTypeSpecProperties{}).Type1()):                   ThingTypeSpecPropertiesCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(TopicRuleSpecDynamodbv2PutItem{}).Type1()):            TopicRuleSpecDynamodbv2PutItemCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(TopicRuleSpecErrorAction{}).Type1()):                  TopicRuleSpecErrorActionCodec{},
@@ -83,6 +87,164 @@ func getDecodersWithout(typ string) map[string]jsoniter.ValDecoder {
 	origMap := GetDecoder()
 	delete(origMap, typ)
 	return origMap
+}
+
+// +k8s:deepcopy-gen=false
+type ThingGroupSpecPropertiesCodec struct {
+}
+
+func (ThingGroupSpecPropertiesCodec) IsEmpty(ptr unsafe.Pointer) bool {
+	return (*ThingGroupSpecProperties)(ptr) == nil
+}
+
+func (ThingGroupSpecPropertiesCodec) Encode(ptr unsafe.Pointer, stream *jsoniter.Stream) {
+	obj := (*ThingGroupSpecProperties)(ptr)
+	var objs []ThingGroupSpecProperties
+	if obj != nil {
+		objs = []ThingGroupSpecProperties{*obj}
+	}
+
+	jsonit := jsoniter.Config{
+		EscapeHTML:             true,
+		SortMapKeys:            true,
+		ValidateJsonRawMessage: true,
+		TagKey:                 "tf",
+		TypeEncoders:           getEncodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(ThingGroupSpecProperties{}).Type1())),
+	}.Froze()
+
+	byt, _ := jsonit.Marshal(objs)
+
+	stream.Write(byt)
+}
+
+func (ThingGroupSpecPropertiesCodec) Decode(ptr unsafe.Pointer, iter *jsoniter.Iterator) {
+	switch iter.WhatIsNext() {
+	case jsoniter.NilValue:
+		iter.Skip()
+		*(*ThingGroupSpecProperties)(ptr) = ThingGroupSpecProperties{}
+		return
+	case jsoniter.ArrayValue:
+		objsByte := iter.SkipAndReturnBytes()
+		if len(objsByte) > 0 {
+			var objs []ThingGroupSpecProperties
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(ThingGroupSpecProperties{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objsByte, &objs)
+
+			if len(objs) > 0 {
+				*(*ThingGroupSpecProperties)(ptr) = objs[0]
+			} else {
+				*(*ThingGroupSpecProperties)(ptr) = ThingGroupSpecProperties{}
+			}
+		} else {
+			*(*ThingGroupSpecProperties)(ptr) = ThingGroupSpecProperties{}
+		}
+	case jsoniter.ObjectValue:
+		objByte := iter.SkipAndReturnBytes()
+		if len(objByte) > 0 {
+			var obj ThingGroupSpecProperties
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(ThingGroupSpecProperties{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objByte, &obj)
+
+			*(*ThingGroupSpecProperties)(ptr) = obj
+		} else {
+			*(*ThingGroupSpecProperties)(ptr) = ThingGroupSpecProperties{}
+		}
+	default:
+		iter.ReportError("decode ThingGroupSpecProperties", "unexpected JSON type")
+	}
+}
+
+// +k8s:deepcopy-gen=false
+type ThingGroupSpecPropertiesAttributePayloadCodec struct {
+}
+
+func (ThingGroupSpecPropertiesAttributePayloadCodec) IsEmpty(ptr unsafe.Pointer) bool {
+	return (*ThingGroupSpecPropertiesAttributePayload)(ptr) == nil
+}
+
+func (ThingGroupSpecPropertiesAttributePayloadCodec) Encode(ptr unsafe.Pointer, stream *jsoniter.Stream) {
+	obj := (*ThingGroupSpecPropertiesAttributePayload)(ptr)
+	var objs []ThingGroupSpecPropertiesAttributePayload
+	if obj != nil {
+		objs = []ThingGroupSpecPropertiesAttributePayload{*obj}
+	}
+
+	jsonit := jsoniter.Config{
+		EscapeHTML:             true,
+		SortMapKeys:            true,
+		ValidateJsonRawMessage: true,
+		TagKey:                 "tf",
+		TypeEncoders:           getEncodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(ThingGroupSpecPropertiesAttributePayload{}).Type1())),
+	}.Froze()
+
+	byt, _ := jsonit.Marshal(objs)
+
+	stream.Write(byt)
+}
+
+func (ThingGroupSpecPropertiesAttributePayloadCodec) Decode(ptr unsafe.Pointer, iter *jsoniter.Iterator) {
+	switch iter.WhatIsNext() {
+	case jsoniter.NilValue:
+		iter.Skip()
+		*(*ThingGroupSpecPropertiesAttributePayload)(ptr) = ThingGroupSpecPropertiesAttributePayload{}
+		return
+	case jsoniter.ArrayValue:
+		objsByte := iter.SkipAndReturnBytes()
+		if len(objsByte) > 0 {
+			var objs []ThingGroupSpecPropertiesAttributePayload
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(ThingGroupSpecPropertiesAttributePayload{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objsByte, &objs)
+
+			if len(objs) > 0 {
+				*(*ThingGroupSpecPropertiesAttributePayload)(ptr) = objs[0]
+			} else {
+				*(*ThingGroupSpecPropertiesAttributePayload)(ptr) = ThingGroupSpecPropertiesAttributePayload{}
+			}
+		} else {
+			*(*ThingGroupSpecPropertiesAttributePayload)(ptr) = ThingGroupSpecPropertiesAttributePayload{}
+		}
+	case jsoniter.ObjectValue:
+		objByte := iter.SkipAndReturnBytes()
+		if len(objByte) > 0 {
+			var obj ThingGroupSpecPropertiesAttributePayload
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(ThingGroupSpecPropertiesAttributePayload{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objByte, &obj)
+
+			*(*ThingGroupSpecPropertiesAttributePayload)(ptr) = obj
+		} else {
+			*(*ThingGroupSpecPropertiesAttributePayload)(ptr) = ThingGroupSpecPropertiesAttributePayload{}
+		}
+	default:
+		iter.ReportError("decode ThingGroupSpecPropertiesAttributePayload", "unexpected JSON type")
+	}
 }
 
 // +k8s:deepcopy-gen=false

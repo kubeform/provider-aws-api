@@ -41,6 +41,114 @@ type Policy struct {
 	Status            PolicyStatus `json:"status,omitempty"`
 }
 
+type PolicySpecPredictiveScalingConfigurationMetricSpecificationCustomizedCapacityMetricSpecificationMetricDataQueriesMetricStatMetricDimensions struct {
+	Name  *string `json:"name" tf:"name"`
+	Value *string `json:"value" tf:"value"`
+}
+
+type PolicySpecPredictiveScalingConfigurationMetricSpecificationCustomizedCapacityMetricSpecificationMetricDataQueriesMetricStatMetric struct {
+	// +optional
+	Dimensions []PolicySpecPredictiveScalingConfigurationMetricSpecificationCustomizedCapacityMetricSpecificationMetricDataQueriesMetricStatMetricDimensions `json:"dimensions,omitempty" tf:"dimensions"`
+	MetricName *string                                                                                                                                       `json:"metricName" tf:"metric_name"`
+	Namespace  *string                                                                                                                                       `json:"namespace" tf:"namespace"`
+}
+
+type PolicySpecPredictiveScalingConfigurationMetricSpecificationCustomizedCapacityMetricSpecificationMetricDataQueriesMetricStat struct {
+	Metric *PolicySpecPredictiveScalingConfigurationMetricSpecificationCustomizedCapacityMetricSpecificationMetricDataQueriesMetricStatMetric `json:"metric" tf:"metric"`
+	Stat   *string                                                                                                                            `json:"stat" tf:"stat"`
+	// +optional
+	Unit *string `json:"unit,omitempty" tf:"unit"`
+}
+
+type PolicySpecPredictiveScalingConfigurationMetricSpecificationCustomizedCapacityMetricSpecificationMetricDataQueries struct {
+	// +optional
+	Expression *string `json:"expression,omitempty" tf:"expression"`
+	ID         *string `json:"ID" tf:"id"`
+	// +optional
+	Label *string `json:"label,omitempty" tf:"label"`
+	// +optional
+	MetricStat *PolicySpecPredictiveScalingConfigurationMetricSpecificationCustomizedCapacityMetricSpecificationMetricDataQueriesMetricStat `json:"metricStat,omitempty" tf:"metric_stat"`
+	// +optional
+	ReturnData *bool `json:"returnData,omitempty" tf:"return_data"`
+}
+
+type PolicySpecPredictiveScalingConfigurationMetricSpecificationCustomizedCapacityMetricSpecification struct {
+	// +kubebuilder:validation:MaxItems=10
+	MetricDataQueries []PolicySpecPredictiveScalingConfigurationMetricSpecificationCustomizedCapacityMetricSpecificationMetricDataQueries `json:"metricDataQueries" tf:"metric_data_queries"`
+}
+
+type PolicySpecPredictiveScalingConfigurationMetricSpecificationCustomizedLoadMetricSpecificationMetricDataQueriesMetricStatMetricDimensions struct {
+	Name  *string `json:"name" tf:"name"`
+	Value *string `json:"value" tf:"value"`
+}
+
+type PolicySpecPredictiveScalingConfigurationMetricSpecificationCustomizedLoadMetricSpecificationMetricDataQueriesMetricStatMetric struct {
+	// +optional
+	Dimensions []PolicySpecPredictiveScalingConfigurationMetricSpecificationCustomizedLoadMetricSpecificationMetricDataQueriesMetricStatMetricDimensions `json:"dimensions,omitempty" tf:"dimensions"`
+	MetricName *string                                                                                                                                   `json:"metricName" tf:"metric_name"`
+	Namespace  *string                                                                                                                                   `json:"namespace" tf:"namespace"`
+}
+
+type PolicySpecPredictiveScalingConfigurationMetricSpecificationCustomizedLoadMetricSpecificationMetricDataQueriesMetricStat struct {
+	Metric *PolicySpecPredictiveScalingConfigurationMetricSpecificationCustomizedLoadMetricSpecificationMetricDataQueriesMetricStatMetric `json:"metric" tf:"metric"`
+	Stat   *string                                                                                                                        `json:"stat" tf:"stat"`
+	// +optional
+	Unit *string `json:"unit,omitempty" tf:"unit"`
+}
+
+type PolicySpecPredictiveScalingConfigurationMetricSpecificationCustomizedLoadMetricSpecificationMetricDataQueries struct {
+	// +optional
+	Expression *string `json:"expression,omitempty" tf:"expression"`
+	ID         *string `json:"ID" tf:"id"`
+	// +optional
+	Label *string `json:"label,omitempty" tf:"label"`
+	// +optional
+	MetricStat *PolicySpecPredictiveScalingConfigurationMetricSpecificationCustomizedLoadMetricSpecificationMetricDataQueriesMetricStat `json:"metricStat,omitempty" tf:"metric_stat"`
+	// +optional
+	ReturnData *bool `json:"returnData,omitempty" tf:"return_data"`
+}
+
+type PolicySpecPredictiveScalingConfigurationMetricSpecificationCustomizedLoadMetricSpecification struct {
+	// +kubebuilder:validation:MaxItems=10
+	MetricDataQueries []PolicySpecPredictiveScalingConfigurationMetricSpecificationCustomizedLoadMetricSpecificationMetricDataQueries `json:"metricDataQueries" tf:"metric_data_queries"`
+}
+
+type PolicySpecPredictiveScalingConfigurationMetricSpecificationCustomizedScalingMetricSpecificationMetricDataQueriesMetricStatMetricDimensions struct {
+	Name  *string `json:"name" tf:"name"`
+	Value *string `json:"value" tf:"value"`
+}
+
+type PolicySpecPredictiveScalingConfigurationMetricSpecificationCustomizedScalingMetricSpecificationMetricDataQueriesMetricStatMetric struct {
+	// +optional
+	Dimensions []PolicySpecPredictiveScalingConfigurationMetricSpecificationCustomizedScalingMetricSpecificationMetricDataQueriesMetricStatMetricDimensions `json:"dimensions,omitempty" tf:"dimensions"`
+	MetricName *string                                                                                                                                      `json:"metricName" tf:"metric_name"`
+	Namespace  *string                                                                                                                                      `json:"namespace" tf:"namespace"`
+}
+
+type PolicySpecPredictiveScalingConfigurationMetricSpecificationCustomizedScalingMetricSpecificationMetricDataQueriesMetricStat struct {
+	Metric *PolicySpecPredictiveScalingConfigurationMetricSpecificationCustomizedScalingMetricSpecificationMetricDataQueriesMetricStatMetric `json:"metric" tf:"metric"`
+	Stat   *string                                                                                                                           `json:"stat" tf:"stat"`
+	// +optional
+	Unit *string `json:"unit,omitempty" tf:"unit"`
+}
+
+type PolicySpecPredictiveScalingConfigurationMetricSpecificationCustomizedScalingMetricSpecificationMetricDataQueries struct {
+	// +optional
+	Expression *string `json:"expression,omitempty" tf:"expression"`
+	ID         *string `json:"ID" tf:"id"`
+	// +optional
+	Label *string `json:"label,omitempty" tf:"label"`
+	// +optional
+	MetricStat *PolicySpecPredictiveScalingConfigurationMetricSpecificationCustomizedScalingMetricSpecificationMetricDataQueriesMetricStat `json:"metricStat,omitempty" tf:"metric_stat"`
+	// +optional
+	ReturnData *bool `json:"returnData,omitempty" tf:"return_data"`
+}
+
+type PolicySpecPredictiveScalingConfigurationMetricSpecificationCustomizedScalingMetricSpecification struct {
+	// +kubebuilder:validation:MaxItems=10
+	MetricDataQueries []PolicySpecPredictiveScalingConfigurationMetricSpecificationCustomizedScalingMetricSpecificationMetricDataQueries `json:"metricDataQueries" tf:"metric_data_queries"`
+}
+
 type PolicySpecPredictiveScalingConfigurationMetricSpecificationPredefinedLoadMetricSpecification struct {
 	PredefinedMetricType *string `json:"predefinedMetricType" tf:"predefined_metric_type"`
 	ResourceLabel        *string `json:"resourceLabel" tf:"resource_label"`
@@ -57,6 +165,12 @@ type PolicySpecPredictiveScalingConfigurationMetricSpecificationPredefinedScalin
 }
 
 type PolicySpecPredictiveScalingConfigurationMetricSpecification struct {
+	// +optional
+	CustomizedCapacityMetricSpecification *PolicySpecPredictiveScalingConfigurationMetricSpecificationCustomizedCapacityMetricSpecification `json:"customizedCapacityMetricSpecification,omitempty" tf:"customized_capacity_metric_specification"`
+	// +optional
+	CustomizedLoadMetricSpecification *PolicySpecPredictiveScalingConfigurationMetricSpecificationCustomizedLoadMetricSpecification `json:"customizedLoadMetricSpecification,omitempty" tf:"customized_load_metric_specification"`
+	// +optional
+	CustomizedScalingMetricSpecification *PolicySpecPredictiveScalingConfigurationMetricSpecificationCustomizedScalingMetricSpecification `json:"customizedScalingMetricSpecification,omitempty" tf:"customized_scaling_metric_specification"`
 	// +optional
 	PredefinedLoadMetricSpecification *PolicySpecPredictiveScalingConfigurationMetricSpecificationPredefinedLoadMetricSpecification `json:"predefinedLoadMetricSpecification,omitempty" tf:"predefined_load_metric_specification"`
 	// +optional

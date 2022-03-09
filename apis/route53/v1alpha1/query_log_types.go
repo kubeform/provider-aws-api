@@ -58,6 +58,8 @@ type QueryLogSpec struct {
 type QueryLogSpecResource struct {
 	ID string `json:"id,omitempty" tf:"id,omitempty"`
 
+	// +optional
+	Arn                   *string `json:"arn,omitempty" tf:"arn"`
 	CloudwatchLogGroupArn *string `json:"cloudwatchLogGroupArn" tf:"cloudwatch_log_group_arn"`
 	ZoneID                *string `json:"zoneID" tf:"zone_id"`
 }

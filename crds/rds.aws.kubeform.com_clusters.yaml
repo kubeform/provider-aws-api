@@ -89,9 +89,13 @@ spec:
                     type: string
                   dbClusterParameterGroupName:
                     type: string
+                  dbInstanceParameterGroupName:
+                    type: string
                   dbSubnetGroupName:
                     type: string
                   deletionProtection:
+                    type: boolean
+                  enableGlobalWriteForwarding:
                     type: boolean
                   enableHTTPEndpoint:
                     type: boolean
@@ -106,6 +110,8 @@ spec:
                   engineMode:
                     type: string
                   engineVersion:
+                    type: string
+                  engineVersionActual:
                     type: string
                   finalSnapshotIdentifier:
                     type: string
@@ -285,9 +291,13 @@ spec:
                     type: string
                   dbClusterParameterGroupName:
                     type: string
+                  dbInstanceParameterGroupName:
+                    type: string
                   dbSubnetGroupName:
                     type: string
                   deletionProtection:
+                    type: boolean
+                  enableGlobalWriteForwarding:
                     type: boolean
                   enableHTTPEndpoint:
                     type: boolean
@@ -302,6 +312,8 @@ spec:
                   engineMode:
                     type: string
                   engineVersion:
+                    type: string
+                  engineVersionActual:
                     type: string
                   finalSnapshotIdentifier:
                     type: string

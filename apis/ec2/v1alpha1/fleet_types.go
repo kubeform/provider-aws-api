@@ -126,6 +126,8 @@ type FleetSpecResource struct {
 	ID string `json:"id,omitempty" tf:"id,omitempty"`
 
 	// +optional
+	Context *string `json:"context,omitempty" tf:"context"`
+	// +optional
 	ExcessCapacityTerminationPolicy *string                        `json:"excessCapacityTerminationPolicy,omitempty" tf:"excess_capacity_termination_policy"`
 	LaunchTemplateConfig            *FleetSpecLaunchTemplateConfig `json:"launchTemplateConfig" tf:"launch_template_config"`
 	// +optional

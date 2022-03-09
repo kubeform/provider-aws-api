@@ -22,6 +22,8 @@ type AttachmentExpansion interface{}
 
 type GroupExpansion interface{}
 
+type GroupTagExpansion interface{}
+
 type LifecycleHookExpansion interface{}
 
 type NotificationExpansion interface{}

@@ -91,7 +91,7 @@ func (r *UserLoginProfile) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range userloginprofileForceNewList {
+	for key, _ := range userloginprofileForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

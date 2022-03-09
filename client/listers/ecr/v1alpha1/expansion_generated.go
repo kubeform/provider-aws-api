@@ -26,6 +26,14 @@ type LifecyclePolicyListerExpansion interface{}
 // LifecyclePolicyNamespaceLister.
 type LifecyclePolicyNamespaceListerExpansion interface{}
 
+// PullThroughCacheRuleListerExpansion allows custom methods to be added to
+// PullThroughCacheRuleLister.
+type PullThroughCacheRuleListerExpansion interface{}
+
+// PullThroughCacheRuleNamespaceListerExpansion allows custom methods to be added to
+// PullThroughCacheRuleNamespaceLister.
+type PullThroughCacheRuleNamespaceListerExpansion interface{}
+
 // RegistryPolicyListerExpansion allows custom methods to be added to
 // RegistryPolicyLister.
 type RegistryPolicyListerExpansion interface{}
@@ -33,6 +41,14 @@ type RegistryPolicyListerExpansion interface{}
 // RegistryPolicyNamespaceListerExpansion allows custom methods to be added to
 // RegistryPolicyNamespaceLister.
 type RegistryPolicyNamespaceListerExpansion interface{}
+
+// RegistryScanningConfigurationListerExpansion allows custom methods to be added to
+// RegistryScanningConfigurationLister.
+type RegistryScanningConfigurationListerExpansion interface{}
+
+// RegistryScanningConfigurationNamespaceListerExpansion allows custom methods to be added to
+// RegistryScanningConfigurationNamespaceLister.
+type RegistryScanningConfigurationNamespaceListerExpansion interface{}
 
 // ReplicationConfigurationListerExpansion allows custom methods to be added to
 // ReplicationConfigurationLister.

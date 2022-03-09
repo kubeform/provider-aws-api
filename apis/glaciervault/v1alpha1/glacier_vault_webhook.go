@@ -88,7 +88,7 @@ func (r *GlacierVault) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range glaciervaultForceNewList {
+	for key, _ := range glaciervaultForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

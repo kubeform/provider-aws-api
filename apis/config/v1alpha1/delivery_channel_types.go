@@ -69,6 +69,8 @@ type DeliveryChannelSpecResource struct {
 	// +optional
 	S3KeyPrefix *string `json:"s3KeyPrefix,omitempty" tf:"s3_key_prefix"`
 	// +optional
+	S3KmsKeyArn *string `json:"s3KmsKeyArn,omitempty" tf:"s3_kms_key_arn"`
+	// +optional
 	SnapshotDeliveryProperties *DeliveryChannelSpecSnapshotDeliveryProperties `json:"snapshotDeliveryProperties,omitempty" tf:"snapshot_delivery_properties"`
 	// +optional
 	SnsTopicArn *string `json:"snsTopicArn,omitempty" tf:"sns_topic_arn"`

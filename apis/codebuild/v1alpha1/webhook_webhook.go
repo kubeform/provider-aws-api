@@ -88,7 +88,7 @@ func (r *Webhook) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range webhookForceNewList {
+	for key, _ := range webhookForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

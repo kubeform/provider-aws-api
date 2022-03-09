@@ -89,7 +89,7 @@ func (r *ConnectionRoute) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range connectionrouteForceNewList {
+	for key, _ := range connectionrouteForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

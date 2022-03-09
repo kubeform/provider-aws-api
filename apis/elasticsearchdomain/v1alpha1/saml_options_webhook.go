@@ -88,7 +88,7 @@ func (r *SamlOptions) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range samloptionsForceNewList {
+	for key, _ := range samloptionsForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

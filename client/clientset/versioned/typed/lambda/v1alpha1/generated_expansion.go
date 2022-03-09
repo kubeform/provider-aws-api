@@ -28,7 +28,11 @@ type FunctionExpansion interface{}
 
 type FunctionEventInvokeConfigExpansion interface{}
 
+type InvocationExpansion interface{}
+
 type LayerVersionExpansion interface{}
+
+type LayerVersionPermissionExpansion interface{}
 
 type PermissionExpansion interface{}
 

@@ -91,7 +91,7 @@ func (r *AutoScalingConfigurationVersion) ValidateUpdate(old runtime.Object) err
 		return err
 	}
 
-	for key := range autoscalingconfigurationversionForceNewList {
+	for key, _ := range autoscalingconfigurationversionForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

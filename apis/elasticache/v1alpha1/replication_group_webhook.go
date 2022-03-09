@@ -44,6 +44,7 @@ var _ webhook.Validator = &ReplicationGroup{}
 var replicationgroupForceNewList = map[string]bool{
 	"/at_rest_encryption_enabled":  true,
 	"/availability_zones":          true,
+	"/data_tiering_enabled":        true,
 	"/engine":                      true,
 	"/global_replication_group_id": true,
 	"/kms_key_id":                  true,
@@ -99,7 +100,7 @@ func (r *ReplicationGroup) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range replicationgroupForceNewList {
+	for key, _ := range replicationgroupForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

@@ -88,7 +88,7 @@ func (r *RequestValidator) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range requestvalidatorForceNewList {
+	for key, _ := range requestvalidatorForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

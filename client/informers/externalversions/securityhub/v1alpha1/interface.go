@@ -28,6 +28,8 @@ type Interface interface {
 	Accounts() AccountInformer
 	// ActionTargets returns a ActionTargetInformer.
 	ActionTargets() ActionTargetInformer
+	// FindingAggregators returns a FindingAggregatorInformer.
+	FindingAggregators() FindingAggregatorInformer
 	// Insights returns a InsightInformer.
 	Insights() InsightInformer
 	// InviteAccepters returns a InviteAccepterInformer.
@@ -36,8 +38,12 @@ type Interface interface {
 	Members() MemberInformer
 	// OrganizationAdminAccounts returns a OrganizationAdminAccountInformer.
 	OrganizationAdminAccounts() OrganizationAdminAccountInformer
+	// OrganizationConfigurations returns a OrganizationConfigurationInformer.
+	OrganizationConfigurations() OrganizationConfigurationInformer
 	// ProductSubscriptions returns a ProductSubscriptionInformer.
 	ProductSubscriptions() ProductSubscriptionInformer
+	// StandardsControls returns a StandardsControlInformer.
+	StandardsControls() StandardsControlInformer
 	// StandardsSubscriptions returns a StandardsSubscriptionInformer.
 	StandardsSubscriptions() StandardsSubscriptionInformer
 }
@@ -63,6 +69,11 @@ func (v *version) ActionTargets() ActionTargetInformer {
 	return &actionTargetInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
 }
 
+// FindingAggregators returns a FindingAggregatorInformer.
+func (v *version) FindingAggregators() FindingAggregatorInformer {
+	return &findingAggregatorInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
 // Insights returns a InsightInformer.
 func (v *version) Insights() InsightInformer {
 	return &insightInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
@@ -83,9 +94,19 @@ func (v *version) OrganizationAdminAccounts() OrganizationAdminAccountInformer {
 	return &organizationAdminAccountInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
 }
 
+// OrganizationConfigurations returns a OrganizationConfigurationInformer.
+func (v *version) OrganizationConfigurations() OrganizationConfigurationInformer {
+	return &organizationConfigurationInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
 // ProductSubscriptions returns a ProductSubscriptionInformer.
 func (v *version) ProductSubscriptions() ProductSubscriptionInformer {
 	return &productSubscriptionInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
+// StandardsControls returns a StandardsControlInformer.
+func (v *version) StandardsControls() StandardsControlInformer {
+	return &standardsControlInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
 }
 
 // StandardsSubscriptions returns a StandardsSubscriptionInformer.

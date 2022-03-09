@@ -58,6 +58,10 @@ type Interface interface {
 	ServerCertificates() ServerCertificateInformer
 	// ServiceLinkedRoles returns a ServiceLinkedRoleInformer.
 	ServiceLinkedRoles() ServiceLinkedRoleInformer
+	// ServiceSpecificCredentials returns a ServiceSpecificCredentialInformer.
+	ServiceSpecificCredentials() ServiceSpecificCredentialInformer
+	// SigningCertificates returns a SigningCertificateInformer.
+	SigningCertificates() SigningCertificateInformer
 	// Users returns a UserInformer.
 	Users() UserInformer
 	// UserGroupMemberships returns a UserGroupMembershipInformer.
@@ -70,6 +74,8 @@ type Interface interface {
 	UserPolicyAttachments() UserPolicyAttachmentInformer
 	// UserSSHKeys returns a UserSSHKeyInformer.
 	UserSSHKeys() UserSSHKeyInformer
+	// VirtualMfaDevices returns a VirtualMfaDeviceInformer.
+	VirtualMfaDevices() VirtualMfaDeviceInformer
 }
 
 type version struct {
@@ -168,6 +174,16 @@ func (v *version) ServiceLinkedRoles() ServiceLinkedRoleInformer {
 	return &serviceLinkedRoleInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
 }
 
+// ServiceSpecificCredentials returns a ServiceSpecificCredentialInformer.
+func (v *version) ServiceSpecificCredentials() ServiceSpecificCredentialInformer {
+	return &serviceSpecificCredentialInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
+// SigningCertificates returns a SigningCertificateInformer.
+func (v *version) SigningCertificates() SigningCertificateInformer {
+	return &signingCertificateInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
 // Users returns a UserInformer.
 func (v *version) Users() UserInformer {
 	return &userInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
@@ -196,4 +212,9 @@ func (v *version) UserPolicyAttachments() UserPolicyAttachmentInformer {
 // UserSSHKeys returns a UserSSHKeyInformer.
 func (v *version) UserSSHKeys() UserSSHKeyInformer {
 	return &userSSHKeyInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
+// VirtualMfaDevices returns a VirtualMfaDeviceInformer.
+func (v *version) VirtualMfaDevices() VirtualMfaDeviceInformer {
+	return &virtualMfaDeviceInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
 }

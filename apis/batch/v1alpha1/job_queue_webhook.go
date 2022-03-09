@@ -88,7 +88,7 @@ func (r *JobQueue) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range jobqueueForceNewList {
+	for key, _ := range jobqueueForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

@@ -61,8 +61,9 @@ type VpcSpecResource struct {
 	// +optional
 	Arn *string `json:"arn,omitempty" tf:"arn"`
 	// +optional
-	AssignGeneratedIpv6CIDRBlock *bool   `json:"assignGeneratedIpv6CIDRBlock,omitempty" tf:"assign_generated_ipv6_cidr_block"`
-	CidrBlock                    *string `json:"cidrBlock" tf:"cidr_block"`
+	AssignGeneratedIpv6CIDRBlock *bool `json:"assignGeneratedIpv6CIDRBlock,omitempty" tf:"assign_generated_ipv6_cidr_block"`
+	// +optional
+	CidrBlock *string `json:"cidrBlock,omitempty" tf:"cidr_block"`
 	// +optional
 	DefaultNetworkACLID *string `json:"defaultNetworkACLID,omitempty" tf:"default_network_acl_id"`
 	// +optional
@@ -82,9 +83,19 @@ type VpcSpecResource struct {
 	// +optional
 	InstanceTenancy *string `json:"instanceTenancy,omitempty" tf:"instance_tenancy"`
 	// +optional
+	Ipv4IpamPoolID *string `json:"ipv4IpamPoolID,omitempty" tf:"ipv4_ipam_pool_id"`
+	// +optional
+	Ipv4NetmaskLength *int64 `json:"ipv4NetmaskLength,omitempty" tf:"ipv4_netmask_length"`
+	// +optional
 	Ipv6AssociationID *string `json:"ipv6AssociationID,omitempty" tf:"ipv6_association_id"`
 	// +optional
 	Ipv6CIDRBlock *string `json:"ipv6CIDRBlock,omitempty" tf:"ipv6_cidr_block"`
+	// +optional
+	Ipv6CIDRBlockNetworkBorderGroup *string `json:"ipv6CIDRBlockNetworkBorderGroup,omitempty" tf:"ipv6_cidr_block_network_border_group"`
+	// +optional
+	Ipv6IpamPoolID *string `json:"ipv6IpamPoolID,omitempty" tf:"ipv6_ipam_pool_id"`
+	// +optional
+	Ipv6NetmaskLength *int64 `json:"ipv6NetmaskLength,omitempty" tf:"ipv6_netmask_length"`
 	// +optional
 	MainRouteTableID *string `json:"mainRouteTableID,omitempty" tf:"main_route_table_id"`
 	// +optional

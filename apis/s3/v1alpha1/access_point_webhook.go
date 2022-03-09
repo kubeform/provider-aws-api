@@ -49,6 +49,7 @@ var accesspointForceNewList = map[string]bool{
 	"/public_access_block_configuration/*/block_public_policy":     true,
 	"/public_access_block_configuration/*/ignore_public_acls":      true,
 	"/public_access_block_configuration/*/restrict_public_buckets": true,
+	"/vpc_configuration/*/vpc_id":                                  true,
 }
 
 // ValidateCreate implements webhook.Validator so a webhook will be registered for the type
@@ -94,7 +95,7 @@ func (r *AccessPoint) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range accesspointForceNewList {
+	for key, _ := range accesspointForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

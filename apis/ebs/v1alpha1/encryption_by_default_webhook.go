@@ -86,7 +86,7 @@ func (r *EncryptionByDefault) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range encryptionbydefaultForceNewList {
+	for key, _ := range encryptionbydefaultForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

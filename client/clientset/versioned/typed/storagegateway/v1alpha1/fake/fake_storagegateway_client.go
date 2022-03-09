@@ -37,6 +37,10 @@ func (c *FakeStoragegatewayV1alpha1) CachedIscsiVolumes(namespace string) v1alph
 	return &FakeCachedIscsiVolumes{c, namespace}
 }
 
+func (c *FakeStoragegatewayV1alpha1) FileSystemAssociations(namespace string) v1alpha1.FileSystemAssociationInterface {
+	return &FakeFileSystemAssociations{c, namespace}
+}
+
 func (c *FakeStoragegatewayV1alpha1) Gateways(namespace string) v1alpha1.GatewayInterface {
 	return &FakeGateways{c, namespace}
 }

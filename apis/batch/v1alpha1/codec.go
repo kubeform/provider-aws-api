@@ -27,19 +27,23 @@ import (
 
 func GetEncoder() map[string]jsoniter.ValEncoder {
 	return map[string]jsoniter.ValEncoder{
-		jsoniter.MustGetKind(reflect2.TypeOf(ComputeEnvironmentSpecComputeResources{}).Type1()):               ComputeEnvironmentSpecComputeResourcesCodec{},
-		jsoniter.MustGetKind(reflect2.TypeOf(ComputeEnvironmentSpecComputeResourcesLaunchTemplate{}).Type1()): ComputeEnvironmentSpecComputeResourcesLaunchTemplateCodec{},
-		jsoniter.MustGetKind(reflect2.TypeOf(JobDefinitionSpecRetryStrategy{}).Type1()):                       JobDefinitionSpecRetryStrategyCodec{},
-		jsoniter.MustGetKind(reflect2.TypeOf(JobDefinitionSpecTimeout{}).Type1()):                             JobDefinitionSpecTimeoutCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(ComputeEnvironmentSpecComputeResources{}).Type1()):                 ComputeEnvironmentSpecComputeResourcesCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(ComputeEnvironmentSpecComputeResourcesEc2Configuration{}).Type1()): ComputeEnvironmentSpecComputeResourcesEc2ConfigurationCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(ComputeEnvironmentSpecComputeResourcesLaunchTemplate{}).Type1()):   ComputeEnvironmentSpecComputeResourcesLaunchTemplateCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(JobDefinitionSpecRetryStrategy{}).Type1()):                         JobDefinitionSpecRetryStrategyCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(JobDefinitionSpecTimeout{}).Type1()):                               JobDefinitionSpecTimeoutCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(SchedulingPolicySpecFairSharePolicy{}).Type1()):                    SchedulingPolicySpecFairSharePolicyCodec{},
 	}
 }
 
 func GetDecoder() map[string]jsoniter.ValDecoder {
 	return map[string]jsoniter.ValDecoder{
-		jsoniter.MustGetKind(reflect2.TypeOf(ComputeEnvironmentSpecComputeResources{}).Type1()):               ComputeEnvironmentSpecComputeResourcesCodec{},
-		jsoniter.MustGetKind(reflect2.TypeOf(ComputeEnvironmentSpecComputeResourcesLaunchTemplate{}).Type1()): ComputeEnvironmentSpecComputeResourcesLaunchTemplateCodec{},
-		jsoniter.MustGetKind(reflect2.TypeOf(JobDefinitionSpecRetryStrategy{}).Type1()):                       JobDefinitionSpecRetryStrategyCodec{},
-		jsoniter.MustGetKind(reflect2.TypeOf(JobDefinitionSpecTimeout{}).Type1()):                             JobDefinitionSpecTimeoutCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(ComputeEnvironmentSpecComputeResources{}).Type1()):                 ComputeEnvironmentSpecComputeResourcesCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(ComputeEnvironmentSpecComputeResourcesEc2Configuration{}).Type1()): ComputeEnvironmentSpecComputeResourcesEc2ConfigurationCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(ComputeEnvironmentSpecComputeResourcesLaunchTemplate{}).Type1()):   ComputeEnvironmentSpecComputeResourcesLaunchTemplateCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(JobDefinitionSpecRetryStrategy{}).Type1()):                         JobDefinitionSpecRetryStrategyCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(JobDefinitionSpecTimeout{}).Type1()):                               JobDefinitionSpecTimeoutCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(SchedulingPolicySpecFairSharePolicy{}).Type1()):                    SchedulingPolicySpecFairSharePolicyCodec{},
 	}
 }
 
@@ -131,6 +135,85 @@ func (ComputeEnvironmentSpecComputeResourcesCodec) Decode(ptr unsafe.Pointer, it
 		}
 	default:
 		iter.ReportError("decode ComputeEnvironmentSpecComputeResources", "unexpected JSON type")
+	}
+}
+
+// +k8s:deepcopy-gen=false
+type ComputeEnvironmentSpecComputeResourcesEc2ConfigurationCodec struct {
+}
+
+func (ComputeEnvironmentSpecComputeResourcesEc2ConfigurationCodec) IsEmpty(ptr unsafe.Pointer) bool {
+	return (*ComputeEnvironmentSpecComputeResourcesEc2Configuration)(ptr) == nil
+}
+
+func (ComputeEnvironmentSpecComputeResourcesEc2ConfigurationCodec) Encode(ptr unsafe.Pointer, stream *jsoniter.Stream) {
+	obj := (*ComputeEnvironmentSpecComputeResourcesEc2Configuration)(ptr)
+	var objs []ComputeEnvironmentSpecComputeResourcesEc2Configuration
+	if obj != nil {
+		objs = []ComputeEnvironmentSpecComputeResourcesEc2Configuration{*obj}
+	}
+
+	jsonit := jsoniter.Config{
+		EscapeHTML:             true,
+		SortMapKeys:            true,
+		ValidateJsonRawMessage: true,
+		TagKey:                 "tf",
+		TypeEncoders:           getEncodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(ComputeEnvironmentSpecComputeResourcesEc2Configuration{}).Type1())),
+	}.Froze()
+
+	byt, _ := jsonit.Marshal(objs)
+
+	stream.Write(byt)
+}
+
+func (ComputeEnvironmentSpecComputeResourcesEc2ConfigurationCodec) Decode(ptr unsafe.Pointer, iter *jsoniter.Iterator) {
+	switch iter.WhatIsNext() {
+	case jsoniter.NilValue:
+		iter.Skip()
+		*(*ComputeEnvironmentSpecComputeResourcesEc2Configuration)(ptr) = ComputeEnvironmentSpecComputeResourcesEc2Configuration{}
+		return
+	case jsoniter.ArrayValue:
+		objsByte := iter.SkipAndReturnBytes()
+		if len(objsByte) > 0 {
+			var objs []ComputeEnvironmentSpecComputeResourcesEc2Configuration
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(ComputeEnvironmentSpecComputeResourcesEc2Configuration{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objsByte, &objs)
+
+			if len(objs) > 0 {
+				*(*ComputeEnvironmentSpecComputeResourcesEc2Configuration)(ptr) = objs[0]
+			} else {
+				*(*ComputeEnvironmentSpecComputeResourcesEc2Configuration)(ptr) = ComputeEnvironmentSpecComputeResourcesEc2Configuration{}
+			}
+		} else {
+			*(*ComputeEnvironmentSpecComputeResourcesEc2Configuration)(ptr) = ComputeEnvironmentSpecComputeResourcesEc2Configuration{}
+		}
+	case jsoniter.ObjectValue:
+		objByte := iter.SkipAndReturnBytes()
+		if len(objByte) > 0 {
+			var obj ComputeEnvironmentSpecComputeResourcesEc2Configuration
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(ComputeEnvironmentSpecComputeResourcesEc2Configuration{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objByte, &obj)
+
+			*(*ComputeEnvironmentSpecComputeResourcesEc2Configuration)(ptr) = obj
+		} else {
+			*(*ComputeEnvironmentSpecComputeResourcesEc2Configuration)(ptr) = ComputeEnvironmentSpecComputeResourcesEc2Configuration{}
+		}
+	default:
+		iter.ReportError("decode ComputeEnvironmentSpecComputeResourcesEc2Configuration", "unexpected JSON type")
 	}
 }
 
@@ -368,5 +451,84 @@ func (JobDefinitionSpecTimeoutCodec) Decode(ptr unsafe.Pointer, iter *jsoniter.I
 		}
 	default:
 		iter.ReportError("decode JobDefinitionSpecTimeout", "unexpected JSON type")
+	}
+}
+
+// +k8s:deepcopy-gen=false
+type SchedulingPolicySpecFairSharePolicyCodec struct {
+}
+
+func (SchedulingPolicySpecFairSharePolicyCodec) IsEmpty(ptr unsafe.Pointer) bool {
+	return (*SchedulingPolicySpecFairSharePolicy)(ptr) == nil
+}
+
+func (SchedulingPolicySpecFairSharePolicyCodec) Encode(ptr unsafe.Pointer, stream *jsoniter.Stream) {
+	obj := (*SchedulingPolicySpecFairSharePolicy)(ptr)
+	var objs []SchedulingPolicySpecFairSharePolicy
+	if obj != nil {
+		objs = []SchedulingPolicySpecFairSharePolicy{*obj}
+	}
+
+	jsonit := jsoniter.Config{
+		EscapeHTML:             true,
+		SortMapKeys:            true,
+		ValidateJsonRawMessage: true,
+		TagKey:                 "tf",
+		TypeEncoders:           getEncodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(SchedulingPolicySpecFairSharePolicy{}).Type1())),
+	}.Froze()
+
+	byt, _ := jsonit.Marshal(objs)
+
+	stream.Write(byt)
+}
+
+func (SchedulingPolicySpecFairSharePolicyCodec) Decode(ptr unsafe.Pointer, iter *jsoniter.Iterator) {
+	switch iter.WhatIsNext() {
+	case jsoniter.NilValue:
+		iter.Skip()
+		*(*SchedulingPolicySpecFairSharePolicy)(ptr) = SchedulingPolicySpecFairSharePolicy{}
+		return
+	case jsoniter.ArrayValue:
+		objsByte := iter.SkipAndReturnBytes()
+		if len(objsByte) > 0 {
+			var objs []SchedulingPolicySpecFairSharePolicy
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(SchedulingPolicySpecFairSharePolicy{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objsByte, &objs)
+
+			if len(objs) > 0 {
+				*(*SchedulingPolicySpecFairSharePolicy)(ptr) = objs[0]
+			} else {
+				*(*SchedulingPolicySpecFairSharePolicy)(ptr) = SchedulingPolicySpecFairSharePolicy{}
+			}
+		} else {
+			*(*SchedulingPolicySpecFairSharePolicy)(ptr) = SchedulingPolicySpecFairSharePolicy{}
+		}
+	case jsoniter.ObjectValue:
+		objByte := iter.SkipAndReturnBytes()
+		if len(objByte) > 0 {
+			var obj SchedulingPolicySpecFairSharePolicy
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(SchedulingPolicySpecFairSharePolicy{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objByte, &obj)
+
+			*(*SchedulingPolicySpecFairSharePolicy)(ptr) = obj
+		} else {
+			*(*SchedulingPolicySpecFairSharePolicy)(ptr) = SchedulingPolicySpecFairSharePolicy{}
+		}
+	default:
+		iter.ReportError("decode SchedulingPolicySpecFairSharePolicy", "unexpected JSON type")
 	}
 }

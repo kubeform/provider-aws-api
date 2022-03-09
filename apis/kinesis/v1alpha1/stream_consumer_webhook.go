@@ -89,7 +89,7 @@ func (r *StreamConsumer) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range streamconsumerForceNewList {
+	for key, _ := range streamconsumerForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

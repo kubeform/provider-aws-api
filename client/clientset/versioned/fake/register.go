@@ -20,6 +20,7 @@ package fake
 
 import (
 	accessanalyzerv1alpha1 "kubeform.dev/provider-aws-api/apis/accessanalyzer/v1alpha1"
+	accountv1alpha1 "kubeform.dev/provider-aws-api/apis/account/v1alpha1"
 	acmv1alpha1 "kubeform.dev/provider-aws-api/apis/acm/v1alpha1"
 	acmpcav1alpha1 "kubeform.dev/provider-aws-api/apis/acmpca/v1alpha1"
 	albv1alpha1 "kubeform.dev/provider-aws-api/apis/alb/v1alpha1"
@@ -29,8 +30,10 @@ import (
 	apigatewayv2v1alpha1 "kubeform.dev/provider-aws-api/apis/apigatewayv2/v1alpha1"
 	appv1alpha1 "kubeform.dev/provider-aws-api/apis/app/v1alpha1"
 	appautoscalingv1alpha1 "kubeform.dev/provider-aws-api/apis/appautoscaling/v1alpha1"
+	appconfigv1alpha1 "kubeform.dev/provider-aws-api/apis/appconfig/v1alpha1"
 	appmeshv1alpha1 "kubeform.dev/provider-aws-api/apis/appmesh/v1alpha1"
 	apprunnerv1alpha1 "kubeform.dev/provider-aws-api/apis/apprunner/v1alpha1"
+	appstreamv1alpha1 "kubeform.dev/provider-aws-api/apis/appstream/v1alpha1"
 	appsyncv1alpha1 "kubeform.dev/provider-aws-api/apis/appsync/v1alpha1"
 	athenav1alpha1 "kubeform.dev/provider-aws-api/apis/athena/v1alpha1"
 	autoscalingv1alpha1 "kubeform.dev/provider-aws-api/apis/autoscaling/v1alpha1"
@@ -38,11 +41,14 @@ import (
 	backupv1alpha1 "kubeform.dev/provider-aws-api/apis/backup/v1alpha1"
 	batchv1alpha1 "kubeform.dev/provider-aws-api/apis/batch/v1alpha1"
 	budgetsv1alpha1 "kubeform.dev/provider-aws-api/apis/budgets/v1alpha1"
+	chimev1alpha1 "kubeform.dev/provider-aws-api/apis/chime/v1alpha1"
 	cloud9v1alpha1 "kubeform.dev/provider-aws-api/apis/cloud9/v1alpha1"
+	cloudcontrolapiv1alpha1 "kubeform.dev/provider-aws-api/apis/cloudcontrolapi/v1alpha1"
 	cloudformationstackv1alpha1 "kubeform.dev/provider-aws-api/apis/cloudformationstack/v1alpha1"
 	cloudformationtypev1alpha1 "kubeform.dev/provider-aws-api/apis/cloudformationtype/v1alpha1"
 	cloudfrontv1alpha1 "kubeform.dev/provider-aws-api/apis/cloudfront/v1alpha1"
 	cloudhsmv2v1alpha1 "kubeform.dev/provider-aws-api/apis/cloudhsmv2/v1alpha1"
+	cloudsearchv1alpha1 "kubeform.dev/provider-aws-api/apis/cloudsearch/v1alpha1"
 	cloudtrailv1alpha1 "kubeform.dev/provider-aws-api/apis/cloudtrail/v1alpha1"
 	cloudwatchv1alpha1 "kubeform.dev/provider-aws-api/apis/cloudwatch/v1alpha1"
 	codeartifactv1alpha1 "kubeform.dev/provider-aws-api/apis/codeartifact/v1alpha1"
@@ -54,13 +60,16 @@ import (
 	codestarnotificationsv1alpha1 "kubeform.dev/provider-aws-api/apis/codestarnotifications/v1alpha1"
 	cognitov1alpha1 "kubeform.dev/provider-aws-api/apis/cognito/v1alpha1"
 	configv1alpha1 "kubeform.dev/provider-aws-api/apis/config/v1alpha1"
+	connectv1alpha1 "kubeform.dev/provider-aws-api/apis/connect/v1alpha1"
 	curv1alpha1 "kubeform.dev/provider-aws-api/apis/cur/v1alpha1"
 	customerv1alpha1 "kubeform.dev/provider-aws-api/apis/customer/v1alpha1"
+	dataexchangev1alpha1 "kubeform.dev/provider-aws-api/apis/dataexchange/v1alpha1"
 	datapipelinev1alpha1 "kubeform.dev/provider-aws-api/apis/datapipeline/v1alpha1"
 	datasyncv1alpha1 "kubeform.dev/provider-aws-api/apis/datasync/v1alpha1"
 	daxv1alpha1 "kubeform.dev/provider-aws-api/apis/dax/v1alpha1"
 	dbv1alpha1 "kubeform.dev/provider-aws-api/apis/db/v1alpha1"
 	defaultv1alpha1 "kubeform.dev/provider-aws-api/apis/default/v1alpha1"
+	detectivev1alpha1 "kubeform.dev/provider-aws-api/apis/detective/v1alpha1"
 	devicefarmv1alpha1 "kubeform.dev/provider-aws-api/apis/devicefarm/v1alpha1"
 	directoryservicev1alpha1 "kubeform.dev/provider-aws-api/apis/directoryservice/v1alpha1"
 	dlmv1alpha1 "kubeform.dev/provider-aws-api/apis/dlm/v1alpha1"
@@ -90,6 +99,7 @@ import (
 	glaciervaultv1alpha1 "kubeform.dev/provider-aws-api/apis/glaciervault/v1alpha1"
 	globalacceleratorv1alpha1 "kubeform.dev/provider-aws-api/apis/globalaccelerator/v1alpha1"
 	gluev1alpha1 "kubeform.dev/provider-aws-api/apis/glue/v1alpha1"
+	grafanav1alpha1 "kubeform.dev/provider-aws-api/apis/grafana/v1alpha1"
 	guarddutyv1alpha1 "kubeform.dev/provider-aws-api/apis/guardduty/v1alpha1"
 	iamv1alpha1 "kubeform.dev/provider-aws-api/apis/iam/v1alpha1"
 	imagebuilderv1alpha1 "kubeform.dev/provider-aws-api/apis/imagebuilder/v1alpha1"
@@ -113,8 +123,10 @@ import (
 	macie2v1alpha1 "kubeform.dev/provider-aws-api/apis/macie2/v1alpha1"
 	mainv1alpha1 "kubeform.dev/provider-aws-api/apis/main/v1alpha1"
 	mediav1alpha1 "kubeform.dev/provider-aws-api/apis/media/v1alpha1"
+	memorydbv1alpha1 "kubeform.dev/provider-aws-api/apis/memorydb/v1alpha1"
 	mqv1alpha1 "kubeform.dev/provider-aws-api/apis/mq/v1alpha1"
 	mskv1alpha1 "kubeform.dev/provider-aws-api/apis/msk/v1alpha1"
+	mskconnectv1alpha1 "kubeform.dev/provider-aws-api/apis/mskconnect/v1alpha1"
 	mwaav1alpha1 "kubeform.dev/provider-aws-api/apis/mwaa/v1alpha1"
 	natv1alpha1 "kubeform.dev/provider-aws-api/apis/nat/v1alpha1"
 	neptunev1alpha1 "kubeform.dev/provider-aws-api/apis/neptune/v1alpha1"
@@ -134,6 +146,9 @@ import (
 	resourcegroupsv1alpha1 "kubeform.dev/provider-aws-api/apis/resourcegroups/v1alpha1"
 	routev1alpha1 "kubeform.dev/provider-aws-api/apis/route/v1alpha1"
 	route53v1alpha1 "kubeform.dev/provider-aws-api/apis/route53/v1alpha1"
+	route53domainsv1alpha1 "kubeform.dev/provider-aws-api/apis/route53domains/v1alpha1"
+	route53recoverycontrolconfigv1alpha1 "kubeform.dev/provider-aws-api/apis/route53recoverycontrolconfig/v1alpha1"
+	route53recoveryreadinessv1alpha1 "kubeform.dev/provider-aws-api/apis/route53recoveryreadiness/v1alpha1"
 	s3v1alpha1 "kubeform.dev/provider-aws-api/apis/s3/v1alpha1"
 	s3controlv1alpha1 "kubeform.dev/provider-aws-api/apis/s3control/v1alpha1"
 	s3outpostsv1alpha1 "kubeform.dev/provider-aws-api/apis/s3outposts/v1alpha1"
@@ -185,6 +200,7 @@ var codecs = serializer.NewCodecFactory(scheme)
 
 var localSchemeBuilder = runtime.SchemeBuilder{
 	accessanalyzerv1alpha1.AddToScheme,
+	accountv1alpha1.AddToScheme,
 	acmv1alpha1.AddToScheme,
 	acmpcav1alpha1.AddToScheme,
 	albv1alpha1.AddToScheme,
@@ -194,8 +210,10 @@ var localSchemeBuilder = runtime.SchemeBuilder{
 	apigatewayv2v1alpha1.AddToScheme,
 	appv1alpha1.AddToScheme,
 	appautoscalingv1alpha1.AddToScheme,
+	appconfigv1alpha1.AddToScheme,
 	appmeshv1alpha1.AddToScheme,
 	apprunnerv1alpha1.AddToScheme,
+	appstreamv1alpha1.AddToScheme,
 	appsyncv1alpha1.AddToScheme,
 	athenav1alpha1.AddToScheme,
 	autoscalingv1alpha1.AddToScheme,
@@ -203,11 +221,14 @@ var localSchemeBuilder = runtime.SchemeBuilder{
 	backupv1alpha1.AddToScheme,
 	batchv1alpha1.AddToScheme,
 	budgetsv1alpha1.AddToScheme,
+	chimev1alpha1.AddToScheme,
 	cloud9v1alpha1.AddToScheme,
+	cloudcontrolapiv1alpha1.AddToScheme,
 	cloudformationstackv1alpha1.AddToScheme,
 	cloudformationtypev1alpha1.AddToScheme,
 	cloudfrontv1alpha1.AddToScheme,
 	cloudhsmv2v1alpha1.AddToScheme,
+	cloudsearchv1alpha1.AddToScheme,
 	cloudtrailv1alpha1.AddToScheme,
 	cloudwatchv1alpha1.AddToScheme,
 	codeartifactv1alpha1.AddToScheme,
@@ -219,13 +240,16 @@ var localSchemeBuilder = runtime.SchemeBuilder{
 	codestarnotificationsv1alpha1.AddToScheme,
 	cognitov1alpha1.AddToScheme,
 	configv1alpha1.AddToScheme,
+	connectv1alpha1.AddToScheme,
 	curv1alpha1.AddToScheme,
 	customerv1alpha1.AddToScheme,
+	dataexchangev1alpha1.AddToScheme,
 	datapipelinev1alpha1.AddToScheme,
 	datasyncv1alpha1.AddToScheme,
 	daxv1alpha1.AddToScheme,
 	dbv1alpha1.AddToScheme,
 	defaultv1alpha1.AddToScheme,
+	detectivev1alpha1.AddToScheme,
 	devicefarmv1alpha1.AddToScheme,
 	directoryservicev1alpha1.AddToScheme,
 	dlmv1alpha1.AddToScheme,
@@ -255,6 +279,7 @@ var localSchemeBuilder = runtime.SchemeBuilder{
 	glaciervaultv1alpha1.AddToScheme,
 	globalacceleratorv1alpha1.AddToScheme,
 	gluev1alpha1.AddToScheme,
+	grafanav1alpha1.AddToScheme,
 	guarddutyv1alpha1.AddToScheme,
 	iamv1alpha1.AddToScheme,
 	imagebuilderv1alpha1.AddToScheme,
@@ -278,8 +303,10 @@ var localSchemeBuilder = runtime.SchemeBuilder{
 	macie2v1alpha1.AddToScheme,
 	mainv1alpha1.AddToScheme,
 	mediav1alpha1.AddToScheme,
+	memorydbv1alpha1.AddToScheme,
 	mqv1alpha1.AddToScheme,
 	mskv1alpha1.AddToScheme,
+	mskconnectv1alpha1.AddToScheme,
 	mwaav1alpha1.AddToScheme,
 	natv1alpha1.AddToScheme,
 	neptunev1alpha1.AddToScheme,
@@ -299,6 +326,9 @@ var localSchemeBuilder = runtime.SchemeBuilder{
 	resourcegroupsv1alpha1.AddToScheme,
 	routev1alpha1.AddToScheme,
 	route53v1alpha1.AddToScheme,
+	route53domainsv1alpha1.AddToScheme,
+	route53recoverycontrolconfigv1alpha1.AddToScheme,
+	route53recoveryreadinessv1alpha1.AddToScheme,
 	s3v1alpha1.AddToScheme,
 	s3controlv1alpha1.AddToScheme,
 	s3outpostsv1alpha1.AddToScheme,

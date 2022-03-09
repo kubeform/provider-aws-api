@@ -46,12 +46,23 @@ type ReplicationConfigurationSpecReplicationConfigurationRuleDestination struct 
 	RegistryID *string `json:"registryID" tf:"registry_id"`
 }
 
+type ReplicationConfigurationSpecReplicationConfigurationRuleRepositoryFilter struct {
+	Filter     *string `json:"filter" tf:"filter"`
+	FilterType *string `json:"filterType" tf:"filter_type"`
+}
+
 type ReplicationConfigurationSpecReplicationConfigurationRule struct {
+	// +kubebuilder:validation:MaxItems=25
 	Destination []ReplicationConfigurationSpecReplicationConfigurationRuleDestination `json:"destination" tf:"destination"`
+	// +optional
+	// +kubebuilder:validation:MaxItems=100
+	// +kubebuilder:validation:MinItems=1
+	RepositoryFilter []ReplicationConfigurationSpecReplicationConfigurationRuleRepositoryFilter `json:"repositoryFilter,omitempty" tf:"repository_filter"`
 }
 
 type ReplicationConfigurationSpecReplicationConfiguration struct {
-	Rule *ReplicationConfigurationSpecReplicationConfigurationRule `json:"rule" tf:"rule"`
+	// +kubebuilder:validation:MaxItems=10
+	Rule []ReplicationConfigurationSpecReplicationConfigurationRule `json:"rule" tf:"rule"`
 }
 
 type ReplicationConfigurationSpec struct {

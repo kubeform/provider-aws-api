@@ -22,9 +22,15 @@ type CachePolicyExpansion interface{}
 
 type DistributionExpansion interface{}
 
+type FieldLevelEncryptionConfigExpansion interface{}
+
+type FieldLevelEncryptionProfileExpansion interface{}
+
 type FunctionExpansion interface{}
 
 type KeyGroupExpansion interface{}
+
+type MonitoringSubscriptionExpansion interface{}
 
 type OriginAccessIdentityExpansion interface{}
 
@@ -33,3 +39,5 @@ type OriginRequestPolicyExpansion interface{}
 type PublicKeyExpansion interface{}
 
 type RealtimeLogConfigExpansion interface{}
+
+type ResponseHeadersPolicyExpansion interface{}

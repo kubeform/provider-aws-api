@@ -70,6 +70,8 @@ func addKnownTypes(scheme *runtime.Scheme) error {
 		&ConformancePackList{},
 		&DeliveryChannel{},
 		&DeliveryChannelList{},
+		&OrganizationConformancePack{},
+		&OrganizationConformancePackList{},
 		&OrganizationCustomRule{},
 		&OrganizationCustomRuleList{},
 		&OrganizationManagedRule{},

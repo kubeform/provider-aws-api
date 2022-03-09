@@ -60,6 +60,7 @@ spec:
                   arn:
                     type: string
                   capacityProviders:
+                    description: Deprecated
                     items:
                       type: string
                     type: array
@@ -87,6 +88,7 @@ spec:
                         type: object
                     type: object
                   defaultCapacityProviderStrategy:
+                    description: Deprecated
                     items:
                       properties:
                         base:
@@ -133,6 +135,7 @@ spec:
                   arn:
                     type: string
                   capacityProviders:
+                    description: Deprecated
                     items:
                       type: string
                     type: array
@@ -160,6 +163,7 @@ spec:
                         type: object
                     type: object
                   defaultCapacityProviderStrategy:
+                    description: Deprecated
                     items:
                       properties:
                         base:

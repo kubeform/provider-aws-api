@@ -88,7 +88,7 @@ func (r *Repository) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range repositoryForceNewList {
+	for key, _ := range repositoryForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

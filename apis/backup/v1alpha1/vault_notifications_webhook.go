@@ -90,7 +90,7 @@ func (r *VaultNotifications) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range vaultnotificationsForceNewList {
+	for key, _ := range vaultnotificationsForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

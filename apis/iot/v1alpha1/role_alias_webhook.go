@@ -88,7 +88,7 @@ func (r *RoleAlias) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range rolealiasForceNewList {
+	for key, _ := range rolealiasForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

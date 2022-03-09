@@ -88,7 +88,7 @@ func (r *GeoMatchSet) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range geomatchsetForceNewList {
+	for key, _ := range geomatchsetForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

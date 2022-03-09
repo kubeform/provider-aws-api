@@ -88,7 +88,7 @@ func (r *SecretPolicy) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range secretpolicyForceNewList {
+	for key, _ := range secretpolicyForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

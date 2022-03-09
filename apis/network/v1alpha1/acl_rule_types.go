@@ -65,9 +65,9 @@ type AclRuleSpecResource struct {
 	// +optional
 	FromPort *int64 `json:"fromPort,omitempty" tf:"from_port"`
 	// +optional
-	IcmpCode *string `json:"icmpCode,omitempty" tf:"icmp_code"`
+	IcmpCode *int64 `json:"icmpCode,omitempty" tf:"icmp_code"`
 	// +optional
-	IcmpType *string `json:"icmpType,omitempty" tf:"icmp_type"`
+	IcmpType *int64 `json:"icmpType,omitempty" tf:"icmp_type"`
 	// +optional
 	Ipv6CIDRBlock *string `json:"ipv6CIDRBlock,omitempty" tf:"ipv6_cidr_block"`
 	NetworkACLID  *string `json:"networkACLID" tf:"network_acl_id"`

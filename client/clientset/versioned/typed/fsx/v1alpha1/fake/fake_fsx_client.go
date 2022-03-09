@@ -29,8 +29,40 @@ type FakeFsxV1alpha1 struct {
 	*testing.Fake
 }
 
+func (c *FakeFsxV1alpha1) Backups(namespace string) v1alpha1.BackupInterface {
+	return &FakeBackups{c, namespace}
+}
+
+func (c *FakeFsxV1alpha1) DataRepositoryAssociations(namespace string) v1alpha1.DataRepositoryAssociationInterface {
+	return &FakeDataRepositoryAssociations{c, namespace}
+}
+
 func (c *FakeFsxV1alpha1) LustreFileSystems(namespace string) v1alpha1.LustreFileSystemInterface {
 	return &FakeLustreFileSystems{c, namespace}
+}
+
+func (c *FakeFsxV1alpha1) OntapFileSystems(namespace string) v1alpha1.OntapFileSystemInterface {
+	return &FakeOntapFileSystems{c, namespace}
+}
+
+func (c *FakeFsxV1alpha1) OntapStorageVirtualMachines(namespace string) v1alpha1.OntapStorageVirtualMachineInterface {
+	return &FakeOntapStorageVirtualMachines{c, namespace}
+}
+
+func (c *FakeFsxV1alpha1) OntapVolumes(namespace string) v1alpha1.OntapVolumeInterface {
+	return &FakeOntapVolumes{c, namespace}
+}
+
+func (c *FakeFsxV1alpha1) OpenzfsFileSystems(namespace string) v1alpha1.OpenzfsFileSystemInterface {
+	return &FakeOpenzfsFileSystems{c, namespace}
+}
+
+func (c *FakeFsxV1alpha1) OpenzfsSnapshots(namespace string) v1alpha1.OpenzfsSnapshotInterface {
+	return &FakeOpenzfsSnapshots{c, namespace}
+}
+
+func (c *FakeFsxV1alpha1) OpenzfsVolumes(namespace string) v1alpha1.OpenzfsVolumeInterface {
+	return &FakeOpenzfsVolumes{c, namespace}
 }
 
 func (c *FakeFsxV1alpha1) WindowsFileSystems(namespace string) v1alpha1.WindowsFileSystemInterface {

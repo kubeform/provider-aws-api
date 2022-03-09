@@ -64,6 +64,8 @@ func addKnownTypes(scheme *runtime.Scheme) error {
 		&SnapshotList{},
 		&SnapshotCopy{},
 		&SnapshotCopyList{},
+		&SnapshotImport{},
+		&SnapshotImportList{},
 		&Volume{},
 		&VolumeList{},
 	)

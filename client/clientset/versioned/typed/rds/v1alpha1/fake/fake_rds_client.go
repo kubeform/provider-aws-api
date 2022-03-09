@@ -45,6 +45,10 @@ func (c *FakeRdsV1alpha1) ClusterParameterGroups(namespace string) v1alpha1.Clus
 	return &FakeClusterParameterGroups{c, namespace}
 }
 
+func (c *FakeRdsV1alpha1) ClusterRoleAssociations(namespace string) v1alpha1.ClusterRoleAssociationInterface {
+	return &FakeClusterRoleAssociations{c, namespace}
+}
+
 func (c *FakeRdsV1alpha1) GlobalClusters(namespace string) v1alpha1.GlobalClusterInterface {
 	return &FakeGlobalClusters{c, namespace}
 }

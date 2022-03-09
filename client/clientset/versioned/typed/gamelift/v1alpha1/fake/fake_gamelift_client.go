@@ -45,6 +45,10 @@ func (c *FakeGameliftV1alpha1) GameSessionQueues(namespace string) v1alpha1.Game
 	return &FakeGameSessionQueues{c, namespace}
 }
 
+func (c *FakeGameliftV1alpha1) Scripts(namespace string) v1alpha1.ScriptInterface {
+	return &FakeScripts{c, namespace}
+}
+
 // RESTClient returns a RESTClient that is used to communicate
 // with API server by this client implementation.
 func (c *FakeGameliftV1alpha1) RESTClient() rest.Interface {

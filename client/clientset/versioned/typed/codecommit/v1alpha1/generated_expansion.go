@@ -18,6 +18,10 @@ limitations under the License.
 
 package v1alpha1
 
+type ApprovalRuleTemplateExpansion interface{}
+
+type ApprovalRuleTemplateAssociationExpansion interface{}
+
 type RepositoryExpansion interface{}
 
 type TriggerExpansion interface{}

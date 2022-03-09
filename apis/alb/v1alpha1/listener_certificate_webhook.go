@@ -89,7 +89,7 @@ func (r *ListenerCertificate) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range listenercertificateForceNewList {
+	for key, _ := range listenercertificateForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

@@ -57,6 +57,8 @@ spec:
                 type: object
               resource:
                 properties:
+                  context:
+                    type: string
                   excessCapacityTerminationPolicy:
                     type: string
                   id:
@@ -197,6 +199,8 @@ spec:
                 type: object
               state:
                 properties:
+                  context:
+                    type: string
                   excessCapacityTerminationPolicy:
                     type: string
                   id:

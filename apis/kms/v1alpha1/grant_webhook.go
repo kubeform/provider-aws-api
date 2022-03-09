@@ -96,7 +96,7 @@ func (r *Grant) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range grantForceNewList {
+	for key, _ := range grantForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

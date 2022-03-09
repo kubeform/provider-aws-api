@@ -26,4 +26,6 @@ type ClusterInstanceExpansion interface{}
 
 type ClusterParameterGroupExpansion interface{}
 
+type ClusterRoleAssociationExpansion interface{}
+
 type GlobalClusterExpansion interface{}

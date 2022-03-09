@@ -90,7 +90,7 @@ func (r *CatalogTable) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range catalogtableForceNewList {
+	for key, _ := range catalogtableForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

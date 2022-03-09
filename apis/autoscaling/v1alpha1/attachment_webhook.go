@@ -45,6 +45,7 @@ var attachmentForceNewList = map[string]bool{
 	"/alb_target_group_arn":   true,
 	"/autoscaling_group_name": true,
 	"/elb":                    true,
+	"/lb_target_group_arn":    true,
 }
 
 // ValidateCreate implements webhook.Validator so a webhook will be registered for the type
@@ -90,7 +91,7 @@ func (r *Attachment) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range attachmentForceNewList {
+	for key, _ := range attachmentForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

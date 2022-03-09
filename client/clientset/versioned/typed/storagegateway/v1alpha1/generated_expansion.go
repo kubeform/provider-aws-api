@@ -22,6 +22,8 @@ type CacheExpansion interface{}
 
 type CachedIscsiVolumeExpansion interface{}
 
+type FileSystemAssociationExpansion interface{}
+
 type GatewayExpansion interface{}
 
 type NfsFileShareExpansion interface{}

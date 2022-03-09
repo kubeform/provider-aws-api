@@ -88,7 +88,7 @@ func (r *BasePathMapping) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range basepathmappingForceNewList {
+	for key, _ := range basepathmappingForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

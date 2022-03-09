@@ -41,6 +41,15 @@ type WindowsFileSystem struct {
 	Status            WindowsFileSystemStatus `json:"status,omitempty"`
 }
 
+type WindowsFileSystemSpecAuditLogConfiguration struct {
+	// +optional
+	AuditLogDestination *string `json:"auditLogDestination,omitempty" tf:"audit_log_destination"`
+	// +optional
+	FileAccessAuditLogLevel *string `json:"fileAccessAuditLogLevel,omitempty" tf:"file_access_audit_log_level"`
+	// +optional
+	FileShareAccessAuditLogLevel *string `json:"fileShareAccessAuditLogLevel,omitempty" tf:"file_share_access_audit_log_level"`
+}
+
 type WindowsFileSystemSpecSelfManagedActiveDirectory struct {
 	// +kubebuilder:validation:MaxItems=2
 	// +kubebuilder:validation:MinItems=1
@@ -78,9 +87,16 @@ type WindowsFileSystemSpecResource struct {
 	// +optional
 	ActiveDirectoryID *string `json:"activeDirectoryID,omitempty" tf:"active_directory_id"`
 	// +optional
+	// +kubebuilder:validation:MaxItems=50
+	Aliases []string `json:"aliases,omitempty" tf:"aliases"`
+	// +optional
 	Arn *string `json:"arn,omitempty" tf:"arn"`
 	// +optional
+	AuditLogConfiguration *WindowsFileSystemSpecAuditLogConfiguration `json:"auditLogConfiguration,omitempty" tf:"audit_log_configuration"`
+	// +optional
 	AutomaticBackupRetentionDays *int64 `json:"automaticBackupRetentionDays,omitempty" tf:"automatic_backup_retention_days"`
+	// +optional
+	BackupID *string `json:"backupID,omitempty" tf:"backup_id"`
 	// +optional
 	CopyTagsToBackups *bool `json:"copyTagsToBackups,omitempty" tf:"copy_tags_to_backups"`
 	// +optional
@@ -107,8 +123,9 @@ type WindowsFileSystemSpecResource struct {
 	// +optional
 	SelfManagedActiveDirectory *WindowsFileSystemSpecSelfManagedActiveDirectory `json:"selfManagedActiveDirectory,omitempty" tf:"self_managed_active_directory"`
 	// +optional
-	SkipFinalBackup *bool  `json:"skipFinalBackup,omitempty" tf:"skip_final_backup"`
-	StorageCapacity *int64 `json:"storageCapacity" tf:"storage_capacity"`
+	SkipFinalBackup *bool `json:"skipFinalBackup,omitempty" tf:"skip_final_backup"`
+	// +optional
+	StorageCapacity *int64 `json:"storageCapacity,omitempty" tf:"storage_capacity"`
 	// +optional
 	StorageType *string `json:"storageType,omitempty" tf:"storage_type"`
 	// +kubebuilder:validation:MinItems=1

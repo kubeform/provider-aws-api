@@ -42,7 +42,8 @@ func (r *Subnet) SetupWebhookWithManager(mgr ctrl.Manager) error {
 var _ webhook.Validator = &Subnet{}
 
 var subnetForceNewList = map[string]bool{
-	"/outpost_arn": true,
+	"/availability_zone": true,
+	"/ipv6_native":       true,
 }
 
 // ValidateCreate implements webhook.Validator so a webhook will be registered for the type
@@ -88,7 +89,7 @@ func (r *Subnet) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range subnetForceNewList {
+	for key, _ := range subnetForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

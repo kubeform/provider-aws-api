@@ -49,3 +49,11 @@ type ServiceListerExpansion interface{}
 // ServiceNamespaceListerExpansion allows custom methods to be added to
 // ServiceNamespaceLister.
 type ServiceNamespaceListerExpansion interface{}
+
+// VpcConnectorListerExpansion allows custom methods to be added to
+// VpcConnectorLister.
+type VpcConnectorListerExpansion interface{}
+
+// VpcConnectorNamespaceListerExpansion allows custom methods to be added to
+// VpcConnectorNamespaceLister.
+type VpcConnectorNamespaceListerExpansion interface{}

@@ -44,6 +44,7 @@ var _ webhook.Validator = &Key{}
 var keyForceNewList = map[string]bool{
 	"/customer_master_key_spec": true,
 	"/key_usage":                true,
+	"/multi_region":             true,
 }
 
 // ValidateCreate implements webhook.Validator so a webhook will be registered for the type
@@ -89,7 +90,7 @@ func (r *Key) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range keyForceNewList {
+	for key, _ := range keyForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

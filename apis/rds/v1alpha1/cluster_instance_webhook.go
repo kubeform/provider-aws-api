@@ -46,7 +46,6 @@ var clusterinstanceForceNewList = map[string]bool{
 	"/cluster_identifier":   true,
 	"/db_subnet_group_name": true,
 	"/engine":               true,
-	"/engine_version":       true,
 	"/identifier":           true,
 	"/identifier_prefix":    true,
 }
@@ -94,7 +93,7 @@ func (r *ClusterInstance) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range clusterinstanceForceNewList {
+	for key, _ := range clusterinstanceForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

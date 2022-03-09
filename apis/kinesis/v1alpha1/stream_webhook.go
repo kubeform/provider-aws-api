@@ -88,7 +88,7 @@ func (r *Stream) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range streamForceNewList {
+	for key, _ := range streamForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

@@ -91,7 +91,7 @@ func (r *PeeringConnection) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range peeringconnectionForceNewList {
+	for key, _ := range peeringconnectionForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

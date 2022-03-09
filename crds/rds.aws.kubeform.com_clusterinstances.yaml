@@ -83,6 +83,8 @@ spec:
                     type: string
                   engineVersion:
                     type: string
+                  engineVersionActual:
+                    type: string
                   id:
                     type: string
                   identifier:
@@ -102,6 +104,9 @@ spec:
                     type: boolean
                   performanceInsightsKmsKeyID:
                     type: string
+                  performanceInsightsRetentionPeriod:
+                    format: int64
+                    type: integer
                   port:
                     format: int64
                     type: integer
@@ -196,6 +201,8 @@ spec:
                     type: string
                   engineVersion:
                     type: string
+                  engineVersionActual:
+                    type: string
                   id:
                     type: string
                   identifier:
@@ -215,6 +222,9 @@ spec:
                     type: boolean
                   performanceInsightsKmsKeyID:
                     type: string
+                  performanceInsightsRetentionPeriod:
+                    format: int64
+                    type: integer
                   port:
                     format: int64
                     type: integer

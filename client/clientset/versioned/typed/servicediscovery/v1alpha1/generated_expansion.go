@@ -20,6 +20,8 @@ package v1alpha1
 
 type HttpNamespaceExpansion interface{}
 
+type InstanceExpansion interface{}
+
 type PrivateDNSNamespaceExpansion interface{}
 
 type PublicDNSNamespaceExpansion interface{}

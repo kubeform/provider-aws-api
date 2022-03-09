@@ -206,6 +206,13 @@ type FirehoseDeliveryStreamSpecExtendedS3ConfigurationDataFormatConversionConfig
 	SchemaConfiguration       *FirehoseDeliveryStreamSpecExtendedS3ConfigurationDataFormatConversionConfigurationSchemaConfiguration       `json:"schemaConfiguration" tf:"schema_configuration"`
 }
 
+type FirehoseDeliveryStreamSpecExtendedS3ConfigurationDynamicPartitioningConfiguration struct {
+	// +optional
+	Enabled *bool `json:"enabled,omitempty" tf:"enabled"`
+	// +optional
+	RetryDuration *int64 `json:"retryDuration,omitempty" tf:"retry_duration"`
+}
+
 type FirehoseDeliveryStreamSpecExtendedS3ConfigurationProcessingConfigurationProcessorsParameters struct {
 	ParameterName  *string `json:"parameterName" tf:"parameter_name"`
 	ParameterValue *string `json:"parameterValue" tf:"parameter_value"`
@@ -244,6 +251,8 @@ type FirehoseDeliveryStreamSpecExtendedS3ConfigurationS3BackupConfiguration stru
 	// +optional
 	CompressionFormat *string `json:"compressionFormat,omitempty" tf:"compression_format"`
 	// +optional
+	ErrorOutputPrefix *string `json:"errorOutputPrefix,omitempty" tf:"error_output_prefix"`
+	// +optional
 	KmsKeyArn *string `json:"kmsKeyArn,omitempty" tf:"kms_key_arn"`
 	// +optional
 	Prefix  *string `json:"prefix,omitempty" tf:"prefix"`
@@ -262,6 +271,8 @@ type FirehoseDeliveryStreamSpecExtendedS3Configuration struct {
 	CompressionFormat *string `json:"compressionFormat,omitempty" tf:"compression_format"`
 	// +optional
 	DataFormatConversionConfiguration *FirehoseDeliveryStreamSpecExtendedS3ConfigurationDataFormatConversionConfiguration `json:"dataFormatConversionConfiguration,omitempty" tf:"data_format_conversion_configuration"`
+	// +optional
+	DynamicPartitioningConfiguration *FirehoseDeliveryStreamSpecExtendedS3ConfigurationDynamicPartitioningConfiguration `json:"dynamicPartitioningConfiguration,omitempty" tf:"dynamic_partitioning_configuration"`
 	// +optional
 	ErrorOutputPrefix *string `json:"errorOutputPrefix,omitempty" tf:"error_output_prefix"`
 	// +optional
@@ -392,6 +403,8 @@ type FirehoseDeliveryStreamSpecRedshiftConfigurationS3BackupConfiguration struct
 	// +optional
 	CompressionFormat *string `json:"compressionFormat,omitempty" tf:"compression_format"`
 	// +optional
+	ErrorOutputPrefix *string `json:"errorOutputPrefix,omitempty" tf:"error_output_prefix"`
+	// +optional
 	KmsKeyArn *string `json:"kmsKeyArn,omitempty" tf:"kms_key_arn"`
 	// +optional
 	Prefix  *string `json:"prefix,omitempty" tf:"prefix"`
@@ -439,6 +452,8 @@ type FirehoseDeliveryStreamSpecS3Configuration struct {
 	CloudwatchLoggingOptions *FirehoseDeliveryStreamSpecS3ConfigurationCloudwatchLoggingOptions `json:"cloudwatchLoggingOptions,omitempty" tf:"cloudwatch_logging_options"`
 	// +optional
 	CompressionFormat *string `json:"compressionFormat,omitempty" tf:"compression_format"`
+	// +optional
+	ErrorOutputPrefix *string `json:"errorOutputPrefix,omitempty" tf:"error_output_prefix"`
 	// +optional
 	KmsKeyArn *string `json:"kmsKeyArn,omitempty" tf:"kms_key_arn"`
 	// +optional

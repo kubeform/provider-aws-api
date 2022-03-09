@@ -89,7 +89,7 @@ func (r *DomainPermissionsPolicy) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range domainpermissionspolicyForceNewList {
+	for key, _ := range domainpermissionspolicyForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

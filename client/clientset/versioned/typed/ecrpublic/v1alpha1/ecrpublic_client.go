@@ -28,6 +28,7 @@ import (
 type EcrpublicV1alpha1Interface interface {
 	RESTClient() rest.Interface
 	RepositoriesGetter
+	RepositoryPoliciesGetter
 }
 
 // EcrpublicV1alpha1Client is used to interact with features provided by the ecrpublic.aws.kubeform.com group.
@@ -37,6 +38,10 @@ type EcrpublicV1alpha1Client struct {
 
 func (c *EcrpublicV1alpha1Client) Repositories(namespace string) RepositoryInterface {
 	return newRepositories(c, namespace)
+}
+
+func (c *EcrpublicV1alpha1Client) RepositoryPolicies(namespace string) RepositoryPolicyInterface {
+	return newRepositoryPolicies(c, namespace)
 }
 
 // NewForConfig creates a new EcrpublicV1alpha1Client for the given config.

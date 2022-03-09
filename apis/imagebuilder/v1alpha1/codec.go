@@ -27,27 +27,39 @@ import (
 
 func GetEncoder() map[string]jsoniter.ValEncoder {
 	return map[string]jsoniter.ValEncoder{
-		jsoniter.MustGetKind(reflect2.TypeOf(DistributionConfigurationSpecDistributionAmiDistributionConfiguration{}).Type1()):                 DistributionConfigurationSpecDistributionAmiDistributionConfigurationCodec{},
-		jsoniter.MustGetKind(reflect2.TypeOf(DistributionConfigurationSpecDistributionAmiDistributionConfigurationLaunchPermission{}).Type1()): DistributionConfigurationSpecDistributionAmiDistributionConfigurationLaunchPermissionCodec{},
-		jsoniter.MustGetKind(reflect2.TypeOf(ImageSpecImageTestsConfiguration{}).Type1()):                                                      ImageSpecImageTestsConfigurationCodec{},
-		jsoniter.MustGetKind(reflect2.TypeOf(ImagePipelineSpecImageTestsConfiguration{}).Type1()):                                              ImagePipelineSpecImageTestsConfigurationCodec{},
-		jsoniter.MustGetKind(reflect2.TypeOf(ImagePipelineSpecSchedule{}).Type1()):                                                             ImagePipelineSpecScheduleCodec{},
-		jsoniter.MustGetKind(reflect2.TypeOf(ImageRecipeSpecBlockDeviceMappingEbs{}).Type1()):                                                  ImageRecipeSpecBlockDeviceMappingEbsCodec{},
-		jsoniter.MustGetKind(reflect2.TypeOf(InfrastructureConfigurationSpecLogging{}).Type1()):                                                InfrastructureConfigurationSpecLoggingCodec{},
-		jsoniter.MustGetKind(reflect2.TypeOf(InfrastructureConfigurationSpecLoggingS3Logs{}).Type1()):                                          InfrastructureConfigurationSpecLoggingS3LogsCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(ContainerRecipeSpecInstanceConfiguration{}).Type1()):                                                    ContainerRecipeSpecInstanceConfigurationCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(ContainerRecipeSpecInstanceConfigurationBlockDeviceMappingEbs{}).Type1()):                               ContainerRecipeSpecInstanceConfigurationBlockDeviceMappingEbsCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(ContainerRecipeSpecTargetRepository{}).Type1()):                                                         ContainerRecipeSpecTargetRepositoryCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(DistributionConfigurationSpecDistributionAmiDistributionConfiguration{}).Type1()):                       DistributionConfigurationSpecDistributionAmiDistributionConfigurationCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(DistributionConfigurationSpecDistributionAmiDistributionConfigurationLaunchPermission{}).Type1()):       DistributionConfigurationSpecDistributionAmiDistributionConfigurationLaunchPermissionCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(DistributionConfigurationSpecDistributionContainerDistributionConfiguration{}).Type1()):                 DistributionConfigurationSpecDistributionContainerDistributionConfigurationCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(DistributionConfigurationSpecDistributionContainerDistributionConfigurationTargetRepository{}).Type1()): DistributionConfigurationSpecDistributionContainerDistributionConfigurationTargetRepositoryCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(ImageSpecImageTestsConfiguration{}).Type1()):                                                            ImageSpecImageTestsConfigurationCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(ImagePipelineSpecImageTestsConfiguration{}).Type1()):                                                    ImagePipelineSpecImageTestsConfigurationCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(ImagePipelineSpecSchedule{}).Type1()):                                                                   ImagePipelineSpecScheduleCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(ImageRecipeSpecBlockDeviceMappingEbs{}).Type1()):                                                        ImageRecipeSpecBlockDeviceMappingEbsCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(ImageRecipeSpecSystemsManagerAgent{}).Type1()):                                                          ImageRecipeSpecSystemsManagerAgentCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(InfrastructureConfigurationSpecLogging{}).Type1()):                                                      InfrastructureConfigurationSpecLoggingCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(InfrastructureConfigurationSpecLoggingS3Logs{}).Type1()):                                                InfrastructureConfigurationSpecLoggingS3LogsCodec{},
 	}
 }
 
 func GetDecoder() map[string]jsoniter.ValDecoder {
 	return map[string]jsoniter.ValDecoder{
-		jsoniter.MustGetKind(reflect2.TypeOf(DistributionConfigurationSpecDistributionAmiDistributionConfiguration{}).Type1()):                 DistributionConfigurationSpecDistributionAmiDistributionConfigurationCodec{},
-		jsoniter.MustGetKind(reflect2.TypeOf(DistributionConfigurationSpecDistributionAmiDistributionConfigurationLaunchPermission{}).Type1()): DistributionConfigurationSpecDistributionAmiDistributionConfigurationLaunchPermissionCodec{},
-		jsoniter.MustGetKind(reflect2.TypeOf(ImageSpecImageTestsConfiguration{}).Type1()):                                                      ImageSpecImageTestsConfigurationCodec{},
-		jsoniter.MustGetKind(reflect2.TypeOf(ImagePipelineSpecImageTestsConfiguration{}).Type1()):                                              ImagePipelineSpecImageTestsConfigurationCodec{},
-		jsoniter.MustGetKind(reflect2.TypeOf(ImagePipelineSpecSchedule{}).Type1()):                                                             ImagePipelineSpecScheduleCodec{},
-		jsoniter.MustGetKind(reflect2.TypeOf(ImageRecipeSpecBlockDeviceMappingEbs{}).Type1()):                                                  ImageRecipeSpecBlockDeviceMappingEbsCodec{},
-		jsoniter.MustGetKind(reflect2.TypeOf(InfrastructureConfigurationSpecLogging{}).Type1()):                                                InfrastructureConfigurationSpecLoggingCodec{},
-		jsoniter.MustGetKind(reflect2.TypeOf(InfrastructureConfigurationSpecLoggingS3Logs{}).Type1()):                                          InfrastructureConfigurationSpecLoggingS3LogsCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(ContainerRecipeSpecInstanceConfiguration{}).Type1()):                                                    ContainerRecipeSpecInstanceConfigurationCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(ContainerRecipeSpecInstanceConfigurationBlockDeviceMappingEbs{}).Type1()):                               ContainerRecipeSpecInstanceConfigurationBlockDeviceMappingEbsCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(ContainerRecipeSpecTargetRepository{}).Type1()):                                                         ContainerRecipeSpecTargetRepositoryCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(DistributionConfigurationSpecDistributionAmiDistributionConfiguration{}).Type1()):                       DistributionConfigurationSpecDistributionAmiDistributionConfigurationCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(DistributionConfigurationSpecDistributionAmiDistributionConfigurationLaunchPermission{}).Type1()):       DistributionConfigurationSpecDistributionAmiDistributionConfigurationLaunchPermissionCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(DistributionConfigurationSpecDistributionContainerDistributionConfiguration{}).Type1()):                 DistributionConfigurationSpecDistributionContainerDistributionConfigurationCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(DistributionConfigurationSpecDistributionContainerDistributionConfigurationTargetRepository{}).Type1()): DistributionConfigurationSpecDistributionContainerDistributionConfigurationTargetRepositoryCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(ImageSpecImageTestsConfiguration{}).Type1()):                                                            ImageSpecImageTestsConfigurationCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(ImagePipelineSpecImageTestsConfiguration{}).Type1()):                                                    ImagePipelineSpecImageTestsConfigurationCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(ImagePipelineSpecSchedule{}).Type1()):                                                                   ImagePipelineSpecScheduleCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(ImageRecipeSpecBlockDeviceMappingEbs{}).Type1()):                                                        ImageRecipeSpecBlockDeviceMappingEbsCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(ImageRecipeSpecSystemsManagerAgent{}).Type1()):                                                          ImageRecipeSpecSystemsManagerAgentCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(InfrastructureConfigurationSpecLogging{}).Type1()):                                                      InfrastructureConfigurationSpecLoggingCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(InfrastructureConfigurationSpecLoggingS3Logs{}).Type1()):                                                InfrastructureConfigurationSpecLoggingS3LogsCodec{},
 	}
 }
 
@@ -61,6 +73,243 @@ func getDecodersWithout(typ string) map[string]jsoniter.ValDecoder {
 	origMap := GetDecoder()
 	delete(origMap, typ)
 	return origMap
+}
+
+// +k8s:deepcopy-gen=false
+type ContainerRecipeSpecInstanceConfigurationCodec struct {
+}
+
+func (ContainerRecipeSpecInstanceConfigurationCodec) IsEmpty(ptr unsafe.Pointer) bool {
+	return (*ContainerRecipeSpecInstanceConfiguration)(ptr) == nil
+}
+
+func (ContainerRecipeSpecInstanceConfigurationCodec) Encode(ptr unsafe.Pointer, stream *jsoniter.Stream) {
+	obj := (*ContainerRecipeSpecInstanceConfiguration)(ptr)
+	var objs []ContainerRecipeSpecInstanceConfiguration
+	if obj != nil {
+		objs = []ContainerRecipeSpecInstanceConfiguration{*obj}
+	}
+
+	jsonit := jsoniter.Config{
+		EscapeHTML:             true,
+		SortMapKeys:            true,
+		ValidateJsonRawMessage: true,
+		TagKey:                 "tf",
+		TypeEncoders:           getEncodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(ContainerRecipeSpecInstanceConfiguration{}).Type1())),
+	}.Froze()
+
+	byt, _ := jsonit.Marshal(objs)
+
+	stream.Write(byt)
+}
+
+func (ContainerRecipeSpecInstanceConfigurationCodec) Decode(ptr unsafe.Pointer, iter *jsoniter.Iterator) {
+	switch iter.WhatIsNext() {
+	case jsoniter.NilValue:
+		iter.Skip()
+		*(*ContainerRecipeSpecInstanceConfiguration)(ptr) = ContainerRecipeSpecInstanceConfiguration{}
+		return
+	case jsoniter.ArrayValue:
+		objsByte := iter.SkipAndReturnBytes()
+		if len(objsByte) > 0 {
+			var objs []ContainerRecipeSpecInstanceConfiguration
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(ContainerRecipeSpecInstanceConfiguration{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objsByte, &objs)
+
+			if len(objs) > 0 {
+				*(*ContainerRecipeSpecInstanceConfiguration)(ptr) = objs[0]
+			} else {
+				*(*ContainerRecipeSpecInstanceConfiguration)(ptr) = ContainerRecipeSpecInstanceConfiguration{}
+			}
+		} else {
+			*(*ContainerRecipeSpecInstanceConfiguration)(ptr) = ContainerRecipeSpecInstanceConfiguration{}
+		}
+	case jsoniter.ObjectValue:
+		objByte := iter.SkipAndReturnBytes()
+		if len(objByte) > 0 {
+			var obj ContainerRecipeSpecInstanceConfiguration
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(ContainerRecipeSpecInstanceConfiguration{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objByte, &obj)
+
+			*(*ContainerRecipeSpecInstanceConfiguration)(ptr) = obj
+		} else {
+			*(*ContainerRecipeSpecInstanceConfiguration)(ptr) = ContainerRecipeSpecInstanceConfiguration{}
+		}
+	default:
+		iter.ReportError("decode ContainerRecipeSpecInstanceConfiguration", "unexpected JSON type")
+	}
+}
+
+// +k8s:deepcopy-gen=false
+type ContainerRecipeSpecInstanceConfigurationBlockDeviceMappingEbsCodec struct {
+}
+
+func (ContainerRecipeSpecInstanceConfigurationBlockDeviceMappingEbsCodec) IsEmpty(ptr unsafe.Pointer) bool {
+	return (*ContainerRecipeSpecInstanceConfigurationBlockDeviceMappingEbs)(ptr) == nil
+}
+
+func (ContainerRecipeSpecInstanceConfigurationBlockDeviceMappingEbsCodec) Encode(ptr unsafe.Pointer, stream *jsoniter.Stream) {
+	obj := (*ContainerRecipeSpecInstanceConfigurationBlockDeviceMappingEbs)(ptr)
+	var objs []ContainerRecipeSpecInstanceConfigurationBlockDeviceMappingEbs
+	if obj != nil {
+		objs = []ContainerRecipeSpecInstanceConfigurationBlockDeviceMappingEbs{*obj}
+	}
+
+	jsonit := jsoniter.Config{
+		EscapeHTML:             true,
+		SortMapKeys:            true,
+		ValidateJsonRawMessage: true,
+		TagKey:                 "tf",
+		TypeEncoders:           getEncodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(ContainerRecipeSpecInstanceConfigurationBlockDeviceMappingEbs{}).Type1())),
+	}.Froze()
+
+	byt, _ := jsonit.Marshal(objs)
+
+	stream.Write(byt)
+}
+
+func (ContainerRecipeSpecInstanceConfigurationBlockDeviceMappingEbsCodec) Decode(ptr unsafe.Pointer, iter *jsoniter.Iterator) {
+	switch iter.WhatIsNext() {
+	case jsoniter.NilValue:
+		iter.Skip()
+		*(*ContainerRecipeSpecInstanceConfigurationBlockDeviceMappingEbs)(ptr) = ContainerRecipeSpecInstanceConfigurationBlockDeviceMappingEbs{}
+		return
+	case jsoniter.ArrayValue:
+		objsByte := iter.SkipAndReturnBytes()
+		if len(objsByte) > 0 {
+			var objs []ContainerRecipeSpecInstanceConfigurationBlockDeviceMappingEbs
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(ContainerRecipeSpecInstanceConfigurationBlockDeviceMappingEbs{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objsByte, &objs)
+
+			if len(objs) > 0 {
+				*(*ContainerRecipeSpecInstanceConfigurationBlockDeviceMappingEbs)(ptr) = objs[0]
+			} else {
+				*(*ContainerRecipeSpecInstanceConfigurationBlockDeviceMappingEbs)(ptr) = ContainerRecipeSpecInstanceConfigurationBlockDeviceMappingEbs{}
+			}
+		} else {
+			*(*ContainerRecipeSpecInstanceConfigurationBlockDeviceMappingEbs)(ptr) = ContainerRecipeSpecInstanceConfigurationBlockDeviceMappingEbs{}
+		}
+	case jsoniter.ObjectValue:
+		objByte := iter.SkipAndReturnBytes()
+		if len(objByte) > 0 {
+			var obj ContainerRecipeSpecInstanceConfigurationBlockDeviceMappingEbs
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(ContainerRecipeSpecInstanceConfigurationBlockDeviceMappingEbs{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objByte, &obj)
+
+			*(*ContainerRecipeSpecInstanceConfigurationBlockDeviceMappingEbs)(ptr) = obj
+		} else {
+			*(*ContainerRecipeSpecInstanceConfigurationBlockDeviceMappingEbs)(ptr) = ContainerRecipeSpecInstanceConfigurationBlockDeviceMappingEbs{}
+		}
+	default:
+		iter.ReportError("decode ContainerRecipeSpecInstanceConfigurationBlockDeviceMappingEbs", "unexpected JSON type")
+	}
+}
+
+// +k8s:deepcopy-gen=false
+type ContainerRecipeSpecTargetRepositoryCodec struct {
+}
+
+func (ContainerRecipeSpecTargetRepositoryCodec) IsEmpty(ptr unsafe.Pointer) bool {
+	return (*ContainerRecipeSpecTargetRepository)(ptr) == nil
+}
+
+func (ContainerRecipeSpecTargetRepositoryCodec) Encode(ptr unsafe.Pointer, stream *jsoniter.Stream) {
+	obj := (*ContainerRecipeSpecTargetRepository)(ptr)
+	var objs []ContainerRecipeSpecTargetRepository
+	if obj != nil {
+		objs = []ContainerRecipeSpecTargetRepository{*obj}
+	}
+
+	jsonit := jsoniter.Config{
+		EscapeHTML:             true,
+		SortMapKeys:            true,
+		ValidateJsonRawMessage: true,
+		TagKey:                 "tf",
+		TypeEncoders:           getEncodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(ContainerRecipeSpecTargetRepository{}).Type1())),
+	}.Froze()
+
+	byt, _ := jsonit.Marshal(objs)
+
+	stream.Write(byt)
+}
+
+func (ContainerRecipeSpecTargetRepositoryCodec) Decode(ptr unsafe.Pointer, iter *jsoniter.Iterator) {
+	switch iter.WhatIsNext() {
+	case jsoniter.NilValue:
+		iter.Skip()
+		*(*ContainerRecipeSpecTargetRepository)(ptr) = ContainerRecipeSpecTargetRepository{}
+		return
+	case jsoniter.ArrayValue:
+		objsByte := iter.SkipAndReturnBytes()
+		if len(objsByte) > 0 {
+			var objs []ContainerRecipeSpecTargetRepository
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(ContainerRecipeSpecTargetRepository{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objsByte, &objs)
+
+			if len(objs) > 0 {
+				*(*ContainerRecipeSpecTargetRepository)(ptr) = objs[0]
+			} else {
+				*(*ContainerRecipeSpecTargetRepository)(ptr) = ContainerRecipeSpecTargetRepository{}
+			}
+		} else {
+			*(*ContainerRecipeSpecTargetRepository)(ptr) = ContainerRecipeSpecTargetRepository{}
+		}
+	case jsoniter.ObjectValue:
+		objByte := iter.SkipAndReturnBytes()
+		if len(objByte) > 0 {
+			var obj ContainerRecipeSpecTargetRepository
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(ContainerRecipeSpecTargetRepository{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objByte, &obj)
+
+			*(*ContainerRecipeSpecTargetRepository)(ptr) = obj
+		} else {
+			*(*ContainerRecipeSpecTargetRepository)(ptr) = ContainerRecipeSpecTargetRepository{}
+		}
+	default:
+		iter.ReportError("decode ContainerRecipeSpecTargetRepository", "unexpected JSON type")
+	}
 }
 
 // +k8s:deepcopy-gen=false
@@ -218,6 +467,164 @@ func (DistributionConfigurationSpecDistributionAmiDistributionConfigurationLaunc
 		}
 	default:
 		iter.ReportError("decode DistributionConfigurationSpecDistributionAmiDistributionConfigurationLaunchPermission", "unexpected JSON type")
+	}
+}
+
+// +k8s:deepcopy-gen=false
+type DistributionConfigurationSpecDistributionContainerDistributionConfigurationCodec struct {
+}
+
+func (DistributionConfigurationSpecDistributionContainerDistributionConfigurationCodec) IsEmpty(ptr unsafe.Pointer) bool {
+	return (*DistributionConfigurationSpecDistributionContainerDistributionConfiguration)(ptr) == nil
+}
+
+func (DistributionConfigurationSpecDistributionContainerDistributionConfigurationCodec) Encode(ptr unsafe.Pointer, stream *jsoniter.Stream) {
+	obj := (*DistributionConfigurationSpecDistributionContainerDistributionConfiguration)(ptr)
+	var objs []DistributionConfigurationSpecDistributionContainerDistributionConfiguration
+	if obj != nil {
+		objs = []DistributionConfigurationSpecDistributionContainerDistributionConfiguration{*obj}
+	}
+
+	jsonit := jsoniter.Config{
+		EscapeHTML:             true,
+		SortMapKeys:            true,
+		ValidateJsonRawMessage: true,
+		TagKey:                 "tf",
+		TypeEncoders:           getEncodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(DistributionConfigurationSpecDistributionContainerDistributionConfiguration{}).Type1())),
+	}.Froze()
+
+	byt, _ := jsonit.Marshal(objs)
+
+	stream.Write(byt)
+}
+
+func (DistributionConfigurationSpecDistributionContainerDistributionConfigurationCodec) Decode(ptr unsafe.Pointer, iter *jsoniter.Iterator) {
+	switch iter.WhatIsNext() {
+	case jsoniter.NilValue:
+		iter.Skip()
+		*(*DistributionConfigurationSpecDistributionContainerDistributionConfiguration)(ptr) = DistributionConfigurationSpecDistributionContainerDistributionConfiguration{}
+		return
+	case jsoniter.ArrayValue:
+		objsByte := iter.SkipAndReturnBytes()
+		if len(objsByte) > 0 {
+			var objs []DistributionConfigurationSpecDistributionContainerDistributionConfiguration
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(DistributionConfigurationSpecDistributionContainerDistributionConfiguration{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objsByte, &objs)
+
+			if len(objs) > 0 {
+				*(*DistributionConfigurationSpecDistributionContainerDistributionConfiguration)(ptr) = objs[0]
+			} else {
+				*(*DistributionConfigurationSpecDistributionContainerDistributionConfiguration)(ptr) = DistributionConfigurationSpecDistributionContainerDistributionConfiguration{}
+			}
+		} else {
+			*(*DistributionConfigurationSpecDistributionContainerDistributionConfiguration)(ptr) = DistributionConfigurationSpecDistributionContainerDistributionConfiguration{}
+		}
+	case jsoniter.ObjectValue:
+		objByte := iter.SkipAndReturnBytes()
+		if len(objByte) > 0 {
+			var obj DistributionConfigurationSpecDistributionContainerDistributionConfiguration
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(DistributionConfigurationSpecDistributionContainerDistributionConfiguration{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objByte, &obj)
+
+			*(*DistributionConfigurationSpecDistributionContainerDistributionConfiguration)(ptr) = obj
+		} else {
+			*(*DistributionConfigurationSpecDistributionContainerDistributionConfiguration)(ptr) = DistributionConfigurationSpecDistributionContainerDistributionConfiguration{}
+		}
+	default:
+		iter.ReportError("decode DistributionConfigurationSpecDistributionContainerDistributionConfiguration", "unexpected JSON type")
+	}
+}
+
+// +k8s:deepcopy-gen=false
+type DistributionConfigurationSpecDistributionContainerDistributionConfigurationTargetRepositoryCodec struct {
+}
+
+func (DistributionConfigurationSpecDistributionContainerDistributionConfigurationTargetRepositoryCodec) IsEmpty(ptr unsafe.Pointer) bool {
+	return (*DistributionConfigurationSpecDistributionContainerDistributionConfigurationTargetRepository)(ptr) == nil
+}
+
+func (DistributionConfigurationSpecDistributionContainerDistributionConfigurationTargetRepositoryCodec) Encode(ptr unsafe.Pointer, stream *jsoniter.Stream) {
+	obj := (*DistributionConfigurationSpecDistributionContainerDistributionConfigurationTargetRepository)(ptr)
+	var objs []DistributionConfigurationSpecDistributionContainerDistributionConfigurationTargetRepository
+	if obj != nil {
+		objs = []DistributionConfigurationSpecDistributionContainerDistributionConfigurationTargetRepository{*obj}
+	}
+
+	jsonit := jsoniter.Config{
+		EscapeHTML:             true,
+		SortMapKeys:            true,
+		ValidateJsonRawMessage: true,
+		TagKey:                 "tf",
+		TypeEncoders:           getEncodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(DistributionConfigurationSpecDistributionContainerDistributionConfigurationTargetRepository{}).Type1())),
+	}.Froze()
+
+	byt, _ := jsonit.Marshal(objs)
+
+	stream.Write(byt)
+}
+
+func (DistributionConfigurationSpecDistributionContainerDistributionConfigurationTargetRepositoryCodec) Decode(ptr unsafe.Pointer, iter *jsoniter.Iterator) {
+	switch iter.WhatIsNext() {
+	case jsoniter.NilValue:
+		iter.Skip()
+		*(*DistributionConfigurationSpecDistributionContainerDistributionConfigurationTargetRepository)(ptr) = DistributionConfigurationSpecDistributionContainerDistributionConfigurationTargetRepository{}
+		return
+	case jsoniter.ArrayValue:
+		objsByte := iter.SkipAndReturnBytes()
+		if len(objsByte) > 0 {
+			var objs []DistributionConfigurationSpecDistributionContainerDistributionConfigurationTargetRepository
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(DistributionConfigurationSpecDistributionContainerDistributionConfigurationTargetRepository{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objsByte, &objs)
+
+			if len(objs) > 0 {
+				*(*DistributionConfigurationSpecDistributionContainerDistributionConfigurationTargetRepository)(ptr) = objs[0]
+			} else {
+				*(*DistributionConfigurationSpecDistributionContainerDistributionConfigurationTargetRepository)(ptr) = DistributionConfigurationSpecDistributionContainerDistributionConfigurationTargetRepository{}
+			}
+		} else {
+			*(*DistributionConfigurationSpecDistributionContainerDistributionConfigurationTargetRepository)(ptr) = DistributionConfigurationSpecDistributionContainerDistributionConfigurationTargetRepository{}
+		}
+	case jsoniter.ObjectValue:
+		objByte := iter.SkipAndReturnBytes()
+		if len(objByte) > 0 {
+			var obj DistributionConfigurationSpecDistributionContainerDistributionConfigurationTargetRepository
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(DistributionConfigurationSpecDistributionContainerDistributionConfigurationTargetRepository{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objByte, &obj)
+
+			*(*DistributionConfigurationSpecDistributionContainerDistributionConfigurationTargetRepository)(ptr) = obj
+		} else {
+			*(*DistributionConfigurationSpecDistributionContainerDistributionConfigurationTargetRepository)(ptr) = DistributionConfigurationSpecDistributionContainerDistributionConfigurationTargetRepository{}
+		}
+	default:
+		iter.ReportError("decode DistributionConfigurationSpecDistributionContainerDistributionConfigurationTargetRepository", "unexpected JSON type")
 	}
 }
 
@@ -534,6 +941,85 @@ func (ImageRecipeSpecBlockDeviceMappingEbsCodec) Decode(ptr unsafe.Pointer, iter
 		}
 	default:
 		iter.ReportError("decode ImageRecipeSpecBlockDeviceMappingEbs", "unexpected JSON type")
+	}
+}
+
+// +k8s:deepcopy-gen=false
+type ImageRecipeSpecSystemsManagerAgentCodec struct {
+}
+
+func (ImageRecipeSpecSystemsManagerAgentCodec) IsEmpty(ptr unsafe.Pointer) bool {
+	return (*ImageRecipeSpecSystemsManagerAgent)(ptr) == nil
+}
+
+func (ImageRecipeSpecSystemsManagerAgentCodec) Encode(ptr unsafe.Pointer, stream *jsoniter.Stream) {
+	obj := (*ImageRecipeSpecSystemsManagerAgent)(ptr)
+	var objs []ImageRecipeSpecSystemsManagerAgent
+	if obj != nil {
+		objs = []ImageRecipeSpecSystemsManagerAgent{*obj}
+	}
+
+	jsonit := jsoniter.Config{
+		EscapeHTML:             true,
+		SortMapKeys:            true,
+		ValidateJsonRawMessage: true,
+		TagKey:                 "tf",
+		TypeEncoders:           getEncodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(ImageRecipeSpecSystemsManagerAgent{}).Type1())),
+	}.Froze()
+
+	byt, _ := jsonit.Marshal(objs)
+
+	stream.Write(byt)
+}
+
+func (ImageRecipeSpecSystemsManagerAgentCodec) Decode(ptr unsafe.Pointer, iter *jsoniter.Iterator) {
+	switch iter.WhatIsNext() {
+	case jsoniter.NilValue:
+		iter.Skip()
+		*(*ImageRecipeSpecSystemsManagerAgent)(ptr) = ImageRecipeSpecSystemsManagerAgent{}
+		return
+	case jsoniter.ArrayValue:
+		objsByte := iter.SkipAndReturnBytes()
+		if len(objsByte) > 0 {
+			var objs []ImageRecipeSpecSystemsManagerAgent
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(ImageRecipeSpecSystemsManagerAgent{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objsByte, &objs)
+
+			if len(objs) > 0 {
+				*(*ImageRecipeSpecSystemsManagerAgent)(ptr) = objs[0]
+			} else {
+				*(*ImageRecipeSpecSystemsManagerAgent)(ptr) = ImageRecipeSpecSystemsManagerAgent{}
+			}
+		} else {
+			*(*ImageRecipeSpecSystemsManagerAgent)(ptr) = ImageRecipeSpecSystemsManagerAgent{}
+		}
+	case jsoniter.ObjectValue:
+		objByte := iter.SkipAndReturnBytes()
+		if len(objByte) > 0 {
+			var obj ImageRecipeSpecSystemsManagerAgent
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(ImageRecipeSpecSystemsManagerAgent{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objByte, &obj)
+
+			*(*ImageRecipeSpecSystemsManagerAgent)(ptr) = obj
+		} else {
+			*(*ImageRecipeSpecSystemsManagerAgent)(ptr) = ImageRecipeSpecSystemsManagerAgent{}
+		}
+	default:
+		iter.ReportError("decode ImageRecipeSpecSystemsManagerAgent", "unexpected JSON type")
 	}
 }
 

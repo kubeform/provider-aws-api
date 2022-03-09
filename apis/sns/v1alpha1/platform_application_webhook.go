@@ -89,7 +89,7 @@ func (r *PlatformApplication) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range platformapplicationForceNewList {
+	for key, _ := range platformapplicationForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

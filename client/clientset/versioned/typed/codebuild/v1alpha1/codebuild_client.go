@@ -29,6 +29,7 @@ type CodebuildV1alpha1Interface interface {
 	RESTClient() rest.Interface
 	ProjectsGetter
 	ReportGroupsGetter
+	ResourcePoliciesGetter
 	SourceCredentialsGetter
 	WebhooksGetter
 }
@@ -44,6 +45,10 @@ func (c *CodebuildV1alpha1Client) Projects(namespace string) ProjectInterface {
 
 func (c *CodebuildV1alpha1Client) ReportGroups(namespace string) ReportGroupInterface {
 	return newReportGroups(c, namespace)
+}
+
+func (c *CodebuildV1alpha1Client) ResourcePolicies(namespace string) ResourcePolicyInterface {
+	return newResourcePolicies(c, namespace)
 }
 
 func (c *CodebuildV1alpha1Client) SourceCredentials(namespace string) SourceCredentialInterface {

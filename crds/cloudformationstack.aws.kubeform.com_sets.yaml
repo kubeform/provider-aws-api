@@ -68,6 +68,8 @@ spec:
                       retainStacksOnAccountRemoval:
                         type: boolean
                     type: object
+                  callAs:
+                    type: string
                   capabilities:
                     items:
                       type: string
@@ -154,6 +156,8 @@ spec:
                       retainStacksOnAccountRemoval:
                         type: boolean
                     type: object
+                  callAs:
+                    type: string
                   capabilities:
                     items:
                       type: string

@@ -32,6 +32,8 @@ type Interface interface {
 	Tables() TableInformer
 	// TableItems returns a TableItemInformer.
 	TableItems() TableItemInformer
+	// Tags returns a TagInformer.
+	Tags() TagInformer
 }
 
 type version struct {
@@ -63,4 +65,9 @@ func (v *version) Tables() TableInformer {
 // TableItems returns a TableItemInformer.
 func (v *version) TableItems() TableItemInformer {
 	return &tableItemInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
+// Tags returns a TagInformer.
+func (v *version) Tags() TagInformer {
+	return &tagInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
 }

@@ -26,6 +26,8 @@ import (
 type Interface interface {
 	// Components returns a ComponentInformer.
 	Components() ComponentInformer
+	// ContainerRecipes returns a ContainerRecipeInformer.
+	ContainerRecipes() ContainerRecipeInformer
 	// DistributionConfigurations returns a DistributionConfigurationInformer.
 	DistributionConfigurations() DistributionConfigurationInformer
 	// Images returns a ImageInformer.
@@ -52,6 +54,11 @@ func New(f internalinterfaces.SharedInformerFactory, namespace string, tweakList
 // Components returns a ComponentInformer.
 func (v *version) Components() ComponentInformer {
 	return &componentInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
+// ContainerRecipes returns a ContainerRecipeInformer.
+func (v *version) ContainerRecipes() ContainerRecipeInformer {
+	return &containerRecipeInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
 }
 
 // DistributionConfigurations returns a DistributionConfigurationInformer.

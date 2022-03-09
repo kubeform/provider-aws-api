@@ -42,11 +42,11 @@ func (r *HealthCheck) SetupWebhookWithManager(mgr ctrl.Manager) error {
 var _ webhook.Validator = &HealthCheck{}
 
 var healthcheckForceNewList = map[string]bool{
-	"/ip_address":       true,
-	"/measure_latency":  true,
-	"/reference_name":   true,
-	"/request_interval": true,
-	"/type":             true,
+	"/measure_latency":     true,
+	"/reference_name":      true,
+	"/request_interval":    true,
+	"/routing_control_arn": true,
+	"/type":                true,
 }
 
 // ValidateCreate implements webhook.Validator so a webhook will be registered for the type
@@ -92,7 +92,7 @@ func (r *HealthCheck) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range healthcheckForceNewList {
+	for key, _ := range healthcheckForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

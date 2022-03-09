@@ -41,6 +41,15 @@ type OrganizationConfiguration struct {
 	Status            OrganizationConfigurationStatus `json:"status,omitempty"`
 }
 
+type OrganizationConfigurationSpecDatasourcesS3Logs struct {
+	AutoEnable *bool `json:"autoEnable" tf:"auto_enable"`
+}
+
+type OrganizationConfigurationSpecDatasources struct {
+	// +optional
+	S3Logs *OrganizationConfigurationSpecDatasourcesS3Logs `json:"s3Logs,omitempty" tf:"s3_logs"`
+}
+
 type OrganizationConfigurationSpec struct {
 	State *OrganizationConfigurationSpecResource `json:"state,omitempty" tf:"-"`
 
@@ -58,8 +67,10 @@ type OrganizationConfigurationSpec struct {
 type OrganizationConfigurationSpecResource struct {
 	ID string `json:"id,omitempty" tf:"id,omitempty"`
 
-	AutoEnable *bool   `json:"autoEnable" tf:"auto_enable"`
-	DetectorID *string `json:"detectorID" tf:"detector_id"`
+	AutoEnable *bool `json:"autoEnable" tf:"auto_enable"`
+	// +optional
+	Datasources *OrganizationConfigurationSpecDatasources `json:"datasources,omitempty" tf:"datasources"`
+	DetectorID  *string                                   `json:"detectorID" tf:"detector_id"`
 }
 
 type OrganizationConfigurationStatus struct {

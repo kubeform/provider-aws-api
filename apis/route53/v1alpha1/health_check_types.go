@@ -59,8 +59,11 @@ type HealthCheckSpecResource struct {
 	ID string `json:"id,omitempty" tf:"id,omitempty"`
 
 	// +optional
+	Arn *string `json:"arn,omitempty" tf:"arn"`
+	// +optional
 	ChildHealthThreshold *int64 `json:"childHealthThreshold,omitempty" tf:"child_health_threshold"`
 	// +optional
+	// +kubebuilder:validation:MaxItems=256
 	ChildHealthchecks []string `json:"childHealthchecks,omitempty" tf:"child_healthchecks"`
 	// +optional
 	CloudwatchAlarmName *string `json:"cloudwatchAlarmName,omitempty" tf:"cloudwatch_alarm_name"`
@@ -87,11 +90,15 @@ type HealthCheckSpecResource struct {
 	// +optional
 	ReferenceName *string `json:"referenceName,omitempty" tf:"reference_name"`
 	// +optional
+	// +kubebuilder:validation:MaxItems=64
+	// +kubebuilder:validation:MinItems=3
 	Regions []string `json:"regions,omitempty" tf:"regions"`
 	// +optional
 	RequestInterval *int64 `json:"requestInterval,omitempty" tf:"request_interval"`
 	// +optional
 	ResourcePath *string `json:"resourcePath,omitempty" tf:"resource_path"`
+	// +optional
+	RoutingControlArn *string `json:"routingControlArn,omitempty" tf:"routing_control_arn"`
 	// +optional
 	SearchString *string `json:"searchString,omitempty" tf:"search_string"`
 	// +optional

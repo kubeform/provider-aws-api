@@ -34,6 +34,22 @@ type DistributionListerExpansion interface{}
 // DistributionNamespaceLister.
 type DistributionNamespaceListerExpansion interface{}
 
+// FieldLevelEncryptionConfigListerExpansion allows custom methods to be added to
+// FieldLevelEncryptionConfigLister.
+type FieldLevelEncryptionConfigListerExpansion interface{}
+
+// FieldLevelEncryptionConfigNamespaceListerExpansion allows custom methods to be added to
+// FieldLevelEncryptionConfigNamespaceLister.
+type FieldLevelEncryptionConfigNamespaceListerExpansion interface{}
+
+// FieldLevelEncryptionProfileListerExpansion allows custom methods to be added to
+// FieldLevelEncryptionProfileLister.
+type FieldLevelEncryptionProfileListerExpansion interface{}
+
+// FieldLevelEncryptionProfileNamespaceListerExpansion allows custom methods to be added to
+// FieldLevelEncryptionProfileNamespaceLister.
+type FieldLevelEncryptionProfileNamespaceListerExpansion interface{}
+
 // FunctionListerExpansion allows custom methods to be added to
 // FunctionLister.
 type FunctionListerExpansion interface{}
@@ -49,6 +65,14 @@ type KeyGroupListerExpansion interface{}
 // KeyGroupNamespaceListerExpansion allows custom methods to be added to
 // KeyGroupNamespaceLister.
 type KeyGroupNamespaceListerExpansion interface{}
+
+// MonitoringSubscriptionListerExpansion allows custom methods to be added to
+// MonitoringSubscriptionLister.
+type MonitoringSubscriptionListerExpansion interface{}
+
+// MonitoringSubscriptionNamespaceListerExpansion allows custom methods to be added to
+// MonitoringSubscriptionNamespaceLister.
+type MonitoringSubscriptionNamespaceListerExpansion interface{}
 
 // OriginAccessIdentityListerExpansion allows custom methods to be added to
 // OriginAccessIdentityLister.
@@ -81,3 +105,11 @@ type RealtimeLogConfigListerExpansion interface{}
 // RealtimeLogConfigNamespaceListerExpansion allows custom methods to be added to
 // RealtimeLogConfigNamespaceLister.
 type RealtimeLogConfigNamespaceListerExpansion interface{}
+
+// ResponseHeadersPolicyListerExpansion allows custom methods to be added to
+// ResponseHeadersPolicyLister.
+type ResponseHeadersPolicyListerExpansion interface{}
+
+// ResponseHeadersPolicyNamespaceListerExpansion allows custom methods to be added to
+// ResponseHeadersPolicyNamespaceLister.
+type ResponseHeadersPolicyNamespaceListerExpansion interface{}

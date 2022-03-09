@@ -70,6 +70,10 @@ type ConnectionSpecResource struct {
 	Location          *string `json:"location" tf:"location"`
 	Name              *string `json:"name" tf:"name"`
 	// +optional
+	OwnerAccountID *string `json:"ownerAccountID,omitempty" tf:"owner_account_id"`
+	// +optional
+	ProviderName *string `json:"providerName,omitempty" tf:"provider_name"`
+	// +optional
 	Tags *map[string]string `json:"tags,omitempty" tf:"tags"`
 	// +optional
 	TagsAll *map[string]string `json:"tagsAll,omitempty" tf:"tags_all"`

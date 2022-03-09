@@ -88,7 +88,7 @@ func (r *Dashboard) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range dashboardForceNewList {
+	for key, _ := range dashboardForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

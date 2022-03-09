@@ -57,6 +57,8 @@ spec:
                 type: object
               resource:
                 properties:
+                  cdcStartPosition:
+                    type: string
                   cdcStartTime:
                     type: string
                   id:
@@ -95,6 +97,8 @@ spec:
                 type: object
               state:
                 properties:
+                  cdcStartPosition:
+                    type: string
                   cdcStartTime:
                     type: string
                   id:

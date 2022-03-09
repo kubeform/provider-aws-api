@@ -134,6 +134,11 @@ func (in *LedgerSpecResource) DeepCopyInto(out *LedgerSpecResource) {
 		*out = new(string)
 		**out = **in
 	}
+	if in.PermissionsMode != nil {
+		in, out := &in.PermissionsMode, &out.PermissionsMode
+		*out = new(string)
+		**out = **in
+	}
 	if in.Tags != nil {
 		in, out := &in.Tags, &out.Tags
 		*out = new(map[string]string)

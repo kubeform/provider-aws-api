@@ -90,7 +90,7 @@ func (r *CertificateAuthorityCertificate) ValidateUpdate(old runtime.Object) err
 		return err
 	}
 
-	for key := range certificateauthoritycertificateForceNewList {
+	for key, _ := range certificateauthoritycertificateForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

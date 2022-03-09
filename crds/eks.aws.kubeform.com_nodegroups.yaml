@@ -206,6 +206,15 @@ spec:
                         format: int64
                         type: integer
                     type: object
+                  updateConfig:
+                    properties:
+                      maxUnavailable:
+                        format: int64
+                        type: integer
+                      maxUnavailablePercentage:
+                        format: int64
+                        type: integer
+                    type: object
                   version:
                     type: string
                 required:
@@ -362,6 +371,15 @@ spec:
                           two instants as an int64 nanosecond count. The representation
                           limits the largest representable duration to approximately
                           290 years.
+                        format: int64
+                        type: integer
+                    type: object
+                  updateConfig:
+                    properties:
+                      maxUnavailable:
+                        format: int64
+                        type: integer
+                      maxUnavailablePercentage:
                         format: int64
                         type: integer
                     type: object

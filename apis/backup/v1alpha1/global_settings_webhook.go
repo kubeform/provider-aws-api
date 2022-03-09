@@ -86,7 +86,7 @@ func (r *GlobalSettings) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range globalsettingsForceNewList {
+	for key, _ := range globalsettingsForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

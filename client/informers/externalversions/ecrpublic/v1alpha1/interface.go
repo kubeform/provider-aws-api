@@ -26,6 +26,8 @@ import (
 type Interface interface {
 	// Repositories returns a RepositoryInformer.
 	Repositories() RepositoryInformer
+	// RepositoryPolicies returns a RepositoryPolicyInformer.
+	RepositoryPolicies() RepositoryPolicyInformer
 }
 
 type version struct {
@@ -42,4 +44,9 @@ func New(f internalinterfaces.SharedInformerFactory, namespace string, tweakList
 // Repositories returns a RepositoryInformer.
 func (v *version) Repositories() RepositoryInformer {
 	return &repositoryInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
+// RepositoryPolicies returns a RepositoryPolicyInformer.
+func (v *version) RepositoryPolicies() RepositoryPolicyInformer {
+	return &repositoryPolicyInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
 }

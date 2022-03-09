@@ -88,6 +88,14 @@ spec:
                     required:
                     - kernelSpec
                     type: object
+                  tags:
+                    additionalProperties:
+                      type: string
+                    type: object
+                  tagsAll:
+                    additionalProperties:
+                      type: string
+                    type: object
                 required:
                 - appImageConfigName
                 type: object
@@ -123,6 +131,14 @@ spec:
                         type: object
                     required:
                     - kernelSpec
+                    type: object
+                  tags:
+                    additionalProperties:
+                      type: string
+                    type: object
+                  tagsAll:
+                    additionalProperties:
+                      type: string
                     type: object
                 required:
                 - appImageConfigName

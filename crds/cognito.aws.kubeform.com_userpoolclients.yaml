@@ -95,6 +95,8 @@ spec:
                     type: array
                   defaultRedirectURI:
                     type: string
+                  enableTokenRevocation:
+                    type: boolean
                   explicitAuthFlows:
                     items:
                       type: string
@@ -191,6 +193,8 @@ spec:
                     type: array
                   defaultRedirectURI:
                     type: string
+                  enableTokenRevocation:
+                    type: boolean
                   explicitAuthFlows:
                     items:
                       type: string

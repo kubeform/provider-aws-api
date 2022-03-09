@@ -24,4 +24,6 @@ type ClusterExpansion interface{}
 
 type FargateProfileExpansion interface{}
 
+type IdentityProviderConfigExpansion interface{}
+
 type NodeGroupExpansion interface{}

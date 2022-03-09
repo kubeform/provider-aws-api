@@ -34,6 +34,10 @@ type Interface interface {
 	Grants() GrantInformer
 	// Keys returns a KeyInformer.
 	Keys() KeyInformer
+	// ReplicaExternalKeys returns a ReplicaExternalKeyInformer.
+	ReplicaExternalKeys() ReplicaExternalKeyInformer
+	// ReplicaKeys returns a ReplicaKeyInformer.
+	ReplicaKeys() ReplicaKeyInformer
 }
 
 type version struct {
@@ -70,4 +74,14 @@ func (v *version) Grants() GrantInformer {
 // Keys returns a KeyInformer.
 func (v *version) Keys() KeyInformer {
 	return &keyInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
+// ReplicaExternalKeys returns a ReplicaExternalKeyInformer.
+func (v *version) ReplicaExternalKeys() ReplicaExternalKeyInformer {
+	return &replicaExternalKeyInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
+// ReplicaKeys returns a ReplicaKeyInformer.
+func (v *version) ReplicaKeys() ReplicaKeyInformer {
+	return &replicaKeyInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
 }

@@ -64,6 +64,8 @@ func addKnownTypes(scheme *runtime.Scheme) error {
 		&FleetList{},
 		&GameSessionQueue{},
 		&GameSessionQueueList{},
+		&Script{},
+		&ScriptList{},
 	)
 
 	scheme.AddKnownTypes(SchemeGroupVersion,

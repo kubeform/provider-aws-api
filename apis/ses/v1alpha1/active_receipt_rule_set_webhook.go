@@ -86,7 +86,7 @@ func (r *ActiveReceiptRuleSet) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range activereceiptrulesetForceNewList {
+	for key, _ := range activereceiptrulesetForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

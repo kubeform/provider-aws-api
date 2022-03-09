@@ -59,6 +59,8 @@ spec:
                 properties:
                   applyOnlyAtCronInterval:
                     type: boolean
+                  arn:
+                    type: string
                   associationID:
                     type: string
                   associationName:
@@ -72,6 +74,7 @@ spec:
                   id:
                     type: string
                   instanceID:
+                    description: Deprecated
                     type: string
                   maxConcurrency:
                     type: string
@@ -84,6 +87,8 @@ spec:
                       s3BucketName:
                         type: string
                       s3KeyPrefix:
+                        type: string
+                      s3Region:
                         type: string
                     required:
                     - s3BucketName
@@ -102,6 +107,7 @@ spec:
                         values:
                           items:
                             type: string
+                          maxItems: 50
                           type: array
                       required:
                       - key
@@ -109,6 +115,9 @@ spec:
                       type: object
                     maxItems: 5
                     type: array
+                  waitForSuccessTimeoutSeconds:
+                    format: int64
+                    type: integer
                 required:
                 - name
                 type: object
@@ -116,6 +125,8 @@ spec:
                 properties:
                   applyOnlyAtCronInterval:
                     type: boolean
+                  arn:
+                    type: string
                   associationID:
                     type: string
                   associationName:
@@ -129,6 +140,7 @@ spec:
                   id:
                     type: string
                   instanceID:
+                    description: Deprecated
                     type: string
                   maxConcurrency:
                     type: string
@@ -141,6 +153,8 @@ spec:
                       s3BucketName:
                         type: string
                       s3KeyPrefix:
+                        type: string
+                      s3Region:
                         type: string
                     required:
                     - s3BucketName
@@ -159,6 +173,7 @@ spec:
                         values:
                           items:
                             type: string
+                          maxItems: 50
                           type: array
                       required:
                       - key
@@ -166,6 +181,9 @@ spec:
                       type: object
                     maxItems: 5
                     type: array
+                  waitForSuccessTimeoutSeconds:
+                    format: int64
+                    type: integer
                 required:
                 - name
                 type: object

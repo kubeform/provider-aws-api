@@ -41,6 +41,14 @@ func (c *FakeSagemakerV1alpha1) CodeRepositories(namespace string) v1alpha1.Code
 	return &FakeCodeRepositories{c, namespace}
 }
 
+func (c *FakeSagemakerV1alpha1) Devices(namespace string) v1alpha1.DeviceInterface {
+	return &FakeDevices{c, namespace}
+}
+
+func (c *FakeSagemakerV1alpha1) DeviceFleets(namespace string) v1alpha1.DeviceFleetInterface {
+	return &FakeDeviceFleets{c, namespace}
+}
+
 func (c *FakeSagemakerV1alpha1) Domains(namespace string) v1alpha1.DomainInterface {
 	return &FakeDomains{c, namespace}
 }
@@ -55,6 +63,14 @@ func (c *FakeSagemakerV1alpha1) EndpointConfigurations(namespace string) v1alpha
 
 func (c *FakeSagemakerV1alpha1) FeatureGroups(namespace string) v1alpha1.FeatureGroupInterface {
 	return &FakeFeatureGroups{c, namespace}
+}
+
+func (c *FakeSagemakerV1alpha1) FlowDefinitions(namespace string) v1alpha1.FlowDefinitionInterface {
+	return &FakeFlowDefinitions{c, namespace}
+}
+
+func (c *FakeSagemakerV1alpha1) HumanTaskUis(namespace string) v1alpha1.HumanTaskUiInterface {
+	return &FakeHumanTaskUis{c, namespace}
 }
 
 func (c *FakeSagemakerV1alpha1) Images(namespace string) v1alpha1.ImageInterface {
@@ -73,6 +89,10 @@ func (c *FakeSagemakerV1alpha1) ModelPackageGroups(namespace string) v1alpha1.Mo
 	return &FakeModelPackageGroups{c, namespace}
 }
 
+func (c *FakeSagemakerV1alpha1) ModelPackageGroupPolicies(namespace string) v1alpha1.ModelPackageGroupPolicyInterface {
+	return &FakeModelPackageGroupPolicies{c, namespace}
+}
+
 func (c *FakeSagemakerV1alpha1) NotebookInstances(namespace string) v1alpha1.NotebookInstanceInterface {
 	return &FakeNotebookInstances{c, namespace}
 }
@@ -81,8 +101,24 @@ func (c *FakeSagemakerV1alpha1) NotebookInstanceLifecycleConfigurations(namespac
 	return &FakeNotebookInstanceLifecycleConfigurations{c, namespace}
 }
 
+func (c *FakeSagemakerV1alpha1) Projects(namespace string) v1alpha1.ProjectInterface {
+	return &FakeProjects{c, namespace}
+}
+
+func (c *FakeSagemakerV1alpha1) StudioLifecycleConfigs(namespace string) v1alpha1.StudioLifecycleConfigInterface {
+	return &FakeStudioLifecycleConfigs{c, namespace}
+}
+
 func (c *FakeSagemakerV1alpha1) UserProfiles(namespace string) v1alpha1.UserProfileInterface {
 	return &FakeUserProfiles{c, namespace}
+}
+
+func (c *FakeSagemakerV1alpha1) Workforces(namespace string) v1alpha1.WorkforceInterface {
+	return &FakeWorkforces{c, namespace}
+}
+
+func (c *FakeSagemakerV1alpha1) Workteams(namespace string) v1alpha1.WorkteamInterface {
+	return &FakeWorkteams{c, namespace}
 }
 
 // RESTClient returns a RESTClient that is used to communicate

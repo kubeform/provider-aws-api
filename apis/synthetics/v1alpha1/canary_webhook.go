@@ -42,8 +42,7 @@ func (r *Canary) SetupWebhookWithManager(mgr ctrl.Manager) error {
 var _ webhook.Validator = &Canary{}
 
 var canaryForceNewList = map[string]bool{
-	"/artifact_s3_location": true,
-	"/name":                 true,
+	"/name": true,
 }
 
 // ValidateCreate implements webhook.Validator so a webhook will be registered for the type
@@ -89,7 +88,7 @@ func (r *Canary) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range canaryForceNewList {
+	for key, _ := range canaryForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

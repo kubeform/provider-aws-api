@@ -102,6 +102,8 @@ type UserPoolClientSpecResource struct {
 	// +optional
 	DefaultRedirectURI *string `json:"defaultRedirectURI,omitempty" tf:"default_redirect_uri"`
 	// +optional
+	EnableTokenRevocation *bool `json:"enableTokenRevocation,omitempty" tf:"enable_token_revocation"`
+	// +optional
 	ExplicitAuthFlows []string `json:"explicitAuthFlows,omitempty" tf:"explicit_auth_flows"`
 	// +optional
 	GenerateSecret *bool `json:"generateSecret,omitempty" tf:"generate_secret"`

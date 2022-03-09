@@ -97,8 +97,16 @@ spec:
                         type: string
                       memory:
                         type: string
-                    required:
-                    - instanceRoleArn
+                    type: object
+                  networkConfiguration:
+                    properties:
+                      egressConfiguration:
+                        properties:
+                          egressType:
+                            type: string
+                          vpcConnectorArn:
+                            type: string
+                        type: object
                     type: object
                   serviceID:
                     type: string
@@ -237,8 +245,16 @@ spec:
                         type: string
                       memory:
                         type: string
-                    required:
-                    - instanceRoleArn
+                    type: object
+                  networkConfiguration:
+                    properties:
+                      egressConfiguration:
+                        properties:
+                          egressType:
+                            type: string
+                          vpcConnectorArn:
+                            type: string
+                        type: object
                     type: object
                   serviceID:
                     type: string

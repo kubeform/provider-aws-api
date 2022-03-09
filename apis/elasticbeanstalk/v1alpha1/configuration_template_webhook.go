@@ -91,7 +91,7 @@ func (r *ConfigurationTemplate) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range configurationtemplateForceNewList {
+	for key, _ := range configurationtemplateForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

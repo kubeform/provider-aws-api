@@ -63,6 +63,9 @@ spec:
                     type: string
                   name:
                     type: string
+                  partitionCount:
+                    format: int64
+                    type: integer
                   placementGroupID:
                     type: string
                   strategy:
@@ -87,6 +90,9 @@ spec:
                     type: string
                   name:
                     type: string
+                  partitionCount:
+                    format: int64
+                    type: integer
                   placementGroupID:
                     type: string
                   strategy:

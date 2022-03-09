@@ -27,15 +27,23 @@ import (
 
 type EcsV1alpha1Interface interface {
 	RESTClient() rest.Interface
+	AccountSettingDefaultsGetter
 	CapacityProvidersGetter
 	ClustersGetter
+	ClusterCapacityProvidersesGetter
 	ServicesGetter
+	TagsGetter
 	TaskDefinitionsGetter
+	TaskSetsGetter
 }
 
 // EcsV1alpha1Client is used to interact with features provided by the ecs.aws.kubeform.com group.
 type EcsV1alpha1Client struct {
 	restClient rest.Interface
+}
+
+func (c *EcsV1alpha1Client) AccountSettingDefaults(namespace string) AccountSettingDefaultInterface {
+	return newAccountSettingDefaults(c, namespace)
 }
 
 func (c *EcsV1alpha1Client) CapacityProviders(namespace string) CapacityProviderInterface {
@@ -46,12 +54,24 @@ func (c *EcsV1alpha1Client) Clusters(namespace string) ClusterInterface {
 	return newClusters(c, namespace)
 }
 
+func (c *EcsV1alpha1Client) ClusterCapacityProviderses(namespace string) ClusterCapacityProvidersInterface {
+	return newClusterCapacityProviderses(c, namespace)
+}
+
 func (c *EcsV1alpha1Client) Services(namespace string) ServiceInterface {
 	return newServices(c, namespace)
 }
 
+func (c *EcsV1alpha1Client) Tags(namespace string) TagInterface {
+	return newTags(c, namespace)
+}
+
 func (c *EcsV1alpha1Client) TaskDefinitions(namespace string) TaskDefinitionInterface {
 	return newTaskDefinitions(c, namespace)
+}
+
+func (c *EcsV1alpha1Client) TaskSets(namespace string) TaskSetInterface {
+	return newTaskSets(c, namespace)
 }
 
 // NewForConfig creates a new EcsV1alpha1Client for the given config.

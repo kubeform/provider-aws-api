@@ -82,7 +82,9 @@ type ClusterSpecResource struct {
 	AvailabilityZones []string `json:"availabilityZones,omitempty" tf:"availability_zones"`
 	// +optional
 	ClusterAddress *string `json:"clusterAddress,omitempty" tf:"cluster_address"`
-	ClusterName    *string `json:"clusterName" tf:"cluster_name"`
+	// +optional
+	ClusterEndpointEncryptionType *string `json:"clusterEndpointEncryptionType,omitempty" tf:"cluster_endpoint_encryption_type"`
+	ClusterName                   *string `json:"clusterName" tf:"cluster_name"`
 	// +optional
 	ConfigurationEndpoint *string `json:"configurationEndpoint,omitempty" tf:"configuration_endpoint"`
 	// +optional

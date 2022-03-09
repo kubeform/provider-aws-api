@@ -90,7 +90,7 @@ func (r *S3BucketAssociation) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range s3bucketassociationForceNewList {
+	for key, _ := range s3bucketassociationForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

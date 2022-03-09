@@ -64,6 +64,13 @@ type TaskDefinitionSpecProxyConfiguration struct {
 	Type *string `json:"type,omitempty" tf:"type"`
 }
 
+type TaskDefinitionSpecRuntimePlatform struct {
+	// +optional
+	CpuArchitecture *string `json:"cpuArchitecture,omitempty" tf:"cpu_architecture"`
+	// +optional
+	OperatingSystemFamily *string `json:"operatingSystemFamily,omitempty" tf:"operating_system_family"`
+}
+
 type TaskDefinitionSpecVolumeDockerVolumeConfiguration struct {
 	// +optional
 	Autoprovision *bool `json:"autoprovision,omitempty" tf:"autoprovision"`
@@ -165,6 +172,10 @@ type TaskDefinitionSpecResource struct {
 	RequiresCompatibilities []string `json:"requiresCompatibilities,omitempty" tf:"requires_compatibilities"`
 	// +optional
 	Revision *int64 `json:"revision,omitempty" tf:"revision"`
+	// +optional
+	RuntimePlatform *TaskDefinitionSpecRuntimePlatform `json:"runtimePlatform,omitempty" tf:"runtime_platform"`
+	// +optional
+	SkipDestroy *bool `json:"skipDestroy,omitempty" tf:"skip_destroy"`
 	// +optional
 	Tags *map[string]string `json:"tags,omitempty" tf:"tags"`
 	// +optional

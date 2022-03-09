@@ -86,7 +86,7 @@ func (r *Portfolio) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range portfolioForceNewList {
+	for key, _ := range portfolioForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

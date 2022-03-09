@@ -86,7 +86,7 @@ func (r *RegionSettings) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range regionsettingsForceNewList {
+	for key, _ := range regionsettingsForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

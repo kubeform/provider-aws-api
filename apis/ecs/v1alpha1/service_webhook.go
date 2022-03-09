@@ -42,24 +42,22 @@ func (r *Service) SetupWebhookWithManager(mgr ctrl.Manager) error {
 var _ webhook.Validator = &Service{}
 
 var serviceForceNewList = map[string]bool{
-	"/capacity_provider_strategy/*/base":              true,
-	"/capacity_provider_strategy/*/capacity_provider": true,
-	"/capacity_provider_strategy/*/weight":            true,
-	"/cluster":                                        true,
-	"/deployment_controller/*/type":                   true,
-	"/iam_role":                                       true,
-	"/launch_type":                                    true,
-	"/load_balancer/*/container_name":                 true,
-	"/load_balancer/*/container_port":                 true,
-	"/load_balancer/*/elb_name":                       true,
-	"/load_balancer/*/target_group_arn":               true,
-	"/name":                                           true,
-	"/propagate_tags":                                 true,
-	"/scheduling_strategy":                            true,
-	"/service_registries/*/container_name":            true,
-	"/service_registries/*/container_port":            true,
-	"/service_registries/*/port":                      true,
-	"/service_registries/*/registry_arn":              true,
+	"/cluster":                             true,
+	"/deployment_controller/*/type":        true,
+	"/enable_ecs_managed_tags":             true,
+	"/iam_role":                            true,
+	"/launch_type":                         true,
+	"/load_balancer/*/container_name":      true,
+	"/load_balancer/*/container_port":      true,
+	"/load_balancer/*/elb_name":            true,
+	"/load_balancer/*/target_group_arn":    true,
+	"/name":                                true,
+	"/propagate_tags":                      true,
+	"/scheduling_strategy":                 true,
+	"/service_registries/*/container_name": true,
+	"/service_registries/*/container_port": true,
+	"/service_registries/*/port":           true,
+	"/service_registries/*/registry_arn":   true,
 }
 
 // ValidateCreate implements webhook.Validator so a webhook will be registered for the type
@@ -105,7 +103,7 @@ func (r *Service) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range serviceForceNewList {
+	for key, _ := range serviceForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

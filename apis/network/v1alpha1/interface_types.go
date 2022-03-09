@@ -66,23 +66,43 @@ type InterfaceSpecResource struct {
 	ID string `json:"id,omitempty" tf:"id,omitempty"`
 
 	// +optional
+	Arn *string `json:"arn,omitempty" tf:"arn"`
+	// +optional
 	Attachment []InterfaceSpecAttachment `json:"attachment,omitempty" tf:"attachment"`
 	// +optional
 	Description *string `json:"description,omitempty" tf:"description"`
 	// +optional
 	InterfaceType *string `json:"interfaceType,omitempty" tf:"interface_type"`
 	// +optional
+	Ipv4PrefixCount *int64 `json:"ipv4PrefixCount,omitempty" tf:"ipv4_prefix_count"`
+	// +optional
+	Ipv4Prefixes []string `json:"ipv4Prefixes,omitempty" tf:"ipv4_prefixes"`
+	// +optional
 	Ipv6AddressCount *int64 `json:"ipv6AddressCount,omitempty" tf:"ipv6_address_count"`
 	// +optional
+	Ipv6AddressList []string `json:"ipv6AddressList,omitempty" tf:"ipv6_address_list"`
+	// +optional
+	Ipv6AddressListEnabled *bool `json:"ipv6AddressListEnabled,omitempty" tf:"ipv6_address_list_enabled"`
+	// +optional
 	Ipv6Addresses []string `json:"ipv6Addresses,omitempty" tf:"ipv6_addresses"`
+	// +optional
+	Ipv6PrefixCount *int64 `json:"ipv6PrefixCount,omitempty" tf:"ipv6_prefix_count"`
+	// +optional
+	Ipv6Prefixes []string `json:"ipv6Prefixes,omitempty" tf:"ipv6_prefixes"`
 	// +optional
 	MacAddress *string `json:"macAddress,omitempty" tf:"mac_address"`
 	// +optional
 	OutpostArn *string `json:"outpostArn,omitempty" tf:"outpost_arn"`
 	// +optional
+	OwnerID *string `json:"ownerID,omitempty" tf:"owner_id"`
+	// +optional
 	PrivateDNSName *string `json:"privateDNSName,omitempty" tf:"private_dns_name"`
 	// +optional
 	PrivateIP *string `json:"privateIP,omitempty" tf:"private_ip"`
+	// +optional
+	PrivateIPList []string `json:"privateIPList,omitempty" tf:"private_ip_list"`
+	// +optional
+	PrivateIPListEnabled *bool `json:"privateIPListEnabled,omitempty" tf:"private_ip_list_enabled"`
 	// +optional
 	PrivateIPS []string `json:"privateIPS,omitempty" tf:"private_ips"`
 	// +optional

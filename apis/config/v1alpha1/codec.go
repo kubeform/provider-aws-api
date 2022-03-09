@@ -33,6 +33,8 @@ func GetEncoder() map[string]jsoniter.ValEncoder {
 		jsoniter.MustGetKind(reflect2.TypeOf(ConfigurationAggregatorSpecOrganizationAggregationSource{}).Type1()): ConfigurationAggregatorSpecOrganizationAggregationSourceCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(ConfigurationRecorderSpecRecordingGroup{}).Type1()):                  ConfigurationRecorderSpecRecordingGroupCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(DeliveryChannelSpecSnapshotDeliveryProperties{}).Type1()):            DeliveryChannelSpecSnapshotDeliveryPropertiesCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(RemediationConfigurationSpecExecutionControls{}).Type1()):            RemediationConfigurationSpecExecutionControlsCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(RemediationConfigurationSpecExecutionControlsSsmControls{}).Type1()): RemediationConfigurationSpecExecutionControlsSsmControlsCodec{},
 	}
 }
 
@@ -44,6 +46,8 @@ func GetDecoder() map[string]jsoniter.ValDecoder {
 		jsoniter.MustGetKind(reflect2.TypeOf(ConfigurationAggregatorSpecOrganizationAggregationSource{}).Type1()): ConfigurationAggregatorSpecOrganizationAggregationSourceCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(ConfigurationRecorderSpecRecordingGroup{}).Type1()):                  ConfigurationRecorderSpecRecordingGroupCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(DeliveryChannelSpecSnapshotDeliveryProperties{}).Type1()):            DeliveryChannelSpecSnapshotDeliveryPropertiesCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(RemediationConfigurationSpecExecutionControls{}).Type1()):            RemediationConfigurationSpecExecutionControlsCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(RemediationConfigurationSpecExecutionControlsSsmControls{}).Type1()): RemediationConfigurationSpecExecutionControlsSsmControlsCodec{},
 	}
 }
 
@@ -530,5 +534,163 @@ func (DeliveryChannelSpecSnapshotDeliveryPropertiesCodec) Decode(ptr unsafe.Poin
 		}
 	default:
 		iter.ReportError("decode DeliveryChannelSpecSnapshotDeliveryProperties", "unexpected JSON type")
+	}
+}
+
+// +k8s:deepcopy-gen=false
+type RemediationConfigurationSpecExecutionControlsCodec struct {
+}
+
+func (RemediationConfigurationSpecExecutionControlsCodec) IsEmpty(ptr unsafe.Pointer) bool {
+	return (*RemediationConfigurationSpecExecutionControls)(ptr) == nil
+}
+
+func (RemediationConfigurationSpecExecutionControlsCodec) Encode(ptr unsafe.Pointer, stream *jsoniter.Stream) {
+	obj := (*RemediationConfigurationSpecExecutionControls)(ptr)
+	var objs []RemediationConfigurationSpecExecutionControls
+	if obj != nil {
+		objs = []RemediationConfigurationSpecExecutionControls{*obj}
+	}
+
+	jsonit := jsoniter.Config{
+		EscapeHTML:             true,
+		SortMapKeys:            true,
+		ValidateJsonRawMessage: true,
+		TagKey:                 "tf",
+		TypeEncoders:           getEncodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(RemediationConfigurationSpecExecutionControls{}).Type1())),
+	}.Froze()
+
+	byt, _ := jsonit.Marshal(objs)
+
+	stream.Write(byt)
+}
+
+func (RemediationConfigurationSpecExecutionControlsCodec) Decode(ptr unsafe.Pointer, iter *jsoniter.Iterator) {
+	switch iter.WhatIsNext() {
+	case jsoniter.NilValue:
+		iter.Skip()
+		*(*RemediationConfigurationSpecExecutionControls)(ptr) = RemediationConfigurationSpecExecutionControls{}
+		return
+	case jsoniter.ArrayValue:
+		objsByte := iter.SkipAndReturnBytes()
+		if len(objsByte) > 0 {
+			var objs []RemediationConfigurationSpecExecutionControls
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(RemediationConfigurationSpecExecutionControls{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objsByte, &objs)
+
+			if len(objs) > 0 {
+				*(*RemediationConfigurationSpecExecutionControls)(ptr) = objs[0]
+			} else {
+				*(*RemediationConfigurationSpecExecutionControls)(ptr) = RemediationConfigurationSpecExecutionControls{}
+			}
+		} else {
+			*(*RemediationConfigurationSpecExecutionControls)(ptr) = RemediationConfigurationSpecExecutionControls{}
+		}
+	case jsoniter.ObjectValue:
+		objByte := iter.SkipAndReturnBytes()
+		if len(objByte) > 0 {
+			var obj RemediationConfigurationSpecExecutionControls
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(RemediationConfigurationSpecExecutionControls{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objByte, &obj)
+
+			*(*RemediationConfigurationSpecExecutionControls)(ptr) = obj
+		} else {
+			*(*RemediationConfigurationSpecExecutionControls)(ptr) = RemediationConfigurationSpecExecutionControls{}
+		}
+	default:
+		iter.ReportError("decode RemediationConfigurationSpecExecutionControls", "unexpected JSON type")
+	}
+}
+
+// +k8s:deepcopy-gen=false
+type RemediationConfigurationSpecExecutionControlsSsmControlsCodec struct {
+}
+
+func (RemediationConfigurationSpecExecutionControlsSsmControlsCodec) IsEmpty(ptr unsafe.Pointer) bool {
+	return (*RemediationConfigurationSpecExecutionControlsSsmControls)(ptr) == nil
+}
+
+func (RemediationConfigurationSpecExecutionControlsSsmControlsCodec) Encode(ptr unsafe.Pointer, stream *jsoniter.Stream) {
+	obj := (*RemediationConfigurationSpecExecutionControlsSsmControls)(ptr)
+	var objs []RemediationConfigurationSpecExecutionControlsSsmControls
+	if obj != nil {
+		objs = []RemediationConfigurationSpecExecutionControlsSsmControls{*obj}
+	}
+
+	jsonit := jsoniter.Config{
+		EscapeHTML:             true,
+		SortMapKeys:            true,
+		ValidateJsonRawMessage: true,
+		TagKey:                 "tf",
+		TypeEncoders:           getEncodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(RemediationConfigurationSpecExecutionControlsSsmControls{}).Type1())),
+	}.Froze()
+
+	byt, _ := jsonit.Marshal(objs)
+
+	stream.Write(byt)
+}
+
+func (RemediationConfigurationSpecExecutionControlsSsmControlsCodec) Decode(ptr unsafe.Pointer, iter *jsoniter.Iterator) {
+	switch iter.WhatIsNext() {
+	case jsoniter.NilValue:
+		iter.Skip()
+		*(*RemediationConfigurationSpecExecutionControlsSsmControls)(ptr) = RemediationConfigurationSpecExecutionControlsSsmControls{}
+		return
+	case jsoniter.ArrayValue:
+		objsByte := iter.SkipAndReturnBytes()
+		if len(objsByte) > 0 {
+			var objs []RemediationConfigurationSpecExecutionControlsSsmControls
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(RemediationConfigurationSpecExecutionControlsSsmControls{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objsByte, &objs)
+
+			if len(objs) > 0 {
+				*(*RemediationConfigurationSpecExecutionControlsSsmControls)(ptr) = objs[0]
+			} else {
+				*(*RemediationConfigurationSpecExecutionControlsSsmControls)(ptr) = RemediationConfigurationSpecExecutionControlsSsmControls{}
+			}
+		} else {
+			*(*RemediationConfigurationSpecExecutionControlsSsmControls)(ptr) = RemediationConfigurationSpecExecutionControlsSsmControls{}
+		}
+	case jsoniter.ObjectValue:
+		objByte := iter.SkipAndReturnBytes()
+		if len(objByte) > 0 {
+			var obj RemediationConfigurationSpecExecutionControlsSsmControls
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(RemediationConfigurationSpecExecutionControlsSsmControls{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objByte, &obj)
+
+			*(*RemediationConfigurationSpecExecutionControlsSsmControls)(ptr) = obj
+		} else {
+			*(*RemediationConfigurationSpecExecutionControlsSsmControls)(ptr) = RemediationConfigurationSpecExecutionControlsSsmControls{}
+		}
+	default:
+		iter.ReportError("decode RemediationConfigurationSpecExecutionControlsSsmControls", "unexpected JSON type")
 	}
 }

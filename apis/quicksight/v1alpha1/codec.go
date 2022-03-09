@@ -19,15 +19,72 @@ limitations under the License.
 package v1alpha1
 
 import (
+	"unsafe"
+
 	jsoniter "github.com/json-iterator/go"
+	"github.com/modern-go/reflect2"
 )
 
 func GetEncoder() map[string]jsoniter.ValEncoder {
-	return map[string]jsoniter.ValEncoder{}
+	return map[string]jsoniter.ValEncoder{
+		jsoniter.MustGetKind(reflect2.TypeOf(DataSourceSpecCredentials{}).Type1()):                      DataSourceSpecCredentialsCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(DataSourceSpecCredentialsCredentialPair{}).Type1()):        DataSourceSpecCredentialsCredentialPairCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(DataSourceSpecParameters{}).Type1()):                       DataSourceSpecParametersCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(DataSourceSpecParametersAmazonElasticsearch{}).Type1()):    DataSourceSpecParametersAmazonElasticsearchCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(DataSourceSpecParametersAthena{}).Type1()):                 DataSourceSpecParametersAthenaCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(DataSourceSpecParametersAurora{}).Type1()):                 DataSourceSpecParametersAuroraCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(DataSourceSpecParametersAuroraPostgresql{}).Type1()):       DataSourceSpecParametersAuroraPostgresqlCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(DataSourceSpecParametersAwsIotAnalytics{}).Type1()):        DataSourceSpecParametersAwsIotAnalyticsCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(DataSourceSpecParametersJira{}).Type1()):                   DataSourceSpecParametersJiraCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(DataSourceSpecParametersMariaDb{}).Type1()):                DataSourceSpecParametersMariaDbCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(DataSourceSpecParametersMysql{}).Type1()):                  DataSourceSpecParametersMysqlCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(DataSourceSpecParametersOracle{}).Type1()):                 DataSourceSpecParametersOracleCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(DataSourceSpecParametersPostgresql{}).Type1()):             DataSourceSpecParametersPostgresqlCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(DataSourceSpecParametersPresto{}).Type1()):                 DataSourceSpecParametersPrestoCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(DataSourceSpecParametersRds{}).Type1()):                    DataSourceSpecParametersRdsCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(DataSourceSpecParametersRedshift{}).Type1()):               DataSourceSpecParametersRedshiftCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(DataSourceSpecParametersS3{}).Type1()):                     DataSourceSpecParametersS3Codec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(DataSourceSpecParametersS3ManifestFileLocation{}).Type1()): DataSourceSpecParametersS3ManifestFileLocationCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(DataSourceSpecParametersServiceNow{}).Type1()):             DataSourceSpecParametersServiceNowCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(DataSourceSpecParametersSnowflake{}).Type1()):              DataSourceSpecParametersSnowflakeCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(DataSourceSpecParametersSpark{}).Type1()):                  DataSourceSpecParametersSparkCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(DataSourceSpecParametersSqlServer{}).Type1()):              DataSourceSpecParametersSqlServerCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(DataSourceSpecParametersTeradata{}).Type1()):               DataSourceSpecParametersTeradataCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(DataSourceSpecParametersTwitter{}).Type1()):                DataSourceSpecParametersTwitterCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(DataSourceSpecSslProperties{}).Type1()):                    DataSourceSpecSslPropertiesCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(DataSourceSpecVpcConnectionProperties{}).Type1()):          DataSourceSpecVpcConnectionPropertiesCodec{},
+	}
 }
 
 func GetDecoder() map[string]jsoniter.ValDecoder {
-	return map[string]jsoniter.ValDecoder{}
+	return map[string]jsoniter.ValDecoder{
+		jsoniter.MustGetKind(reflect2.TypeOf(DataSourceSpecCredentials{}).Type1()):                      DataSourceSpecCredentialsCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(DataSourceSpecCredentialsCredentialPair{}).Type1()):        DataSourceSpecCredentialsCredentialPairCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(DataSourceSpecParameters{}).Type1()):                       DataSourceSpecParametersCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(DataSourceSpecParametersAmazonElasticsearch{}).Type1()):    DataSourceSpecParametersAmazonElasticsearchCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(DataSourceSpecParametersAthena{}).Type1()):                 DataSourceSpecParametersAthenaCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(DataSourceSpecParametersAurora{}).Type1()):                 DataSourceSpecParametersAuroraCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(DataSourceSpecParametersAuroraPostgresql{}).Type1()):       DataSourceSpecParametersAuroraPostgresqlCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(DataSourceSpecParametersAwsIotAnalytics{}).Type1()):        DataSourceSpecParametersAwsIotAnalyticsCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(DataSourceSpecParametersJira{}).Type1()):                   DataSourceSpecParametersJiraCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(DataSourceSpecParametersMariaDb{}).Type1()):                DataSourceSpecParametersMariaDbCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(DataSourceSpecParametersMysql{}).Type1()):                  DataSourceSpecParametersMysqlCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(DataSourceSpecParametersOracle{}).Type1()):                 DataSourceSpecParametersOracleCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(DataSourceSpecParametersPostgresql{}).Type1()):             DataSourceSpecParametersPostgresqlCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(DataSourceSpecParametersPresto{}).Type1()):                 DataSourceSpecParametersPrestoCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(DataSourceSpecParametersRds{}).Type1()):                    DataSourceSpecParametersRdsCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(DataSourceSpecParametersRedshift{}).Type1()):               DataSourceSpecParametersRedshiftCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(DataSourceSpecParametersS3{}).Type1()):                     DataSourceSpecParametersS3Codec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(DataSourceSpecParametersS3ManifestFileLocation{}).Type1()): DataSourceSpecParametersS3ManifestFileLocationCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(DataSourceSpecParametersServiceNow{}).Type1()):             DataSourceSpecParametersServiceNowCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(DataSourceSpecParametersSnowflake{}).Type1()):              DataSourceSpecParametersSnowflakeCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(DataSourceSpecParametersSpark{}).Type1()):                  DataSourceSpecParametersSparkCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(DataSourceSpecParametersSqlServer{}).Type1()):              DataSourceSpecParametersSqlServerCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(DataSourceSpecParametersTeradata{}).Type1()):               DataSourceSpecParametersTeradataCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(DataSourceSpecParametersTwitter{}).Type1()):                DataSourceSpecParametersTwitterCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(DataSourceSpecSslProperties{}).Type1()):                    DataSourceSpecSslPropertiesCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(DataSourceSpecVpcConnectionProperties{}).Type1()):          DataSourceSpecVpcConnectionPropertiesCodec{},
+	}
 }
 
 func getEncodersWithout(typ string) map[string]jsoniter.ValEncoder {
@@ -40,4 +97,2058 @@ func getDecodersWithout(typ string) map[string]jsoniter.ValDecoder {
 	origMap := GetDecoder()
 	delete(origMap, typ)
 	return origMap
+}
+
+// +k8s:deepcopy-gen=false
+type DataSourceSpecCredentialsCodec struct {
+}
+
+func (DataSourceSpecCredentialsCodec) IsEmpty(ptr unsafe.Pointer) bool {
+	return (*DataSourceSpecCredentials)(ptr) == nil
+}
+
+func (DataSourceSpecCredentialsCodec) Encode(ptr unsafe.Pointer, stream *jsoniter.Stream) {
+	obj := (*DataSourceSpecCredentials)(ptr)
+	var objs []DataSourceSpecCredentials
+	if obj != nil {
+		objs = []DataSourceSpecCredentials{*obj}
+	}
+
+	jsonit := jsoniter.Config{
+		EscapeHTML:             true,
+		SortMapKeys:            true,
+		ValidateJsonRawMessage: true,
+		TagKey:                 "tf",
+		TypeEncoders:           getEncodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(DataSourceSpecCredentials{}).Type1())),
+	}.Froze()
+
+	byt, _ := jsonit.Marshal(objs)
+
+	stream.Write(byt)
+}
+
+func (DataSourceSpecCredentialsCodec) Decode(ptr unsafe.Pointer, iter *jsoniter.Iterator) {
+	switch iter.WhatIsNext() {
+	case jsoniter.NilValue:
+		iter.Skip()
+		*(*DataSourceSpecCredentials)(ptr) = DataSourceSpecCredentials{}
+		return
+	case jsoniter.ArrayValue:
+		objsByte := iter.SkipAndReturnBytes()
+		if len(objsByte) > 0 {
+			var objs []DataSourceSpecCredentials
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(DataSourceSpecCredentials{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objsByte, &objs)
+
+			if len(objs) > 0 {
+				*(*DataSourceSpecCredentials)(ptr) = objs[0]
+			} else {
+				*(*DataSourceSpecCredentials)(ptr) = DataSourceSpecCredentials{}
+			}
+		} else {
+			*(*DataSourceSpecCredentials)(ptr) = DataSourceSpecCredentials{}
+		}
+	case jsoniter.ObjectValue:
+		objByte := iter.SkipAndReturnBytes()
+		if len(objByte) > 0 {
+			var obj DataSourceSpecCredentials
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(DataSourceSpecCredentials{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objByte, &obj)
+
+			*(*DataSourceSpecCredentials)(ptr) = obj
+		} else {
+			*(*DataSourceSpecCredentials)(ptr) = DataSourceSpecCredentials{}
+		}
+	default:
+		iter.ReportError("decode DataSourceSpecCredentials", "unexpected JSON type")
+	}
+}
+
+// +k8s:deepcopy-gen=false
+type DataSourceSpecCredentialsCredentialPairCodec struct {
+}
+
+func (DataSourceSpecCredentialsCredentialPairCodec) IsEmpty(ptr unsafe.Pointer) bool {
+	return (*DataSourceSpecCredentialsCredentialPair)(ptr) == nil
+}
+
+func (DataSourceSpecCredentialsCredentialPairCodec) Encode(ptr unsafe.Pointer, stream *jsoniter.Stream) {
+	obj := (*DataSourceSpecCredentialsCredentialPair)(ptr)
+	var objs []DataSourceSpecCredentialsCredentialPair
+	if obj != nil {
+		objs = []DataSourceSpecCredentialsCredentialPair{*obj}
+	}
+
+	jsonit := jsoniter.Config{
+		EscapeHTML:             true,
+		SortMapKeys:            true,
+		ValidateJsonRawMessage: true,
+		TagKey:                 "tf",
+		TypeEncoders:           getEncodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(DataSourceSpecCredentialsCredentialPair{}).Type1())),
+	}.Froze()
+
+	byt, _ := jsonit.Marshal(objs)
+
+	stream.Write(byt)
+}
+
+func (DataSourceSpecCredentialsCredentialPairCodec) Decode(ptr unsafe.Pointer, iter *jsoniter.Iterator) {
+	switch iter.WhatIsNext() {
+	case jsoniter.NilValue:
+		iter.Skip()
+		*(*DataSourceSpecCredentialsCredentialPair)(ptr) = DataSourceSpecCredentialsCredentialPair{}
+		return
+	case jsoniter.ArrayValue:
+		objsByte := iter.SkipAndReturnBytes()
+		if len(objsByte) > 0 {
+			var objs []DataSourceSpecCredentialsCredentialPair
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(DataSourceSpecCredentialsCredentialPair{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objsByte, &objs)
+
+			if len(objs) > 0 {
+				*(*DataSourceSpecCredentialsCredentialPair)(ptr) = objs[0]
+			} else {
+				*(*DataSourceSpecCredentialsCredentialPair)(ptr) = DataSourceSpecCredentialsCredentialPair{}
+			}
+		} else {
+			*(*DataSourceSpecCredentialsCredentialPair)(ptr) = DataSourceSpecCredentialsCredentialPair{}
+		}
+	case jsoniter.ObjectValue:
+		objByte := iter.SkipAndReturnBytes()
+		if len(objByte) > 0 {
+			var obj DataSourceSpecCredentialsCredentialPair
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(DataSourceSpecCredentialsCredentialPair{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objByte, &obj)
+
+			*(*DataSourceSpecCredentialsCredentialPair)(ptr) = obj
+		} else {
+			*(*DataSourceSpecCredentialsCredentialPair)(ptr) = DataSourceSpecCredentialsCredentialPair{}
+		}
+	default:
+		iter.ReportError("decode DataSourceSpecCredentialsCredentialPair", "unexpected JSON type")
+	}
+}
+
+// +k8s:deepcopy-gen=false
+type DataSourceSpecParametersCodec struct {
+}
+
+func (DataSourceSpecParametersCodec) IsEmpty(ptr unsafe.Pointer) bool {
+	return (*DataSourceSpecParameters)(ptr) == nil
+}
+
+func (DataSourceSpecParametersCodec) Encode(ptr unsafe.Pointer, stream *jsoniter.Stream) {
+	obj := (*DataSourceSpecParameters)(ptr)
+	var objs []DataSourceSpecParameters
+	if obj != nil {
+		objs = []DataSourceSpecParameters{*obj}
+	}
+
+	jsonit := jsoniter.Config{
+		EscapeHTML:             true,
+		SortMapKeys:            true,
+		ValidateJsonRawMessage: true,
+		TagKey:                 "tf",
+		TypeEncoders:           getEncodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(DataSourceSpecParameters{}).Type1())),
+	}.Froze()
+
+	byt, _ := jsonit.Marshal(objs)
+
+	stream.Write(byt)
+}
+
+func (DataSourceSpecParametersCodec) Decode(ptr unsafe.Pointer, iter *jsoniter.Iterator) {
+	switch iter.WhatIsNext() {
+	case jsoniter.NilValue:
+		iter.Skip()
+		*(*DataSourceSpecParameters)(ptr) = DataSourceSpecParameters{}
+		return
+	case jsoniter.ArrayValue:
+		objsByte := iter.SkipAndReturnBytes()
+		if len(objsByte) > 0 {
+			var objs []DataSourceSpecParameters
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(DataSourceSpecParameters{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objsByte, &objs)
+
+			if len(objs) > 0 {
+				*(*DataSourceSpecParameters)(ptr) = objs[0]
+			} else {
+				*(*DataSourceSpecParameters)(ptr) = DataSourceSpecParameters{}
+			}
+		} else {
+			*(*DataSourceSpecParameters)(ptr) = DataSourceSpecParameters{}
+		}
+	case jsoniter.ObjectValue:
+		objByte := iter.SkipAndReturnBytes()
+		if len(objByte) > 0 {
+			var obj DataSourceSpecParameters
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(DataSourceSpecParameters{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objByte, &obj)
+
+			*(*DataSourceSpecParameters)(ptr) = obj
+		} else {
+			*(*DataSourceSpecParameters)(ptr) = DataSourceSpecParameters{}
+		}
+	default:
+		iter.ReportError("decode DataSourceSpecParameters", "unexpected JSON type")
+	}
+}
+
+// +k8s:deepcopy-gen=false
+type DataSourceSpecParametersAmazonElasticsearchCodec struct {
+}
+
+func (DataSourceSpecParametersAmazonElasticsearchCodec) IsEmpty(ptr unsafe.Pointer) bool {
+	return (*DataSourceSpecParametersAmazonElasticsearch)(ptr) == nil
+}
+
+func (DataSourceSpecParametersAmazonElasticsearchCodec) Encode(ptr unsafe.Pointer, stream *jsoniter.Stream) {
+	obj := (*DataSourceSpecParametersAmazonElasticsearch)(ptr)
+	var objs []DataSourceSpecParametersAmazonElasticsearch
+	if obj != nil {
+		objs = []DataSourceSpecParametersAmazonElasticsearch{*obj}
+	}
+
+	jsonit := jsoniter.Config{
+		EscapeHTML:             true,
+		SortMapKeys:            true,
+		ValidateJsonRawMessage: true,
+		TagKey:                 "tf",
+		TypeEncoders:           getEncodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(DataSourceSpecParametersAmazonElasticsearch{}).Type1())),
+	}.Froze()
+
+	byt, _ := jsonit.Marshal(objs)
+
+	stream.Write(byt)
+}
+
+func (DataSourceSpecParametersAmazonElasticsearchCodec) Decode(ptr unsafe.Pointer, iter *jsoniter.Iterator) {
+	switch iter.WhatIsNext() {
+	case jsoniter.NilValue:
+		iter.Skip()
+		*(*DataSourceSpecParametersAmazonElasticsearch)(ptr) = DataSourceSpecParametersAmazonElasticsearch{}
+		return
+	case jsoniter.ArrayValue:
+		objsByte := iter.SkipAndReturnBytes()
+		if len(objsByte) > 0 {
+			var objs []DataSourceSpecParametersAmazonElasticsearch
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(DataSourceSpecParametersAmazonElasticsearch{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objsByte, &objs)
+
+			if len(objs) > 0 {
+				*(*DataSourceSpecParametersAmazonElasticsearch)(ptr) = objs[0]
+			} else {
+				*(*DataSourceSpecParametersAmazonElasticsearch)(ptr) = DataSourceSpecParametersAmazonElasticsearch{}
+			}
+		} else {
+			*(*DataSourceSpecParametersAmazonElasticsearch)(ptr) = DataSourceSpecParametersAmazonElasticsearch{}
+		}
+	case jsoniter.ObjectValue:
+		objByte := iter.SkipAndReturnBytes()
+		if len(objByte) > 0 {
+			var obj DataSourceSpecParametersAmazonElasticsearch
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(DataSourceSpecParametersAmazonElasticsearch{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objByte, &obj)
+
+			*(*DataSourceSpecParametersAmazonElasticsearch)(ptr) = obj
+		} else {
+			*(*DataSourceSpecParametersAmazonElasticsearch)(ptr) = DataSourceSpecParametersAmazonElasticsearch{}
+		}
+	default:
+		iter.ReportError("decode DataSourceSpecParametersAmazonElasticsearch", "unexpected JSON type")
+	}
+}
+
+// +k8s:deepcopy-gen=false
+type DataSourceSpecParametersAthenaCodec struct {
+}
+
+func (DataSourceSpecParametersAthenaCodec) IsEmpty(ptr unsafe.Pointer) bool {
+	return (*DataSourceSpecParametersAthena)(ptr) == nil
+}
+
+func (DataSourceSpecParametersAthenaCodec) Encode(ptr unsafe.Pointer, stream *jsoniter.Stream) {
+	obj := (*DataSourceSpecParametersAthena)(ptr)
+	var objs []DataSourceSpecParametersAthena
+	if obj != nil {
+		objs = []DataSourceSpecParametersAthena{*obj}
+	}
+
+	jsonit := jsoniter.Config{
+		EscapeHTML:             true,
+		SortMapKeys:            true,
+		ValidateJsonRawMessage: true,
+		TagKey:                 "tf",
+		TypeEncoders:           getEncodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(DataSourceSpecParametersAthena{}).Type1())),
+	}.Froze()
+
+	byt, _ := jsonit.Marshal(objs)
+
+	stream.Write(byt)
+}
+
+func (DataSourceSpecParametersAthenaCodec) Decode(ptr unsafe.Pointer, iter *jsoniter.Iterator) {
+	switch iter.WhatIsNext() {
+	case jsoniter.NilValue:
+		iter.Skip()
+		*(*DataSourceSpecParametersAthena)(ptr) = DataSourceSpecParametersAthena{}
+		return
+	case jsoniter.ArrayValue:
+		objsByte := iter.SkipAndReturnBytes()
+		if len(objsByte) > 0 {
+			var objs []DataSourceSpecParametersAthena
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(DataSourceSpecParametersAthena{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objsByte, &objs)
+
+			if len(objs) > 0 {
+				*(*DataSourceSpecParametersAthena)(ptr) = objs[0]
+			} else {
+				*(*DataSourceSpecParametersAthena)(ptr) = DataSourceSpecParametersAthena{}
+			}
+		} else {
+			*(*DataSourceSpecParametersAthena)(ptr) = DataSourceSpecParametersAthena{}
+		}
+	case jsoniter.ObjectValue:
+		objByte := iter.SkipAndReturnBytes()
+		if len(objByte) > 0 {
+			var obj DataSourceSpecParametersAthena
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(DataSourceSpecParametersAthena{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objByte, &obj)
+
+			*(*DataSourceSpecParametersAthena)(ptr) = obj
+		} else {
+			*(*DataSourceSpecParametersAthena)(ptr) = DataSourceSpecParametersAthena{}
+		}
+	default:
+		iter.ReportError("decode DataSourceSpecParametersAthena", "unexpected JSON type")
+	}
+}
+
+// +k8s:deepcopy-gen=false
+type DataSourceSpecParametersAuroraCodec struct {
+}
+
+func (DataSourceSpecParametersAuroraCodec) IsEmpty(ptr unsafe.Pointer) bool {
+	return (*DataSourceSpecParametersAurora)(ptr) == nil
+}
+
+func (DataSourceSpecParametersAuroraCodec) Encode(ptr unsafe.Pointer, stream *jsoniter.Stream) {
+	obj := (*DataSourceSpecParametersAurora)(ptr)
+	var objs []DataSourceSpecParametersAurora
+	if obj != nil {
+		objs = []DataSourceSpecParametersAurora{*obj}
+	}
+
+	jsonit := jsoniter.Config{
+		EscapeHTML:             true,
+		SortMapKeys:            true,
+		ValidateJsonRawMessage: true,
+		TagKey:                 "tf",
+		TypeEncoders:           getEncodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(DataSourceSpecParametersAurora{}).Type1())),
+	}.Froze()
+
+	byt, _ := jsonit.Marshal(objs)
+
+	stream.Write(byt)
+}
+
+func (DataSourceSpecParametersAuroraCodec) Decode(ptr unsafe.Pointer, iter *jsoniter.Iterator) {
+	switch iter.WhatIsNext() {
+	case jsoniter.NilValue:
+		iter.Skip()
+		*(*DataSourceSpecParametersAurora)(ptr) = DataSourceSpecParametersAurora{}
+		return
+	case jsoniter.ArrayValue:
+		objsByte := iter.SkipAndReturnBytes()
+		if len(objsByte) > 0 {
+			var objs []DataSourceSpecParametersAurora
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(DataSourceSpecParametersAurora{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objsByte, &objs)
+
+			if len(objs) > 0 {
+				*(*DataSourceSpecParametersAurora)(ptr) = objs[0]
+			} else {
+				*(*DataSourceSpecParametersAurora)(ptr) = DataSourceSpecParametersAurora{}
+			}
+		} else {
+			*(*DataSourceSpecParametersAurora)(ptr) = DataSourceSpecParametersAurora{}
+		}
+	case jsoniter.ObjectValue:
+		objByte := iter.SkipAndReturnBytes()
+		if len(objByte) > 0 {
+			var obj DataSourceSpecParametersAurora
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(DataSourceSpecParametersAurora{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objByte, &obj)
+
+			*(*DataSourceSpecParametersAurora)(ptr) = obj
+		} else {
+			*(*DataSourceSpecParametersAurora)(ptr) = DataSourceSpecParametersAurora{}
+		}
+	default:
+		iter.ReportError("decode DataSourceSpecParametersAurora", "unexpected JSON type")
+	}
+}
+
+// +k8s:deepcopy-gen=false
+type DataSourceSpecParametersAuroraPostgresqlCodec struct {
+}
+
+func (DataSourceSpecParametersAuroraPostgresqlCodec) IsEmpty(ptr unsafe.Pointer) bool {
+	return (*DataSourceSpecParametersAuroraPostgresql)(ptr) == nil
+}
+
+func (DataSourceSpecParametersAuroraPostgresqlCodec) Encode(ptr unsafe.Pointer, stream *jsoniter.Stream) {
+	obj := (*DataSourceSpecParametersAuroraPostgresql)(ptr)
+	var objs []DataSourceSpecParametersAuroraPostgresql
+	if obj != nil {
+		objs = []DataSourceSpecParametersAuroraPostgresql{*obj}
+	}
+
+	jsonit := jsoniter.Config{
+		EscapeHTML:             true,
+		SortMapKeys:            true,
+		ValidateJsonRawMessage: true,
+		TagKey:                 "tf",
+		TypeEncoders:           getEncodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(DataSourceSpecParametersAuroraPostgresql{}).Type1())),
+	}.Froze()
+
+	byt, _ := jsonit.Marshal(objs)
+
+	stream.Write(byt)
+}
+
+func (DataSourceSpecParametersAuroraPostgresqlCodec) Decode(ptr unsafe.Pointer, iter *jsoniter.Iterator) {
+	switch iter.WhatIsNext() {
+	case jsoniter.NilValue:
+		iter.Skip()
+		*(*DataSourceSpecParametersAuroraPostgresql)(ptr) = DataSourceSpecParametersAuroraPostgresql{}
+		return
+	case jsoniter.ArrayValue:
+		objsByte := iter.SkipAndReturnBytes()
+		if len(objsByte) > 0 {
+			var objs []DataSourceSpecParametersAuroraPostgresql
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(DataSourceSpecParametersAuroraPostgresql{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objsByte, &objs)
+
+			if len(objs) > 0 {
+				*(*DataSourceSpecParametersAuroraPostgresql)(ptr) = objs[0]
+			} else {
+				*(*DataSourceSpecParametersAuroraPostgresql)(ptr) = DataSourceSpecParametersAuroraPostgresql{}
+			}
+		} else {
+			*(*DataSourceSpecParametersAuroraPostgresql)(ptr) = DataSourceSpecParametersAuroraPostgresql{}
+		}
+	case jsoniter.ObjectValue:
+		objByte := iter.SkipAndReturnBytes()
+		if len(objByte) > 0 {
+			var obj DataSourceSpecParametersAuroraPostgresql
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(DataSourceSpecParametersAuroraPostgresql{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objByte, &obj)
+
+			*(*DataSourceSpecParametersAuroraPostgresql)(ptr) = obj
+		} else {
+			*(*DataSourceSpecParametersAuroraPostgresql)(ptr) = DataSourceSpecParametersAuroraPostgresql{}
+		}
+	default:
+		iter.ReportError("decode DataSourceSpecParametersAuroraPostgresql", "unexpected JSON type")
+	}
+}
+
+// +k8s:deepcopy-gen=false
+type DataSourceSpecParametersAwsIotAnalyticsCodec struct {
+}
+
+func (DataSourceSpecParametersAwsIotAnalyticsCodec) IsEmpty(ptr unsafe.Pointer) bool {
+	return (*DataSourceSpecParametersAwsIotAnalytics)(ptr) == nil
+}
+
+func (DataSourceSpecParametersAwsIotAnalyticsCodec) Encode(ptr unsafe.Pointer, stream *jsoniter.Stream) {
+	obj := (*DataSourceSpecParametersAwsIotAnalytics)(ptr)
+	var objs []DataSourceSpecParametersAwsIotAnalytics
+	if obj != nil {
+		objs = []DataSourceSpecParametersAwsIotAnalytics{*obj}
+	}
+
+	jsonit := jsoniter.Config{
+		EscapeHTML:             true,
+		SortMapKeys:            true,
+		ValidateJsonRawMessage: true,
+		TagKey:                 "tf",
+		TypeEncoders:           getEncodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(DataSourceSpecParametersAwsIotAnalytics{}).Type1())),
+	}.Froze()
+
+	byt, _ := jsonit.Marshal(objs)
+
+	stream.Write(byt)
+}
+
+func (DataSourceSpecParametersAwsIotAnalyticsCodec) Decode(ptr unsafe.Pointer, iter *jsoniter.Iterator) {
+	switch iter.WhatIsNext() {
+	case jsoniter.NilValue:
+		iter.Skip()
+		*(*DataSourceSpecParametersAwsIotAnalytics)(ptr) = DataSourceSpecParametersAwsIotAnalytics{}
+		return
+	case jsoniter.ArrayValue:
+		objsByte := iter.SkipAndReturnBytes()
+		if len(objsByte) > 0 {
+			var objs []DataSourceSpecParametersAwsIotAnalytics
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(DataSourceSpecParametersAwsIotAnalytics{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objsByte, &objs)
+
+			if len(objs) > 0 {
+				*(*DataSourceSpecParametersAwsIotAnalytics)(ptr) = objs[0]
+			} else {
+				*(*DataSourceSpecParametersAwsIotAnalytics)(ptr) = DataSourceSpecParametersAwsIotAnalytics{}
+			}
+		} else {
+			*(*DataSourceSpecParametersAwsIotAnalytics)(ptr) = DataSourceSpecParametersAwsIotAnalytics{}
+		}
+	case jsoniter.ObjectValue:
+		objByte := iter.SkipAndReturnBytes()
+		if len(objByte) > 0 {
+			var obj DataSourceSpecParametersAwsIotAnalytics
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(DataSourceSpecParametersAwsIotAnalytics{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objByte, &obj)
+
+			*(*DataSourceSpecParametersAwsIotAnalytics)(ptr) = obj
+		} else {
+			*(*DataSourceSpecParametersAwsIotAnalytics)(ptr) = DataSourceSpecParametersAwsIotAnalytics{}
+		}
+	default:
+		iter.ReportError("decode DataSourceSpecParametersAwsIotAnalytics", "unexpected JSON type")
+	}
+}
+
+// +k8s:deepcopy-gen=false
+type DataSourceSpecParametersJiraCodec struct {
+}
+
+func (DataSourceSpecParametersJiraCodec) IsEmpty(ptr unsafe.Pointer) bool {
+	return (*DataSourceSpecParametersJira)(ptr) == nil
+}
+
+func (DataSourceSpecParametersJiraCodec) Encode(ptr unsafe.Pointer, stream *jsoniter.Stream) {
+	obj := (*DataSourceSpecParametersJira)(ptr)
+	var objs []DataSourceSpecParametersJira
+	if obj != nil {
+		objs = []DataSourceSpecParametersJira{*obj}
+	}
+
+	jsonit := jsoniter.Config{
+		EscapeHTML:             true,
+		SortMapKeys:            true,
+		ValidateJsonRawMessage: true,
+		TagKey:                 "tf",
+		TypeEncoders:           getEncodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(DataSourceSpecParametersJira{}).Type1())),
+	}.Froze()
+
+	byt, _ := jsonit.Marshal(objs)
+
+	stream.Write(byt)
+}
+
+func (DataSourceSpecParametersJiraCodec) Decode(ptr unsafe.Pointer, iter *jsoniter.Iterator) {
+	switch iter.WhatIsNext() {
+	case jsoniter.NilValue:
+		iter.Skip()
+		*(*DataSourceSpecParametersJira)(ptr) = DataSourceSpecParametersJira{}
+		return
+	case jsoniter.ArrayValue:
+		objsByte := iter.SkipAndReturnBytes()
+		if len(objsByte) > 0 {
+			var objs []DataSourceSpecParametersJira
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(DataSourceSpecParametersJira{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objsByte, &objs)
+
+			if len(objs) > 0 {
+				*(*DataSourceSpecParametersJira)(ptr) = objs[0]
+			} else {
+				*(*DataSourceSpecParametersJira)(ptr) = DataSourceSpecParametersJira{}
+			}
+		} else {
+			*(*DataSourceSpecParametersJira)(ptr) = DataSourceSpecParametersJira{}
+		}
+	case jsoniter.ObjectValue:
+		objByte := iter.SkipAndReturnBytes()
+		if len(objByte) > 0 {
+			var obj DataSourceSpecParametersJira
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(DataSourceSpecParametersJira{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objByte, &obj)
+
+			*(*DataSourceSpecParametersJira)(ptr) = obj
+		} else {
+			*(*DataSourceSpecParametersJira)(ptr) = DataSourceSpecParametersJira{}
+		}
+	default:
+		iter.ReportError("decode DataSourceSpecParametersJira", "unexpected JSON type")
+	}
+}
+
+// +k8s:deepcopy-gen=false
+type DataSourceSpecParametersMariaDbCodec struct {
+}
+
+func (DataSourceSpecParametersMariaDbCodec) IsEmpty(ptr unsafe.Pointer) bool {
+	return (*DataSourceSpecParametersMariaDb)(ptr) == nil
+}
+
+func (DataSourceSpecParametersMariaDbCodec) Encode(ptr unsafe.Pointer, stream *jsoniter.Stream) {
+	obj := (*DataSourceSpecParametersMariaDb)(ptr)
+	var objs []DataSourceSpecParametersMariaDb
+	if obj != nil {
+		objs = []DataSourceSpecParametersMariaDb{*obj}
+	}
+
+	jsonit := jsoniter.Config{
+		EscapeHTML:             true,
+		SortMapKeys:            true,
+		ValidateJsonRawMessage: true,
+		TagKey:                 "tf",
+		TypeEncoders:           getEncodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(DataSourceSpecParametersMariaDb{}).Type1())),
+	}.Froze()
+
+	byt, _ := jsonit.Marshal(objs)
+
+	stream.Write(byt)
+}
+
+func (DataSourceSpecParametersMariaDbCodec) Decode(ptr unsafe.Pointer, iter *jsoniter.Iterator) {
+	switch iter.WhatIsNext() {
+	case jsoniter.NilValue:
+		iter.Skip()
+		*(*DataSourceSpecParametersMariaDb)(ptr) = DataSourceSpecParametersMariaDb{}
+		return
+	case jsoniter.ArrayValue:
+		objsByte := iter.SkipAndReturnBytes()
+		if len(objsByte) > 0 {
+			var objs []DataSourceSpecParametersMariaDb
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(DataSourceSpecParametersMariaDb{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objsByte, &objs)
+
+			if len(objs) > 0 {
+				*(*DataSourceSpecParametersMariaDb)(ptr) = objs[0]
+			} else {
+				*(*DataSourceSpecParametersMariaDb)(ptr) = DataSourceSpecParametersMariaDb{}
+			}
+		} else {
+			*(*DataSourceSpecParametersMariaDb)(ptr) = DataSourceSpecParametersMariaDb{}
+		}
+	case jsoniter.ObjectValue:
+		objByte := iter.SkipAndReturnBytes()
+		if len(objByte) > 0 {
+			var obj DataSourceSpecParametersMariaDb
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(DataSourceSpecParametersMariaDb{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objByte, &obj)
+
+			*(*DataSourceSpecParametersMariaDb)(ptr) = obj
+		} else {
+			*(*DataSourceSpecParametersMariaDb)(ptr) = DataSourceSpecParametersMariaDb{}
+		}
+	default:
+		iter.ReportError("decode DataSourceSpecParametersMariaDb", "unexpected JSON type")
+	}
+}
+
+// +k8s:deepcopy-gen=false
+type DataSourceSpecParametersMysqlCodec struct {
+}
+
+func (DataSourceSpecParametersMysqlCodec) IsEmpty(ptr unsafe.Pointer) bool {
+	return (*DataSourceSpecParametersMysql)(ptr) == nil
+}
+
+func (DataSourceSpecParametersMysqlCodec) Encode(ptr unsafe.Pointer, stream *jsoniter.Stream) {
+	obj := (*DataSourceSpecParametersMysql)(ptr)
+	var objs []DataSourceSpecParametersMysql
+	if obj != nil {
+		objs = []DataSourceSpecParametersMysql{*obj}
+	}
+
+	jsonit := jsoniter.Config{
+		EscapeHTML:             true,
+		SortMapKeys:            true,
+		ValidateJsonRawMessage: true,
+		TagKey:                 "tf",
+		TypeEncoders:           getEncodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(DataSourceSpecParametersMysql{}).Type1())),
+	}.Froze()
+
+	byt, _ := jsonit.Marshal(objs)
+
+	stream.Write(byt)
+}
+
+func (DataSourceSpecParametersMysqlCodec) Decode(ptr unsafe.Pointer, iter *jsoniter.Iterator) {
+	switch iter.WhatIsNext() {
+	case jsoniter.NilValue:
+		iter.Skip()
+		*(*DataSourceSpecParametersMysql)(ptr) = DataSourceSpecParametersMysql{}
+		return
+	case jsoniter.ArrayValue:
+		objsByte := iter.SkipAndReturnBytes()
+		if len(objsByte) > 0 {
+			var objs []DataSourceSpecParametersMysql
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(DataSourceSpecParametersMysql{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objsByte, &objs)
+
+			if len(objs) > 0 {
+				*(*DataSourceSpecParametersMysql)(ptr) = objs[0]
+			} else {
+				*(*DataSourceSpecParametersMysql)(ptr) = DataSourceSpecParametersMysql{}
+			}
+		} else {
+			*(*DataSourceSpecParametersMysql)(ptr) = DataSourceSpecParametersMysql{}
+		}
+	case jsoniter.ObjectValue:
+		objByte := iter.SkipAndReturnBytes()
+		if len(objByte) > 0 {
+			var obj DataSourceSpecParametersMysql
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(DataSourceSpecParametersMysql{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objByte, &obj)
+
+			*(*DataSourceSpecParametersMysql)(ptr) = obj
+		} else {
+			*(*DataSourceSpecParametersMysql)(ptr) = DataSourceSpecParametersMysql{}
+		}
+	default:
+		iter.ReportError("decode DataSourceSpecParametersMysql", "unexpected JSON type")
+	}
+}
+
+// +k8s:deepcopy-gen=false
+type DataSourceSpecParametersOracleCodec struct {
+}
+
+func (DataSourceSpecParametersOracleCodec) IsEmpty(ptr unsafe.Pointer) bool {
+	return (*DataSourceSpecParametersOracle)(ptr) == nil
+}
+
+func (DataSourceSpecParametersOracleCodec) Encode(ptr unsafe.Pointer, stream *jsoniter.Stream) {
+	obj := (*DataSourceSpecParametersOracle)(ptr)
+	var objs []DataSourceSpecParametersOracle
+	if obj != nil {
+		objs = []DataSourceSpecParametersOracle{*obj}
+	}
+
+	jsonit := jsoniter.Config{
+		EscapeHTML:             true,
+		SortMapKeys:            true,
+		ValidateJsonRawMessage: true,
+		TagKey:                 "tf",
+		TypeEncoders:           getEncodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(DataSourceSpecParametersOracle{}).Type1())),
+	}.Froze()
+
+	byt, _ := jsonit.Marshal(objs)
+
+	stream.Write(byt)
+}
+
+func (DataSourceSpecParametersOracleCodec) Decode(ptr unsafe.Pointer, iter *jsoniter.Iterator) {
+	switch iter.WhatIsNext() {
+	case jsoniter.NilValue:
+		iter.Skip()
+		*(*DataSourceSpecParametersOracle)(ptr) = DataSourceSpecParametersOracle{}
+		return
+	case jsoniter.ArrayValue:
+		objsByte := iter.SkipAndReturnBytes()
+		if len(objsByte) > 0 {
+			var objs []DataSourceSpecParametersOracle
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(DataSourceSpecParametersOracle{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objsByte, &objs)
+
+			if len(objs) > 0 {
+				*(*DataSourceSpecParametersOracle)(ptr) = objs[0]
+			} else {
+				*(*DataSourceSpecParametersOracle)(ptr) = DataSourceSpecParametersOracle{}
+			}
+		} else {
+			*(*DataSourceSpecParametersOracle)(ptr) = DataSourceSpecParametersOracle{}
+		}
+	case jsoniter.ObjectValue:
+		objByte := iter.SkipAndReturnBytes()
+		if len(objByte) > 0 {
+			var obj DataSourceSpecParametersOracle
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(DataSourceSpecParametersOracle{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objByte, &obj)
+
+			*(*DataSourceSpecParametersOracle)(ptr) = obj
+		} else {
+			*(*DataSourceSpecParametersOracle)(ptr) = DataSourceSpecParametersOracle{}
+		}
+	default:
+		iter.ReportError("decode DataSourceSpecParametersOracle", "unexpected JSON type")
+	}
+}
+
+// +k8s:deepcopy-gen=false
+type DataSourceSpecParametersPostgresqlCodec struct {
+}
+
+func (DataSourceSpecParametersPostgresqlCodec) IsEmpty(ptr unsafe.Pointer) bool {
+	return (*DataSourceSpecParametersPostgresql)(ptr) == nil
+}
+
+func (DataSourceSpecParametersPostgresqlCodec) Encode(ptr unsafe.Pointer, stream *jsoniter.Stream) {
+	obj := (*DataSourceSpecParametersPostgresql)(ptr)
+	var objs []DataSourceSpecParametersPostgresql
+	if obj != nil {
+		objs = []DataSourceSpecParametersPostgresql{*obj}
+	}
+
+	jsonit := jsoniter.Config{
+		EscapeHTML:             true,
+		SortMapKeys:            true,
+		ValidateJsonRawMessage: true,
+		TagKey:                 "tf",
+		TypeEncoders:           getEncodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(DataSourceSpecParametersPostgresql{}).Type1())),
+	}.Froze()
+
+	byt, _ := jsonit.Marshal(objs)
+
+	stream.Write(byt)
+}
+
+func (DataSourceSpecParametersPostgresqlCodec) Decode(ptr unsafe.Pointer, iter *jsoniter.Iterator) {
+	switch iter.WhatIsNext() {
+	case jsoniter.NilValue:
+		iter.Skip()
+		*(*DataSourceSpecParametersPostgresql)(ptr) = DataSourceSpecParametersPostgresql{}
+		return
+	case jsoniter.ArrayValue:
+		objsByte := iter.SkipAndReturnBytes()
+		if len(objsByte) > 0 {
+			var objs []DataSourceSpecParametersPostgresql
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(DataSourceSpecParametersPostgresql{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objsByte, &objs)
+
+			if len(objs) > 0 {
+				*(*DataSourceSpecParametersPostgresql)(ptr) = objs[0]
+			} else {
+				*(*DataSourceSpecParametersPostgresql)(ptr) = DataSourceSpecParametersPostgresql{}
+			}
+		} else {
+			*(*DataSourceSpecParametersPostgresql)(ptr) = DataSourceSpecParametersPostgresql{}
+		}
+	case jsoniter.ObjectValue:
+		objByte := iter.SkipAndReturnBytes()
+		if len(objByte) > 0 {
+			var obj DataSourceSpecParametersPostgresql
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(DataSourceSpecParametersPostgresql{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objByte, &obj)
+
+			*(*DataSourceSpecParametersPostgresql)(ptr) = obj
+		} else {
+			*(*DataSourceSpecParametersPostgresql)(ptr) = DataSourceSpecParametersPostgresql{}
+		}
+	default:
+		iter.ReportError("decode DataSourceSpecParametersPostgresql", "unexpected JSON type")
+	}
+}
+
+// +k8s:deepcopy-gen=false
+type DataSourceSpecParametersPrestoCodec struct {
+}
+
+func (DataSourceSpecParametersPrestoCodec) IsEmpty(ptr unsafe.Pointer) bool {
+	return (*DataSourceSpecParametersPresto)(ptr) == nil
+}
+
+func (DataSourceSpecParametersPrestoCodec) Encode(ptr unsafe.Pointer, stream *jsoniter.Stream) {
+	obj := (*DataSourceSpecParametersPresto)(ptr)
+	var objs []DataSourceSpecParametersPresto
+	if obj != nil {
+		objs = []DataSourceSpecParametersPresto{*obj}
+	}
+
+	jsonit := jsoniter.Config{
+		EscapeHTML:             true,
+		SortMapKeys:            true,
+		ValidateJsonRawMessage: true,
+		TagKey:                 "tf",
+		TypeEncoders:           getEncodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(DataSourceSpecParametersPresto{}).Type1())),
+	}.Froze()
+
+	byt, _ := jsonit.Marshal(objs)
+
+	stream.Write(byt)
+}
+
+func (DataSourceSpecParametersPrestoCodec) Decode(ptr unsafe.Pointer, iter *jsoniter.Iterator) {
+	switch iter.WhatIsNext() {
+	case jsoniter.NilValue:
+		iter.Skip()
+		*(*DataSourceSpecParametersPresto)(ptr) = DataSourceSpecParametersPresto{}
+		return
+	case jsoniter.ArrayValue:
+		objsByte := iter.SkipAndReturnBytes()
+		if len(objsByte) > 0 {
+			var objs []DataSourceSpecParametersPresto
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(DataSourceSpecParametersPresto{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objsByte, &objs)
+
+			if len(objs) > 0 {
+				*(*DataSourceSpecParametersPresto)(ptr) = objs[0]
+			} else {
+				*(*DataSourceSpecParametersPresto)(ptr) = DataSourceSpecParametersPresto{}
+			}
+		} else {
+			*(*DataSourceSpecParametersPresto)(ptr) = DataSourceSpecParametersPresto{}
+		}
+	case jsoniter.ObjectValue:
+		objByte := iter.SkipAndReturnBytes()
+		if len(objByte) > 0 {
+			var obj DataSourceSpecParametersPresto
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(DataSourceSpecParametersPresto{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objByte, &obj)
+
+			*(*DataSourceSpecParametersPresto)(ptr) = obj
+		} else {
+			*(*DataSourceSpecParametersPresto)(ptr) = DataSourceSpecParametersPresto{}
+		}
+	default:
+		iter.ReportError("decode DataSourceSpecParametersPresto", "unexpected JSON type")
+	}
+}
+
+// +k8s:deepcopy-gen=false
+type DataSourceSpecParametersRdsCodec struct {
+}
+
+func (DataSourceSpecParametersRdsCodec) IsEmpty(ptr unsafe.Pointer) bool {
+	return (*DataSourceSpecParametersRds)(ptr) == nil
+}
+
+func (DataSourceSpecParametersRdsCodec) Encode(ptr unsafe.Pointer, stream *jsoniter.Stream) {
+	obj := (*DataSourceSpecParametersRds)(ptr)
+	var objs []DataSourceSpecParametersRds
+	if obj != nil {
+		objs = []DataSourceSpecParametersRds{*obj}
+	}
+
+	jsonit := jsoniter.Config{
+		EscapeHTML:             true,
+		SortMapKeys:            true,
+		ValidateJsonRawMessage: true,
+		TagKey:                 "tf",
+		TypeEncoders:           getEncodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(DataSourceSpecParametersRds{}).Type1())),
+	}.Froze()
+
+	byt, _ := jsonit.Marshal(objs)
+
+	stream.Write(byt)
+}
+
+func (DataSourceSpecParametersRdsCodec) Decode(ptr unsafe.Pointer, iter *jsoniter.Iterator) {
+	switch iter.WhatIsNext() {
+	case jsoniter.NilValue:
+		iter.Skip()
+		*(*DataSourceSpecParametersRds)(ptr) = DataSourceSpecParametersRds{}
+		return
+	case jsoniter.ArrayValue:
+		objsByte := iter.SkipAndReturnBytes()
+		if len(objsByte) > 0 {
+			var objs []DataSourceSpecParametersRds
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(DataSourceSpecParametersRds{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objsByte, &objs)
+
+			if len(objs) > 0 {
+				*(*DataSourceSpecParametersRds)(ptr) = objs[0]
+			} else {
+				*(*DataSourceSpecParametersRds)(ptr) = DataSourceSpecParametersRds{}
+			}
+		} else {
+			*(*DataSourceSpecParametersRds)(ptr) = DataSourceSpecParametersRds{}
+		}
+	case jsoniter.ObjectValue:
+		objByte := iter.SkipAndReturnBytes()
+		if len(objByte) > 0 {
+			var obj DataSourceSpecParametersRds
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(DataSourceSpecParametersRds{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objByte, &obj)
+
+			*(*DataSourceSpecParametersRds)(ptr) = obj
+		} else {
+			*(*DataSourceSpecParametersRds)(ptr) = DataSourceSpecParametersRds{}
+		}
+	default:
+		iter.ReportError("decode DataSourceSpecParametersRds", "unexpected JSON type")
+	}
+}
+
+// +k8s:deepcopy-gen=false
+type DataSourceSpecParametersRedshiftCodec struct {
+}
+
+func (DataSourceSpecParametersRedshiftCodec) IsEmpty(ptr unsafe.Pointer) bool {
+	return (*DataSourceSpecParametersRedshift)(ptr) == nil
+}
+
+func (DataSourceSpecParametersRedshiftCodec) Encode(ptr unsafe.Pointer, stream *jsoniter.Stream) {
+	obj := (*DataSourceSpecParametersRedshift)(ptr)
+	var objs []DataSourceSpecParametersRedshift
+	if obj != nil {
+		objs = []DataSourceSpecParametersRedshift{*obj}
+	}
+
+	jsonit := jsoniter.Config{
+		EscapeHTML:             true,
+		SortMapKeys:            true,
+		ValidateJsonRawMessage: true,
+		TagKey:                 "tf",
+		TypeEncoders:           getEncodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(DataSourceSpecParametersRedshift{}).Type1())),
+	}.Froze()
+
+	byt, _ := jsonit.Marshal(objs)
+
+	stream.Write(byt)
+}
+
+func (DataSourceSpecParametersRedshiftCodec) Decode(ptr unsafe.Pointer, iter *jsoniter.Iterator) {
+	switch iter.WhatIsNext() {
+	case jsoniter.NilValue:
+		iter.Skip()
+		*(*DataSourceSpecParametersRedshift)(ptr) = DataSourceSpecParametersRedshift{}
+		return
+	case jsoniter.ArrayValue:
+		objsByte := iter.SkipAndReturnBytes()
+		if len(objsByte) > 0 {
+			var objs []DataSourceSpecParametersRedshift
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(DataSourceSpecParametersRedshift{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objsByte, &objs)
+
+			if len(objs) > 0 {
+				*(*DataSourceSpecParametersRedshift)(ptr) = objs[0]
+			} else {
+				*(*DataSourceSpecParametersRedshift)(ptr) = DataSourceSpecParametersRedshift{}
+			}
+		} else {
+			*(*DataSourceSpecParametersRedshift)(ptr) = DataSourceSpecParametersRedshift{}
+		}
+	case jsoniter.ObjectValue:
+		objByte := iter.SkipAndReturnBytes()
+		if len(objByte) > 0 {
+			var obj DataSourceSpecParametersRedshift
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(DataSourceSpecParametersRedshift{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objByte, &obj)
+
+			*(*DataSourceSpecParametersRedshift)(ptr) = obj
+		} else {
+			*(*DataSourceSpecParametersRedshift)(ptr) = DataSourceSpecParametersRedshift{}
+		}
+	default:
+		iter.ReportError("decode DataSourceSpecParametersRedshift", "unexpected JSON type")
+	}
+}
+
+// +k8s:deepcopy-gen=false
+type DataSourceSpecParametersS3Codec struct {
+}
+
+func (DataSourceSpecParametersS3Codec) IsEmpty(ptr unsafe.Pointer) bool {
+	return (*DataSourceSpecParametersS3)(ptr) == nil
+}
+
+func (DataSourceSpecParametersS3Codec) Encode(ptr unsafe.Pointer, stream *jsoniter.Stream) {
+	obj := (*DataSourceSpecParametersS3)(ptr)
+	var objs []DataSourceSpecParametersS3
+	if obj != nil {
+		objs = []DataSourceSpecParametersS3{*obj}
+	}
+
+	jsonit := jsoniter.Config{
+		EscapeHTML:             true,
+		SortMapKeys:            true,
+		ValidateJsonRawMessage: true,
+		TagKey:                 "tf",
+		TypeEncoders:           getEncodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(DataSourceSpecParametersS3{}).Type1())),
+	}.Froze()
+
+	byt, _ := jsonit.Marshal(objs)
+
+	stream.Write(byt)
+}
+
+func (DataSourceSpecParametersS3Codec) Decode(ptr unsafe.Pointer, iter *jsoniter.Iterator) {
+	switch iter.WhatIsNext() {
+	case jsoniter.NilValue:
+		iter.Skip()
+		*(*DataSourceSpecParametersS3)(ptr) = DataSourceSpecParametersS3{}
+		return
+	case jsoniter.ArrayValue:
+		objsByte := iter.SkipAndReturnBytes()
+		if len(objsByte) > 0 {
+			var objs []DataSourceSpecParametersS3
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(DataSourceSpecParametersS3{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objsByte, &objs)
+
+			if len(objs) > 0 {
+				*(*DataSourceSpecParametersS3)(ptr) = objs[0]
+			} else {
+				*(*DataSourceSpecParametersS3)(ptr) = DataSourceSpecParametersS3{}
+			}
+		} else {
+			*(*DataSourceSpecParametersS3)(ptr) = DataSourceSpecParametersS3{}
+		}
+	case jsoniter.ObjectValue:
+		objByte := iter.SkipAndReturnBytes()
+		if len(objByte) > 0 {
+			var obj DataSourceSpecParametersS3
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(DataSourceSpecParametersS3{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objByte, &obj)
+
+			*(*DataSourceSpecParametersS3)(ptr) = obj
+		} else {
+			*(*DataSourceSpecParametersS3)(ptr) = DataSourceSpecParametersS3{}
+		}
+	default:
+		iter.ReportError("decode DataSourceSpecParametersS3", "unexpected JSON type")
+	}
+}
+
+// +k8s:deepcopy-gen=false
+type DataSourceSpecParametersS3ManifestFileLocationCodec struct {
+}
+
+func (DataSourceSpecParametersS3ManifestFileLocationCodec) IsEmpty(ptr unsafe.Pointer) bool {
+	return (*DataSourceSpecParametersS3ManifestFileLocation)(ptr) == nil
+}
+
+func (DataSourceSpecParametersS3ManifestFileLocationCodec) Encode(ptr unsafe.Pointer, stream *jsoniter.Stream) {
+	obj := (*DataSourceSpecParametersS3ManifestFileLocation)(ptr)
+	var objs []DataSourceSpecParametersS3ManifestFileLocation
+	if obj != nil {
+		objs = []DataSourceSpecParametersS3ManifestFileLocation{*obj}
+	}
+
+	jsonit := jsoniter.Config{
+		EscapeHTML:             true,
+		SortMapKeys:            true,
+		ValidateJsonRawMessage: true,
+		TagKey:                 "tf",
+		TypeEncoders:           getEncodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(DataSourceSpecParametersS3ManifestFileLocation{}).Type1())),
+	}.Froze()
+
+	byt, _ := jsonit.Marshal(objs)
+
+	stream.Write(byt)
+}
+
+func (DataSourceSpecParametersS3ManifestFileLocationCodec) Decode(ptr unsafe.Pointer, iter *jsoniter.Iterator) {
+	switch iter.WhatIsNext() {
+	case jsoniter.NilValue:
+		iter.Skip()
+		*(*DataSourceSpecParametersS3ManifestFileLocation)(ptr) = DataSourceSpecParametersS3ManifestFileLocation{}
+		return
+	case jsoniter.ArrayValue:
+		objsByte := iter.SkipAndReturnBytes()
+		if len(objsByte) > 0 {
+			var objs []DataSourceSpecParametersS3ManifestFileLocation
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(DataSourceSpecParametersS3ManifestFileLocation{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objsByte, &objs)
+
+			if len(objs) > 0 {
+				*(*DataSourceSpecParametersS3ManifestFileLocation)(ptr) = objs[0]
+			} else {
+				*(*DataSourceSpecParametersS3ManifestFileLocation)(ptr) = DataSourceSpecParametersS3ManifestFileLocation{}
+			}
+		} else {
+			*(*DataSourceSpecParametersS3ManifestFileLocation)(ptr) = DataSourceSpecParametersS3ManifestFileLocation{}
+		}
+	case jsoniter.ObjectValue:
+		objByte := iter.SkipAndReturnBytes()
+		if len(objByte) > 0 {
+			var obj DataSourceSpecParametersS3ManifestFileLocation
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(DataSourceSpecParametersS3ManifestFileLocation{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objByte, &obj)
+
+			*(*DataSourceSpecParametersS3ManifestFileLocation)(ptr) = obj
+		} else {
+			*(*DataSourceSpecParametersS3ManifestFileLocation)(ptr) = DataSourceSpecParametersS3ManifestFileLocation{}
+		}
+	default:
+		iter.ReportError("decode DataSourceSpecParametersS3ManifestFileLocation", "unexpected JSON type")
+	}
+}
+
+// +k8s:deepcopy-gen=false
+type DataSourceSpecParametersServiceNowCodec struct {
+}
+
+func (DataSourceSpecParametersServiceNowCodec) IsEmpty(ptr unsafe.Pointer) bool {
+	return (*DataSourceSpecParametersServiceNow)(ptr) == nil
+}
+
+func (DataSourceSpecParametersServiceNowCodec) Encode(ptr unsafe.Pointer, stream *jsoniter.Stream) {
+	obj := (*DataSourceSpecParametersServiceNow)(ptr)
+	var objs []DataSourceSpecParametersServiceNow
+	if obj != nil {
+		objs = []DataSourceSpecParametersServiceNow{*obj}
+	}
+
+	jsonit := jsoniter.Config{
+		EscapeHTML:             true,
+		SortMapKeys:            true,
+		ValidateJsonRawMessage: true,
+		TagKey:                 "tf",
+		TypeEncoders:           getEncodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(DataSourceSpecParametersServiceNow{}).Type1())),
+	}.Froze()
+
+	byt, _ := jsonit.Marshal(objs)
+
+	stream.Write(byt)
+}
+
+func (DataSourceSpecParametersServiceNowCodec) Decode(ptr unsafe.Pointer, iter *jsoniter.Iterator) {
+	switch iter.WhatIsNext() {
+	case jsoniter.NilValue:
+		iter.Skip()
+		*(*DataSourceSpecParametersServiceNow)(ptr) = DataSourceSpecParametersServiceNow{}
+		return
+	case jsoniter.ArrayValue:
+		objsByte := iter.SkipAndReturnBytes()
+		if len(objsByte) > 0 {
+			var objs []DataSourceSpecParametersServiceNow
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(DataSourceSpecParametersServiceNow{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objsByte, &objs)
+
+			if len(objs) > 0 {
+				*(*DataSourceSpecParametersServiceNow)(ptr) = objs[0]
+			} else {
+				*(*DataSourceSpecParametersServiceNow)(ptr) = DataSourceSpecParametersServiceNow{}
+			}
+		} else {
+			*(*DataSourceSpecParametersServiceNow)(ptr) = DataSourceSpecParametersServiceNow{}
+		}
+	case jsoniter.ObjectValue:
+		objByte := iter.SkipAndReturnBytes()
+		if len(objByte) > 0 {
+			var obj DataSourceSpecParametersServiceNow
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(DataSourceSpecParametersServiceNow{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objByte, &obj)
+
+			*(*DataSourceSpecParametersServiceNow)(ptr) = obj
+		} else {
+			*(*DataSourceSpecParametersServiceNow)(ptr) = DataSourceSpecParametersServiceNow{}
+		}
+	default:
+		iter.ReportError("decode DataSourceSpecParametersServiceNow", "unexpected JSON type")
+	}
+}
+
+// +k8s:deepcopy-gen=false
+type DataSourceSpecParametersSnowflakeCodec struct {
+}
+
+func (DataSourceSpecParametersSnowflakeCodec) IsEmpty(ptr unsafe.Pointer) bool {
+	return (*DataSourceSpecParametersSnowflake)(ptr) == nil
+}
+
+func (DataSourceSpecParametersSnowflakeCodec) Encode(ptr unsafe.Pointer, stream *jsoniter.Stream) {
+	obj := (*DataSourceSpecParametersSnowflake)(ptr)
+	var objs []DataSourceSpecParametersSnowflake
+	if obj != nil {
+		objs = []DataSourceSpecParametersSnowflake{*obj}
+	}
+
+	jsonit := jsoniter.Config{
+		EscapeHTML:             true,
+		SortMapKeys:            true,
+		ValidateJsonRawMessage: true,
+		TagKey:                 "tf",
+		TypeEncoders:           getEncodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(DataSourceSpecParametersSnowflake{}).Type1())),
+	}.Froze()
+
+	byt, _ := jsonit.Marshal(objs)
+
+	stream.Write(byt)
+}
+
+func (DataSourceSpecParametersSnowflakeCodec) Decode(ptr unsafe.Pointer, iter *jsoniter.Iterator) {
+	switch iter.WhatIsNext() {
+	case jsoniter.NilValue:
+		iter.Skip()
+		*(*DataSourceSpecParametersSnowflake)(ptr) = DataSourceSpecParametersSnowflake{}
+		return
+	case jsoniter.ArrayValue:
+		objsByte := iter.SkipAndReturnBytes()
+		if len(objsByte) > 0 {
+			var objs []DataSourceSpecParametersSnowflake
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(DataSourceSpecParametersSnowflake{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objsByte, &objs)
+
+			if len(objs) > 0 {
+				*(*DataSourceSpecParametersSnowflake)(ptr) = objs[0]
+			} else {
+				*(*DataSourceSpecParametersSnowflake)(ptr) = DataSourceSpecParametersSnowflake{}
+			}
+		} else {
+			*(*DataSourceSpecParametersSnowflake)(ptr) = DataSourceSpecParametersSnowflake{}
+		}
+	case jsoniter.ObjectValue:
+		objByte := iter.SkipAndReturnBytes()
+		if len(objByte) > 0 {
+			var obj DataSourceSpecParametersSnowflake
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(DataSourceSpecParametersSnowflake{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objByte, &obj)
+
+			*(*DataSourceSpecParametersSnowflake)(ptr) = obj
+		} else {
+			*(*DataSourceSpecParametersSnowflake)(ptr) = DataSourceSpecParametersSnowflake{}
+		}
+	default:
+		iter.ReportError("decode DataSourceSpecParametersSnowflake", "unexpected JSON type")
+	}
+}
+
+// +k8s:deepcopy-gen=false
+type DataSourceSpecParametersSparkCodec struct {
+}
+
+func (DataSourceSpecParametersSparkCodec) IsEmpty(ptr unsafe.Pointer) bool {
+	return (*DataSourceSpecParametersSpark)(ptr) == nil
+}
+
+func (DataSourceSpecParametersSparkCodec) Encode(ptr unsafe.Pointer, stream *jsoniter.Stream) {
+	obj := (*DataSourceSpecParametersSpark)(ptr)
+	var objs []DataSourceSpecParametersSpark
+	if obj != nil {
+		objs = []DataSourceSpecParametersSpark{*obj}
+	}
+
+	jsonit := jsoniter.Config{
+		EscapeHTML:             true,
+		SortMapKeys:            true,
+		ValidateJsonRawMessage: true,
+		TagKey:                 "tf",
+		TypeEncoders:           getEncodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(DataSourceSpecParametersSpark{}).Type1())),
+	}.Froze()
+
+	byt, _ := jsonit.Marshal(objs)
+
+	stream.Write(byt)
+}
+
+func (DataSourceSpecParametersSparkCodec) Decode(ptr unsafe.Pointer, iter *jsoniter.Iterator) {
+	switch iter.WhatIsNext() {
+	case jsoniter.NilValue:
+		iter.Skip()
+		*(*DataSourceSpecParametersSpark)(ptr) = DataSourceSpecParametersSpark{}
+		return
+	case jsoniter.ArrayValue:
+		objsByte := iter.SkipAndReturnBytes()
+		if len(objsByte) > 0 {
+			var objs []DataSourceSpecParametersSpark
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(DataSourceSpecParametersSpark{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objsByte, &objs)
+
+			if len(objs) > 0 {
+				*(*DataSourceSpecParametersSpark)(ptr) = objs[0]
+			} else {
+				*(*DataSourceSpecParametersSpark)(ptr) = DataSourceSpecParametersSpark{}
+			}
+		} else {
+			*(*DataSourceSpecParametersSpark)(ptr) = DataSourceSpecParametersSpark{}
+		}
+	case jsoniter.ObjectValue:
+		objByte := iter.SkipAndReturnBytes()
+		if len(objByte) > 0 {
+			var obj DataSourceSpecParametersSpark
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(DataSourceSpecParametersSpark{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objByte, &obj)
+
+			*(*DataSourceSpecParametersSpark)(ptr) = obj
+		} else {
+			*(*DataSourceSpecParametersSpark)(ptr) = DataSourceSpecParametersSpark{}
+		}
+	default:
+		iter.ReportError("decode DataSourceSpecParametersSpark", "unexpected JSON type")
+	}
+}
+
+// +k8s:deepcopy-gen=false
+type DataSourceSpecParametersSqlServerCodec struct {
+}
+
+func (DataSourceSpecParametersSqlServerCodec) IsEmpty(ptr unsafe.Pointer) bool {
+	return (*DataSourceSpecParametersSqlServer)(ptr) == nil
+}
+
+func (DataSourceSpecParametersSqlServerCodec) Encode(ptr unsafe.Pointer, stream *jsoniter.Stream) {
+	obj := (*DataSourceSpecParametersSqlServer)(ptr)
+	var objs []DataSourceSpecParametersSqlServer
+	if obj != nil {
+		objs = []DataSourceSpecParametersSqlServer{*obj}
+	}
+
+	jsonit := jsoniter.Config{
+		EscapeHTML:             true,
+		SortMapKeys:            true,
+		ValidateJsonRawMessage: true,
+		TagKey:                 "tf",
+		TypeEncoders:           getEncodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(DataSourceSpecParametersSqlServer{}).Type1())),
+	}.Froze()
+
+	byt, _ := jsonit.Marshal(objs)
+
+	stream.Write(byt)
+}
+
+func (DataSourceSpecParametersSqlServerCodec) Decode(ptr unsafe.Pointer, iter *jsoniter.Iterator) {
+	switch iter.WhatIsNext() {
+	case jsoniter.NilValue:
+		iter.Skip()
+		*(*DataSourceSpecParametersSqlServer)(ptr) = DataSourceSpecParametersSqlServer{}
+		return
+	case jsoniter.ArrayValue:
+		objsByte := iter.SkipAndReturnBytes()
+		if len(objsByte) > 0 {
+			var objs []DataSourceSpecParametersSqlServer
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(DataSourceSpecParametersSqlServer{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objsByte, &objs)
+
+			if len(objs) > 0 {
+				*(*DataSourceSpecParametersSqlServer)(ptr) = objs[0]
+			} else {
+				*(*DataSourceSpecParametersSqlServer)(ptr) = DataSourceSpecParametersSqlServer{}
+			}
+		} else {
+			*(*DataSourceSpecParametersSqlServer)(ptr) = DataSourceSpecParametersSqlServer{}
+		}
+	case jsoniter.ObjectValue:
+		objByte := iter.SkipAndReturnBytes()
+		if len(objByte) > 0 {
+			var obj DataSourceSpecParametersSqlServer
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(DataSourceSpecParametersSqlServer{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objByte, &obj)
+
+			*(*DataSourceSpecParametersSqlServer)(ptr) = obj
+		} else {
+			*(*DataSourceSpecParametersSqlServer)(ptr) = DataSourceSpecParametersSqlServer{}
+		}
+	default:
+		iter.ReportError("decode DataSourceSpecParametersSqlServer", "unexpected JSON type")
+	}
+}
+
+// +k8s:deepcopy-gen=false
+type DataSourceSpecParametersTeradataCodec struct {
+}
+
+func (DataSourceSpecParametersTeradataCodec) IsEmpty(ptr unsafe.Pointer) bool {
+	return (*DataSourceSpecParametersTeradata)(ptr) == nil
+}
+
+func (DataSourceSpecParametersTeradataCodec) Encode(ptr unsafe.Pointer, stream *jsoniter.Stream) {
+	obj := (*DataSourceSpecParametersTeradata)(ptr)
+	var objs []DataSourceSpecParametersTeradata
+	if obj != nil {
+		objs = []DataSourceSpecParametersTeradata{*obj}
+	}
+
+	jsonit := jsoniter.Config{
+		EscapeHTML:             true,
+		SortMapKeys:            true,
+		ValidateJsonRawMessage: true,
+		TagKey:                 "tf",
+		TypeEncoders:           getEncodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(DataSourceSpecParametersTeradata{}).Type1())),
+	}.Froze()
+
+	byt, _ := jsonit.Marshal(objs)
+
+	stream.Write(byt)
+}
+
+func (DataSourceSpecParametersTeradataCodec) Decode(ptr unsafe.Pointer, iter *jsoniter.Iterator) {
+	switch iter.WhatIsNext() {
+	case jsoniter.NilValue:
+		iter.Skip()
+		*(*DataSourceSpecParametersTeradata)(ptr) = DataSourceSpecParametersTeradata{}
+		return
+	case jsoniter.ArrayValue:
+		objsByte := iter.SkipAndReturnBytes()
+		if len(objsByte) > 0 {
+			var objs []DataSourceSpecParametersTeradata
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(DataSourceSpecParametersTeradata{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objsByte, &objs)
+
+			if len(objs) > 0 {
+				*(*DataSourceSpecParametersTeradata)(ptr) = objs[0]
+			} else {
+				*(*DataSourceSpecParametersTeradata)(ptr) = DataSourceSpecParametersTeradata{}
+			}
+		} else {
+			*(*DataSourceSpecParametersTeradata)(ptr) = DataSourceSpecParametersTeradata{}
+		}
+	case jsoniter.ObjectValue:
+		objByte := iter.SkipAndReturnBytes()
+		if len(objByte) > 0 {
+			var obj DataSourceSpecParametersTeradata
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(DataSourceSpecParametersTeradata{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objByte, &obj)
+
+			*(*DataSourceSpecParametersTeradata)(ptr) = obj
+		} else {
+			*(*DataSourceSpecParametersTeradata)(ptr) = DataSourceSpecParametersTeradata{}
+		}
+	default:
+		iter.ReportError("decode DataSourceSpecParametersTeradata", "unexpected JSON type")
+	}
+}
+
+// +k8s:deepcopy-gen=false
+type DataSourceSpecParametersTwitterCodec struct {
+}
+
+func (DataSourceSpecParametersTwitterCodec) IsEmpty(ptr unsafe.Pointer) bool {
+	return (*DataSourceSpecParametersTwitter)(ptr) == nil
+}
+
+func (DataSourceSpecParametersTwitterCodec) Encode(ptr unsafe.Pointer, stream *jsoniter.Stream) {
+	obj := (*DataSourceSpecParametersTwitter)(ptr)
+	var objs []DataSourceSpecParametersTwitter
+	if obj != nil {
+		objs = []DataSourceSpecParametersTwitter{*obj}
+	}
+
+	jsonit := jsoniter.Config{
+		EscapeHTML:             true,
+		SortMapKeys:            true,
+		ValidateJsonRawMessage: true,
+		TagKey:                 "tf",
+		TypeEncoders:           getEncodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(DataSourceSpecParametersTwitter{}).Type1())),
+	}.Froze()
+
+	byt, _ := jsonit.Marshal(objs)
+
+	stream.Write(byt)
+}
+
+func (DataSourceSpecParametersTwitterCodec) Decode(ptr unsafe.Pointer, iter *jsoniter.Iterator) {
+	switch iter.WhatIsNext() {
+	case jsoniter.NilValue:
+		iter.Skip()
+		*(*DataSourceSpecParametersTwitter)(ptr) = DataSourceSpecParametersTwitter{}
+		return
+	case jsoniter.ArrayValue:
+		objsByte := iter.SkipAndReturnBytes()
+		if len(objsByte) > 0 {
+			var objs []DataSourceSpecParametersTwitter
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(DataSourceSpecParametersTwitter{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objsByte, &objs)
+
+			if len(objs) > 0 {
+				*(*DataSourceSpecParametersTwitter)(ptr) = objs[0]
+			} else {
+				*(*DataSourceSpecParametersTwitter)(ptr) = DataSourceSpecParametersTwitter{}
+			}
+		} else {
+			*(*DataSourceSpecParametersTwitter)(ptr) = DataSourceSpecParametersTwitter{}
+		}
+	case jsoniter.ObjectValue:
+		objByte := iter.SkipAndReturnBytes()
+		if len(objByte) > 0 {
+			var obj DataSourceSpecParametersTwitter
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(DataSourceSpecParametersTwitter{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objByte, &obj)
+
+			*(*DataSourceSpecParametersTwitter)(ptr) = obj
+		} else {
+			*(*DataSourceSpecParametersTwitter)(ptr) = DataSourceSpecParametersTwitter{}
+		}
+	default:
+		iter.ReportError("decode DataSourceSpecParametersTwitter", "unexpected JSON type")
+	}
+}
+
+// +k8s:deepcopy-gen=false
+type DataSourceSpecSslPropertiesCodec struct {
+}
+
+func (DataSourceSpecSslPropertiesCodec) IsEmpty(ptr unsafe.Pointer) bool {
+	return (*DataSourceSpecSslProperties)(ptr) == nil
+}
+
+func (DataSourceSpecSslPropertiesCodec) Encode(ptr unsafe.Pointer, stream *jsoniter.Stream) {
+	obj := (*DataSourceSpecSslProperties)(ptr)
+	var objs []DataSourceSpecSslProperties
+	if obj != nil {
+		objs = []DataSourceSpecSslProperties{*obj}
+	}
+
+	jsonit := jsoniter.Config{
+		EscapeHTML:             true,
+		SortMapKeys:            true,
+		ValidateJsonRawMessage: true,
+		TagKey:                 "tf",
+		TypeEncoders:           getEncodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(DataSourceSpecSslProperties{}).Type1())),
+	}.Froze()
+
+	byt, _ := jsonit.Marshal(objs)
+
+	stream.Write(byt)
+}
+
+func (DataSourceSpecSslPropertiesCodec) Decode(ptr unsafe.Pointer, iter *jsoniter.Iterator) {
+	switch iter.WhatIsNext() {
+	case jsoniter.NilValue:
+		iter.Skip()
+		*(*DataSourceSpecSslProperties)(ptr) = DataSourceSpecSslProperties{}
+		return
+	case jsoniter.ArrayValue:
+		objsByte := iter.SkipAndReturnBytes()
+		if len(objsByte) > 0 {
+			var objs []DataSourceSpecSslProperties
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(DataSourceSpecSslProperties{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objsByte, &objs)
+
+			if len(objs) > 0 {
+				*(*DataSourceSpecSslProperties)(ptr) = objs[0]
+			} else {
+				*(*DataSourceSpecSslProperties)(ptr) = DataSourceSpecSslProperties{}
+			}
+		} else {
+			*(*DataSourceSpecSslProperties)(ptr) = DataSourceSpecSslProperties{}
+		}
+	case jsoniter.ObjectValue:
+		objByte := iter.SkipAndReturnBytes()
+		if len(objByte) > 0 {
+			var obj DataSourceSpecSslProperties
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(DataSourceSpecSslProperties{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objByte, &obj)
+
+			*(*DataSourceSpecSslProperties)(ptr) = obj
+		} else {
+			*(*DataSourceSpecSslProperties)(ptr) = DataSourceSpecSslProperties{}
+		}
+	default:
+		iter.ReportError("decode DataSourceSpecSslProperties", "unexpected JSON type")
+	}
+}
+
+// +k8s:deepcopy-gen=false
+type DataSourceSpecVpcConnectionPropertiesCodec struct {
+}
+
+func (DataSourceSpecVpcConnectionPropertiesCodec) IsEmpty(ptr unsafe.Pointer) bool {
+	return (*DataSourceSpecVpcConnectionProperties)(ptr) == nil
+}
+
+func (DataSourceSpecVpcConnectionPropertiesCodec) Encode(ptr unsafe.Pointer, stream *jsoniter.Stream) {
+	obj := (*DataSourceSpecVpcConnectionProperties)(ptr)
+	var objs []DataSourceSpecVpcConnectionProperties
+	if obj != nil {
+		objs = []DataSourceSpecVpcConnectionProperties{*obj}
+	}
+
+	jsonit := jsoniter.Config{
+		EscapeHTML:             true,
+		SortMapKeys:            true,
+		ValidateJsonRawMessage: true,
+		TagKey:                 "tf",
+		TypeEncoders:           getEncodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(DataSourceSpecVpcConnectionProperties{}).Type1())),
+	}.Froze()
+
+	byt, _ := jsonit.Marshal(objs)
+
+	stream.Write(byt)
+}
+
+func (DataSourceSpecVpcConnectionPropertiesCodec) Decode(ptr unsafe.Pointer, iter *jsoniter.Iterator) {
+	switch iter.WhatIsNext() {
+	case jsoniter.NilValue:
+		iter.Skip()
+		*(*DataSourceSpecVpcConnectionProperties)(ptr) = DataSourceSpecVpcConnectionProperties{}
+		return
+	case jsoniter.ArrayValue:
+		objsByte := iter.SkipAndReturnBytes()
+		if len(objsByte) > 0 {
+			var objs []DataSourceSpecVpcConnectionProperties
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(DataSourceSpecVpcConnectionProperties{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objsByte, &objs)
+
+			if len(objs) > 0 {
+				*(*DataSourceSpecVpcConnectionProperties)(ptr) = objs[0]
+			} else {
+				*(*DataSourceSpecVpcConnectionProperties)(ptr) = DataSourceSpecVpcConnectionProperties{}
+			}
+		} else {
+			*(*DataSourceSpecVpcConnectionProperties)(ptr) = DataSourceSpecVpcConnectionProperties{}
+		}
+	case jsoniter.ObjectValue:
+		objByte := iter.SkipAndReturnBytes()
+		if len(objByte) > 0 {
+			var obj DataSourceSpecVpcConnectionProperties
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(DataSourceSpecVpcConnectionProperties{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objByte, &obj)
+
+			*(*DataSourceSpecVpcConnectionProperties)(ptr) = obj
+		} else {
+			*(*DataSourceSpecVpcConnectionProperties)(ptr) = DataSourceSpecVpcConnectionProperties{}
+		}
+	default:
+		iter.ReportError("decode DataSourceSpecVpcConnectionProperties", "unexpected JSON type")
+	}
 }

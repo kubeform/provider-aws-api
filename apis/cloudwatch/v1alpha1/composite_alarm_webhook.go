@@ -89,7 +89,7 @@ func (r *CompositeAlarm) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range compositealarmForceNewList {
+	for key, _ := range compositealarmForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

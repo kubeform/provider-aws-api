@@ -111,10 +111,9 @@ type CachePolicySpecResource struct {
 	// +optional
 	MaxTtl *int64 `json:"maxTtl,omitempty" tf:"max_ttl"`
 	// +optional
-	MinTtl *int64  `json:"minTtl,omitempty" tf:"min_ttl"`
-	Name   *string `json:"name" tf:"name"`
-	// +optional
-	ParametersInCacheKeyAndForwardedToOrigin *CachePolicySpecParametersInCacheKeyAndForwardedToOrigin `json:"parametersInCacheKeyAndForwardedToOrigin,omitempty" tf:"parameters_in_cache_key_and_forwarded_to_origin"`
+	MinTtl                                   *int64                                                   `json:"minTtl,omitempty" tf:"min_ttl"`
+	Name                                     *string                                                  `json:"name" tf:"name"`
+	ParametersInCacheKeyAndForwardedToOrigin *CachePolicySpecParametersInCacheKeyAndForwardedToOrigin `json:"parametersInCacheKeyAndForwardedToOrigin" tf:"parameters_in_cache_key_and_forwarded_to_origin"`
 }
 
 type CachePolicyStatus struct {

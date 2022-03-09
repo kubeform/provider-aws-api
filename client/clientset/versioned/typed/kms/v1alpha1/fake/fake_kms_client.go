@@ -49,6 +49,14 @@ func (c *FakeKmsV1alpha1) Keys(namespace string) v1alpha1.KeyInterface {
 	return &FakeKeys{c, namespace}
 }
 
+func (c *FakeKmsV1alpha1) ReplicaExternalKeys(namespace string) v1alpha1.ReplicaExternalKeyInterface {
+	return &FakeReplicaExternalKeys{c, namespace}
+}
+
+func (c *FakeKmsV1alpha1) ReplicaKeys(namespace string) v1alpha1.ReplicaKeyInterface {
+	return &FakeReplicaKeys{c, namespace}
+}
+
 // RESTClient returns a RESTClient that is used to communicate
 // with API server by this client implementation.
 func (c *FakeKmsV1alpha1) RESTClient() rest.Interface {

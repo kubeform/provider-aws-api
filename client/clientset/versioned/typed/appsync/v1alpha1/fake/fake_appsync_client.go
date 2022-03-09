@@ -29,12 +29,24 @@ type FakeAppsyncV1alpha1 struct {
 	*testing.Fake
 }
 
+func (c *FakeAppsyncV1alpha1) ApiCaches(namespace string) v1alpha1.ApiCacheInterface {
+	return &FakeApiCaches{c, namespace}
+}
+
 func (c *FakeAppsyncV1alpha1) ApiKeys(namespace string) v1alpha1.ApiKeyInterface {
 	return &FakeApiKeys{c, namespace}
 }
 
 func (c *FakeAppsyncV1alpha1) Datasources(namespace string) v1alpha1.DatasourceInterface {
 	return &FakeDatasources{c, namespace}
+}
+
+func (c *FakeAppsyncV1alpha1) DomainNames(namespace string) v1alpha1.DomainNameInterface {
+	return &FakeDomainNames{c, namespace}
+}
+
+func (c *FakeAppsyncV1alpha1) DomainNameAPIAssociations(namespace string) v1alpha1.DomainNameAPIAssociationInterface {
+	return &FakeDomainNameAPIAssociations{c, namespace}
 }
 
 func (c *FakeAppsyncV1alpha1) Functions(namespace string) v1alpha1.FunctionInterface {
