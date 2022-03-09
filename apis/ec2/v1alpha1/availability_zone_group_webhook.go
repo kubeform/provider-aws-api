@@ -88,7 +88,7 @@ func (r *AvailabilityZoneGroup) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range availabilityzonegroupForceNewList {
+	for key, _ := range availabilityzonegroupForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

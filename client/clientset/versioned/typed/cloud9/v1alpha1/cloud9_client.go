@@ -28,6 +28,7 @@ import (
 type Cloud9V1alpha1Interface interface {
 	RESTClient() rest.Interface
 	EnvironmentEc2sGetter
+	EnvironmentMembershipsGetter
 }
 
 // Cloud9V1alpha1Client is used to interact with features provided by the cloud9.aws.kubeform.com group.
@@ -37,6 +38,10 @@ type Cloud9V1alpha1Client struct {
 
 func (c *Cloud9V1alpha1Client) EnvironmentEc2s(namespace string) EnvironmentEc2Interface {
 	return newEnvironmentEc2s(c, namespace)
+}
+
+func (c *Cloud9V1alpha1Client) EnvironmentMemberships(namespace string) EnvironmentMembershipInterface {
+	return newEnvironmentMemberships(c, namespace)
 }
 
 // NewForConfig creates a new Cloud9V1alpha1Client for the given config.

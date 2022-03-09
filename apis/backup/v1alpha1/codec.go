@@ -27,15 +27,21 @@ import (
 
 func GetEncoder() map[string]jsoniter.ValEncoder {
 	return map[string]jsoniter.ValEncoder{
-		jsoniter.MustGetKind(reflect2.TypeOf(PlanSpecRuleCopyActionLifecycle{}).Type1()): PlanSpecRuleCopyActionLifecycleCodec{},
-		jsoniter.MustGetKind(reflect2.TypeOf(PlanSpecRuleLifecycle{}).Type1()):           PlanSpecRuleLifecycleCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(FrameworkSpecControlScope{}).Type1()):           FrameworkSpecControlScopeCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(PlanSpecRuleCopyActionLifecycle{}).Type1()):     PlanSpecRuleCopyActionLifecycleCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(PlanSpecRuleLifecycle{}).Type1()):               PlanSpecRuleLifecycleCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(ReportPlanSpecReportDeliveryChannel{}).Type1()): ReportPlanSpecReportDeliveryChannelCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(ReportPlanSpecReportSetting{}).Type1()):         ReportPlanSpecReportSettingCodec{},
 	}
 }
 
 func GetDecoder() map[string]jsoniter.ValDecoder {
 	return map[string]jsoniter.ValDecoder{
-		jsoniter.MustGetKind(reflect2.TypeOf(PlanSpecRuleCopyActionLifecycle{}).Type1()): PlanSpecRuleCopyActionLifecycleCodec{},
-		jsoniter.MustGetKind(reflect2.TypeOf(PlanSpecRuleLifecycle{}).Type1()):           PlanSpecRuleLifecycleCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(FrameworkSpecControlScope{}).Type1()):           FrameworkSpecControlScopeCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(PlanSpecRuleCopyActionLifecycle{}).Type1()):     PlanSpecRuleCopyActionLifecycleCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(PlanSpecRuleLifecycle{}).Type1()):               PlanSpecRuleLifecycleCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(ReportPlanSpecReportDeliveryChannel{}).Type1()): ReportPlanSpecReportDeliveryChannelCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(ReportPlanSpecReportSetting{}).Type1()):         ReportPlanSpecReportSettingCodec{},
 	}
 }
 
@@ -49,6 +55,85 @@ func getDecodersWithout(typ string) map[string]jsoniter.ValDecoder {
 	origMap := GetDecoder()
 	delete(origMap, typ)
 	return origMap
+}
+
+// +k8s:deepcopy-gen=false
+type FrameworkSpecControlScopeCodec struct {
+}
+
+func (FrameworkSpecControlScopeCodec) IsEmpty(ptr unsafe.Pointer) bool {
+	return (*FrameworkSpecControlScope)(ptr) == nil
+}
+
+func (FrameworkSpecControlScopeCodec) Encode(ptr unsafe.Pointer, stream *jsoniter.Stream) {
+	obj := (*FrameworkSpecControlScope)(ptr)
+	var objs []FrameworkSpecControlScope
+	if obj != nil {
+		objs = []FrameworkSpecControlScope{*obj}
+	}
+
+	jsonit := jsoniter.Config{
+		EscapeHTML:             true,
+		SortMapKeys:            true,
+		ValidateJsonRawMessage: true,
+		TagKey:                 "tf",
+		TypeEncoders:           getEncodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(FrameworkSpecControlScope{}).Type1())),
+	}.Froze()
+
+	byt, _ := jsonit.Marshal(objs)
+
+	stream.Write(byt)
+}
+
+func (FrameworkSpecControlScopeCodec) Decode(ptr unsafe.Pointer, iter *jsoniter.Iterator) {
+	switch iter.WhatIsNext() {
+	case jsoniter.NilValue:
+		iter.Skip()
+		*(*FrameworkSpecControlScope)(ptr) = FrameworkSpecControlScope{}
+		return
+	case jsoniter.ArrayValue:
+		objsByte := iter.SkipAndReturnBytes()
+		if len(objsByte) > 0 {
+			var objs []FrameworkSpecControlScope
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(FrameworkSpecControlScope{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objsByte, &objs)
+
+			if len(objs) > 0 {
+				*(*FrameworkSpecControlScope)(ptr) = objs[0]
+			} else {
+				*(*FrameworkSpecControlScope)(ptr) = FrameworkSpecControlScope{}
+			}
+		} else {
+			*(*FrameworkSpecControlScope)(ptr) = FrameworkSpecControlScope{}
+		}
+	case jsoniter.ObjectValue:
+		objByte := iter.SkipAndReturnBytes()
+		if len(objByte) > 0 {
+			var obj FrameworkSpecControlScope
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(FrameworkSpecControlScope{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objByte, &obj)
+
+			*(*FrameworkSpecControlScope)(ptr) = obj
+		} else {
+			*(*FrameworkSpecControlScope)(ptr) = FrameworkSpecControlScope{}
+		}
+	default:
+		iter.ReportError("decode FrameworkSpecControlScope", "unexpected JSON type")
+	}
 }
 
 // +k8s:deepcopy-gen=false
@@ -206,5 +291,163 @@ func (PlanSpecRuleLifecycleCodec) Decode(ptr unsafe.Pointer, iter *jsoniter.Iter
 		}
 	default:
 		iter.ReportError("decode PlanSpecRuleLifecycle", "unexpected JSON type")
+	}
+}
+
+// +k8s:deepcopy-gen=false
+type ReportPlanSpecReportDeliveryChannelCodec struct {
+}
+
+func (ReportPlanSpecReportDeliveryChannelCodec) IsEmpty(ptr unsafe.Pointer) bool {
+	return (*ReportPlanSpecReportDeliveryChannel)(ptr) == nil
+}
+
+func (ReportPlanSpecReportDeliveryChannelCodec) Encode(ptr unsafe.Pointer, stream *jsoniter.Stream) {
+	obj := (*ReportPlanSpecReportDeliveryChannel)(ptr)
+	var objs []ReportPlanSpecReportDeliveryChannel
+	if obj != nil {
+		objs = []ReportPlanSpecReportDeliveryChannel{*obj}
+	}
+
+	jsonit := jsoniter.Config{
+		EscapeHTML:             true,
+		SortMapKeys:            true,
+		ValidateJsonRawMessage: true,
+		TagKey:                 "tf",
+		TypeEncoders:           getEncodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(ReportPlanSpecReportDeliveryChannel{}).Type1())),
+	}.Froze()
+
+	byt, _ := jsonit.Marshal(objs)
+
+	stream.Write(byt)
+}
+
+func (ReportPlanSpecReportDeliveryChannelCodec) Decode(ptr unsafe.Pointer, iter *jsoniter.Iterator) {
+	switch iter.WhatIsNext() {
+	case jsoniter.NilValue:
+		iter.Skip()
+		*(*ReportPlanSpecReportDeliveryChannel)(ptr) = ReportPlanSpecReportDeliveryChannel{}
+		return
+	case jsoniter.ArrayValue:
+		objsByte := iter.SkipAndReturnBytes()
+		if len(objsByte) > 0 {
+			var objs []ReportPlanSpecReportDeliveryChannel
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(ReportPlanSpecReportDeliveryChannel{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objsByte, &objs)
+
+			if len(objs) > 0 {
+				*(*ReportPlanSpecReportDeliveryChannel)(ptr) = objs[0]
+			} else {
+				*(*ReportPlanSpecReportDeliveryChannel)(ptr) = ReportPlanSpecReportDeliveryChannel{}
+			}
+		} else {
+			*(*ReportPlanSpecReportDeliveryChannel)(ptr) = ReportPlanSpecReportDeliveryChannel{}
+		}
+	case jsoniter.ObjectValue:
+		objByte := iter.SkipAndReturnBytes()
+		if len(objByte) > 0 {
+			var obj ReportPlanSpecReportDeliveryChannel
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(ReportPlanSpecReportDeliveryChannel{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objByte, &obj)
+
+			*(*ReportPlanSpecReportDeliveryChannel)(ptr) = obj
+		} else {
+			*(*ReportPlanSpecReportDeliveryChannel)(ptr) = ReportPlanSpecReportDeliveryChannel{}
+		}
+	default:
+		iter.ReportError("decode ReportPlanSpecReportDeliveryChannel", "unexpected JSON type")
+	}
+}
+
+// +k8s:deepcopy-gen=false
+type ReportPlanSpecReportSettingCodec struct {
+}
+
+func (ReportPlanSpecReportSettingCodec) IsEmpty(ptr unsafe.Pointer) bool {
+	return (*ReportPlanSpecReportSetting)(ptr) == nil
+}
+
+func (ReportPlanSpecReportSettingCodec) Encode(ptr unsafe.Pointer, stream *jsoniter.Stream) {
+	obj := (*ReportPlanSpecReportSetting)(ptr)
+	var objs []ReportPlanSpecReportSetting
+	if obj != nil {
+		objs = []ReportPlanSpecReportSetting{*obj}
+	}
+
+	jsonit := jsoniter.Config{
+		EscapeHTML:             true,
+		SortMapKeys:            true,
+		ValidateJsonRawMessage: true,
+		TagKey:                 "tf",
+		TypeEncoders:           getEncodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(ReportPlanSpecReportSetting{}).Type1())),
+	}.Froze()
+
+	byt, _ := jsonit.Marshal(objs)
+
+	stream.Write(byt)
+}
+
+func (ReportPlanSpecReportSettingCodec) Decode(ptr unsafe.Pointer, iter *jsoniter.Iterator) {
+	switch iter.WhatIsNext() {
+	case jsoniter.NilValue:
+		iter.Skip()
+		*(*ReportPlanSpecReportSetting)(ptr) = ReportPlanSpecReportSetting{}
+		return
+	case jsoniter.ArrayValue:
+		objsByte := iter.SkipAndReturnBytes()
+		if len(objsByte) > 0 {
+			var objs []ReportPlanSpecReportSetting
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(ReportPlanSpecReportSetting{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objsByte, &objs)
+
+			if len(objs) > 0 {
+				*(*ReportPlanSpecReportSetting)(ptr) = objs[0]
+			} else {
+				*(*ReportPlanSpecReportSetting)(ptr) = ReportPlanSpecReportSetting{}
+			}
+		} else {
+			*(*ReportPlanSpecReportSetting)(ptr) = ReportPlanSpecReportSetting{}
+		}
+	case jsoniter.ObjectValue:
+		objByte := iter.SkipAndReturnBytes()
+		if len(objByte) > 0 {
+			var obj ReportPlanSpecReportSetting
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(ReportPlanSpecReportSetting{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objByte, &obj)
+
+			*(*ReportPlanSpecReportSetting)(ptr) = obj
+		} else {
+			*(*ReportPlanSpecReportSetting)(ptr) = ReportPlanSpecReportSetting{}
+		}
+	default:
+		iter.ReportError("decode ReportPlanSpecReportSetting", "unexpected JSON type")
 	}
 }

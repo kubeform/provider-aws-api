@@ -41,6 +41,13 @@ type LustreFileSystem struct {
 	Status            LustreFileSystemStatus `json:"status,omitempty"`
 }
 
+type LustreFileSystemSpecLogConfiguration struct {
+	// +optional
+	Destination *string `json:"destination,omitempty" tf:"destination"`
+	// +optional
+	Level *string `json:"level,omitempty" tf:"level"`
+}
+
 type LustreFileSystemSpec struct {
 	State *LustreFileSystemSpecResource `json:"state,omitempty" tf:"-"`
 
@@ -67,6 +74,8 @@ type LustreFileSystemSpecResource struct {
 	// +optional
 	AutomaticBackupRetentionDays *int64 `json:"automaticBackupRetentionDays,omitempty" tf:"automatic_backup_retention_days"`
 	// +optional
+	BackupID *string `json:"backupID,omitempty" tf:"backup_id"`
+	// +optional
 	CopyTagsToBackups *bool `json:"copyTagsToBackups,omitempty" tf:"copy_tags_to_backups"`
 	// +optional
 	DailyAutomaticBackupStartTime *string `json:"dailyAutomaticBackupStartTime,omitempty" tf:"daily_automatic_backup_start_time"`
@@ -81,11 +90,15 @@ type LustreFileSystemSpecResource struct {
 	// +optional
 	ExportPath *string `json:"exportPath,omitempty" tf:"export_path"`
 	// +optional
+	FileSystemTypeVersion *string `json:"fileSystemTypeVersion,omitempty" tf:"file_system_type_version"`
+	// +optional
 	ImportPath *string `json:"importPath,omitempty" tf:"import_path"`
 	// +optional
 	ImportedFileChunkSize *int64 `json:"importedFileChunkSize,omitempty" tf:"imported_file_chunk_size"`
 	// +optional
 	KmsKeyID *string `json:"kmsKeyID,omitempty" tf:"kms_key_id"`
+	// +optional
+	LogConfiguration *LustreFileSystemSpecLogConfiguration `json:"logConfiguration,omitempty" tf:"log_configuration"`
 	// +optional
 	MountName *string `json:"mountName,omitempty" tf:"mount_name"`
 	// +optional
@@ -97,7 +110,8 @@ type LustreFileSystemSpecResource struct {
 	// +optional
 	// +kubebuilder:validation:MaxItems=50
 	SecurityGroupIDS []string `json:"securityGroupIDS,omitempty" tf:"security_group_ids"`
-	StorageCapacity  *int64   `json:"storageCapacity" tf:"storage_capacity"`
+	// +optional
+	StorageCapacity *int64 `json:"storageCapacity,omitempty" tf:"storage_capacity"`
 	// +optional
 	StorageType *string  `json:"storageType,omitempty" tf:"storage_type"`
 	SubnetIDS   []string `json:"subnetIDS" tf:"subnet_ids"`

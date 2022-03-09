@@ -24,6 +24,10 @@ type AppImageConfigExpansion interface{}
 
 type CodeRepositoryExpansion interface{}
 
+type DeviceExpansion interface{}
+
+type DeviceFleetExpansion interface{}
+
 type DomainExpansion interface{}
 
 type EndpointExpansion interface{}
@@ -31,6 +35,10 @@ type EndpointExpansion interface{}
 type EndpointConfigurationExpansion interface{}
 
 type FeatureGroupExpansion interface{}
+
+type FlowDefinitionExpansion interface{}
+
+type HumanTaskUiExpansion interface{}
 
 type ImageExpansion interface{}
 
@@ -40,8 +48,18 @@ type ModelExpansion interface{}
 
 type ModelPackageGroupExpansion interface{}
 
+type ModelPackageGroupPolicyExpansion interface{}
+
 type NotebookInstanceExpansion interface{}
 
 type NotebookInstanceLifecycleConfigurationExpansion interface{}
 
+type ProjectExpansion interface{}
+
+type StudioLifecycleConfigExpansion interface{}
+
 type UserProfileExpansion interface{}
+
+type WorkforceExpansion interface{}
+
+type WorkteamExpansion interface{}

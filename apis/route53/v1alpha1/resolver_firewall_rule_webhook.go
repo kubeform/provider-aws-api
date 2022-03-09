@@ -89,7 +89,7 @@ func (r *ResolverFirewallRule) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range resolverfirewallruleForceNewList {
+	for key, _ := range resolverfirewallruleForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

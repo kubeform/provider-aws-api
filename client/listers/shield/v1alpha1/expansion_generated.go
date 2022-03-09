@@ -25,3 +25,19 @@ type ProtectionListerExpansion interface{}
 // ProtectionNamespaceListerExpansion allows custom methods to be added to
 // ProtectionNamespaceLister.
 type ProtectionNamespaceListerExpansion interface{}
+
+// ProtectionGroupListerExpansion allows custom methods to be added to
+// ProtectionGroupLister.
+type ProtectionGroupListerExpansion interface{}
+
+// ProtectionGroupNamespaceListerExpansion allows custom methods to be added to
+// ProtectionGroupNamespaceLister.
+type ProtectionGroupNamespaceListerExpansion interface{}
+
+// ProtectionHealthCheckAssociationListerExpansion allows custom methods to be added to
+// ProtectionHealthCheckAssociationLister.
+type ProtectionHealthCheckAssociationListerExpansion interface{}
+
+// ProtectionHealthCheckAssociationNamespaceListerExpansion allows custom methods to be added to
+// ProtectionHealthCheckAssociationNamespaceLister.
+type ProtectionHealthCheckAssociationNamespaceListerExpansion interface{}

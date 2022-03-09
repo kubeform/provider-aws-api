@@ -89,7 +89,7 @@ func (r *BucketAnalyticsConfiguration) ValidateUpdate(old runtime.Object) error 
 		return err
 	}
 
-	for key := range bucketanalyticsconfigurationForceNewList {
+	for key, _ := range bucketanalyticsconfigurationForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

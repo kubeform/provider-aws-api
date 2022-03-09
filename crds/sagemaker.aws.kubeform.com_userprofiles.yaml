@@ -89,9 +89,17 @@ spec:
                             properties:
                               instanceType:
                                 type: string
+                              lifecycleConfigArn:
+                                type: string
                               sagemakerImageArn:
                                 type: string
+                              sagemakerImageVersionArn:
+                                type: string
                             type: object
+                          lifecycleConfigArns:
+                            items:
+                              type: string
+                            type: array
                         required:
                         - defaultResourceSpec
                         type: object
@@ -117,9 +125,17 @@ spec:
                             properties:
                               instanceType:
                                 type: string
+                              lifecycleConfigArn:
+                                type: string
                               sagemakerImageArn:
                                 type: string
+                              sagemakerImageVersionArn:
+                                type: string
                             type: object
+                          lifecycleConfigArns:
+                            items:
+                              type: string
+                            type: array
                         required:
                         - defaultResourceSpec
                         type: object
@@ -143,7 +159,11 @@ spec:
                             properties:
                               instanceType:
                                 type: string
+                              lifecycleConfigArn:
+                                type: string
                               sagemakerImageArn:
+                                type: string
+                              sagemakerImageVersionArn:
                                 type: string
                             type: object
                         required:
@@ -190,9 +210,17 @@ spec:
                             properties:
                               instanceType:
                                 type: string
+                              lifecycleConfigArn:
+                                type: string
                               sagemakerImageArn:
                                 type: string
+                              sagemakerImageVersionArn:
+                                type: string
                             type: object
+                          lifecycleConfigArns:
+                            items:
+                              type: string
+                            type: array
                         required:
                         - defaultResourceSpec
                         type: object
@@ -218,9 +246,17 @@ spec:
                             properties:
                               instanceType:
                                 type: string
+                              lifecycleConfigArn:
+                                type: string
                               sagemakerImageArn:
                                 type: string
+                              sagemakerImageVersionArn:
+                                type: string
                             type: object
+                          lifecycleConfigArns:
+                            items:
+                              type: string
+                            type: array
                         required:
                         - defaultResourceSpec
                         type: object
@@ -244,7 +280,11 @@ spec:
                             properties:
                               instanceType:
                                 type: string
+                              lifecycleConfigArn:
+                                type: string
                               sagemakerImageArn:
+                                type: string
+                              sagemakerImageVersionArn:
                                 type: string
                             type: object
                         required:

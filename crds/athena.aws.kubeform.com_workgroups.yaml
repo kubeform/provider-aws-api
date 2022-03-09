@@ -66,7 +66,16 @@ spec:
                         type: integer
                       enforceWorkgroupConfiguration:
                         type: boolean
+                      engineVersion:
+                        properties:
+                          effectiveEngineVersion:
+                            type: string
+                          selectedEngineVersion:
+                            type: string
+                        type: object
                       publishCloudwatchMetricsEnabled:
+                        type: boolean
+                      requesterPaysEnabled:
                         type: boolean
                       resultConfiguration:
                         properties:
@@ -113,7 +122,16 @@ spec:
                         type: integer
                       enforceWorkgroupConfiguration:
                         type: boolean
+                      engineVersion:
+                        properties:
+                          effectiveEngineVersion:
+                            type: string
+                          selectedEngineVersion:
+                            type: string
+                        type: object
                       publishCloudwatchMetricsEnabled:
+                        type: boolean
+                      requesterPaysEnabled:
                         type: boolean
                       resultConfiguration:
                         properties:

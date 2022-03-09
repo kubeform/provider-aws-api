@@ -22,6 +22,7 @@ import (
 	"fmt"
 
 	v1alpha1 "kubeform.dev/provider-aws-api/apis/accessanalyzer/v1alpha1"
+	accountv1alpha1 "kubeform.dev/provider-aws-api/apis/account/v1alpha1"
 	acmv1alpha1 "kubeform.dev/provider-aws-api/apis/acm/v1alpha1"
 	acmpcav1alpha1 "kubeform.dev/provider-aws-api/apis/acmpca/v1alpha1"
 	albv1alpha1 "kubeform.dev/provider-aws-api/apis/alb/v1alpha1"
@@ -31,8 +32,10 @@ import (
 	apigatewayv2v1alpha1 "kubeform.dev/provider-aws-api/apis/apigatewayv2/v1alpha1"
 	appv1alpha1 "kubeform.dev/provider-aws-api/apis/app/v1alpha1"
 	appautoscalingv1alpha1 "kubeform.dev/provider-aws-api/apis/appautoscaling/v1alpha1"
+	appconfigv1alpha1 "kubeform.dev/provider-aws-api/apis/appconfig/v1alpha1"
 	appmeshv1alpha1 "kubeform.dev/provider-aws-api/apis/appmesh/v1alpha1"
 	apprunnerv1alpha1 "kubeform.dev/provider-aws-api/apis/apprunner/v1alpha1"
+	appstreamv1alpha1 "kubeform.dev/provider-aws-api/apis/appstream/v1alpha1"
 	appsyncv1alpha1 "kubeform.dev/provider-aws-api/apis/appsync/v1alpha1"
 	athenav1alpha1 "kubeform.dev/provider-aws-api/apis/athena/v1alpha1"
 	autoscalingv1alpha1 "kubeform.dev/provider-aws-api/apis/autoscaling/v1alpha1"
@@ -40,11 +43,14 @@ import (
 	backupv1alpha1 "kubeform.dev/provider-aws-api/apis/backup/v1alpha1"
 	batchv1alpha1 "kubeform.dev/provider-aws-api/apis/batch/v1alpha1"
 	budgetsv1alpha1 "kubeform.dev/provider-aws-api/apis/budgets/v1alpha1"
+	chimev1alpha1 "kubeform.dev/provider-aws-api/apis/chime/v1alpha1"
 	cloud9v1alpha1 "kubeform.dev/provider-aws-api/apis/cloud9/v1alpha1"
+	cloudcontrolapiv1alpha1 "kubeform.dev/provider-aws-api/apis/cloudcontrolapi/v1alpha1"
 	cloudformationstackv1alpha1 "kubeform.dev/provider-aws-api/apis/cloudformationstack/v1alpha1"
 	cloudformationtypev1alpha1 "kubeform.dev/provider-aws-api/apis/cloudformationtype/v1alpha1"
 	cloudfrontv1alpha1 "kubeform.dev/provider-aws-api/apis/cloudfront/v1alpha1"
 	cloudhsmv2v1alpha1 "kubeform.dev/provider-aws-api/apis/cloudhsmv2/v1alpha1"
+	cloudsearchv1alpha1 "kubeform.dev/provider-aws-api/apis/cloudsearch/v1alpha1"
 	cloudtrailv1alpha1 "kubeform.dev/provider-aws-api/apis/cloudtrail/v1alpha1"
 	cloudwatchv1alpha1 "kubeform.dev/provider-aws-api/apis/cloudwatch/v1alpha1"
 	codeartifactv1alpha1 "kubeform.dev/provider-aws-api/apis/codeartifact/v1alpha1"
@@ -56,13 +62,16 @@ import (
 	codestarnotificationsv1alpha1 "kubeform.dev/provider-aws-api/apis/codestarnotifications/v1alpha1"
 	cognitov1alpha1 "kubeform.dev/provider-aws-api/apis/cognito/v1alpha1"
 	configv1alpha1 "kubeform.dev/provider-aws-api/apis/config/v1alpha1"
+	connectv1alpha1 "kubeform.dev/provider-aws-api/apis/connect/v1alpha1"
 	curv1alpha1 "kubeform.dev/provider-aws-api/apis/cur/v1alpha1"
 	customerv1alpha1 "kubeform.dev/provider-aws-api/apis/customer/v1alpha1"
+	dataexchangev1alpha1 "kubeform.dev/provider-aws-api/apis/dataexchange/v1alpha1"
 	datapipelinev1alpha1 "kubeform.dev/provider-aws-api/apis/datapipeline/v1alpha1"
 	datasyncv1alpha1 "kubeform.dev/provider-aws-api/apis/datasync/v1alpha1"
 	daxv1alpha1 "kubeform.dev/provider-aws-api/apis/dax/v1alpha1"
 	dbv1alpha1 "kubeform.dev/provider-aws-api/apis/db/v1alpha1"
 	defaultv1alpha1 "kubeform.dev/provider-aws-api/apis/default/v1alpha1"
+	detectivev1alpha1 "kubeform.dev/provider-aws-api/apis/detective/v1alpha1"
 	devicefarmv1alpha1 "kubeform.dev/provider-aws-api/apis/devicefarm/v1alpha1"
 	directoryservicev1alpha1 "kubeform.dev/provider-aws-api/apis/directoryservice/v1alpha1"
 	dlmv1alpha1 "kubeform.dev/provider-aws-api/apis/dlm/v1alpha1"
@@ -92,6 +101,7 @@ import (
 	glaciervaultv1alpha1 "kubeform.dev/provider-aws-api/apis/glaciervault/v1alpha1"
 	globalacceleratorv1alpha1 "kubeform.dev/provider-aws-api/apis/globalaccelerator/v1alpha1"
 	gluev1alpha1 "kubeform.dev/provider-aws-api/apis/glue/v1alpha1"
+	grafanav1alpha1 "kubeform.dev/provider-aws-api/apis/grafana/v1alpha1"
 	guarddutyv1alpha1 "kubeform.dev/provider-aws-api/apis/guardduty/v1alpha1"
 	iamv1alpha1 "kubeform.dev/provider-aws-api/apis/iam/v1alpha1"
 	imagebuilderv1alpha1 "kubeform.dev/provider-aws-api/apis/imagebuilder/v1alpha1"
@@ -115,8 +125,10 @@ import (
 	macie2v1alpha1 "kubeform.dev/provider-aws-api/apis/macie2/v1alpha1"
 	mainv1alpha1 "kubeform.dev/provider-aws-api/apis/main/v1alpha1"
 	mediav1alpha1 "kubeform.dev/provider-aws-api/apis/media/v1alpha1"
+	memorydbv1alpha1 "kubeform.dev/provider-aws-api/apis/memorydb/v1alpha1"
 	mqv1alpha1 "kubeform.dev/provider-aws-api/apis/mq/v1alpha1"
 	mskv1alpha1 "kubeform.dev/provider-aws-api/apis/msk/v1alpha1"
+	mskconnectv1alpha1 "kubeform.dev/provider-aws-api/apis/mskconnect/v1alpha1"
 	mwaav1alpha1 "kubeform.dev/provider-aws-api/apis/mwaa/v1alpha1"
 	natv1alpha1 "kubeform.dev/provider-aws-api/apis/nat/v1alpha1"
 	neptunev1alpha1 "kubeform.dev/provider-aws-api/apis/neptune/v1alpha1"
@@ -136,6 +148,9 @@ import (
 	resourcegroupsv1alpha1 "kubeform.dev/provider-aws-api/apis/resourcegroups/v1alpha1"
 	routev1alpha1 "kubeform.dev/provider-aws-api/apis/route/v1alpha1"
 	route53v1alpha1 "kubeform.dev/provider-aws-api/apis/route53/v1alpha1"
+	route53domainsv1alpha1 "kubeform.dev/provider-aws-api/apis/route53domains/v1alpha1"
+	route53recoverycontrolconfigv1alpha1 "kubeform.dev/provider-aws-api/apis/route53recoverycontrolconfig/v1alpha1"
+	route53recoveryreadinessv1alpha1 "kubeform.dev/provider-aws-api/apis/route53recoveryreadiness/v1alpha1"
 	s3v1alpha1 "kubeform.dev/provider-aws-api/apis/s3/v1alpha1"
 	s3controlv1alpha1 "kubeform.dev/provider-aws-api/apis/s3control/v1alpha1"
 	s3outpostsv1alpha1 "kubeform.dev/provider-aws-api/apis/s3outposts/v1alpha1"
@@ -208,6 +223,10 @@ func (f *sharedInformerFactory) ForResource(resource schema.GroupVersionResource
 	// Group=accessanalyzer.aws.kubeform.com, Version=v1alpha1
 	case v1alpha1.SchemeGroupVersion.WithResource("analyzers"):
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Accessanalyzer().V1alpha1().Analyzers().Informer()}, nil
+
+		// Group=account.aws.kubeform.com, Version=v1alpha1
+	case accountv1alpha1.SchemeGroupVersion.WithResource("alternatecontacts"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Account().V1alpha1().AlternateContacts().Informer()}, nil
 
 		// Group=acm.aws.kubeform.com, Version=v1alpha1
 	case acmv1alpha1.SchemeGroupVersion.WithResource("certificates"):
@@ -347,6 +366,20 @@ func (f *sharedInformerFactory) ForResource(resource schema.GroupVersionResource
 	case appautoscalingv1alpha1.SchemeGroupVersion.WithResource("targets"):
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Appautoscaling().V1alpha1().Targets().Informer()}, nil
 
+		// Group=appconfig.aws.kubeform.com, Version=v1alpha1
+	case appconfigv1alpha1.SchemeGroupVersion.WithResource("applications"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Appconfig().V1alpha1().Applications().Informer()}, nil
+	case appconfigv1alpha1.SchemeGroupVersion.WithResource("configurationprofiles"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Appconfig().V1alpha1().ConfigurationProfiles().Informer()}, nil
+	case appconfigv1alpha1.SchemeGroupVersion.WithResource("deployments"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Appconfig().V1alpha1().Deployments().Informer()}, nil
+	case appconfigv1alpha1.SchemeGroupVersion.WithResource("deploymentstrategies"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Appconfig().V1alpha1().DeploymentStrategies().Informer()}, nil
+	case appconfigv1alpha1.SchemeGroupVersion.WithResource("environments"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Appconfig().V1alpha1().Environments().Informer()}, nil
+	case appconfigv1alpha1.SchemeGroupVersion.WithResource("hostedconfigurationversions"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Appconfig().V1alpha1().HostedConfigurationVersions().Informer()}, nil
+
 		// Group=appmesh.aws.kubeform.com, Version=v1alpha1
 	case appmeshv1alpha1.SchemeGroupVersion.WithResource("gatewayroutes"):
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Appmesh().V1alpha1().GatewayRoutes().Informer()}, nil
@@ -372,12 +405,36 @@ func (f *sharedInformerFactory) ForResource(resource schema.GroupVersionResource
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Apprunner().V1alpha1().CustomDomainAssociations().Informer()}, nil
 	case apprunnerv1alpha1.SchemeGroupVersion.WithResource("services"):
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Apprunner().V1alpha1().Services().Informer()}, nil
+	case apprunnerv1alpha1.SchemeGroupVersion.WithResource("vpcconnectors"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Apprunner().V1alpha1().VpcConnectors().Informer()}, nil
+
+		// Group=appstream.aws.kubeform.com, Version=v1alpha1
+	case appstreamv1alpha1.SchemeGroupVersion.WithResource("directoryconfigs"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Appstream().V1alpha1().DirectoryConfigs().Informer()}, nil
+	case appstreamv1alpha1.SchemeGroupVersion.WithResource("fleets"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Appstream().V1alpha1().Fleets().Informer()}, nil
+	case appstreamv1alpha1.SchemeGroupVersion.WithResource("fleetstackassociations"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Appstream().V1alpha1().FleetStackAssociations().Informer()}, nil
+	case appstreamv1alpha1.SchemeGroupVersion.WithResource("imagebuilders"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Appstream().V1alpha1().ImageBuilders().Informer()}, nil
+	case appstreamv1alpha1.SchemeGroupVersion.WithResource("stacks"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Appstream().V1alpha1().Stacks().Informer()}, nil
+	case appstreamv1alpha1.SchemeGroupVersion.WithResource("users"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Appstream().V1alpha1().Users().Informer()}, nil
+	case appstreamv1alpha1.SchemeGroupVersion.WithResource("userstackassociations"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Appstream().V1alpha1().UserStackAssociations().Informer()}, nil
 
 		// Group=appsync.aws.kubeform.com, Version=v1alpha1
+	case appsyncv1alpha1.SchemeGroupVersion.WithResource("apicaches"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Appsync().V1alpha1().ApiCaches().Informer()}, nil
 	case appsyncv1alpha1.SchemeGroupVersion.WithResource("apikeys"):
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Appsync().V1alpha1().ApiKeys().Informer()}, nil
 	case appsyncv1alpha1.SchemeGroupVersion.WithResource("datasources"):
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Appsync().V1alpha1().Datasources().Informer()}, nil
+	case appsyncv1alpha1.SchemeGroupVersion.WithResource("domainnames"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Appsync().V1alpha1().DomainNames().Informer()}, nil
+	case appsyncv1alpha1.SchemeGroupVersion.WithResource("domainnameapiassociations"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Appsync().V1alpha1().DomainNameAPIAssociations().Informer()}, nil
 	case appsyncv1alpha1.SchemeGroupVersion.WithResource("functions"):
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Appsync().V1alpha1().Functions().Informer()}, nil
 	case appsyncv1alpha1.SchemeGroupVersion.WithResource("graphqlapis"):
@@ -398,6 +455,8 @@ func (f *sharedInformerFactory) ForResource(resource schema.GroupVersionResource
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Autoscaling().V1alpha1().Attachments().Informer()}, nil
 	case autoscalingv1alpha1.SchemeGroupVersion.WithResource("groups"):
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Autoscaling().V1alpha1().Groups().Informer()}, nil
+	case autoscalingv1alpha1.SchemeGroupVersion.WithResource("grouptags"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Autoscaling().V1alpha1().GroupTags().Informer()}, nil
 	case autoscalingv1alpha1.SchemeGroupVersion.WithResource("lifecyclehooks"):
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Autoscaling().V1alpha1().LifecycleHooks().Informer()}, nil
 	case autoscalingv1alpha1.SchemeGroupVersion.WithResource("notifications"):
@@ -412,16 +471,22 @@ func (f *sharedInformerFactory) ForResource(resource schema.GroupVersionResource
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Autoscalingplans().V1alpha1().ScalingPlans().Informer()}, nil
 
 		// Group=backup.aws.kubeform.com, Version=v1alpha1
+	case backupv1alpha1.SchemeGroupVersion.WithResource("frameworks"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Backup().V1alpha1().Frameworks().Informer()}, nil
 	case backupv1alpha1.SchemeGroupVersion.WithResource("globalsettingses"):
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Backup().V1alpha1().GlobalSettingses().Informer()}, nil
 	case backupv1alpha1.SchemeGroupVersion.WithResource("plans"):
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Backup().V1alpha1().Plans().Informer()}, nil
 	case backupv1alpha1.SchemeGroupVersion.WithResource("regionsettingses"):
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Backup().V1alpha1().RegionSettingses().Informer()}, nil
+	case backupv1alpha1.SchemeGroupVersion.WithResource("reportplans"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Backup().V1alpha1().ReportPlans().Informer()}, nil
 	case backupv1alpha1.SchemeGroupVersion.WithResource("selections"):
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Backup().V1alpha1().Selections().Informer()}, nil
 	case backupv1alpha1.SchemeGroupVersion.WithResource("vaults"):
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Backup().V1alpha1().Vaults().Informer()}, nil
+	case backupv1alpha1.SchemeGroupVersion.WithResource("vaultlockconfigurations"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Backup().V1alpha1().VaultLockConfigurations().Informer()}, nil
 	case backupv1alpha1.SchemeGroupVersion.WithResource("vaultnotificationses"):
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Backup().V1alpha1().VaultNotificationses().Informer()}, nil
 	case backupv1alpha1.SchemeGroupVersion.WithResource("vaultpolicies"):
@@ -434,6 +499,8 @@ func (f *sharedInformerFactory) ForResource(resource schema.GroupVersionResource
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Batch().V1alpha1().JobDefinitions().Informer()}, nil
 	case batchv1alpha1.SchemeGroupVersion.WithResource("jobqueues"):
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Batch().V1alpha1().JobQueues().Informer()}, nil
+	case batchv1alpha1.SchemeGroupVersion.WithResource("schedulingpolicies"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Batch().V1alpha1().SchedulingPolicies().Informer()}, nil
 
 		// Group=budgets.aws.kubeform.com, Version=v1alpha1
 	case budgetsv1alpha1.SchemeGroupVersion.WithResource("budgets"):
@@ -441,9 +508,31 @@ func (f *sharedInformerFactory) ForResource(resource schema.GroupVersionResource
 	case budgetsv1alpha1.SchemeGroupVersion.WithResource("budgetactions"):
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Budgets().V1alpha1().BudgetActions().Informer()}, nil
 
+		// Group=chime.aws.kubeform.com, Version=v1alpha1
+	case chimev1alpha1.SchemeGroupVersion.WithResource("voiceconnectors"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Chime().V1alpha1().VoiceConnectors().Informer()}, nil
+	case chimev1alpha1.SchemeGroupVersion.WithResource("voiceconnectorgroups"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Chime().V1alpha1().VoiceConnectorGroups().Informer()}, nil
+	case chimev1alpha1.SchemeGroupVersion.WithResource("voiceconnectorloggings"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Chime().V1alpha1().VoiceConnectorLoggings().Informer()}, nil
+	case chimev1alpha1.SchemeGroupVersion.WithResource("voiceconnectororiginations"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Chime().V1alpha1().VoiceConnectorOriginations().Informer()}, nil
+	case chimev1alpha1.SchemeGroupVersion.WithResource("voiceconnectorstreamings"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Chime().V1alpha1().VoiceConnectorStreamings().Informer()}, nil
+	case chimev1alpha1.SchemeGroupVersion.WithResource("voiceconnectorterminations"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Chime().V1alpha1().VoiceConnectorTerminations().Informer()}, nil
+	case chimev1alpha1.SchemeGroupVersion.WithResource("voiceconnectorterminationcredentialses"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Chime().V1alpha1().VoiceConnectorTerminationCredentialses().Informer()}, nil
+
 		// Group=cloud9.aws.kubeform.com, Version=v1alpha1
 	case cloud9v1alpha1.SchemeGroupVersion.WithResource("environmentec2s"):
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Cloud9().V1alpha1().EnvironmentEc2s().Informer()}, nil
+	case cloud9v1alpha1.SchemeGroupVersion.WithResource("environmentmemberships"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Cloud9().V1alpha1().EnvironmentMemberships().Informer()}, nil
+
+		// Group=cloudcontrolapi.aws.kubeform.com, Version=v1alpha1
+	case cloudcontrolapiv1alpha1.SchemeGroupVersion.WithResource("cloudcontrolapiresources"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Cloudcontrolapi().V1alpha1().CloudcontrolapiResources().Informer()}, nil
 
 		// Group=cloudformationstack.aws.kubeform.com, Version=v1alpha1
 	case cloudformationstackv1alpha1.SchemeGroupVersion.WithResource("cloudformationstacks"):
@@ -462,10 +551,16 @@ func (f *sharedInformerFactory) ForResource(resource schema.GroupVersionResource
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Cloudfront().V1alpha1().CachePolicies().Informer()}, nil
 	case cloudfrontv1alpha1.SchemeGroupVersion.WithResource("distributions"):
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Cloudfront().V1alpha1().Distributions().Informer()}, nil
+	case cloudfrontv1alpha1.SchemeGroupVersion.WithResource("fieldlevelencryptionconfigs"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Cloudfront().V1alpha1().FieldLevelEncryptionConfigs().Informer()}, nil
+	case cloudfrontv1alpha1.SchemeGroupVersion.WithResource("fieldlevelencryptionprofiles"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Cloudfront().V1alpha1().FieldLevelEncryptionProfiles().Informer()}, nil
 	case cloudfrontv1alpha1.SchemeGroupVersion.WithResource("functions"):
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Cloudfront().V1alpha1().Functions().Informer()}, nil
 	case cloudfrontv1alpha1.SchemeGroupVersion.WithResource("keygroups"):
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Cloudfront().V1alpha1().KeyGroups().Informer()}, nil
+	case cloudfrontv1alpha1.SchemeGroupVersion.WithResource("monitoringsubscriptions"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Cloudfront().V1alpha1().MonitoringSubscriptions().Informer()}, nil
 	case cloudfrontv1alpha1.SchemeGroupVersion.WithResource("originaccessidentities"):
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Cloudfront().V1alpha1().OriginAccessIdentities().Informer()}, nil
 	case cloudfrontv1alpha1.SchemeGroupVersion.WithResource("originrequestpolicies"):
@@ -474,6 +569,8 @@ func (f *sharedInformerFactory) ForResource(resource schema.GroupVersionResource
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Cloudfront().V1alpha1().PublicKeys().Informer()}, nil
 	case cloudfrontv1alpha1.SchemeGroupVersion.WithResource("realtimelogconfigs"):
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Cloudfront().V1alpha1().RealtimeLogConfigs().Informer()}, nil
+	case cloudfrontv1alpha1.SchemeGroupVersion.WithResource("responseheaderspolicies"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Cloudfront().V1alpha1().ResponseHeadersPolicies().Informer()}, nil
 
 		// Group=cloudhsmv2.aws.kubeform.com, Version=v1alpha1
 	case cloudhsmv2v1alpha1.SchemeGroupVersion.WithResource("clusters"):
@@ -481,9 +578,17 @@ func (f *sharedInformerFactory) ForResource(resource schema.GroupVersionResource
 	case cloudhsmv2v1alpha1.SchemeGroupVersion.WithResource("hsms"):
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Cloudhsmv2().V1alpha1().Hsms().Informer()}, nil
 
+		// Group=cloudsearch.aws.kubeform.com, Version=v1alpha1
+	case cloudsearchv1alpha1.SchemeGroupVersion.WithResource("domains"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Cloudsearch().V1alpha1().Domains().Informer()}, nil
+	case cloudsearchv1alpha1.SchemeGroupVersion.WithResource("domainserviceaccesspolicies"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Cloudsearch().V1alpha1().DomainServiceAccessPolicies().Informer()}, nil
+
 		// Group=cloudtrail.aws.kubeform.com, Version=v1alpha1
 	case cloudtrailv1alpha1.SchemeGroupVersion.WithResource("cloudtrails"):
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Cloudtrail().V1alpha1().Cloudtrails().Informer()}, nil
+	case cloudtrailv1alpha1.SchemeGroupVersion.WithResource("eventdatastores"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Cloudtrail().V1alpha1().EventDataStores().Informer()}, nil
 
 		// Group=cloudwatch.aws.kubeform.com, Version=v1alpha1
 	case cloudwatchv1alpha1.SchemeGroupVersion.WithResource("compositealarms"):
@@ -542,12 +647,18 @@ func (f *sharedInformerFactory) ForResource(resource schema.GroupVersionResource
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Codebuild().V1alpha1().Projects().Informer()}, nil
 	case codebuildv1alpha1.SchemeGroupVersion.WithResource("reportgroups"):
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Codebuild().V1alpha1().ReportGroups().Informer()}, nil
+	case codebuildv1alpha1.SchemeGroupVersion.WithResource("resourcepolicies"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Codebuild().V1alpha1().ResourcePolicies().Informer()}, nil
 	case codebuildv1alpha1.SchemeGroupVersion.WithResource("sourcecredentials"):
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Codebuild().V1alpha1().SourceCredentials().Informer()}, nil
 	case codebuildv1alpha1.SchemeGroupVersion.WithResource("webhooks"):
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Codebuild().V1alpha1().Webhooks().Informer()}, nil
 
 		// Group=codecommit.aws.kubeform.com, Version=v1alpha1
+	case codecommitv1alpha1.SchemeGroupVersion.WithResource("approvalruletemplates"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Codecommit().V1alpha1().ApprovalRuleTemplates().Informer()}, nil
+	case codecommitv1alpha1.SchemeGroupVersion.WithResource("approvalruletemplateassociations"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Codecommit().V1alpha1().ApprovalRuleTemplateAssociations().Informer()}, nil
 	case codecommitv1alpha1.SchemeGroupVersion.WithResource("repositories"):
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Codecommit().V1alpha1().Repositories().Informer()}, nil
 	case codecommitv1alpha1.SchemeGroupVersion.WithResource("triggers"):
@@ -580,12 +691,16 @@ func (f *sharedInformerFactory) ForResource(resource schema.GroupVersionResource
 		// Group=cognito.aws.kubeform.com, Version=v1alpha1
 	case cognitov1alpha1.SchemeGroupVersion.WithResource("identitypools"):
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Cognito().V1alpha1().IdentityPools().Informer()}, nil
+	case cognitov1alpha1.SchemeGroupVersion.WithResource("identitypoolproviderprincipaltags"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Cognito().V1alpha1().IdentityPoolProviderPrincipalTags().Informer()}, nil
 	case cognitov1alpha1.SchemeGroupVersion.WithResource("identitypoolrolesattachments"):
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Cognito().V1alpha1().IdentityPoolRolesAttachments().Informer()}, nil
 	case cognitov1alpha1.SchemeGroupVersion.WithResource("identityproviders"):
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Cognito().V1alpha1().IdentityProviders().Informer()}, nil
 	case cognitov1alpha1.SchemeGroupVersion.WithResource("resourceservers"):
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Cognito().V1alpha1().ResourceServers().Informer()}, nil
+	case cognitov1alpha1.SchemeGroupVersion.WithResource("users"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Cognito().V1alpha1().Users().Informer()}, nil
 	case cognitov1alpha1.SchemeGroupVersion.WithResource("usergroups"):
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Cognito().V1alpha1().UserGroups().Informer()}, nil
 	case cognitov1alpha1.SchemeGroupVersion.WithResource("userpools"):
@@ -612,12 +727,38 @@ func (f *sharedInformerFactory) ForResource(resource schema.GroupVersionResource
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Config().V1alpha1().ConformancePacks().Informer()}, nil
 	case configv1alpha1.SchemeGroupVersion.WithResource("deliverychannels"):
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Config().V1alpha1().DeliveryChannels().Informer()}, nil
+	case configv1alpha1.SchemeGroupVersion.WithResource("organizationconformancepacks"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Config().V1alpha1().OrganizationConformancePacks().Informer()}, nil
 	case configv1alpha1.SchemeGroupVersion.WithResource("organizationcustomrules"):
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Config().V1alpha1().OrganizationCustomRules().Informer()}, nil
 	case configv1alpha1.SchemeGroupVersion.WithResource("organizationmanagedrules"):
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Config().V1alpha1().OrganizationManagedRules().Informer()}, nil
 	case configv1alpha1.SchemeGroupVersion.WithResource("remediationconfigurations"):
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Config().V1alpha1().RemediationConfigurations().Informer()}, nil
+
+		// Group=connect.aws.kubeform.com, Version=v1alpha1
+	case connectv1alpha1.SchemeGroupVersion.WithResource("botassociations"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Connect().V1alpha1().BotAssociations().Informer()}, nil
+	case connectv1alpha1.SchemeGroupVersion.WithResource("contactflows"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Connect().V1alpha1().ContactFlows().Informer()}, nil
+	case connectv1alpha1.SchemeGroupVersion.WithResource("contactflowmodules"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Connect().V1alpha1().ContactFlowModules().Informer()}, nil
+	case connectv1alpha1.SchemeGroupVersion.WithResource("hoursofoperations"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Connect().V1alpha1().HoursOfOperations().Informer()}, nil
+	case connectv1alpha1.SchemeGroupVersion.WithResource("instances"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Connect().V1alpha1().Instances().Informer()}, nil
+	case connectv1alpha1.SchemeGroupVersion.WithResource("lambdafunctionassociations"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Connect().V1alpha1().LambdaFunctionAssociations().Informer()}, nil
+	case connectv1alpha1.SchemeGroupVersion.WithResource("queues"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Connect().V1alpha1().Queues().Informer()}, nil
+	case connectv1alpha1.SchemeGroupVersion.WithResource("quickconnects"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Connect().V1alpha1().QuickConnects().Informer()}, nil
+	case connectv1alpha1.SchemeGroupVersion.WithResource("routingprofiles"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Connect().V1alpha1().RoutingProfiles().Informer()}, nil
+	case connectv1alpha1.SchemeGroupVersion.WithResource("securityprofiles"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Connect().V1alpha1().SecurityProfiles().Informer()}, nil
+	case connectv1alpha1.SchemeGroupVersion.WithResource("userhierarchystructures"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Connect().V1alpha1().UserHierarchyStructures().Informer()}, nil
 
 		// Group=cur.aws.kubeform.com, Version=v1alpha1
 	case curv1alpha1.SchemeGroupVersion.WithResource("reportdefinitions"):
@@ -627,17 +768,29 @@ func (f *sharedInformerFactory) ForResource(resource schema.GroupVersionResource
 	case customerv1alpha1.SchemeGroupVersion.WithResource("gateways"):
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Customer().V1alpha1().Gateways().Informer()}, nil
 
+		// Group=dataexchange.aws.kubeform.com, Version=v1alpha1
+	case dataexchangev1alpha1.SchemeGroupVersion.WithResource("datasets"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Dataexchange().V1alpha1().DataSets().Informer()}, nil
+	case dataexchangev1alpha1.SchemeGroupVersion.WithResource("revisions"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Dataexchange().V1alpha1().Revisions().Informer()}, nil
+
 		// Group=datapipeline.aws.kubeform.com, Version=v1alpha1
 	case datapipelinev1alpha1.SchemeGroupVersion.WithResource("pipelines"):
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Datapipeline().V1alpha1().Pipelines().Informer()}, nil
+	case datapipelinev1alpha1.SchemeGroupVersion.WithResource("pipelinedefinitions"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Datapipeline().V1alpha1().PipelineDefinitions().Informer()}, nil
 
 		// Group=datasync.aws.kubeform.com, Version=v1alpha1
 	case datasyncv1alpha1.SchemeGroupVersion.WithResource("agents"):
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Datasync().V1alpha1().Agents().Informer()}, nil
 	case datasyncv1alpha1.SchemeGroupVersion.WithResource("locationefses"):
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Datasync().V1alpha1().LocationEfses().Informer()}, nil
+	case datasyncv1alpha1.SchemeGroupVersion.WithResource("locationfsxlustrefilesystems"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Datasync().V1alpha1().LocationFsxLustreFileSystems().Informer()}, nil
 	case datasyncv1alpha1.SchemeGroupVersion.WithResource("locationfsxwindowsfilesystems"):
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Datasync().V1alpha1().LocationFsxWindowsFileSystems().Informer()}, nil
+	case datasyncv1alpha1.SchemeGroupVersion.WithResource("locationhdfses"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Datasync().V1alpha1().LocationHdfses().Informer()}, nil
 	case datasyncv1alpha1.SchemeGroupVersion.WithResource("locationnfses"):
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Datasync().V1alpha1().LocationNfses().Informer()}, nil
 	case datasyncv1alpha1.SchemeGroupVersion.WithResource("locations3s"):
@@ -697,9 +850,27 @@ func (f *sharedInformerFactory) ForResource(resource schema.GroupVersionResource
 	case defaultv1alpha1.SchemeGroupVersion.WithResource("vpcdhcpoptionses"):
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Default().V1alpha1().VpcDHCPOptionses().Informer()}, nil
 
+		// Group=detective.aws.kubeform.com, Version=v1alpha1
+	case detectivev1alpha1.SchemeGroupVersion.WithResource("graphs"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Detective().V1alpha1().Graphs().Informer()}, nil
+	case detectivev1alpha1.SchemeGroupVersion.WithResource("invitationaccepters"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Detective().V1alpha1().InvitationAccepters().Informer()}, nil
+	case detectivev1alpha1.SchemeGroupVersion.WithResource("members"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Detective().V1alpha1().Members().Informer()}, nil
+
 		// Group=devicefarm.aws.kubeform.com, Version=v1alpha1
+	case devicefarmv1alpha1.SchemeGroupVersion.WithResource("devicepools"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Devicefarm().V1alpha1().DevicePools().Informer()}, nil
+	case devicefarmv1alpha1.SchemeGroupVersion.WithResource("instanceprofiles"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Devicefarm().V1alpha1().InstanceProfiles().Informer()}, nil
+	case devicefarmv1alpha1.SchemeGroupVersion.WithResource("networkprofiles"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Devicefarm().V1alpha1().NetworkProfiles().Informer()}, nil
 	case devicefarmv1alpha1.SchemeGroupVersion.WithResource("projects"):
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Devicefarm().V1alpha1().Projects().Informer()}, nil
+	case devicefarmv1alpha1.SchemeGroupVersion.WithResource("testgridprojects"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Devicefarm().V1alpha1().TestGridProjects().Informer()}, nil
+	case devicefarmv1alpha1.SchemeGroupVersion.WithResource("uploads"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Devicefarm().V1alpha1().Uploads().Informer()}, nil
 
 		// Group=directoryservice.aws.kubeform.com, Version=v1alpha1
 	case directoryservicev1alpha1.SchemeGroupVersion.WithResource("conditionalforwarders"):
@@ -736,6 +907,8 @@ func (f *sharedInformerFactory) ForResource(resource schema.GroupVersionResource
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Docdb().V1alpha1().ClusterParameterGroups().Informer()}, nil
 	case docdbv1alpha1.SchemeGroupVersion.WithResource("clustersnapshots"):
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Docdb().V1alpha1().ClusterSnapshots().Informer()}, nil
+	case docdbv1alpha1.SchemeGroupVersion.WithResource("globalclusters"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Docdb().V1alpha1().GlobalClusters().Informer()}, nil
 	case docdbv1alpha1.SchemeGroupVersion.WithResource("subnetgroups"):
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Docdb().V1alpha1().SubnetGroups().Informer()}, nil
 
@@ -746,12 +919,16 @@ func (f *sharedInformerFactory) ForResource(resource schema.GroupVersionResource
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Dx().V1alpha1().Connections().Informer()}, nil
 	case dxv1alpha1.SchemeGroupVersion.WithResource("connectionassociations"):
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Dx().V1alpha1().ConnectionAssociations().Informer()}, nil
+	case dxv1alpha1.SchemeGroupVersion.WithResource("connectionconfirmations"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Dx().V1alpha1().ConnectionConfirmations().Informer()}, nil
 	case dxv1alpha1.SchemeGroupVersion.WithResource("gateways"):
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Dx().V1alpha1().Gateways().Informer()}, nil
 	case dxv1alpha1.SchemeGroupVersion.WithResource("gatewayassociations"):
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Dx().V1alpha1().GatewayAssociations().Informer()}, nil
 	case dxv1alpha1.SchemeGroupVersion.WithResource("gatewayassociationproposals"):
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Dx().V1alpha1().GatewayAssociationProposals().Informer()}, nil
+	case dxv1alpha1.SchemeGroupVersion.WithResource("hostedconnections"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Dx().V1alpha1().HostedConnections().Informer()}, nil
 	case dxv1alpha1.SchemeGroupVersion.WithResource("hostedprivatevirtualinterfaces"):
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Dx().V1alpha1().HostedPrivateVirtualInterfaces().Informer()}, nil
 	case dxv1alpha1.SchemeGroupVersion.WithResource("hostedprivatevirtualinterfaceaccepters"):
@@ -782,6 +959,8 @@ func (f *sharedInformerFactory) ForResource(resource schema.GroupVersionResource
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Dynamodb().V1alpha1().Tables().Informer()}, nil
 	case dynamodbv1alpha1.SchemeGroupVersion.WithResource("tableitems"):
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Dynamodb().V1alpha1().TableItems().Informer()}, nil
+	case dynamodbv1alpha1.SchemeGroupVersion.WithResource("tags"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Dynamodb().V1alpha1().Tags().Informer()}, nil
 
 		// Group=ebs.aws.kubeform.com, Version=v1alpha1
 	case ebsv1alpha1.SchemeGroupVersion.WithResource("defaultkmskeys"):
@@ -792,6 +971,8 @@ func (f *sharedInformerFactory) ForResource(resource schema.GroupVersionResource
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Ebs().V1alpha1().Snapshots().Informer()}, nil
 	case ebsv1alpha1.SchemeGroupVersion.WithResource("snapshotcopies"):
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Ebs().V1alpha1().SnapshotCopies().Informer()}, nil
+	case ebsv1alpha1.SchemeGroupVersion.WithResource("snapshotimports"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Ebs().V1alpha1().SnapshotImports().Informer()}, nil
 	case ebsv1alpha1.SchemeGroupVersion.WithResource("volumes"):
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Ebs().V1alpha1().Volumes().Informer()}, nil
 
@@ -812,12 +993,22 @@ func (f *sharedInformerFactory) ForResource(resource schema.GroupVersionResource
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Ec2().V1alpha1().ClientVPNRoutes().Informer()}, nil
 	case ec2v1alpha1.SchemeGroupVersion.WithResource("fleets"):
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Ec2().V1alpha1().Fleets().Informer()}, nil
+	case ec2v1alpha1.SchemeGroupVersion.WithResource("hosts"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Ec2().V1alpha1().Hosts().Informer()}, nil
 	case ec2v1alpha1.SchemeGroupVersion.WithResource("localgatewayroutes"):
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Ec2().V1alpha1().LocalGatewayRoutes().Informer()}, nil
 	case ec2v1alpha1.SchemeGroupVersion.WithResource("localgatewayroutetablevpcassociations"):
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Ec2().V1alpha1().LocalGatewayRouteTableVpcAssociations().Informer()}, nil
 	case ec2v1alpha1.SchemeGroupVersion.WithResource("managedprefixlists"):
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Ec2().V1alpha1().ManagedPrefixLists().Informer()}, nil
+	case ec2v1alpha1.SchemeGroupVersion.WithResource("managedprefixlistentries"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Ec2().V1alpha1().ManagedPrefixListEntries().Informer()}, nil
+	case ec2v1alpha1.SchemeGroupVersion.WithResource("networkinsightspaths"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Ec2().V1alpha1().NetworkInsightsPaths().Informer()}, nil
+	case ec2v1alpha1.SchemeGroupVersion.WithResource("serialconsoleaccesses"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Ec2().V1alpha1().SerialConsoleAccesses().Informer()}, nil
+	case ec2v1alpha1.SchemeGroupVersion.WithResource("subnetcidrreservations"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Ec2().V1alpha1().SubnetCIDRReservations().Informer()}, nil
 	case ec2v1alpha1.SchemeGroupVersion.WithResource("tags"):
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Ec2().V1alpha1().Tags().Informer()}, nil
 	case ec2v1alpha1.SchemeGroupVersion.WithResource("trafficmirrorfilters"):
@@ -830,6 +1021,18 @@ func (f *sharedInformerFactory) ForResource(resource schema.GroupVersionResource
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Ec2().V1alpha1().TrafficMirrorTargets().Informer()}, nil
 	case ec2v1alpha1.SchemeGroupVersion.WithResource("transitgateways"):
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Ec2().V1alpha1().TransitGateways().Informer()}, nil
+	case ec2v1alpha1.SchemeGroupVersion.WithResource("transitgatewayconnects"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Ec2().V1alpha1().TransitGatewayConnects().Informer()}, nil
+	case ec2v1alpha1.SchemeGroupVersion.WithResource("transitgatewayconnectpeers"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Ec2().V1alpha1().TransitGatewayConnectPeers().Informer()}, nil
+	case ec2v1alpha1.SchemeGroupVersion.WithResource("transitgatewaymulticastdomains"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Ec2().V1alpha1().TransitGatewayMulticastDomains().Informer()}, nil
+	case ec2v1alpha1.SchemeGroupVersion.WithResource("transitgatewaymulticastdomainassociations"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Ec2().V1alpha1().TransitGatewayMulticastDomainAssociations().Informer()}, nil
+	case ec2v1alpha1.SchemeGroupVersion.WithResource("transitgatewaymulticastgroupmembers"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Ec2().V1alpha1().TransitGatewayMulticastGroupMembers().Informer()}, nil
+	case ec2v1alpha1.SchemeGroupVersion.WithResource("transitgatewaymulticastgroupsources"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Ec2().V1alpha1().TransitGatewayMulticastGroupSources().Informer()}, nil
 	case ec2v1alpha1.SchemeGroupVersion.WithResource("transitgatewaypeeringattachments"):
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Ec2().V1alpha1().TransitGatewayPeeringAttachments().Informer()}, nil
 	case ec2v1alpha1.SchemeGroupVersion.WithResource("transitgatewaypeeringattachmentaccepters"):
@@ -852,8 +1055,12 @@ func (f *sharedInformerFactory) ForResource(resource schema.GroupVersionResource
 		// Group=ecr.aws.kubeform.com, Version=v1alpha1
 	case ecrv1alpha1.SchemeGroupVersion.WithResource("lifecyclepolicies"):
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Ecr().V1alpha1().LifecyclePolicies().Informer()}, nil
+	case ecrv1alpha1.SchemeGroupVersion.WithResource("pullthroughcacherules"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Ecr().V1alpha1().PullThroughCacheRules().Informer()}, nil
 	case ecrv1alpha1.SchemeGroupVersion.WithResource("registrypolicies"):
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Ecr().V1alpha1().RegistryPolicies().Informer()}, nil
+	case ecrv1alpha1.SchemeGroupVersion.WithResource("registryscanningconfigurations"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Ecr().V1alpha1().RegistryScanningConfigurations().Informer()}, nil
 	case ecrv1alpha1.SchemeGroupVersion.WithResource("replicationconfigurations"):
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Ecr().V1alpha1().ReplicationConfigurations().Informer()}, nil
 	case ecrv1alpha1.SchemeGroupVersion.WithResource("repositories"):
@@ -864,16 +1071,26 @@ func (f *sharedInformerFactory) ForResource(resource schema.GroupVersionResource
 		// Group=ecrpublic.aws.kubeform.com, Version=v1alpha1
 	case ecrpublicv1alpha1.SchemeGroupVersion.WithResource("repositories"):
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Ecrpublic().V1alpha1().Repositories().Informer()}, nil
+	case ecrpublicv1alpha1.SchemeGroupVersion.WithResource("repositorypolicies"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Ecrpublic().V1alpha1().RepositoryPolicies().Informer()}, nil
 
 		// Group=ecs.aws.kubeform.com, Version=v1alpha1
+	case ecsv1alpha1.SchemeGroupVersion.WithResource("accountsettingdefaults"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Ecs().V1alpha1().AccountSettingDefaults().Informer()}, nil
 	case ecsv1alpha1.SchemeGroupVersion.WithResource("capacityproviders"):
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Ecs().V1alpha1().CapacityProviders().Informer()}, nil
 	case ecsv1alpha1.SchemeGroupVersion.WithResource("clusters"):
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Ecs().V1alpha1().Clusters().Informer()}, nil
+	case ecsv1alpha1.SchemeGroupVersion.WithResource("clustercapacityproviderses"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Ecs().V1alpha1().ClusterCapacityProviderses().Informer()}, nil
 	case ecsv1alpha1.SchemeGroupVersion.WithResource("services"):
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Ecs().V1alpha1().Services().Informer()}, nil
+	case ecsv1alpha1.SchemeGroupVersion.WithResource("tags"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Ecs().V1alpha1().Tags().Informer()}, nil
 	case ecsv1alpha1.SchemeGroupVersion.WithResource("taskdefinitions"):
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Ecs().V1alpha1().TaskDefinitions().Informer()}, nil
+	case ecsv1alpha1.SchemeGroupVersion.WithResource("tasksets"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Ecs().V1alpha1().TaskSets().Informer()}, nil
 
 		// Group=efs.aws.kubeform.com, Version=v1alpha1
 	case efsv1alpha1.SchemeGroupVersion.WithResource("accesspoints"):
@@ -904,6 +1121,8 @@ func (f *sharedInformerFactory) ForResource(resource schema.GroupVersionResource
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Eks().V1alpha1().Clusters().Informer()}, nil
 	case eksv1alpha1.SchemeGroupVersion.WithResource("fargateprofiles"):
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Eks().V1alpha1().FargateProfiles().Informer()}, nil
+	case eksv1alpha1.SchemeGroupVersion.WithResource("identityproviderconfigs"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Eks().V1alpha1().IdentityProviderConfigs().Informer()}, nil
 	case eksv1alpha1.SchemeGroupVersion.WithResource("nodegroups"):
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Eks().V1alpha1().NodeGroups().Informer()}, nil
 
@@ -920,6 +1139,10 @@ func (f *sharedInformerFactory) ForResource(resource schema.GroupVersionResource
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Elasticache().V1alpha1().SecurityGroups().Informer()}, nil
 	case elasticachev1alpha1.SchemeGroupVersion.WithResource("subnetgroups"):
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Elasticache().V1alpha1().SubnetGroups().Informer()}, nil
+	case elasticachev1alpha1.SchemeGroupVersion.WithResource("users"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Elasticache().V1alpha1().Users().Informer()}, nil
+	case elasticachev1alpha1.SchemeGroupVersion.WithResource("usergroups"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Elasticache().V1alpha1().UserGroups().Informer()}, nil
 
 		// Group=elasticbeanstalk.aws.kubeform.com, Version=v1alpha1
 	case elasticbeanstalkv1alpha1.SchemeGroupVersion.WithResource("applications"):
@@ -962,6 +1185,10 @@ func (f *sharedInformerFactory) ForResource(resource schema.GroupVersionResource
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Emr().V1alpha1().ManagedScalingPolicies().Informer()}, nil
 	case emrv1alpha1.SchemeGroupVersion.WithResource("securityconfigurations"):
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Emr().V1alpha1().SecurityConfigurations().Informer()}, nil
+	case emrv1alpha1.SchemeGroupVersion.WithResource("studios"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Emr().V1alpha1().Studios().Informer()}, nil
+	case emrv1alpha1.SchemeGroupVersion.WithResource("studiosessionmappings"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Emr().V1alpha1().StudioSessionMappings().Informer()}, nil
 
 		// Group=flow.aws.kubeform.com, Version=v1alpha1
 	case flowv1alpha1.SchemeGroupVersion.WithResource("logs"):
@@ -974,8 +1201,24 @@ func (f *sharedInformerFactory) ForResource(resource schema.GroupVersionResource
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Fms().V1alpha1().Policies().Informer()}, nil
 
 		// Group=fsx.aws.kubeform.com, Version=v1alpha1
+	case fsxv1alpha1.SchemeGroupVersion.WithResource("backups"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Fsx().V1alpha1().Backups().Informer()}, nil
+	case fsxv1alpha1.SchemeGroupVersion.WithResource("datarepositoryassociations"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Fsx().V1alpha1().DataRepositoryAssociations().Informer()}, nil
 	case fsxv1alpha1.SchemeGroupVersion.WithResource("lustrefilesystems"):
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Fsx().V1alpha1().LustreFileSystems().Informer()}, nil
+	case fsxv1alpha1.SchemeGroupVersion.WithResource("ontapfilesystems"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Fsx().V1alpha1().OntapFileSystems().Informer()}, nil
+	case fsxv1alpha1.SchemeGroupVersion.WithResource("ontapstoragevirtualmachines"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Fsx().V1alpha1().OntapStorageVirtualMachines().Informer()}, nil
+	case fsxv1alpha1.SchemeGroupVersion.WithResource("ontapvolumes"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Fsx().V1alpha1().OntapVolumes().Informer()}, nil
+	case fsxv1alpha1.SchemeGroupVersion.WithResource("openzfsfilesystems"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Fsx().V1alpha1().OpenzfsFileSystems().Informer()}, nil
+	case fsxv1alpha1.SchemeGroupVersion.WithResource("openzfssnapshots"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Fsx().V1alpha1().OpenzfsSnapshots().Informer()}, nil
+	case fsxv1alpha1.SchemeGroupVersion.WithResource("openzfsvolumes"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Fsx().V1alpha1().OpenzfsVolumes().Informer()}, nil
 	case fsxv1alpha1.SchemeGroupVersion.WithResource("windowsfilesystems"):
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Fsx().V1alpha1().WindowsFileSystems().Informer()}, nil
 
@@ -988,6 +1231,8 @@ func (f *sharedInformerFactory) ForResource(resource schema.GroupVersionResource
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Gamelift().V1alpha1().Fleets().Informer()}, nil
 	case gameliftv1alpha1.SchemeGroupVersion.WithResource("gamesessionqueues"):
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Gamelift().V1alpha1().GameSessionQueues().Informer()}, nil
+	case gameliftv1alpha1.SchemeGroupVersion.WithResource("scripts"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Gamelift().V1alpha1().Scripts().Informer()}, nil
 
 		// Group=glaciervault.aws.kubeform.com, Version=v1alpha1
 	case glaciervaultv1alpha1.SchemeGroupVersion.WithResource("glaciervaults"):
@@ -1024,6 +1269,8 @@ func (f *sharedInformerFactory) ForResource(resource schema.GroupVersionResource
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Glue().V1alpha1().MlTransforms().Informer()}, nil
 	case gluev1alpha1.SchemeGroupVersion.WithResource("partitions"):
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Glue().V1alpha1().Partitions().Informer()}, nil
+	case gluev1alpha1.SchemeGroupVersion.WithResource("partitionindexes"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Glue().V1alpha1().PartitionIndexes().Informer()}, nil
 	case gluev1alpha1.SchemeGroupVersion.WithResource("registries"):
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Glue().V1alpha1().Registries().Informer()}, nil
 	case gluev1alpha1.SchemeGroupVersion.WithResource("resourcepolicies"):
@@ -1038,6 +1285,12 @@ func (f *sharedInformerFactory) ForResource(resource schema.GroupVersionResource
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Glue().V1alpha1().UserDefinedFunctions().Informer()}, nil
 	case gluev1alpha1.SchemeGroupVersion.WithResource("workflows"):
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Glue().V1alpha1().Workflows().Informer()}, nil
+
+		// Group=grafana.aws.kubeform.com, Version=v1alpha1
+	case grafanav1alpha1.SchemeGroupVersion.WithResource("licenseassociations"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Grafana().V1alpha1().LicenseAssociations().Informer()}, nil
+	case grafanav1alpha1.SchemeGroupVersion.WithResource("workspaces"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Grafana().V1alpha1().Workspaces().Informer()}, nil
 
 		// Group=guardduty.aws.kubeform.com, Version=v1alpha1
 	case guarddutyv1alpha1.SchemeGroupVersion.WithResource("detectors"):
@@ -1094,6 +1347,10 @@ func (f *sharedInformerFactory) ForResource(resource schema.GroupVersionResource
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Iam().V1alpha1().ServerCertificates().Informer()}, nil
 	case iamv1alpha1.SchemeGroupVersion.WithResource("servicelinkedroles"):
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Iam().V1alpha1().ServiceLinkedRoles().Informer()}, nil
+	case iamv1alpha1.SchemeGroupVersion.WithResource("servicespecificcredentials"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Iam().V1alpha1().ServiceSpecificCredentials().Informer()}, nil
+	case iamv1alpha1.SchemeGroupVersion.WithResource("signingcertificates"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Iam().V1alpha1().SigningCertificates().Informer()}, nil
 	case iamv1alpha1.SchemeGroupVersion.WithResource("users"):
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Iam().V1alpha1().Users().Informer()}, nil
 	case iamv1alpha1.SchemeGroupVersion.WithResource("usergroupmemberships"):
@@ -1106,10 +1363,14 @@ func (f *sharedInformerFactory) ForResource(resource schema.GroupVersionResource
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Iam().V1alpha1().UserPolicyAttachments().Informer()}, nil
 	case iamv1alpha1.SchemeGroupVersion.WithResource("usersshkeys"):
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Iam().V1alpha1().UserSSHKeys().Informer()}, nil
+	case iamv1alpha1.SchemeGroupVersion.WithResource("virtualmfadevices"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Iam().V1alpha1().VirtualMfaDevices().Informer()}, nil
 
 		// Group=imagebuilder.aws.kubeform.com, Version=v1alpha1
 	case imagebuilderv1alpha1.SchemeGroupVersion.WithResource("components"):
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Imagebuilder().V1alpha1().Components().Informer()}, nil
+	case imagebuilderv1alpha1.SchemeGroupVersion.WithResource("containerrecipes"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Imagebuilder().V1alpha1().ContainerRecipes().Informer()}, nil
 	case imagebuilderv1alpha1.SchemeGroupVersion.WithResource("distributionconfigurations"):
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Imagebuilder().V1alpha1().DistributionConfigurations().Informer()}, nil
 	case imagebuilderv1alpha1.SchemeGroupVersion.WithResource("images"):
@@ -1136,8 +1397,12 @@ func (f *sharedInformerFactory) ForResource(resource schema.GroupVersionResource
 		// Group=internet.aws.kubeform.com, Version=v1alpha1
 	case internetv1alpha1.SchemeGroupVersion.WithResource("gateways"):
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Internet().V1alpha1().Gateways().Informer()}, nil
+	case internetv1alpha1.SchemeGroupVersion.WithResource("gatewayattachments"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Internet().V1alpha1().GatewayAttachments().Informer()}, nil
 
 		// Group=iot.aws.kubeform.com, Version=v1alpha1
+	case iotv1alpha1.SchemeGroupVersion.WithResource("authorizers"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Iot().V1alpha1().Authorizers().Informer()}, nil
 	case iotv1alpha1.SchemeGroupVersion.WithResource("certificates"):
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Iot().V1alpha1().Certificates().Informer()}, nil
 	case iotv1alpha1.SchemeGroupVersion.WithResource("policies"):
@@ -1148,6 +1413,10 @@ func (f *sharedInformerFactory) ForResource(resource schema.GroupVersionResource
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Iot().V1alpha1().RoleAliases().Informer()}, nil
 	case iotv1alpha1.SchemeGroupVersion.WithResource("things"):
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Iot().V1alpha1().Things().Informer()}, nil
+	case iotv1alpha1.SchemeGroupVersion.WithResource("thinggroups"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Iot().V1alpha1().ThingGroups().Informer()}, nil
+	case iotv1alpha1.SchemeGroupVersion.WithResource("thinggroupmemberships"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Iot().V1alpha1().ThingGroupMemberships().Informer()}, nil
 	case iotv1alpha1.SchemeGroupVersion.WithResource("thingprincipalattachments"):
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Iot().V1alpha1().ThingPrincipalAttachments().Informer()}, nil
 	case iotv1alpha1.SchemeGroupVersion.WithResource("thingtypes"):
@@ -1188,6 +1457,10 @@ func (f *sharedInformerFactory) ForResource(resource schema.GroupVersionResource
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Kms().V1alpha1().Grants().Informer()}, nil
 	case kmsv1alpha1.SchemeGroupVersion.WithResource("keys"):
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Kms().V1alpha1().Keys().Informer()}, nil
+	case kmsv1alpha1.SchemeGroupVersion.WithResource("replicaexternalkeys"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Kms().V1alpha1().ReplicaExternalKeys().Informer()}, nil
+	case kmsv1alpha1.SchemeGroupVersion.WithResource("replicakeys"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Kms().V1alpha1().ReplicaKeys().Informer()}, nil
 
 		// Group=lakeformation.aws.kubeform.com, Version=v1alpha1
 	case lakeformationv1alpha1.SchemeGroupVersion.WithResource("datalakesettingses"):
@@ -1208,8 +1481,12 @@ func (f *sharedInformerFactory) ForResource(resource schema.GroupVersionResource
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Lambda().V1alpha1().Functions().Informer()}, nil
 	case lambdav1alpha1.SchemeGroupVersion.WithResource("functioneventinvokeconfigs"):
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Lambda().V1alpha1().FunctionEventInvokeConfigs().Informer()}, nil
+	case lambdav1alpha1.SchemeGroupVersion.WithResource("invocations"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Lambda().V1alpha1().Invocations().Informer()}, nil
 	case lambdav1alpha1.SchemeGroupVersion.WithResource("layerversions"):
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Lambda().V1alpha1().LayerVersions().Informer()}, nil
+	case lambdav1alpha1.SchemeGroupVersion.WithResource("layerversionpermissions"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Lambda().V1alpha1().LayerVersionPermissions().Informer()}, nil
 	case lambdav1alpha1.SchemeGroupVersion.WithResource("permissions"):
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Lambda().V1alpha1().Permissions().Informer()}, nil
 	case lambdav1alpha1.SchemeGroupVersion.WithResource("provisionedconcurrencyconfigs"):
@@ -1313,6 +1590,20 @@ func (f *sharedInformerFactory) ForResource(resource schema.GroupVersionResource
 	case mediav1alpha1.SchemeGroupVersion.WithResource("storecontainerpolicies"):
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Media().V1alpha1().StoreContainerPolicies().Informer()}, nil
 
+		// Group=memorydb.aws.kubeform.com, Version=v1alpha1
+	case memorydbv1alpha1.SchemeGroupVersion.WithResource("acls"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Memorydb().V1alpha1().Acls().Informer()}, nil
+	case memorydbv1alpha1.SchemeGroupVersion.WithResource("clusters"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Memorydb().V1alpha1().Clusters().Informer()}, nil
+	case memorydbv1alpha1.SchemeGroupVersion.WithResource("parametergroups"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Memorydb().V1alpha1().ParameterGroups().Informer()}, nil
+	case memorydbv1alpha1.SchemeGroupVersion.WithResource("snapshots"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Memorydb().V1alpha1().Snapshots().Informer()}, nil
+	case memorydbv1alpha1.SchemeGroupVersion.WithResource("subnetgroups"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Memorydb().V1alpha1().SubnetGroups().Informer()}, nil
+	case memorydbv1alpha1.SchemeGroupVersion.WithResource("users"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Memorydb().V1alpha1().Users().Informer()}, nil
+
 		// Group=mq.aws.kubeform.com, Version=v1alpha1
 	case mqv1alpha1.SchemeGroupVersion.WithResource("brokers"):
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Mq().V1alpha1().Brokers().Informer()}, nil
@@ -1326,6 +1617,12 @@ func (f *sharedInformerFactory) ForResource(resource schema.GroupVersionResource
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Msk().V1alpha1().Configurations().Informer()}, nil
 	case mskv1alpha1.SchemeGroupVersion.WithResource("scramsecretassociations"):
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Msk().V1alpha1().ScramSecretAssociations().Informer()}, nil
+
+		// Group=mskconnect.aws.kubeform.com, Version=v1alpha1
+	case mskconnectv1alpha1.SchemeGroupVersion.WithResource("customplugins"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Mskconnect().V1alpha1().CustomPlugins().Informer()}, nil
+	case mskconnectv1alpha1.SchemeGroupVersion.WithResource("workerconfigurations"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Mskconnect().V1alpha1().WorkerConfigurations().Informer()}, nil
 
 		// Group=mwaa.aws.kubeform.com, Version=v1alpha1
 	case mwaav1alpha1.SchemeGroupVersion.WithResource("environments"):
@@ -1356,6 +1653,8 @@ func (f *sharedInformerFactory) ForResource(resource schema.GroupVersionResource
 		// Group=network.aws.kubeform.com, Version=v1alpha1
 	case networkv1alpha1.SchemeGroupVersion.WithResource("acls"):
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Network().V1alpha1().Acls().Informer()}, nil
+	case networkv1alpha1.SchemeGroupVersion.WithResource("aclassociations"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Network().V1alpha1().AclAssociations().Informer()}, nil
 	case networkv1alpha1.SchemeGroupVersion.WithResource("aclrules"):
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Network().V1alpha1().AclRules().Informer()}, nil
 	case networkv1alpha1.SchemeGroupVersion.WithResource("interfaces"):
@@ -1382,6 +1681,8 @@ func (f *sharedInformerFactory) ForResource(resource schema.GroupVersionResource
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Opsworks().V1alpha1().Applications().Informer()}, nil
 	case opsworksv1alpha1.SchemeGroupVersion.WithResource("customlayers"):
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Opsworks().V1alpha1().CustomLayers().Informer()}, nil
+	case opsworksv1alpha1.SchemeGroupVersion.WithResource("ecsclusterlayers"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Opsworks().V1alpha1().EcsClusterLayers().Informer()}, nil
 	case opsworksv1alpha1.SchemeGroupVersion.WithResource("ganglialayers"):
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Opsworks().V1alpha1().GangliaLayers().Informer()}, nil
 	case opsworksv1alpha1.SchemeGroupVersion.WithResource("haproxylayers"):
@@ -1454,6 +1755,10 @@ func (f *sharedInformerFactory) ForResource(resource schema.GroupVersionResource
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Placement().V1alpha1().Groups().Informer()}, nil
 
 		// Group=prometheus.aws.kubeform.com, Version=v1alpha1
+	case prometheusv1alpha1.SchemeGroupVersion.WithResource("alertmanagerdefinitions"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Prometheus().V1alpha1().AlertManagerDefinitions().Informer()}, nil
+	case prometheusv1alpha1.SchemeGroupVersion.WithResource("rulegroupnamespaces"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Prometheus().V1alpha1().RuleGroupNamespaces().Informer()}, nil
 	case prometheusv1alpha1.SchemeGroupVersion.WithResource("workspaces"):
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Prometheus().V1alpha1().Workspaces().Informer()}, nil
 
@@ -1466,8 +1771,12 @@ func (f *sharedInformerFactory) ForResource(resource schema.GroupVersionResource
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Qldb().V1alpha1().Ledgers().Informer()}, nil
 
 		// Group=quicksight.aws.kubeform.com, Version=v1alpha1
+	case quicksightv1alpha1.SchemeGroupVersion.WithResource("datasources"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Quicksight().V1alpha1().DataSources().Informer()}, nil
 	case quicksightv1alpha1.SchemeGroupVersion.WithResource("groups"):
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Quicksight().V1alpha1().Groups().Informer()}, nil
+	case quicksightv1alpha1.SchemeGroupVersion.WithResource("groupmemberships"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Quicksight().V1alpha1().GroupMemberships().Informer()}, nil
 	case quicksightv1alpha1.SchemeGroupVersion.WithResource("users"):
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Quicksight().V1alpha1().Users().Informer()}, nil
 
@@ -1490,6 +1799,8 @@ func (f *sharedInformerFactory) ForResource(resource schema.GroupVersionResource
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Rds().V1alpha1().ClusterInstances().Informer()}, nil
 	case rdsv1alpha1.SchemeGroupVersion.WithResource("clusterparametergroups"):
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Rds().V1alpha1().ClusterParameterGroups().Informer()}, nil
+	case rdsv1alpha1.SchemeGroupVersion.WithResource("clusterroleassociations"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Rds().V1alpha1().ClusterRoleAssociations().Informer()}, nil
 	case rdsv1alpha1.SchemeGroupVersion.WithResource("globalclusters"):
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Rds().V1alpha1().GlobalClusters().Informer()}, nil
 
@@ -1500,6 +1811,8 @@ func (f *sharedInformerFactory) ForResource(resource schema.GroupVersionResource
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Redshift().V1alpha1().EventSubscriptions().Informer()}, nil
 	case redshiftv1alpha1.SchemeGroupVersion.WithResource("parametergroups"):
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Redshift().V1alpha1().ParameterGroups().Informer()}, nil
+	case redshiftv1alpha1.SchemeGroupVersion.WithResource("scheduledactions"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Redshift().V1alpha1().ScheduledActions().Informer()}, nil
 	case redshiftv1alpha1.SchemeGroupVersion.WithResource("securitygroups"):
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Redshift().V1alpha1().SecurityGroups().Informer()}, nil
 	case redshiftv1alpha1.SchemeGroupVersion.WithResource("snapshotcopygrants"):
@@ -1565,6 +1878,30 @@ func (f *sharedInformerFactory) ForResource(resource schema.GroupVersionResource
 	case route53v1alpha1.SchemeGroupVersion.WithResource("zoneassociations"):
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Route53().V1alpha1().ZoneAssociations().Informer()}, nil
 
+		// Group=route53domains.aws.kubeform.com, Version=v1alpha1
+	case route53domainsv1alpha1.SchemeGroupVersion.WithResource("registereddomains"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Route53domains().V1alpha1().RegisteredDomains().Informer()}, nil
+
+		// Group=route53recoverycontrolconfig.aws.kubeform.com, Version=v1alpha1
+	case route53recoverycontrolconfigv1alpha1.SchemeGroupVersion.WithResource("clusters"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Route53recoverycontrolconfig().V1alpha1().Clusters().Informer()}, nil
+	case route53recoverycontrolconfigv1alpha1.SchemeGroupVersion.WithResource("controlpanels"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Route53recoverycontrolconfig().V1alpha1().ControlPanels().Informer()}, nil
+	case route53recoverycontrolconfigv1alpha1.SchemeGroupVersion.WithResource("routingcontrols"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Route53recoverycontrolconfig().V1alpha1().RoutingControls().Informer()}, nil
+	case route53recoverycontrolconfigv1alpha1.SchemeGroupVersion.WithResource("safetyrules"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Route53recoverycontrolconfig().V1alpha1().SafetyRules().Informer()}, nil
+
+		// Group=route53recoveryreadiness.aws.kubeform.com, Version=v1alpha1
+	case route53recoveryreadinessv1alpha1.SchemeGroupVersion.WithResource("cells"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Route53recoveryreadiness().V1alpha1().Cells().Informer()}, nil
+	case route53recoveryreadinessv1alpha1.SchemeGroupVersion.WithResource("readinesschecks"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Route53recoveryreadiness().V1alpha1().ReadinessChecks().Informer()}, nil
+	case route53recoveryreadinessv1alpha1.SchemeGroupVersion.WithResource("recoverygroups"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Route53recoveryreadiness().V1alpha1().RecoveryGroups().Informer()}, nil
+	case route53recoveryreadinessv1alpha1.SchemeGroupVersion.WithResource("resourcesets"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Route53recoveryreadiness().V1alpha1().ResourceSets().Informer()}, nil
+
 		// Group=s3.aws.kubeform.com, Version=v1alpha1
 	case s3v1alpha1.SchemeGroupVersion.WithResource("accesspoints"):
 		return &genericInformer{resource: resource.GroupResource(), informer: f.S3().V1alpha1().AccessPoints().Informer()}, nil
@@ -1572,32 +1909,68 @@ func (f *sharedInformerFactory) ForResource(resource schema.GroupVersionResource
 		return &genericInformer{resource: resource.GroupResource(), informer: f.S3().V1alpha1().AccountPublicAccessBlocks().Informer()}, nil
 	case s3v1alpha1.SchemeGroupVersion.WithResource("buckets"):
 		return &genericInformer{resource: resource.GroupResource(), informer: f.S3().V1alpha1().Buckets().Informer()}, nil
+	case s3v1alpha1.SchemeGroupVersion.WithResource("bucketacls"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.S3().V1alpha1().BucketACLs().Informer()}, nil
+	case s3v1alpha1.SchemeGroupVersion.WithResource("bucketaccelerateconfigurations"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.S3().V1alpha1().BucketAccelerateConfigurations().Informer()}, nil
 	case s3v1alpha1.SchemeGroupVersion.WithResource("bucketanalyticsconfigurations"):
 		return &genericInformer{resource: resource.GroupResource(), informer: f.S3().V1alpha1().BucketAnalyticsConfigurations().Informer()}, nil
+	case s3v1alpha1.SchemeGroupVersion.WithResource("bucketcorsconfigurations"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.S3().V1alpha1().BucketCorsConfigurations().Informer()}, nil
+	case s3v1alpha1.SchemeGroupVersion.WithResource("bucketintelligenttieringconfigurations"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.S3().V1alpha1().BucketIntelligentTieringConfigurations().Informer()}, nil
 	case s3v1alpha1.SchemeGroupVersion.WithResource("bucketinventories"):
 		return &genericInformer{resource: resource.GroupResource(), informer: f.S3().V1alpha1().BucketInventories().Informer()}, nil
+	case s3v1alpha1.SchemeGroupVersion.WithResource("bucketlifecycleconfigurations"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.S3().V1alpha1().BucketLifecycleConfigurations().Informer()}, nil
+	case s3v1alpha1.SchemeGroupVersion.WithResource("bucketloggings"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.S3().V1alpha1().BucketLoggings().Informer()}, nil
 	case s3v1alpha1.SchemeGroupVersion.WithResource("bucketmetrics"):
 		return &genericInformer{resource: resource.GroupResource(), informer: f.S3().V1alpha1().BucketMetrics().Informer()}, nil
 	case s3v1alpha1.SchemeGroupVersion.WithResource("bucketnotifications"):
 		return &genericInformer{resource: resource.GroupResource(), informer: f.S3().V1alpha1().BucketNotifications().Informer()}, nil
 	case s3v1alpha1.SchemeGroupVersion.WithResource("bucketobjects"):
 		return &genericInformer{resource: resource.GroupResource(), informer: f.S3().V1alpha1().BucketObjects().Informer()}, nil
+	case s3v1alpha1.SchemeGroupVersion.WithResource("bucketobjectlockconfigurations"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.S3().V1alpha1().BucketObjectLockConfigurations().Informer()}, nil
 	case s3v1alpha1.SchemeGroupVersion.WithResource("bucketownershipcontrolses"):
 		return &genericInformer{resource: resource.GroupResource(), informer: f.S3().V1alpha1().BucketOwnershipControlses().Informer()}, nil
 	case s3v1alpha1.SchemeGroupVersion.WithResource("bucketpolicies"):
 		return &genericInformer{resource: resource.GroupResource(), informer: f.S3().V1alpha1().BucketPolicies().Informer()}, nil
 	case s3v1alpha1.SchemeGroupVersion.WithResource("bucketpublicaccessblocks"):
 		return &genericInformer{resource: resource.GroupResource(), informer: f.S3().V1alpha1().BucketPublicAccessBlocks().Informer()}, nil
+	case s3v1alpha1.SchemeGroupVersion.WithResource("bucketreplicationconfigurations"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.S3().V1alpha1().BucketReplicationConfigurations().Informer()}, nil
+	case s3v1alpha1.SchemeGroupVersion.WithResource("bucketrequestpaymentconfigurations"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.S3().V1alpha1().BucketRequestPaymentConfigurations().Informer()}, nil
+	case s3v1alpha1.SchemeGroupVersion.WithResource("bucketserversideencryptionconfigurations"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.S3().V1alpha1().BucketServerSideEncryptionConfigurations().Informer()}, nil
+	case s3v1alpha1.SchemeGroupVersion.WithResource("bucketversionings"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.S3().V1alpha1().BucketVersionings().Informer()}, nil
+	case s3v1alpha1.SchemeGroupVersion.WithResource("bucketwebsiteconfigurations"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.S3().V1alpha1().BucketWebsiteConfigurations().Informer()}, nil
+	case s3v1alpha1.SchemeGroupVersion.WithResource("objects"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.S3().V1alpha1().Objects().Informer()}, nil
 	case s3v1alpha1.SchemeGroupVersion.WithResource("objectcopies"):
 		return &genericInformer{resource: resource.GroupResource(), informer: f.S3().V1alpha1().ObjectCopies().Informer()}, nil
 
 		// Group=s3control.aws.kubeform.com, Version=v1alpha1
+	case s3controlv1alpha1.SchemeGroupVersion.WithResource("accesspointpolicies"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.S3control().V1alpha1().AccessPointPolicies().Informer()}, nil
 	case s3controlv1alpha1.SchemeGroupVersion.WithResource("buckets"):
 		return &genericInformer{resource: resource.GroupResource(), informer: f.S3control().V1alpha1().Buckets().Informer()}, nil
 	case s3controlv1alpha1.SchemeGroupVersion.WithResource("bucketlifecycleconfigurations"):
 		return &genericInformer{resource: resource.GroupResource(), informer: f.S3control().V1alpha1().BucketLifecycleConfigurations().Informer()}, nil
 	case s3controlv1alpha1.SchemeGroupVersion.WithResource("bucketpolicies"):
 		return &genericInformer{resource: resource.GroupResource(), informer: f.S3control().V1alpha1().BucketPolicies().Informer()}, nil
+	case s3controlv1alpha1.SchemeGroupVersion.WithResource("multiregionaccesspoints"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.S3control().V1alpha1().MultiRegionAccessPoints().Informer()}, nil
+	case s3controlv1alpha1.SchemeGroupVersion.WithResource("multiregionaccesspointpolicies"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.S3control().V1alpha1().MultiRegionAccessPointPolicies().Informer()}, nil
+	case s3controlv1alpha1.SchemeGroupVersion.WithResource("objectlambdaaccesspoints"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.S3control().V1alpha1().ObjectLambdaAccessPoints().Informer()}, nil
+	case s3controlv1alpha1.SchemeGroupVersion.WithResource("objectlambdaaccesspointpolicies"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.S3control().V1alpha1().ObjectLambdaAccessPointPolicies().Informer()}, nil
 
 		// Group=s3outposts.aws.kubeform.com, Version=v1alpha1
 	case s3outpostsv1alpha1.SchemeGroupVersion.WithResource("endpoints"):
@@ -1610,6 +1983,10 @@ func (f *sharedInformerFactory) ForResource(resource schema.GroupVersionResource
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Sagemaker().V1alpha1().AppImageConfigs().Informer()}, nil
 	case sagemakerv1alpha1.SchemeGroupVersion.WithResource("coderepositories"):
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Sagemaker().V1alpha1().CodeRepositories().Informer()}, nil
+	case sagemakerv1alpha1.SchemeGroupVersion.WithResource("devices"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Sagemaker().V1alpha1().Devices().Informer()}, nil
+	case sagemakerv1alpha1.SchemeGroupVersion.WithResource("devicefleets"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Sagemaker().V1alpha1().DeviceFleets().Informer()}, nil
 	case sagemakerv1alpha1.SchemeGroupVersion.WithResource("domains"):
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Sagemaker().V1alpha1().Domains().Informer()}, nil
 	case sagemakerv1alpha1.SchemeGroupVersion.WithResource("endpoints"):
@@ -1618,6 +1995,10 @@ func (f *sharedInformerFactory) ForResource(resource schema.GroupVersionResource
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Sagemaker().V1alpha1().EndpointConfigurations().Informer()}, nil
 	case sagemakerv1alpha1.SchemeGroupVersion.WithResource("featuregroups"):
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Sagemaker().V1alpha1().FeatureGroups().Informer()}, nil
+	case sagemakerv1alpha1.SchemeGroupVersion.WithResource("flowdefinitions"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Sagemaker().V1alpha1().FlowDefinitions().Informer()}, nil
+	case sagemakerv1alpha1.SchemeGroupVersion.WithResource("humantaskuis"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Sagemaker().V1alpha1().HumanTaskUis().Informer()}, nil
 	case sagemakerv1alpha1.SchemeGroupVersion.WithResource("images"):
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Sagemaker().V1alpha1().Images().Informer()}, nil
 	case sagemakerv1alpha1.SchemeGroupVersion.WithResource("imageversions"):
@@ -1626,12 +2007,22 @@ func (f *sharedInformerFactory) ForResource(resource schema.GroupVersionResource
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Sagemaker().V1alpha1().Models().Informer()}, nil
 	case sagemakerv1alpha1.SchemeGroupVersion.WithResource("modelpackagegroups"):
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Sagemaker().V1alpha1().ModelPackageGroups().Informer()}, nil
+	case sagemakerv1alpha1.SchemeGroupVersion.WithResource("modelpackagegrouppolicies"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Sagemaker().V1alpha1().ModelPackageGroupPolicies().Informer()}, nil
 	case sagemakerv1alpha1.SchemeGroupVersion.WithResource("notebookinstances"):
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Sagemaker().V1alpha1().NotebookInstances().Informer()}, nil
 	case sagemakerv1alpha1.SchemeGroupVersion.WithResource("notebookinstancelifecycleconfigurations"):
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Sagemaker().V1alpha1().NotebookInstanceLifecycleConfigurations().Informer()}, nil
+	case sagemakerv1alpha1.SchemeGroupVersion.WithResource("projects"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Sagemaker().V1alpha1().Projects().Informer()}, nil
+	case sagemakerv1alpha1.SchemeGroupVersion.WithResource("studiolifecycleconfigs"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Sagemaker().V1alpha1().StudioLifecycleConfigs().Informer()}, nil
 	case sagemakerv1alpha1.SchemeGroupVersion.WithResource("userprofiles"):
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Sagemaker().V1alpha1().UserProfiles().Informer()}, nil
+	case sagemakerv1alpha1.SchemeGroupVersion.WithResource("workforces"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Sagemaker().V1alpha1().Workforces().Informer()}, nil
+	case sagemakerv1alpha1.SchemeGroupVersion.WithResource("workteams"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Sagemaker().V1alpha1().Workteams().Informer()}, nil
 
 		// Group=schemas.aws.kubeform.com, Version=v1alpha1
 	case schemasv1alpha1.SchemeGroupVersion.WithResource("discoverers"):
@@ -1662,6 +2053,8 @@ func (f *sharedInformerFactory) ForResource(resource schema.GroupVersionResource
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Securityhub().V1alpha1().Accounts().Informer()}, nil
 	case securityhubv1alpha1.SchemeGroupVersion.WithResource("actiontargets"):
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Securityhub().V1alpha1().ActionTargets().Informer()}, nil
+	case securityhubv1alpha1.SchemeGroupVersion.WithResource("findingaggregators"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Securityhub().V1alpha1().FindingAggregators().Informer()}, nil
 	case securityhubv1alpha1.SchemeGroupVersion.WithResource("insights"):
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Securityhub().V1alpha1().Insights().Informer()}, nil
 	case securityhubv1alpha1.SchemeGroupVersion.WithResource("inviteaccepters"):
@@ -1670,8 +2063,12 @@ func (f *sharedInformerFactory) ForResource(resource schema.GroupVersionResource
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Securityhub().V1alpha1().Members().Informer()}, nil
 	case securityhubv1alpha1.SchemeGroupVersion.WithResource("organizationadminaccounts"):
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Securityhub().V1alpha1().OrganizationAdminAccounts().Informer()}, nil
+	case securityhubv1alpha1.SchemeGroupVersion.WithResource("organizationconfigurations"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Securityhub().V1alpha1().OrganizationConfigurations().Informer()}, nil
 	case securityhubv1alpha1.SchemeGroupVersion.WithResource("productsubscriptions"):
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Securityhub().V1alpha1().ProductSubscriptions().Informer()}, nil
+	case securityhubv1alpha1.SchemeGroupVersion.WithResource("standardscontrols"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Securityhub().V1alpha1().StandardsControls().Informer()}, nil
 	case securityhubv1alpha1.SchemeGroupVersion.WithResource("standardssubscriptions"):
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Securityhub().V1alpha1().StandardsSubscriptions().Informer()}, nil
 
@@ -1696,6 +2093,8 @@ func (f *sharedInformerFactory) ForResource(resource schema.GroupVersionResource
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Servicecatalog().V1alpha1().Products().Informer()}, nil
 	case servicecatalogv1alpha1.SchemeGroupVersion.WithResource("productportfolioassociations"):
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Servicecatalog().V1alpha1().ProductPortfolioAssociations().Informer()}, nil
+	case servicecatalogv1alpha1.SchemeGroupVersion.WithResource("provisionedproducts"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Servicecatalog().V1alpha1().ProvisionedProducts().Informer()}, nil
 	case servicecatalogv1alpha1.SchemeGroupVersion.WithResource("provisioningartifacts"):
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Servicecatalog().V1alpha1().ProvisioningArtifacts().Informer()}, nil
 	case servicecatalogv1alpha1.SchemeGroupVersion.WithResource("serviceactions"):
@@ -1708,6 +2107,8 @@ func (f *sharedInformerFactory) ForResource(resource schema.GroupVersionResource
 		// Group=servicediscovery.aws.kubeform.com, Version=v1alpha1
 	case servicediscoveryv1alpha1.SchemeGroupVersion.WithResource("httpnamespaces"):
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Servicediscovery().V1alpha1().HttpNamespaces().Informer()}, nil
+	case servicediscoveryv1alpha1.SchemeGroupVersion.WithResource("instances"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Servicediscovery().V1alpha1().Instances().Informer()}, nil
 	case servicediscoveryv1alpha1.SchemeGroupVersion.WithResource("privatednsnamespaces"):
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Servicediscovery().V1alpha1().PrivateDNSNamespaces().Informer()}, nil
 	case servicediscoveryv1alpha1.SchemeGroupVersion.WithResource("publicdnsnamespaces"):
@@ -1758,6 +2159,10 @@ func (f *sharedInformerFactory) ForResource(resource schema.GroupVersionResource
 		// Group=shield.aws.kubeform.com, Version=v1alpha1
 	case shieldv1alpha1.SchemeGroupVersion.WithResource("protections"):
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Shield().V1alpha1().Protections().Informer()}, nil
+	case shieldv1alpha1.SchemeGroupVersion.WithResource("protectiongroups"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Shield().V1alpha1().ProtectionGroups().Informer()}, nil
+	case shieldv1alpha1.SchemeGroupVersion.WithResource("protectionhealthcheckassociations"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Shield().V1alpha1().ProtectionHealthCheckAssociations().Informer()}, nil
 
 		// Group=signer.aws.kubeform.com, Version=v1alpha1
 	case signerv1alpha1.SchemeGroupVersion.WithResource("signingjobs"):
@@ -1838,6 +2243,8 @@ func (f *sharedInformerFactory) ForResource(resource schema.GroupVersionResource
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Storagegateway().V1alpha1().Caches().Informer()}, nil
 	case storagegatewayv1alpha1.SchemeGroupVersion.WithResource("cachediscsivolumes"):
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Storagegateway().V1alpha1().CachedIscsiVolumes().Informer()}, nil
+	case storagegatewayv1alpha1.SchemeGroupVersion.WithResource("filesystemassociations"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Storagegateway().V1alpha1().FileSystemAssociations().Informer()}, nil
 	case storagegatewayv1alpha1.SchemeGroupVersion.WithResource("gateways"):
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Storagegateway().V1alpha1().Gateways().Informer()}, nil
 	case storagegatewayv1alpha1.SchemeGroupVersion.WithResource("nfsfileshares"):
@@ -1872,6 +2279,8 @@ func (f *sharedInformerFactory) ForResource(resource schema.GroupVersionResource
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Timestreamwrite().V1alpha1().Tables().Informer()}, nil
 
 		// Group=transfer.aws.kubeform.com, Version=v1alpha1
+	case transferv1alpha1.SchemeGroupVersion.WithResource("accesses"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Transfer().V1alpha1().Accesses().Informer()}, nil
 	case transferv1alpha1.SchemeGroupVersion.WithResource("servers"):
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Transfer().V1alpha1().Servers().Informer()}, nil
 	case transferv1alpha1.SchemeGroupVersion.WithResource("sshkeys"):
@@ -1890,8 +2299,12 @@ func (f *sharedInformerFactory) ForResource(resource schema.GroupVersionResource
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Vpc().V1alpha1().DhcpOptionsAssociations().Informer()}, nil
 	case vpcv1alpha1.SchemeGroupVersion.WithResource("endpoints"):
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Vpc().V1alpha1().Endpoints().Informer()}, nil
+	case vpcv1alpha1.SchemeGroupVersion.WithResource("endpointconnectionaccepters"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Vpc().V1alpha1().EndpointConnectionAccepters().Informer()}, nil
 	case vpcv1alpha1.SchemeGroupVersion.WithResource("endpointconnectionnotifications"):
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Vpc().V1alpha1().EndpointConnectionNotifications().Informer()}, nil
+	case vpcv1alpha1.SchemeGroupVersion.WithResource("endpointpolicies"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Vpc().V1alpha1().EndpointPolicies().Informer()}, nil
 	case vpcv1alpha1.SchemeGroupVersion.WithResource("endpointroutetableassociations"):
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Vpc().V1alpha1().EndpointRouteTableAssociations().Informer()}, nil
 	case vpcv1alpha1.SchemeGroupVersion.WithResource("endpointservices"):
@@ -1900,8 +2313,24 @@ func (f *sharedInformerFactory) ForResource(resource schema.GroupVersionResource
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Vpc().V1alpha1().EndpointServiceAllowedPrincipals().Informer()}, nil
 	case vpcv1alpha1.SchemeGroupVersion.WithResource("endpointsubnetassociations"):
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Vpc().V1alpha1().EndpointSubnetAssociations().Informer()}, nil
+	case vpcv1alpha1.SchemeGroupVersion.WithResource("ipams"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Vpc().V1alpha1().Ipams().Informer()}, nil
+	case vpcv1alpha1.SchemeGroupVersion.WithResource("ipamorganizationadminaccounts"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Vpc().V1alpha1().IpamOrganizationAdminAccounts().Informer()}, nil
+	case vpcv1alpha1.SchemeGroupVersion.WithResource("ipampools"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Vpc().V1alpha1().IpamPools().Informer()}, nil
+	case vpcv1alpha1.SchemeGroupVersion.WithResource("ipampoolcidrs"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Vpc().V1alpha1().IpamPoolCIDRs().Informer()}, nil
+	case vpcv1alpha1.SchemeGroupVersion.WithResource("ipampoolcidrallocations"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Vpc().V1alpha1().IpamPoolCIDRAllocations().Informer()}, nil
+	case vpcv1alpha1.SchemeGroupVersion.WithResource("ipampreviewnextcidrs"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Vpc().V1alpha1().IpamPreviewNextCIDRs().Informer()}, nil
+	case vpcv1alpha1.SchemeGroupVersion.WithResource("ipamscopes"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Vpc().V1alpha1().IpamScopes().Informer()}, nil
 	case vpcv1alpha1.SchemeGroupVersion.WithResource("ipv4cidrblockassociations"):
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Vpc().V1alpha1().Ipv4CIDRBlockAssociations().Informer()}, nil
+	case vpcv1alpha1.SchemeGroupVersion.WithResource("ipv6cidrblockassociations"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Vpc().V1alpha1().Ipv6CIDRBlockAssociations().Informer()}, nil
 	case vpcv1alpha1.SchemeGroupVersion.WithResource("peeringconnections"):
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Vpc().V1alpha1().PeeringConnections().Informer()}, nil
 	case vpcv1alpha1.SchemeGroupVersion.WithResource("peeringconnectionaccepters"):

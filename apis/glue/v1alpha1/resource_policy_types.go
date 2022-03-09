@@ -58,7 +58,9 @@ type ResourcePolicySpec struct {
 type ResourcePolicySpecResource struct {
 	ID string `json:"id,omitempty" tf:"id,omitempty"`
 
-	Policy *string `json:"policy" tf:"policy"`
+	// +optional
+	EnableHybrid *string `json:"enableHybrid,omitempty" tf:"enable_hybrid"`
+	Policy       *string `json:"policy" tf:"policy"`
 }
 
 type ResourcePolicyStatus struct {

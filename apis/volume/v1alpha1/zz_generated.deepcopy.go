@@ -139,6 +139,11 @@ func (in *AttachmentSpecResource) DeepCopyInto(out *AttachmentSpecResource) {
 		*out = new(bool)
 		**out = **in
 	}
+	if in.StopInstanceBeforeDetaching != nil {
+		in, out := &in.StopInstanceBeforeDetaching, &out.StopInstanceBeforeDetaching
+		*out = new(bool)
+		**out = **in
+	}
 	if in.VolumeID != nil {
 		in, out := &in.VolumeID, &out.VolumeID
 		*out = new(string)

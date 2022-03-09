@@ -62,7 +62,6 @@ spec:
                   computeEnvironments:
                     items:
                       type: string
-                    maxItems: 3
                     type: array
                   id:
                     type: string
@@ -71,6 +70,8 @@ spec:
                   priority:
                     format: int64
                     type: integer
+                  schedulingPolicyArn:
+                    type: string
                   state:
                     type: string
                   tags:
@@ -94,7 +95,6 @@ spec:
                   computeEnvironments:
                     items:
                       type: string
-                    maxItems: 3
                     type: array
                   id:
                     type: string
@@ -103,6 +103,8 @@ spec:
                   priority:
                     format: int64
                     type: integer
+                  schedulingPolicyArn:
+                    type: string
                   state:
                     type: string
                   tags:

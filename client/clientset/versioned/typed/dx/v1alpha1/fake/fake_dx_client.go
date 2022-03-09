@@ -41,6 +41,10 @@ func (c *FakeDxV1alpha1) ConnectionAssociations(namespace string) v1alpha1.Conne
 	return &FakeConnectionAssociations{c, namespace}
 }
 
+func (c *FakeDxV1alpha1) ConnectionConfirmations(namespace string) v1alpha1.ConnectionConfirmationInterface {
+	return &FakeConnectionConfirmations{c, namespace}
+}
+
 func (c *FakeDxV1alpha1) Gateways(namespace string) v1alpha1.GatewayInterface {
 	return &FakeGateways{c, namespace}
 }
@@ -51,6 +55,10 @@ func (c *FakeDxV1alpha1) GatewayAssociations(namespace string) v1alpha1.GatewayA
 
 func (c *FakeDxV1alpha1) GatewayAssociationProposals(namespace string) v1alpha1.GatewayAssociationProposalInterface {
 	return &FakeGatewayAssociationProposals{c, namespace}
+}
+
+func (c *FakeDxV1alpha1) HostedConnections(namespace string) v1alpha1.HostedConnectionInterface {
+	return &FakeHostedConnections{c, namespace}
 }
 
 func (c *FakeDxV1alpha1) HostedPrivateVirtualInterfaces(namespace string) v1alpha1.HostedPrivateVirtualInterfaceInterface {

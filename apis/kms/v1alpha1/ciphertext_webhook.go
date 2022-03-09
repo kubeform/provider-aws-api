@@ -89,7 +89,7 @@ func (r *Ciphertext) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range ciphertextForceNewList {
+	for key, _ := range ciphertextForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

@@ -95,6 +95,8 @@ spec:
                     required:
                     - truststoreURI
                     type: object
+                  ownershipVerificationCertificateArn:
+                    type: string
                   regionalCertificateArn:
                     type: string
                   regionalCertificateName:
@@ -165,6 +167,8 @@ spec:
                     required:
                     - truststoreURI
                     type: object
+                  ownershipVerificationCertificateArn:
+                    type: string
                   regionalCertificateArn:
                     type: string
                   regionalCertificateName:

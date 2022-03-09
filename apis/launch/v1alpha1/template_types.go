@@ -147,9 +147,13 @@ type TemplateSpecMetadataOptions struct {
 	// +optional
 	HttpEndpoint *string `json:"httpEndpoint,omitempty" tf:"http_endpoint"`
 	// +optional
+	HttpProtocolIpv6 *string `json:"httpProtocolIpv6,omitempty" tf:"http_protocol_ipv6"`
+	// +optional
 	HttpPutResponseHopLimit *int64 `json:"httpPutResponseHopLimit,omitempty" tf:"http_put_response_hop_limit"`
 	// +optional
 	HttpTokens *string `json:"httpTokens,omitempty" tf:"http_tokens"`
+	// +optional
+	InstanceMetadataTags *string `json:"instanceMetadataTags,omitempty" tf:"instance_metadata_tags"`
 }
 
 type TemplateSpecMonitoring struct {
@@ -178,6 +182,8 @@ type TemplateSpecNetworkInterfaces struct {
 	Ipv6AddressCount *int64 `json:"ipv6AddressCount,omitempty" tf:"ipv6_address_count"`
 	// +optional
 	Ipv6Addresses []string `json:"ipv6Addresses,omitempty" tf:"ipv6_addresses"`
+	// +optional
+	NetworkCardIndex *int64 `json:"networkCardIndex,omitempty" tf:"network_card_index"`
 	// +optional
 	NetworkInterfaceID *string `json:"networkInterfaceID,omitempty" tf:"network_interface_id"`
 	// +optional

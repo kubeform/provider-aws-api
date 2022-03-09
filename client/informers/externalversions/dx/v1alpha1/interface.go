@@ -30,12 +30,16 @@ type Interface interface {
 	Connections() ConnectionInformer
 	// ConnectionAssociations returns a ConnectionAssociationInformer.
 	ConnectionAssociations() ConnectionAssociationInformer
+	// ConnectionConfirmations returns a ConnectionConfirmationInformer.
+	ConnectionConfirmations() ConnectionConfirmationInformer
 	// Gateways returns a GatewayInformer.
 	Gateways() GatewayInformer
 	// GatewayAssociations returns a GatewayAssociationInformer.
 	GatewayAssociations() GatewayAssociationInformer
 	// GatewayAssociationProposals returns a GatewayAssociationProposalInformer.
 	GatewayAssociationProposals() GatewayAssociationProposalInformer
+	// HostedConnections returns a HostedConnectionInformer.
+	HostedConnections() HostedConnectionInformer
 	// HostedPrivateVirtualInterfaces returns a HostedPrivateVirtualInterfaceInformer.
 	HostedPrivateVirtualInterfaces() HostedPrivateVirtualInterfaceInformer
 	// HostedPrivateVirtualInterfaceAccepters returns a HostedPrivateVirtualInterfaceAccepterInformer.
@@ -84,6 +88,11 @@ func (v *version) ConnectionAssociations() ConnectionAssociationInformer {
 	return &connectionAssociationInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
 }
 
+// ConnectionConfirmations returns a ConnectionConfirmationInformer.
+func (v *version) ConnectionConfirmations() ConnectionConfirmationInformer {
+	return &connectionConfirmationInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
 // Gateways returns a GatewayInformer.
 func (v *version) Gateways() GatewayInformer {
 	return &gatewayInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
@@ -97,6 +106,11 @@ func (v *version) GatewayAssociations() GatewayAssociationInformer {
 // GatewayAssociationProposals returns a GatewayAssociationProposalInformer.
 func (v *version) GatewayAssociationProposals() GatewayAssociationProposalInformer {
 	return &gatewayAssociationProposalInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
+// HostedConnections returns a HostedConnectionInformer.
+func (v *version) HostedConnections() HostedConnectionInformer {
+	return &hostedConnectionInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
 }
 
 // HostedPrivateVirtualInterfaces returns a HostedPrivateVirtualInterfaceInformer.

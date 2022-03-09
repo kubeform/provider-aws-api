@@ -61,6 +61,10 @@ func (c *FakeServicecatalogV1alpha1) ProductPortfolioAssociations(namespace stri
 	return &FakeProductPortfolioAssociations{c, namespace}
 }
 
+func (c *FakeServicecatalogV1alpha1) ProvisionedProducts(namespace string) v1alpha1.ProvisionedProductInterface {
+	return &FakeProvisionedProducts{c, namespace}
+}
+
 func (c *FakeServicecatalogV1alpha1) ProvisioningArtifacts(namespace string) v1alpha1.ProvisioningArtifactInterface {
 	return &FakeProvisioningArtifacts{c, namespace}
 }

@@ -28,6 +28,7 @@ import (
 type NetworkV1alpha1Interface interface {
 	RESTClient() rest.Interface
 	AclsGetter
+	AclAssociationsGetter
 	AclRulesGetter
 	InterfacesGetter
 	InterfaceAttachmentsGetter
@@ -41,6 +42,10 @@ type NetworkV1alpha1Client struct {
 
 func (c *NetworkV1alpha1Client) Acls(namespace string) AclInterface {
 	return newAcls(c, namespace)
+}
+
+func (c *NetworkV1alpha1Client) AclAssociations(namespace string) AclAssociationInterface {
+	return newAclAssociations(c, namespace)
 }
 
 func (c *NetworkV1alpha1Client) AclRules(namespace string) AclRuleInterface {

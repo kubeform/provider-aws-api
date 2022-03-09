@@ -42,6 +42,14 @@ type ConnectionAssociationListerExpansion interface{}
 // ConnectionAssociationNamespaceLister.
 type ConnectionAssociationNamespaceListerExpansion interface{}
 
+// ConnectionConfirmationListerExpansion allows custom methods to be added to
+// ConnectionConfirmationLister.
+type ConnectionConfirmationListerExpansion interface{}
+
+// ConnectionConfirmationNamespaceListerExpansion allows custom methods to be added to
+// ConnectionConfirmationNamespaceLister.
+type ConnectionConfirmationNamespaceListerExpansion interface{}
+
 // GatewayListerExpansion allows custom methods to be added to
 // GatewayLister.
 type GatewayListerExpansion interface{}
@@ -65,6 +73,14 @@ type GatewayAssociationProposalListerExpansion interface{}
 // GatewayAssociationProposalNamespaceListerExpansion allows custom methods to be added to
 // GatewayAssociationProposalNamespaceLister.
 type GatewayAssociationProposalNamespaceListerExpansion interface{}
+
+// HostedConnectionListerExpansion allows custom methods to be added to
+// HostedConnectionLister.
+type HostedConnectionListerExpansion interface{}
+
+// HostedConnectionNamespaceListerExpansion allows custom methods to be added to
+// HostedConnectionNamespaceLister.
+type HostedConnectionNamespaceListerExpansion interface{}
 
 // HostedPrivateVirtualInterfaceListerExpansion allows custom methods to be added to
 // HostedPrivateVirtualInterfaceLister.

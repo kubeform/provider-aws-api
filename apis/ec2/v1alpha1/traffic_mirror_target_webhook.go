@@ -90,7 +90,7 @@ func (r *TrafficMirrorTarget) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range trafficmirrortargetForceNewList {
+	for key, _ := range trafficmirrortargetForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

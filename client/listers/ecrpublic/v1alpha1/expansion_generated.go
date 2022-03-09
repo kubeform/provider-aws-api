@@ -25,3 +25,11 @@ type RepositoryListerExpansion interface{}
 // RepositoryNamespaceListerExpansion allows custom methods to be added to
 // RepositoryNamespaceLister.
 type RepositoryNamespaceListerExpansion interface{}
+
+// RepositoryPolicyListerExpansion allows custom methods to be added to
+// RepositoryPolicyLister.
+type RepositoryPolicyListerExpansion interface{}
+
+// RepositoryPolicyNamespaceListerExpansion allows custom methods to be added to
+// RepositoryPolicyNamespaceLister.
+type RepositoryPolicyNamespaceListerExpansion interface{}

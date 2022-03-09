@@ -79,6 +79,10 @@ spec:
                     type: boolean
                   enableDNSSupport:
                     type: boolean
+                  existingDefaultVpc:
+                    type: boolean
+                  forceDestroy:
+                    type: boolean
                   id:
                     type: string
                   instanceTenancy:
@@ -87,6 +91,13 @@ spec:
                     type: string
                   ipv6CIDRBlock:
                     type: string
+                  ipv6CIDRBlockNetworkBorderGroup:
+                    type: string
+                  ipv6IpamPoolID:
+                    type: string
+                  ipv6NetmaskLength:
+                    format: int64
+                    type: integer
                   mainRouteTableID:
                     type: string
                   ownerID:
@@ -124,6 +135,10 @@ spec:
                     type: boolean
                   enableDNSSupport:
                     type: boolean
+                  existingDefaultVpc:
+                    type: boolean
+                  forceDestroy:
+                    type: boolean
                   id:
                     type: string
                   instanceTenancy:
@@ -132,6 +147,13 @@ spec:
                     type: string
                   ipv6CIDRBlock:
                     type: string
+                  ipv6CIDRBlockNetworkBorderGroup:
+                    type: string
+                  ipv6IpamPoolID:
+                    type: string
+                  ipv6NetmaskLength:
+                    format: int64
+                    type: integer
                   mainRouteTableID:
                     type: string
                   ownerID:

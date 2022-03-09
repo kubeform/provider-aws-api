@@ -34,6 +34,14 @@ type CachedIscsiVolumeListerExpansion interface{}
 // CachedIscsiVolumeNamespaceLister.
 type CachedIscsiVolumeNamespaceListerExpansion interface{}
 
+// FileSystemAssociationListerExpansion allows custom methods to be added to
+// FileSystemAssociationLister.
+type FileSystemAssociationListerExpansion interface{}
+
+// FileSystemAssociationNamespaceListerExpansion allows custom methods to be added to
+// FileSystemAssociationNamespaceLister.
+type FileSystemAssociationNamespaceListerExpansion interface{}
+
 // GatewayListerExpansion allows custom methods to be added to
 // GatewayLister.
 type GatewayListerExpansion interface{}

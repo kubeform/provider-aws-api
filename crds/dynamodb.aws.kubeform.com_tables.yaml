@@ -148,6 +148,12 @@ spec:
                       - regionName
                       type: object
                     type: array
+                  restoreDateTime:
+                    type: string
+                  restoreSourceName:
+                    type: string
+                  restoreToLatestTime:
+                    type: boolean
                   serverSideEncryption:
                     properties:
                       enabled:
@@ -164,6 +170,8 @@ spec:
                   streamLabel:
                     type: string
                   streamViewType:
+                    type: string
+                  tableClass:
                     type: string
                   tags:
                     additionalProperties:
@@ -217,8 +225,6 @@ spec:
                         type: string
                       enabled:
                         type: boolean
-                      kmsKeyArn:
-                        type: string
                     required:
                     - attributeName
                     type: object
@@ -226,8 +232,6 @@ spec:
                     format: int64
                     type: integer
                 required:
-                - attribute
-                - hashKey
                 - name
                 type: object
               state:
@@ -323,6 +327,12 @@ spec:
                       - regionName
                       type: object
                     type: array
+                  restoreDateTime:
+                    type: string
+                  restoreSourceName:
+                    type: string
+                  restoreToLatestTime:
+                    type: boolean
                   serverSideEncryption:
                     properties:
                       enabled:
@@ -339,6 +349,8 @@ spec:
                   streamLabel:
                     type: string
                   streamViewType:
+                    type: string
+                  tableClass:
                     type: string
                   tags:
                     additionalProperties:
@@ -392,8 +404,6 @@ spec:
                         type: string
                       enabled:
                         type: boolean
-                      kmsKeyArn:
-                        type: string
                     required:
                     - attributeName
                     type: object
@@ -401,8 +411,6 @@ spec:
                     format: int64
                     type: integer
                 required:
-                - attribute
-                - hashKey
                 - name
                 type: object
               terminationPolicy:

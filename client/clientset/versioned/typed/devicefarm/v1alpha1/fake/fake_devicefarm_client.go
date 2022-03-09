@@ -29,8 +29,28 @@ type FakeDevicefarmV1alpha1 struct {
 	*testing.Fake
 }
 
+func (c *FakeDevicefarmV1alpha1) DevicePools(namespace string) v1alpha1.DevicePoolInterface {
+	return &FakeDevicePools{c, namespace}
+}
+
+func (c *FakeDevicefarmV1alpha1) InstanceProfiles(namespace string) v1alpha1.InstanceProfileInterface {
+	return &FakeInstanceProfiles{c, namespace}
+}
+
+func (c *FakeDevicefarmV1alpha1) NetworkProfiles(namespace string) v1alpha1.NetworkProfileInterface {
+	return &FakeNetworkProfiles{c, namespace}
+}
+
 func (c *FakeDevicefarmV1alpha1) Projects(namespace string) v1alpha1.ProjectInterface {
 	return &FakeProjects{c, namespace}
+}
+
+func (c *FakeDevicefarmV1alpha1) TestGridProjects(namespace string) v1alpha1.TestGridProjectInterface {
+	return &FakeTestGridProjects{c, namespace}
+}
+
+func (c *FakeDevicefarmV1alpha1) Uploads(namespace string) v1alpha1.UploadInterface {
+	return &FakeUploads{c, namespace}
 }
 
 // RESTClient returns a RESTClient that is used to communicate

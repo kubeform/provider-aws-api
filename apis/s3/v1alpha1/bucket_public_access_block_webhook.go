@@ -88,7 +88,7 @@ func (r *BucketPublicAccessBlock) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range bucketpublicaccessblockForceNewList {
+	for key, _ := range bucketpublicaccessblockForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

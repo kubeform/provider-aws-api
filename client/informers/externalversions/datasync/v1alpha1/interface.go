@@ -28,8 +28,12 @@ type Interface interface {
 	Agents() AgentInformer
 	// LocationEfses returns a LocationEfsInformer.
 	LocationEfses() LocationEfsInformer
+	// LocationFsxLustreFileSystems returns a LocationFsxLustreFileSystemInformer.
+	LocationFsxLustreFileSystems() LocationFsxLustreFileSystemInformer
 	// LocationFsxWindowsFileSystems returns a LocationFsxWindowsFileSystemInformer.
 	LocationFsxWindowsFileSystems() LocationFsxWindowsFileSystemInformer
+	// LocationHdfses returns a LocationHdfsInformer.
+	LocationHdfses() LocationHdfsInformer
 	// LocationNfses returns a LocationNfsInformer.
 	LocationNfses() LocationNfsInformer
 	// LocationS3s returns a LocationS3Informer.
@@ -61,9 +65,19 @@ func (v *version) LocationEfses() LocationEfsInformer {
 	return &locationEfsInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
 }
 
+// LocationFsxLustreFileSystems returns a LocationFsxLustreFileSystemInformer.
+func (v *version) LocationFsxLustreFileSystems() LocationFsxLustreFileSystemInformer {
+	return &locationFsxLustreFileSystemInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
 // LocationFsxWindowsFileSystems returns a LocationFsxWindowsFileSystemInformer.
 func (v *version) LocationFsxWindowsFileSystems() LocationFsxWindowsFileSystemInformer {
 	return &locationFsxWindowsFileSystemInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
+// LocationHdfses returns a LocationHdfsInformer.
+func (v *version) LocationHdfses() LocationHdfsInformer {
+	return &locationHdfsInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
 }
 
 // LocationNfses returns a LocationNfsInformer.

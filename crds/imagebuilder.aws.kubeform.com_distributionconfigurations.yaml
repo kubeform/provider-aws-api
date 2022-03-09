@@ -94,9 +94,41 @@ spec:
                             targetAccountIDS:
                               items:
                                 type: string
-                              maxItems: 50
                               type: array
                           type: object
+                        containerDistributionConfiguration:
+                          properties:
+                            containerTags:
+                              items:
+                                type: string
+                              type: array
+                            description:
+                              type: string
+                            targetRepository:
+                              properties:
+                                repositoryName:
+                                  type: string
+                                service:
+                                  type: string
+                              required:
+                              - repositoryName
+                              - service
+                              type: object
+                          required:
+                          - targetRepository
+                          type: object
+                        launchTemplateConfiguration:
+                          items:
+                            properties:
+                              default:
+                                type: boolean
+                              launchTemplateID:
+                                type: string
+                            required:
+                            - launchTemplateID
+                            type: object
+                          maxItems: 100
+                          type: array
                         licenseConfigurationArns:
                           items:
                             type: string
@@ -162,9 +194,41 @@ spec:
                             targetAccountIDS:
                               items:
                                 type: string
-                              maxItems: 50
                               type: array
                           type: object
+                        containerDistributionConfiguration:
+                          properties:
+                            containerTags:
+                              items:
+                                type: string
+                              type: array
+                            description:
+                              type: string
+                            targetRepository:
+                              properties:
+                                repositoryName:
+                                  type: string
+                                service:
+                                  type: string
+                              required:
+                              - repositoryName
+                              - service
+                              type: object
+                          required:
+                          - targetRepository
+                          type: object
+                        launchTemplateConfiguration:
+                          items:
+                            properties:
+                              default:
+                                type: boolean
+                              launchTemplateID:
+                                type: string
+                            required:
+                            - launchTemplateID
+                            type: object
+                          maxItems: 100
+                          type: array
                         licenseConfigurationArns:
                           items:
                             type: string

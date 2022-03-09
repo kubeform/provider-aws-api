@@ -89,7 +89,7 @@ func (r *TableAssociation) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range tableassociationForceNewList {
+	for key, _ := range tableassociationForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

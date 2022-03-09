@@ -26,6 +26,8 @@ import (
 type Interface interface {
 	// EnvironmentEc2s returns a EnvironmentEc2Informer.
 	EnvironmentEc2s() EnvironmentEc2Informer
+	// EnvironmentMemberships returns a EnvironmentMembershipInformer.
+	EnvironmentMemberships() EnvironmentMembershipInformer
 }
 
 type version struct {
@@ -42,4 +44,9 @@ func New(f internalinterfaces.SharedInformerFactory, namespace string, tweakList
 // EnvironmentEc2s returns a EnvironmentEc2Informer.
 func (v *version) EnvironmentEc2s() EnvironmentEc2Informer {
 	return &environmentEc2Informer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
+// EnvironmentMemberships returns a EnvironmentMembershipInformer.
+func (v *version) EnvironmentMemberships() EnvironmentMembershipInformer {
+	return &environmentMembershipInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
 }

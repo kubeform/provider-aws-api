@@ -49,3 +49,11 @@ type TableItemListerExpansion interface{}
 // TableItemNamespaceListerExpansion allows custom methods to be added to
 // TableItemNamespaceLister.
 type TableItemNamespaceListerExpansion interface{}
+
+// TagListerExpansion allows custom methods to be added to
+// TagLister.
+type TagListerExpansion interface{}
+
+// TagNamespaceListerExpansion allows custom methods to be added to
+// TagNamespaceLister.
+type TagNamespaceListerExpansion interface{}

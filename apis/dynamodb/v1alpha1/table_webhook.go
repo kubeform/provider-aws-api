@@ -49,6 +49,9 @@ var tableForceNewList = map[string]bool{
 	"/local_secondary_index/*/range_key":          true,
 	"/name":                                       true,
 	"/range_key":                                  true,
+	"/restore_date_time":                          true,
+	"/restore_source_name":                        true,
+	"/restore_to_latest_time":                     true,
 }
 
 // ValidateCreate implements webhook.Validator so a webhook will be registered for the type
@@ -94,7 +97,7 @@ func (r *Table) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range tableForceNewList {
+	for key, _ := range tableForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

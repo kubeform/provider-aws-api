@@ -89,7 +89,7 @@ func (r *LocalGatewayRouteTableVpcAssociation) ValidateUpdate(old runtime.Object
 		return err
 	}
 
-	for key := range localgatewayroutetablevpcassociationForceNewList {
+	for key, _ := range localgatewayroutetablevpcassociationForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

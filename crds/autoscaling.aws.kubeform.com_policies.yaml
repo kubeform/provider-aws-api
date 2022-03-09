@@ -88,6 +88,165 @@ spec:
                         type: string
                       metricSpecification:
                         properties:
+                          customizedCapacityMetricSpecification:
+                            properties:
+                              metricDataQueries:
+                                items:
+                                  properties:
+                                    ID:
+                                      type: string
+                                    expression:
+                                      type: string
+                                    label:
+                                      type: string
+                                    metricStat:
+                                      properties:
+                                        metric:
+                                          properties:
+                                            dimensions:
+                                              items:
+                                                properties:
+                                                  name:
+                                                    type: string
+                                                  value:
+                                                    type: string
+                                                required:
+                                                - name
+                                                - value
+                                                type: object
+                                              type: array
+                                            metricName:
+                                              type: string
+                                            namespace:
+                                              type: string
+                                          required:
+                                          - metricName
+                                          - namespace
+                                          type: object
+                                        stat:
+                                          type: string
+                                        unit:
+                                          type: string
+                                      required:
+                                      - metric
+                                      - stat
+                                      type: object
+                                    returnData:
+                                      type: boolean
+                                  required:
+                                  - ID
+                                  type: object
+                                maxItems: 10
+                                type: array
+                            required:
+                            - metricDataQueries
+                            type: object
+                          customizedLoadMetricSpecification:
+                            properties:
+                              metricDataQueries:
+                                items:
+                                  properties:
+                                    ID:
+                                      type: string
+                                    expression:
+                                      type: string
+                                    label:
+                                      type: string
+                                    metricStat:
+                                      properties:
+                                        metric:
+                                          properties:
+                                            dimensions:
+                                              items:
+                                                properties:
+                                                  name:
+                                                    type: string
+                                                  value:
+                                                    type: string
+                                                required:
+                                                - name
+                                                - value
+                                                type: object
+                                              type: array
+                                            metricName:
+                                              type: string
+                                            namespace:
+                                              type: string
+                                          required:
+                                          - metricName
+                                          - namespace
+                                          type: object
+                                        stat:
+                                          type: string
+                                        unit:
+                                          type: string
+                                      required:
+                                      - metric
+                                      - stat
+                                      type: object
+                                    returnData:
+                                      type: boolean
+                                  required:
+                                  - ID
+                                  type: object
+                                maxItems: 10
+                                type: array
+                            required:
+                            - metricDataQueries
+                            type: object
+                          customizedScalingMetricSpecification:
+                            properties:
+                              metricDataQueries:
+                                items:
+                                  properties:
+                                    ID:
+                                      type: string
+                                    expression:
+                                      type: string
+                                    label:
+                                      type: string
+                                    metricStat:
+                                      properties:
+                                        metric:
+                                          properties:
+                                            dimensions:
+                                              items:
+                                                properties:
+                                                  name:
+                                                    type: string
+                                                  value:
+                                                    type: string
+                                                required:
+                                                - name
+                                                - value
+                                                type: object
+                                              type: array
+                                            metricName:
+                                              type: string
+                                            namespace:
+                                              type: string
+                                          required:
+                                          - metricName
+                                          - namespace
+                                          type: object
+                                        stat:
+                                          type: string
+                                        unit:
+                                          type: string
+                                      required:
+                                      - metric
+                                      - stat
+                                      type: object
+                                    returnData:
+                                      type: boolean
+                                  required:
+                                  - ID
+                                  type: object
+                                maxItems: 10
+                                type: array
+                            required:
+                            - metricDataQueries
+                            type: object
                           predefinedLoadMetricSpecification:
                             properties:
                               predefinedMetricType:
@@ -231,6 +390,165 @@ spec:
                         type: string
                       metricSpecification:
                         properties:
+                          customizedCapacityMetricSpecification:
+                            properties:
+                              metricDataQueries:
+                                items:
+                                  properties:
+                                    ID:
+                                      type: string
+                                    expression:
+                                      type: string
+                                    label:
+                                      type: string
+                                    metricStat:
+                                      properties:
+                                        metric:
+                                          properties:
+                                            dimensions:
+                                              items:
+                                                properties:
+                                                  name:
+                                                    type: string
+                                                  value:
+                                                    type: string
+                                                required:
+                                                - name
+                                                - value
+                                                type: object
+                                              type: array
+                                            metricName:
+                                              type: string
+                                            namespace:
+                                              type: string
+                                          required:
+                                          - metricName
+                                          - namespace
+                                          type: object
+                                        stat:
+                                          type: string
+                                        unit:
+                                          type: string
+                                      required:
+                                      - metric
+                                      - stat
+                                      type: object
+                                    returnData:
+                                      type: boolean
+                                  required:
+                                  - ID
+                                  type: object
+                                maxItems: 10
+                                type: array
+                            required:
+                            - metricDataQueries
+                            type: object
+                          customizedLoadMetricSpecification:
+                            properties:
+                              metricDataQueries:
+                                items:
+                                  properties:
+                                    ID:
+                                      type: string
+                                    expression:
+                                      type: string
+                                    label:
+                                      type: string
+                                    metricStat:
+                                      properties:
+                                        metric:
+                                          properties:
+                                            dimensions:
+                                              items:
+                                                properties:
+                                                  name:
+                                                    type: string
+                                                  value:
+                                                    type: string
+                                                required:
+                                                - name
+                                                - value
+                                                type: object
+                                              type: array
+                                            metricName:
+                                              type: string
+                                            namespace:
+                                              type: string
+                                          required:
+                                          - metricName
+                                          - namespace
+                                          type: object
+                                        stat:
+                                          type: string
+                                        unit:
+                                          type: string
+                                      required:
+                                      - metric
+                                      - stat
+                                      type: object
+                                    returnData:
+                                      type: boolean
+                                  required:
+                                  - ID
+                                  type: object
+                                maxItems: 10
+                                type: array
+                            required:
+                            - metricDataQueries
+                            type: object
+                          customizedScalingMetricSpecification:
+                            properties:
+                              metricDataQueries:
+                                items:
+                                  properties:
+                                    ID:
+                                      type: string
+                                    expression:
+                                      type: string
+                                    label:
+                                      type: string
+                                    metricStat:
+                                      properties:
+                                        metric:
+                                          properties:
+                                            dimensions:
+                                              items:
+                                                properties:
+                                                  name:
+                                                    type: string
+                                                  value:
+                                                    type: string
+                                                required:
+                                                - name
+                                                - value
+                                                type: object
+                                              type: array
+                                            metricName:
+                                              type: string
+                                            namespace:
+                                              type: string
+                                          required:
+                                          - metricName
+                                          - namespace
+                                          type: object
+                                        stat:
+                                          type: string
+                                        unit:
+                                          type: string
+                                      required:
+                                      - metric
+                                      - stat
+                                      type: object
+                                    returnData:
+                                      type: boolean
+                                  required:
+                                  - ID
+                                  type: object
+                                maxItems: 10
+                                type: array
+                            required:
+                            - metricDataQueries
+                            type: object
                           predefinedLoadMetricSpecification:
                             properties:
                               predefinedMetricType:

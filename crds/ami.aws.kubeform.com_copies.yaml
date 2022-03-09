@@ -61,6 +61,8 @@ spec:
                     type: string
                   arn:
                     type: string
+                  bootMode:
+                    type: string
                   description:
                     type: string
                   destinationOutpostArn:
@@ -77,6 +79,8 @@ spec:
                         iops:
                           format: int64
                           type: integer
+                        outpostArn:
+                          type: string
                         snapshotID:
                           type: string
                         throughput:
@@ -201,6 +205,8 @@ spec:
                     type: string
                   arn:
                     type: string
+                  bootMode:
+                    type: string
                   description:
                     type: string
                   destinationOutpostArn:
@@ -217,6 +223,8 @@ spec:
                         iops:
                           format: int64
                           type: integer
+                        outpostArn:
+                          type: string
                         snapshotID:
                           type: string
                         throughput:

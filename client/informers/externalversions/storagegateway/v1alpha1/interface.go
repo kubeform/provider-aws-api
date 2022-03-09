@@ -28,6 +28,8 @@ type Interface interface {
 	Caches() CacheInformer
 	// CachedIscsiVolumes returns a CachedIscsiVolumeInformer.
 	CachedIscsiVolumes() CachedIscsiVolumeInformer
+	// FileSystemAssociations returns a FileSystemAssociationInformer.
+	FileSystemAssociations() FileSystemAssociationInformer
 	// Gateways returns a GatewayInformer.
 	Gateways() GatewayInformer
 	// NfsFileShares returns a NfsFileShareInformer.
@@ -63,6 +65,11 @@ func (v *version) Caches() CacheInformer {
 // CachedIscsiVolumes returns a CachedIscsiVolumeInformer.
 func (v *version) CachedIscsiVolumes() CachedIscsiVolumeInformer {
 	return &cachedIscsiVolumeInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
+// FileSystemAssociations returns a FileSystemAssociationInformer.
+func (v *version) FileSystemAssociations() FileSystemAssociationInformer {
+	return &fileSystemAssociationInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
 }
 
 // Gateways returns a GatewayInformer.

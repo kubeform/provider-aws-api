@@ -90,7 +90,7 @@ func (r *EventSubscription) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range eventsubscriptionForceNewList {
+	for key, _ := range eventsubscriptionForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

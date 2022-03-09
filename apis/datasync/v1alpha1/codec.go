@@ -27,27 +27,29 @@ import (
 
 func GetEncoder() map[string]jsoniter.ValEncoder {
 	return map[string]jsoniter.ValEncoder{
-		jsoniter.MustGetKind(reflect2.TypeOf(LocationEfsSpecEc2Config{}).Type1()):    LocationEfsSpecEc2ConfigCodec{},
-		jsoniter.MustGetKind(reflect2.TypeOf(LocationNfsSpecMountOptions{}).Type1()): LocationNfsSpecMountOptionsCodec{},
-		jsoniter.MustGetKind(reflect2.TypeOf(LocationNfsSpecOnPremConfig{}).Type1()): LocationNfsSpecOnPremConfigCodec{},
-		jsoniter.MustGetKind(reflect2.TypeOf(LocationS3SpecS3Config{}).Type1()):      LocationS3SpecS3ConfigCodec{},
-		jsoniter.MustGetKind(reflect2.TypeOf(LocationSmbSpecMountOptions{}).Type1()): LocationSmbSpecMountOptionsCodec{},
-		jsoniter.MustGetKind(reflect2.TypeOf(TaskSpecExcludes{}).Type1()):            TaskSpecExcludesCodec{},
-		jsoniter.MustGetKind(reflect2.TypeOf(TaskSpecOptions{}).Type1()):             TaskSpecOptionsCodec{},
-		jsoniter.MustGetKind(reflect2.TypeOf(TaskSpecSchedule{}).Type1()):            TaskSpecScheduleCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(LocationEfsSpecEc2Config{}).Type1()):         LocationEfsSpecEc2ConfigCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(LocationHdfsSpecQopConfiguration{}).Type1()): LocationHdfsSpecQopConfigurationCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(LocationNfsSpecMountOptions{}).Type1()):      LocationNfsSpecMountOptionsCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(LocationNfsSpecOnPremConfig{}).Type1()):      LocationNfsSpecOnPremConfigCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(LocationS3SpecS3Config{}).Type1()):           LocationS3SpecS3ConfigCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(LocationSmbSpecMountOptions{}).Type1()):      LocationSmbSpecMountOptionsCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(TaskSpecExcludes{}).Type1()):                 TaskSpecExcludesCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(TaskSpecOptions{}).Type1()):                  TaskSpecOptionsCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(TaskSpecSchedule{}).Type1()):                 TaskSpecScheduleCodec{},
 	}
 }
 
 func GetDecoder() map[string]jsoniter.ValDecoder {
 	return map[string]jsoniter.ValDecoder{
-		jsoniter.MustGetKind(reflect2.TypeOf(LocationEfsSpecEc2Config{}).Type1()):    LocationEfsSpecEc2ConfigCodec{},
-		jsoniter.MustGetKind(reflect2.TypeOf(LocationNfsSpecMountOptions{}).Type1()): LocationNfsSpecMountOptionsCodec{},
-		jsoniter.MustGetKind(reflect2.TypeOf(LocationNfsSpecOnPremConfig{}).Type1()): LocationNfsSpecOnPremConfigCodec{},
-		jsoniter.MustGetKind(reflect2.TypeOf(LocationS3SpecS3Config{}).Type1()):      LocationS3SpecS3ConfigCodec{},
-		jsoniter.MustGetKind(reflect2.TypeOf(LocationSmbSpecMountOptions{}).Type1()): LocationSmbSpecMountOptionsCodec{},
-		jsoniter.MustGetKind(reflect2.TypeOf(TaskSpecExcludes{}).Type1()):            TaskSpecExcludesCodec{},
-		jsoniter.MustGetKind(reflect2.TypeOf(TaskSpecOptions{}).Type1()):             TaskSpecOptionsCodec{},
-		jsoniter.MustGetKind(reflect2.TypeOf(TaskSpecSchedule{}).Type1()):            TaskSpecScheduleCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(LocationEfsSpecEc2Config{}).Type1()):         LocationEfsSpecEc2ConfigCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(LocationHdfsSpecQopConfiguration{}).Type1()): LocationHdfsSpecQopConfigurationCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(LocationNfsSpecMountOptions{}).Type1()):      LocationNfsSpecMountOptionsCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(LocationNfsSpecOnPremConfig{}).Type1()):      LocationNfsSpecOnPremConfigCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(LocationS3SpecS3Config{}).Type1()):           LocationS3SpecS3ConfigCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(LocationSmbSpecMountOptions{}).Type1()):      LocationSmbSpecMountOptionsCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(TaskSpecExcludes{}).Type1()):                 TaskSpecExcludesCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(TaskSpecOptions{}).Type1()):                  TaskSpecOptionsCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(TaskSpecSchedule{}).Type1()):                 TaskSpecScheduleCodec{},
 	}
 }
 
@@ -139,6 +141,85 @@ func (LocationEfsSpecEc2ConfigCodec) Decode(ptr unsafe.Pointer, iter *jsoniter.I
 		}
 	default:
 		iter.ReportError("decode LocationEfsSpecEc2Config", "unexpected JSON type")
+	}
+}
+
+// +k8s:deepcopy-gen=false
+type LocationHdfsSpecQopConfigurationCodec struct {
+}
+
+func (LocationHdfsSpecQopConfigurationCodec) IsEmpty(ptr unsafe.Pointer) bool {
+	return (*LocationHdfsSpecQopConfiguration)(ptr) == nil
+}
+
+func (LocationHdfsSpecQopConfigurationCodec) Encode(ptr unsafe.Pointer, stream *jsoniter.Stream) {
+	obj := (*LocationHdfsSpecQopConfiguration)(ptr)
+	var objs []LocationHdfsSpecQopConfiguration
+	if obj != nil {
+		objs = []LocationHdfsSpecQopConfiguration{*obj}
+	}
+
+	jsonit := jsoniter.Config{
+		EscapeHTML:             true,
+		SortMapKeys:            true,
+		ValidateJsonRawMessage: true,
+		TagKey:                 "tf",
+		TypeEncoders:           getEncodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(LocationHdfsSpecQopConfiguration{}).Type1())),
+	}.Froze()
+
+	byt, _ := jsonit.Marshal(objs)
+
+	stream.Write(byt)
+}
+
+func (LocationHdfsSpecQopConfigurationCodec) Decode(ptr unsafe.Pointer, iter *jsoniter.Iterator) {
+	switch iter.WhatIsNext() {
+	case jsoniter.NilValue:
+		iter.Skip()
+		*(*LocationHdfsSpecQopConfiguration)(ptr) = LocationHdfsSpecQopConfiguration{}
+		return
+	case jsoniter.ArrayValue:
+		objsByte := iter.SkipAndReturnBytes()
+		if len(objsByte) > 0 {
+			var objs []LocationHdfsSpecQopConfiguration
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(LocationHdfsSpecQopConfiguration{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objsByte, &objs)
+
+			if len(objs) > 0 {
+				*(*LocationHdfsSpecQopConfiguration)(ptr) = objs[0]
+			} else {
+				*(*LocationHdfsSpecQopConfiguration)(ptr) = LocationHdfsSpecQopConfiguration{}
+			}
+		} else {
+			*(*LocationHdfsSpecQopConfiguration)(ptr) = LocationHdfsSpecQopConfiguration{}
+		}
+	case jsoniter.ObjectValue:
+		objByte := iter.SkipAndReturnBytes()
+		if len(objByte) > 0 {
+			var obj LocationHdfsSpecQopConfiguration
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(LocationHdfsSpecQopConfiguration{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objByte, &obj)
+
+			*(*LocationHdfsSpecQopConfiguration)(ptr) = obj
+		} else {
+			*(*LocationHdfsSpecQopConfiguration)(ptr) = LocationHdfsSpecQopConfiguration{}
+		}
+	default:
+		iter.ReportError("decode LocationHdfsSpecQopConfiguration", "unexpected JSON type")
 	}
 }
 

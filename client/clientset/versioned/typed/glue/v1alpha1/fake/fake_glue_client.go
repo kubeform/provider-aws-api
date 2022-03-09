@@ -69,6 +69,10 @@ func (c *FakeGlueV1alpha1) Partitions(namespace string) v1alpha1.PartitionInterf
 	return &FakePartitions{c, namespace}
 }
 
+func (c *FakeGlueV1alpha1) PartitionIndexes(namespace string) v1alpha1.PartitionIndexInterface {
+	return &FakePartitionIndexes{c, namespace}
+}
+
 func (c *FakeGlueV1alpha1) Registries(namespace string) v1alpha1.RegistryInterface {
 	return &FakeRegistries{c, namespace}
 }

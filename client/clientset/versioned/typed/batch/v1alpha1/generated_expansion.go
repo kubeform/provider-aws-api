@@ -23,3 +23,5 @@ type ComputeEnvironmentExpansion interface{}
 type JobDefinitionExpansion interface{}
 
 type JobQueueExpansion interface{}
+
+type SchedulingPolicyExpansion interface{}

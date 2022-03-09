@@ -30,17 +30,26 @@ type SagemakerV1alpha1Interface interface {
 	AppsGetter
 	AppImageConfigsGetter
 	CodeRepositoriesGetter
+	DevicesGetter
+	DeviceFleetsGetter
 	DomainsGetter
 	EndpointsGetter
 	EndpointConfigurationsGetter
 	FeatureGroupsGetter
+	FlowDefinitionsGetter
+	HumanTaskUisGetter
 	ImagesGetter
 	ImageVersionsGetter
 	ModelsGetter
 	ModelPackageGroupsGetter
+	ModelPackageGroupPoliciesGetter
 	NotebookInstancesGetter
 	NotebookInstanceLifecycleConfigurationsGetter
+	ProjectsGetter
+	StudioLifecycleConfigsGetter
 	UserProfilesGetter
+	WorkforcesGetter
+	WorkteamsGetter
 }
 
 // SagemakerV1alpha1Client is used to interact with features provided by the sagemaker.aws.kubeform.com group.
@@ -60,6 +69,14 @@ func (c *SagemakerV1alpha1Client) CodeRepositories(namespace string) CodeReposit
 	return newCodeRepositories(c, namespace)
 }
 
+func (c *SagemakerV1alpha1Client) Devices(namespace string) DeviceInterface {
+	return newDevices(c, namespace)
+}
+
+func (c *SagemakerV1alpha1Client) DeviceFleets(namespace string) DeviceFleetInterface {
+	return newDeviceFleets(c, namespace)
+}
+
 func (c *SagemakerV1alpha1Client) Domains(namespace string) DomainInterface {
 	return newDomains(c, namespace)
 }
@@ -74,6 +91,14 @@ func (c *SagemakerV1alpha1Client) EndpointConfigurations(namespace string) Endpo
 
 func (c *SagemakerV1alpha1Client) FeatureGroups(namespace string) FeatureGroupInterface {
 	return newFeatureGroups(c, namespace)
+}
+
+func (c *SagemakerV1alpha1Client) FlowDefinitions(namespace string) FlowDefinitionInterface {
+	return newFlowDefinitions(c, namespace)
+}
+
+func (c *SagemakerV1alpha1Client) HumanTaskUis(namespace string) HumanTaskUiInterface {
+	return newHumanTaskUis(c, namespace)
 }
 
 func (c *SagemakerV1alpha1Client) Images(namespace string) ImageInterface {
@@ -92,6 +117,10 @@ func (c *SagemakerV1alpha1Client) ModelPackageGroups(namespace string) ModelPack
 	return newModelPackageGroups(c, namespace)
 }
 
+func (c *SagemakerV1alpha1Client) ModelPackageGroupPolicies(namespace string) ModelPackageGroupPolicyInterface {
+	return newModelPackageGroupPolicies(c, namespace)
+}
+
 func (c *SagemakerV1alpha1Client) NotebookInstances(namespace string) NotebookInstanceInterface {
 	return newNotebookInstances(c, namespace)
 }
@@ -100,8 +129,24 @@ func (c *SagemakerV1alpha1Client) NotebookInstanceLifecycleConfigurations(namesp
 	return newNotebookInstanceLifecycleConfigurations(c, namespace)
 }
 
+func (c *SagemakerV1alpha1Client) Projects(namespace string) ProjectInterface {
+	return newProjects(c, namespace)
+}
+
+func (c *SagemakerV1alpha1Client) StudioLifecycleConfigs(namespace string) StudioLifecycleConfigInterface {
+	return newStudioLifecycleConfigs(c, namespace)
+}
+
 func (c *SagemakerV1alpha1Client) UserProfiles(namespace string) UserProfileInterface {
 	return newUserProfiles(c, namespace)
+}
+
+func (c *SagemakerV1alpha1Client) Workforces(namespace string) WorkforceInterface {
+	return newWorkforces(c, namespace)
+}
+
+func (c *SagemakerV1alpha1Client) Workteams(namespace string) WorkteamInterface {
+	return newWorkteams(c, namespace)
 }
 
 // NewForConfig creates a new SagemakerV1alpha1Client for the given config.

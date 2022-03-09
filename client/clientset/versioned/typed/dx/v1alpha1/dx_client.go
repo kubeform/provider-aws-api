@@ -30,9 +30,11 @@ type DxV1alpha1Interface interface {
 	BgpPeersGetter
 	ConnectionsGetter
 	ConnectionAssociationsGetter
+	ConnectionConfirmationsGetter
 	GatewaysGetter
 	GatewayAssociationsGetter
 	GatewayAssociationProposalsGetter
+	HostedConnectionsGetter
 	HostedPrivateVirtualInterfacesGetter
 	HostedPrivateVirtualInterfaceAcceptersGetter
 	HostedPublicVirtualInterfacesGetter
@@ -62,6 +64,10 @@ func (c *DxV1alpha1Client) ConnectionAssociations(namespace string) ConnectionAs
 	return newConnectionAssociations(c, namespace)
 }
 
+func (c *DxV1alpha1Client) ConnectionConfirmations(namespace string) ConnectionConfirmationInterface {
+	return newConnectionConfirmations(c, namespace)
+}
+
 func (c *DxV1alpha1Client) Gateways(namespace string) GatewayInterface {
 	return newGateways(c, namespace)
 }
@@ -72,6 +78,10 @@ func (c *DxV1alpha1Client) GatewayAssociations(namespace string) GatewayAssociat
 
 func (c *DxV1alpha1Client) GatewayAssociationProposals(namespace string) GatewayAssociationProposalInterface {
 	return newGatewayAssociationProposals(c, namespace)
+}
+
+func (c *DxV1alpha1Client) HostedConnections(namespace string) HostedConnectionInterface {
+	return newHostedConnections(c, namespace)
 }
 
 func (c *DxV1alpha1Client) HostedPrivateVirtualInterfaces(namespace string) HostedPrivateVirtualInterfaceInterface {

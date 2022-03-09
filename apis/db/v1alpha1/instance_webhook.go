@@ -44,11 +44,13 @@ var _ webhook.Validator = &Instance{}
 var instanceForceNewList = map[string]bool{
 	"/availability_zone":                 true,
 	"/character_set_name":                true,
+	"/db_name":                           true,
 	"/engine":                            true,
 	"/identifier":                        true,
 	"/identifier_prefix":                 true,
 	"/kms_key_id":                        true,
 	"/name":                              true,
+	"/nchar_character_set_name":          true,
 	"/s3_import/*/bucket_name":           true,
 	"/s3_import/*/bucket_prefix":         true,
 	"/s3_import/*/ingestion_role":        true,
@@ -103,7 +105,7 @@ func (r *Instance) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range instanceForceNewList {
+	for key, _ := range instanceForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

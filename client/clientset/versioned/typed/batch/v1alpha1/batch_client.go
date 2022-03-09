@@ -30,6 +30,7 @@ type BatchV1alpha1Interface interface {
 	ComputeEnvironmentsGetter
 	JobDefinitionsGetter
 	JobQueuesGetter
+	SchedulingPoliciesGetter
 }
 
 // BatchV1alpha1Client is used to interact with features provided by the batch.aws.kubeform.com group.
@@ -47,6 +48,10 @@ func (c *BatchV1alpha1Client) JobDefinitions(namespace string) JobDefinitionInte
 
 func (c *BatchV1alpha1Client) JobQueues(namespace string) JobQueueInterface {
 	return newJobQueues(c, namespace)
+}
+
+func (c *BatchV1alpha1Client) SchedulingPolicies(namespace string) SchedulingPolicyInterface {
+	return newSchedulingPolicies(c, namespace)
 }
 
 // NewForConfig creates a new BatchV1alpha1Client for the given config.

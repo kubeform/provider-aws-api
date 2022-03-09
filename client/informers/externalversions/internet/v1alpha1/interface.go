@@ -26,6 +26,8 @@ import (
 type Interface interface {
 	// Gateways returns a GatewayInformer.
 	Gateways() GatewayInformer
+	// GatewayAttachments returns a GatewayAttachmentInformer.
+	GatewayAttachments() GatewayAttachmentInformer
 }
 
 type version struct {
@@ -42,4 +44,9 @@ func New(f internalinterfaces.SharedInformerFactory, namespace string, tweakList
 // Gateways returns a GatewayInformer.
 func (v *version) Gateways() GatewayInformer {
 	return &gatewayInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
+// GatewayAttachments returns a GatewayAttachmentInformer.
+func (v *version) GatewayAttachments() GatewayAttachmentInformer {
+	return &gatewayAttachmentInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
 }

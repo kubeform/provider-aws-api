@@ -66,6 +66,7 @@ func GetEncoder() map[string]jsoniter.ValEncoder {
 		jsoniter.MustGetKind(reflect2.TypeOf(FirehoseDeliveryStreamSpecExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfigurationSerializerOrcSerDe{}).Type1()):        FirehoseDeliveryStreamSpecExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfigurationSerializerOrcSerDeCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(FirehoseDeliveryStreamSpecExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfigurationSerializerParquetSerDe{}).Type1()):    FirehoseDeliveryStreamSpecExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfigurationSerializerParquetSerDeCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(FirehoseDeliveryStreamSpecExtendedS3ConfigurationDataFormatConversionConfigurationSchemaConfiguration{}).Type1()):                                FirehoseDeliveryStreamSpecExtendedS3ConfigurationDataFormatConversionConfigurationSchemaConfigurationCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(FirehoseDeliveryStreamSpecExtendedS3ConfigurationDynamicPartitioningConfiguration{}).Type1()):                                                    FirehoseDeliveryStreamSpecExtendedS3ConfigurationDynamicPartitioningConfigurationCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(FirehoseDeliveryStreamSpecExtendedS3ConfigurationProcessingConfiguration{}).Type1()):                                                             FirehoseDeliveryStreamSpecExtendedS3ConfigurationProcessingConfigurationCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(FirehoseDeliveryStreamSpecExtendedS3ConfigurationS3BackupConfiguration{}).Type1()):                                                               FirehoseDeliveryStreamSpecExtendedS3ConfigurationS3BackupConfigurationCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(FirehoseDeliveryStreamSpecExtendedS3ConfigurationS3BackupConfigurationCloudwatchLoggingOptions{}).Type1()):                                       FirehoseDeliveryStreamSpecExtendedS3ConfigurationS3BackupConfigurationCloudwatchLoggingOptionsCodec{},
@@ -85,6 +86,7 @@ func GetEncoder() map[string]jsoniter.ValEncoder {
 		jsoniter.MustGetKind(reflect2.TypeOf(FirehoseDeliveryStreamSpecSplunkConfiguration{}).Type1()):                                                                                        FirehoseDeliveryStreamSpecSplunkConfigurationCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(FirehoseDeliveryStreamSpecSplunkConfigurationCloudwatchLoggingOptions{}).Type1()):                                                                FirehoseDeliveryStreamSpecSplunkConfigurationCloudwatchLoggingOptionsCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(FirehoseDeliveryStreamSpecSplunkConfigurationProcessingConfiguration{}).Type1()):                                                                 FirehoseDeliveryStreamSpecSplunkConfigurationProcessingConfigurationCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(StreamSpecStreamModeDetails{}).Type1()):                                                                                                          StreamSpecStreamModeDetailsCodec{},
 	}
 }
 
@@ -129,6 +131,7 @@ func GetDecoder() map[string]jsoniter.ValDecoder {
 		jsoniter.MustGetKind(reflect2.TypeOf(FirehoseDeliveryStreamSpecExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfigurationSerializerOrcSerDe{}).Type1()):        FirehoseDeliveryStreamSpecExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfigurationSerializerOrcSerDeCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(FirehoseDeliveryStreamSpecExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfigurationSerializerParquetSerDe{}).Type1()):    FirehoseDeliveryStreamSpecExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfigurationSerializerParquetSerDeCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(FirehoseDeliveryStreamSpecExtendedS3ConfigurationDataFormatConversionConfigurationSchemaConfiguration{}).Type1()):                                FirehoseDeliveryStreamSpecExtendedS3ConfigurationDataFormatConversionConfigurationSchemaConfigurationCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(FirehoseDeliveryStreamSpecExtendedS3ConfigurationDynamicPartitioningConfiguration{}).Type1()):                                                    FirehoseDeliveryStreamSpecExtendedS3ConfigurationDynamicPartitioningConfigurationCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(FirehoseDeliveryStreamSpecExtendedS3ConfigurationProcessingConfiguration{}).Type1()):                                                             FirehoseDeliveryStreamSpecExtendedS3ConfigurationProcessingConfigurationCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(FirehoseDeliveryStreamSpecExtendedS3ConfigurationS3BackupConfiguration{}).Type1()):                                                               FirehoseDeliveryStreamSpecExtendedS3ConfigurationS3BackupConfigurationCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(FirehoseDeliveryStreamSpecExtendedS3ConfigurationS3BackupConfigurationCloudwatchLoggingOptions{}).Type1()):                                       FirehoseDeliveryStreamSpecExtendedS3ConfigurationS3BackupConfigurationCloudwatchLoggingOptionsCodec{},
@@ -148,6 +151,7 @@ func GetDecoder() map[string]jsoniter.ValDecoder {
 		jsoniter.MustGetKind(reflect2.TypeOf(FirehoseDeliveryStreamSpecSplunkConfiguration{}).Type1()):                                                                                        FirehoseDeliveryStreamSpecSplunkConfigurationCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(FirehoseDeliveryStreamSpecSplunkConfigurationCloudwatchLoggingOptions{}).Type1()):                                                                FirehoseDeliveryStreamSpecSplunkConfigurationCloudwatchLoggingOptionsCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(FirehoseDeliveryStreamSpecSplunkConfigurationProcessingConfiguration{}).Type1()):                                                                 FirehoseDeliveryStreamSpecSplunkConfigurationProcessingConfigurationCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(StreamSpecStreamModeDetails{}).Type1()):                                                                                                          StreamSpecStreamModeDetailsCodec{},
 	}
 }
 
@@ -3245,6 +3249,85 @@ func (FirehoseDeliveryStreamSpecExtendedS3ConfigurationDataFormatConversionConfi
 }
 
 // +k8s:deepcopy-gen=false
+type FirehoseDeliveryStreamSpecExtendedS3ConfigurationDynamicPartitioningConfigurationCodec struct {
+}
+
+func (FirehoseDeliveryStreamSpecExtendedS3ConfigurationDynamicPartitioningConfigurationCodec) IsEmpty(ptr unsafe.Pointer) bool {
+	return (*FirehoseDeliveryStreamSpecExtendedS3ConfigurationDynamicPartitioningConfiguration)(ptr) == nil
+}
+
+func (FirehoseDeliveryStreamSpecExtendedS3ConfigurationDynamicPartitioningConfigurationCodec) Encode(ptr unsafe.Pointer, stream *jsoniter.Stream) {
+	obj := (*FirehoseDeliveryStreamSpecExtendedS3ConfigurationDynamicPartitioningConfiguration)(ptr)
+	var objs []FirehoseDeliveryStreamSpecExtendedS3ConfigurationDynamicPartitioningConfiguration
+	if obj != nil {
+		objs = []FirehoseDeliveryStreamSpecExtendedS3ConfigurationDynamicPartitioningConfiguration{*obj}
+	}
+
+	jsonit := jsoniter.Config{
+		EscapeHTML:             true,
+		SortMapKeys:            true,
+		ValidateJsonRawMessage: true,
+		TagKey:                 "tf",
+		TypeEncoders:           getEncodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(FirehoseDeliveryStreamSpecExtendedS3ConfigurationDynamicPartitioningConfiguration{}).Type1())),
+	}.Froze()
+
+	byt, _ := jsonit.Marshal(objs)
+
+	stream.Write(byt)
+}
+
+func (FirehoseDeliveryStreamSpecExtendedS3ConfigurationDynamicPartitioningConfigurationCodec) Decode(ptr unsafe.Pointer, iter *jsoniter.Iterator) {
+	switch iter.WhatIsNext() {
+	case jsoniter.NilValue:
+		iter.Skip()
+		*(*FirehoseDeliveryStreamSpecExtendedS3ConfigurationDynamicPartitioningConfiguration)(ptr) = FirehoseDeliveryStreamSpecExtendedS3ConfigurationDynamicPartitioningConfiguration{}
+		return
+	case jsoniter.ArrayValue:
+		objsByte := iter.SkipAndReturnBytes()
+		if len(objsByte) > 0 {
+			var objs []FirehoseDeliveryStreamSpecExtendedS3ConfigurationDynamicPartitioningConfiguration
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(FirehoseDeliveryStreamSpecExtendedS3ConfigurationDynamicPartitioningConfiguration{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objsByte, &objs)
+
+			if len(objs) > 0 {
+				*(*FirehoseDeliveryStreamSpecExtendedS3ConfigurationDynamicPartitioningConfiguration)(ptr) = objs[0]
+			} else {
+				*(*FirehoseDeliveryStreamSpecExtendedS3ConfigurationDynamicPartitioningConfiguration)(ptr) = FirehoseDeliveryStreamSpecExtendedS3ConfigurationDynamicPartitioningConfiguration{}
+			}
+		} else {
+			*(*FirehoseDeliveryStreamSpecExtendedS3ConfigurationDynamicPartitioningConfiguration)(ptr) = FirehoseDeliveryStreamSpecExtendedS3ConfigurationDynamicPartitioningConfiguration{}
+		}
+	case jsoniter.ObjectValue:
+		objByte := iter.SkipAndReturnBytes()
+		if len(objByte) > 0 {
+			var obj FirehoseDeliveryStreamSpecExtendedS3ConfigurationDynamicPartitioningConfiguration
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(FirehoseDeliveryStreamSpecExtendedS3ConfigurationDynamicPartitioningConfiguration{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objByte, &obj)
+
+			*(*FirehoseDeliveryStreamSpecExtendedS3ConfigurationDynamicPartitioningConfiguration)(ptr) = obj
+		} else {
+			*(*FirehoseDeliveryStreamSpecExtendedS3ConfigurationDynamicPartitioningConfiguration)(ptr) = FirehoseDeliveryStreamSpecExtendedS3ConfigurationDynamicPartitioningConfiguration{}
+		}
+	default:
+		iter.ReportError("decode FirehoseDeliveryStreamSpecExtendedS3ConfigurationDynamicPartitioningConfiguration", "unexpected JSON type")
+	}
+}
+
+// +k8s:deepcopy-gen=false
 type FirehoseDeliveryStreamSpecExtendedS3ConfigurationProcessingConfigurationCodec struct {
 }
 
@@ -4742,5 +4825,84 @@ func (FirehoseDeliveryStreamSpecSplunkConfigurationProcessingConfigurationCodec)
 		}
 	default:
 		iter.ReportError("decode FirehoseDeliveryStreamSpecSplunkConfigurationProcessingConfiguration", "unexpected JSON type")
+	}
+}
+
+// +k8s:deepcopy-gen=false
+type StreamSpecStreamModeDetailsCodec struct {
+}
+
+func (StreamSpecStreamModeDetailsCodec) IsEmpty(ptr unsafe.Pointer) bool {
+	return (*StreamSpecStreamModeDetails)(ptr) == nil
+}
+
+func (StreamSpecStreamModeDetailsCodec) Encode(ptr unsafe.Pointer, stream *jsoniter.Stream) {
+	obj := (*StreamSpecStreamModeDetails)(ptr)
+	var objs []StreamSpecStreamModeDetails
+	if obj != nil {
+		objs = []StreamSpecStreamModeDetails{*obj}
+	}
+
+	jsonit := jsoniter.Config{
+		EscapeHTML:             true,
+		SortMapKeys:            true,
+		ValidateJsonRawMessage: true,
+		TagKey:                 "tf",
+		TypeEncoders:           getEncodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(StreamSpecStreamModeDetails{}).Type1())),
+	}.Froze()
+
+	byt, _ := jsonit.Marshal(objs)
+
+	stream.Write(byt)
+}
+
+func (StreamSpecStreamModeDetailsCodec) Decode(ptr unsafe.Pointer, iter *jsoniter.Iterator) {
+	switch iter.WhatIsNext() {
+	case jsoniter.NilValue:
+		iter.Skip()
+		*(*StreamSpecStreamModeDetails)(ptr) = StreamSpecStreamModeDetails{}
+		return
+	case jsoniter.ArrayValue:
+		objsByte := iter.SkipAndReturnBytes()
+		if len(objsByte) > 0 {
+			var objs []StreamSpecStreamModeDetails
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(StreamSpecStreamModeDetails{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objsByte, &objs)
+
+			if len(objs) > 0 {
+				*(*StreamSpecStreamModeDetails)(ptr) = objs[0]
+			} else {
+				*(*StreamSpecStreamModeDetails)(ptr) = StreamSpecStreamModeDetails{}
+			}
+		} else {
+			*(*StreamSpecStreamModeDetails)(ptr) = StreamSpecStreamModeDetails{}
+		}
+	case jsoniter.ObjectValue:
+		objByte := iter.SkipAndReturnBytes()
+		if len(objByte) > 0 {
+			var obj StreamSpecStreamModeDetails
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(StreamSpecStreamModeDetails{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objByte, &obj)
+
+			*(*StreamSpecStreamModeDetails)(ptr) = obj
+		} else {
+			*(*StreamSpecStreamModeDetails)(ptr) = StreamSpecStreamModeDetails{}
+		}
+	default:
+		iter.ReportError("decode StreamSpecStreamModeDetails", "unexpected JSON type")
 	}
 }

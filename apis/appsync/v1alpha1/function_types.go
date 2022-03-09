@@ -41,6 +41,20 @@ type Function struct {
 	Status            FunctionStatus `json:"status,omitempty"`
 }
 
+type FunctionSpecSyncConfigLambdaConflictHandlerConfig struct {
+	// +optional
+	LambdaConflictHandlerArn *string `json:"lambdaConflictHandlerArn,omitempty" tf:"lambda_conflict_handler_arn"`
+}
+
+type FunctionSpecSyncConfig struct {
+	// +optional
+	ConflictDetection *string `json:"conflictDetection,omitempty" tf:"conflict_detection"`
+	// +optional
+	ConflictHandler *string `json:"conflictHandler,omitempty" tf:"conflict_handler"`
+	// +optional
+	LambdaConflictHandlerConfig *FunctionSpecSyncConfigLambdaConflictHandlerConfig `json:"lambdaConflictHandlerConfig,omitempty" tf:"lambda_conflict_handler_config"`
+}
+
 type FunctionSpec struct {
 	State *FunctionSpecResource `json:"state,omitempty" tf:"-"`
 
@@ -67,10 +81,14 @@ type FunctionSpecResource struct {
 	// +optional
 	FunctionID *string `json:"functionID,omitempty" tf:"function_id"`
 	// +optional
-	FunctionVersion         *string `json:"functionVersion,omitempty" tf:"function_version"`
+	FunctionVersion *string `json:"functionVersion,omitempty" tf:"function_version"`
+	// +optional
+	MaxBatchSize            *int64  `json:"maxBatchSize,omitempty" tf:"max_batch_size"`
 	Name                    *string `json:"name" tf:"name"`
 	RequestMappingTemplate  *string `json:"requestMappingTemplate" tf:"request_mapping_template"`
 	ResponseMappingTemplate *string `json:"responseMappingTemplate" tf:"response_mapping_template"`
+	// +optional
+	SyncConfig *FunctionSpecSyncConfig `json:"syncConfig,omitempty" tf:"sync_config"`
 }
 
 type FunctionStatus struct {

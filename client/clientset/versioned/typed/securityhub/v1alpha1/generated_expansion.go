@@ -22,6 +22,8 @@ type AccountExpansion interface{}
 
 type ActionTargetExpansion interface{}
 
+type FindingAggregatorExpansion interface{}
+
 type InsightExpansion interface{}
 
 type InviteAccepterExpansion interface{}
@@ -30,6 +32,10 @@ type MemberExpansion interface{}
 
 type OrganizationAdminAccountExpansion interface{}
 
+type OrganizationConfigurationExpansion interface{}
+
 type ProductSubscriptionExpansion interface{}
+
+type StandardsControlExpansion interface{}
 
 type StandardsSubscriptionExpansion interface{}

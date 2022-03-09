@@ -65,11 +65,26 @@ spec:
                     type: string
                   dynamodbConfig:
                     properties:
+                      deltaSyncConfig:
+                        properties:
+                          baseTableTtl:
+                            format: int64
+                            type: integer
+                          deltaSyncTableName:
+                            type: string
+                          deltaSyncTableTtl:
+                            format: int64
+                            type: integer
+                        required:
+                        - deltaSyncTableName
+                        type: object
                       region:
                         type: string
                       tableName:
                         type: string
                       useCallerCredentials:
+                        type: boolean
+                      versioned:
                         type: boolean
                     required:
                     - tableName
@@ -85,6 +100,18 @@ spec:
                     type: object
                   httpConfig:
                     properties:
+                      authorizationConfig:
+                        properties:
+                          authorizationType:
+                            type: string
+                          awsIamConfig:
+                            properties:
+                              signingRegion:
+                                type: string
+                              signingServiceName:
+                                type: string
+                            type: object
+                        type: object
                       endpoint:
                         type: string
                     required:
@@ -101,6 +128,27 @@ spec:
                     type: object
                   name:
                     type: string
+                  relationalDatabaseConfig:
+                    properties:
+                      httpEndpointConfig:
+                        properties:
+                          awsSecretStoreArn:
+                            type: string
+                          databaseName:
+                            type: string
+                          dbClusterIdentifier:
+                            type: string
+                          region:
+                            type: string
+                          schema:
+                            type: string
+                        required:
+                        - awsSecretStoreArn
+                        - dbClusterIdentifier
+                        type: object
+                      sourceType:
+                        type: string
+                    type: object
                   serviceRoleArn:
                     type: string
                   type:
@@ -120,11 +168,26 @@ spec:
                     type: string
                   dynamodbConfig:
                     properties:
+                      deltaSyncConfig:
+                        properties:
+                          baseTableTtl:
+                            format: int64
+                            type: integer
+                          deltaSyncTableName:
+                            type: string
+                          deltaSyncTableTtl:
+                            format: int64
+                            type: integer
+                        required:
+                        - deltaSyncTableName
+                        type: object
                       region:
                         type: string
                       tableName:
                         type: string
                       useCallerCredentials:
+                        type: boolean
+                      versioned:
                         type: boolean
                     required:
                     - tableName
@@ -140,6 +203,18 @@ spec:
                     type: object
                   httpConfig:
                     properties:
+                      authorizationConfig:
+                        properties:
+                          authorizationType:
+                            type: string
+                          awsIamConfig:
+                            properties:
+                              signingRegion:
+                                type: string
+                              signingServiceName:
+                                type: string
+                            type: object
+                        type: object
                       endpoint:
                         type: string
                     required:
@@ -156,6 +231,27 @@ spec:
                     type: object
                   name:
                     type: string
+                  relationalDatabaseConfig:
+                    properties:
+                      httpEndpointConfig:
+                        properties:
+                          awsSecretStoreArn:
+                            type: string
+                          databaseName:
+                            type: string
+                          dbClusterIdentifier:
+                            type: string
+                          region:
+                            type: string
+                          schema:
+                            type: string
+                        required:
+                        - awsSecretStoreArn
+                        - dbClusterIdentifier
+                        type: object
+                      sourceType:
+                        type: string
+                    type: object
                   serviceRoleArn:
                     type: string
                   type:

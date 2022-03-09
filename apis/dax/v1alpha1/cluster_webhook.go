@@ -43,6 +43,7 @@ var _ webhook.Validator = &Cluster{}
 
 var clusterForceNewList = map[string]bool{
 	"/availability_zones":               true,
+	"/cluster_endpoint_encryption_type": true,
 	"/cluster_name":                     true,
 	"/iam_role_arn":                     true,
 	"/node_type":                        true,
@@ -93,7 +94,7 @@ func (r *Cluster) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range clusterForceNewList {
+	for key, _ := range clusterForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

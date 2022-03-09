@@ -27,12 +27,22 @@ import (
 
 type PrometheusV1alpha1Interface interface {
 	RESTClient() rest.Interface
+	AlertManagerDefinitionsGetter
+	RuleGroupNamespacesGetter
 	WorkspacesGetter
 }
 
 // PrometheusV1alpha1Client is used to interact with features provided by the prometheus.aws.kubeform.com group.
 type PrometheusV1alpha1Client struct {
 	restClient rest.Interface
+}
+
+func (c *PrometheusV1alpha1Client) AlertManagerDefinitions(namespace string) AlertManagerDefinitionInterface {
+	return newAlertManagerDefinitions(c, namespace)
+}
+
+func (c *PrometheusV1alpha1Client) RuleGroupNamespaces(namespace string) RuleGroupNamespaceInterface {
+	return newRuleGroupNamespaces(c, namespace)
 }
 
 func (c *PrometheusV1alpha1Client) Workspaces(namespace string) WorkspaceInterface {

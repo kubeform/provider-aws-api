@@ -74,6 +74,8 @@ type ScheduleSpecResource struct {
 	ScheduledActionName *string `json:"scheduledActionName" tf:"scheduled_action_name"`
 	// +optional
 	StartTime *string `json:"startTime,omitempty" tf:"start_time"`
+	// +optional
+	TimeZone *string `json:"timeZone,omitempty" tf:"time_zone"`
 }
 
 type ScheduleStatus struct {

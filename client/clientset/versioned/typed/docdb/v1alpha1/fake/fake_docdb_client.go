@@ -45,6 +45,10 @@ func (c *FakeDocdbV1alpha1) ClusterSnapshots(namespace string) v1alpha1.ClusterS
 	return &FakeClusterSnapshots{c, namespace}
 }
 
+func (c *FakeDocdbV1alpha1) GlobalClusters(namespace string) v1alpha1.GlobalClusterInterface {
+	return &FakeGlobalClusters{c, namespace}
+}
+
 func (c *FakeDocdbV1alpha1) SubnetGroups(namespace string) v1alpha1.SubnetGroupInterface {
 	return &FakeSubnetGroups{c, namespace}
 }

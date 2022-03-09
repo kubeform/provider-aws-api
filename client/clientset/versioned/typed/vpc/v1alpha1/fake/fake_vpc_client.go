@@ -41,8 +41,16 @@ func (c *FakeVpcV1alpha1) Endpoints(namespace string) v1alpha1.EndpointInterface
 	return &FakeEndpoints{c, namespace}
 }
 
+func (c *FakeVpcV1alpha1) EndpointConnectionAccepters(namespace string) v1alpha1.EndpointConnectionAccepterInterface {
+	return &FakeEndpointConnectionAccepters{c, namespace}
+}
+
 func (c *FakeVpcV1alpha1) EndpointConnectionNotifications(namespace string) v1alpha1.EndpointConnectionNotificationInterface {
 	return &FakeEndpointConnectionNotifications{c, namespace}
+}
+
+func (c *FakeVpcV1alpha1) EndpointPolicies(namespace string) v1alpha1.EndpointPolicyInterface {
+	return &FakeEndpointPolicies{c, namespace}
 }
 
 func (c *FakeVpcV1alpha1) EndpointRouteTableAssociations(namespace string) v1alpha1.EndpointRouteTableAssociationInterface {
@@ -61,8 +69,40 @@ func (c *FakeVpcV1alpha1) EndpointSubnetAssociations(namespace string) v1alpha1.
 	return &FakeEndpointSubnetAssociations{c, namespace}
 }
 
+func (c *FakeVpcV1alpha1) Ipams(namespace string) v1alpha1.IpamInterface {
+	return &FakeIpams{c, namespace}
+}
+
+func (c *FakeVpcV1alpha1) IpamOrganizationAdminAccounts(namespace string) v1alpha1.IpamOrganizationAdminAccountInterface {
+	return &FakeIpamOrganizationAdminAccounts{c, namespace}
+}
+
+func (c *FakeVpcV1alpha1) IpamPools(namespace string) v1alpha1.IpamPoolInterface {
+	return &FakeIpamPools{c, namespace}
+}
+
+func (c *FakeVpcV1alpha1) IpamPoolCIDRs(namespace string) v1alpha1.IpamPoolCIDRInterface {
+	return &FakeIpamPoolCIDRs{c, namespace}
+}
+
+func (c *FakeVpcV1alpha1) IpamPoolCIDRAllocations(namespace string) v1alpha1.IpamPoolCIDRAllocationInterface {
+	return &FakeIpamPoolCIDRAllocations{c, namespace}
+}
+
+func (c *FakeVpcV1alpha1) IpamPreviewNextCIDRs(namespace string) v1alpha1.IpamPreviewNextCIDRInterface {
+	return &FakeIpamPreviewNextCIDRs{c, namespace}
+}
+
+func (c *FakeVpcV1alpha1) IpamScopes(namespace string) v1alpha1.IpamScopeInterface {
+	return &FakeIpamScopes{c, namespace}
+}
+
 func (c *FakeVpcV1alpha1) Ipv4CIDRBlockAssociations(namespace string) v1alpha1.Ipv4CIDRBlockAssociationInterface {
 	return &FakeIpv4CIDRBlockAssociations{c, namespace}
+}
+
+func (c *FakeVpcV1alpha1) Ipv6CIDRBlockAssociations(namespace string) v1alpha1.Ipv6CIDRBlockAssociationInterface {
+	return &FakeIpv6CIDRBlockAssociations{c, namespace}
 }
 
 func (c *FakeVpcV1alpha1) PeeringConnections(namespace string) v1alpha1.PeeringConnectionInterface {

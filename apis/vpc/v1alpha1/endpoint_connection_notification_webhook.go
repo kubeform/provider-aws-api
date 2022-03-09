@@ -89,7 +89,7 @@ func (r *EndpointConnectionNotification) ValidateUpdate(old runtime.Object) erro
 		return err
 	}
 
-	for key := range endpointconnectionnotificationForceNewList {
+	for key, _ := range endpointconnectionnotificationForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

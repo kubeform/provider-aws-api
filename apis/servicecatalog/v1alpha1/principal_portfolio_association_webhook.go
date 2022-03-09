@@ -91,7 +91,7 @@ func (r *PrincipalPortfolioAssociation) ValidateUpdate(old runtime.Object) error
 		return err
 	}
 
-	for key := range principalportfolioassociationForceNewList {
+	for key, _ := range principalportfolioassociationForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

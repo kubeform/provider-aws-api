@@ -89,7 +89,7 @@ func (r *LicenseConfiguration) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range licenseconfigurationForceNewList {
+	for key, _ := range licenseconfigurationForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

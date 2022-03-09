@@ -59,6 +59,8 @@ spec:
                 properties:
                   arn:
                     type: string
+                  connectionID:
+                    type: string
                   connectionsBandwidth:
                     type: string
                   forceDestroy:
@@ -72,6 +74,10 @@ spec:
                   location:
                     type: string
                   name:
+                    type: string
+                  ownerAccountID:
+                    type: string
+                  providerName:
                     type: string
                   tags:
                     additionalProperties:
@@ -90,6 +96,8 @@ spec:
                 properties:
                   arn:
                     type: string
+                  connectionID:
+                    type: string
                   connectionsBandwidth:
                     type: string
                   forceDestroy:
@@ -103,6 +111,10 @@ spec:
                   location:
                     type: string
                   name:
+                    type: string
+                  ownerAccountID:
+                    type: string
+                  providerName:
                     type: string
                   tags:
                     additionalProperties:

@@ -88,7 +88,7 @@ func (r *RouteTable) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range routetableForceNewList {
+	for key, _ := range routetableForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

@@ -27,6 +27,7 @@ import (
 
 type TransferV1alpha1Interface interface {
 	RESTClient() rest.Interface
+	AccessesGetter
 	ServersGetter
 	SshKeysGetter
 	UsersGetter
@@ -35,6 +36,10 @@ type TransferV1alpha1Interface interface {
 // TransferV1alpha1Client is used to interact with features provided by the transfer.aws.kubeform.com group.
 type TransferV1alpha1Client struct {
 	restClient rest.Interface
+}
+
+func (c *TransferV1alpha1Client) Accesses(namespace string) AccessInterface {
+	return newAccesses(c, namespace)
 }
 
 func (c *TransferV1alpha1Client) Servers(namespace string) ServerInterface {

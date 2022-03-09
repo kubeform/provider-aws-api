@@ -42,15 +42,17 @@ func (r *LayerVersion) SetupWebhookWithManager(mgr ctrl.Manager) error {
 var _ webhook.Validator = &LayerVersion{}
 
 var layerversionForceNewList = map[string]bool{
-	"/compatible_runtimes": true,
-	"/description":         true,
-	"/filename":            true,
-	"/layer_name":          true,
-	"/license_info":        true,
-	"/s3_bucket":           true,
-	"/s3_key":              true,
-	"/s3_object_version":   true,
-	"/source_code_hash":    true,
+	"/compatible_architectures": true,
+	"/compatible_runtimes":      true,
+	"/description":              true,
+	"/filename":                 true,
+	"/layer_name":               true,
+	"/license_info":             true,
+	"/s3_bucket":                true,
+	"/s3_key":                   true,
+	"/s3_object_version":        true,
+	"/skip_destroy":             true,
+	"/source_code_hash":         true,
 }
 
 // ValidateCreate implements webhook.Validator so a webhook will be registered for the type
@@ -96,7 +98,7 @@ func (r *LayerVersion) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range layerversionForceNewList {
+	for key, _ := range layerversionForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

@@ -28,6 +28,8 @@ type Interface interface {
 	Applications() ApplicationInformer
 	// CustomLayers returns a CustomLayerInformer.
 	CustomLayers() CustomLayerInformer
+	// EcsClusterLayers returns a EcsClusterLayerInformer.
+	EcsClusterLayers() EcsClusterLayerInformer
 	// GangliaLayers returns a GangliaLayerInformer.
 	GangliaLayers() GangliaLayerInformer
 	// HaproxyLayers returns a HaproxyLayerInformer.
@@ -77,6 +79,11 @@ func (v *version) Applications() ApplicationInformer {
 // CustomLayers returns a CustomLayerInformer.
 func (v *version) CustomLayers() CustomLayerInformer {
 	return &customLayerInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
+// EcsClusterLayers returns a EcsClusterLayerInformer.
+func (v *version) EcsClusterLayers() EcsClusterLayerInformer {
+	return &ecsClusterLayerInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
 }
 
 // GangliaLayers returns a GangliaLayerInformer.

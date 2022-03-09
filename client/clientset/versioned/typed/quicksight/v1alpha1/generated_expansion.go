@@ -18,6 +18,10 @@ limitations under the License.
 
 package v1alpha1
 
+type DataSourceExpansion interface{}
+
 type GroupExpansion interface{}
+
+type GroupMembershipExpansion interface{}
 
 type UserExpansion interface{}

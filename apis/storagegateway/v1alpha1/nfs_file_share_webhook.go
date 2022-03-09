@@ -90,7 +90,7 @@ func (r *NfsFileShare) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range nfsfileshareForceNewList {
+	for key, _ := range nfsfileshareForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

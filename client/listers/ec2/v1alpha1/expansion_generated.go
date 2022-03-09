@@ -82,6 +82,14 @@ type FleetListerExpansion interface{}
 // FleetNamespaceLister.
 type FleetNamespaceListerExpansion interface{}
 
+// HostListerExpansion allows custom methods to be added to
+// HostLister.
+type HostListerExpansion interface{}
+
+// HostNamespaceListerExpansion allows custom methods to be added to
+// HostNamespaceLister.
+type HostNamespaceListerExpansion interface{}
+
 // LocalGatewayRouteListerExpansion allows custom methods to be added to
 // LocalGatewayRouteLister.
 type LocalGatewayRouteListerExpansion interface{}
@@ -105,6 +113,38 @@ type ManagedPrefixListListerExpansion interface{}
 // ManagedPrefixListNamespaceListerExpansion allows custom methods to be added to
 // ManagedPrefixListNamespaceLister.
 type ManagedPrefixListNamespaceListerExpansion interface{}
+
+// ManagedPrefixListEntryListerExpansion allows custom methods to be added to
+// ManagedPrefixListEntryLister.
+type ManagedPrefixListEntryListerExpansion interface{}
+
+// ManagedPrefixListEntryNamespaceListerExpansion allows custom methods to be added to
+// ManagedPrefixListEntryNamespaceLister.
+type ManagedPrefixListEntryNamespaceListerExpansion interface{}
+
+// NetworkInsightsPathListerExpansion allows custom methods to be added to
+// NetworkInsightsPathLister.
+type NetworkInsightsPathListerExpansion interface{}
+
+// NetworkInsightsPathNamespaceListerExpansion allows custom methods to be added to
+// NetworkInsightsPathNamespaceLister.
+type NetworkInsightsPathNamespaceListerExpansion interface{}
+
+// SerialConsoleAccessListerExpansion allows custom methods to be added to
+// SerialConsoleAccessLister.
+type SerialConsoleAccessListerExpansion interface{}
+
+// SerialConsoleAccessNamespaceListerExpansion allows custom methods to be added to
+// SerialConsoleAccessNamespaceLister.
+type SerialConsoleAccessNamespaceListerExpansion interface{}
+
+// SubnetCIDRReservationListerExpansion allows custom methods to be added to
+// SubnetCIDRReservationLister.
+type SubnetCIDRReservationListerExpansion interface{}
+
+// SubnetCIDRReservationNamespaceListerExpansion allows custom methods to be added to
+// SubnetCIDRReservationNamespaceLister.
+type SubnetCIDRReservationNamespaceListerExpansion interface{}
 
 // TagListerExpansion allows custom methods to be added to
 // TagLister.
@@ -153,6 +193,54 @@ type TransitGatewayListerExpansion interface{}
 // TransitGatewayNamespaceListerExpansion allows custom methods to be added to
 // TransitGatewayNamespaceLister.
 type TransitGatewayNamespaceListerExpansion interface{}
+
+// TransitGatewayConnectListerExpansion allows custom methods to be added to
+// TransitGatewayConnectLister.
+type TransitGatewayConnectListerExpansion interface{}
+
+// TransitGatewayConnectNamespaceListerExpansion allows custom methods to be added to
+// TransitGatewayConnectNamespaceLister.
+type TransitGatewayConnectNamespaceListerExpansion interface{}
+
+// TransitGatewayConnectPeerListerExpansion allows custom methods to be added to
+// TransitGatewayConnectPeerLister.
+type TransitGatewayConnectPeerListerExpansion interface{}
+
+// TransitGatewayConnectPeerNamespaceListerExpansion allows custom methods to be added to
+// TransitGatewayConnectPeerNamespaceLister.
+type TransitGatewayConnectPeerNamespaceListerExpansion interface{}
+
+// TransitGatewayMulticastDomainListerExpansion allows custom methods to be added to
+// TransitGatewayMulticastDomainLister.
+type TransitGatewayMulticastDomainListerExpansion interface{}
+
+// TransitGatewayMulticastDomainNamespaceListerExpansion allows custom methods to be added to
+// TransitGatewayMulticastDomainNamespaceLister.
+type TransitGatewayMulticastDomainNamespaceListerExpansion interface{}
+
+// TransitGatewayMulticastDomainAssociationListerExpansion allows custom methods to be added to
+// TransitGatewayMulticastDomainAssociationLister.
+type TransitGatewayMulticastDomainAssociationListerExpansion interface{}
+
+// TransitGatewayMulticastDomainAssociationNamespaceListerExpansion allows custom methods to be added to
+// TransitGatewayMulticastDomainAssociationNamespaceLister.
+type TransitGatewayMulticastDomainAssociationNamespaceListerExpansion interface{}
+
+// TransitGatewayMulticastGroupMemberListerExpansion allows custom methods to be added to
+// TransitGatewayMulticastGroupMemberLister.
+type TransitGatewayMulticastGroupMemberListerExpansion interface{}
+
+// TransitGatewayMulticastGroupMemberNamespaceListerExpansion allows custom methods to be added to
+// TransitGatewayMulticastGroupMemberNamespaceLister.
+type TransitGatewayMulticastGroupMemberNamespaceListerExpansion interface{}
+
+// TransitGatewayMulticastGroupSourceListerExpansion allows custom methods to be added to
+// TransitGatewayMulticastGroupSourceLister.
+type TransitGatewayMulticastGroupSourceListerExpansion interface{}
+
+// TransitGatewayMulticastGroupSourceNamespaceListerExpansion allows custom methods to be added to
+// TransitGatewayMulticastGroupSourceNamespaceLister.
+type TransitGatewayMulticastGroupSourceNamespaceListerExpansion interface{}
 
 // TransitGatewayPeeringAttachmentListerExpansion allows custom methods to be added to
 // TransitGatewayPeeringAttachmentLister.

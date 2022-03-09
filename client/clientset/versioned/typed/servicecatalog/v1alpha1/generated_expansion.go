@@ -34,6 +34,8 @@ type ProductExpansion interface{}
 
 type ProductPortfolioAssociationExpansion interface{}
 
+type ProvisionedProductExpansion interface{}
+
 type ProvisioningArtifactExpansion interface{}
 
 type ServiceActionExpansion interface{}

@@ -19,10 +19,14 @@ limitations under the License.
 package provider
 
 type AwsSpecAssumeRole struct {
-	// Seconds to restrict the assume role session duration.
+	// The duration, between 15 minutes and 12 hours, of the role session. Valid time units are ns, us (or µs), ms, s, h, or m.
 	// +optional
+	Duration *string `json:"duration,omitempty" tf:"duration"`
+	// The duration, in seconds, of the role session.
+	// +optional
+	// Deprecated
 	DurationSeconds *int64 `json:"durationSeconds,omitempty" tf:"duration_seconds"`
-	// Unique identifier that might be required for assuming a role in another account.
+	// A unique identifier that might be required when you assume a role in another account.
 	// +optional
 	ExternalID *string `json:"externalID,omitempty" tf:"external_id"`
 	// IAM Policy JSON describing further restricting permissions for the IAM Role being assumed.
@@ -34,7 +38,7 @@ type AwsSpecAssumeRole struct {
 	// Amazon Resource Name of an IAM Role to assume prior to making API calls.
 	// +optional
 	RoleArn *string `json:"roleArn,omitempty" tf:"role_arn"`
-	// Identifier for the assumed role session.
+	// An identifier for the assumed role session.
 	// +optional
 	SessionName *string `json:"sessionName,omitempty" tf:"session_name"`
 	// Assume role session tags.
@@ -57,28 +61,70 @@ type AwsSpecEndpoints struct {
 	Accessanalyzer *string `json:"accessanalyzer,omitempty" tf:"accessanalyzer"`
 	// Use this to override the default service endpoint URL
 	// +optional
+	Account *string `json:"account,omitempty" tf:"account"`
+	// Use this to override the default service endpoint URL
+	// +optional
 	Acm *string `json:"acm,omitempty" tf:"acm"`
 	// Use this to override the default service endpoint URL
 	// +optional
 	Acmpca *string `json:"acmpca,omitempty" tf:"acmpca"`
 	// Use this to override the default service endpoint URL
 	// +optional
+	Alexaforbusiness *string `json:"alexaforbusiness,omitempty" tf:"alexaforbusiness"`
+	// Use this to override the default service endpoint URL
+	// +optional
+	Amg *string `json:"amg,omitempty" tf:"amg"`
+	// Use this to override the default service endpoint URL
+	// +optional
+	Amp *string `json:"amp,omitempty" tf:"amp"`
+	// Use this to override the default service endpoint URL
+	// +optional
 	Amplify *string `json:"amplify,omitempty" tf:"amplify"`
+	// Use this to override the default service endpoint URL
+	// +optional
+	Amplifybackend *string `json:"amplifybackend,omitempty" tf:"amplifybackend"`
 	// Use this to override the default service endpoint URL
 	// +optional
 	Apigateway *string `json:"apigateway,omitempty" tf:"apigateway"`
 	// Use this to override the default service endpoint URL
 	// +optional
+	Apigatewayv2 *string `json:"apigatewayv2,omitempty" tf:"apigatewayv2"`
+	// Use this to override the default service endpoint URL
+	// +optional
+	Appautoscaling *string `json:"appautoscaling,omitempty" tf:"appautoscaling"`
+	// Use this to override the default service endpoint URL
+	// +optional
 	Appconfig *string `json:"appconfig,omitempty" tf:"appconfig"`
 	// Use this to override the default service endpoint URL
 	// +optional
+	Appflow *string `json:"appflow,omitempty" tf:"appflow"`
+	// Use this to override the default service endpoint URL
+	// +optional
+	Appintegrations *string `json:"appintegrations,omitempty" tf:"appintegrations"`
+	// Use this to override the default service endpoint URL
+	// +optional
+	Appintegrationsservice *string `json:"appintegrationsservice,omitempty" tf:"appintegrationsservice"`
+	// Use this to override the default service endpoint URL
+	// +optional
 	Applicationautoscaling *string `json:"applicationautoscaling,omitempty" tf:"applicationautoscaling"`
+	// Use this to override the default service endpoint URL
+	// +optional
+	Applicationcostprofiler *string `json:"applicationcostprofiler,omitempty" tf:"applicationcostprofiler"`
+	// Use this to override the default service endpoint URL
+	// +optional
+	Applicationdiscovery *string `json:"applicationdiscovery,omitempty" tf:"applicationdiscovery"`
+	// Use this to override the default service endpoint URL
+	// +optional
+	Applicationdiscoveryservice *string `json:"applicationdiscoveryservice,omitempty" tf:"applicationdiscoveryservice"`
 	// Use this to override the default service endpoint URL
 	// +optional
 	Applicationinsights *string `json:"applicationinsights,omitempty" tf:"applicationinsights"`
 	// Use this to override the default service endpoint URL
 	// +optional
 	Appmesh *string `json:"appmesh,omitempty" tf:"appmesh"`
+	// Use this to override the default service endpoint URL
+	// +optional
+	Appregistry *string `json:"appregistry,omitempty" tf:"appregistry"`
 	// Use this to override the default service endpoint URL
 	// +optional
 	Apprunner *string `json:"apprunner,omitempty" tf:"apprunner"`
@@ -96,6 +142,9 @@ type AwsSpecEndpoints struct {
 	Auditmanager *string `json:"auditmanager,omitempty" tf:"auditmanager"`
 	// Use this to override the default service endpoint URL
 	// +optional
+	Augmentedairuntime *string `json:"augmentedairuntime,omitempty" tf:"augmentedairuntime"`
+	// Use this to override the default service endpoint URL
+	// +optional
 	Autoscaling *string `json:"autoscaling,omitempty" tf:"autoscaling"`
 	// Use this to override the default service endpoint URL
 	// +optional
@@ -108,6 +157,9 @@ type AwsSpecEndpoints struct {
 	Batch *string `json:"batch,omitempty" tf:"batch"`
 	// Use this to override the default service endpoint URL
 	// +optional
+	Braket *string `json:"braket,omitempty" tf:"braket"`
+	// Use this to override the default service endpoint URL
+	// +optional
 	Budgets *string `json:"budgets,omitempty" tf:"budgets"`
 	// Use this to override the default service endpoint URL
 	// +optional
@@ -115,6 +167,15 @@ type AwsSpecEndpoints struct {
 	// Use this to override the default service endpoint URL
 	// +optional
 	Cloud9 *string `json:"cloud9,omitempty" tf:"cloud9"`
+	// Use this to override the default service endpoint URL
+	// +optional
+	Cloudcontrol *string `json:"cloudcontrol,omitempty" tf:"cloudcontrol"`
+	// Use this to override the default service endpoint URL
+	// +optional
+	Cloudcontrolapi *string `json:"cloudcontrolapi,omitempty" tf:"cloudcontrolapi"`
+	// Use this to override the default service endpoint URL
+	// +optional
+	Clouddirectory *string `json:"clouddirectory,omitempty" tf:"clouddirectory"`
 	// Use this to override the default service endpoint URL
 	// +optional
 	Cloudformation *string `json:"cloudformation,omitempty" tf:"cloudformation"`
@@ -126,7 +187,13 @@ type AwsSpecEndpoints struct {
 	Cloudhsm *string `json:"cloudhsm,omitempty" tf:"cloudhsm"`
 	// Use this to override the default service endpoint URL
 	// +optional
+	Cloudhsmv2 *string `json:"cloudhsmv2,omitempty" tf:"cloudhsmv2"`
+	// Use this to override the default service endpoint URL
+	// +optional
 	Cloudsearch *string `json:"cloudsearch,omitempty" tf:"cloudsearch"`
+	// Use this to override the default service endpoint URL
+	// +optional
+	Cloudsearchdomain *string `json:"cloudsearchdomain,omitempty" tf:"cloudsearchdomain"`
 	// Use this to override the default service endpoint URL
 	// +optional
 	Cloudtrail *string `json:"cloudtrail,omitempty" tf:"cloudtrail"`
@@ -141,6 +208,9 @@ type AwsSpecEndpoints struct {
 	Cloudwatchlogs *string `json:"cloudwatchlogs,omitempty" tf:"cloudwatchlogs"`
 	// Use this to override the default service endpoint URL
 	// +optional
+	Cloudwatchrum *string `json:"cloudwatchrum,omitempty" tf:"cloudwatchrum"`
+	// Use this to override the default service endpoint URL
+	// +optional
 	Codeartifact *string `json:"codeartifact,omitempty" tf:"codeartifact"`
 	// Use this to override the default service endpoint URL
 	// +optional
@@ -153,16 +223,43 @@ type AwsSpecEndpoints struct {
 	Codedeploy *string `json:"codedeploy,omitempty" tf:"codedeploy"`
 	// Use this to override the default service endpoint URL
 	// +optional
+	Codeguruprofiler *string `json:"codeguruprofiler,omitempty" tf:"codeguruprofiler"`
+	// Use this to override the default service endpoint URL
+	// +optional
+	Codegurureviewer *string `json:"codegurureviewer,omitempty" tf:"codegurureviewer"`
+	// Use this to override the default service endpoint URL
+	// +optional
 	Codepipeline *string `json:"codepipeline,omitempty" tf:"codepipeline"`
+	// Use this to override the default service endpoint URL
+	// +optional
+	Codestar *string `json:"codestar,omitempty" tf:"codestar"`
 	// Use this to override the default service endpoint URL
 	// +optional
 	Codestarconnections *string `json:"codestarconnections,omitempty" tf:"codestarconnections"`
 	// Use this to override the default service endpoint URL
 	// +optional
+	Codestarnotifications *string `json:"codestarnotifications,omitempty" tf:"codestarnotifications"`
+	// Use this to override the default service endpoint URL
+	// +optional
 	Cognitoidentity *string `json:"cognitoidentity,omitempty" tf:"cognitoidentity"`
 	// Use this to override the default service endpoint URL
 	// +optional
+	Cognitoidentityprovider *string `json:"cognitoidentityprovider,omitempty" tf:"cognitoidentityprovider"`
+	// Use this to override the default service endpoint URL
+	// +optional
 	Cognitoidp *string `json:"cognitoidp,omitempty" tf:"cognitoidp"`
+	// Use this to override the default service endpoint URL
+	// +optional
+	Cognitosync *string `json:"cognitosync,omitempty" tf:"cognitosync"`
+	// Use this to override the default service endpoint URL
+	// +optional
+	Comprehend *string `json:"comprehend,omitempty" tf:"comprehend"`
+	// Use this to override the default service endpoint URL
+	// +optional
+	Comprehendmedical *string `json:"comprehendmedical,omitempty" tf:"comprehendmedical"`
+	// Use this to override the default service endpoint URL
+	// +optional
+	Config *string `json:"config,omitempty" tf:"config"`
 	// Use this to override the default service endpoint URL
 	// +optional
 	Configservice *string `json:"configservice,omitempty" tf:"configservice"`
@@ -171,7 +268,25 @@ type AwsSpecEndpoints struct {
 	Connect *string `json:"connect,omitempty" tf:"connect"`
 	// Use this to override the default service endpoint URL
 	// +optional
+	Connectcontactlens *string `json:"connectcontactlens,omitempty" tf:"connectcontactlens"`
+	// Use this to override the default service endpoint URL
+	// +optional
+	Connectparticipant *string `json:"connectparticipant,omitempty" tf:"connectparticipant"`
+	// Use this to override the default service endpoint URL
+	// +optional
+	Costandusagereportservice *string `json:"costandusagereportservice,omitempty" tf:"costandusagereportservice"`
+	// Use this to override the default service endpoint URL
+	// +optional
+	Costexplorer *string `json:"costexplorer,omitempty" tf:"costexplorer"`
+	// Use this to override the default service endpoint URL
+	// +optional
 	Cur *string `json:"cur,omitempty" tf:"cur"`
+	// Use this to override the default service endpoint URL
+	// +optional
+	Databasemigration *string `json:"databasemigration,omitempty" tf:"databasemigration"`
+	// Use this to override the default service endpoint URL
+	// +optional
+	Databasemigrationservice *string `json:"databasemigrationservice,omitempty" tf:"databasemigrationservice"`
 	// Use this to override the default service endpoint URL
 	// +optional
 	Dataexchange *string `json:"dataexchange,omitempty" tf:"dataexchange"`
@@ -192,6 +307,9 @@ type AwsSpecEndpoints struct {
 	Devicefarm *string `json:"devicefarm,omitempty" tf:"devicefarm"`
 	// Use this to override the default service endpoint URL
 	// +optional
+	Devopsguru *string `json:"devopsguru,omitempty" tf:"devopsguru"`
+	// Use this to override the default service endpoint URL
+	// +optional
 	Directconnect *string `json:"directconnect,omitempty" tf:"directconnect"`
 	// Use this to override the default service endpoint URL
 	// +optional
@@ -210,7 +328,13 @@ type AwsSpecEndpoints struct {
 	Dynamodb *string `json:"dynamodb,omitempty" tf:"dynamodb"`
 	// Use this to override the default service endpoint URL
 	// +optional
+	Dynamodbstreams *string `json:"dynamodbstreams,omitempty" tf:"dynamodbstreams"`
+	// Use this to override the default service endpoint URL
+	// +optional
 	Ec2 *string `json:"ec2,omitempty" tf:"ec2"`
+	// Use this to override the default service endpoint URL
+	// +optional
+	Ec2instanceconnect *string `json:"ec2instanceconnect,omitempty" tf:"ec2instanceconnect"`
 	// Use this to override the default service endpoint URL
 	// +optional
 	Ecr *string `json:"ecr,omitempty" tf:"ecr"`
@@ -234,10 +358,22 @@ type AwsSpecEndpoints struct {
 	Elasticbeanstalk *string `json:"elasticbeanstalk,omitempty" tf:"elasticbeanstalk"`
 	// Use this to override the default service endpoint URL
 	// +optional
+	Elasticinference *string `json:"elasticinference,omitempty" tf:"elasticinference"`
+	// Use this to override the default service endpoint URL
+	// +optional
+	Elasticsearch *string `json:"elasticsearch,omitempty" tf:"elasticsearch"`
+	// Use this to override the default service endpoint URL
+	// +optional
+	Elasticsearchservice *string `json:"elasticsearchservice,omitempty" tf:"elasticsearchservice"`
+	// Use this to override the default service endpoint URL
+	// +optional
 	Elastictranscoder *string `json:"elastictranscoder,omitempty" tf:"elastictranscoder"`
 	// Use this to override the default service endpoint URL
 	// +optional
 	Elb *string `json:"elb,omitempty" tf:"elb"`
+	// Use this to override the default service endpoint URL
+	// +optional
+	Elbv2 *string `json:"elbv2,omitempty" tf:"elbv2"`
 	// Use this to override the default service endpoint URL
 	// +optional
 	Emr *string `json:"emr,omitempty" tf:"emr"`
@@ -249,13 +385,40 @@ type AwsSpecEndpoints struct {
 	Es *string `json:"es,omitempty" tf:"es"`
 	// Use this to override the default service endpoint URL
 	// +optional
+	Eventbridge *string `json:"eventbridge,omitempty" tf:"eventbridge"`
+	// Use this to override the default service endpoint URL
+	// +optional
+	Events *string `json:"events,omitempty" tf:"events"`
+	// Use this to override the default service endpoint URL
+	// +optional
+	Finspace *string `json:"finspace,omitempty" tf:"finspace"`
+	// Use this to override the default service endpoint URL
+	// +optional
+	Finspacedata *string `json:"finspacedata,omitempty" tf:"finspacedata"`
+	// Use this to override the default service endpoint URL
+	// +optional
 	Firehose *string `json:"firehose,omitempty" tf:"firehose"`
+	// Use this to override the default service endpoint URL
+	// +optional
+	Fis *string `json:"fis,omitempty" tf:"fis"`
 	// Use this to override the default service endpoint URL
 	// +optional
 	Fms *string `json:"fms,omitempty" tf:"fms"`
 	// Use this to override the default service endpoint URL
 	// +optional
 	Forecast *string `json:"forecast,omitempty" tf:"forecast"`
+	// Use this to override the default service endpoint URL
+	// +optional
+	Forecastquery *string `json:"forecastquery,omitempty" tf:"forecastquery"`
+	// Use this to override the default service endpoint URL
+	// +optional
+	Forecastqueryservice *string `json:"forecastqueryservice,omitempty" tf:"forecastqueryservice"`
+	// Use this to override the default service endpoint URL
+	// +optional
+	Forecastservice *string `json:"forecastservice,omitempty" tf:"forecastservice"`
+	// Use this to override the default service endpoint URL
+	// +optional
+	Frauddetector *string `json:"frauddetector,omitempty" tf:"frauddetector"`
 	// Use this to override the default service endpoint URL
 	// +optional
 	Fsx *string `json:"fsx,omitempty" tf:"fsx"`
@@ -273,10 +436,31 @@ type AwsSpecEndpoints struct {
 	Glue *string `json:"glue,omitempty" tf:"glue"`
 	// Use this to override the default service endpoint URL
 	// +optional
+	Gluedatabrew *string `json:"gluedatabrew,omitempty" tf:"gluedatabrew"`
+	// Use this to override the default service endpoint URL
+	// +optional
+	Grafana *string `json:"grafana,omitempty" tf:"grafana"`
+	// Use this to override the default service endpoint URL
+	// +optional
 	Greengrass *string `json:"greengrass,omitempty" tf:"greengrass"`
 	// Use this to override the default service endpoint URL
 	// +optional
+	Greengrassv2 *string `json:"greengrassv2,omitempty" tf:"greengrassv2"`
+	// Use this to override the default service endpoint URL
+	// +optional
+	Groundstation *string `json:"groundstation,omitempty" tf:"groundstation"`
+	// Use this to override the default service endpoint URL
+	// +optional
 	Guardduty *string `json:"guardduty,omitempty" tf:"guardduty"`
+	// Use this to override the default service endpoint URL
+	// +optional
+	Health *string `json:"health,omitempty" tf:"health"`
+	// Use this to override the default service endpoint URL
+	// +optional
+	Healthlake *string `json:"healthlake,omitempty" tf:"healthlake"`
+	// Use this to override the default service endpoint URL
+	// +optional
+	Honeycode *string `json:"honeycode,omitempty" tf:"honeycode"`
 	// Use this to override the default service endpoint URL
 	// +optional
 	Iam *string `json:"iam,omitempty" tf:"iam"`
@@ -294,13 +478,55 @@ type AwsSpecEndpoints struct {
 	Iot *string `json:"iot,omitempty" tf:"iot"`
 	// Use this to override the default service endpoint URL
 	// +optional
+	Iot1clickdevices *string `json:"iot1clickdevices,omitempty" tf:"iot1clickdevices"`
+	// Use this to override the default service endpoint URL
+	// +optional
+	Iot1clickdevicesservice *string `json:"iot1clickdevicesservice,omitempty" tf:"iot1clickdevicesservice"`
+	// Use this to override the default service endpoint URL
+	// +optional
+	Iot1clickprojects *string `json:"iot1clickprojects,omitempty" tf:"iot1clickprojects"`
+	// Use this to override the default service endpoint URL
+	// +optional
 	Iotanalytics *string `json:"iotanalytics,omitempty" tf:"iotanalytics"`
+	// Use this to override the default service endpoint URL
+	// +optional
+	Iotdataplane *string `json:"iotdataplane,omitempty" tf:"iotdataplane"`
+	// Use this to override the default service endpoint URL
+	// +optional
+	Iotdeviceadvisor *string `json:"iotdeviceadvisor,omitempty" tf:"iotdeviceadvisor"`
 	// Use this to override the default service endpoint URL
 	// +optional
 	Iotevents *string `json:"iotevents,omitempty" tf:"iotevents"`
 	// Use this to override the default service endpoint URL
 	// +optional
+	Ioteventsdata *string `json:"ioteventsdata,omitempty" tf:"ioteventsdata"`
+	// Use this to override the default service endpoint URL
+	// +optional
+	Iotfleethub *string `json:"iotfleethub,omitempty" tf:"iotfleethub"`
+	// Use this to override the default service endpoint URL
+	// +optional
+	Iotjobsdataplane *string `json:"iotjobsdataplane,omitempty" tf:"iotjobsdataplane"`
+	// Use this to override the default service endpoint URL
+	// +optional
+	Iotsecuretunneling *string `json:"iotsecuretunneling,omitempty" tf:"iotsecuretunneling"`
+	// Use this to override the default service endpoint URL
+	// +optional
+	Iotsitewise *string `json:"iotsitewise,omitempty" tf:"iotsitewise"`
+	// Use this to override the default service endpoint URL
+	// +optional
+	Iotthingsgraph *string `json:"iotthingsgraph,omitempty" tf:"iotthingsgraph"`
+	// Use this to override the default service endpoint URL
+	// +optional
+	Iotwireless *string `json:"iotwireless,omitempty" tf:"iotwireless"`
+	// Use this to override the default service endpoint URL
+	// +optional
 	Kafka *string `json:"kafka,omitempty" tf:"kafka"`
+	// Use this to override the default service endpoint URL
+	// +optional
+	Kafkaconnect *string `json:"kafkaconnect,omitempty" tf:"kafkaconnect"`
+	// Use this to override the default service endpoint URL
+	// +optional
+	Kendra *string `json:"kendra,omitempty" tf:"kendra"`
 	// Use this to override the default service endpoint URL
 	// +optional
 	Kinesis *string `json:"kinesis,omitempty" tf:"kinesis"`
@@ -315,6 +541,15 @@ type AwsSpecEndpoints struct {
 	Kinesisvideo *string `json:"kinesisvideo,omitempty" tf:"kinesisvideo"`
 	// Use this to override the default service endpoint URL
 	// +optional
+	Kinesisvideoarchivedmedia *string `json:"kinesisvideoarchivedmedia,omitempty" tf:"kinesisvideoarchivedmedia"`
+	// Use this to override the default service endpoint URL
+	// +optional
+	Kinesisvideomedia *string `json:"kinesisvideomedia,omitempty" tf:"kinesisvideomedia"`
+	// Use this to override the default service endpoint URL
+	// +optional
+	Kinesisvideosignalingchannels *string `json:"kinesisvideosignalingchannels,omitempty" tf:"kinesisvideosignalingchannels"`
+	// Use this to override the default service endpoint URL
+	// +optional
 	Kms *string `json:"kms,omitempty" tf:"kms"`
 	// Use this to override the default service endpoint URL
 	// +optional
@@ -324,7 +559,25 @@ type AwsSpecEndpoints struct {
 	Lambda *string `json:"lambda,omitempty" tf:"lambda"`
 	// Use this to override the default service endpoint URL
 	// +optional
+	Lexmodelbuilding *string `json:"lexmodelbuilding,omitempty" tf:"lexmodelbuilding"`
+	// Use this to override the default service endpoint URL
+	// +optional
+	Lexmodelbuildingservice *string `json:"lexmodelbuildingservice,omitempty" tf:"lexmodelbuildingservice"`
+	// Use this to override the default service endpoint URL
+	// +optional
 	Lexmodels *string `json:"lexmodels,omitempty" tf:"lexmodels"`
+	// Use this to override the default service endpoint URL
+	// +optional
+	Lexmodelsv2 *string `json:"lexmodelsv2,omitempty" tf:"lexmodelsv2"`
+	// Use this to override the default service endpoint URL
+	// +optional
+	Lexruntime *string `json:"lexruntime,omitempty" tf:"lexruntime"`
+	// Use this to override the default service endpoint URL
+	// +optional
+	Lexruntimeservice *string `json:"lexruntimeservice,omitempty" tf:"lexruntimeservice"`
+	// Use this to override the default service endpoint URL
+	// +optional
+	Lexruntimev2 *string `json:"lexruntimev2,omitempty" tf:"lexruntimev2"`
 	// Use this to override the default service endpoint URL
 	// +optional
 	Licensemanager *string `json:"licensemanager,omitempty" tf:"licensemanager"`
@@ -336,6 +589,18 @@ type AwsSpecEndpoints struct {
 	Location *string `json:"location,omitempty" tf:"location"`
 	// Use this to override the default service endpoint URL
 	// +optional
+	Lookoutequipment *string `json:"lookoutequipment,omitempty" tf:"lookoutequipment"`
+	// Use this to override the default service endpoint URL
+	// +optional
+	Lookoutforvision *string `json:"lookoutforvision,omitempty" tf:"lookoutforvision"`
+	// Use this to override the default service endpoint URL
+	// +optional
+	Lookoutmetrics *string `json:"lookoutmetrics,omitempty" tf:"lookoutmetrics"`
+	// Use this to override the default service endpoint URL
+	// +optional
+	Machinelearning *string `json:"machinelearning,omitempty" tf:"machinelearning"`
+	// Use this to override the default service endpoint URL
+	// +optional
 	Macie *string `json:"macie,omitempty" tf:"macie"`
 	// Use this to override the default service endpoint URL
 	// +optional
@@ -345,7 +610,22 @@ type AwsSpecEndpoints struct {
 	Managedblockchain *string `json:"managedblockchain,omitempty" tf:"managedblockchain"`
 	// Use this to override the default service endpoint URL
 	// +optional
+	Managedgrafana *string `json:"managedgrafana,omitempty" tf:"managedgrafana"`
+	// Use this to override the default service endpoint URL
+	// +optional
 	Marketplacecatalog *string `json:"marketplacecatalog,omitempty" tf:"marketplacecatalog"`
+	// Use this to override the default service endpoint URL
+	// +optional
+	Marketplacecommerceanalytics *string `json:"marketplacecommerceanalytics,omitempty" tf:"marketplacecommerceanalytics"`
+	// Use this to override the default service endpoint URL
+	// +optional
+	Marketplaceentitlement *string `json:"marketplaceentitlement,omitempty" tf:"marketplaceentitlement"`
+	// Use this to override the default service endpoint URL
+	// +optional
+	Marketplaceentitlementservice *string `json:"marketplaceentitlementservice,omitempty" tf:"marketplaceentitlementservice"`
+	// Use this to override the default service endpoint URL
+	// +optional
+	Marketplacemetering *string `json:"marketplacemetering,omitempty" tf:"marketplacemetering"`
 	// Use this to override the default service endpoint URL
 	// +optional
 	Mediaconnect *string `json:"mediaconnect,omitempty" tf:"mediaconnect"`
@@ -360,13 +640,40 @@ type AwsSpecEndpoints struct {
 	Mediapackage *string `json:"mediapackage,omitempty" tf:"mediapackage"`
 	// Use this to override the default service endpoint URL
 	// +optional
+	Mediapackagevod *string `json:"mediapackagevod,omitempty" tf:"mediapackagevod"`
+	// Use this to override the default service endpoint URL
+	// +optional
 	Mediastore *string `json:"mediastore,omitempty" tf:"mediastore"`
 	// Use this to override the default service endpoint URL
 	// +optional
 	Mediastoredata *string `json:"mediastoredata,omitempty" tf:"mediastoredata"`
 	// Use this to override the default service endpoint URL
 	// +optional
+	Mediatailor *string `json:"mediatailor,omitempty" tf:"mediatailor"`
+	// Use this to override the default service endpoint URL
+	// +optional
+	Memorydb *string `json:"memorydb,omitempty" tf:"memorydb"`
+	// Use this to override the default service endpoint URL
+	// +optional
+	Mgn *string `json:"mgn,omitempty" tf:"mgn"`
+	// Use this to override the default service endpoint URL
+	// +optional
+	Migrationhub *string `json:"migrationhub,omitempty" tf:"migrationhub"`
+	// Use this to override the default service endpoint URL
+	// +optional
+	Migrationhubconfig *string `json:"migrationhubconfig,omitempty" tf:"migrationhubconfig"`
+	// Use this to override the default service endpoint URL
+	// +optional
+	Mobile *string `json:"mobile,omitempty" tf:"mobile"`
+	// Use this to override the default service endpoint URL
+	// +optional
+	Mobileanalytics *string `json:"mobileanalytics,omitempty" tf:"mobileanalytics"`
+	// Use this to override the default service endpoint URL
+	// +optional
 	Mq *string `json:"mq,omitempty" tf:"mq"`
+	// Use this to override the default service endpoint URL
+	// +optional
+	Mturk *string `json:"mturk,omitempty" tf:"mturk"`
 	// Use this to override the default service endpoint URL
 	// +optional
 	Mwaa *string `json:"mwaa,omitempty" tf:"mwaa"`
@@ -381,7 +688,13 @@ type AwsSpecEndpoints struct {
 	Networkmanager *string `json:"networkmanager,omitempty" tf:"networkmanager"`
 	// Use this to override the default service endpoint URL
 	// +optional
+	Nimblestudio *string `json:"nimblestudio,omitempty" tf:"nimblestudio"`
+	// Use this to override the default service endpoint URL
+	// +optional
 	Opsworks *string `json:"opsworks,omitempty" tf:"opsworks"`
+	// Use this to override the default service endpoint URL
+	// +optional
+	Opsworkscm *string `json:"opsworkscm,omitempty" tf:"opsworkscm"`
 	// Use this to override the default service endpoint URL
 	// +optional
 	Organizations *string `json:"organizations,omitempty" tf:"organizations"`
@@ -393,13 +706,43 @@ type AwsSpecEndpoints struct {
 	Personalize *string `json:"personalize,omitempty" tf:"personalize"`
 	// Use this to override the default service endpoint URL
 	// +optional
+	Personalizeevents *string `json:"personalizeevents,omitempty" tf:"personalizeevents"`
+	// Use this to override the default service endpoint URL
+	// +optional
+	Personalizeruntime *string `json:"personalizeruntime,omitempty" tf:"personalizeruntime"`
+	// Use this to override the default service endpoint URL
+	// +optional
+	Pi *string `json:"pi,omitempty" tf:"pi"`
+	// Use this to override the default service endpoint URL
+	// +optional
 	Pinpoint *string `json:"pinpoint,omitempty" tf:"pinpoint"`
+	// Use this to override the default service endpoint URL
+	// +optional
+	Pinpointemail *string `json:"pinpointemail,omitempty" tf:"pinpointemail"`
+	// Use this to override the default service endpoint URL
+	// +optional
+	Pinpointsmsvoice *string `json:"pinpointsmsvoice,omitempty" tf:"pinpointsmsvoice"`
+	// Use this to override the default service endpoint URL
+	// +optional
+	Polly *string `json:"polly,omitempty" tf:"polly"`
 	// Use this to override the default service endpoint URL
 	// +optional
 	Pricing *string `json:"pricing,omitempty" tf:"pricing"`
 	// Use this to override the default service endpoint URL
 	// +optional
+	Prometheus *string `json:"prometheus,omitempty" tf:"prometheus"`
+	// Use this to override the default service endpoint URL
+	// +optional
+	Prometheusservice *string `json:"prometheusservice,omitempty" tf:"prometheusservice"`
+	// Use this to override the default service endpoint URL
+	// +optional
+	Proton *string `json:"proton,omitempty" tf:"proton"`
+	// Use this to override the default service endpoint URL
+	// +optional
 	Qldb *string `json:"qldb,omitempty" tf:"qldb"`
+	// Use this to override the default service endpoint URL
+	// +optional
+	Qldbsession *string `json:"qldbsession,omitempty" tf:"qldbsession"`
 	// Use this to override the default service endpoint URL
 	// +optional
 	Quicksight *string `json:"quicksight,omitempty" tf:"quicksight"`
@@ -411,19 +754,43 @@ type AwsSpecEndpoints struct {
 	Rds *string `json:"rds,omitempty" tf:"rds"`
 	// Use this to override the default service endpoint URL
 	// +optional
+	Rdsdata *string `json:"rdsdata,omitempty" tf:"rdsdata"`
+	// Use this to override the default service endpoint URL
+	// +optional
+	Rdsdataservice *string `json:"rdsdataservice,omitempty" tf:"rdsdataservice"`
+	// Use this to override the default service endpoint URL
+	// +optional
 	Redshift *string `json:"redshift,omitempty" tf:"redshift"`
+	// Use this to override the default service endpoint URL
+	// +optional
+	Redshiftdata *string `json:"redshiftdata,omitempty" tf:"redshiftdata"`
+	// Use this to override the default service endpoint URL
+	// +optional
+	Rekognition *string `json:"rekognition,omitempty" tf:"rekognition"`
 	// Use this to override the default service endpoint URL
 	// +optional
 	Resourcegroups *string `json:"resourcegroups,omitempty" tf:"resourcegroups"`
 	// Use this to override the default service endpoint URL
 	// +optional
+	Resourcegroupstagging *string `json:"resourcegroupstagging,omitempty" tf:"resourcegroupstagging"`
+	// Use this to override the default service endpoint URL
+	// +optional
 	Resourcegroupstaggingapi *string `json:"resourcegroupstaggingapi,omitempty" tf:"resourcegroupstaggingapi"`
+	// Use this to override the default service endpoint URL
+	// +optional
+	Robomaker *string `json:"robomaker,omitempty" tf:"robomaker"`
 	// Use this to override the default service endpoint URL
 	// +optional
 	Route53 *string `json:"route53,omitempty" tf:"route53"`
 	// Use this to override the default service endpoint URL
 	// +optional
 	Route53domains *string `json:"route53domains,omitempty" tf:"route53domains"`
+	// Use this to override the default service endpoint URL
+	// +optional
+	Route53recoverycontrolconfig *string `json:"route53recoverycontrolconfig,omitempty" tf:"route53recoverycontrolconfig"`
+	// Use this to override the default service endpoint URL
+	// +optional
+	Route53recoveryreadiness *string `json:"route53recoveryreadiness,omitempty" tf:"route53recoveryreadiness"`
 	// Use this to override the default service endpoint URL
 	// +optional
 	Route53resolver *string `json:"route53resolver,omitempty" tf:"route53resolver"`
@@ -441,6 +808,18 @@ type AwsSpecEndpoints struct {
 	Sagemaker *string `json:"sagemaker,omitempty" tf:"sagemaker"`
 	// Use this to override the default service endpoint URL
 	// +optional
+	Sagemakeredgemanager *string `json:"sagemakeredgemanager,omitempty" tf:"sagemakeredgemanager"`
+	// Use this to override the default service endpoint URL
+	// +optional
+	Sagemakerfeaturestoreruntime *string `json:"sagemakerfeaturestoreruntime,omitempty" tf:"sagemakerfeaturestoreruntime"`
+	// Use this to override the default service endpoint URL
+	// +optional
+	Sagemakerruntime *string `json:"sagemakerruntime,omitempty" tf:"sagemakerruntime"`
+	// Use this to override the default service endpoint URL
+	// +optional
+	Savingsplans *string `json:"savingsplans,omitempty" tf:"savingsplans"`
+	// Use this to override the default service endpoint URL
+	// +optional
 	Schemas *string `json:"schemas,omitempty" tf:"schemas"`
 	// Use this to override the default service endpoint URL
 	// +optional
@@ -451,6 +830,12 @@ type AwsSpecEndpoints struct {
 	// Use this to override the default service endpoint URL
 	// +optional
 	Securityhub *string `json:"securityhub,omitempty" tf:"securityhub"`
+	// Use this to override the default service endpoint URL
+	// +optional
+	Serverlessapplicationrepository *string `json:"serverlessapplicationrepository,omitempty" tf:"serverlessapplicationrepository"`
+	// Use this to override the default service endpoint URL
+	// +optional
+	Serverlessapprepo *string `json:"serverlessapprepo,omitempty" tf:"serverlessapprepo"`
 	// Use this to override the default service endpoint URL
 	// +optional
 	Serverlessrepo *string `json:"serverlessrepo,omitempty" tf:"serverlessrepo"`
@@ -468,10 +853,25 @@ type AwsSpecEndpoints struct {
 	Ses *string `json:"ses,omitempty" tf:"ses"`
 	// Use this to override the default service endpoint URL
 	// +optional
+	Sesv2 *string `json:"sesv2,omitempty" tf:"sesv2"`
+	// Use this to override the default service endpoint URL
+	// +optional
+	Sfn *string `json:"sfn,omitempty" tf:"sfn"`
+	// Use this to override the default service endpoint URL
+	// +optional
 	Shield *string `json:"shield,omitempty" tf:"shield"`
 	// Use this to override the default service endpoint URL
 	// +optional
 	Signer *string `json:"signer,omitempty" tf:"signer"`
+	// Use this to override the default service endpoint URL
+	// +optional
+	Simpledb *string `json:"simpledb,omitempty" tf:"simpledb"`
+	// Use this to override the default service endpoint URL
+	// +optional
+	Sms *string `json:"sms,omitempty" tf:"sms"`
+	// Use this to override the default service endpoint URL
+	// +optional
+	Snowball *string `json:"snowball,omitempty" tf:"snowball"`
 	// Use this to override the default service endpoint URL
 	// +optional
 	Sns *string `json:"sns,omitempty" tf:"sns"`
@@ -483,7 +883,19 @@ type AwsSpecEndpoints struct {
 	Ssm *string `json:"ssm,omitempty" tf:"ssm"`
 	// Use this to override the default service endpoint URL
 	// +optional
+	Ssmcontacts *string `json:"ssmcontacts,omitempty" tf:"ssmcontacts"`
+	// Use this to override the default service endpoint URL
+	// +optional
+	Ssmincidents *string `json:"ssmincidents,omitempty" tf:"ssmincidents"`
+	// Use this to override the default service endpoint URL
+	// +optional
+	Sso *string `json:"sso,omitempty" tf:"sso"`
+	// Use this to override the default service endpoint URL
+	// +optional
 	Ssoadmin *string `json:"ssoadmin,omitempty" tf:"ssoadmin"`
+	// Use this to override the default service endpoint URL
+	// +optional
+	Ssooidc *string `json:"ssooidc,omitempty" tf:"ssooidc"`
 	// Use this to override the default service endpoint URL
 	// +optional
 	Stepfunctions *string `json:"stepfunctions,omitempty" tf:"stepfunctions"`
@@ -495,16 +907,40 @@ type AwsSpecEndpoints struct {
 	Sts *string `json:"sts,omitempty" tf:"sts"`
 	// Use this to override the default service endpoint URL
 	// +optional
+	Support *string `json:"support,omitempty" tf:"support"`
+	// Use this to override the default service endpoint URL
+	// +optional
 	Swf *string `json:"swf,omitempty" tf:"swf"`
 	// Use this to override the default service endpoint URL
 	// +optional
 	Synthetics *string `json:"synthetics,omitempty" tf:"synthetics"`
 	// Use this to override the default service endpoint URL
 	// +optional
+	Textract *string `json:"textract,omitempty" tf:"textract"`
+	// Use this to override the default service endpoint URL
+	// +optional
+	Timestreamquery *string `json:"timestreamquery,omitempty" tf:"timestreamquery"`
+	// Use this to override the default service endpoint URL
+	// +optional
 	Timestreamwrite *string `json:"timestreamwrite,omitempty" tf:"timestreamwrite"`
 	// Use this to override the default service endpoint URL
 	// +optional
+	Transcribe *string `json:"transcribe,omitempty" tf:"transcribe"`
+	// Use this to override the default service endpoint URL
+	// +optional
+	Transcribeservice *string `json:"transcribeservice,omitempty" tf:"transcribeservice"`
+	// Use this to override the default service endpoint URL
+	// +optional
+	Transcribestreaming *string `json:"transcribestreaming,omitempty" tf:"transcribestreaming"`
+	// Use this to override the default service endpoint URL
+	// +optional
+	Transcribestreamingservice *string `json:"transcribestreamingservice,omitempty" tf:"transcribestreamingservice"`
+	// Use this to override the default service endpoint URL
+	// +optional
 	Transfer *string `json:"transfer,omitempty" tf:"transfer"`
+	// Use this to override the default service endpoint URL
+	// +optional
+	Translate *string `json:"translate,omitempty" tf:"translate"`
 	// Use this to override the default service endpoint URL
 	// +optional
 	Waf *string `json:"waf,omitempty" tf:"waf"`
@@ -516,10 +952,19 @@ type AwsSpecEndpoints struct {
 	Wafv2 *string `json:"wafv2,omitempty" tf:"wafv2"`
 	// Use this to override the default service endpoint URL
 	// +optional
+	Wellarchitected *string `json:"wellarchitected,omitempty" tf:"wellarchitected"`
+	// Use this to override the default service endpoint URL
+	// +optional
+	Workdocs *string `json:"workdocs,omitempty" tf:"workdocs"`
+	// Use this to override the default service endpoint URL
+	// +optional
 	Worklink *string `json:"worklink,omitempty" tf:"worklink"`
 	// Use this to override the default service endpoint URL
 	// +optional
 	Workmail *string `json:"workmail,omitempty" tf:"workmail"`
+	// Use this to override the default service endpoint URL
+	// +optional
+	Workmailmessageflow *string `json:"workmailmessageflow,omitempty" tf:"workmailmessageflow"`
 	// Use this to override the default service endpoint URL
 	// +optional
 	Workspaces *string `json:"workspaces,omitempty" tf:"workspaces"`
@@ -546,17 +991,29 @@ type AwsSpec struct {
 	AllowedAccountIDS []string `json:"allowedAccountIDS,omitempty" tf:"allowed_account_ids"`
 	// +optional
 	AssumeRole *AwsSpecAssumeRole `json:"assumeRole,omitempty" tf:"assume_role"`
+	// File containing custom root and intermediate certificates. Can also be configured using the `AWS_CA_BUNDLE` environment variable. (Setting `ca_bundle` in the shared config file is not supported.)
+	// +optional
+	CustomCaBundle *string `json:"customCaBundle,omitempty" tf:"custom_ca_bundle"`
 	// Configuration block with settings to default resource tags across all resources.
 	// +optional
 	DefaultTags *AwsSpecDefaultTags `json:"defaultTags,omitempty" tf:"default_tags"`
+	// Address of the EC2 metadata service endpoint to use. Can also be configured using the `AWS_EC2_METADATA_SERVICE_ENDPOINT` environment variable.
+	// +optional
+	Ec2MetadataServiceEndpoint *string `json:"ec2MetadataServiceEndpoint,omitempty" tf:"ec2_metadata_service_endpoint"`
+	// Protocol to use with EC2 metadata service endpoint.Valid values are `IPv4` and `IPv6`. Can also be configured using the `AWS_EC2_METADATA_SERVICE_ENDPOINT_MODE` environment variable.
+	// +optional
+	Ec2MetadataServiceEndpointMode *string `json:"ec2MetadataServiceEndpointMode,omitempty" tf:"ec2_metadata_service_endpoint_mode"`
 	// +optional
 	Endpoints []AwsSpecEndpoints `json:"endpoints,omitempty" tf:"endpoints"`
 	// +optional
 	ForbiddenAccountIDS []string `json:"forbiddenAccountIDS,omitempty" tf:"forbidden_account_ids"`
+	// The address of an HTTP proxy to use when accessing the AWS API. Can also be configured using the `HTTP_PROXY` or `HTTPS_PROXY` environment variables.
+	// +optional
+	HttpProxy *string `json:"httpProxy,omitempty" tf:"http_proxy"`
 	// Configuration block with settings to ignore resource tags across all resources.
 	// +optional
 	IgnoreTags *AwsSpecIgnoreTags `json:"ignoreTags,omitempty" tf:"ignore_tags"`
-	// Explicitly allow the provider to perform "insecure" SSL requests. If omitted,default value is `false`
+	// Explicitly allow the provider to perform "insecure" SSL requests. If omitted, default value is `false`
 	// +optional
 	Insecure *bool `json:"insecure,omitempty" tf:"insecure"`
 	// The maximum number of times an AWS API request is
@@ -570,27 +1027,42 @@ type AwsSpec struct {
 	Profile *string `json:"profile,omitempty" tf:"profile"`
 	// The region where AWS operations will take place. Examples
 	// are us-east-1, us-west-2, etc.
-	Region *string `json:"region" tf:"region"`
-	// Set this to true to force the request to use path-style addressing,
-	// i.e., http://s3.amazonaws.com/BUCKET/KEY. By default, the S3 client will
-	// use virtual hosted bucket addressing when possible
-	// (http://BUCKET.s3.amazonaws.com/KEY). Specific to the Amazon S3 service.
 	// +optional
+	Region *string `json:"region,omitempty" tf:"region"`
+	// Set this to true to enable the request to use path-style addressing,
+	// i.e., https://s3.amazonaws.com/BUCKET/KEY. By default, the S3 client will
+	// use virtual hosted bucket addressing when possible
+	// (https://BUCKET.s3.amazonaws.com/KEY). Specific to the Amazon S3 service.
+	// +optional
+	// Deprecated
 	S3ForcePathStyle *bool `json:"s3ForcePathStyle,omitempty" tf:"s3_force_path_style"`
+	// Set this to true to enable the request to use path-style addressing,
+	// i.e., https://s3.amazonaws.com/BUCKET/KEY. By default, the S3 client will
+	// use virtual hosted bucket addressing when possible
+	// (https://BUCKET.s3.amazonaws.com/KEY). Specific to the Amazon S3 service.
+	// +optional
+	S3UsePathStyle *bool `json:"s3UsePathStyle,omitempty" tf:"s3_use_path_style"`
 	// The secret key for API operations. You can retrieve this
 	// from the 'Security & Credentials' section of the AWS console.
 	// +optional
 	SecretKey *string `json:"secretKey,omitempty" tf:"secret_key"`
-	// The path to the shared credentials file. If not set
-	// this defaults to ~/.aws/credentials.
+	// List of paths to shared config files. If not set, defaults to [~/.aws/config].
 	// +optional
+	SharedConfigFiles []string `json:"sharedConfigFiles,omitempty" tf:"shared_config_files"`
+	// The path to the shared credentials file. If not set, defaults to ~/.aws/credentials.
+	// +optional
+	// Deprecated
 	SharedCredentialsFile *string `json:"sharedCredentialsFile,omitempty" tf:"shared_credentials_file"`
+	// List of paths to shared credentials files. If not set, defaults to [~/.aws/credentials].
+	// +optional
+	SharedCredentialsFiles []string `json:"sharedCredentialsFiles,omitempty" tf:"shared_credentials_files"`
 	// Skip the credentials validation via STS API. Used for AWS API implementations that do not have STS available/implemented.
 	// +optional
 	SkipCredentialsValidation *bool `json:"skipCredentialsValidation,omitempty" tf:"skip_credentials_validation"`
 	// Skip getting the supported EC2 platforms. Used by users that don't have ec2:DescribeAccountAttributes permissions.
 	// +optional
 	SkipGetEc2Platforms *bool `json:"skipGetEc2Platforms,omitempty" tf:"skip_get_ec2_platforms"`
+	// Skip the AWS Metadata API check. Used for AWS API implementations that do not have a metadata api endpoint.
 	// +optional
 	SkipMetadataAPICheck *bool `json:"skipMetadataAPICheck,omitempty" tf:"skip_metadata_api_check"`
 	// Skip static validation of region name. Used by users of alternative AWS-like APIs or users w/ access to regions that are not public (yet).
@@ -599,8 +1071,18 @@ type AwsSpec struct {
 	// Skip requesting the account ID. Used for AWS API implementations that do not have IAM/STS API and/or metadata API.
 	// +optional
 	SkipRequestingAccountID *bool `json:"skipRequestingAccountID,omitempty" tf:"skip_requesting_account_id"`
+	// The region where AWS STS operations will take place. Examples
+	// are us-east-1 and us-west-2.
+	// +optional
+	StsRegion *string `json:"stsRegion,omitempty" tf:"sts_region"`
 	// session token. A session token is only required if you are
 	// using temporary security credentials.
 	// +optional
 	Token *string `json:"token,omitempty" tf:"token"`
+	// Resolve an endpoint with DualStack capability
+	// +optional
+	UseDualstackEndpoint *bool `json:"useDualstackEndpoint,omitempty" tf:"use_dualstack_endpoint"`
+	// Resolve an endpoint with FIPS capability
+	// +optional
+	UseFipsEndpoint *bool `json:"useFipsEndpoint,omitempty" tf:"use_fips_endpoint"`
 }

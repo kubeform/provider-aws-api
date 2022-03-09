@@ -94,6 +94,8 @@ type DomainNameSpecResource struct {
 	// +optional
 	MutualTlsAuthentication *DomainNameSpecMutualTlsAuthentication `json:"mutualTlsAuthentication,omitempty" tf:"mutual_tls_authentication"`
 	// +optional
+	OwnershipVerificationCertificateArn *string `json:"ownershipVerificationCertificateArn,omitempty" tf:"ownership_verification_certificate_arn"`
+	// +optional
 	RegionalCertificateArn *string `json:"regionalCertificateArn,omitempty" tf:"regional_certificate_arn"`
 	// +optional
 	RegionalCertificateName *string `json:"regionalCertificateName,omitempty" tf:"regional_certificate_name"`

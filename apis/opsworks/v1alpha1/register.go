@@ -60,6 +60,8 @@ func addKnownTypes(scheme *runtime.Scheme) error {
 		&ApplicationList{},
 		&CustomLayer{},
 		&CustomLayerList{},
+		&EcsClusterLayer{},
+		&EcsClusterLayerList{},
 		&GangliaLayer{},
 		&GangliaLayerList{},
 		&HaproxyLayer{},

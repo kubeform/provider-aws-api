@@ -30,6 +30,8 @@ type Interface interface {
 	JobDefinitions() JobDefinitionInformer
 	// JobQueues returns a JobQueueInformer.
 	JobQueues() JobQueueInformer
+	// SchedulingPolicies returns a SchedulingPolicyInformer.
+	SchedulingPolicies() SchedulingPolicyInformer
 }
 
 type version struct {
@@ -56,4 +58,9 @@ func (v *version) JobDefinitions() JobDefinitionInformer {
 // JobQueues returns a JobQueueInformer.
 func (v *version) JobQueues() JobQueueInformer {
 	return &jobQueueInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
+// SchedulingPolicies returns a SchedulingPolicyInformer.
+func (v *version) SchedulingPolicies() SchedulingPolicyInformer {
+	return &schedulingPolicyInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
 }

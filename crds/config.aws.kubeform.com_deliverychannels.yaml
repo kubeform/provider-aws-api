@@ -65,6 +65,8 @@ spec:
                     type: string
                   s3KeyPrefix:
                     type: string
+                  s3KmsKeyArn:
+                    type: string
                   snapshotDeliveryProperties:
                     properties:
                       deliveryFrequency:
@@ -84,6 +86,8 @@ spec:
                   s3BucketName:
                     type: string
                   s3KeyPrefix:
+                    type: string
+                  s3KmsKeyArn:
                     type: string
                   snapshotDeliveryProperties:
                     properties:

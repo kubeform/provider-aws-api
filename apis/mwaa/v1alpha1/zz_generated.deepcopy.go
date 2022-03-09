@@ -407,9 +407,13 @@ func (in *EnvironmentSpecResource) DeepCopyInto(out *EnvironmentSpecResource) {
 	*out = *in
 	if in.AirflowConfigurationOptions != nil {
 		in, out := &in.AirflowConfigurationOptions, &out.AirflowConfigurationOptions
-		*out = make(map[string]string, len(*in))
-		for key, val := range *in {
-			(*out)[key] = val
+		*out = new(map[string]string)
+		if **in != nil {
+			in, out := *in, *out
+			*out = make(map[string]string, len(*in))
+			for key, val := range *in {
+				(*out)[key] = val
+			}
 		}
 	}
 	if in.AirflowVersion != nil {

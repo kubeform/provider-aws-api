@@ -27,11 +27,14 @@ import (
 
 type IotV1alpha1Interface interface {
 	RESTClient() rest.Interface
+	AuthorizersGetter
 	CertificatesGetter
 	PoliciesGetter
 	PolicyAttachmentsGetter
 	RoleAliasesGetter
 	ThingsGetter
+	ThingGroupsGetter
+	ThingGroupMembershipsGetter
 	ThingPrincipalAttachmentsGetter
 	ThingTypesGetter
 	TopicRulesGetter
@@ -40,6 +43,10 @@ type IotV1alpha1Interface interface {
 // IotV1alpha1Client is used to interact with features provided by the iot.aws.kubeform.com group.
 type IotV1alpha1Client struct {
 	restClient rest.Interface
+}
+
+func (c *IotV1alpha1Client) Authorizers(namespace string) AuthorizerInterface {
+	return newAuthorizers(c, namespace)
 }
 
 func (c *IotV1alpha1Client) Certificates(namespace string) CertificateInterface {
@@ -60,6 +67,14 @@ func (c *IotV1alpha1Client) RoleAliases(namespace string) RoleAliasInterface {
 
 func (c *IotV1alpha1Client) Things(namespace string) ThingInterface {
 	return newThings(c, namespace)
+}
+
+func (c *IotV1alpha1Client) ThingGroups(namespace string) ThingGroupInterface {
+	return newThingGroups(c, namespace)
+}
+
+func (c *IotV1alpha1Client) ThingGroupMemberships(namespace string) ThingGroupMembershipInterface {
+	return newThingGroupMemberships(c, namespace)
 }
 
 func (c *IotV1alpha1Client) ThingPrincipalAttachments(namespace string) ThingPrincipalAttachmentInterface {

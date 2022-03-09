@@ -89,7 +89,7 @@ func (r *LogGroup) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range loggroupForceNewList {
+	for key, _ := range loggroupForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

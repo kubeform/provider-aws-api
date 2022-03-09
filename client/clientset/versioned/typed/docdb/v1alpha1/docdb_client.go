@@ -31,6 +31,7 @@ type DocdbV1alpha1Interface interface {
 	ClusterInstancesGetter
 	ClusterParameterGroupsGetter
 	ClusterSnapshotsGetter
+	GlobalClustersGetter
 	SubnetGroupsGetter
 }
 
@@ -53,6 +54,10 @@ func (c *DocdbV1alpha1Client) ClusterParameterGroups(namespace string) ClusterPa
 
 func (c *DocdbV1alpha1Client) ClusterSnapshots(namespace string) ClusterSnapshotInterface {
 	return newClusterSnapshots(c, namespace)
+}
+
+func (c *DocdbV1alpha1Client) GlobalClusters(namespace string) GlobalClusterInterface {
+	return newGlobalClusters(c, namespace)
 }
 
 func (c *DocdbV1alpha1Client) SubnetGroups(namespace string) SubnetGroupInterface {

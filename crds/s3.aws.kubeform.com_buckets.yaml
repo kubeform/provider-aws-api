@@ -58,8 +58,10 @@ spec:
               resource:
                 properties:
                   accelerationStatus:
+                    description: Deprecated
                     type: string
                   acl:
+                    description: Deprecated
                     type: string
                   arn:
                     type: string
@@ -72,50 +74,55 @@ spec:
                   bucketRegionalDomainName:
                     type: string
                   corsRule:
+                    description: Deprecated
                     items:
                       properties:
                         allowedHeaders:
+                          description: Deprecated
                           items:
                             type: string
                           type: array
                         allowedMethods:
+                          description: Deprecated
                           items:
                             type: string
                           type: array
                         allowedOrigins:
+                          description: Deprecated
                           items:
                             type: string
                           type: array
                         exposeHeaders:
+                          description: Deprecated
                           items:
                             type: string
                           type: array
                         maxAgeSeconds:
+                          description: Deprecated
                           format: int64
                           type: integer
-                      required:
-                      - allowedMethods
-                      - allowedOrigins
                       type: object
                     type: array
                   forceDestroy:
                     type: boolean
                   grant:
+                    description: Deprecated
                     items:
                       properties:
                         ID:
+                          description: Deprecated
                           type: string
                         permissions:
+                          description: Deprecated
                           items:
                             type: string
                           type: array
                         type:
+                          description: Deprecated
                           type: string
                         uri:
+                          description: Deprecated
                           type: string
-                      required:
-                      - permissions
-                      - type
                       type: object
                     type: array
                   hostedZoneID:
@@ -123,76 +130,94 @@ spec:
                   id:
                     type: string
                   lifecycleRule:
+                    description: Deprecated
                     items:
                       properties:
                         ID:
+                          description: Deprecated
                           type: string
                         abortIncompleteMultipartUploadDays:
+                          description: Deprecated
                           format: int64
                           type: integer
                         enabled:
+                          description: Deprecated
                           type: boolean
                         expiration:
-                          properties:
-                            date:
-                              type: string
-                            days:
-                              format: int64
-                              type: integer
-                            expiredObjectDeleteMarker:
-                              type: boolean
-                          type: object
+                          description: Deprecated
+                          items:
+                            properties:
+                              date:
+                                description: Deprecated
+                                type: string
+                              days:
+                                description: Deprecated
+                                format: int64
+                                type: integer
+                              expiredObjectDeleteMarker:
+                                description: Deprecated
+                                type: boolean
+                            type: object
+                          type: array
                         noncurrentVersionExpiration:
-                          properties:
-                            days:
-                              format: int64
-                              type: integer
-                          type: object
-                        noncurrentVersionTransition:
+                          description: Deprecated
                           items:
                             properties:
                               days:
+                                description: Deprecated
+                                format: int64
+                                type: integer
+                            type: object
+                          type: array
+                        noncurrentVersionTransition:
+                          description: Deprecated
+                          items:
+                            properties:
+                              days:
+                                description: Deprecated
                                 format: int64
                                 type: integer
                               storageClass:
+                                description: Deprecated
                                 type: string
-                            required:
-                            - storageClass
                             type: object
                           type: array
                         prefix:
+                          description: Deprecated
                           type: string
                         tags:
                           additionalProperties:
                             type: string
+                          description: Deprecated
                           type: object
                         transition:
+                          description: Deprecated
                           items:
                             properties:
                               date:
+                                description: Deprecated
                                 type: string
                               days:
+                                description: Deprecated
                                 format: int64
                                 type: integer
                               storageClass:
+                                description: Deprecated
                                 type: string
-                            required:
-                            - storageClass
                             type: object
                           type: array
-                      required:
-                      - enabled
                       type: object
                     type: array
                   logging:
+                    description: Deprecated
                     items:
                       properties:
                         targetBucket:
+                          description: Deprecated
                           type: string
                         targetPrefix:
+                          description: Deprecated
                           type: string
-                      required:
-                      - targetBucket
                       type: object
                     type: array
                   objectLockConfiguration:
@@ -200,117 +225,179 @@ spec:
                       objectLockEnabled:
                         type: string
                       rule:
-                        properties:
-                          defaultRetention:
-                            properties:
-                              days:
-                                format: int64
-                                type: integer
-                              mode:
-                                type: string
-                              years:
-                                format: int64
-                                type: integer
-                            required:
-                            - mode
-                            type: object
-                        required:
-                        - defaultRetention
-                        type: object
+                        description: Deprecated
+                        items:
+                          properties:
+                            defaultRetention:
+                              description: Deprecated
+                              items:
+                                properties:
+                                  days:
+                                    description: Deprecated
+                                    format: int64
+                                    type: integer
+                                  mode:
+                                    description: Deprecated
+                                    type: string
+                                  years:
+                                    description: Deprecated
+                                    format: int64
+                                    type: integer
+                                type: object
+                              type: array
+                          type: object
+                        type: array
                     required:
                     - objectLockEnabled
                     type: object
                   policy:
+                    description: Deprecated
                     type: string
                   region:
                     type: string
                   replicationConfiguration:
-                    properties:
-                      role:
-                        type: string
-                      rules:
-                        items:
-                          properties:
-                            ID:
-                              type: string
-                            destination:
-                              properties:
-                                accessControlTranslation:
+                    description: Deprecated
+                    items:
+                      properties:
+                        role:
+                          description: Deprecated
+                          type: string
+                        rules:
+                          description: Deprecated
+                          items:
+                            properties:
+                              ID:
+                                description: Deprecated
+                                type: string
+                              deleteMarkerReplicationStatus:
+                                description: Deprecated
+                                type: string
+                              destination:
+                                description: Deprecated
+                                items:
                                   properties:
-                                    owner:
+                                    accessControlTranslation:
+                                      description: Deprecated
+                                      items:
+                                        properties:
+                                          owner:
+                                            description: Deprecated
+                                            type: string
+                                        type: object
+                                      type: array
+                                    accountID:
+                                      description: Deprecated
                                       type: string
-                                  required:
-                                  - owner
+                                    bucket:
+                                      description: Deprecated
+                                      type: string
+                                    metrics:
+                                      description: Deprecated
+                                      items:
+                                        properties:
+                                          minutes:
+                                            description: Deprecated
+                                            format: int64
+                                            type: integer
+                                          status:
+                                            description: Deprecated
+                                            type: string
+                                        type: object
+                                      type: array
+                                    replicaKmsKeyID:
+                                      description: Deprecated
+                                      type: string
+                                    replicationTime:
+                                      description: Deprecated
+                                      items:
+                                        properties:
+                                          minutes:
+                                            description: Deprecated
+                                            format: int64
+                                            type: integer
+                                          status:
+                                            description: Deprecated
+                                            type: string
+                                        type: object
+                                      type: array
+                                    storageClass:
+                                      description: Deprecated
+                                      type: string
                                   type: object
-                                accountID:
-                                  type: string
-                                bucket:
-                                  type: string
-                                replicaKmsKeyID:
-                                  type: string
-                                storageClass:
-                                  type: string
-                              required:
-                              - bucket
-                              type: object
-                            filter:
-                              properties:
-                                prefix:
-                                  type: string
-                                tags:
-                                  additionalProperties:
-                                    type: string
-                                  type: object
-                              type: object
-                            prefix:
-                              type: string
-                            priority:
-                              format: int64
-                              type: integer
-                            sourceSelectionCriteria:
-                              properties:
-                                sseKmsEncryptedObjects:
+                                type: array
+                              filter:
+                                description: Deprecated
+                                items:
                                   properties:
-                                    enabled:
-                                      type: boolean
-                                  required:
-                                  - enabled
+                                    prefix:
+                                      description: Deprecated
+                                      type: string
+                                    tags:
+                                      additionalProperties:
+                                        type: string
+                                      description: Deprecated
+                                      type: object
                                   type: object
-                              type: object
-                            status:
-                              type: string
-                          required:
-                          - destination
-                          - status
-                          type: object
-                        type: array
-                    required:
-                    - role
-                    - rules
-                    type: object
+                                type: array
+                              prefix:
+                                description: Deprecated
+                                type: string
+                              priority:
+                                description: Deprecated
+                                format: int64
+                                type: integer
+                              sourceSelectionCriteria:
+                                description: Deprecated
+                                items:
+                                  properties:
+                                    sseKmsEncryptedObjects:
+                                      description: Deprecated
+                                      items:
+                                        properties:
+                                          enabled:
+                                            description: Deprecated
+                                            type: boolean
+                                        type: object
+                                      type: array
+                                  type: object
+                                type: array
+                              status:
+                                description: Deprecated
+                                type: string
+                            type: object
+                          type: array
+                      type: object
+                    type: array
                   requestPayer:
+                    description: Deprecated
                     type: string
                   serverSideEncryptionConfiguration:
-                    properties:
-                      rule:
-                        properties:
-                          applyServerSideEncryptionByDefault:
+                    description: Deprecated
+                    items:
+                      properties:
+                        rule:
+                          description: Deprecated
+                          items:
                             properties:
-                              kmsMasterKeyID:
-                                type: string
-                              sseAlgorithm:
-                                type: string
-                            required:
-                            - sseAlgorithm
+                              applyServerSideEncryptionByDefault:
+                                description: Deprecated
+                                items:
+                                  properties:
+                                    kmsMasterKeyID:
+                                      description: Deprecated
+                                      type: string
+                                    sseAlgorithm:
+                                      description: Deprecated
+                                      type: string
+                                  type: object
+                                type: array
+                              bucketKeyEnabled:
+                                description: Deprecated
+                                type: boolean
                             type: object
-                          bucketKeyEnabled:
-                            type: boolean
-                        required:
-                        - applyServerSideEncryptionByDefault
-                        type: object
-                    required:
-                    - rule
-                    type: object
+                          type: array
+                      type: object
+                    type: array
                   tags:
                     additionalProperties:
                       type: string
@@ -320,33 +407,49 @@ spec:
                       type: string
                     type: object
                   versioning:
-                    properties:
-                      enabled:
-                        type: boolean
-                      mfaDelete:
-                        type: boolean
-                    type: object
+                    description: Deprecated
+                    items:
+                      properties:
+                        enabled:
+                          description: Deprecated
+                          type: boolean
+                        mfaDelete:
+                          description: Deprecated
+                          type: boolean
+                      type: object
+                    type: array
                   website:
-                    properties:
-                      errorDocument:
-                        type: string
-                      indexDocument:
-                        type: string
-                      redirectAllRequestsTo:
-                        type: string
-                      routingRules:
-                        type: string
-                    type: object
+                    description: Deprecated
+                    items:
+                      properties:
+                        errorDocument:
+                          description: Deprecated
+                          type: string
+                        indexDocument:
+                          description: Deprecated
+                          type: string
+                        redirectAllRequestsTo:
+                          description: Deprecated
+                          type: string
+                        routingRules:
+                          description: Deprecated
+                          type: string
+                      type: object
+                    type: array
                   websiteDomain:
+                    description: Deprecated
                     type: string
                   websiteEndpoint:
+                    description: Deprecated
                     type: string
                 type: object
               state:
                 properties:
                   accelerationStatus:
+                    description: Deprecated
                     type: string
                   acl:
+                    description: Deprecated
                     type: string
                   arn:
                     type: string
@@ -359,50 +462,55 @@ spec:
                   bucketRegionalDomainName:
                     type: string
                   corsRule:
+                    description: Deprecated
                     items:
                       properties:
                         allowedHeaders:
+                          description: Deprecated
                           items:
                             type: string
                           type: array
                         allowedMethods:
+                          description: Deprecated
                           items:
                             type: string
                           type: array
                         allowedOrigins:
+                          description: Deprecated
                           items:
                             type: string
                           type: array
                         exposeHeaders:
+                          description: Deprecated
                           items:
                             type: string
                           type: array
                         maxAgeSeconds:
+                          description: Deprecated
                           format: int64
                           type: integer
-                      required:
-                      - allowedMethods
-                      - allowedOrigins
                       type: object
                     type: array
                   forceDestroy:
                     type: boolean
                   grant:
+                    description: Deprecated
                     items:
                       properties:
                         ID:
+                          description: Deprecated
                           type: string
                         permissions:
+                          description: Deprecated
                           items:
                             type: string
                           type: array
                         type:
+                          description: Deprecated
                           type: string
                         uri:
+                          description: Deprecated
                           type: string
-                      required:
-                      - permissions
-                      - type
                       type: object
                     type: array
                   hostedZoneID:
@@ -410,76 +518,94 @@ spec:
                   id:
                     type: string
                   lifecycleRule:
+                    description: Deprecated
                     items:
                       properties:
                         ID:
+                          description: Deprecated
                           type: string
                         abortIncompleteMultipartUploadDays:
+                          description: Deprecated
                           format: int64
                           type: integer
                         enabled:
+                          description: Deprecated
                           type: boolean
                         expiration:
-                          properties:
-                            date:
-                              type: string
-                            days:
-                              format: int64
-                              type: integer
-                            expiredObjectDeleteMarker:
-                              type: boolean
-                          type: object
+                          description: Deprecated
+                          items:
+                            properties:
+                              date:
+                                description: Deprecated
+                                type: string
+                              days:
+                                description: Deprecated
+                                format: int64
+                                type: integer
+                              expiredObjectDeleteMarker:
+                                description: Deprecated
+                                type: boolean
+                            type: object
+                          type: array
                         noncurrentVersionExpiration:
-                          properties:
-                            days:
-                              format: int64
-                              type: integer
-                          type: object
-                        noncurrentVersionTransition:
+                          description: Deprecated
                           items:
                             properties:
                               days:
+                                description: Deprecated
+                                format: int64
+                                type: integer
+                            type: object
+                          type: array
+                        noncurrentVersionTransition:
+                          description: Deprecated
+                          items:
+                            properties:
+                              days:
+                                description: Deprecated
                                 format: int64
                                 type: integer
                               storageClass:
+                                description: Deprecated
                                 type: string
-                            required:
-                            - storageClass
                             type: object
                           type: array
                         prefix:
+                          description: Deprecated
                           type: string
                         tags:
                           additionalProperties:
                             type: string
+                          description: Deprecated
                           type: object
                         transition:
+                          description: Deprecated
                           items:
                             properties:
                               date:
+                                description: Deprecated
                                 type: string
                               days:
+                                description: Deprecated
                                 format: int64
                                 type: integer
                               storageClass:
+                                description: Deprecated
                                 type: string
-                            required:
-                            - storageClass
                             type: object
                           type: array
-                      required:
-                      - enabled
                       type: object
                     type: array
                   logging:
+                    description: Deprecated
                     items:
                       properties:
                         targetBucket:
+                          description: Deprecated
                           type: string
                         targetPrefix:
+                          description: Deprecated
                           type: string
-                      required:
-                      - targetBucket
                       type: object
                     type: array
                   objectLockConfiguration:
@@ -487,117 +613,179 @@ spec:
                       objectLockEnabled:
                         type: string
                       rule:
-                        properties:
-                          defaultRetention:
-                            properties:
-                              days:
-                                format: int64
-                                type: integer
-                              mode:
-                                type: string
-                              years:
-                                format: int64
-                                type: integer
-                            required:
-                            - mode
-                            type: object
-                        required:
-                        - defaultRetention
-                        type: object
+                        description: Deprecated
+                        items:
+                          properties:
+                            defaultRetention:
+                              description: Deprecated
+                              items:
+                                properties:
+                                  days:
+                                    description: Deprecated
+                                    format: int64
+                                    type: integer
+                                  mode:
+                                    description: Deprecated
+                                    type: string
+                                  years:
+                                    description: Deprecated
+                                    format: int64
+                                    type: integer
+                                type: object
+                              type: array
+                          type: object
+                        type: array
                     required:
                     - objectLockEnabled
                     type: object
                   policy:
+                    description: Deprecated
                     type: string
                   region:
                     type: string
                   replicationConfiguration:
-                    properties:
-                      role:
-                        type: string
-                      rules:
-                        items:
-                          properties:
-                            ID:
-                              type: string
-                            destination:
-                              properties:
-                                accessControlTranslation:
+                    description: Deprecated
+                    items:
+                      properties:
+                        role:
+                          description: Deprecated
+                          type: string
+                        rules:
+                          description: Deprecated
+                          items:
+                            properties:
+                              ID:
+                                description: Deprecated
+                                type: string
+                              deleteMarkerReplicationStatus:
+                                description: Deprecated
+                                type: string
+                              destination:
+                                description: Deprecated
+                                items:
                                   properties:
-                                    owner:
+                                    accessControlTranslation:
+                                      description: Deprecated
+                                      items:
+                                        properties:
+                                          owner:
+                                            description: Deprecated
+                                            type: string
+                                        type: object
+                                      type: array
+                                    accountID:
+                                      description: Deprecated
                                       type: string
-                                  required:
-                                  - owner
+                                    bucket:
+                                      description: Deprecated
+                                      type: string
+                                    metrics:
+                                      description: Deprecated
+                                      items:
+                                        properties:
+                                          minutes:
+                                            description: Deprecated
+                                            format: int64
+                                            type: integer
+                                          status:
+                                            description: Deprecated
+                                            type: string
+                                        type: object
+                                      type: array
+                                    replicaKmsKeyID:
+                                      description: Deprecated
+                                      type: string
+                                    replicationTime:
+                                      description: Deprecated
+                                      items:
+                                        properties:
+                                          minutes:
+                                            description: Deprecated
+                                            format: int64
+                                            type: integer
+                                          status:
+                                            description: Deprecated
+                                            type: string
+                                        type: object
+                                      type: array
+                                    storageClass:
+                                      description: Deprecated
+                                      type: string
                                   type: object
-                                accountID:
-                                  type: string
-                                bucket:
-                                  type: string
-                                replicaKmsKeyID:
-                                  type: string
-                                storageClass:
-                                  type: string
-                              required:
-                              - bucket
-                              type: object
-                            filter:
-                              properties:
-                                prefix:
-                                  type: string
-                                tags:
-                                  additionalProperties:
-                                    type: string
-                                  type: object
-                              type: object
-                            prefix:
-                              type: string
-                            priority:
-                              format: int64
-                              type: integer
-                            sourceSelectionCriteria:
-                              properties:
-                                sseKmsEncryptedObjects:
+                                type: array
+                              filter:
+                                description: Deprecated
+                                items:
                                   properties:
-                                    enabled:
-                                      type: boolean
-                                  required:
-                                  - enabled
+                                    prefix:
+                                      description: Deprecated
+                                      type: string
+                                    tags:
+                                      additionalProperties:
+                                        type: string
+                                      description: Deprecated
+                                      type: object
                                   type: object
-                              type: object
-                            status:
-                              type: string
-                          required:
-                          - destination
-                          - status
-                          type: object
-                        type: array
-                    required:
-                    - role
-                    - rules
-                    type: object
+                                type: array
+                              prefix:
+                                description: Deprecated
+                                type: string
+                              priority:
+                                description: Deprecated
+                                format: int64
+                                type: integer
+                              sourceSelectionCriteria:
+                                description: Deprecated
+                                items:
+                                  properties:
+                                    sseKmsEncryptedObjects:
+                                      description: Deprecated
+                                      items:
+                                        properties:
+                                          enabled:
+                                            description: Deprecated
+                                            type: boolean
+                                        type: object
+                                      type: array
+                                  type: object
+                                type: array
+                              status:
+                                description: Deprecated
+                                type: string
+                            type: object
+                          type: array
+                      type: object
+                    type: array
                   requestPayer:
+                    description: Deprecated
                     type: string
                   serverSideEncryptionConfiguration:
-                    properties:
-                      rule:
-                        properties:
-                          applyServerSideEncryptionByDefault:
+                    description: Deprecated
+                    items:
+                      properties:
+                        rule:
+                          description: Deprecated
+                          items:
                             properties:
-                              kmsMasterKeyID:
-                                type: string
-                              sseAlgorithm:
-                                type: string
-                            required:
-                            - sseAlgorithm
+                              applyServerSideEncryptionByDefault:
+                                description: Deprecated
+                                items:
+                                  properties:
+                                    kmsMasterKeyID:
+                                      description: Deprecated
+                                      type: string
+                                    sseAlgorithm:
+                                      description: Deprecated
+                                      type: string
+                                  type: object
+                                type: array
+                              bucketKeyEnabled:
+                                description: Deprecated
+                                type: boolean
                             type: object
-                          bucketKeyEnabled:
-                            type: boolean
-                        required:
-                        - applyServerSideEncryptionByDefault
-                        type: object
-                    required:
-                    - rule
-                    type: object
+                          type: array
+                      type: object
+                    type: array
                   tags:
                     additionalProperties:
                       type: string
@@ -607,26 +795,40 @@ spec:
                       type: string
                     type: object
                   versioning:
-                    properties:
-                      enabled:
-                        type: boolean
-                      mfaDelete:
-                        type: boolean
-                    type: object
+                    description: Deprecated
+                    items:
+                      properties:
+                        enabled:
+                          description: Deprecated
+                          type: boolean
+                        mfaDelete:
+                          description: Deprecated
+                          type: boolean
+                      type: object
+                    type: array
                   website:
-                    properties:
-                      errorDocument:
-                        type: string
-                      indexDocument:
-                        type: string
-                      redirectAllRequestsTo:
-                        type: string
-                      routingRules:
-                        type: string
-                    type: object
+                    description: Deprecated
+                    items:
+                      properties:
+                        errorDocument:
+                          description: Deprecated
+                          type: string
+                        indexDocument:
+                          description: Deprecated
+                          type: string
+                        redirectAllRequestsTo:
+                          description: Deprecated
+                          type: string
+                        routingRules:
+                          description: Deprecated
+                          type: string
+                      type: object
+                    type: array
                   websiteDomain:
+                    description: Deprecated
                     type: string
                   websiteEndpoint:
+                    description: Deprecated
                     type: string
                 type: object
               terminationPolicy:

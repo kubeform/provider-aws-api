@@ -45,12 +45,18 @@ type DomainSpecDefaultUserSettingsJupyterServerAppSettingsDefaultResourceSpec st
 	// +optional
 	InstanceType *string `json:"instanceType,omitempty" tf:"instance_type"`
 	// +optional
+	LifecycleConfigArn *string `json:"lifecycleConfigArn,omitempty" tf:"lifecycle_config_arn"`
+	// +optional
 	SagemakerImageArn *string `json:"sagemakerImageArn,omitempty" tf:"sagemaker_image_arn"`
+	// +optional
+	SagemakerImageVersionArn *string `json:"sagemakerImageVersionArn,omitempty" tf:"sagemaker_image_version_arn"`
 }
 
 type DomainSpecDefaultUserSettingsJupyterServerAppSettings struct {
 	// +optional
 	DefaultResourceSpec *DomainSpecDefaultUserSettingsJupyterServerAppSettingsDefaultResourceSpec `json:"defaultResourceSpec,omitempty" tf:"default_resource_spec"`
+	// +optional
+	LifecycleConfigArns []string `json:"lifecycleConfigArns,omitempty" tf:"lifecycle_config_arns"`
 }
 
 type DomainSpecDefaultUserSettingsKernelGatewayAppSettingsCustomImage struct {
@@ -64,7 +70,11 @@ type DomainSpecDefaultUserSettingsKernelGatewayAppSettingsDefaultResourceSpec st
 	// +optional
 	InstanceType *string `json:"instanceType,omitempty" tf:"instance_type"`
 	// +optional
+	LifecycleConfigArn *string `json:"lifecycleConfigArn,omitempty" tf:"lifecycle_config_arn"`
+	// +optional
 	SagemakerImageArn *string `json:"sagemakerImageArn,omitempty" tf:"sagemaker_image_arn"`
+	// +optional
+	SagemakerImageVersionArn *string `json:"sagemakerImageVersionArn,omitempty" tf:"sagemaker_image_version_arn"`
 }
 
 type DomainSpecDefaultUserSettingsKernelGatewayAppSettings struct {
@@ -73,6 +83,8 @@ type DomainSpecDefaultUserSettingsKernelGatewayAppSettings struct {
 	CustomImage []DomainSpecDefaultUserSettingsKernelGatewayAppSettingsCustomImage `json:"customImage,omitempty" tf:"custom_image"`
 	// +optional
 	DefaultResourceSpec *DomainSpecDefaultUserSettingsKernelGatewayAppSettingsDefaultResourceSpec `json:"defaultResourceSpec,omitempty" tf:"default_resource_spec"`
+	// +optional
+	LifecycleConfigArns []string `json:"lifecycleConfigArns,omitempty" tf:"lifecycle_config_arns"`
 }
 
 type DomainSpecDefaultUserSettingsSharingSettings struct {
@@ -88,7 +100,11 @@ type DomainSpecDefaultUserSettingsTensorBoardAppSettingsDefaultResourceSpec stru
 	// +optional
 	InstanceType *string `json:"instanceType,omitempty" tf:"instance_type"`
 	// +optional
+	LifecycleConfigArn *string `json:"lifecycleConfigArn,omitempty" tf:"lifecycle_config_arn"`
+	// +optional
 	SagemakerImageArn *string `json:"sagemakerImageArn,omitempty" tf:"sagemaker_image_arn"`
+	// +optional
+	SagemakerImageVersionArn *string `json:"sagemakerImageVersionArn,omitempty" tf:"sagemaker_image_version_arn"`
 }
 
 type DomainSpecDefaultUserSettingsTensorBoardAppSettings struct {
@@ -109,6 +125,11 @@ type DomainSpecDefaultUserSettings struct {
 	SharingSettings *DomainSpecDefaultUserSettingsSharingSettings `json:"sharingSettings,omitempty" tf:"sharing_settings"`
 	// +optional
 	TensorBoardAppSettings *DomainSpecDefaultUserSettingsTensorBoardAppSettings `json:"tensorBoardAppSettings,omitempty" tf:"tensor_board_app_settings"`
+}
+
+type DomainSpecRetentionPolicy struct {
+	// +optional
+	HomeEfsFileSystem *string `json:"homeEfsFileSystem,omitempty" tf:"home_efs_file_system"`
 }
 
 type DomainSpec struct {
@@ -139,6 +160,8 @@ type DomainSpecResource struct {
 	HomeEfsFileSystemID *string `json:"homeEfsFileSystemID,omitempty" tf:"home_efs_file_system_id"`
 	// +optional
 	KmsKeyID *string `json:"kmsKeyID,omitempty" tf:"kms_key_id"`
+	// +optional
+	RetentionPolicy *DomainSpecRetentionPolicy `json:"retentionPolicy,omitempty" tf:"retention_policy"`
 	// +optional
 	SingleSignOnManagedApplicationInstanceID *string `json:"singleSignOnManagedApplicationInstanceID,omitempty" tf:"single_sign_on_managed_application_instance_id"`
 	// +kubebuilder:validation:MaxItems=16

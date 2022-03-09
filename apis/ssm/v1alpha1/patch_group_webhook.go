@@ -89,7 +89,7 @@ func (r *PatchGroup) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range patchgroupForceNewList {
+	for key, _ := range patchgroupForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

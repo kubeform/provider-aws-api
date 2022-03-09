@@ -83,6 +83,10 @@ spec:
                     type: string
                   copyTagsToSnapshot:
                     type: boolean
+                  customerOwnedIPEnabled:
+                    type: boolean
+                  dbName:
+                    type: string
                   dbSubnetGroupName:
                     type: string
                   deleteAutomatedBackups:
@@ -102,6 +106,8 @@ spec:
                   engine:
                     type: string
                   engineVersion:
+                    type: string
+                  engineVersionActual:
                     type: string
                   finalSnapshotIdentifier:
                     type: string
@@ -139,6 +145,9 @@ spec:
                   multiAz:
                     type: boolean
                   name:
+                    description: Deprecated
+                    type: string
+                  ncharCharacterSetName:
                     type: string
                   optionGroupName:
                     type: string
@@ -156,6 +165,8 @@ spec:
                     type: integer
                   publiclyAccessible:
                     type: boolean
+                  replicaMode:
+                    type: string
                   replicas:
                     items:
                       type: string
@@ -301,6 +312,10 @@ spec:
                     type: string
                   copyTagsToSnapshot:
                     type: boolean
+                  customerOwnedIPEnabled:
+                    type: boolean
+                  dbName:
+                    type: string
                   dbSubnetGroupName:
                     type: string
                   deleteAutomatedBackups:
@@ -320,6 +335,8 @@ spec:
                   engine:
                     type: string
                   engineVersion:
+                    type: string
+                  engineVersionActual:
                     type: string
                   finalSnapshotIdentifier:
                     type: string
@@ -357,6 +374,9 @@ spec:
                   multiAz:
                     type: boolean
                   name:
+                    description: Deprecated
+                    type: string
+                  ncharCharacterSetName:
                     type: string
                   optionGroupName:
                     type: string
@@ -374,6 +394,8 @@ spec:
                     type: integer
                   publiclyAccessible:
                     type: boolean
+                  replicaMode:
+                    type: string
                   replicas:
                     items:
                       type: string

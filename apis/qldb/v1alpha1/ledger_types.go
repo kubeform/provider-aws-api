@@ -63,7 +63,8 @@ type LedgerSpecResource struct {
 	// +optional
 	DeletionProtection *bool `json:"deletionProtection,omitempty" tf:"deletion_protection"`
 	// +optional
-	Name *string `json:"name,omitempty" tf:"name"`
+	Name            *string `json:"name,omitempty" tf:"name"`
+	PermissionsMode *string `json:"permissionsMode" tf:"permissions_mode"`
 	// +optional
 	Tags *map[string]string `json:"tags,omitempty" tf:"tags"`
 	// +optional

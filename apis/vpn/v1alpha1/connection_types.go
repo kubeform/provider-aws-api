@@ -54,6 +54,8 @@ type ConnectionSpecVgwTelemetry struct {
 	// +optional
 	AcceptedRouteCount *int64 `json:"acceptedRouteCount,omitempty" tf:"accepted_route_count"`
 	// +optional
+	CertificateArn *string `json:"certificateArn,omitempty" tf:"certificate_arn"`
+	// +optional
 	LastStatusChange *string `json:"lastStatusChange,omitempty" tf:"last_status_change"`
 	// +optional
 	OutsideIPAddress *string `json:"outsideIPAddress,omitempty" tf:"outside_ip_address"`
@@ -85,7 +87,7 @@ type ConnectionSpecResource struct {
 	// +optional
 	Arn *string `json:"arn,omitempty" tf:"arn"`
 	// +optional
-	CustomerGatewayConfiguration *string `json:"customerGatewayConfiguration,omitempty" tf:"customer_gateway_configuration"`
+	CustomerGatewayConfiguration *string `json:"-" sensitive:"true" tf:"customer_gateway_configuration"`
 	CustomerGatewayID            *string `json:"customerGatewayID" tf:"customer_gateway_id"`
 	// +optional
 	EnableAcceleration *bool `json:"enableAcceleration,omitempty" tf:"enable_acceleration"`

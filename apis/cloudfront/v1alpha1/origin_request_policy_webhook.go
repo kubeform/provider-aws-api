@@ -86,7 +86,7 @@ func (r *OriginRequestPolicy) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range originrequestpolicyForceNewList {
+	for key, _ := range originrequestpolicyForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

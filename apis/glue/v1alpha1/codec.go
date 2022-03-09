@@ -27,6 +27,7 @@ import (
 
 func GetEncoder() map[string]jsoniter.ValEncoder {
 	return map[string]jsoniter.ValEncoder{
+		jsoniter.MustGetKind(reflect2.TypeOf(CatalogDatabaseSpecCreateTableDefaultPermissionPrincipal{}).Type1()):                                   CatalogDatabaseSpecCreateTableDefaultPermissionPrincipalCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(CatalogDatabaseSpecTargetDatabase{}).Type1()):                                                          CatalogDatabaseSpecTargetDatabaseCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(CatalogTableSpecStorageDescriptor{}).Type1()):                                                          CatalogTableSpecStorageDescriptorCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(CatalogTableSpecStorageDescriptorSchemaReference{}).Type1()):                                           CatalogTableSpecStorageDescriptorSchemaReferenceCodec{},
@@ -53,6 +54,7 @@ func GetEncoder() map[string]jsoniter.ValEncoder {
 		jsoniter.MustGetKind(reflect2.TypeOf(PartitionSpecStorageDescriptor{}).Type1()):                                                             PartitionSpecStorageDescriptorCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(PartitionSpecStorageDescriptorSerDeInfo{}).Type1()):                                                    PartitionSpecStorageDescriptorSerDeInfoCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(PartitionSpecStorageDescriptorSkewedInfo{}).Type1()):                                                   PartitionSpecStorageDescriptorSkewedInfoCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(PartitionIndexSpecPartitionIndex{}).Type1()):                                                           PartitionIndexSpecPartitionIndexCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(SecurityConfigurationSpecEncryptionConfiguration{}).Type1()):                                           SecurityConfigurationSpecEncryptionConfigurationCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(SecurityConfigurationSpecEncryptionConfigurationCloudwatchEncryption{}).Type1()):                       SecurityConfigurationSpecEncryptionConfigurationCloudwatchEncryptionCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(SecurityConfigurationSpecEncryptionConfigurationJobBookmarksEncryption{}).Type1()):                     SecurityConfigurationSpecEncryptionConfigurationJobBookmarksEncryptionCodec{},
@@ -64,6 +66,7 @@ func GetEncoder() map[string]jsoniter.ValEncoder {
 
 func GetDecoder() map[string]jsoniter.ValDecoder {
 	return map[string]jsoniter.ValDecoder{
+		jsoniter.MustGetKind(reflect2.TypeOf(CatalogDatabaseSpecCreateTableDefaultPermissionPrincipal{}).Type1()):                                   CatalogDatabaseSpecCreateTableDefaultPermissionPrincipalCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(CatalogDatabaseSpecTargetDatabase{}).Type1()):                                                          CatalogDatabaseSpecTargetDatabaseCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(CatalogTableSpecStorageDescriptor{}).Type1()):                                                          CatalogTableSpecStorageDescriptorCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(CatalogTableSpecStorageDescriptorSchemaReference{}).Type1()):                                           CatalogTableSpecStorageDescriptorSchemaReferenceCodec{},
@@ -90,6 +93,7 @@ func GetDecoder() map[string]jsoniter.ValDecoder {
 		jsoniter.MustGetKind(reflect2.TypeOf(PartitionSpecStorageDescriptor{}).Type1()):                                                             PartitionSpecStorageDescriptorCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(PartitionSpecStorageDescriptorSerDeInfo{}).Type1()):                                                    PartitionSpecStorageDescriptorSerDeInfoCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(PartitionSpecStorageDescriptorSkewedInfo{}).Type1()):                                                   PartitionSpecStorageDescriptorSkewedInfoCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(PartitionIndexSpecPartitionIndex{}).Type1()):                                                           PartitionIndexSpecPartitionIndexCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(SecurityConfigurationSpecEncryptionConfiguration{}).Type1()):                                           SecurityConfigurationSpecEncryptionConfigurationCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(SecurityConfigurationSpecEncryptionConfigurationCloudwatchEncryption{}).Type1()):                       SecurityConfigurationSpecEncryptionConfigurationCloudwatchEncryptionCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(SecurityConfigurationSpecEncryptionConfigurationJobBookmarksEncryption{}).Type1()):                     SecurityConfigurationSpecEncryptionConfigurationJobBookmarksEncryptionCodec{},
@@ -109,6 +113,85 @@ func getDecodersWithout(typ string) map[string]jsoniter.ValDecoder {
 	origMap := GetDecoder()
 	delete(origMap, typ)
 	return origMap
+}
+
+// +k8s:deepcopy-gen=false
+type CatalogDatabaseSpecCreateTableDefaultPermissionPrincipalCodec struct {
+}
+
+func (CatalogDatabaseSpecCreateTableDefaultPermissionPrincipalCodec) IsEmpty(ptr unsafe.Pointer) bool {
+	return (*CatalogDatabaseSpecCreateTableDefaultPermissionPrincipal)(ptr) == nil
+}
+
+func (CatalogDatabaseSpecCreateTableDefaultPermissionPrincipalCodec) Encode(ptr unsafe.Pointer, stream *jsoniter.Stream) {
+	obj := (*CatalogDatabaseSpecCreateTableDefaultPermissionPrincipal)(ptr)
+	var objs []CatalogDatabaseSpecCreateTableDefaultPermissionPrincipal
+	if obj != nil {
+		objs = []CatalogDatabaseSpecCreateTableDefaultPermissionPrincipal{*obj}
+	}
+
+	jsonit := jsoniter.Config{
+		EscapeHTML:             true,
+		SortMapKeys:            true,
+		ValidateJsonRawMessage: true,
+		TagKey:                 "tf",
+		TypeEncoders:           getEncodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(CatalogDatabaseSpecCreateTableDefaultPermissionPrincipal{}).Type1())),
+	}.Froze()
+
+	byt, _ := jsonit.Marshal(objs)
+
+	stream.Write(byt)
+}
+
+func (CatalogDatabaseSpecCreateTableDefaultPermissionPrincipalCodec) Decode(ptr unsafe.Pointer, iter *jsoniter.Iterator) {
+	switch iter.WhatIsNext() {
+	case jsoniter.NilValue:
+		iter.Skip()
+		*(*CatalogDatabaseSpecCreateTableDefaultPermissionPrincipal)(ptr) = CatalogDatabaseSpecCreateTableDefaultPermissionPrincipal{}
+		return
+	case jsoniter.ArrayValue:
+		objsByte := iter.SkipAndReturnBytes()
+		if len(objsByte) > 0 {
+			var objs []CatalogDatabaseSpecCreateTableDefaultPermissionPrincipal
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(CatalogDatabaseSpecCreateTableDefaultPermissionPrincipal{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objsByte, &objs)
+
+			if len(objs) > 0 {
+				*(*CatalogDatabaseSpecCreateTableDefaultPermissionPrincipal)(ptr) = objs[0]
+			} else {
+				*(*CatalogDatabaseSpecCreateTableDefaultPermissionPrincipal)(ptr) = CatalogDatabaseSpecCreateTableDefaultPermissionPrincipal{}
+			}
+		} else {
+			*(*CatalogDatabaseSpecCreateTableDefaultPermissionPrincipal)(ptr) = CatalogDatabaseSpecCreateTableDefaultPermissionPrincipal{}
+		}
+	case jsoniter.ObjectValue:
+		objByte := iter.SkipAndReturnBytes()
+		if len(objByte) > 0 {
+			var obj CatalogDatabaseSpecCreateTableDefaultPermissionPrincipal
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(CatalogDatabaseSpecCreateTableDefaultPermissionPrincipal{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objByte, &obj)
+
+			*(*CatalogDatabaseSpecCreateTableDefaultPermissionPrincipal)(ptr) = obj
+		} else {
+			*(*CatalogDatabaseSpecCreateTableDefaultPermissionPrincipal)(ptr) = CatalogDatabaseSpecCreateTableDefaultPermissionPrincipal{}
+		}
+	default:
+		iter.ReportError("decode CatalogDatabaseSpecCreateTableDefaultPermissionPrincipal", "unexpected JSON type")
+	}
 }
 
 // +k8s:deepcopy-gen=false
@@ -2162,6 +2245,85 @@ func (PartitionSpecStorageDescriptorSkewedInfoCodec) Decode(ptr unsafe.Pointer, 
 		}
 	default:
 		iter.ReportError("decode PartitionSpecStorageDescriptorSkewedInfo", "unexpected JSON type")
+	}
+}
+
+// +k8s:deepcopy-gen=false
+type PartitionIndexSpecPartitionIndexCodec struct {
+}
+
+func (PartitionIndexSpecPartitionIndexCodec) IsEmpty(ptr unsafe.Pointer) bool {
+	return (*PartitionIndexSpecPartitionIndex)(ptr) == nil
+}
+
+func (PartitionIndexSpecPartitionIndexCodec) Encode(ptr unsafe.Pointer, stream *jsoniter.Stream) {
+	obj := (*PartitionIndexSpecPartitionIndex)(ptr)
+	var objs []PartitionIndexSpecPartitionIndex
+	if obj != nil {
+		objs = []PartitionIndexSpecPartitionIndex{*obj}
+	}
+
+	jsonit := jsoniter.Config{
+		EscapeHTML:             true,
+		SortMapKeys:            true,
+		ValidateJsonRawMessage: true,
+		TagKey:                 "tf",
+		TypeEncoders:           getEncodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(PartitionIndexSpecPartitionIndex{}).Type1())),
+	}.Froze()
+
+	byt, _ := jsonit.Marshal(objs)
+
+	stream.Write(byt)
+}
+
+func (PartitionIndexSpecPartitionIndexCodec) Decode(ptr unsafe.Pointer, iter *jsoniter.Iterator) {
+	switch iter.WhatIsNext() {
+	case jsoniter.NilValue:
+		iter.Skip()
+		*(*PartitionIndexSpecPartitionIndex)(ptr) = PartitionIndexSpecPartitionIndex{}
+		return
+	case jsoniter.ArrayValue:
+		objsByte := iter.SkipAndReturnBytes()
+		if len(objsByte) > 0 {
+			var objs []PartitionIndexSpecPartitionIndex
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(PartitionIndexSpecPartitionIndex{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objsByte, &objs)
+
+			if len(objs) > 0 {
+				*(*PartitionIndexSpecPartitionIndex)(ptr) = objs[0]
+			} else {
+				*(*PartitionIndexSpecPartitionIndex)(ptr) = PartitionIndexSpecPartitionIndex{}
+			}
+		} else {
+			*(*PartitionIndexSpecPartitionIndex)(ptr) = PartitionIndexSpecPartitionIndex{}
+		}
+	case jsoniter.ObjectValue:
+		objByte := iter.SkipAndReturnBytes()
+		if len(objByte) > 0 {
+			var obj PartitionIndexSpecPartitionIndex
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(PartitionIndexSpecPartitionIndex{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objByte, &obj)
+
+			*(*PartitionIndexSpecPartitionIndex)(ptr) = obj
+		} else {
+			*(*PartitionIndexSpecPartitionIndex)(ptr) = PartitionIndexSpecPartitionIndex{}
+		}
+	default:
+		iter.ReportError("decode PartitionIndexSpecPartitionIndex", "unexpected JSON type")
 	}
 }
 

@@ -60,6 +60,8 @@ func addKnownTypes(scheme *runtime.Scheme) error {
 		&CacheList{},
 		&CachedIscsiVolume{},
 		&CachedIscsiVolumeList{},
+		&FileSystemAssociation{},
+		&FileSystemAssociationList{},
 		&Gateway{},
 		&GatewayList{},
 		&NfsFileShare{},

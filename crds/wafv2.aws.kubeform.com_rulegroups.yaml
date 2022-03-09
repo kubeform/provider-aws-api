@@ -62,6 +62,21 @@ spec:
                   capacity:
                     format: int64
                     type: integer
+                  customResponseBody:
+                    items:
+                      properties:
+                        content:
+                          type: string
+                        contentType:
+                          type: string
+                        key:
+                          type: string
+                      required:
+                      - content
+                      - contentType
+                      - key
+                      type: object
+                    type: array
                   description:
                     type: string
                   id:
@@ -100,6 +115,8 @@ spec:
                               properties:
                                 customResponse:
                                   properties:
+                                    customResponseBodyKey:
+                                      type: string
                                     responseCode:
                                       format: int64
                                       type: integer
@@ -146,6 +163,15 @@ spec:
                         priority:
                           format: int64
                           type: integer
+                        ruleLabel:
+                          items:
+                            properties:
+                              name:
+                                type: string
+                            required:
+                            - name
+                            type: object
+                          type: array
                         statement:
                           properties:
                             andStatement:
@@ -248,6 +274,16 @@ spec:
                                                       type: object
                                                   required:
                                                   - arn
+                                                  type: object
+                                                labelMatchStatement:
+                                                  properties:
+                                                    key:
+                                                      type: string
+                                                    scope:
+                                                      type: string
+                                                  required:
+                                                  - key
+                                                  - scope
                                                   type: object
                                                 regexPatternSetReferenceStatement:
                                                   properties:
@@ -535,6 +571,16 @@ spec:
                                         required:
                                         - arn
                                         type: object
+                                      labelMatchStatement:
+                                        properties:
+                                          key:
+                                            type: string
+                                          scope:
+                                            type: string
+                                        required:
+                                        - key
+                                        - scope
+                                        type: object
                                       notStatement:
                                         properties:
                                           statement:
@@ -630,6 +676,16 @@ spec:
                                                       type: object
                                                   required:
                                                   - arn
+                                                  type: object
+                                                labelMatchStatement:
+                                                  properties:
+                                                    key:
+                                                      type: string
+                                                    scope:
+                                                      type: string
+                                                  required:
+                                                  - key
+                                                  - scope
                                                   type: object
                                                 regexPatternSetReferenceStatement:
                                                   properties:
@@ -921,6 +977,16 @@ spec:
                                                       type: object
                                                   required:
                                                   - arn
+                                                  type: object
+                                                labelMatchStatement:
+                                                  properties:
+                                                    key:
+                                                      type: string
+                                                    scope:
+                                                      type: string
+                                                  required:
+                                                  - key
+                                                  - scope
                                                   type: object
                                                 regexPatternSetReferenceStatement:
                                                   properties:
@@ -1403,6 +1469,16 @@ spec:
                               required:
                               - arn
                               type: object
+                            labelMatchStatement:
+                              properties:
+                                key:
+                                  type: string
+                                scope:
+                                  type: string
+                              required:
+                              - key
+                              - scope
+                              type: object
                             notStatement:
                               properties:
                                 statement:
@@ -1503,6 +1579,16 @@ spec:
                                                       type: object
                                                   required:
                                                   - arn
+                                                  type: object
+                                                labelMatchStatement:
+                                                  properties:
+                                                    key:
+                                                      type: string
+                                                    scope:
+                                                      type: string
+                                                  required:
+                                                  - key
+                                                  - scope
                                                   type: object
                                                 regexPatternSetReferenceStatement:
                                                   properties:
@@ -1790,6 +1876,16 @@ spec:
                                         required:
                                         - arn
                                         type: object
+                                      labelMatchStatement:
+                                        properties:
+                                          key:
+                                            type: string
+                                          scope:
+                                            type: string
+                                        required:
+                                        - key
+                                        - scope
+                                        type: object
                                       notStatement:
                                         properties:
                                           statement:
@@ -1885,6 +1981,16 @@ spec:
                                                       type: object
                                                   required:
                                                   - arn
+                                                  type: object
+                                                labelMatchStatement:
+                                                  properties:
+                                                    key:
+                                                      type: string
+                                                    scope:
+                                                      type: string
+                                                  required:
+                                                  - key
+                                                  - scope
                                                   type: object
                                                 regexPatternSetReferenceStatement:
                                                   properties:
@@ -2176,6 +2282,16 @@ spec:
                                                       type: object
                                                   required:
                                                   - arn
+                                                  type: object
+                                                labelMatchStatement:
+                                                  properties:
+                                                    key:
+                                                      type: string
+                                                    scope:
+                                                      type: string
+                                                  required:
+                                                  - key
+                                                  - scope
                                                   type: object
                                                 regexPatternSetReferenceStatement:
                                                   properties:
@@ -2668,6 +2784,16 @@ spec:
                                                   required:
                                                   - arn
                                                   type: object
+                                                labelMatchStatement:
+                                                  properties:
+                                                    key:
+                                                      type: string
+                                                    scope:
+                                                      type: string
+                                                  required:
+                                                  - key
+                                                  - scope
+                                                  type: object
                                                 regexPatternSetReferenceStatement:
                                                   properties:
                                                     arn:
@@ -2954,6 +3080,16 @@ spec:
                                         required:
                                         - arn
                                         type: object
+                                      labelMatchStatement:
+                                        properties:
+                                          key:
+                                            type: string
+                                          scope:
+                                            type: string
+                                        required:
+                                        - key
+                                        - scope
+                                        type: object
                                       notStatement:
                                         properties:
                                           statement:
@@ -3049,6 +3185,16 @@ spec:
                                                       type: object
                                                   required:
                                                   - arn
+                                                  type: object
+                                                labelMatchStatement:
+                                                  properties:
+                                                    key:
+                                                      type: string
+                                                    scope:
+                                                      type: string
+                                                  required:
+                                                  - key
+                                                  - scope
                                                   type: object
                                                 regexPatternSetReferenceStatement:
                                                   properties:
@@ -3340,6 +3486,16 @@ spec:
                                                       type: object
                                                   required:
                                                   - arn
+                                                  type: object
+                                                labelMatchStatement:
+                                                  properties:
+                                                    key:
+                                                      type: string
+                                                    scope:
+                                                      type: string
+                                                  required:
+                                                  - key
+                                                  - scope
                                                   type: object
                                                 regexPatternSetReferenceStatement:
                                                   properties:
@@ -3979,6 +4135,21 @@ spec:
                   capacity:
                     format: int64
                     type: integer
+                  customResponseBody:
+                    items:
+                      properties:
+                        content:
+                          type: string
+                        contentType:
+                          type: string
+                        key:
+                          type: string
+                      required:
+                      - content
+                      - contentType
+                      - key
+                      type: object
+                    type: array
                   description:
                     type: string
                   id:
@@ -4017,6 +4188,8 @@ spec:
                               properties:
                                 customResponse:
                                   properties:
+                                    customResponseBodyKey:
+                                      type: string
                                     responseCode:
                                       format: int64
                                       type: integer
@@ -4063,6 +4236,15 @@ spec:
                         priority:
                           format: int64
                           type: integer
+                        ruleLabel:
+                          items:
+                            properties:
+                              name:
+                                type: string
+                            required:
+                            - name
+                            type: object
+                          type: array
                         statement:
                           properties:
                             andStatement:
@@ -4165,6 +4347,16 @@ spec:
                                                       type: object
                                                   required:
                                                   - arn
+                                                  type: object
+                                                labelMatchStatement:
+                                                  properties:
+                                                    key:
+                                                      type: string
+                                                    scope:
+                                                      type: string
+                                                  required:
+                                                  - key
+                                                  - scope
                                                   type: object
                                                 regexPatternSetReferenceStatement:
                                                   properties:
@@ -4452,6 +4644,16 @@ spec:
                                         required:
                                         - arn
                                         type: object
+                                      labelMatchStatement:
+                                        properties:
+                                          key:
+                                            type: string
+                                          scope:
+                                            type: string
+                                        required:
+                                        - key
+                                        - scope
+                                        type: object
                                       notStatement:
                                         properties:
                                           statement:
@@ -4547,6 +4749,16 @@ spec:
                                                       type: object
                                                   required:
                                                   - arn
+                                                  type: object
+                                                labelMatchStatement:
+                                                  properties:
+                                                    key:
+                                                      type: string
+                                                    scope:
+                                                      type: string
+                                                  required:
+                                                  - key
+                                                  - scope
                                                   type: object
                                                 regexPatternSetReferenceStatement:
                                                   properties:
@@ -4838,6 +5050,16 @@ spec:
                                                       type: object
                                                   required:
                                                   - arn
+                                                  type: object
+                                                labelMatchStatement:
+                                                  properties:
+                                                    key:
+                                                      type: string
+                                                    scope:
+                                                      type: string
+                                                  required:
+                                                  - key
+                                                  - scope
                                                   type: object
                                                 regexPatternSetReferenceStatement:
                                                   properties:
@@ -5320,6 +5542,16 @@ spec:
                               required:
                               - arn
                               type: object
+                            labelMatchStatement:
+                              properties:
+                                key:
+                                  type: string
+                                scope:
+                                  type: string
+                              required:
+                              - key
+                              - scope
+                              type: object
                             notStatement:
                               properties:
                                 statement:
@@ -5420,6 +5652,16 @@ spec:
                                                       type: object
                                                   required:
                                                   - arn
+                                                  type: object
+                                                labelMatchStatement:
+                                                  properties:
+                                                    key:
+                                                      type: string
+                                                    scope:
+                                                      type: string
+                                                  required:
+                                                  - key
+                                                  - scope
                                                   type: object
                                                 regexPatternSetReferenceStatement:
                                                   properties:
@@ -5707,6 +5949,16 @@ spec:
                                         required:
                                         - arn
                                         type: object
+                                      labelMatchStatement:
+                                        properties:
+                                          key:
+                                            type: string
+                                          scope:
+                                            type: string
+                                        required:
+                                        - key
+                                        - scope
+                                        type: object
                                       notStatement:
                                         properties:
                                           statement:
@@ -5802,6 +6054,16 @@ spec:
                                                       type: object
                                                   required:
                                                   - arn
+                                                  type: object
+                                                labelMatchStatement:
+                                                  properties:
+                                                    key:
+                                                      type: string
+                                                    scope:
+                                                      type: string
+                                                  required:
+                                                  - key
+                                                  - scope
                                                   type: object
                                                 regexPatternSetReferenceStatement:
                                                   properties:
@@ -6093,6 +6355,16 @@ spec:
                                                       type: object
                                                   required:
                                                   - arn
+                                                  type: object
+                                                labelMatchStatement:
+                                                  properties:
+                                                    key:
+                                                      type: string
+                                                    scope:
+                                                      type: string
+                                                  required:
+                                                  - key
+                                                  - scope
                                                   type: object
                                                 regexPatternSetReferenceStatement:
                                                   properties:
@@ -6585,6 +6857,16 @@ spec:
                                                   required:
                                                   - arn
                                                   type: object
+                                                labelMatchStatement:
+                                                  properties:
+                                                    key:
+                                                      type: string
+                                                    scope:
+                                                      type: string
+                                                  required:
+                                                  - key
+                                                  - scope
+                                                  type: object
                                                 regexPatternSetReferenceStatement:
                                                   properties:
                                                     arn:
@@ -6871,6 +7153,16 @@ spec:
                                         required:
                                         - arn
                                         type: object
+                                      labelMatchStatement:
+                                        properties:
+                                          key:
+                                            type: string
+                                          scope:
+                                            type: string
+                                        required:
+                                        - key
+                                        - scope
+                                        type: object
                                       notStatement:
                                         properties:
                                           statement:
@@ -6966,6 +7258,16 @@ spec:
                                                       type: object
                                                   required:
                                                   - arn
+                                                  type: object
+                                                labelMatchStatement:
+                                                  properties:
+                                                    key:
+                                                      type: string
+                                                    scope:
+                                                      type: string
+                                                  required:
+                                                  - key
+                                                  - scope
                                                   type: object
                                                 regexPatternSetReferenceStatement:
                                                   properties:
@@ -7257,6 +7559,16 @@ spec:
                                                       type: object
                                                   required:
                                                   - arn
+                                                  type: object
+                                                labelMatchStatement:
+                                                  properties:
+                                                    key:
+                                                      type: string
+                                                    scope:
+                                                      type: string
+                                                  required:
+                                                  - key
+                                                  - scope
                                                   type: object
                                                 regexPatternSetReferenceStatement:
                                                   properties:

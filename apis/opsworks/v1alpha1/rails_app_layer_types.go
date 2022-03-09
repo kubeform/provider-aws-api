@@ -41,6 +41,36 @@ type RailsAppLayer struct {
 	Status            RailsAppLayerStatus `json:"status,omitempty"`
 }
 
+type RailsAppLayerSpecCloudwatchConfigurationLogStreams struct {
+	// +optional
+	BatchCount *int64 `json:"batchCount,omitempty" tf:"batch_count"`
+	// +optional
+	BatchSize *int64 `json:"batchSize,omitempty" tf:"batch_size"`
+	// +optional
+	BufferDuration *int64 `json:"bufferDuration,omitempty" tf:"buffer_duration"`
+	// +optional
+	DatetimeFormat *string `json:"datetimeFormat,omitempty" tf:"datetime_format"`
+	// +optional
+	Encoding *string `json:"encoding,omitempty" tf:"encoding"`
+	File     *string `json:"file" tf:"file"`
+	// +optional
+	FileFingerprintLines *string `json:"fileFingerprintLines,omitempty" tf:"file_fingerprint_lines"`
+	// +optional
+	InitialPosition *string `json:"initialPosition,omitempty" tf:"initial_position"`
+	LogGroupName    *string `json:"logGroupName" tf:"log_group_name"`
+	// +optional
+	MultilineStartPattern *string `json:"multilineStartPattern,omitempty" tf:"multiline_start_pattern"`
+	// +optional
+	TimeZone *string `json:"timeZone,omitempty" tf:"time_zone"`
+}
+
+type RailsAppLayerSpecCloudwatchConfiguration struct {
+	// +optional
+	Enabled *bool `json:"enabled,omitempty" tf:"enabled"`
+	// +optional
+	LogStreams []RailsAppLayerSpecCloudwatchConfigurationLogStreams `json:"logStreams,omitempty" tf:"log_streams"`
+}
+
 type RailsAppLayerSpecEbsVolume struct {
 	// +optional
 	Encrypted *bool `json:"encrypted,omitempty" tf:"encrypted"`
@@ -84,6 +114,8 @@ type RailsAppLayerSpecResource struct {
 	AutoHealing *bool `json:"autoHealing,omitempty" tf:"auto_healing"`
 	// +optional
 	BundlerVersion *string `json:"bundlerVersion,omitempty" tf:"bundler_version"`
+	// +optional
+	CloudwatchConfiguration *RailsAppLayerSpecCloudwatchConfiguration `json:"cloudwatchConfiguration,omitempty" tf:"cloudwatch_configuration"`
 	// +optional
 	CustomConfigureRecipes []string `json:"customConfigureRecipes,omitempty" tf:"custom_configure_recipes"`
 	// +optional

@@ -88,7 +88,7 @@ func (r *Ledger) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range ledgerForceNewList {
+	for key, _ := range ledgerForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

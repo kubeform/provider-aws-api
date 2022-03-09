@@ -89,7 +89,7 @@ func (r *TagOptionResourceAssociation) ValidateUpdate(old runtime.Object) error 
 		return err
 	}
 
-	for key := range tagoptionresourceassociationForceNewList {
+	for key, _ := range tagoptionresourceassociationForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

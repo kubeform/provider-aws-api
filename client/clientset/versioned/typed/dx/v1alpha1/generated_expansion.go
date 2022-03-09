@@ -24,11 +24,15 @@ type ConnectionExpansion interface{}
 
 type ConnectionAssociationExpansion interface{}
 
+type ConnectionConfirmationExpansion interface{}
+
 type GatewayExpansion interface{}
 
 type GatewayAssociationExpansion interface{}
 
 type GatewayAssociationProposalExpansion interface{}
+
+type HostedConnectionExpansion interface{}
 
 type HostedPrivateVirtualInterfaceExpansion interface{}
 

@@ -319,6 +319,11 @@ func (in *AssociationSpecOutputLocation) DeepCopyInto(out *AssociationSpecOutput
 		*out = new(string)
 		**out = **in
 	}
+	if in.S3Region != nil {
+		in, out := &in.S3Region, &out.S3Region
+		*out = new(string)
+		**out = **in
+	}
 	return
 }
 
@@ -338,6 +343,11 @@ func (in *AssociationSpecResource) DeepCopyInto(out *AssociationSpecResource) {
 	if in.ApplyOnlyAtCronInterval != nil {
 		in, out := &in.ApplyOnlyAtCronInterval, &out.ApplyOnlyAtCronInterval
 		*out = new(bool)
+		**out = **in
+	}
+	if in.Arn != nil {
+		in, out := &in.Arn, &out.Arn
+		*out = new(string)
 		**out = **in
 	}
 	if in.AssociationID != nil {
@@ -412,6 +422,11 @@ func (in *AssociationSpecResource) DeepCopyInto(out *AssociationSpecResource) {
 		for i := range *in {
 			(*in)[i].DeepCopyInto(&(*out)[i])
 		}
+	}
+	if in.WaitForSuccessTimeoutSeconds != nil {
+		in, out := &in.WaitForSuccessTimeoutSeconds, &out.WaitForSuccessTimeoutSeconds
+		*out = new(int64)
+		**out = **in
 	}
 	return
 }

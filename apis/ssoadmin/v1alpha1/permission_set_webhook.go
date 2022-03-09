@@ -89,7 +89,7 @@ func (r *PermissionSet) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range permissionsetForceNewList {
+	for key, _ := range permissionsetForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

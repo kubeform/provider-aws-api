@@ -45,6 +45,8 @@ type ServerSpecEndpointDetails struct {
 	// +optional
 	AddressAllocationIDS []string `json:"addressAllocationIDS,omitempty" tf:"address_allocation_ids"`
 	// +optional
+	SecurityGroupIDS []string `json:"securityGroupIDS,omitempty" tf:"security_group_ids"`
+	// +optional
 	SubnetIDS []string `json:"subnetIDS,omitempty" tf:"subnet_ids"`
 	// +optional
 	VpcEndpointID *string `json:"vpcEndpointID,omitempty" tf:"vpc_endpoint_id"`
@@ -76,6 +78,8 @@ type ServerSpecResource struct {
 	// +optional
 	Certificate *string `json:"certificate,omitempty" tf:"certificate"`
 	// +optional
+	DirectoryID *string `json:"directoryID,omitempty" tf:"directory_id"`
+	// +optional
 	Domain *string `json:"domain,omitempty" tf:"domain"`
 	// +optional
 	Endpoint *string `json:"endpoint,omitempty" tf:"endpoint"`
@@ -85,6 +89,8 @@ type ServerSpecResource struct {
 	EndpointType *string `json:"endpointType,omitempty" tf:"endpoint_type"`
 	// +optional
 	ForceDestroy *bool `json:"forceDestroy,omitempty" tf:"force_destroy"`
+	// +optional
+	Function *string `json:"function,omitempty" tf:"function"`
 	// +optional
 	HostKey *string `json:"-" sensitive:"true" tf:"host_key"`
 	// +optional

@@ -63,6 +63,8 @@ spec:
                     type: string
                   keyFingerprint:
                     type: string
+                  password:
+                    type: string
                   passwordLength:
                     format: int64
                     type: integer
@@ -73,7 +75,6 @@ spec:
                   user:
                     type: string
                 required:
-                - pgpKey
                 - user
                 type: object
               state:
@@ -84,6 +85,8 @@ spec:
                     type: string
                   keyFingerprint:
                     type: string
+                  password:
+                    type: string
                   passwordLength:
                     format: int64
                     type: integer
@@ -94,7 +97,6 @@ spec:
                   user:
                     type: string
                 required:
-                - pgpKey
                 - user
                 type: object
               terminationPolicy:

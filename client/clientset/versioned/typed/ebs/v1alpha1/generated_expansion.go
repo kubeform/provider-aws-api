@@ -26,4 +26,6 @@ type SnapshotExpansion interface{}
 
 type SnapshotCopyExpansion interface{}
 
+type SnapshotImportExpansion interface{}
+
 type VolumeExpansion interface{}

@@ -89,7 +89,7 @@ func (r *TransitGatewayRouteTableAssociation) ValidateUpdate(old runtime.Object)
 		return err
 	}
 
-	for key := range transitgatewayroutetableassociationForceNewList {
+	for key, _ := range transitgatewayroutetableassociationForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

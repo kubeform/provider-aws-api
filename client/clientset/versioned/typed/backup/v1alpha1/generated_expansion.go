@@ -18,15 +18,21 @@ limitations under the License.
 
 package v1alpha1
 
+type FrameworkExpansion interface{}
+
 type GlobalSettingsExpansion interface{}
 
 type PlanExpansion interface{}
 
 type RegionSettingsExpansion interface{}
 
+type ReportPlanExpansion interface{}
+
 type SelectionExpansion interface{}
 
 type VaultExpansion interface{}
+
+type VaultLockConfigurationExpansion interface{}
 
 type VaultNotificationsExpansion interface{}
 

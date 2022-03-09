@@ -18,6 +18,30 @@ limitations under the License.
 
 package v1alpha1
 
+// DevicePoolListerExpansion allows custom methods to be added to
+// DevicePoolLister.
+type DevicePoolListerExpansion interface{}
+
+// DevicePoolNamespaceListerExpansion allows custom methods to be added to
+// DevicePoolNamespaceLister.
+type DevicePoolNamespaceListerExpansion interface{}
+
+// InstanceProfileListerExpansion allows custom methods to be added to
+// InstanceProfileLister.
+type InstanceProfileListerExpansion interface{}
+
+// InstanceProfileNamespaceListerExpansion allows custom methods to be added to
+// InstanceProfileNamespaceLister.
+type InstanceProfileNamespaceListerExpansion interface{}
+
+// NetworkProfileListerExpansion allows custom methods to be added to
+// NetworkProfileLister.
+type NetworkProfileListerExpansion interface{}
+
+// NetworkProfileNamespaceListerExpansion allows custom methods to be added to
+// NetworkProfileNamespaceLister.
+type NetworkProfileNamespaceListerExpansion interface{}
+
 // ProjectListerExpansion allows custom methods to be added to
 // ProjectLister.
 type ProjectListerExpansion interface{}
@@ -25,3 +49,19 @@ type ProjectListerExpansion interface{}
 // ProjectNamespaceListerExpansion allows custom methods to be added to
 // ProjectNamespaceLister.
 type ProjectNamespaceListerExpansion interface{}
+
+// TestGridProjectListerExpansion allows custom methods to be added to
+// TestGridProjectLister.
+type TestGridProjectListerExpansion interface{}
+
+// TestGridProjectNamespaceListerExpansion allows custom methods to be added to
+// TestGridProjectNamespaceLister.
+type TestGridProjectNamespaceListerExpansion interface{}
+
+// UploadListerExpansion allows custom methods to be added to
+// UploadLister.
+type UploadListerExpansion interface{}
+
+// UploadNamespaceListerExpansion allows custom methods to be added to
+// UploadNamespaceLister.
+type UploadNamespaceListerExpansion interface{}

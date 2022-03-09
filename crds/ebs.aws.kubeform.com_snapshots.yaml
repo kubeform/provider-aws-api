@@ -69,9 +69,15 @@ spec:
                     type: string
                   kmsKeyID:
                     type: string
+                  outpostArn:
+                    type: string
                   ownerAlias:
                     type: string
                   ownerID:
+                    type: string
+                  permanentRestore:
+                    type: boolean
+                  storageTier:
                     type: string
                   tags:
                     additionalProperties:
@@ -81,6 +87,9 @@ spec:
                     additionalProperties:
                       type: string
                     type: object
+                  temporaryRestoreDays:
+                    format: int64
+                    type: integer
                   timeouts:
                     properties:
                       create:
@@ -141,9 +150,15 @@ spec:
                     type: string
                   kmsKeyID:
                     type: string
+                  outpostArn:
+                    type: string
                   ownerAlias:
                     type: string
                   ownerID:
+                    type: string
+                  permanentRestore:
+                    type: boolean
+                  storageTier:
                     type: string
                   tags:
                     additionalProperties:
@@ -153,6 +168,9 @@ spec:
                     additionalProperties:
                       type: string
                     type: object
+                  temporaryRestoreDays:
+                    format: int64
+                    type: integer
                   timeouts:
                     properties:
                       create:

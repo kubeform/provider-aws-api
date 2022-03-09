@@ -32,6 +32,8 @@ type Interface interface {
 	ClusterParameterGroups() ClusterParameterGroupInformer
 	// ClusterSnapshots returns a ClusterSnapshotInformer.
 	ClusterSnapshots() ClusterSnapshotInformer
+	// GlobalClusters returns a GlobalClusterInformer.
+	GlobalClusters() GlobalClusterInformer
 	// SubnetGroups returns a SubnetGroupInformer.
 	SubnetGroups() SubnetGroupInformer
 }
@@ -65,6 +67,11 @@ func (v *version) ClusterParameterGroups() ClusterParameterGroupInformer {
 // ClusterSnapshots returns a ClusterSnapshotInformer.
 func (v *version) ClusterSnapshots() ClusterSnapshotInformer {
 	return &clusterSnapshotInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
+// GlobalClusters returns a GlobalClusterInformer.
+func (v *version) GlobalClusters() GlobalClusterInformer {
+	return &globalClusterInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
 }
 
 // SubnetGroups returns a SubnetGroupInformer.

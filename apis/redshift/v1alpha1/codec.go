@@ -27,15 +27,23 @@ import (
 
 func GetEncoder() map[string]jsoniter.ValEncoder {
 	return map[string]jsoniter.ValEncoder{
-		jsoniter.MustGetKind(reflect2.TypeOf(ClusterSpecLogging{}).Type1()):      ClusterSpecLoggingCodec{},
-		jsoniter.MustGetKind(reflect2.TypeOf(ClusterSpecSnapshotCopy{}).Type1()): ClusterSpecSnapshotCopyCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(ClusterSpecLogging{}).Type1()):                           ClusterSpecLoggingCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(ClusterSpecSnapshotCopy{}).Type1()):                      ClusterSpecSnapshotCopyCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(ScheduledActionSpecTargetAction{}).Type1()):              ScheduledActionSpecTargetActionCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(ScheduledActionSpecTargetActionPauseCluster{}).Type1()):  ScheduledActionSpecTargetActionPauseClusterCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(ScheduledActionSpecTargetActionResizeCluster{}).Type1()): ScheduledActionSpecTargetActionResizeClusterCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(ScheduledActionSpecTargetActionResumeCluster{}).Type1()): ScheduledActionSpecTargetActionResumeClusterCodec{},
 	}
 }
 
 func GetDecoder() map[string]jsoniter.ValDecoder {
 	return map[string]jsoniter.ValDecoder{
-		jsoniter.MustGetKind(reflect2.TypeOf(ClusterSpecLogging{}).Type1()):      ClusterSpecLoggingCodec{},
-		jsoniter.MustGetKind(reflect2.TypeOf(ClusterSpecSnapshotCopy{}).Type1()): ClusterSpecSnapshotCopyCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(ClusterSpecLogging{}).Type1()):                           ClusterSpecLoggingCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(ClusterSpecSnapshotCopy{}).Type1()):                      ClusterSpecSnapshotCopyCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(ScheduledActionSpecTargetAction{}).Type1()):              ScheduledActionSpecTargetActionCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(ScheduledActionSpecTargetActionPauseCluster{}).Type1()):  ScheduledActionSpecTargetActionPauseClusterCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(ScheduledActionSpecTargetActionResizeCluster{}).Type1()): ScheduledActionSpecTargetActionResizeClusterCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(ScheduledActionSpecTargetActionResumeCluster{}).Type1()): ScheduledActionSpecTargetActionResumeClusterCodec{},
 	}
 }
 
@@ -206,5 +214,321 @@ func (ClusterSpecSnapshotCopyCodec) Decode(ptr unsafe.Pointer, iter *jsoniter.It
 		}
 	default:
 		iter.ReportError("decode ClusterSpecSnapshotCopy", "unexpected JSON type")
+	}
+}
+
+// +k8s:deepcopy-gen=false
+type ScheduledActionSpecTargetActionCodec struct {
+}
+
+func (ScheduledActionSpecTargetActionCodec) IsEmpty(ptr unsafe.Pointer) bool {
+	return (*ScheduledActionSpecTargetAction)(ptr) == nil
+}
+
+func (ScheduledActionSpecTargetActionCodec) Encode(ptr unsafe.Pointer, stream *jsoniter.Stream) {
+	obj := (*ScheduledActionSpecTargetAction)(ptr)
+	var objs []ScheduledActionSpecTargetAction
+	if obj != nil {
+		objs = []ScheduledActionSpecTargetAction{*obj}
+	}
+
+	jsonit := jsoniter.Config{
+		EscapeHTML:             true,
+		SortMapKeys:            true,
+		ValidateJsonRawMessage: true,
+		TagKey:                 "tf",
+		TypeEncoders:           getEncodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(ScheduledActionSpecTargetAction{}).Type1())),
+	}.Froze()
+
+	byt, _ := jsonit.Marshal(objs)
+
+	stream.Write(byt)
+}
+
+func (ScheduledActionSpecTargetActionCodec) Decode(ptr unsafe.Pointer, iter *jsoniter.Iterator) {
+	switch iter.WhatIsNext() {
+	case jsoniter.NilValue:
+		iter.Skip()
+		*(*ScheduledActionSpecTargetAction)(ptr) = ScheduledActionSpecTargetAction{}
+		return
+	case jsoniter.ArrayValue:
+		objsByte := iter.SkipAndReturnBytes()
+		if len(objsByte) > 0 {
+			var objs []ScheduledActionSpecTargetAction
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(ScheduledActionSpecTargetAction{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objsByte, &objs)
+
+			if len(objs) > 0 {
+				*(*ScheduledActionSpecTargetAction)(ptr) = objs[0]
+			} else {
+				*(*ScheduledActionSpecTargetAction)(ptr) = ScheduledActionSpecTargetAction{}
+			}
+		} else {
+			*(*ScheduledActionSpecTargetAction)(ptr) = ScheduledActionSpecTargetAction{}
+		}
+	case jsoniter.ObjectValue:
+		objByte := iter.SkipAndReturnBytes()
+		if len(objByte) > 0 {
+			var obj ScheduledActionSpecTargetAction
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(ScheduledActionSpecTargetAction{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objByte, &obj)
+
+			*(*ScheduledActionSpecTargetAction)(ptr) = obj
+		} else {
+			*(*ScheduledActionSpecTargetAction)(ptr) = ScheduledActionSpecTargetAction{}
+		}
+	default:
+		iter.ReportError("decode ScheduledActionSpecTargetAction", "unexpected JSON type")
+	}
+}
+
+// +k8s:deepcopy-gen=false
+type ScheduledActionSpecTargetActionPauseClusterCodec struct {
+}
+
+func (ScheduledActionSpecTargetActionPauseClusterCodec) IsEmpty(ptr unsafe.Pointer) bool {
+	return (*ScheduledActionSpecTargetActionPauseCluster)(ptr) == nil
+}
+
+func (ScheduledActionSpecTargetActionPauseClusterCodec) Encode(ptr unsafe.Pointer, stream *jsoniter.Stream) {
+	obj := (*ScheduledActionSpecTargetActionPauseCluster)(ptr)
+	var objs []ScheduledActionSpecTargetActionPauseCluster
+	if obj != nil {
+		objs = []ScheduledActionSpecTargetActionPauseCluster{*obj}
+	}
+
+	jsonit := jsoniter.Config{
+		EscapeHTML:             true,
+		SortMapKeys:            true,
+		ValidateJsonRawMessage: true,
+		TagKey:                 "tf",
+		TypeEncoders:           getEncodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(ScheduledActionSpecTargetActionPauseCluster{}).Type1())),
+	}.Froze()
+
+	byt, _ := jsonit.Marshal(objs)
+
+	stream.Write(byt)
+}
+
+func (ScheduledActionSpecTargetActionPauseClusterCodec) Decode(ptr unsafe.Pointer, iter *jsoniter.Iterator) {
+	switch iter.WhatIsNext() {
+	case jsoniter.NilValue:
+		iter.Skip()
+		*(*ScheduledActionSpecTargetActionPauseCluster)(ptr) = ScheduledActionSpecTargetActionPauseCluster{}
+		return
+	case jsoniter.ArrayValue:
+		objsByte := iter.SkipAndReturnBytes()
+		if len(objsByte) > 0 {
+			var objs []ScheduledActionSpecTargetActionPauseCluster
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(ScheduledActionSpecTargetActionPauseCluster{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objsByte, &objs)
+
+			if len(objs) > 0 {
+				*(*ScheduledActionSpecTargetActionPauseCluster)(ptr) = objs[0]
+			} else {
+				*(*ScheduledActionSpecTargetActionPauseCluster)(ptr) = ScheduledActionSpecTargetActionPauseCluster{}
+			}
+		} else {
+			*(*ScheduledActionSpecTargetActionPauseCluster)(ptr) = ScheduledActionSpecTargetActionPauseCluster{}
+		}
+	case jsoniter.ObjectValue:
+		objByte := iter.SkipAndReturnBytes()
+		if len(objByte) > 0 {
+			var obj ScheduledActionSpecTargetActionPauseCluster
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(ScheduledActionSpecTargetActionPauseCluster{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objByte, &obj)
+
+			*(*ScheduledActionSpecTargetActionPauseCluster)(ptr) = obj
+		} else {
+			*(*ScheduledActionSpecTargetActionPauseCluster)(ptr) = ScheduledActionSpecTargetActionPauseCluster{}
+		}
+	default:
+		iter.ReportError("decode ScheduledActionSpecTargetActionPauseCluster", "unexpected JSON type")
+	}
+}
+
+// +k8s:deepcopy-gen=false
+type ScheduledActionSpecTargetActionResizeClusterCodec struct {
+}
+
+func (ScheduledActionSpecTargetActionResizeClusterCodec) IsEmpty(ptr unsafe.Pointer) bool {
+	return (*ScheduledActionSpecTargetActionResizeCluster)(ptr) == nil
+}
+
+func (ScheduledActionSpecTargetActionResizeClusterCodec) Encode(ptr unsafe.Pointer, stream *jsoniter.Stream) {
+	obj := (*ScheduledActionSpecTargetActionResizeCluster)(ptr)
+	var objs []ScheduledActionSpecTargetActionResizeCluster
+	if obj != nil {
+		objs = []ScheduledActionSpecTargetActionResizeCluster{*obj}
+	}
+
+	jsonit := jsoniter.Config{
+		EscapeHTML:             true,
+		SortMapKeys:            true,
+		ValidateJsonRawMessage: true,
+		TagKey:                 "tf",
+		TypeEncoders:           getEncodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(ScheduledActionSpecTargetActionResizeCluster{}).Type1())),
+	}.Froze()
+
+	byt, _ := jsonit.Marshal(objs)
+
+	stream.Write(byt)
+}
+
+func (ScheduledActionSpecTargetActionResizeClusterCodec) Decode(ptr unsafe.Pointer, iter *jsoniter.Iterator) {
+	switch iter.WhatIsNext() {
+	case jsoniter.NilValue:
+		iter.Skip()
+		*(*ScheduledActionSpecTargetActionResizeCluster)(ptr) = ScheduledActionSpecTargetActionResizeCluster{}
+		return
+	case jsoniter.ArrayValue:
+		objsByte := iter.SkipAndReturnBytes()
+		if len(objsByte) > 0 {
+			var objs []ScheduledActionSpecTargetActionResizeCluster
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(ScheduledActionSpecTargetActionResizeCluster{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objsByte, &objs)
+
+			if len(objs) > 0 {
+				*(*ScheduledActionSpecTargetActionResizeCluster)(ptr) = objs[0]
+			} else {
+				*(*ScheduledActionSpecTargetActionResizeCluster)(ptr) = ScheduledActionSpecTargetActionResizeCluster{}
+			}
+		} else {
+			*(*ScheduledActionSpecTargetActionResizeCluster)(ptr) = ScheduledActionSpecTargetActionResizeCluster{}
+		}
+	case jsoniter.ObjectValue:
+		objByte := iter.SkipAndReturnBytes()
+		if len(objByte) > 0 {
+			var obj ScheduledActionSpecTargetActionResizeCluster
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(ScheduledActionSpecTargetActionResizeCluster{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objByte, &obj)
+
+			*(*ScheduledActionSpecTargetActionResizeCluster)(ptr) = obj
+		} else {
+			*(*ScheduledActionSpecTargetActionResizeCluster)(ptr) = ScheduledActionSpecTargetActionResizeCluster{}
+		}
+	default:
+		iter.ReportError("decode ScheduledActionSpecTargetActionResizeCluster", "unexpected JSON type")
+	}
+}
+
+// +k8s:deepcopy-gen=false
+type ScheduledActionSpecTargetActionResumeClusterCodec struct {
+}
+
+func (ScheduledActionSpecTargetActionResumeClusterCodec) IsEmpty(ptr unsafe.Pointer) bool {
+	return (*ScheduledActionSpecTargetActionResumeCluster)(ptr) == nil
+}
+
+func (ScheduledActionSpecTargetActionResumeClusterCodec) Encode(ptr unsafe.Pointer, stream *jsoniter.Stream) {
+	obj := (*ScheduledActionSpecTargetActionResumeCluster)(ptr)
+	var objs []ScheduledActionSpecTargetActionResumeCluster
+	if obj != nil {
+		objs = []ScheduledActionSpecTargetActionResumeCluster{*obj}
+	}
+
+	jsonit := jsoniter.Config{
+		EscapeHTML:             true,
+		SortMapKeys:            true,
+		ValidateJsonRawMessage: true,
+		TagKey:                 "tf",
+		TypeEncoders:           getEncodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(ScheduledActionSpecTargetActionResumeCluster{}).Type1())),
+	}.Froze()
+
+	byt, _ := jsonit.Marshal(objs)
+
+	stream.Write(byt)
+}
+
+func (ScheduledActionSpecTargetActionResumeClusterCodec) Decode(ptr unsafe.Pointer, iter *jsoniter.Iterator) {
+	switch iter.WhatIsNext() {
+	case jsoniter.NilValue:
+		iter.Skip()
+		*(*ScheduledActionSpecTargetActionResumeCluster)(ptr) = ScheduledActionSpecTargetActionResumeCluster{}
+		return
+	case jsoniter.ArrayValue:
+		objsByte := iter.SkipAndReturnBytes()
+		if len(objsByte) > 0 {
+			var objs []ScheduledActionSpecTargetActionResumeCluster
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(ScheduledActionSpecTargetActionResumeCluster{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objsByte, &objs)
+
+			if len(objs) > 0 {
+				*(*ScheduledActionSpecTargetActionResumeCluster)(ptr) = objs[0]
+			} else {
+				*(*ScheduledActionSpecTargetActionResumeCluster)(ptr) = ScheduledActionSpecTargetActionResumeCluster{}
+			}
+		} else {
+			*(*ScheduledActionSpecTargetActionResumeCluster)(ptr) = ScheduledActionSpecTargetActionResumeCluster{}
+		}
+	case jsoniter.ObjectValue:
+		objByte := iter.SkipAndReturnBytes()
+		if len(objByte) > 0 {
+			var obj ScheduledActionSpecTargetActionResumeCluster
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(ScheduledActionSpecTargetActionResumeCluster{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objByte, &obj)
+
+			*(*ScheduledActionSpecTargetActionResumeCluster)(ptr) = obj
+		} else {
+			*(*ScheduledActionSpecTargetActionResumeCluster)(ptr) = ScheduledActionSpecTargetActionResumeCluster{}
+		}
+	default:
+		iter.ReportError("decode ScheduledActionSpecTargetActionResumeCluster", "unexpected JSON type")
 	}
 }

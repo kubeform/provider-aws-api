@@ -26,6 +26,14 @@ type ComponentListerExpansion interface{}
 // ComponentNamespaceLister.
 type ComponentNamespaceListerExpansion interface{}
 
+// ContainerRecipeListerExpansion allows custom methods to be added to
+// ContainerRecipeLister.
+type ContainerRecipeListerExpansion interface{}
+
+// ContainerRecipeNamespaceListerExpansion allows custom methods to be added to
+// ContainerRecipeNamespaceLister.
+type ContainerRecipeNamespaceListerExpansion interface{}
+
 // DistributionConfigurationListerExpansion allows custom methods to be added to
 // DistributionConfigurationLister.
 type DistributionConfigurationListerExpansion interface{}

@@ -62,6 +62,8 @@ func addKnownTypes(scheme *runtime.Scheme) error {
 		&ClusterList{},
 		&FargateProfile{},
 		&FargateProfileList{},
+		&IdentityProviderConfig{},
+		&IdentityProviderConfigList{},
 		&NodeGroup{},
 		&NodeGroupList{},
 	)

@@ -71,6 +71,8 @@ spec:
                         type: string
                       key:
                         type: string
+                      objectVersion:
+                        type: string
                       roleArn:
                         type: string
                     required:
@@ -108,6 +110,8 @@ spec:
                       bucket:
                         type: string
                       key:
+                        type: string
+                      objectVersion:
                         type: string
                       roleArn:
                         type: string

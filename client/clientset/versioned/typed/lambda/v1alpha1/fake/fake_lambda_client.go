@@ -49,8 +49,16 @@ func (c *FakeLambdaV1alpha1) FunctionEventInvokeConfigs(namespace string) v1alph
 	return &FakeFunctionEventInvokeConfigs{c, namespace}
 }
 
+func (c *FakeLambdaV1alpha1) Invocations(namespace string) v1alpha1.InvocationInterface {
+	return &FakeInvocations{c, namespace}
+}
+
 func (c *FakeLambdaV1alpha1) LayerVersions(namespace string) v1alpha1.LayerVersionInterface {
 	return &FakeLayerVersions{c, namespace}
+}
+
+func (c *FakeLambdaV1alpha1) LayerVersionPermissions(namespace string) v1alpha1.LayerVersionPermissionInterface {
+	return &FakeLayerVersionPermissions{c, namespace}
 }
 
 func (c *FakeLambdaV1alpha1) Permissions(namespace string) v1alpha1.PermissionInterface {

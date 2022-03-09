@@ -89,7 +89,7 @@ func (r *StaticIPAttachment) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range staticipattachmentForceNewList {
+	for key, _ := range staticipattachmentForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

@@ -57,12 +57,15 @@ spec:
                 type: object
               resource:
                 properties:
+                  arn:
+                    type: string
                   childHealthThreshold:
                     format: int64
                     type: integer
                   childHealthchecks:
                     items:
                       type: string
+                    maxItems: 256
                     type: array
                   cloudwatchAlarmName:
                     type: string
@@ -95,11 +98,15 @@ spec:
                   regions:
                     items:
                       type: string
+                    maxItems: 64
+                    minItems: 3
                     type: array
                   requestInterval:
                     format: int64
                     type: integer
                   resourcePath:
+                    type: string
+                  routingControlArn:
                     type: string
                   searchString:
                     type: string
@@ -118,12 +125,15 @@ spec:
                 type: object
               state:
                 properties:
+                  arn:
+                    type: string
                   childHealthThreshold:
                     format: int64
                     type: integer
                   childHealthchecks:
                     items:
                       type: string
+                    maxItems: 256
                     type: array
                   cloudwatchAlarmName:
                     type: string
@@ -156,11 +166,15 @@ spec:
                   regions:
                     items:
                       type: string
+                    maxItems: 64
+                    minItems: 3
                     type: array
                   requestInterval:
                     format: int64
                     type: integer
                   resourcePath:
+                    type: string
+                  routingControlArn:
                     type: string
                   searchString:
                     type: string

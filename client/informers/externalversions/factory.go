@@ -25,6 +25,7 @@ import (
 
 	versioned "kubeform.dev/provider-aws-api/client/clientset/versioned"
 	accessanalyzer "kubeform.dev/provider-aws-api/client/informers/externalversions/accessanalyzer"
+	account "kubeform.dev/provider-aws-api/client/informers/externalversions/account"
 	acm "kubeform.dev/provider-aws-api/client/informers/externalversions/acm"
 	acmpca "kubeform.dev/provider-aws-api/client/informers/externalversions/acmpca"
 	alb "kubeform.dev/provider-aws-api/client/informers/externalversions/alb"
@@ -34,8 +35,10 @@ import (
 	apigatewayv2 "kubeform.dev/provider-aws-api/client/informers/externalversions/apigatewayv2"
 	app "kubeform.dev/provider-aws-api/client/informers/externalversions/app"
 	appautoscaling "kubeform.dev/provider-aws-api/client/informers/externalversions/appautoscaling"
+	appconfig "kubeform.dev/provider-aws-api/client/informers/externalversions/appconfig"
 	appmesh "kubeform.dev/provider-aws-api/client/informers/externalversions/appmesh"
 	apprunner "kubeform.dev/provider-aws-api/client/informers/externalversions/apprunner"
+	appstream "kubeform.dev/provider-aws-api/client/informers/externalversions/appstream"
 	appsync "kubeform.dev/provider-aws-api/client/informers/externalversions/appsync"
 	athena "kubeform.dev/provider-aws-api/client/informers/externalversions/athena"
 	autoscaling "kubeform.dev/provider-aws-api/client/informers/externalversions/autoscaling"
@@ -43,11 +46,14 @@ import (
 	backup "kubeform.dev/provider-aws-api/client/informers/externalversions/backup"
 	batch "kubeform.dev/provider-aws-api/client/informers/externalversions/batch"
 	budgets "kubeform.dev/provider-aws-api/client/informers/externalversions/budgets"
+	chime "kubeform.dev/provider-aws-api/client/informers/externalversions/chime"
 	cloud9 "kubeform.dev/provider-aws-api/client/informers/externalversions/cloud9"
+	cloudcontrolapi "kubeform.dev/provider-aws-api/client/informers/externalversions/cloudcontrolapi"
 	cloudformationstack "kubeform.dev/provider-aws-api/client/informers/externalversions/cloudformationstack"
 	cloudformationtype "kubeform.dev/provider-aws-api/client/informers/externalversions/cloudformationtype"
 	cloudfront "kubeform.dev/provider-aws-api/client/informers/externalversions/cloudfront"
 	cloudhsmv2 "kubeform.dev/provider-aws-api/client/informers/externalversions/cloudhsmv2"
+	cloudsearch "kubeform.dev/provider-aws-api/client/informers/externalversions/cloudsearch"
 	cloudtrail "kubeform.dev/provider-aws-api/client/informers/externalversions/cloudtrail"
 	cloudwatch "kubeform.dev/provider-aws-api/client/informers/externalversions/cloudwatch"
 	codeartifact "kubeform.dev/provider-aws-api/client/informers/externalversions/codeartifact"
@@ -59,13 +65,16 @@ import (
 	codestarnotifications "kubeform.dev/provider-aws-api/client/informers/externalversions/codestarnotifications"
 	cognito "kubeform.dev/provider-aws-api/client/informers/externalversions/cognito"
 	config "kubeform.dev/provider-aws-api/client/informers/externalversions/config"
+	connect "kubeform.dev/provider-aws-api/client/informers/externalversions/connect"
 	cur "kubeform.dev/provider-aws-api/client/informers/externalversions/cur"
 	customer "kubeform.dev/provider-aws-api/client/informers/externalversions/customer"
+	dataexchange "kubeform.dev/provider-aws-api/client/informers/externalversions/dataexchange"
 	datapipeline "kubeform.dev/provider-aws-api/client/informers/externalversions/datapipeline"
 	datasync "kubeform.dev/provider-aws-api/client/informers/externalversions/datasync"
 	dax "kubeform.dev/provider-aws-api/client/informers/externalversions/dax"
 	db "kubeform.dev/provider-aws-api/client/informers/externalversions/db"
 	_default "kubeform.dev/provider-aws-api/client/informers/externalversions/default"
+	detective "kubeform.dev/provider-aws-api/client/informers/externalversions/detective"
 	devicefarm "kubeform.dev/provider-aws-api/client/informers/externalversions/devicefarm"
 	directoryservice "kubeform.dev/provider-aws-api/client/informers/externalversions/directoryservice"
 	dlm "kubeform.dev/provider-aws-api/client/informers/externalversions/dlm"
@@ -95,6 +104,7 @@ import (
 	glaciervault "kubeform.dev/provider-aws-api/client/informers/externalversions/glaciervault"
 	globalaccelerator "kubeform.dev/provider-aws-api/client/informers/externalversions/globalaccelerator"
 	glue "kubeform.dev/provider-aws-api/client/informers/externalversions/glue"
+	grafana "kubeform.dev/provider-aws-api/client/informers/externalversions/grafana"
 	guardduty "kubeform.dev/provider-aws-api/client/informers/externalversions/guardduty"
 	iam "kubeform.dev/provider-aws-api/client/informers/externalversions/iam"
 	imagebuilder "kubeform.dev/provider-aws-api/client/informers/externalversions/imagebuilder"
@@ -119,8 +129,10 @@ import (
 	macie2 "kubeform.dev/provider-aws-api/client/informers/externalversions/macie2"
 	main "kubeform.dev/provider-aws-api/client/informers/externalversions/main"
 	media "kubeform.dev/provider-aws-api/client/informers/externalversions/media"
+	memorydb "kubeform.dev/provider-aws-api/client/informers/externalversions/memorydb"
 	mq "kubeform.dev/provider-aws-api/client/informers/externalversions/mq"
 	msk "kubeform.dev/provider-aws-api/client/informers/externalversions/msk"
+	mskconnect "kubeform.dev/provider-aws-api/client/informers/externalversions/mskconnect"
 	mwaa "kubeform.dev/provider-aws-api/client/informers/externalversions/mwaa"
 	nat "kubeform.dev/provider-aws-api/client/informers/externalversions/nat"
 	neptune "kubeform.dev/provider-aws-api/client/informers/externalversions/neptune"
@@ -140,6 +152,9 @@ import (
 	resourcegroups "kubeform.dev/provider-aws-api/client/informers/externalversions/resourcegroups"
 	route "kubeform.dev/provider-aws-api/client/informers/externalversions/route"
 	route53 "kubeform.dev/provider-aws-api/client/informers/externalversions/route53"
+	route53domains "kubeform.dev/provider-aws-api/client/informers/externalversions/route53domains"
+	route53recoverycontrolconfig "kubeform.dev/provider-aws-api/client/informers/externalversions/route53recoverycontrolconfig"
+	route53recoveryreadiness "kubeform.dev/provider-aws-api/client/informers/externalversions/route53recoveryreadiness"
 	s3 "kubeform.dev/provider-aws-api/client/informers/externalversions/s3"
 	s3control "kubeform.dev/provider-aws-api/client/informers/externalversions/s3control"
 	s3outposts "kubeform.dev/provider-aws-api/client/informers/externalversions/s3outposts"
@@ -326,6 +341,7 @@ type SharedInformerFactory interface {
 	WaitForCacheSync(stopCh <-chan struct{}) map[reflect.Type]bool
 
 	Accessanalyzer() accessanalyzer.Interface
+	Account() account.Interface
 	Acm() acm.Interface
 	Acmpca() acmpca.Interface
 	Alb() alb.Interface
@@ -335,8 +351,10 @@ type SharedInformerFactory interface {
 	Apigatewayv2() apigatewayv2.Interface
 	App() app.Interface
 	Appautoscaling() appautoscaling.Interface
+	Appconfig() appconfig.Interface
 	Appmesh() appmesh.Interface
 	Apprunner() apprunner.Interface
+	Appstream() appstream.Interface
 	Appsync() appsync.Interface
 	Athena() athena.Interface
 	Autoscaling() autoscaling.Interface
@@ -344,11 +362,14 @@ type SharedInformerFactory interface {
 	Backup() backup.Interface
 	Batch() batch.Interface
 	Budgets() budgets.Interface
+	Chime() chime.Interface
 	Cloud9() cloud9.Interface
+	Cloudcontrolapi() cloudcontrolapi.Interface
 	Cloudformationstack() cloudformationstack.Interface
 	Cloudformationtype() cloudformationtype.Interface
 	Cloudfront() cloudfront.Interface
 	Cloudhsmv2() cloudhsmv2.Interface
+	Cloudsearch() cloudsearch.Interface
 	Cloudtrail() cloudtrail.Interface
 	Cloudwatch() cloudwatch.Interface
 	Codeartifact() codeartifact.Interface
@@ -360,13 +381,16 @@ type SharedInformerFactory interface {
 	Codestarnotifications() codestarnotifications.Interface
 	Cognito() cognito.Interface
 	Config() config.Interface
+	Connect() connect.Interface
 	Cur() cur.Interface
 	Customer() customer.Interface
+	Dataexchange() dataexchange.Interface
 	Datapipeline() datapipeline.Interface
 	Datasync() datasync.Interface
 	Dax() dax.Interface
 	Db() db.Interface
 	Default() _default.Interface
+	Detective() detective.Interface
 	Devicefarm() devicefarm.Interface
 	Directoryservice() directoryservice.Interface
 	Dlm() dlm.Interface
@@ -396,6 +420,7 @@ type SharedInformerFactory interface {
 	Glaciervault() glaciervault.Interface
 	Globalaccelerator() globalaccelerator.Interface
 	Glue() glue.Interface
+	Grafana() grafana.Interface
 	Guardduty() guardduty.Interface
 	Iam() iam.Interface
 	Imagebuilder() imagebuilder.Interface
@@ -419,8 +444,10 @@ type SharedInformerFactory interface {
 	Macie2() macie2.Interface
 	Main() main.Interface
 	Media() media.Interface
+	Memorydb() memorydb.Interface
 	Mq() mq.Interface
 	Msk() msk.Interface
+	Mskconnect() mskconnect.Interface
 	Mwaa() mwaa.Interface
 	Nat() nat.Interface
 	Neptune() neptune.Interface
@@ -440,6 +467,9 @@ type SharedInformerFactory interface {
 	Resourcegroups() resourcegroups.Interface
 	Route() route.Interface
 	Route53() route53.Interface
+	Route53domains() route53domains.Interface
+	Route53recoverycontrolconfig() route53recoverycontrolconfig.Interface
+	Route53recoveryreadiness() route53recoveryreadiness.Interface
 	S3() s3.Interface
 	S3control() s3control.Interface
 	S3outposts() s3outposts.Interface
@@ -484,6 +514,10 @@ func (f *sharedInformerFactory) Accessanalyzer() accessanalyzer.Interface {
 	return accessanalyzer.New(f, f.namespace, f.tweakListOptions)
 }
 
+func (f *sharedInformerFactory) Account() account.Interface {
+	return account.New(f, f.namespace, f.tweakListOptions)
+}
+
 func (f *sharedInformerFactory) Acm() acm.Interface {
 	return acm.New(f, f.namespace, f.tweakListOptions)
 }
@@ -520,12 +554,20 @@ func (f *sharedInformerFactory) Appautoscaling() appautoscaling.Interface {
 	return appautoscaling.New(f, f.namespace, f.tweakListOptions)
 }
 
+func (f *sharedInformerFactory) Appconfig() appconfig.Interface {
+	return appconfig.New(f, f.namespace, f.tweakListOptions)
+}
+
 func (f *sharedInformerFactory) Appmesh() appmesh.Interface {
 	return appmesh.New(f, f.namespace, f.tweakListOptions)
 }
 
 func (f *sharedInformerFactory) Apprunner() apprunner.Interface {
 	return apprunner.New(f, f.namespace, f.tweakListOptions)
+}
+
+func (f *sharedInformerFactory) Appstream() appstream.Interface {
+	return appstream.New(f, f.namespace, f.tweakListOptions)
 }
 
 func (f *sharedInformerFactory) Appsync() appsync.Interface {
@@ -556,8 +598,16 @@ func (f *sharedInformerFactory) Budgets() budgets.Interface {
 	return budgets.New(f, f.namespace, f.tweakListOptions)
 }
 
+func (f *sharedInformerFactory) Chime() chime.Interface {
+	return chime.New(f, f.namespace, f.tweakListOptions)
+}
+
 func (f *sharedInformerFactory) Cloud9() cloud9.Interface {
 	return cloud9.New(f, f.namespace, f.tweakListOptions)
+}
+
+func (f *sharedInformerFactory) Cloudcontrolapi() cloudcontrolapi.Interface {
+	return cloudcontrolapi.New(f, f.namespace, f.tweakListOptions)
 }
 
 func (f *sharedInformerFactory) Cloudformationstack() cloudformationstack.Interface {
@@ -574,6 +624,10 @@ func (f *sharedInformerFactory) Cloudfront() cloudfront.Interface {
 
 func (f *sharedInformerFactory) Cloudhsmv2() cloudhsmv2.Interface {
 	return cloudhsmv2.New(f, f.namespace, f.tweakListOptions)
+}
+
+func (f *sharedInformerFactory) Cloudsearch() cloudsearch.Interface {
+	return cloudsearch.New(f, f.namespace, f.tweakListOptions)
 }
 
 func (f *sharedInformerFactory) Cloudtrail() cloudtrail.Interface {
@@ -620,12 +674,20 @@ func (f *sharedInformerFactory) Config() config.Interface {
 	return config.New(f, f.namespace, f.tweakListOptions)
 }
 
+func (f *sharedInformerFactory) Connect() connect.Interface {
+	return connect.New(f, f.namespace, f.tweakListOptions)
+}
+
 func (f *sharedInformerFactory) Cur() cur.Interface {
 	return cur.New(f, f.namespace, f.tweakListOptions)
 }
 
 func (f *sharedInformerFactory) Customer() customer.Interface {
 	return customer.New(f, f.namespace, f.tweakListOptions)
+}
+
+func (f *sharedInformerFactory) Dataexchange() dataexchange.Interface {
+	return dataexchange.New(f, f.namespace, f.tweakListOptions)
 }
 
 func (f *sharedInformerFactory) Datapipeline() datapipeline.Interface {
@@ -646,6 +708,10 @@ func (f *sharedInformerFactory) Db() db.Interface {
 
 func (f *sharedInformerFactory) Default() _default.Interface {
 	return _default.New(f, f.namespace, f.tweakListOptions)
+}
+
+func (f *sharedInformerFactory) Detective() detective.Interface {
+	return detective.New(f, f.namespace, f.tweakListOptions)
 }
 
 func (f *sharedInformerFactory) Devicefarm() devicefarm.Interface {
@@ -764,6 +830,10 @@ func (f *sharedInformerFactory) Glue() glue.Interface {
 	return glue.New(f, f.namespace, f.tweakListOptions)
 }
 
+func (f *sharedInformerFactory) Grafana() grafana.Interface {
+	return grafana.New(f, f.namespace, f.tweakListOptions)
+}
+
 func (f *sharedInformerFactory) Guardduty() guardduty.Interface {
 	return guardduty.New(f, f.namespace, f.tweakListOptions)
 }
@@ -856,12 +926,20 @@ func (f *sharedInformerFactory) Media() media.Interface {
 	return media.New(f, f.namespace, f.tweakListOptions)
 }
 
+func (f *sharedInformerFactory) Memorydb() memorydb.Interface {
+	return memorydb.New(f, f.namespace, f.tweakListOptions)
+}
+
 func (f *sharedInformerFactory) Mq() mq.Interface {
 	return mq.New(f, f.namespace, f.tweakListOptions)
 }
 
 func (f *sharedInformerFactory) Msk() msk.Interface {
 	return msk.New(f, f.namespace, f.tweakListOptions)
+}
+
+func (f *sharedInformerFactory) Mskconnect() mskconnect.Interface {
+	return mskconnect.New(f, f.namespace, f.tweakListOptions)
 }
 
 func (f *sharedInformerFactory) Mwaa() mwaa.Interface {
@@ -938,6 +1016,18 @@ func (f *sharedInformerFactory) Route() route.Interface {
 
 func (f *sharedInformerFactory) Route53() route53.Interface {
 	return route53.New(f, f.namespace, f.tweakListOptions)
+}
+
+func (f *sharedInformerFactory) Route53domains() route53domains.Interface {
+	return route53domains.New(f, f.namespace, f.tweakListOptions)
+}
+
+func (f *sharedInformerFactory) Route53recoverycontrolconfig() route53recoverycontrolconfig.Interface {
+	return route53recoverycontrolconfig.New(f, f.namespace, f.tweakListOptions)
+}
+
+func (f *sharedInformerFactory) Route53recoveryreadiness() route53recoveryreadiness.Interface {
+	return route53recoveryreadiness.New(f, f.namespace, f.tweakListOptions)
 }
 
 func (f *sharedInformerFactory) S3() s3.Interface {

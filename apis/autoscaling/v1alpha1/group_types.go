@@ -58,6 +58,10 @@ type GroupSpecInitialLifecycleHook struct {
 
 type GroupSpecInstanceRefreshPreferences struct {
 	// +optional
+	CheckpointDelay *string `json:"checkpointDelay,omitempty" tf:"checkpoint_delay"`
+	// +optional
+	CheckpointPercentages []int64 `json:"checkpointPercentages,omitempty" tf:"checkpoint_percentages"`
+	// +optional
 	InstanceWarmup *string `json:"instanceWarmup,omitempty" tf:"instance_warmup"`
 	// +optional
 	MinHealthyPercentage *int64 `json:"minHealthyPercentage,omitempty" tf:"min_healthy_percentage"`
@@ -223,6 +227,7 @@ type GroupSpecResource struct {
 	// +optional
 	Tag []GroupSpecTag `json:"tag,omitempty" tf:"tag"`
 	// +optional
+	// Deprecated
 	// +optional
 	TargetGroupArns []string `json:"targetGroupArns,omitempty" tf:"target_group_arns"`
 	// +optional

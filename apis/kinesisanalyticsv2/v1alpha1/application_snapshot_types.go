@@ -56,6 +56,8 @@ type ApplicationSnapshotSpec struct {
 }
 
 type ApplicationSnapshotSpecResource struct {
+	Timeouts *base.ResourceTimeout `json:"timeouts,omitempty" tf:"timeouts"`
+
 	ID string `json:"id,omitempty" tf:"id,omitempty"`
 
 	ApplicationName *string `json:"applicationName" tf:"application_name"`

@@ -27,19 +27,21 @@ import (
 
 func GetEncoder() map[string]jsoniter.ValEncoder {
 	return map[string]jsoniter.ValEncoder{
-		jsoniter.MustGetKind(reflect2.TypeOf(GatewaySpecSmbActiveDirectorySettings{}).Type1()): GatewaySpecSmbActiveDirectorySettingsCodec{},
-		jsoniter.MustGetKind(reflect2.TypeOf(NfsFileShareSpecCacheAttributes{}).Type1()):       NfsFileShareSpecCacheAttributesCodec{},
-		jsoniter.MustGetKind(reflect2.TypeOf(NfsFileShareSpecNfsFileShareDefaults{}).Type1()):  NfsFileShareSpecNfsFileShareDefaultsCodec{},
-		jsoniter.MustGetKind(reflect2.TypeOf(SmbFileShareSpecCacheAttributes{}).Type1()):       SmbFileShareSpecCacheAttributesCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(FileSystemAssociationSpecCacheAttributes{}).Type1()): FileSystemAssociationSpecCacheAttributesCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(GatewaySpecSmbActiveDirectorySettings{}).Type1()):    GatewaySpecSmbActiveDirectorySettingsCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(NfsFileShareSpecCacheAttributes{}).Type1()):          NfsFileShareSpecCacheAttributesCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(NfsFileShareSpecNfsFileShareDefaults{}).Type1()):     NfsFileShareSpecNfsFileShareDefaultsCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(SmbFileShareSpecCacheAttributes{}).Type1()):          SmbFileShareSpecCacheAttributesCodec{},
 	}
 }
 
 func GetDecoder() map[string]jsoniter.ValDecoder {
 	return map[string]jsoniter.ValDecoder{
-		jsoniter.MustGetKind(reflect2.TypeOf(GatewaySpecSmbActiveDirectorySettings{}).Type1()): GatewaySpecSmbActiveDirectorySettingsCodec{},
-		jsoniter.MustGetKind(reflect2.TypeOf(NfsFileShareSpecCacheAttributes{}).Type1()):       NfsFileShareSpecCacheAttributesCodec{},
-		jsoniter.MustGetKind(reflect2.TypeOf(NfsFileShareSpecNfsFileShareDefaults{}).Type1()):  NfsFileShareSpecNfsFileShareDefaultsCodec{},
-		jsoniter.MustGetKind(reflect2.TypeOf(SmbFileShareSpecCacheAttributes{}).Type1()):       SmbFileShareSpecCacheAttributesCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(FileSystemAssociationSpecCacheAttributes{}).Type1()): FileSystemAssociationSpecCacheAttributesCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(GatewaySpecSmbActiveDirectorySettings{}).Type1()):    GatewaySpecSmbActiveDirectorySettingsCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(NfsFileShareSpecCacheAttributes{}).Type1()):          NfsFileShareSpecCacheAttributesCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(NfsFileShareSpecNfsFileShareDefaults{}).Type1()):     NfsFileShareSpecNfsFileShareDefaultsCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(SmbFileShareSpecCacheAttributes{}).Type1()):          SmbFileShareSpecCacheAttributesCodec{},
 	}
 }
 
@@ -53,6 +55,85 @@ func getDecodersWithout(typ string) map[string]jsoniter.ValDecoder {
 	origMap := GetDecoder()
 	delete(origMap, typ)
 	return origMap
+}
+
+// +k8s:deepcopy-gen=false
+type FileSystemAssociationSpecCacheAttributesCodec struct {
+}
+
+func (FileSystemAssociationSpecCacheAttributesCodec) IsEmpty(ptr unsafe.Pointer) bool {
+	return (*FileSystemAssociationSpecCacheAttributes)(ptr) == nil
+}
+
+func (FileSystemAssociationSpecCacheAttributesCodec) Encode(ptr unsafe.Pointer, stream *jsoniter.Stream) {
+	obj := (*FileSystemAssociationSpecCacheAttributes)(ptr)
+	var objs []FileSystemAssociationSpecCacheAttributes
+	if obj != nil {
+		objs = []FileSystemAssociationSpecCacheAttributes{*obj}
+	}
+
+	jsonit := jsoniter.Config{
+		EscapeHTML:             true,
+		SortMapKeys:            true,
+		ValidateJsonRawMessage: true,
+		TagKey:                 "tf",
+		TypeEncoders:           getEncodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(FileSystemAssociationSpecCacheAttributes{}).Type1())),
+	}.Froze()
+
+	byt, _ := jsonit.Marshal(objs)
+
+	stream.Write(byt)
+}
+
+func (FileSystemAssociationSpecCacheAttributesCodec) Decode(ptr unsafe.Pointer, iter *jsoniter.Iterator) {
+	switch iter.WhatIsNext() {
+	case jsoniter.NilValue:
+		iter.Skip()
+		*(*FileSystemAssociationSpecCacheAttributes)(ptr) = FileSystemAssociationSpecCacheAttributes{}
+		return
+	case jsoniter.ArrayValue:
+		objsByte := iter.SkipAndReturnBytes()
+		if len(objsByte) > 0 {
+			var objs []FileSystemAssociationSpecCacheAttributes
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(FileSystemAssociationSpecCacheAttributes{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objsByte, &objs)
+
+			if len(objs) > 0 {
+				*(*FileSystemAssociationSpecCacheAttributes)(ptr) = objs[0]
+			} else {
+				*(*FileSystemAssociationSpecCacheAttributes)(ptr) = FileSystemAssociationSpecCacheAttributes{}
+			}
+		} else {
+			*(*FileSystemAssociationSpecCacheAttributes)(ptr) = FileSystemAssociationSpecCacheAttributes{}
+		}
+	case jsoniter.ObjectValue:
+		objByte := iter.SkipAndReturnBytes()
+		if len(objByte) > 0 {
+			var obj FileSystemAssociationSpecCacheAttributes
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(FileSystemAssociationSpecCacheAttributes{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objByte, &obj)
+
+			*(*FileSystemAssociationSpecCacheAttributes)(ptr) = obj
+		} else {
+			*(*FileSystemAssociationSpecCacheAttributes)(ptr) = FileSystemAssociationSpecCacheAttributes{}
+		}
+	default:
+		iter.ReportError("decode FileSystemAssociationSpecCacheAttributes", "unexpected JSON type")
+	}
 }
 
 // +k8s:deepcopy-gen=false

@@ -89,7 +89,7 @@ func (r *ServiceLinkedRole) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range servicelinkedroleForceNewList {
+	for key, _ := range servicelinkedroleForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

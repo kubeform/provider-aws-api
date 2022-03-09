@@ -93,7 +93,7 @@ func (r *EventSourceMapping) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range eventsourcemappingForceNewList {
+	for key, _ := range eventsourcemappingForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

@@ -89,7 +89,7 @@ func (r *FunctionEventInvokeConfig) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range functioneventinvokeconfigForceNewList {
+	for key, _ := range functioneventinvokeconfigForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

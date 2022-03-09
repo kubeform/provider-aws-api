@@ -103,6 +103,8 @@ spec:
                     additionalProperties:
                       type: string
                     type: object
+                  webACLArn:
+                    type: string
                   xrayTracingEnabled:
                     type: boolean
                 required:
@@ -158,6 +160,8 @@ spec:
                     additionalProperties:
                       type: string
                     type: object
+                  webACLArn:
+                    type: string
                   xrayTracingEnabled:
                     type: boolean
                 required:

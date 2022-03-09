@@ -52,6 +52,10 @@ type ServerCertificateExpansion interface{}
 
 type ServiceLinkedRoleExpansion interface{}
 
+type ServiceSpecificCredentialExpansion interface{}
+
+type SigningCertificateExpansion interface{}
+
 type UserExpansion interface{}
 
 type UserGroupMembershipExpansion interface{}
@@ -63,3 +67,5 @@ type UserPolicyExpansion interface{}
 type UserPolicyAttachmentExpansion interface{}
 
 type UserSSHKeyExpansion interface{}
+
+type VirtualMfaDeviceExpansion interface{}

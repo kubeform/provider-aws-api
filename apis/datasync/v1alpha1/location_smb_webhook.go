@@ -88,7 +88,7 @@ func (r *LocationSmb) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range locationsmbForceNewList {
+	for key, _ := range locationsmbForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

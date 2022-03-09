@@ -88,7 +88,7 @@ func (r *MetricAlarm) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range metricalarmForceNewList {
+	for key, _ := range metricalarmForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

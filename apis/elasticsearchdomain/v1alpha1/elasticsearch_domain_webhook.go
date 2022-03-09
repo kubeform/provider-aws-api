@@ -92,7 +92,7 @@ func (r *ElasticsearchDomain) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range elasticsearchdomainForceNewList {
+	for key, _ := range elasticsearchdomainForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

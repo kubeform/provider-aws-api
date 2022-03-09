@@ -18,6 +18,14 @@ limitations under the License.
 
 package v1alpha1
 
+// AccountSettingDefaultListerExpansion allows custom methods to be added to
+// AccountSettingDefaultLister.
+type AccountSettingDefaultListerExpansion interface{}
+
+// AccountSettingDefaultNamespaceListerExpansion allows custom methods to be added to
+// AccountSettingDefaultNamespaceLister.
+type AccountSettingDefaultNamespaceListerExpansion interface{}
+
 // CapacityProviderListerExpansion allows custom methods to be added to
 // CapacityProviderLister.
 type CapacityProviderListerExpansion interface{}
@@ -34,6 +42,14 @@ type ClusterListerExpansion interface{}
 // ClusterNamespaceLister.
 type ClusterNamespaceListerExpansion interface{}
 
+// ClusterCapacityProvidersListerExpansion allows custom methods to be added to
+// ClusterCapacityProvidersLister.
+type ClusterCapacityProvidersListerExpansion interface{}
+
+// ClusterCapacityProvidersNamespaceListerExpansion allows custom methods to be added to
+// ClusterCapacityProvidersNamespaceLister.
+type ClusterCapacityProvidersNamespaceListerExpansion interface{}
+
 // ServiceListerExpansion allows custom methods to be added to
 // ServiceLister.
 type ServiceListerExpansion interface{}
@@ -42,6 +58,14 @@ type ServiceListerExpansion interface{}
 // ServiceNamespaceLister.
 type ServiceNamespaceListerExpansion interface{}
 
+// TagListerExpansion allows custom methods to be added to
+// TagLister.
+type TagListerExpansion interface{}
+
+// TagNamespaceListerExpansion allows custom methods to be added to
+// TagNamespaceLister.
+type TagNamespaceListerExpansion interface{}
+
 // TaskDefinitionListerExpansion allows custom methods to be added to
 // TaskDefinitionLister.
 type TaskDefinitionListerExpansion interface{}
@@ -49,3 +73,11 @@ type TaskDefinitionListerExpansion interface{}
 // TaskDefinitionNamespaceListerExpansion allows custom methods to be added to
 // TaskDefinitionNamespaceLister.
 type TaskDefinitionNamespaceListerExpansion interface{}
+
+// TaskSetListerExpansion allows custom methods to be added to
+// TaskSetLister.
+type TaskSetListerExpansion interface{}
+
+// TaskSetNamespaceListerExpansion allows custom methods to be added to
+// TaskSetNamespaceLister.
+type TaskSetNamespaceListerExpansion interface{}

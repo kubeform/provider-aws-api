@@ -24,10 +24,16 @@ import (
 
 // Interface provides access to all the informers in this group version.
 type Interface interface {
+	// ApiCaches returns a ApiCacheInformer.
+	ApiCaches() ApiCacheInformer
 	// ApiKeys returns a ApiKeyInformer.
 	ApiKeys() ApiKeyInformer
 	// Datasources returns a DatasourceInformer.
 	Datasources() DatasourceInformer
+	// DomainNames returns a DomainNameInformer.
+	DomainNames() DomainNameInformer
+	// DomainNameAPIAssociations returns a DomainNameAPIAssociationInformer.
+	DomainNameAPIAssociations() DomainNameAPIAssociationInformer
 	// Functions returns a FunctionInformer.
 	Functions() FunctionInformer
 	// GraphqlAPIs returns a GraphqlAPIInformer.
@@ -47,6 +53,11 @@ func New(f internalinterfaces.SharedInformerFactory, namespace string, tweakList
 	return &version{factory: f, namespace: namespace, tweakListOptions: tweakListOptions}
 }
 
+// ApiCaches returns a ApiCacheInformer.
+func (v *version) ApiCaches() ApiCacheInformer {
+	return &apiCacheInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
 // ApiKeys returns a ApiKeyInformer.
 func (v *version) ApiKeys() ApiKeyInformer {
 	return &apiKeyInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
@@ -55,6 +66,16 @@ func (v *version) ApiKeys() ApiKeyInformer {
 // Datasources returns a DatasourceInformer.
 func (v *version) Datasources() DatasourceInformer {
 	return &datasourceInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
+// DomainNames returns a DomainNameInformer.
+func (v *version) DomainNames() DomainNameInformer {
+	return &domainNameInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
+// DomainNameAPIAssociations returns a DomainNameAPIAssociationInformer.
+func (v *version) DomainNameAPIAssociations() DomainNameAPIAssociationInformer {
+	return &domainNameAPIAssociationInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
 }
 
 // Functions returns a FunctionInformer.

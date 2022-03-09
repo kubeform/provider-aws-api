@@ -61,7 +61,10 @@ type LayerVersionSpecResource struct {
 	// +optional
 	Arn *string `json:"arn,omitempty" tf:"arn"`
 	// +optional
-	// +kubebuilder:validation:MaxItems=5
+	// +kubebuilder:validation:MaxItems=2
+	CompatibleArchitectures []string `json:"compatibleArchitectures,omitempty" tf:"compatible_architectures"`
+	// +optional
+	// +kubebuilder:validation:MaxItems=15
 	CompatibleRuntimes []string `json:"compatibleRuntimes,omitempty" tf:"compatible_runtimes"`
 	// +optional
 	CreatedDate *string `json:"createdDate,omitempty" tf:"created_date"`
@@ -84,6 +87,8 @@ type LayerVersionSpecResource struct {
 	SigningJobArn *string `json:"signingJobArn,omitempty" tf:"signing_job_arn"`
 	// +optional
 	SigningProfileVersionArn *string `json:"signingProfileVersionArn,omitempty" tf:"signing_profile_version_arn"`
+	// +optional
+	SkipDestroy *bool `json:"skipDestroy,omitempty" tf:"skip_destroy"`
 	// +optional
 	SourceCodeHash *string `json:"sourceCodeHash,omitempty" tf:"source_code_hash"`
 	// +optional

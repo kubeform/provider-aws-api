@@ -88,7 +88,7 @@ func (r *NotebookInstanceLifecycleConfiguration) ValidateUpdate(old runtime.Obje
 		return err
 	}
 
-	for key := range notebookinstancelifecycleconfigurationForceNewList {
+	for key, _ := range notebookinstancelifecycleconfigurationForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

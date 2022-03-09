@@ -30,12 +30,22 @@ type VpcV1alpha1Interface interface {
 	DhcpOptionsesGetter
 	DhcpOptionsAssociationsGetter
 	EndpointsGetter
+	EndpointConnectionAcceptersGetter
 	EndpointConnectionNotificationsGetter
+	EndpointPoliciesGetter
 	EndpointRouteTableAssociationsGetter
 	EndpointServicesGetter
 	EndpointServiceAllowedPrincipalsGetter
 	EndpointSubnetAssociationsGetter
+	IpamsGetter
+	IpamOrganizationAdminAccountsGetter
+	IpamPoolsGetter
+	IpamPoolCIDRsGetter
+	IpamPoolCIDRAllocationsGetter
+	IpamPreviewNextCIDRsGetter
+	IpamScopesGetter
 	Ipv4CIDRBlockAssociationsGetter
+	Ipv6CIDRBlockAssociationsGetter
 	PeeringConnectionsGetter
 	PeeringConnectionAcceptersGetter
 	PeeringConnectionOptionsesGetter
@@ -59,8 +69,16 @@ func (c *VpcV1alpha1Client) Endpoints(namespace string) EndpointInterface {
 	return newEndpoints(c, namespace)
 }
 
+func (c *VpcV1alpha1Client) EndpointConnectionAccepters(namespace string) EndpointConnectionAccepterInterface {
+	return newEndpointConnectionAccepters(c, namespace)
+}
+
 func (c *VpcV1alpha1Client) EndpointConnectionNotifications(namespace string) EndpointConnectionNotificationInterface {
 	return newEndpointConnectionNotifications(c, namespace)
+}
+
+func (c *VpcV1alpha1Client) EndpointPolicies(namespace string) EndpointPolicyInterface {
+	return newEndpointPolicies(c, namespace)
 }
 
 func (c *VpcV1alpha1Client) EndpointRouteTableAssociations(namespace string) EndpointRouteTableAssociationInterface {
@@ -79,8 +97,40 @@ func (c *VpcV1alpha1Client) EndpointSubnetAssociations(namespace string) Endpoin
 	return newEndpointSubnetAssociations(c, namespace)
 }
 
+func (c *VpcV1alpha1Client) Ipams(namespace string) IpamInterface {
+	return newIpams(c, namespace)
+}
+
+func (c *VpcV1alpha1Client) IpamOrganizationAdminAccounts(namespace string) IpamOrganizationAdminAccountInterface {
+	return newIpamOrganizationAdminAccounts(c, namespace)
+}
+
+func (c *VpcV1alpha1Client) IpamPools(namespace string) IpamPoolInterface {
+	return newIpamPools(c, namespace)
+}
+
+func (c *VpcV1alpha1Client) IpamPoolCIDRs(namespace string) IpamPoolCIDRInterface {
+	return newIpamPoolCIDRs(c, namespace)
+}
+
+func (c *VpcV1alpha1Client) IpamPoolCIDRAllocations(namespace string) IpamPoolCIDRAllocationInterface {
+	return newIpamPoolCIDRAllocations(c, namespace)
+}
+
+func (c *VpcV1alpha1Client) IpamPreviewNextCIDRs(namespace string) IpamPreviewNextCIDRInterface {
+	return newIpamPreviewNextCIDRs(c, namespace)
+}
+
+func (c *VpcV1alpha1Client) IpamScopes(namespace string) IpamScopeInterface {
+	return newIpamScopes(c, namespace)
+}
+
 func (c *VpcV1alpha1Client) Ipv4CIDRBlockAssociations(namespace string) Ipv4CIDRBlockAssociationInterface {
 	return newIpv4CIDRBlockAssociations(c, namespace)
+}
+
+func (c *VpcV1alpha1Client) Ipv6CIDRBlockAssociations(namespace string) Ipv6CIDRBlockAssociationInterface {
+	return newIpv6CIDRBlockAssociations(c, namespace)
 }
 
 func (c *VpcV1alpha1Client) PeeringConnections(namespace string) PeeringConnectionInterface {

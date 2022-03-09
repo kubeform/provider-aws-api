@@ -41,6 +41,11 @@ type Budget struct {
 	Status            BudgetStatus `json:"status,omitempty"`
 }
 
+type BudgetSpecCostFilter struct {
+	Name   *string  `json:"name" tf:"name"`
+	Values []string `json:"values" tf:"values"`
+}
+
 type BudgetSpecCostTypes struct {
 	// +optional
 	IncludeCredit *bool `json:"includeCredit,omitempty" tf:"include_credit"`
@@ -100,6 +105,9 @@ type BudgetSpecResource struct {
 	Arn        *string `json:"arn,omitempty" tf:"arn"`
 	BudgetType *string `json:"budgetType" tf:"budget_type"`
 	// +optional
+	CostFilter []BudgetSpecCostFilter `json:"costFilter,omitempty" tf:"cost_filter"`
+	// +optional
+	// Deprecated
 	CostFilters *map[string]string `json:"costFilters,omitempty" tf:"cost_filters"`
 	// +optional
 	CostTypes   *BudgetSpecCostTypes `json:"costTypes,omitempty" tf:"cost_types"`
@@ -112,8 +120,9 @@ type BudgetSpecResource struct {
 	// +optional
 	Notification []BudgetSpecNotification `json:"notification,omitempty" tf:"notification"`
 	// +optional
-	TimePeriodEnd   *string `json:"timePeriodEnd,omitempty" tf:"time_period_end"`
-	TimePeriodStart *string `json:"timePeriodStart" tf:"time_period_start"`
+	TimePeriodEnd *string `json:"timePeriodEnd,omitempty" tf:"time_period_end"`
+	// +optional
+	TimePeriodStart *string `json:"timePeriodStart,omitempty" tf:"time_period_start"`
 	TimeUnit        *string `json:"timeUnit" tf:"time_unit"`
 }
 

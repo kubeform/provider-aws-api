@@ -106,6 +106,8 @@ type DistributionSpecDefaultCacheBehavior struct {
 	// +optional
 	RealtimeLogConfigArn *string `json:"realtimeLogConfigArn,omitempty" tf:"realtime_log_config_arn"`
 	// +optional
+	ResponseHeadersPolicyID *string `json:"responseHeadersPolicyID,omitempty" tf:"response_headers_policy_id"`
+	// +optional
 	SmoothStreaming *bool   `json:"smoothStreaming,omitempty" tf:"smooth_streaming"`
 	TargetOriginID  *string `json:"targetOriginID" tf:"target_origin_id"`
 	// +optional
@@ -178,6 +180,8 @@ type DistributionSpecOrderedCacheBehavior struct {
 	PathPattern           *string `json:"pathPattern" tf:"path_pattern"`
 	// +optional
 	RealtimeLogConfigArn *string `json:"realtimeLogConfigArn,omitempty" tf:"realtime_log_config_arn"`
+	// +optional
+	ResponseHeadersPolicyID *string `json:"responseHeadersPolicyID,omitempty" tf:"response_headers_policy_id"`
 	// +optional
 	SmoothStreaming *bool   `json:"smoothStreaming,omitempty" tf:"smooth_streaming"`
 	TargetOriginID  *string `json:"targetOriginID" tf:"target_origin_id"`

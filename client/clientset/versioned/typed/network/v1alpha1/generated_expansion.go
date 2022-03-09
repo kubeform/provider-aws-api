@@ -20,6 +20,8 @@ package v1alpha1
 
 type AclExpansion interface{}
 
+type AclAssociationExpansion interface{}
+
 type AclRuleExpansion interface{}
 
 type InterfaceExpansion interface{}

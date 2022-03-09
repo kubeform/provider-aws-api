@@ -66,6 +66,10 @@ func addKnownTypes(scheme *runtime.Scheme) error {
 		&GrantList{},
 		&Key{},
 		&KeyList{},
+		&ReplicaExternalKey{},
+		&ReplicaExternalKeyList{},
+		&ReplicaKey{},
+		&ReplicaKeyList{},
 	)
 
 	scheme.AddKnownTypes(SchemeGroupVersion,

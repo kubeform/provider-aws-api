@@ -64,6 +64,8 @@ func addKnownTypes(scheme *runtime.Scheme) error {
 		&ClusterParameterGroupList{},
 		&ClusterSnapshot{},
 		&ClusterSnapshotList{},
+		&GlobalCluster{},
+		&GlobalClusterList{},
 		&SubnetGroup{},
 		&SubnetGroupList{},
 	)

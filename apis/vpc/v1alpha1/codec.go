@@ -27,23 +27,25 @@ import (
 
 func GetEncoder() map[string]jsoniter.ValEncoder {
 	return map[string]jsoniter.ValEncoder{
-		jsoniter.MustGetKind(reflect2.TypeOf(PeeringConnectionSpecAccepter{}).Type1()):          PeeringConnectionSpecAccepterCodec{},
-		jsoniter.MustGetKind(reflect2.TypeOf(PeeringConnectionSpecRequester{}).Type1()):         PeeringConnectionSpecRequesterCodec{},
-		jsoniter.MustGetKind(reflect2.TypeOf(PeeringConnectionAccepterSpecAccepter{}).Type1()):  PeeringConnectionAccepterSpecAccepterCodec{},
-		jsoniter.MustGetKind(reflect2.TypeOf(PeeringConnectionAccepterSpecRequester{}).Type1()): PeeringConnectionAccepterSpecRequesterCodec{},
-		jsoniter.MustGetKind(reflect2.TypeOf(PeeringConnectionOptionsSpecAccepter{}).Type1()):   PeeringConnectionOptionsSpecAccepterCodec{},
-		jsoniter.MustGetKind(reflect2.TypeOf(PeeringConnectionOptionsSpecRequester{}).Type1()):  PeeringConnectionOptionsSpecRequesterCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(IpamPoolCIDRSpecCidrAuthorizationContext{}).Type1()): IpamPoolCIDRSpecCidrAuthorizationContextCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(PeeringConnectionSpecAccepter{}).Type1()):            PeeringConnectionSpecAccepterCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(PeeringConnectionSpecRequester{}).Type1()):           PeeringConnectionSpecRequesterCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(PeeringConnectionAccepterSpecAccepter{}).Type1()):    PeeringConnectionAccepterSpecAccepterCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(PeeringConnectionAccepterSpecRequester{}).Type1()):   PeeringConnectionAccepterSpecRequesterCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(PeeringConnectionOptionsSpecAccepter{}).Type1()):     PeeringConnectionOptionsSpecAccepterCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(PeeringConnectionOptionsSpecRequester{}).Type1()):    PeeringConnectionOptionsSpecRequesterCodec{},
 	}
 }
 
 func GetDecoder() map[string]jsoniter.ValDecoder {
 	return map[string]jsoniter.ValDecoder{
-		jsoniter.MustGetKind(reflect2.TypeOf(PeeringConnectionSpecAccepter{}).Type1()):          PeeringConnectionSpecAccepterCodec{},
-		jsoniter.MustGetKind(reflect2.TypeOf(PeeringConnectionSpecRequester{}).Type1()):         PeeringConnectionSpecRequesterCodec{},
-		jsoniter.MustGetKind(reflect2.TypeOf(PeeringConnectionAccepterSpecAccepter{}).Type1()):  PeeringConnectionAccepterSpecAccepterCodec{},
-		jsoniter.MustGetKind(reflect2.TypeOf(PeeringConnectionAccepterSpecRequester{}).Type1()): PeeringConnectionAccepterSpecRequesterCodec{},
-		jsoniter.MustGetKind(reflect2.TypeOf(PeeringConnectionOptionsSpecAccepter{}).Type1()):   PeeringConnectionOptionsSpecAccepterCodec{},
-		jsoniter.MustGetKind(reflect2.TypeOf(PeeringConnectionOptionsSpecRequester{}).Type1()):  PeeringConnectionOptionsSpecRequesterCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(IpamPoolCIDRSpecCidrAuthorizationContext{}).Type1()): IpamPoolCIDRSpecCidrAuthorizationContextCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(PeeringConnectionSpecAccepter{}).Type1()):            PeeringConnectionSpecAccepterCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(PeeringConnectionSpecRequester{}).Type1()):           PeeringConnectionSpecRequesterCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(PeeringConnectionAccepterSpecAccepter{}).Type1()):    PeeringConnectionAccepterSpecAccepterCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(PeeringConnectionAccepterSpecRequester{}).Type1()):   PeeringConnectionAccepterSpecRequesterCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(PeeringConnectionOptionsSpecAccepter{}).Type1()):     PeeringConnectionOptionsSpecAccepterCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(PeeringConnectionOptionsSpecRequester{}).Type1()):    PeeringConnectionOptionsSpecRequesterCodec{},
 	}
 }
 
@@ -57,6 +59,85 @@ func getDecodersWithout(typ string) map[string]jsoniter.ValDecoder {
 	origMap := GetDecoder()
 	delete(origMap, typ)
 	return origMap
+}
+
+// +k8s:deepcopy-gen=false
+type IpamPoolCIDRSpecCidrAuthorizationContextCodec struct {
+}
+
+func (IpamPoolCIDRSpecCidrAuthorizationContextCodec) IsEmpty(ptr unsafe.Pointer) bool {
+	return (*IpamPoolCIDRSpecCidrAuthorizationContext)(ptr) == nil
+}
+
+func (IpamPoolCIDRSpecCidrAuthorizationContextCodec) Encode(ptr unsafe.Pointer, stream *jsoniter.Stream) {
+	obj := (*IpamPoolCIDRSpecCidrAuthorizationContext)(ptr)
+	var objs []IpamPoolCIDRSpecCidrAuthorizationContext
+	if obj != nil {
+		objs = []IpamPoolCIDRSpecCidrAuthorizationContext{*obj}
+	}
+
+	jsonit := jsoniter.Config{
+		EscapeHTML:             true,
+		SortMapKeys:            true,
+		ValidateJsonRawMessage: true,
+		TagKey:                 "tf",
+		TypeEncoders:           getEncodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(IpamPoolCIDRSpecCidrAuthorizationContext{}).Type1())),
+	}.Froze()
+
+	byt, _ := jsonit.Marshal(objs)
+
+	stream.Write(byt)
+}
+
+func (IpamPoolCIDRSpecCidrAuthorizationContextCodec) Decode(ptr unsafe.Pointer, iter *jsoniter.Iterator) {
+	switch iter.WhatIsNext() {
+	case jsoniter.NilValue:
+		iter.Skip()
+		*(*IpamPoolCIDRSpecCidrAuthorizationContext)(ptr) = IpamPoolCIDRSpecCidrAuthorizationContext{}
+		return
+	case jsoniter.ArrayValue:
+		objsByte := iter.SkipAndReturnBytes()
+		if len(objsByte) > 0 {
+			var objs []IpamPoolCIDRSpecCidrAuthorizationContext
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(IpamPoolCIDRSpecCidrAuthorizationContext{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objsByte, &objs)
+
+			if len(objs) > 0 {
+				*(*IpamPoolCIDRSpecCidrAuthorizationContext)(ptr) = objs[0]
+			} else {
+				*(*IpamPoolCIDRSpecCidrAuthorizationContext)(ptr) = IpamPoolCIDRSpecCidrAuthorizationContext{}
+			}
+		} else {
+			*(*IpamPoolCIDRSpecCidrAuthorizationContext)(ptr) = IpamPoolCIDRSpecCidrAuthorizationContext{}
+		}
+	case jsoniter.ObjectValue:
+		objByte := iter.SkipAndReturnBytes()
+		if len(objByte) > 0 {
+			var obj IpamPoolCIDRSpecCidrAuthorizationContext
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(IpamPoolCIDRSpecCidrAuthorizationContext{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objByte, &obj)
+
+			*(*IpamPoolCIDRSpecCidrAuthorizationContext)(ptr) = obj
+		} else {
+			*(*IpamPoolCIDRSpecCidrAuthorizationContext)(ptr) = IpamPoolCIDRSpecCidrAuthorizationContext{}
+		}
+	default:
+		iter.ReportError("decode IpamPoolCIDRSpecCidrAuthorizationContext", "unexpected JSON type")
+	}
 }
 
 // +k8s:deepcopy-gen=false

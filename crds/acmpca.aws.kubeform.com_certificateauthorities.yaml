@@ -138,6 +138,7 @@ spec:
                   serial:
                     type: string
                   status:
+                    description: Deprecated
                     type: string
                   tags:
                     additionalProperties:
@@ -273,6 +274,7 @@ spec:
                   serial:
                     type: string
                   status:
+                    description: Deprecated
                     type: string
                   tags:
                     additionalProperties:

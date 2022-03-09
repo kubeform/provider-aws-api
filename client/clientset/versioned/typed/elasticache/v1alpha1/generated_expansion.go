@@ -29,3 +29,7 @@ type ReplicationGroupExpansion interface{}
 type SecurityGroupExpansion interface{}
 
 type SubnetGroupExpansion interface{}
+
+type UserExpansion interface{}
+
+type UserGroupExpansion interface{}

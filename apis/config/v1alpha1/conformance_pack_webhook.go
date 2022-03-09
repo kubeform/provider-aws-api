@@ -88,7 +88,7 @@ func (r *ConformancePack) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range conformancepackForceNewList {
+	for key, _ := range conformancepackForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

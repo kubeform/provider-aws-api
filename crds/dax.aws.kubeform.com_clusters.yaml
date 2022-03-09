@@ -65,6 +65,8 @@ spec:
                     type: array
                   clusterAddress:
                     type: string
+                  clusterEndpointEncryptionType:
+                    type: string
                   clusterName:
                     type: string
                   configurationEndpoint:
@@ -175,6 +177,8 @@ spec:
                       type: string
                     type: array
                   clusterAddress:
+                    type: string
+                  clusterEndpointEncryptionType:
                     type: string
                   clusterName:
                     type: string

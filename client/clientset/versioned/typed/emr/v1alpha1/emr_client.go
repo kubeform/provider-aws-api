@@ -32,6 +32,8 @@ type EmrV1alpha1Interface interface {
 	InstanceGroupsGetter
 	ManagedScalingPoliciesGetter
 	SecurityConfigurationsGetter
+	StudiosGetter
+	StudioSessionMappingsGetter
 }
 
 // EmrV1alpha1Client is used to interact with features provided by the emr.aws.kubeform.com group.
@@ -57,6 +59,14 @@ func (c *EmrV1alpha1Client) ManagedScalingPolicies(namespace string) ManagedScal
 
 func (c *EmrV1alpha1Client) SecurityConfigurations(namespace string) SecurityConfigurationInterface {
 	return newSecurityConfigurations(c, namespace)
+}
+
+func (c *EmrV1alpha1Client) Studios(namespace string) StudioInterface {
+	return newStudios(c, namespace)
+}
+
+func (c *EmrV1alpha1Client) StudioSessionMappings(namespace string) StudioSessionMappingInterface {
+	return newStudioSessionMappings(c, namespace)
 }
 
 // NewForConfig creates a new EmrV1alpha1Client for the given config.

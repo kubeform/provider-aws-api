@@ -89,7 +89,7 @@ func (r *SamplingRule) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range samplingruleForceNewList {
+	for key, _ := range samplingruleForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

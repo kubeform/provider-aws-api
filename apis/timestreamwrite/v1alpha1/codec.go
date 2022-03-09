@@ -27,13 +27,19 @@ import (
 
 func GetEncoder() map[string]jsoniter.ValEncoder {
 	return map[string]jsoniter.ValEncoder{
-		jsoniter.MustGetKind(reflect2.TypeOf(TableSpecRetentionProperties{}).Type1()): TableSpecRetentionPropertiesCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(TableSpecMagneticStoreWriteProperties{}).Type1()):                                                 TableSpecMagneticStoreWritePropertiesCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(TableSpecMagneticStoreWritePropertiesMagneticStoreRejectedDataLocation{}).Type1()):                TableSpecMagneticStoreWritePropertiesMagneticStoreRejectedDataLocationCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(TableSpecMagneticStoreWritePropertiesMagneticStoreRejectedDataLocationS3Configuration{}).Type1()): TableSpecMagneticStoreWritePropertiesMagneticStoreRejectedDataLocationS3ConfigurationCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(TableSpecRetentionProperties{}).Type1()):                                                          TableSpecRetentionPropertiesCodec{},
 	}
 }
 
 func GetDecoder() map[string]jsoniter.ValDecoder {
 	return map[string]jsoniter.ValDecoder{
-		jsoniter.MustGetKind(reflect2.TypeOf(TableSpecRetentionProperties{}).Type1()): TableSpecRetentionPropertiesCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(TableSpecMagneticStoreWriteProperties{}).Type1()):                                                 TableSpecMagneticStoreWritePropertiesCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(TableSpecMagneticStoreWritePropertiesMagneticStoreRejectedDataLocation{}).Type1()):                TableSpecMagneticStoreWritePropertiesMagneticStoreRejectedDataLocationCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(TableSpecMagneticStoreWritePropertiesMagneticStoreRejectedDataLocationS3Configuration{}).Type1()): TableSpecMagneticStoreWritePropertiesMagneticStoreRejectedDataLocationS3ConfigurationCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(TableSpecRetentionProperties{}).Type1()):                                                          TableSpecRetentionPropertiesCodec{},
 	}
 }
 
@@ -47,6 +53,243 @@ func getDecodersWithout(typ string) map[string]jsoniter.ValDecoder {
 	origMap := GetDecoder()
 	delete(origMap, typ)
 	return origMap
+}
+
+// +k8s:deepcopy-gen=false
+type TableSpecMagneticStoreWritePropertiesCodec struct {
+}
+
+func (TableSpecMagneticStoreWritePropertiesCodec) IsEmpty(ptr unsafe.Pointer) bool {
+	return (*TableSpecMagneticStoreWriteProperties)(ptr) == nil
+}
+
+func (TableSpecMagneticStoreWritePropertiesCodec) Encode(ptr unsafe.Pointer, stream *jsoniter.Stream) {
+	obj := (*TableSpecMagneticStoreWriteProperties)(ptr)
+	var objs []TableSpecMagneticStoreWriteProperties
+	if obj != nil {
+		objs = []TableSpecMagneticStoreWriteProperties{*obj}
+	}
+
+	jsonit := jsoniter.Config{
+		EscapeHTML:             true,
+		SortMapKeys:            true,
+		ValidateJsonRawMessage: true,
+		TagKey:                 "tf",
+		TypeEncoders:           getEncodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(TableSpecMagneticStoreWriteProperties{}).Type1())),
+	}.Froze()
+
+	byt, _ := jsonit.Marshal(objs)
+
+	stream.Write(byt)
+}
+
+func (TableSpecMagneticStoreWritePropertiesCodec) Decode(ptr unsafe.Pointer, iter *jsoniter.Iterator) {
+	switch iter.WhatIsNext() {
+	case jsoniter.NilValue:
+		iter.Skip()
+		*(*TableSpecMagneticStoreWriteProperties)(ptr) = TableSpecMagneticStoreWriteProperties{}
+		return
+	case jsoniter.ArrayValue:
+		objsByte := iter.SkipAndReturnBytes()
+		if len(objsByte) > 0 {
+			var objs []TableSpecMagneticStoreWriteProperties
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(TableSpecMagneticStoreWriteProperties{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objsByte, &objs)
+
+			if len(objs) > 0 {
+				*(*TableSpecMagneticStoreWriteProperties)(ptr) = objs[0]
+			} else {
+				*(*TableSpecMagneticStoreWriteProperties)(ptr) = TableSpecMagneticStoreWriteProperties{}
+			}
+		} else {
+			*(*TableSpecMagneticStoreWriteProperties)(ptr) = TableSpecMagneticStoreWriteProperties{}
+		}
+	case jsoniter.ObjectValue:
+		objByte := iter.SkipAndReturnBytes()
+		if len(objByte) > 0 {
+			var obj TableSpecMagneticStoreWriteProperties
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(TableSpecMagneticStoreWriteProperties{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objByte, &obj)
+
+			*(*TableSpecMagneticStoreWriteProperties)(ptr) = obj
+		} else {
+			*(*TableSpecMagneticStoreWriteProperties)(ptr) = TableSpecMagneticStoreWriteProperties{}
+		}
+	default:
+		iter.ReportError("decode TableSpecMagneticStoreWriteProperties", "unexpected JSON type")
+	}
+}
+
+// +k8s:deepcopy-gen=false
+type TableSpecMagneticStoreWritePropertiesMagneticStoreRejectedDataLocationCodec struct {
+}
+
+func (TableSpecMagneticStoreWritePropertiesMagneticStoreRejectedDataLocationCodec) IsEmpty(ptr unsafe.Pointer) bool {
+	return (*TableSpecMagneticStoreWritePropertiesMagneticStoreRejectedDataLocation)(ptr) == nil
+}
+
+func (TableSpecMagneticStoreWritePropertiesMagneticStoreRejectedDataLocationCodec) Encode(ptr unsafe.Pointer, stream *jsoniter.Stream) {
+	obj := (*TableSpecMagneticStoreWritePropertiesMagneticStoreRejectedDataLocation)(ptr)
+	var objs []TableSpecMagneticStoreWritePropertiesMagneticStoreRejectedDataLocation
+	if obj != nil {
+		objs = []TableSpecMagneticStoreWritePropertiesMagneticStoreRejectedDataLocation{*obj}
+	}
+
+	jsonit := jsoniter.Config{
+		EscapeHTML:             true,
+		SortMapKeys:            true,
+		ValidateJsonRawMessage: true,
+		TagKey:                 "tf",
+		TypeEncoders:           getEncodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(TableSpecMagneticStoreWritePropertiesMagneticStoreRejectedDataLocation{}).Type1())),
+	}.Froze()
+
+	byt, _ := jsonit.Marshal(objs)
+
+	stream.Write(byt)
+}
+
+func (TableSpecMagneticStoreWritePropertiesMagneticStoreRejectedDataLocationCodec) Decode(ptr unsafe.Pointer, iter *jsoniter.Iterator) {
+	switch iter.WhatIsNext() {
+	case jsoniter.NilValue:
+		iter.Skip()
+		*(*TableSpecMagneticStoreWritePropertiesMagneticStoreRejectedDataLocation)(ptr) = TableSpecMagneticStoreWritePropertiesMagneticStoreRejectedDataLocation{}
+		return
+	case jsoniter.ArrayValue:
+		objsByte := iter.SkipAndReturnBytes()
+		if len(objsByte) > 0 {
+			var objs []TableSpecMagneticStoreWritePropertiesMagneticStoreRejectedDataLocation
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(TableSpecMagneticStoreWritePropertiesMagneticStoreRejectedDataLocation{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objsByte, &objs)
+
+			if len(objs) > 0 {
+				*(*TableSpecMagneticStoreWritePropertiesMagneticStoreRejectedDataLocation)(ptr) = objs[0]
+			} else {
+				*(*TableSpecMagneticStoreWritePropertiesMagneticStoreRejectedDataLocation)(ptr) = TableSpecMagneticStoreWritePropertiesMagneticStoreRejectedDataLocation{}
+			}
+		} else {
+			*(*TableSpecMagneticStoreWritePropertiesMagneticStoreRejectedDataLocation)(ptr) = TableSpecMagneticStoreWritePropertiesMagneticStoreRejectedDataLocation{}
+		}
+	case jsoniter.ObjectValue:
+		objByte := iter.SkipAndReturnBytes()
+		if len(objByte) > 0 {
+			var obj TableSpecMagneticStoreWritePropertiesMagneticStoreRejectedDataLocation
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(TableSpecMagneticStoreWritePropertiesMagneticStoreRejectedDataLocation{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objByte, &obj)
+
+			*(*TableSpecMagneticStoreWritePropertiesMagneticStoreRejectedDataLocation)(ptr) = obj
+		} else {
+			*(*TableSpecMagneticStoreWritePropertiesMagneticStoreRejectedDataLocation)(ptr) = TableSpecMagneticStoreWritePropertiesMagneticStoreRejectedDataLocation{}
+		}
+	default:
+		iter.ReportError("decode TableSpecMagneticStoreWritePropertiesMagneticStoreRejectedDataLocation", "unexpected JSON type")
+	}
+}
+
+// +k8s:deepcopy-gen=false
+type TableSpecMagneticStoreWritePropertiesMagneticStoreRejectedDataLocationS3ConfigurationCodec struct {
+}
+
+func (TableSpecMagneticStoreWritePropertiesMagneticStoreRejectedDataLocationS3ConfigurationCodec) IsEmpty(ptr unsafe.Pointer) bool {
+	return (*TableSpecMagneticStoreWritePropertiesMagneticStoreRejectedDataLocationS3Configuration)(ptr) == nil
+}
+
+func (TableSpecMagneticStoreWritePropertiesMagneticStoreRejectedDataLocationS3ConfigurationCodec) Encode(ptr unsafe.Pointer, stream *jsoniter.Stream) {
+	obj := (*TableSpecMagneticStoreWritePropertiesMagneticStoreRejectedDataLocationS3Configuration)(ptr)
+	var objs []TableSpecMagneticStoreWritePropertiesMagneticStoreRejectedDataLocationS3Configuration
+	if obj != nil {
+		objs = []TableSpecMagneticStoreWritePropertiesMagneticStoreRejectedDataLocationS3Configuration{*obj}
+	}
+
+	jsonit := jsoniter.Config{
+		EscapeHTML:             true,
+		SortMapKeys:            true,
+		ValidateJsonRawMessage: true,
+		TagKey:                 "tf",
+		TypeEncoders:           getEncodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(TableSpecMagneticStoreWritePropertiesMagneticStoreRejectedDataLocationS3Configuration{}).Type1())),
+	}.Froze()
+
+	byt, _ := jsonit.Marshal(objs)
+
+	stream.Write(byt)
+}
+
+func (TableSpecMagneticStoreWritePropertiesMagneticStoreRejectedDataLocationS3ConfigurationCodec) Decode(ptr unsafe.Pointer, iter *jsoniter.Iterator) {
+	switch iter.WhatIsNext() {
+	case jsoniter.NilValue:
+		iter.Skip()
+		*(*TableSpecMagneticStoreWritePropertiesMagneticStoreRejectedDataLocationS3Configuration)(ptr) = TableSpecMagneticStoreWritePropertiesMagneticStoreRejectedDataLocationS3Configuration{}
+		return
+	case jsoniter.ArrayValue:
+		objsByte := iter.SkipAndReturnBytes()
+		if len(objsByte) > 0 {
+			var objs []TableSpecMagneticStoreWritePropertiesMagneticStoreRejectedDataLocationS3Configuration
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(TableSpecMagneticStoreWritePropertiesMagneticStoreRejectedDataLocationS3Configuration{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objsByte, &objs)
+
+			if len(objs) > 0 {
+				*(*TableSpecMagneticStoreWritePropertiesMagneticStoreRejectedDataLocationS3Configuration)(ptr) = objs[0]
+			} else {
+				*(*TableSpecMagneticStoreWritePropertiesMagneticStoreRejectedDataLocationS3Configuration)(ptr) = TableSpecMagneticStoreWritePropertiesMagneticStoreRejectedDataLocationS3Configuration{}
+			}
+		} else {
+			*(*TableSpecMagneticStoreWritePropertiesMagneticStoreRejectedDataLocationS3Configuration)(ptr) = TableSpecMagneticStoreWritePropertiesMagneticStoreRejectedDataLocationS3Configuration{}
+		}
+	case jsoniter.ObjectValue:
+		objByte := iter.SkipAndReturnBytes()
+		if len(objByte) > 0 {
+			var obj TableSpecMagneticStoreWritePropertiesMagneticStoreRejectedDataLocationS3Configuration
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(TableSpecMagneticStoreWritePropertiesMagneticStoreRejectedDataLocationS3Configuration{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objByte, &obj)
+
+			*(*TableSpecMagneticStoreWritePropertiesMagneticStoreRejectedDataLocationS3Configuration)(ptr) = obj
+		} else {
+			*(*TableSpecMagneticStoreWritePropertiesMagneticStoreRejectedDataLocationS3Configuration)(ptr) = TableSpecMagneticStoreWritePropertiesMagneticStoreRejectedDataLocationS3Configuration{}
+		}
+	default:
+		iter.ReportError("decode TableSpecMagneticStoreWritePropertiesMagneticStoreRejectedDataLocationS3Configuration", "unexpected JSON type")
+	}
 }
 
 // +k8s:deepcopy-gen=false

@@ -90,7 +90,7 @@ func (r *Method) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range methodForceNewList {
+	for key, _ := range methodForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

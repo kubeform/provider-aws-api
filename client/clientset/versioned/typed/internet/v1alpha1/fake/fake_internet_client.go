@@ -33,6 +33,10 @@ func (c *FakeInternetV1alpha1) Gateways(namespace string) v1alpha1.GatewayInterf
 	return &FakeGateways{c, namespace}
 }
 
+func (c *FakeInternetV1alpha1) GatewayAttachments(namespace string) v1alpha1.GatewayAttachmentInterface {
+	return &FakeGatewayAttachments{c, namespace}
+}
+
 // RESTClient returns a RESTClient that is used to communicate
 // with API server by this client implementation.
 func (c *FakeInternetV1alpha1) RESTClient() rest.Interface {

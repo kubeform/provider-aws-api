@@ -32,6 +32,8 @@ type Interface interface {
 	Fleets() FleetInformer
 	// GameSessionQueues returns a GameSessionQueueInformer.
 	GameSessionQueues() GameSessionQueueInformer
+	// Scripts returns a ScriptInformer.
+	Scripts() ScriptInformer
 }
 
 type version struct {
@@ -63,4 +65,9 @@ func (v *version) Fleets() FleetInformer {
 // GameSessionQueues returns a GameSessionQueueInformer.
 func (v *version) GameSessionQueues() GameSessionQueueInformer {
 	return &gameSessionQueueInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
+// Scripts returns a ScriptInformer.
+func (v *version) Scripts() ScriptInformer {
+	return &scriptInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
 }

@@ -56,6 +56,8 @@ type ClientVPNRouteSpec struct {
 }
 
 type ClientVPNRouteSpecResource struct {
+	Timeouts *base.ResourceTimeout `json:"timeouts,omitempty" tf:"timeouts"`
+
 	ID string `json:"id,omitempty" tf:"id,omitempty"`
 
 	ClientVPNEndpointID *string `json:"clientVPNEndpointID" tf:"client_vpn_endpoint_id"`

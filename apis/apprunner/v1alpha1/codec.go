@@ -30,6 +30,8 @@ func GetEncoder() map[string]jsoniter.ValEncoder {
 		jsoniter.MustGetKind(reflect2.TypeOf(ServiceSpecEncryptionConfiguration{}).Type1()):                                                   ServiceSpecEncryptionConfigurationCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(ServiceSpecHealthCheckConfiguration{}).Type1()):                                                  ServiceSpecHealthCheckConfigurationCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(ServiceSpecInstanceConfiguration{}).Type1()):                                                     ServiceSpecInstanceConfigurationCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(ServiceSpecNetworkConfiguration{}).Type1()):                                                      ServiceSpecNetworkConfigurationCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(ServiceSpecNetworkConfigurationEgressConfiguration{}).Type1()):                                   ServiceSpecNetworkConfigurationEgressConfigurationCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(ServiceSpecSourceConfiguration{}).Type1()):                                                       ServiceSpecSourceConfigurationCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(ServiceSpecSourceConfigurationAuthenticationConfiguration{}).Type1()):                            ServiceSpecSourceConfigurationAuthenticationConfigurationCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(ServiceSpecSourceConfigurationCodeRepository{}).Type1()):                                         ServiceSpecSourceConfigurationCodeRepositoryCodec{},
@@ -46,6 +48,8 @@ func GetDecoder() map[string]jsoniter.ValDecoder {
 		jsoniter.MustGetKind(reflect2.TypeOf(ServiceSpecEncryptionConfiguration{}).Type1()):                                                   ServiceSpecEncryptionConfigurationCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(ServiceSpecHealthCheckConfiguration{}).Type1()):                                                  ServiceSpecHealthCheckConfigurationCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(ServiceSpecInstanceConfiguration{}).Type1()):                                                     ServiceSpecInstanceConfigurationCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(ServiceSpecNetworkConfiguration{}).Type1()):                                                      ServiceSpecNetworkConfigurationCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(ServiceSpecNetworkConfigurationEgressConfiguration{}).Type1()):                                   ServiceSpecNetworkConfigurationEgressConfigurationCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(ServiceSpecSourceConfiguration{}).Type1()):                                                       ServiceSpecSourceConfigurationCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(ServiceSpecSourceConfigurationAuthenticationConfiguration{}).Type1()):                            ServiceSpecSourceConfigurationAuthenticationConfigurationCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(ServiceSpecSourceConfigurationCodeRepository{}).Type1()):                                         ServiceSpecSourceConfigurationCodeRepositoryCodec{},
@@ -303,6 +307,164 @@ func (ServiceSpecInstanceConfigurationCodec) Decode(ptr unsafe.Pointer, iter *js
 		}
 	default:
 		iter.ReportError("decode ServiceSpecInstanceConfiguration", "unexpected JSON type")
+	}
+}
+
+// +k8s:deepcopy-gen=false
+type ServiceSpecNetworkConfigurationCodec struct {
+}
+
+func (ServiceSpecNetworkConfigurationCodec) IsEmpty(ptr unsafe.Pointer) bool {
+	return (*ServiceSpecNetworkConfiguration)(ptr) == nil
+}
+
+func (ServiceSpecNetworkConfigurationCodec) Encode(ptr unsafe.Pointer, stream *jsoniter.Stream) {
+	obj := (*ServiceSpecNetworkConfiguration)(ptr)
+	var objs []ServiceSpecNetworkConfiguration
+	if obj != nil {
+		objs = []ServiceSpecNetworkConfiguration{*obj}
+	}
+
+	jsonit := jsoniter.Config{
+		EscapeHTML:             true,
+		SortMapKeys:            true,
+		ValidateJsonRawMessage: true,
+		TagKey:                 "tf",
+		TypeEncoders:           getEncodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(ServiceSpecNetworkConfiguration{}).Type1())),
+	}.Froze()
+
+	byt, _ := jsonit.Marshal(objs)
+
+	stream.Write(byt)
+}
+
+func (ServiceSpecNetworkConfigurationCodec) Decode(ptr unsafe.Pointer, iter *jsoniter.Iterator) {
+	switch iter.WhatIsNext() {
+	case jsoniter.NilValue:
+		iter.Skip()
+		*(*ServiceSpecNetworkConfiguration)(ptr) = ServiceSpecNetworkConfiguration{}
+		return
+	case jsoniter.ArrayValue:
+		objsByte := iter.SkipAndReturnBytes()
+		if len(objsByte) > 0 {
+			var objs []ServiceSpecNetworkConfiguration
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(ServiceSpecNetworkConfiguration{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objsByte, &objs)
+
+			if len(objs) > 0 {
+				*(*ServiceSpecNetworkConfiguration)(ptr) = objs[0]
+			} else {
+				*(*ServiceSpecNetworkConfiguration)(ptr) = ServiceSpecNetworkConfiguration{}
+			}
+		} else {
+			*(*ServiceSpecNetworkConfiguration)(ptr) = ServiceSpecNetworkConfiguration{}
+		}
+	case jsoniter.ObjectValue:
+		objByte := iter.SkipAndReturnBytes()
+		if len(objByte) > 0 {
+			var obj ServiceSpecNetworkConfiguration
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(ServiceSpecNetworkConfiguration{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objByte, &obj)
+
+			*(*ServiceSpecNetworkConfiguration)(ptr) = obj
+		} else {
+			*(*ServiceSpecNetworkConfiguration)(ptr) = ServiceSpecNetworkConfiguration{}
+		}
+	default:
+		iter.ReportError("decode ServiceSpecNetworkConfiguration", "unexpected JSON type")
+	}
+}
+
+// +k8s:deepcopy-gen=false
+type ServiceSpecNetworkConfigurationEgressConfigurationCodec struct {
+}
+
+func (ServiceSpecNetworkConfigurationEgressConfigurationCodec) IsEmpty(ptr unsafe.Pointer) bool {
+	return (*ServiceSpecNetworkConfigurationEgressConfiguration)(ptr) == nil
+}
+
+func (ServiceSpecNetworkConfigurationEgressConfigurationCodec) Encode(ptr unsafe.Pointer, stream *jsoniter.Stream) {
+	obj := (*ServiceSpecNetworkConfigurationEgressConfiguration)(ptr)
+	var objs []ServiceSpecNetworkConfigurationEgressConfiguration
+	if obj != nil {
+		objs = []ServiceSpecNetworkConfigurationEgressConfiguration{*obj}
+	}
+
+	jsonit := jsoniter.Config{
+		EscapeHTML:             true,
+		SortMapKeys:            true,
+		ValidateJsonRawMessage: true,
+		TagKey:                 "tf",
+		TypeEncoders:           getEncodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(ServiceSpecNetworkConfigurationEgressConfiguration{}).Type1())),
+	}.Froze()
+
+	byt, _ := jsonit.Marshal(objs)
+
+	stream.Write(byt)
+}
+
+func (ServiceSpecNetworkConfigurationEgressConfigurationCodec) Decode(ptr unsafe.Pointer, iter *jsoniter.Iterator) {
+	switch iter.WhatIsNext() {
+	case jsoniter.NilValue:
+		iter.Skip()
+		*(*ServiceSpecNetworkConfigurationEgressConfiguration)(ptr) = ServiceSpecNetworkConfigurationEgressConfiguration{}
+		return
+	case jsoniter.ArrayValue:
+		objsByte := iter.SkipAndReturnBytes()
+		if len(objsByte) > 0 {
+			var objs []ServiceSpecNetworkConfigurationEgressConfiguration
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(ServiceSpecNetworkConfigurationEgressConfiguration{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objsByte, &objs)
+
+			if len(objs) > 0 {
+				*(*ServiceSpecNetworkConfigurationEgressConfiguration)(ptr) = objs[0]
+			} else {
+				*(*ServiceSpecNetworkConfigurationEgressConfiguration)(ptr) = ServiceSpecNetworkConfigurationEgressConfiguration{}
+			}
+		} else {
+			*(*ServiceSpecNetworkConfigurationEgressConfiguration)(ptr) = ServiceSpecNetworkConfigurationEgressConfiguration{}
+		}
+	case jsoniter.ObjectValue:
+		objByte := iter.SkipAndReturnBytes()
+		if len(objByte) > 0 {
+			var obj ServiceSpecNetworkConfigurationEgressConfiguration
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(ServiceSpecNetworkConfigurationEgressConfiguration{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objByte, &obj)
+
+			*(*ServiceSpecNetworkConfigurationEgressConfiguration)(ptr) = obj
+		} else {
+			*(*ServiceSpecNetworkConfigurationEgressConfiguration)(ptr) = ServiceSpecNetworkConfigurationEgressConfiguration{}
+		}
+	default:
+		iter.ReportError("decode ServiceSpecNetworkConfigurationEgressConfiguration", "unexpected JSON type")
 	}
 }
 

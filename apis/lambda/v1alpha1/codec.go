@@ -32,6 +32,7 @@ func GetEncoder() map[string]jsoniter.ValEncoder {
 		jsoniter.MustGetKind(reflect2.TypeOf(CodeSigningConfigSpecPolicies{}).Type1()):                           CodeSigningConfigSpecPoliciesCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(EventSourceMappingSpecDestinationConfig{}).Type1()):                 EventSourceMappingSpecDestinationConfigCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(EventSourceMappingSpecDestinationConfigOnFailure{}).Type1()):        EventSourceMappingSpecDestinationConfigOnFailureCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(EventSourceMappingSpecFilterCriteria{}).Type1()):                    EventSourceMappingSpecFilterCriteriaCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(EventSourceMappingSpecSelfManagedEventSource{}).Type1()):            EventSourceMappingSpecSelfManagedEventSourceCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(FunctionSpecDeadLetterConfig{}).Type1()):                            FunctionSpecDeadLetterConfigCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(FunctionSpecEnvironment{}).Type1()):                                 FunctionSpecEnvironmentCodec{},
@@ -52,6 +53,7 @@ func GetDecoder() map[string]jsoniter.ValDecoder {
 		jsoniter.MustGetKind(reflect2.TypeOf(CodeSigningConfigSpecPolicies{}).Type1()):                           CodeSigningConfigSpecPoliciesCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(EventSourceMappingSpecDestinationConfig{}).Type1()):                 EventSourceMappingSpecDestinationConfigCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(EventSourceMappingSpecDestinationConfigOnFailure{}).Type1()):        EventSourceMappingSpecDestinationConfigOnFailureCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(EventSourceMappingSpecFilterCriteria{}).Type1()):                    EventSourceMappingSpecFilterCriteriaCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(EventSourceMappingSpecSelfManagedEventSource{}).Type1()):            EventSourceMappingSpecSelfManagedEventSourceCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(FunctionSpecDeadLetterConfig{}).Type1()):                            FunctionSpecDeadLetterConfigCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(FunctionSpecEnvironment{}).Type1()):                                 FunctionSpecEnvironmentCodec{},
@@ -469,6 +471,85 @@ func (EventSourceMappingSpecDestinationConfigOnFailureCodec) Decode(ptr unsafe.P
 		}
 	default:
 		iter.ReportError("decode EventSourceMappingSpecDestinationConfigOnFailure", "unexpected JSON type")
+	}
+}
+
+// +k8s:deepcopy-gen=false
+type EventSourceMappingSpecFilterCriteriaCodec struct {
+}
+
+func (EventSourceMappingSpecFilterCriteriaCodec) IsEmpty(ptr unsafe.Pointer) bool {
+	return (*EventSourceMappingSpecFilterCriteria)(ptr) == nil
+}
+
+func (EventSourceMappingSpecFilterCriteriaCodec) Encode(ptr unsafe.Pointer, stream *jsoniter.Stream) {
+	obj := (*EventSourceMappingSpecFilterCriteria)(ptr)
+	var objs []EventSourceMappingSpecFilterCriteria
+	if obj != nil {
+		objs = []EventSourceMappingSpecFilterCriteria{*obj}
+	}
+
+	jsonit := jsoniter.Config{
+		EscapeHTML:             true,
+		SortMapKeys:            true,
+		ValidateJsonRawMessage: true,
+		TagKey:                 "tf",
+		TypeEncoders:           getEncodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(EventSourceMappingSpecFilterCriteria{}).Type1())),
+	}.Froze()
+
+	byt, _ := jsonit.Marshal(objs)
+
+	stream.Write(byt)
+}
+
+func (EventSourceMappingSpecFilterCriteriaCodec) Decode(ptr unsafe.Pointer, iter *jsoniter.Iterator) {
+	switch iter.WhatIsNext() {
+	case jsoniter.NilValue:
+		iter.Skip()
+		*(*EventSourceMappingSpecFilterCriteria)(ptr) = EventSourceMappingSpecFilterCriteria{}
+		return
+	case jsoniter.ArrayValue:
+		objsByte := iter.SkipAndReturnBytes()
+		if len(objsByte) > 0 {
+			var objs []EventSourceMappingSpecFilterCriteria
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(EventSourceMappingSpecFilterCriteria{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objsByte, &objs)
+
+			if len(objs) > 0 {
+				*(*EventSourceMappingSpecFilterCriteria)(ptr) = objs[0]
+			} else {
+				*(*EventSourceMappingSpecFilterCriteria)(ptr) = EventSourceMappingSpecFilterCriteria{}
+			}
+		} else {
+			*(*EventSourceMappingSpecFilterCriteria)(ptr) = EventSourceMappingSpecFilterCriteria{}
+		}
+	case jsoniter.ObjectValue:
+		objByte := iter.SkipAndReturnBytes()
+		if len(objByte) > 0 {
+			var obj EventSourceMappingSpecFilterCriteria
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(EventSourceMappingSpecFilterCriteria{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objByte, &obj)
+
+			*(*EventSourceMappingSpecFilterCriteria)(ptr) = obj
+		} else {
+			*(*EventSourceMappingSpecFilterCriteria)(ptr) = EventSourceMappingSpecFilterCriteria{}
+		}
+	default:
+		iter.ReportError("decode EventSourceMappingSpecFilterCriteria", "unexpected JSON type")
 	}
 }
 

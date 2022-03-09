@@ -26,6 +26,8 @@ import (
 type Interface interface {
 	// Pipelines returns a PipelineInformer.
 	Pipelines() PipelineInformer
+	// PipelineDefinitions returns a PipelineDefinitionInformer.
+	PipelineDefinitions() PipelineDefinitionInformer
 }
 
 type version struct {
@@ -42,4 +44,9 @@ func New(f internalinterfaces.SharedInformerFactory, namespace string, tweakList
 // Pipelines returns a PipelineInformer.
 func (v *version) Pipelines() PipelineInformer {
 	return &pipelineInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
+// PipelineDefinitions returns a PipelineDefinitionInformer.
+func (v *version) PipelineDefinitions() PipelineDefinitionInformer {
+	return &pipelineDefinitionInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
 }

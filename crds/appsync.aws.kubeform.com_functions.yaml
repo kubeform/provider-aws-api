@@ -71,12 +71,27 @@ spec:
                     type: string
                   id:
                     type: string
+                  maxBatchSize:
+                    format: int64
+                    type: integer
                   name:
                     type: string
                   requestMappingTemplate:
                     type: string
                   responseMappingTemplate:
                     type: string
+                  syncConfig:
+                    properties:
+                      conflictDetection:
+                        type: string
+                      conflictHandler:
+                        type: string
+                      lambdaConflictHandlerConfig:
+                        properties:
+                          lambdaConflictHandlerArn:
+                            type: string
+                        type: object
+                    type: object
                 required:
                 - apiID
                 - dataSource
@@ -100,12 +115,27 @@ spec:
                     type: string
                   id:
                     type: string
+                  maxBatchSize:
+                    format: int64
+                    type: integer
                   name:
                     type: string
                   requestMappingTemplate:
                     type: string
                   responseMappingTemplate:
                     type: string
+                  syncConfig:
+                    properties:
+                      conflictDetection:
+                        type: string
+                      conflictHandler:
+                        type: string
+                      lambdaConflictHandlerConfig:
+                        properties:
+                          lambdaConflictHandlerArn:
+                            type: string
+                        type: object
+                    type: object
                 required:
                 - apiID
                 - dataSource

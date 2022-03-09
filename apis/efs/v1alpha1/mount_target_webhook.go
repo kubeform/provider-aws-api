@@ -90,7 +90,7 @@ func (r *MountTarget) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range mounttargetForceNewList {
+	for key, _ := range mounttargetForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

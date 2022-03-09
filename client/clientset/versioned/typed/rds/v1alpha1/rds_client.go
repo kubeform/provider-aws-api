@@ -31,6 +31,7 @@ type RdsV1alpha1Interface interface {
 	ClusterEndpointsGetter
 	ClusterInstancesGetter
 	ClusterParameterGroupsGetter
+	ClusterRoleAssociationsGetter
 	GlobalClustersGetter
 }
 
@@ -53,6 +54,10 @@ func (c *RdsV1alpha1Client) ClusterInstances(namespace string) ClusterInstanceIn
 
 func (c *RdsV1alpha1Client) ClusterParameterGroups(namespace string) ClusterParameterGroupInterface {
 	return newClusterParameterGroups(c, namespace)
+}
+
+func (c *RdsV1alpha1Client) ClusterRoleAssociations(namespace string) ClusterRoleAssociationInterface {
+	return newClusterRoleAssociations(c, namespace)
 }
 
 func (c *RdsV1alpha1Client) GlobalClusters(namespace string) GlobalClusterInterface {

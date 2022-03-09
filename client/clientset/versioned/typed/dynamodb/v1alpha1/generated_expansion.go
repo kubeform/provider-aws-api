@@ -25,3 +25,5 @@ type KinesisStreamingDestinationExpansion interface{}
 type TableExpansion interface{}
 
 type TableItemExpansion interface{}
+
+type TagExpansion interface{}

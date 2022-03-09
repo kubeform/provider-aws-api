@@ -50,6 +50,14 @@ type ClusterSnapshotListerExpansion interface{}
 // ClusterSnapshotNamespaceLister.
 type ClusterSnapshotNamespaceListerExpansion interface{}
 
+// GlobalClusterListerExpansion allows custom methods to be added to
+// GlobalClusterLister.
+type GlobalClusterListerExpansion interface{}
+
+// GlobalClusterNamespaceListerExpansion allows custom methods to be added to
+// GlobalClusterNamespaceLister.
+type GlobalClusterNamespaceListerExpansion interface{}
+
 // SubnetGroupListerExpansion allows custom methods to be added to
 // SubnetGroupLister.
 type SubnetGroupListerExpansion interface{}

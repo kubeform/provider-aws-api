@@ -90,7 +90,7 @@ func (r *CustomDomainAssociation) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range customdomainassociationForceNewList {
+	for key, _ := range customdomainassociationForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

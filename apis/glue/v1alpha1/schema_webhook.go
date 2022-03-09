@@ -88,7 +88,7 @@ func (r *Schema) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range schemaForceNewList {
+	for key, _ := range schemaForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

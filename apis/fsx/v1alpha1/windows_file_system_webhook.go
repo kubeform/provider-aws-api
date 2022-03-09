@@ -43,6 +43,7 @@ var _ webhook.Validator = &WindowsFileSystem{}
 
 var windowsfilesystemForceNewList = map[string]bool{
 	"/active_directory_id":  true,
+	"/backup_id":            true,
 	"/copy_tags_to_backups": true,
 	"/deployment_type":      true,
 	"/kms_key_id":           true,
@@ -95,7 +96,7 @@ func (r *WindowsFileSystem) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range windowsfilesystemForceNewList {
+	for key, _ := range windowsfilesystemForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

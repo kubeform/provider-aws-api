@@ -114,6 +114,8 @@ spec:
                         type: string
                       deviceTypeIos:
                         type: string
+                      deviceTypeLinux:
+                        type: string
                       deviceTypeOsx:
                         type: string
                       deviceTypeWeb:
@@ -199,6 +201,8 @@ spec:
                       deviceTypeChromeos:
                         type: string
                       deviceTypeIos:
+                        type: string
+                      deviceTypeLinux:
                         type: string
                       deviceTypeOsx:
                         type: string

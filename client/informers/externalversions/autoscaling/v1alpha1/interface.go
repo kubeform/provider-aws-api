@@ -28,6 +28,8 @@ type Interface interface {
 	Attachments() AttachmentInformer
 	// Groups returns a GroupInformer.
 	Groups() GroupInformer
+	// GroupTags returns a GroupTagInformer.
+	GroupTags() GroupTagInformer
 	// LifecycleHooks returns a LifecycleHookInformer.
 	LifecycleHooks() LifecycleHookInformer
 	// Notifications returns a NotificationInformer.
@@ -57,6 +59,11 @@ func (v *version) Attachments() AttachmentInformer {
 // Groups returns a GroupInformer.
 func (v *version) Groups() GroupInformer {
 	return &groupInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
+// GroupTags returns a GroupTagInformer.
+func (v *version) GroupTags() GroupTagInformer {
+	return &groupTagInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
 }
 
 // LifecycleHooks returns a LifecycleHookInformer.

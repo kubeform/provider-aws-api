@@ -38,6 +38,8 @@ type MlTransformExpansion interface{}
 
 type PartitionExpansion interface{}
 
+type PartitionIndexExpansion interface{}
+
 type RegistryExpansion interface{}
 
 type ResourcePolicyExpansion interface{}

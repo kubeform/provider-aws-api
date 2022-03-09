@@ -22,6 +22,8 @@ import (
 	clientset "kubeform.dev/provider-aws-api/client/clientset/versioned"
 	accessanalyzerv1alpha1 "kubeform.dev/provider-aws-api/client/clientset/versioned/typed/accessanalyzer/v1alpha1"
 	fakeaccessanalyzerv1alpha1 "kubeform.dev/provider-aws-api/client/clientset/versioned/typed/accessanalyzer/v1alpha1/fake"
+	accountv1alpha1 "kubeform.dev/provider-aws-api/client/clientset/versioned/typed/account/v1alpha1"
+	fakeaccountv1alpha1 "kubeform.dev/provider-aws-api/client/clientset/versioned/typed/account/v1alpha1/fake"
 	acmv1alpha1 "kubeform.dev/provider-aws-api/client/clientset/versioned/typed/acm/v1alpha1"
 	fakeacmv1alpha1 "kubeform.dev/provider-aws-api/client/clientset/versioned/typed/acm/v1alpha1/fake"
 	acmpcav1alpha1 "kubeform.dev/provider-aws-api/client/clientset/versioned/typed/acmpca/v1alpha1"
@@ -40,10 +42,14 @@ import (
 	fakeappv1alpha1 "kubeform.dev/provider-aws-api/client/clientset/versioned/typed/app/v1alpha1/fake"
 	appautoscalingv1alpha1 "kubeform.dev/provider-aws-api/client/clientset/versioned/typed/appautoscaling/v1alpha1"
 	fakeappautoscalingv1alpha1 "kubeform.dev/provider-aws-api/client/clientset/versioned/typed/appautoscaling/v1alpha1/fake"
+	appconfigv1alpha1 "kubeform.dev/provider-aws-api/client/clientset/versioned/typed/appconfig/v1alpha1"
+	fakeappconfigv1alpha1 "kubeform.dev/provider-aws-api/client/clientset/versioned/typed/appconfig/v1alpha1/fake"
 	appmeshv1alpha1 "kubeform.dev/provider-aws-api/client/clientset/versioned/typed/appmesh/v1alpha1"
 	fakeappmeshv1alpha1 "kubeform.dev/provider-aws-api/client/clientset/versioned/typed/appmesh/v1alpha1/fake"
 	apprunnerv1alpha1 "kubeform.dev/provider-aws-api/client/clientset/versioned/typed/apprunner/v1alpha1"
 	fakeapprunnerv1alpha1 "kubeform.dev/provider-aws-api/client/clientset/versioned/typed/apprunner/v1alpha1/fake"
+	appstreamv1alpha1 "kubeform.dev/provider-aws-api/client/clientset/versioned/typed/appstream/v1alpha1"
+	fakeappstreamv1alpha1 "kubeform.dev/provider-aws-api/client/clientset/versioned/typed/appstream/v1alpha1/fake"
 	appsyncv1alpha1 "kubeform.dev/provider-aws-api/client/clientset/versioned/typed/appsync/v1alpha1"
 	fakeappsyncv1alpha1 "kubeform.dev/provider-aws-api/client/clientset/versioned/typed/appsync/v1alpha1/fake"
 	athenav1alpha1 "kubeform.dev/provider-aws-api/client/clientset/versioned/typed/athena/v1alpha1"
@@ -58,8 +64,12 @@ import (
 	fakebatchv1alpha1 "kubeform.dev/provider-aws-api/client/clientset/versioned/typed/batch/v1alpha1/fake"
 	budgetsv1alpha1 "kubeform.dev/provider-aws-api/client/clientset/versioned/typed/budgets/v1alpha1"
 	fakebudgetsv1alpha1 "kubeform.dev/provider-aws-api/client/clientset/versioned/typed/budgets/v1alpha1/fake"
+	chimev1alpha1 "kubeform.dev/provider-aws-api/client/clientset/versioned/typed/chime/v1alpha1"
+	fakechimev1alpha1 "kubeform.dev/provider-aws-api/client/clientset/versioned/typed/chime/v1alpha1/fake"
 	cloud9v1alpha1 "kubeform.dev/provider-aws-api/client/clientset/versioned/typed/cloud9/v1alpha1"
 	fakecloud9v1alpha1 "kubeform.dev/provider-aws-api/client/clientset/versioned/typed/cloud9/v1alpha1/fake"
+	cloudcontrolapiv1alpha1 "kubeform.dev/provider-aws-api/client/clientset/versioned/typed/cloudcontrolapi/v1alpha1"
+	fakecloudcontrolapiv1alpha1 "kubeform.dev/provider-aws-api/client/clientset/versioned/typed/cloudcontrolapi/v1alpha1/fake"
 	cloudformationstackv1alpha1 "kubeform.dev/provider-aws-api/client/clientset/versioned/typed/cloudformationstack/v1alpha1"
 	fakecloudformationstackv1alpha1 "kubeform.dev/provider-aws-api/client/clientset/versioned/typed/cloudformationstack/v1alpha1/fake"
 	cloudformationtypev1alpha1 "kubeform.dev/provider-aws-api/client/clientset/versioned/typed/cloudformationtype/v1alpha1"
@@ -68,6 +78,8 @@ import (
 	fakecloudfrontv1alpha1 "kubeform.dev/provider-aws-api/client/clientset/versioned/typed/cloudfront/v1alpha1/fake"
 	cloudhsmv2v1alpha1 "kubeform.dev/provider-aws-api/client/clientset/versioned/typed/cloudhsmv2/v1alpha1"
 	fakecloudhsmv2v1alpha1 "kubeform.dev/provider-aws-api/client/clientset/versioned/typed/cloudhsmv2/v1alpha1/fake"
+	cloudsearchv1alpha1 "kubeform.dev/provider-aws-api/client/clientset/versioned/typed/cloudsearch/v1alpha1"
+	fakecloudsearchv1alpha1 "kubeform.dev/provider-aws-api/client/clientset/versioned/typed/cloudsearch/v1alpha1/fake"
 	cloudtrailv1alpha1 "kubeform.dev/provider-aws-api/client/clientset/versioned/typed/cloudtrail/v1alpha1"
 	fakecloudtrailv1alpha1 "kubeform.dev/provider-aws-api/client/clientset/versioned/typed/cloudtrail/v1alpha1/fake"
 	cloudwatchv1alpha1 "kubeform.dev/provider-aws-api/client/clientset/versioned/typed/cloudwatch/v1alpha1"
@@ -90,10 +102,14 @@ import (
 	fakecognitov1alpha1 "kubeform.dev/provider-aws-api/client/clientset/versioned/typed/cognito/v1alpha1/fake"
 	configv1alpha1 "kubeform.dev/provider-aws-api/client/clientset/versioned/typed/config/v1alpha1"
 	fakeconfigv1alpha1 "kubeform.dev/provider-aws-api/client/clientset/versioned/typed/config/v1alpha1/fake"
+	connectv1alpha1 "kubeform.dev/provider-aws-api/client/clientset/versioned/typed/connect/v1alpha1"
+	fakeconnectv1alpha1 "kubeform.dev/provider-aws-api/client/clientset/versioned/typed/connect/v1alpha1/fake"
 	curv1alpha1 "kubeform.dev/provider-aws-api/client/clientset/versioned/typed/cur/v1alpha1"
 	fakecurv1alpha1 "kubeform.dev/provider-aws-api/client/clientset/versioned/typed/cur/v1alpha1/fake"
 	customerv1alpha1 "kubeform.dev/provider-aws-api/client/clientset/versioned/typed/customer/v1alpha1"
 	fakecustomerv1alpha1 "kubeform.dev/provider-aws-api/client/clientset/versioned/typed/customer/v1alpha1/fake"
+	dataexchangev1alpha1 "kubeform.dev/provider-aws-api/client/clientset/versioned/typed/dataexchange/v1alpha1"
+	fakedataexchangev1alpha1 "kubeform.dev/provider-aws-api/client/clientset/versioned/typed/dataexchange/v1alpha1/fake"
 	datapipelinev1alpha1 "kubeform.dev/provider-aws-api/client/clientset/versioned/typed/datapipeline/v1alpha1"
 	fakedatapipelinev1alpha1 "kubeform.dev/provider-aws-api/client/clientset/versioned/typed/datapipeline/v1alpha1/fake"
 	datasyncv1alpha1 "kubeform.dev/provider-aws-api/client/clientset/versioned/typed/datasync/v1alpha1"
@@ -104,6 +120,8 @@ import (
 	fakedbv1alpha1 "kubeform.dev/provider-aws-api/client/clientset/versioned/typed/db/v1alpha1/fake"
 	defaultv1alpha1 "kubeform.dev/provider-aws-api/client/clientset/versioned/typed/default/v1alpha1"
 	fakedefaultv1alpha1 "kubeform.dev/provider-aws-api/client/clientset/versioned/typed/default/v1alpha1/fake"
+	detectivev1alpha1 "kubeform.dev/provider-aws-api/client/clientset/versioned/typed/detective/v1alpha1"
+	fakedetectivev1alpha1 "kubeform.dev/provider-aws-api/client/clientset/versioned/typed/detective/v1alpha1/fake"
 	devicefarmv1alpha1 "kubeform.dev/provider-aws-api/client/clientset/versioned/typed/devicefarm/v1alpha1"
 	fakedevicefarmv1alpha1 "kubeform.dev/provider-aws-api/client/clientset/versioned/typed/devicefarm/v1alpha1/fake"
 	directoryservicev1alpha1 "kubeform.dev/provider-aws-api/client/clientset/versioned/typed/directoryservice/v1alpha1"
@@ -162,6 +180,8 @@ import (
 	fakeglobalacceleratorv1alpha1 "kubeform.dev/provider-aws-api/client/clientset/versioned/typed/globalaccelerator/v1alpha1/fake"
 	gluev1alpha1 "kubeform.dev/provider-aws-api/client/clientset/versioned/typed/glue/v1alpha1"
 	fakegluev1alpha1 "kubeform.dev/provider-aws-api/client/clientset/versioned/typed/glue/v1alpha1/fake"
+	grafanav1alpha1 "kubeform.dev/provider-aws-api/client/clientset/versioned/typed/grafana/v1alpha1"
+	fakegrafanav1alpha1 "kubeform.dev/provider-aws-api/client/clientset/versioned/typed/grafana/v1alpha1/fake"
 	guarddutyv1alpha1 "kubeform.dev/provider-aws-api/client/clientset/versioned/typed/guardduty/v1alpha1"
 	fakeguarddutyv1alpha1 "kubeform.dev/provider-aws-api/client/clientset/versioned/typed/guardduty/v1alpha1/fake"
 	iamv1alpha1 "kubeform.dev/provider-aws-api/client/clientset/versioned/typed/iam/v1alpha1"
@@ -208,10 +228,14 @@ import (
 	fakemainv1alpha1 "kubeform.dev/provider-aws-api/client/clientset/versioned/typed/main/v1alpha1/fake"
 	mediav1alpha1 "kubeform.dev/provider-aws-api/client/clientset/versioned/typed/media/v1alpha1"
 	fakemediav1alpha1 "kubeform.dev/provider-aws-api/client/clientset/versioned/typed/media/v1alpha1/fake"
+	memorydbv1alpha1 "kubeform.dev/provider-aws-api/client/clientset/versioned/typed/memorydb/v1alpha1"
+	fakememorydbv1alpha1 "kubeform.dev/provider-aws-api/client/clientset/versioned/typed/memorydb/v1alpha1/fake"
 	mqv1alpha1 "kubeform.dev/provider-aws-api/client/clientset/versioned/typed/mq/v1alpha1"
 	fakemqv1alpha1 "kubeform.dev/provider-aws-api/client/clientset/versioned/typed/mq/v1alpha1/fake"
 	mskv1alpha1 "kubeform.dev/provider-aws-api/client/clientset/versioned/typed/msk/v1alpha1"
 	fakemskv1alpha1 "kubeform.dev/provider-aws-api/client/clientset/versioned/typed/msk/v1alpha1/fake"
+	mskconnectv1alpha1 "kubeform.dev/provider-aws-api/client/clientset/versioned/typed/mskconnect/v1alpha1"
+	fakemskconnectv1alpha1 "kubeform.dev/provider-aws-api/client/clientset/versioned/typed/mskconnect/v1alpha1/fake"
 	mwaav1alpha1 "kubeform.dev/provider-aws-api/client/clientset/versioned/typed/mwaa/v1alpha1"
 	fakemwaav1alpha1 "kubeform.dev/provider-aws-api/client/clientset/versioned/typed/mwaa/v1alpha1/fake"
 	natv1alpha1 "kubeform.dev/provider-aws-api/client/clientset/versioned/typed/nat/v1alpha1"
@@ -250,6 +274,12 @@ import (
 	fakeroutev1alpha1 "kubeform.dev/provider-aws-api/client/clientset/versioned/typed/route/v1alpha1/fake"
 	route53v1alpha1 "kubeform.dev/provider-aws-api/client/clientset/versioned/typed/route53/v1alpha1"
 	fakeroute53v1alpha1 "kubeform.dev/provider-aws-api/client/clientset/versioned/typed/route53/v1alpha1/fake"
+	route53domainsv1alpha1 "kubeform.dev/provider-aws-api/client/clientset/versioned/typed/route53domains/v1alpha1"
+	fakeroute53domainsv1alpha1 "kubeform.dev/provider-aws-api/client/clientset/versioned/typed/route53domains/v1alpha1/fake"
+	route53recoverycontrolconfigv1alpha1 "kubeform.dev/provider-aws-api/client/clientset/versioned/typed/route53recoverycontrolconfig/v1alpha1"
+	fakeroute53recoverycontrolconfigv1alpha1 "kubeform.dev/provider-aws-api/client/clientset/versioned/typed/route53recoverycontrolconfig/v1alpha1/fake"
+	route53recoveryreadinessv1alpha1 "kubeform.dev/provider-aws-api/client/clientset/versioned/typed/route53recoveryreadiness/v1alpha1"
+	fakeroute53recoveryreadinessv1alpha1 "kubeform.dev/provider-aws-api/client/clientset/versioned/typed/route53recoveryreadiness/v1alpha1/fake"
 	s3v1alpha1 "kubeform.dev/provider-aws-api/client/clientset/versioned/typed/s3/v1alpha1"
 	fakes3v1alpha1 "kubeform.dev/provider-aws-api/client/clientset/versioned/typed/s3/v1alpha1/fake"
 	s3controlv1alpha1 "kubeform.dev/provider-aws-api/client/clientset/versioned/typed/s3control/v1alpha1"
@@ -386,6 +416,11 @@ func (c *Clientset) AccessanalyzerV1alpha1() accessanalyzerv1alpha1.Accessanalyz
 	return &fakeaccessanalyzerv1alpha1.FakeAccessanalyzerV1alpha1{Fake: &c.Fake}
 }
 
+// AccountV1alpha1 retrieves the AccountV1alpha1Client
+func (c *Clientset) AccountV1alpha1() accountv1alpha1.AccountV1alpha1Interface {
+	return &fakeaccountv1alpha1.FakeAccountV1alpha1{Fake: &c.Fake}
+}
+
 // AcmV1alpha1 retrieves the AcmV1alpha1Client
 func (c *Clientset) AcmV1alpha1() acmv1alpha1.AcmV1alpha1Interface {
 	return &fakeacmv1alpha1.FakeAcmV1alpha1{Fake: &c.Fake}
@@ -431,6 +466,11 @@ func (c *Clientset) AppautoscalingV1alpha1() appautoscalingv1alpha1.Appautoscali
 	return &fakeappautoscalingv1alpha1.FakeAppautoscalingV1alpha1{Fake: &c.Fake}
 }
 
+// AppconfigV1alpha1 retrieves the AppconfigV1alpha1Client
+func (c *Clientset) AppconfigV1alpha1() appconfigv1alpha1.AppconfigV1alpha1Interface {
+	return &fakeappconfigv1alpha1.FakeAppconfigV1alpha1{Fake: &c.Fake}
+}
+
 // AppmeshV1alpha1 retrieves the AppmeshV1alpha1Client
 func (c *Clientset) AppmeshV1alpha1() appmeshv1alpha1.AppmeshV1alpha1Interface {
 	return &fakeappmeshv1alpha1.FakeAppmeshV1alpha1{Fake: &c.Fake}
@@ -439,6 +479,11 @@ func (c *Clientset) AppmeshV1alpha1() appmeshv1alpha1.AppmeshV1alpha1Interface {
 // ApprunnerV1alpha1 retrieves the ApprunnerV1alpha1Client
 func (c *Clientset) ApprunnerV1alpha1() apprunnerv1alpha1.ApprunnerV1alpha1Interface {
 	return &fakeapprunnerv1alpha1.FakeApprunnerV1alpha1{Fake: &c.Fake}
+}
+
+// AppstreamV1alpha1 retrieves the AppstreamV1alpha1Client
+func (c *Clientset) AppstreamV1alpha1() appstreamv1alpha1.AppstreamV1alpha1Interface {
+	return &fakeappstreamv1alpha1.FakeAppstreamV1alpha1{Fake: &c.Fake}
 }
 
 // AppsyncV1alpha1 retrieves the AppsyncV1alpha1Client
@@ -476,9 +521,19 @@ func (c *Clientset) BudgetsV1alpha1() budgetsv1alpha1.BudgetsV1alpha1Interface {
 	return &fakebudgetsv1alpha1.FakeBudgetsV1alpha1{Fake: &c.Fake}
 }
 
+// ChimeV1alpha1 retrieves the ChimeV1alpha1Client
+func (c *Clientset) ChimeV1alpha1() chimev1alpha1.ChimeV1alpha1Interface {
+	return &fakechimev1alpha1.FakeChimeV1alpha1{Fake: &c.Fake}
+}
+
 // Cloud9V1alpha1 retrieves the Cloud9V1alpha1Client
 func (c *Clientset) Cloud9V1alpha1() cloud9v1alpha1.Cloud9V1alpha1Interface {
 	return &fakecloud9v1alpha1.FakeCloud9V1alpha1{Fake: &c.Fake}
+}
+
+// CloudcontrolapiV1alpha1 retrieves the CloudcontrolapiV1alpha1Client
+func (c *Clientset) CloudcontrolapiV1alpha1() cloudcontrolapiv1alpha1.CloudcontrolapiV1alpha1Interface {
+	return &fakecloudcontrolapiv1alpha1.FakeCloudcontrolapiV1alpha1{Fake: &c.Fake}
 }
 
 // CloudformationstackV1alpha1 retrieves the CloudformationstackV1alpha1Client
@@ -499,6 +554,11 @@ func (c *Clientset) CloudfrontV1alpha1() cloudfrontv1alpha1.CloudfrontV1alpha1In
 // Cloudhsmv2V1alpha1 retrieves the Cloudhsmv2V1alpha1Client
 func (c *Clientset) Cloudhsmv2V1alpha1() cloudhsmv2v1alpha1.Cloudhsmv2V1alpha1Interface {
 	return &fakecloudhsmv2v1alpha1.FakeCloudhsmv2V1alpha1{Fake: &c.Fake}
+}
+
+// CloudsearchV1alpha1 retrieves the CloudsearchV1alpha1Client
+func (c *Clientset) CloudsearchV1alpha1() cloudsearchv1alpha1.CloudsearchV1alpha1Interface {
+	return &fakecloudsearchv1alpha1.FakeCloudsearchV1alpha1{Fake: &c.Fake}
 }
 
 // CloudtrailV1alpha1 retrieves the CloudtrailV1alpha1Client
@@ -556,6 +616,11 @@ func (c *Clientset) ConfigV1alpha1() configv1alpha1.ConfigV1alpha1Interface {
 	return &fakeconfigv1alpha1.FakeConfigV1alpha1{Fake: &c.Fake}
 }
 
+// ConnectV1alpha1 retrieves the ConnectV1alpha1Client
+func (c *Clientset) ConnectV1alpha1() connectv1alpha1.ConnectV1alpha1Interface {
+	return &fakeconnectv1alpha1.FakeConnectV1alpha1{Fake: &c.Fake}
+}
+
 // CurV1alpha1 retrieves the CurV1alpha1Client
 func (c *Clientset) CurV1alpha1() curv1alpha1.CurV1alpha1Interface {
 	return &fakecurv1alpha1.FakeCurV1alpha1{Fake: &c.Fake}
@@ -564,6 +629,11 @@ func (c *Clientset) CurV1alpha1() curv1alpha1.CurV1alpha1Interface {
 // CustomerV1alpha1 retrieves the CustomerV1alpha1Client
 func (c *Clientset) CustomerV1alpha1() customerv1alpha1.CustomerV1alpha1Interface {
 	return &fakecustomerv1alpha1.FakeCustomerV1alpha1{Fake: &c.Fake}
+}
+
+// DataexchangeV1alpha1 retrieves the DataexchangeV1alpha1Client
+func (c *Clientset) DataexchangeV1alpha1() dataexchangev1alpha1.DataexchangeV1alpha1Interface {
+	return &fakedataexchangev1alpha1.FakeDataexchangeV1alpha1{Fake: &c.Fake}
 }
 
 // DatapipelineV1alpha1 retrieves the DatapipelineV1alpha1Client
@@ -589,6 +659,11 @@ func (c *Clientset) DbV1alpha1() dbv1alpha1.DbV1alpha1Interface {
 // DefaultV1alpha1 retrieves the DefaultV1alpha1Client
 func (c *Clientset) DefaultV1alpha1() defaultv1alpha1.DefaultV1alpha1Interface {
 	return &fakedefaultv1alpha1.FakeDefaultV1alpha1{Fake: &c.Fake}
+}
+
+// DetectiveV1alpha1 retrieves the DetectiveV1alpha1Client
+func (c *Clientset) DetectiveV1alpha1() detectivev1alpha1.DetectiveV1alpha1Interface {
+	return &fakedetectivev1alpha1.FakeDetectiveV1alpha1{Fake: &c.Fake}
 }
 
 // DevicefarmV1alpha1 retrieves the DevicefarmV1alpha1Client
@@ -736,6 +811,11 @@ func (c *Clientset) GlueV1alpha1() gluev1alpha1.GlueV1alpha1Interface {
 	return &fakegluev1alpha1.FakeGlueV1alpha1{Fake: &c.Fake}
 }
 
+// GrafanaV1alpha1 retrieves the GrafanaV1alpha1Client
+func (c *Clientset) GrafanaV1alpha1() grafanav1alpha1.GrafanaV1alpha1Interface {
+	return &fakegrafanav1alpha1.FakeGrafanaV1alpha1{Fake: &c.Fake}
+}
+
 // GuarddutyV1alpha1 retrieves the GuarddutyV1alpha1Client
 func (c *Clientset) GuarddutyV1alpha1() guarddutyv1alpha1.GuarddutyV1alpha1Interface {
 	return &fakeguarddutyv1alpha1.FakeGuarddutyV1alpha1{Fake: &c.Fake}
@@ -851,6 +931,11 @@ func (c *Clientset) MediaV1alpha1() mediav1alpha1.MediaV1alpha1Interface {
 	return &fakemediav1alpha1.FakeMediaV1alpha1{Fake: &c.Fake}
 }
 
+// MemorydbV1alpha1 retrieves the MemorydbV1alpha1Client
+func (c *Clientset) MemorydbV1alpha1() memorydbv1alpha1.MemorydbV1alpha1Interface {
+	return &fakememorydbv1alpha1.FakeMemorydbV1alpha1{Fake: &c.Fake}
+}
+
 // MqV1alpha1 retrieves the MqV1alpha1Client
 func (c *Clientset) MqV1alpha1() mqv1alpha1.MqV1alpha1Interface {
 	return &fakemqv1alpha1.FakeMqV1alpha1{Fake: &c.Fake}
@@ -859,6 +944,11 @@ func (c *Clientset) MqV1alpha1() mqv1alpha1.MqV1alpha1Interface {
 // MskV1alpha1 retrieves the MskV1alpha1Client
 func (c *Clientset) MskV1alpha1() mskv1alpha1.MskV1alpha1Interface {
 	return &fakemskv1alpha1.FakeMskV1alpha1{Fake: &c.Fake}
+}
+
+// MskconnectV1alpha1 retrieves the MskconnectV1alpha1Client
+func (c *Clientset) MskconnectV1alpha1() mskconnectv1alpha1.MskconnectV1alpha1Interface {
+	return &fakemskconnectv1alpha1.FakeMskconnectV1alpha1{Fake: &c.Fake}
 }
 
 // MwaaV1alpha1 retrieves the MwaaV1alpha1Client
@@ -954,6 +1044,21 @@ func (c *Clientset) RouteV1alpha1() routev1alpha1.RouteV1alpha1Interface {
 // Route53V1alpha1 retrieves the Route53V1alpha1Client
 func (c *Clientset) Route53V1alpha1() route53v1alpha1.Route53V1alpha1Interface {
 	return &fakeroute53v1alpha1.FakeRoute53V1alpha1{Fake: &c.Fake}
+}
+
+// Route53domainsV1alpha1 retrieves the Route53domainsV1alpha1Client
+func (c *Clientset) Route53domainsV1alpha1() route53domainsv1alpha1.Route53domainsV1alpha1Interface {
+	return &fakeroute53domainsv1alpha1.FakeRoute53domainsV1alpha1{Fake: &c.Fake}
+}
+
+// Route53recoverycontrolconfigV1alpha1 retrieves the Route53recoverycontrolconfigV1alpha1Client
+func (c *Clientset) Route53recoverycontrolconfigV1alpha1() route53recoverycontrolconfigv1alpha1.Route53recoverycontrolconfigV1alpha1Interface {
+	return &fakeroute53recoverycontrolconfigv1alpha1.FakeRoute53recoverycontrolconfigV1alpha1{Fake: &c.Fake}
+}
+
+// Route53recoveryreadinessV1alpha1 retrieves the Route53recoveryreadinessV1alpha1Client
+func (c *Clientset) Route53recoveryreadinessV1alpha1() route53recoveryreadinessv1alpha1.Route53recoveryreadinessV1alpha1Interface {
+	return &fakeroute53recoveryreadinessv1alpha1.FakeRoute53recoveryreadinessV1alpha1{Fake: &c.Fake}
 }
 
 // S3V1alpha1 retrieves the S3V1alpha1Client

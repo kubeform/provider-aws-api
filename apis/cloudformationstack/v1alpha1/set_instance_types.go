@@ -41,6 +41,12 @@ type SetInstance struct {
 	Status            SetInstanceStatus `json:"status,omitempty"`
 }
 
+type SetInstanceSpecDeploymentTargets struct {
+	// +optional
+	// +kubebuilder:validation:MinItems=1
+	OrganizationalUnitIDS []string `json:"organizationalUnitIDS,omitempty" tf:"organizational_unit_ids"`
+}
+
 type SetInstanceSpec struct {
 	State *SetInstanceSpecResource `json:"state,omitempty" tf:"-"`
 
@@ -62,6 +68,10 @@ type SetInstanceSpecResource struct {
 
 	// +optional
 	AccountID *string `json:"accountID,omitempty" tf:"account_id"`
+	// +optional
+	DeploymentTargets *SetInstanceSpecDeploymentTargets `json:"deploymentTargets,omitempty" tf:"deployment_targets"`
+	// +optional
+	OrganizationalUnitID *string `json:"organizationalUnitID,omitempty" tf:"organizational_unit_id"`
 	// +optional
 	ParameterOverrides *map[string]string `json:"parameterOverrides,omitempty" tf:"parameter_overrides"`
 	// +optional

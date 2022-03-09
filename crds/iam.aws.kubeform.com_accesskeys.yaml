@@ -61,6 +61,8 @@ spec:
                     type: string
                   encryptedSecret:
                     type: string
+                  encryptedSesSMTPPasswordV4:
+                    type: string
                   id:
                     type: string
                   keyFingerprint:
@@ -88,6 +90,8 @@ spec:
                   createDate:
                     type: string
                   encryptedSecret:
+                    type: string
+                  encryptedSesSMTPPasswordV4:
                     type: string
                   id:
                     type: string

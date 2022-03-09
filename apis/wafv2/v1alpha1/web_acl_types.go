@@ -41,6 +41,12 @@ type WebACL struct {
 	Status            WebACLStatus `json:"status,omitempty"`
 }
 
+type WebACLSpecCustomResponseBody struct {
+	Content     *string `json:"content" tf:"content"`
+	ContentType *string `json:"contentType" tf:"content_type"`
+	Key         *string `json:"key" tf:"key"`
+}
+
 type WebACLSpecDefaultActionAllowCustomRequestHandlingInsertHeader struct {
 	Name  *string `json:"name" tf:"name"`
 	Value *string `json:"value" tf:"value"`
@@ -62,7 +68,9 @@ type WebACLSpecDefaultActionBlockCustomResponseResponseHeader struct {
 }
 
 type WebACLSpecDefaultActionBlockCustomResponse struct {
-	ResponseCode *int64 `json:"responseCode" tf:"response_code"`
+	// +optional
+	CustomResponseBodyKey *string `json:"customResponseBodyKey,omitempty" tf:"custom_response_body_key"`
+	ResponseCode          *int64  `json:"responseCode" tf:"response_code"`
 	// +optional
 	ResponseHeader []WebACLSpecDefaultActionBlockCustomResponseResponseHeader `json:"responseHeader,omitempty" tf:"response_header"`
 }
@@ -100,7 +108,9 @@ type WebACLSpecRuleActionBlockCustomResponseResponseHeader struct {
 }
 
 type WebACLSpecRuleActionBlockCustomResponse struct {
-	ResponseCode *int64 `json:"responseCode" tf:"response_code"`
+	// +optional
+	CustomResponseBodyKey *string `json:"customResponseBodyKey,omitempty" tf:"custom_response_body_key"`
+	ResponseCode          *int64  `json:"responseCode" tf:"response_code"`
 	// +optional
 	ResponseHeader []WebACLSpecRuleActionBlockCustomResponseResponseHeader `json:"responseHeader,omitempty" tf:"response_header"`
 }
@@ -143,6 +153,10 @@ type WebACLSpecRuleOverrideAction struct {
 	Count *WebACLSpecRuleOverrideActionCount `json:"count,omitempty" tf:"count"`
 	// +optional
 	None *WebACLSpecRuleOverrideActionNone `json:"none,omitempty" tf:"none"`
+}
+
+type WebACLSpecRuleRuleLabel struct {
+	Name *string `json:"name" tf:"name"`
 }
 
 type WebACLSpecRuleStatementAndStatementStatementAndStatementStatementAndStatementStatementByteMatchStatementFieldToMatchAllQueryArguments struct{}
@@ -215,6 +229,11 @@ type WebACLSpecRuleStatementAndStatementStatementAndStatementStatementAndStateme
 	Arn *string `json:"arn" tf:"arn"`
 	// +optional
 	IpSetForwardedIPConfig *WebACLSpecRuleStatementAndStatementStatementAndStatementStatementAndStatementStatementIpSetReferenceStatementIpSetForwardedIPConfig `json:"ipSetForwardedIPConfig,omitempty" tf:"ip_set_forwarded_ip_config"`
+}
+
+type WebACLSpecRuleStatementAndStatementStatementAndStatementStatementAndStatementStatementLabelMatchStatement struct {
+	Key   *string `json:"key" tf:"key"`
+	Scope *string `json:"scope" tf:"scope"`
 }
 
 type WebACLSpecRuleStatementAndStatementStatementAndStatementStatementAndStatementStatementRegexPatternSetReferenceStatementFieldToMatchAllQueryArguments struct{}
@@ -412,6 +431,8 @@ type WebACLSpecRuleStatementAndStatementStatementAndStatementStatementAndStateme
 	// +optional
 	IpSetReferenceStatement *WebACLSpecRuleStatementAndStatementStatementAndStatementStatementAndStatementStatementIpSetReferenceStatement `json:"ipSetReferenceStatement,omitempty" tf:"ip_set_reference_statement"`
 	// +optional
+	LabelMatchStatement *WebACLSpecRuleStatementAndStatementStatementAndStatementStatementAndStatementStatementLabelMatchStatement `json:"labelMatchStatement,omitempty" tf:"label_match_statement"`
+	// +optional
 	RegexPatternSetReferenceStatement *WebACLSpecRuleStatementAndStatementStatementAndStatementStatementAndStatementStatementRegexPatternSetReferenceStatement `json:"regexPatternSetReferenceStatement,omitempty" tf:"regex_pattern_set_reference_statement"`
 	// +optional
 	SizeConstraintStatement *WebACLSpecRuleStatementAndStatementStatementAndStatementStatementAndStatementStatementSizeConstraintStatement `json:"sizeConstraintStatement,omitempty" tf:"size_constraint_statement"`
@@ -497,6 +518,11 @@ type WebACLSpecRuleStatementAndStatementStatementAndStatementStatementIpSetRefer
 	IpSetForwardedIPConfig *WebACLSpecRuleStatementAndStatementStatementAndStatementStatementIpSetReferenceStatementIpSetForwardedIPConfig `json:"ipSetForwardedIPConfig,omitempty" tf:"ip_set_forwarded_ip_config"`
 }
 
+type WebACLSpecRuleStatementAndStatementStatementAndStatementStatementLabelMatchStatement struct {
+	Key   *string `json:"key" tf:"key"`
+	Scope *string `json:"scope" tf:"scope"`
+}
+
 type WebACLSpecRuleStatementAndStatementStatementAndStatementStatementNotStatementStatementByteMatchStatementFieldToMatchAllQueryArguments struct{}
 
 type WebACLSpecRuleStatementAndStatementStatementAndStatementStatementNotStatementStatementByteMatchStatementFieldToMatchBody struct{}
@@ -567,6 +593,11 @@ type WebACLSpecRuleStatementAndStatementStatementAndStatementStatementNotStateme
 	Arn *string `json:"arn" tf:"arn"`
 	// +optional
 	IpSetForwardedIPConfig *WebACLSpecRuleStatementAndStatementStatementAndStatementStatementNotStatementStatementIpSetReferenceStatementIpSetForwardedIPConfig `json:"ipSetForwardedIPConfig,omitempty" tf:"ip_set_forwarded_ip_config"`
+}
+
+type WebACLSpecRuleStatementAndStatementStatementAndStatementStatementNotStatementStatementLabelMatchStatement struct {
+	Key   *string `json:"key" tf:"key"`
+	Scope *string `json:"scope" tf:"scope"`
 }
 
 type WebACLSpecRuleStatementAndStatementStatementAndStatementStatementNotStatementStatementRegexPatternSetReferenceStatementFieldToMatchAllQueryArguments struct{}
@@ -764,6 +795,8 @@ type WebACLSpecRuleStatementAndStatementStatementAndStatementStatementNotStateme
 	// +optional
 	IpSetReferenceStatement *WebACLSpecRuleStatementAndStatementStatementAndStatementStatementNotStatementStatementIpSetReferenceStatement `json:"ipSetReferenceStatement,omitempty" tf:"ip_set_reference_statement"`
 	// +optional
+	LabelMatchStatement *WebACLSpecRuleStatementAndStatementStatementAndStatementStatementNotStatementStatementLabelMatchStatement `json:"labelMatchStatement,omitempty" tf:"label_match_statement"`
+	// +optional
 	RegexPatternSetReferenceStatement *WebACLSpecRuleStatementAndStatementStatementAndStatementStatementNotStatementStatementRegexPatternSetReferenceStatement `json:"regexPatternSetReferenceStatement,omitempty" tf:"regex_pattern_set_reference_statement"`
 	// +optional
 	SizeConstraintStatement *WebACLSpecRuleStatementAndStatementStatementAndStatementStatementNotStatementStatementSizeConstraintStatement `json:"sizeConstraintStatement,omitempty" tf:"size_constraint_statement"`
@@ -847,6 +880,11 @@ type WebACLSpecRuleStatementAndStatementStatementAndStatementStatementOrStatemen
 	Arn *string `json:"arn" tf:"arn"`
 	// +optional
 	IpSetForwardedIPConfig *WebACLSpecRuleStatementAndStatementStatementAndStatementStatementOrStatementStatementIpSetReferenceStatementIpSetForwardedIPConfig `json:"ipSetForwardedIPConfig,omitempty" tf:"ip_set_forwarded_ip_config"`
+}
+
+type WebACLSpecRuleStatementAndStatementStatementAndStatementStatementOrStatementStatementLabelMatchStatement struct {
+	Key   *string `json:"key" tf:"key"`
+	Scope *string `json:"scope" tf:"scope"`
 }
 
 type WebACLSpecRuleStatementAndStatementStatementAndStatementStatementOrStatementStatementRegexPatternSetReferenceStatementFieldToMatchAllQueryArguments struct{}
@@ -1043,6 +1081,8 @@ type WebACLSpecRuleStatementAndStatementStatementAndStatementStatementOrStatemen
 	GeoMatchStatement *WebACLSpecRuleStatementAndStatementStatementAndStatementStatementOrStatementStatementGeoMatchStatement `json:"geoMatchStatement,omitempty" tf:"geo_match_statement"`
 	// +optional
 	IpSetReferenceStatement *WebACLSpecRuleStatementAndStatementStatementAndStatementStatementOrStatementStatementIpSetReferenceStatement `json:"ipSetReferenceStatement,omitempty" tf:"ip_set_reference_statement"`
+	// +optional
+	LabelMatchStatement *WebACLSpecRuleStatementAndStatementStatementAndStatementStatementOrStatementStatementLabelMatchStatement `json:"labelMatchStatement,omitempty" tf:"label_match_statement"`
 	// +optional
 	RegexPatternSetReferenceStatement *WebACLSpecRuleStatementAndStatementStatementAndStatementStatementOrStatementStatementRegexPatternSetReferenceStatement `json:"regexPatternSetReferenceStatement,omitempty" tf:"regex_pattern_set_reference_statement"`
 	// +optional
@@ -1254,6 +1294,8 @@ type WebACLSpecRuleStatementAndStatementStatementAndStatementStatement struct {
 	// +optional
 	IpSetReferenceStatement *WebACLSpecRuleStatementAndStatementStatementAndStatementStatementIpSetReferenceStatement `json:"ipSetReferenceStatement,omitempty" tf:"ip_set_reference_statement"`
 	// +optional
+	LabelMatchStatement *WebACLSpecRuleStatementAndStatementStatementAndStatementStatementLabelMatchStatement `json:"labelMatchStatement,omitempty" tf:"label_match_statement"`
+	// +optional
 	NotStatement *WebACLSpecRuleStatementAndStatementStatementAndStatementStatementNotStatement `json:"notStatement,omitempty" tf:"not_statement"`
 	// +optional
 	OrStatement *WebACLSpecRuleStatementAndStatementStatementAndStatementStatementOrStatement `json:"orStatement,omitempty" tf:"or_statement"`
@@ -1343,6 +1385,11 @@ type WebACLSpecRuleStatementAndStatementStatementIpSetReferenceStatement struct 
 	IpSetForwardedIPConfig *WebACLSpecRuleStatementAndStatementStatementIpSetReferenceStatementIpSetForwardedIPConfig `json:"ipSetForwardedIPConfig,omitempty" tf:"ip_set_forwarded_ip_config"`
 }
 
+type WebACLSpecRuleStatementAndStatementStatementLabelMatchStatement struct {
+	Key   *string `json:"key" tf:"key"`
+	Scope *string `json:"scope" tf:"scope"`
+}
+
 type WebACLSpecRuleStatementAndStatementStatementNotStatementStatementAndStatementStatementByteMatchStatementFieldToMatchAllQueryArguments struct{}
 
 type WebACLSpecRuleStatementAndStatementStatementNotStatementStatementAndStatementStatementByteMatchStatementFieldToMatchBody struct{}
@@ -1413,6 +1460,11 @@ type WebACLSpecRuleStatementAndStatementStatementNotStatementStatementAndStateme
 	Arn *string `json:"arn" tf:"arn"`
 	// +optional
 	IpSetForwardedIPConfig *WebACLSpecRuleStatementAndStatementStatementNotStatementStatementAndStatementStatementIpSetReferenceStatementIpSetForwardedIPConfig `json:"ipSetForwardedIPConfig,omitempty" tf:"ip_set_forwarded_ip_config"`
+}
+
+type WebACLSpecRuleStatementAndStatementStatementNotStatementStatementAndStatementStatementLabelMatchStatement struct {
+	Key   *string `json:"key" tf:"key"`
+	Scope *string `json:"scope" tf:"scope"`
 }
 
 type WebACLSpecRuleStatementAndStatementStatementNotStatementStatementAndStatementStatementRegexPatternSetReferenceStatementFieldToMatchAllQueryArguments struct{}
@@ -1610,6 +1662,8 @@ type WebACLSpecRuleStatementAndStatementStatementNotStatementStatementAndStateme
 	// +optional
 	IpSetReferenceStatement *WebACLSpecRuleStatementAndStatementStatementNotStatementStatementAndStatementStatementIpSetReferenceStatement `json:"ipSetReferenceStatement,omitempty" tf:"ip_set_reference_statement"`
 	// +optional
+	LabelMatchStatement *WebACLSpecRuleStatementAndStatementStatementNotStatementStatementAndStatementStatementLabelMatchStatement `json:"labelMatchStatement,omitempty" tf:"label_match_statement"`
+	// +optional
 	RegexPatternSetReferenceStatement *WebACLSpecRuleStatementAndStatementStatementNotStatementStatementAndStatementStatementRegexPatternSetReferenceStatement `json:"regexPatternSetReferenceStatement,omitempty" tf:"regex_pattern_set_reference_statement"`
 	// +optional
 	SizeConstraintStatement *WebACLSpecRuleStatementAndStatementStatementNotStatementStatementAndStatementStatementSizeConstraintStatement `json:"sizeConstraintStatement,omitempty" tf:"size_constraint_statement"`
@@ -1695,6 +1749,11 @@ type WebACLSpecRuleStatementAndStatementStatementNotStatementStatementIpSetRefer
 	IpSetForwardedIPConfig *WebACLSpecRuleStatementAndStatementStatementNotStatementStatementIpSetReferenceStatementIpSetForwardedIPConfig `json:"ipSetForwardedIPConfig,omitempty" tf:"ip_set_forwarded_ip_config"`
 }
 
+type WebACLSpecRuleStatementAndStatementStatementNotStatementStatementLabelMatchStatement struct {
+	Key   *string `json:"key" tf:"key"`
+	Scope *string `json:"scope" tf:"scope"`
+}
+
 type WebACLSpecRuleStatementAndStatementStatementNotStatementStatementNotStatementStatementByteMatchStatementFieldToMatchAllQueryArguments struct{}
 
 type WebACLSpecRuleStatementAndStatementStatementNotStatementStatementNotStatementStatementByteMatchStatementFieldToMatchBody struct{}
@@ -1765,6 +1824,11 @@ type WebACLSpecRuleStatementAndStatementStatementNotStatementStatementNotStateme
 	Arn *string `json:"arn" tf:"arn"`
 	// +optional
 	IpSetForwardedIPConfig *WebACLSpecRuleStatementAndStatementStatementNotStatementStatementNotStatementStatementIpSetReferenceStatementIpSetForwardedIPConfig `json:"ipSetForwardedIPConfig,omitempty" tf:"ip_set_forwarded_ip_config"`
+}
+
+type WebACLSpecRuleStatementAndStatementStatementNotStatementStatementNotStatementStatementLabelMatchStatement struct {
+	Key   *string `json:"key" tf:"key"`
+	Scope *string `json:"scope" tf:"scope"`
 }
 
 type WebACLSpecRuleStatementAndStatementStatementNotStatementStatementNotStatementStatementRegexPatternSetReferenceStatementFieldToMatchAllQueryArguments struct{}
@@ -1962,6 +2026,8 @@ type WebACLSpecRuleStatementAndStatementStatementNotStatementStatementNotStateme
 	// +optional
 	IpSetReferenceStatement *WebACLSpecRuleStatementAndStatementStatementNotStatementStatementNotStatementStatementIpSetReferenceStatement `json:"ipSetReferenceStatement,omitempty" tf:"ip_set_reference_statement"`
 	// +optional
+	LabelMatchStatement *WebACLSpecRuleStatementAndStatementStatementNotStatementStatementNotStatementStatementLabelMatchStatement `json:"labelMatchStatement,omitempty" tf:"label_match_statement"`
+	// +optional
 	RegexPatternSetReferenceStatement *WebACLSpecRuleStatementAndStatementStatementNotStatementStatementNotStatementStatementRegexPatternSetReferenceStatement `json:"regexPatternSetReferenceStatement,omitempty" tf:"regex_pattern_set_reference_statement"`
 	// +optional
 	SizeConstraintStatement *WebACLSpecRuleStatementAndStatementStatementNotStatementStatementNotStatementStatementSizeConstraintStatement `json:"sizeConstraintStatement,omitempty" tf:"size_constraint_statement"`
@@ -2045,6 +2111,11 @@ type WebACLSpecRuleStatementAndStatementStatementNotStatementStatementOrStatemen
 	Arn *string `json:"arn" tf:"arn"`
 	// +optional
 	IpSetForwardedIPConfig *WebACLSpecRuleStatementAndStatementStatementNotStatementStatementOrStatementStatementIpSetReferenceStatementIpSetForwardedIPConfig `json:"ipSetForwardedIPConfig,omitempty" tf:"ip_set_forwarded_ip_config"`
+}
+
+type WebACLSpecRuleStatementAndStatementStatementNotStatementStatementOrStatementStatementLabelMatchStatement struct {
+	Key   *string `json:"key" tf:"key"`
+	Scope *string `json:"scope" tf:"scope"`
 }
 
 type WebACLSpecRuleStatementAndStatementStatementNotStatementStatementOrStatementStatementRegexPatternSetReferenceStatementFieldToMatchAllQueryArguments struct{}
@@ -2241,6 +2312,8 @@ type WebACLSpecRuleStatementAndStatementStatementNotStatementStatementOrStatemen
 	GeoMatchStatement *WebACLSpecRuleStatementAndStatementStatementNotStatementStatementOrStatementStatementGeoMatchStatement `json:"geoMatchStatement,omitempty" tf:"geo_match_statement"`
 	// +optional
 	IpSetReferenceStatement *WebACLSpecRuleStatementAndStatementStatementNotStatementStatementOrStatementStatementIpSetReferenceStatement `json:"ipSetReferenceStatement,omitempty" tf:"ip_set_reference_statement"`
+	// +optional
+	LabelMatchStatement *WebACLSpecRuleStatementAndStatementStatementNotStatementStatementOrStatementStatementLabelMatchStatement `json:"labelMatchStatement,omitempty" tf:"label_match_statement"`
 	// +optional
 	RegexPatternSetReferenceStatement *WebACLSpecRuleStatementAndStatementStatementNotStatementStatementOrStatementStatementRegexPatternSetReferenceStatement `json:"regexPatternSetReferenceStatement,omitempty" tf:"regex_pattern_set_reference_statement"`
 	// +optional
@@ -2452,6 +2525,8 @@ type WebACLSpecRuleStatementAndStatementStatementNotStatementStatement struct {
 	// +optional
 	IpSetReferenceStatement *WebACLSpecRuleStatementAndStatementStatementNotStatementStatementIpSetReferenceStatement `json:"ipSetReferenceStatement,omitempty" tf:"ip_set_reference_statement"`
 	// +optional
+	LabelMatchStatement *WebACLSpecRuleStatementAndStatementStatementNotStatementStatementLabelMatchStatement `json:"labelMatchStatement,omitempty" tf:"label_match_statement"`
+	// +optional
 	NotStatement *WebACLSpecRuleStatementAndStatementStatementNotStatementStatementNotStatement `json:"notStatement,omitempty" tf:"not_statement"`
 	// +optional
 	OrStatement *WebACLSpecRuleStatementAndStatementStatementNotStatementStatementOrStatement `json:"orStatement,omitempty" tf:"or_statement"`
@@ -2539,6 +2614,11 @@ type WebACLSpecRuleStatementAndStatementStatementOrStatementStatementAndStatemen
 	Arn *string `json:"arn" tf:"arn"`
 	// +optional
 	IpSetForwardedIPConfig *WebACLSpecRuleStatementAndStatementStatementOrStatementStatementAndStatementStatementIpSetReferenceStatementIpSetForwardedIPConfig `json:"ipSetForwardedIPConfig,omitempty" tf:"ip_set_forwarded_ip_config"`
+}
+
+type WebACLSpecRuleStatementAndStatementStatementOrStatementStatementAndStatementStatementLabelMatchStatement struct {
+	Key   *string `json:"key" tf:"key"`
+	Scope *string `json:"scope" tf:"scope"`
 }
 
 type WebACLSpecRuleStatementAndStatementStatementOrStatementStatementAndStatementStatementRegexPatternSetReferenceStatementFieldToMatchAllQueryArguments struct{}
@@ -2736,6 +2816,8 @@ type WebACLSpecRuleStatementAndStatementStatementOrStatementStatementAndStatemen
 	// +optional
 	IpSetReferenceStatement *WebACLSpecRuleStatementAndStatementStatementOrStatementStatementAndStatementStatementIpSetReferenceStatement `json:"ipSetReferenceStatement,omitempty" tf:"ip_set_reference_statement"`
 	// +optional
+	LabelMatchStatement *WebACLSpecRuleStatementAndStatementStatementOrStatementStatementAndStatementStatementLabelMatchStatement `json:"labelMatchStatement,omitempty" tf:"label_match_statement"`
+	// +optional
 	RegexPatternSetReferenceStatement *WebACLSpecRuleStatementAndStatementStatementOrStatementStatementAndStatementStatementRegexPatternSetReferenceStatement `json:"regexPatternSetReferenceStatement,omitempty" tf:"regex_pattern_set_reference_statement"`
 	// +optional
 	SizeConstraintStatement *WebACLSpecRuleStatementAndStatementStatementOrStatementStatementAndStatementStatementSizeConstraintStatement `json:"sizeConstraintStatement,omitempty" tf:"size_constraint_statement"`
@@ -2821,6 +2903,11 @@ type WebACLSpecRuleStatementAndStatementStatementOrStatementStatementIpSetRefere
 	IpSetForwardedIPConfig *WebACLSpecRuleStatementAndStatementStatementOrStatementStatementIpSetReferenceStatementIpSetForwardedIPConfig `json:"ipSetForwardedIPConfig,omitempty" tf:"ip_set_forwarded_ip_config"`
 }
 
+type WebACLSpecRuleStatementAndStatementStatementOrStatementStatementLabelMatchStatement struct {
+	Key   *string `json:"key" tf:"key"`
+	Scope *string `json:"scope" tf:"scope"`
+}
+
 type WebACLSpecRuleStatementAndStatementStatementOrStatementStatementNotStatementStatementByteMatchStatementFieldToMatchAllQueryArguments struct{}
 
 type WebACLSpecRuleStatementAndStatementStatementOrStatementStatementNotStatementStatementByteMatchStatementFieldToMatchBody struct{}
@@ -2891,6 +2978,11 @@ type WebACLSpecRuleStatementAndStatementStatementOrStatementStatementNotStatemen
 	Arn *string `json:"arn" tf:"arn"`
 	// +optional
 	IpSetForwardedIPConfig *WebACLSpecRuleStatementAndStatementStatementOrStatementStatementNotStatementStatementIpSetReferenceStatementIpSetForwardedIPConfig `json:"ipSetForwardedIPConfig,omitempty" tf:"ip_set_forwarded_ip_config"`
+}
+
+type WebACLSpecRuleStatementAndStatementStatementOrStatementStatementNotStatementStatementLabelMatchStatement struct {
+	Key   *string `json:"key" tf:"key"`
+	Scope *string `json:"scope" tf:"scope"`
 }
 
 type WebACLSpecRuleStatementAndStatementStatementOrStatementStatementNotStatementStatementRegexPatternSetReferenceStatementFieldToMatchAllQueryArguments struct{}
@@ -3088,6 +3180,8 @@ type WebACLSpecRuleStatementAndStatementStatementOrStatementStatementNotStatemen
 	// +optional
 	IpSetReferenceStatement *WebACLSpecRuleStatementAndStatementStatementOrStatementStatementNotStatementStatementIpSetReferenceStatement `json:"ipSetReferenceStatement,omitempty" tf:"ip_set_reference_statement"`
 	// +optional
+	LabelMatchStatement *WebACLSpecRuleStatementAndStatementStatementOrStatementStatementNotStatementStatementLabelMatchStatement `json:"labelMatchStatement,omitempty" tf:"label_match_statement"`
+	// +optional
 	RegexPatternSetReferenceStatement *WebACLSpecRuleStatementAndStatementStatementOrStatementStatementNotStatementStatementRegexPatternSetReferenceStatement `json:"regexPatternSetReferenceStatement,omitempty" tf:"regex_pattern_set_reference_statement"`
 	// +optional
 	SizeConstraintStatement *WebACLSpecRuleStatementAndStatementStatementOrStatementStatementNotStatementStatementSizeConstraintStatement `json:"sizeConstraintStatement,omitempty" tf:"size_constraint_statement"`
@@ -3171,6 +3265,11 @@ type WebACLSpecRuleStatementAndStatementStatementOrStatementStatementOrStatement
 	Arn *string `json:"arn" tf:"arn"`
 	// +optional
 	IpSetForwardedIPConfig *WebACLSpecRuleStatementAndStatementStatementOrStatementStatementOrStatementStatementIpSetReferenceStatementIpSetForwardedIPConfig `json:"ipSetForwardedIPConfig,omitempty" tf:"ip_set_forwarded_ip_config"`
+}
+
+type WebACLSpecRuleStatementAndStatementStatementOrStatementStatementOrStatementStatementLabelMatchStatement struct {
+	Key   *string `json:"key" tf:"key"`
+	Scope *string `json:"scope" tf:"scope"`
 }
 
 type WebACLSpecRuleStatementAndStatementStatementOrStatementStatementOrStatementStatementRegexPatternSetReferenceStatementFieldToMatchAllQueryArguments struct{}
@@ -3367,6 +3466,8 @@ type WebACLSpecRuleStatementAndStatementStatementOrStatementStatementOrStatement
 	GeoMatchStatement *WebACLSpecRuleStatementAndStatementStatementOrStatementStatementOrStatementStatementGeoMatchStatement `json:"geoMatchStatement,omitempty" tf:"geo_match_statement"`
 	// +optional
 	IpSetReferenceStatement *WebACLSpecRuleStatementAndStatementStatementOrStatementStatementOrStatementStatementIpSetReferenceStatement `json:"ipSetReferenceStatement,omitempty" tf:"ip_set_reference_statement"`
+	// +optional
+	LabelMatchStatement *WebACLSpecRuleStatementAndStatementStatementOrStatementStatementOrStatementStatementLabelMatchStatement `json:"labelMatchStatement,omitempty" tf:"label_match_statement"`
 	// +optional
 	RegexPatternSetReferenceStatement *WebACLSpecRuleStatementAndStatementStatementOrStatementStatementOrStatementStatementRegexPatternSetReferenceStatement `json:"regexPatternSetReferenceStatement,omitempty" tf:"regex_pattern_set_reference_statement"`
 	// +optional
@@ -3577,6 +3678,8 @@ type WebACLSpecRuleStatementAndStatementStatementOrStatementStatement struct {
 	GeoMatchStatement *WebACLSpecRuleStatementAndStatementStatementOrStatementStatementGeoMatchStatement `json:"geoMatchStatement,omitempty" tf:"geo_match_statement"`
 	// +optional
 	IpSetReferenceStatement *WebACLSpecRuleStatementAndStatementStatementOrStatementStatementIpSetReferenceStatement `json:"ipSetReferenceStatement,omitempty" tf:"ip_set_reference_statement"`
+	// +optional
+	LabelMatchStatement *WebACLSpecRuleStatementAndStatementStatementOrStatementStatementLabelMatchStatement `json:"labelMatchStatement,omitempty" tf:"label_match_statement"`
 	// +optional
 	NotStatement *WebACLSpecRuleStatementAndStatementStatementOrStatementStatementNotStatement `json:"notStatement,omitempty" tf:"not_statement"`
 	// +optional
@@ -3792,6 +3895,8 @@ type WebACLSpecRuleStatementAndStatementStatement struct {
 	// +optional
 	IpSetReferenceStatement *WebACLSpecRuleStatementAndStatementStatementIpSetReferenceStatement `json:"ipSetReferenceStatement,omitempty" tf:"ip_set_reference_statement"`
 	// +optional
+	LabelMatchStatement *WebACLSpecRuleStatementAndStatementStatementLabelMatchStatement `json:"labelMatchStatement,omitempty" tf:"label_match_statement"`
+	// +optional
 	NotStatement *WebACLSpecRuleStatementAndStatementStatementNotStatement `json:"notStatement,omitempty" tf:"not_statement"`
 	// +optional
 	OrStatement *WebACLSpecRuleStatementAndStatementStatementOrStatement `json:"orStatement,omitempty" tf:"or_statement"`
@@ -3881,15 +3986,3775 @@ type WebACLSpecRuleStatementIpSetReferenceStatement struct {
 	IpSetForwardedIPConfig *WebACLSpecRuleStatementIpSetReferenceStatementIpSetForwardedIPConfig `json:"ipSetForwardedIPConfig,omitempty" tf:"ip_set_forwarded_ip_config"`
 }
 
+type WebACLSpecRuleStatementLabelMatchStatement struct {
+	Key   *string `json:"key" tf:"key"`
+	Scope *string `json:"scope" tf:"scope"`
+}
+
 type WebACLSpecRuleStatementManagedRuleGroupStatementExcludedRule struct {
 	Name *string `json:"name" tf:"name"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementAndStatementStatementByteMatchStatementFieldToMatchAllQueryArguments struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementAndStatementStatementByteMatchStatementFieldToMatchBody struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementAndStatementStatementByteMatchStatementFieldToMatchMethod struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementAndStatementStatementByteMatchStatementFieldToMatchQueryString struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementAndStatementStatementByteMatchStatementFieldToMatchSingleHeader struct {
+	Name *string `json:"name" tf:"name"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementAndStatementStatementByteMatchStatementFieldToMatchSingleQueryArgument struct {
+	Name *string `json:"name" tf:"name"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementAndStatementStatementByteMatchStatementFieldToMatchUriPath struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementAndStatementStatementByteMatchStatementFieldToMatch struct {
+	// +optional
+	AllQueryArguments *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementAndStatementStatementByteMatchStatementFieldToMatchAllQueryArguments `json:"allQueryArguments,omitempty" tf:"all_query_arguments"`
+	// +optional
+	Body *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementAndStatementStatementByteMatchStatementFieldToMatchBody `json:"body,omitempty" tf:"body"`
+	// +optional
+	Method *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementAndStatementStatementByteMatchStatementFieldToMatchMethod `json:"method,omitempty" tf:"method"`
+	// +optional
+	QueryString *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementAndStatementStatementByteMatchStatementFieldToMatchQueryString `json:"queryString,omitempty" tf:"query_string"`
+	// +optional
+	SingleHeader *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementAndStatementStatementByteMatchStatementFieldToMatchSingleHeader `json:"singleHeader,omitempty" tf:"single_header"`
+	// +optional
+	SingleQueryArgument *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementAndStatementStatementByteMatchStatementFieldToMatchSingleQueryArgument `json:"singleQueryArgument,omitempty" tf:"single_query_argument"`
+	// +optional
+	UriPath *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementAndStatementStatementByteMatchStatementFieldToMatchUriPath `json:"uriPath,omitempty" tf:"uri_path"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementAndStatementStatementByteMatchStatementTextTransformation struct {
+	Priority *int64  `json:"priority" tf:"priority"`
+	Type     *string `json:"type" tf:"type"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementAndStatementStatementByteMatchStatement struct {
+	// +optional
+	FieldToMatch         *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementAndStatementStatementByteMatchStatementFieldToMatch        `json:"fieldToMatch,omitempty" tf:"field_to_match"`
+	PositionalConstraint *string                                                                                                                                            `json:"positionalConstraint" tf:"positional_constraint"`
+	SearchString         *string                                                                                                                                            `json:"searchString" tf:"search_string"`
+	TextTransformation   []WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementAndStatementStatementByteMatchStatementTextTransformation `json:"textTransformation" tf:"text_transformation"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementAndStatementStatementGeoMatchStatementForwardedIPConfig struct {
+	FallbackBehavior *string `json:"fallbackBehavior" tf:"fallback_behavior"`
+	HeaderName       *string `json:"headerName" tf:"header_name"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementAndStatementStatementGeoMatchStatement struct {
+	// +kubebuilder:validation:MinItems=1
+	CountryCodes []string `json:"countryCodes" tf:"country_codes"`
+	// +optional
+	ForwardedIPConfig *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementAndStatementStatementGeoMatchStatementForwardedIPConfig `json:"forwardedIPConfig,omitempty" tf:"forwarded_ip_config"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementAndStatementStatementIpSetReferenceStatementIpSetForwardedIPConfig struct {
+	FallbackBehavior *string `json:"fallbackBehavior" tf:"fallback_behavior"`
+	HeaderName       *string `json:"headerName" tf:"header_name"`
+	Position         *string `json:"position" tf:"position"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementAndStatementStatementIpSetReferenceStatement struct {
+	Arn *string `json:"arn" tf:"arn"`
+	// +optional
+	IpSetForwardedIPConfig *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementAndStatementStatementIpSetReferenceStatementIpSetForwardedIPConfig `json:"ipSetForwardedIPConfig,omitempty" tf:"ip_set_forwarded_ip_config"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementAndStatementStatementLabelMatchStatement struct {
+	Key   *string `json:"key" tf:"key"`
+	Scope *string `json:"scope" tf:"scope"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementAndStatementStatementRegexPatternSetReferenceStatementFieldToMatchAllQueryArguments struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementAndStatementStatementRegexPatternSetReferenceStatementFieldToMatchBody struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementAndStatementStatementRegexPatternSetReferenceStatementFieldToMatchMethod struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementAndStatementStatementRegexPatternSetReferenceStatementFieldToMatchQueryString struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementAndStatementStatementRegexPatternSetReferenceStatementFieldToMatchSingleHeader struct {
+	Name *string `json:"name" tf:"name"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementAndStatementStatementRegexPatternSetReferenceStatementFieldToMatchSingleQueryArgument struct {
+	Name *string `json:"name" tf:"name"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementAndStatementStatementRegexPatternSetReferenceStatementFieldToMatchUriPath struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementAndStatementStatementRegexPatternSetReferenceStatementFieldToMatch struct {
+	// +optional
+	AllQueryArguments *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementAndStatementStatementRegexPatternSetReferenceStatementFieldToMatchAllQueryArguments `json:"allQueryArguments,omitempty" tf:"all_query_arguments"`
+	// +optional
+	Body *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementAndStatementStatementRegexPatternSetReferenceStatementFieldToMatchBody `json:"body,omitempty" tf:"body"`
+	// +optional
+	Method *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementAndStatementStatementRegexPatternSetReferenceStatementFieldToMatchMethod `json:"method,omitempty" tf:"method"`
+	// +optional
+	QueryString *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementAndStatementStatementRegexPatternSetReferenceStatementFieldToMatchQueryString `json:"queryString,omitempty" tf:"query_string"`
+	// +optional
+	SingleHeader *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementAndStatementStatementRegexPatternSetReferenceStatementFieldToMatchSingleHeader `json:"singleHeader,omitempty" tf:"single_header"`
+	// +optional
+	SingleQueryArgument *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementAndStatementStatementRegexPatternSetReferenceStatementFieldToMatchSingleQueryArgument `json:"singleQueryArgument,omitempty" tf:"single_query_argument"`
+	// +optional
+	UriPath *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementAndStatementStatementRegexPatternSetReferenceStatementFieldToMatchUriPath `json:"uriPath,omitempty" tf:"uri_path"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementAndStatementStatementRegexPatternSetReferenceStatementTextTransformation struct {
+	Priority *int64  `json:"priority" tf:"priority"`
+	Type     *string `json:"type" tf:"type"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementAndStatementStatementRegexPatternSetReferenceStatement struct {
+	Arn *string `json:"arn" tf:"arn"`
+	// +optional
+	FieldToMatch       *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementAndStatementStatementRegexPatternSetReferenceStatementFieldToMatch        `json:"fieldToMatch,omitempty" tf:"field_to_match"`
+	TextTransformation []WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementAndStatementStatementRegexPatternSetReferenceStatementTextTransformation `json:"textTransformation" tf:"text_transformation"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementAndStatementStatementSizeConstraintStatementFieldToMatchAllQueryArguments struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementAndStatementStatementSizeConstraintStatementFieldToMatchBody struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementAndStatementStatementSizeConstraintStatementFieldToMatchMethod struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementAndStatementStatementSizeConstraintStatementFieldToMatchQueryString struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementAndStatementStatementSizeConstraintStatementFieldToMatchSingleHeader struct {
+	Name *string `json:"name" tf:"name"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementAndStatementStatementSizeConstraintStatementFieldToMatchSingleQueryArgument struct {
+	Name *string `json:"name" tf:"name"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementAndStatementStatementSizeConstraintStatementFieldToMatchUriPath struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementAndStatementStatementSizeConstraintStatementFieldToMatch struct {
+	// +optional
+	AllQueryArguments *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementAndStatementStatementSizeConstraintStatementFieldToMatchAllQueryArguments `json:"allQueryArguments,omitempty" tf:"all_query_arguments"`
+	// +optional
+	Body *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementAndStatementStatementSizeConstraintStatementFieldToMatchBody `json:"body,omitempty" tf:"body"`
+	// +optional
+	Method *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementAndStatementStatementSizeConstraintStatementFieldToMatchMethod `json:"method,omitempty" tf:"method"`
+	// +optional
+	QueryString *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementAndStatementStatementSizeConstraintStatementFieldToMatchQueryString `json:"queryString,omitempty" tf:"query_string"`
+	// +optional
+	SingleHeader *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementAndStatementStatementSizeConstraintStatementFieldToMatchSingleHeader `json:"singleHeader,omitempty" tf:"single_header"`
+	// +optional
+	SingleQueryArgument *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementAndStatementStatementSizeConstraintStatementFieldToMatchSingleQueryArgument `json:"singleQueryArgument,omitempty" tf:"single_query_argument"`
+	// +optional
+	UriPath *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementAndStatementStatementSizeConstraintStatementFieldToMatchUriPath `json:"uriPath,omitempty" tf:"uri_path"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementAndStatementStatementSizeConstraintStatementTextTransformation struct {
+	Priority *int64  `json:"priority" tf:"priority"`
+	Type     *string `json:"type" tf:"type"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementAndStatementStatementSizeConstraintStatement struct {
+	ComparisonOperator *string `json:"comparisonOperator" tf:"comparison_operator"`
+	// +optional
+	FieldToMatch       *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementAndStatementStatementSizeConstraintStatementFieldToMatch        `json:"fieldToMatch,omitempty" tf:"field_to_match"`
+	Size               *int64                                                                                                                                                  `json:"size" tf:"size"`
+	TextTransformation []WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementAndStatementStatementSizeConstraintStatementTextTransformation `json:"textTransformation" tf:"text_transformation"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementAndStatementStatementSqliMatchStatementFieldToMatchAllQueryArguments struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementAndStatementStatementSqliMatchStatementFieldToMatchBody struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementAndStatementStatementSqliMatchStatementFieldToMatchMethod struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementAndStatementStatementSqliMatchStatementFieldToMatchQueryString struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementAndStatementStatementSqliMatchStatementFieldToMatchSingleHeader struct {
+	Name *string `json:"name" tf:"name"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementAndStatementStatementSqliMatchStatementFieldToMatchSingleQueryArgument struct {
+	Name *string `json:"name" tf:"name"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementAndStatementStatementSqliMatchStatementFieldToMatchUriPath struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementAndStatementStatementSqliMatchStatementFieldToMatch struct {
+	// +optional
+	AllQueryArguments *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementAndStatementStatementSqliMatchStatementFieldToMatchAllQueryArguments `json:"allQueryArguments,omitempty" tf:"all_query_arguments"`
+	// +optional
+	Body *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementAndStatementStatementSqliMatchStatementFieldToMatchBody `json:"body,omitempty" tf:"body"`
+	// +optional
+	Method *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementAndStatementStatementSqliMatchStatementFieldToMatchMethod `json:"method,omitempty" tf:"method"`
+	// +optional
+	QueryString *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementAndStatementStatementSqliMatchStatementFieldToMatchQueryString `json:"queryString,omitempty" tf:"query_string"`
+	// +optional
+	SingleHeader *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementAndStatementStatementSqliMatchStatementFieldToMatchSingleHeader `json:"singleHeader,omitempty" tf:"single_header"`
+	// +optional
+	SingleQueryArgument *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementAndStatementStatementSqliMatchStatementFieldToMatchSingleQueryArgument `json:"singleQueryArgument,omitempty" tf:"single_query_argument"`
+	// +optional
+	UriPath *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementAndStatementStatementSqliMatchStatementFieldToMatchUriPath `json:"uriPath,omitempty" tf:"uri_path"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementAndStatementStatementSqliMatchStatementTextTransformation struct {
+	Priority *int64  `json:"priority" tf:"priority"`
+	Type     *string `json:"type" tf:"type"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementAndStatementStatementSqliMatchStatement struct {
+	// +optional
+	FieldToMatch       *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementAndStatementStatementSqliMatchStatementFieldToMatch        `json:"fieldToMatch,omitempty" tf:"field_to_match"`
+	TextTransformation []WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementAndStatementStatementSqliMatchStatementTextTransformation `json:"textTransformation" tf:"text_transformation"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementAndStatementStatementXssMatchStatementFieldToMatchAllQueryArguments struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementAndStatementStatementXssMatchStatementFieldToMatchBody struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementAndStatementStatementXssMatchStatementFieldToMatchMethod struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementAndStatementStatementXssMatchStatementFieldToMatchQueryString struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementAndStatementStatementXssMatchStatementFieldToMatchSingleHeader struct {
+	Name *string `json:"name" tf:"name"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementAndStatementStatementXssMatchStatementFieldToMatchSingleQueryArgument struct {
+	Name *string `json:"name" tf:"name"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementAndStatementStatementXssMatchStatementFieldToMatchUriPath struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementAndStatementStatementXssMatchStatementFieldToMatch struct {
+	// +optional
+	AllQueryArguments *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementAndStatementStatementXssMatchStatementFieldToMatchAllQueryArguments `json:"allQueryArguments,omitempty" tf:"all_query_arguments"`
+	// +optional
+	Body *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementAndStatementStatementXssMatchStatementFieldToMatchBody `json:"body,omitempty" tf:"body"`
+	// +optional
+	Method *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementAndStatementStatementXssMatchStatementFieldToMatchMethod `json:"method,omitempty" tf:"method"`
+	// +optional
+	QueryString *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementAndStatementStatementXssMatchStatementFieldToMatchQueryString `json:"queryString,omitempty" tf:"query_string"`
+	// +optional
+	SingleHeader *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementAndStatementStatementXssMatchStatementFieldToMatchSingleHeader `json:"singleHeader,omitempty" tf:"single_header"`
+	// +optional
+	SingleQueryArgument *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementAndStatementStatementXssMatchStatementFieldToMatchSingleQueryArgument `json:"singleQueryArgument,omitempty" tf:"single_query_argument"`
+	// +optional
+	UriPath *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementAndStatementStatementXssMatchStatementFieldToMatchUriPath `json:"uriPath,omitempty" tf:"uri_path"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementAndStatementStatementXssMatchStatementTextTransformation struct {
+	Priority *int64  `json:"priority" tf:"priority"`
+	Type     *string `json:"type" tf:"type"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementAndStatementStatementXssMatchStatement struct {
+	// +optional
+	FieldToMatch       *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementAndStatementStatementXssMatchStatementFieldToMatch        `json:"fieldToMatch,omitempty" tf:"field_to_match"`
+	TextTransformation []WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementAndStatementStatementXssMatchStatementTextTransformation `json:"textTransformation" tf:"text_transformation"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementAndStatementStatement struct {
+	// +optional
+	ByteMatchStatement *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementAndStatementStatementByteMatchStatement `json:"byteMatchStatement,omitempty" tf:"byte_match_statement"`
+	// +optional
+	GeoMatchStatement *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementAndStatementStatementGeoMatchStatement `json:"geoMatchStatement,omitempty" tf:"geo_match_statement"`
+	// +optional
+	IpSetReferenceStatement *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementAndStatementStatementIpSetReferenceStatement `json:"ipSetReferenceStatement,omitempty" tf:"ip_set_reference_statement"`
+	// +optional
+	LabelMatchStatement *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementAndStatementStatementLabelMatchStatement `json:"labelMatchStatement,omitempty" tf:"label_match_statement"`
+	// +optional
+	RegexPatternSetReferenceStatement *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementAndStatementStatementRegexPatternSetReferenceStatement `json:"regexPatternSetReferenceStatement,omitempty" tf:"regex_pattern_set_reference_statement"`
+	// +optional
+	SizeConstraintStatement *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementAndStatementStatementSizeConstraintStatement `json:"sizeConstraintStatement,omitempty" tf:"size_constraint_statement"`
+	// +optional
+	SqliMatchStatement *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementAndStatementStatementSqliMatchStatement `json:"sqliMatchStatement,omitempty" tf:"sqli_match_statement"`
+	// +optional
+	XssMatchStatement *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementAndStatementStatementXssMatchStatement `json:"xssMatchStatement,omitempty" tf:"xss_match_statement"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementAndStatement struct {
+	Statement []WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementAndStatementStatement `json:"statement" tf:"statement"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementByteMatchStatementFieldToMatchAllQueryArguments struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementByteMatchStatementFieldToMatchBody struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementByteMatchStatementFieldToMatchMethod struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementByteMatchStatementFieldToMatchQueryString struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementByteMatchStatementFieldToMatchSingleHeader struct {
+	Name *string `json:"name" tf:"name"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementByteMatchStatementFieldToMatchSingleQueryArgument struct {
+	Name *string `json:"name" tf:"name"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementByteMatchStatementFieldToMatchUriPath struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementByteMatchStatementFieldToMatch struct {
+	// +optional
+	AllQueryArguments *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementByteMatchStatementFieldToMatchAllQueryArguments `json:"allQueryArguments,omitempty" tf:"all_query_arguments"`
+	// +optional
+	Body *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementByteMatchStatementFieldToMatchBody `json:"body,omitempty" tf:"body"`
+	// +optional
+	Method *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementByteMatchStatementFieldToMatchMethod `json:"method,omitempty" tf:"method"`
+	// +optional
+	QueryString *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementByteMatchStatementFieldToMatchQueryString `json:"queryString,omitempty" tf:"query_string"`
+	// +optional
+	SingleHeader *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementByteMatchStatementFieldToMatchSingleHeader `json:"singleHeader,omitempty" tf:"single_header"`
+	// +optional
+	SingleQueryArgument *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementByteMatchStatementFieldToMatchSingleQueryArgument `json:"singleQueryArgument,omitempty" tf:"single_query_argument"`
+	// +optional
+	UriPath *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementByteMatchStatementFieldToMatchUriPath `json:"uriPath,omitempty" tf:"uri_path"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementByteMatchStatementTextTransformation struct {
+	Priority *int64  `json:"priority" tf:"priority"`
+	Type     *string `json:"type" tf:"type"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementByteMatchStatement struct {
+	// +optional
+	FieldToMatch         *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementByteMatchStatementFieldToMatch        `json:"fieldToMatch,omitempty" tf:"field_to_match"`
+	PositionalConstraint *string                                                                                                                       `json:"positionalConstraint" tf:"positional_constraint"`
+	SearchString         *string                                                                                                                       `json:"searchString" tf:"search_string"`
+	TextTransformation   []WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementByteMatchStatementTextTransformation `json:"textTransformation" tf:"text_transformation"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementGeoMatchStatementForwardedIPConfig struct {
+	FallbackBehavior *string `json:"fallbackBehavior" tf:"fallback_behavior"`
+	HeaderName       *string `json:"headerName" tf:"header_name"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementGeoMatchStatement struct {
+	// +kubebuilder:validation:MinItems=1
+	CountryCodes []string `json:"countryCodes" tf:"country_codes"`
+	// +optional
+	ForwardedIPConfig *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementGeoMatchStatementForwardedIPConfig `json:"forwardedIPConfig,omitempty" tf:"forwarded_ip_config"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementIpSetReferenceStatementIpSetForwardedIPConfig struct {
+	FallbackBehavior *string `json:"fallbackBehavior" tf:"fallback_behavior"`
+	HeaderName       *string `json:"headerName" tf:"header_name"`
+	Position         *string `json:"position" tf:"position"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementIpSetReferenceStatement struct {
+	Arn *string `json:"arn" tf:"arn"`
+	// +optional
+	IpSetForwardedIPConfig *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementIpSetReferenceStatementIpSetForwardedIPConfig `json:"ipSetForwardedIPConfig,omitempty" tf:"ip_set_forwarded_ip_config"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementLabelMatchStatement struct {
+	Key   *string `json:"key" tf:"key"`
+	Scope *string `json:"scope" tf:"scope"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementNotStatementStatementByteMatchStatementFieldToMatchAllQueryArguments struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementNotStatementStatementByteMatchStatementFieldToMatchBody struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementNotStatementStatementByteMatchStatementFieldToMatchMethod struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementNotStatementStatementByteMatchStatementFieldToMatchQueryString struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementNotStatementStatementByteMatchStatementFieldToMatchSingleHeader struct {
+	Name *string `json:"name" tf:"name"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementNotStatementStatementByteMatchStatementFieldToMatchSingleQueryArgument struct {
+	Name *string `json:"name" tf:"name"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementNotStatementStatementByteMatchStatementFieldToMatchUriPath struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementNotStatementStatementByteMatchStatementFieldToMatch struct {
+	// +optional
+	AllQueryArguments *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementNotStatementStatementByteMatchStatementFieldToMatchAllQueryArguments `json:"allQueryArguments,omitempty" tf:"all_query_arguments"`
+	// +optional
+	Body *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementNotStatementStatementByteMatchStatementFieldToMatchBody `json:"body,omitempty" tf:"body"`
+	// +optional
+	Method *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementNotStatementStatementByteMatchStatementFieldToMatchMethod `json:"method,omitempty" tf:"method"`
+	// +optional
+	QueryString *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementNotStatementStatementByteMatchStatementFieldToMatchQueryString `json:"queryString,omitempty" tf:"query_string"`
+	// +optional
+	SingleHeader *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementNotStatementStatementByteMatchStatementFieldToMatchSingleHeader `json:"singleHeader,omitempty" tf:"single_header"`
+	// +optional
+	SingleQueryArgument *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementNotStatementStatementByteMatchStatementFieldToMatchSingleQueryArgument `json:"singleQueryArgument,omitempty" tf:"single_query_argument"`
+	// +optional
+	UriPath *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementNotStatementStatementByteMatchStatementFieldToMatchUriPath `json:"uriPath,omitempty" tf:"uri_path"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementNotStatementStatementByteMatchStatementTextTransformation struct {
+	Priority *int64  `json:"priority" tf:"priority"`
+	Type     *string `json:"type" tf:"type"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementNotStatementStatementByteMatchStatement struct {
+	// +optional
+	FieldToMatch         *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementNotStatementStatementByteMatchStatementFieldToMatch        `json:"fieldToMatch,omitempty" tf:"field_to_match"`
+	PositionalConstraint *string                                                                                                                                            `json:"positionalConstraint" tf:"positional_constraint"`
+	SearchString         *string                                                                                                                                            `json:"searchString" tf:"search_string"`
+	TextTransformation   []WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementNotStatementStatementByteMatchStatementTextTransformation `json:"textTransformation" tf:"text_transformation"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementNotStatementStatementGeoMatchStatementForwardedIPConfig struct {
+	FallbackBehavior *string `json:"fallbackBehavior" tf:"fallback_behavior"`
+	HeaderName       *string `json:"headerName" tf:"header_name"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementNotStatementStatementGeoMatchStatement struct {
+	// +kubebuilder:validation:MinItems=1
+	CountryCodes []string `json:"countryCodes" tf:"country_codes"`
+	// +optional
+	ForwardedIPConfig *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementNotStatementStatementGeoMatchStatementForwardedIPConfig `json:"forwardedIPConfig,omitempty" tf:"forwarded_ip_config"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementNotStatementStatementIpSetReferenceStatementIpSetForwardedIPConfig struct {
+	FallbackBehavior *string `json:"fallbackBehavior" tf:"fallback_behavior"`
+	HeaderName       *string `json:"headerName" tf:"header_name"`
+	Position         *string `json:"position" tf:"position"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementNotStatementStatementIpSetReferenceStatement struct {
+	Arn *string `json:"arn" tf:"arn"`
+	// +optional
+	IpSetForwardedIPConfig *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementNotStatementStatementIpSetReferenceStatementIpSetForwardedIPConfig `json:"ipSetForwardedIPConfig,omitempty" tf:"ip_set_forwarded_ip_config"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementNotStatementStatementLabelMatchStatement struct {
+	Key   *string `json:"key" tf:"key"`
+	Scope *string `json:"scope" tf:"scope"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementNotStatementStatementRegexPatternSetReferenceStatementFieldToMatchAllQueryArguments struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementNotStatementStatementRegexPatternSetReferenceStatementFieldToMatchBody struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementNotStatementStatementRegexPatternSetReferenceStatementFieldToMatchMethod struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementNotStatementStatementRegexPatternSetReferenceStatementFieldToMatchQueryString struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementNotStatementStatementRegexPatternSetReferenceStatementFieldToMatchSingleHeader struct {
+	Name *string `json:"name" tf:"name"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementNotStatementStatementRegexPatternSetReferenceStatementFieldToMatchSingleQueryArgument struct {
+	Name *string `json:"name" tf:"name"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementNotStatementStatementRegexPatternSetReferenceStatementFieldToMatchUriPath struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementNotStatementStatementRegexPatternSetReferenceStatementFieldToMatch struct {
+	// +optional
+	AllQueryArguments *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementNotStatementStatementRegexPatternSetReferenceStatementFieldToMatchAllQueryArguments `json:"allQueryArguments,omitempty" tf:"all_query_arguments"`
+	// +optional
+	Body *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementNotStatementStatementRegexPatternSetReferenceStatementFieldToMatchBody `json:"body,omitempty" tf:"body"`
+	// +optional
+	Method *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementNotStatementStatementRegexPatternSetReferenceStatementFieldToMatchMethod `json:"method,omitempty" tf:"method"`
+	// +optional
+	QueryString *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementNotStatementStatementRegexPatternSetReferenceStatementFieldToMatchQueryString `json:"queryString,omitempty" tf:"query_string"`
+	// +optional
+	SingleHeader *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementNotStatementStatementRegexPatternSetReferenceStatementFieldToMatchSingleHeader `json:"singleHeader,omitempty" tf:"single_header"`
+	// +optional
+	SingleQueryArgument *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementNotStatementStatementRegexPatternSetReferenceStatementFieldToMatchSingleQueryArgument `json:"singleQueryArgument,omitempty" tf:"single_query_argument"`
+	// +optional
+	UriPath *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementNotStatementStatementRegexPatternSetReferenceStatementFieldToMatchUriPath `json:"uriPath,omitempty" tf:"uri_path"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementNotStatementStatementRegexPatternSetReferenceStatementTextTransformation struct {
+	Priority *int64  `json:"priority" tf:"priority"`
+	Type     *string `json:"type" tf:"type"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementNotStatementStatementRegexPatternSetReferenceStatement struct {
+	Arn *string `json:"arn" tf:"arn"`
+	// +optional
+	FieldToMatch       *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementNotStatementStatementRegexPatternSetReferenceStatementFieldToMatch        `json:"fieldToMatch,omitempty" tf:"field_to_match"`
+	TextTransformation []WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementNotStatementStatementRegexPatternSetReferenceStatementTextTransformation `json:"textTransformation" tf:"text_transformation"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementNotStatementStatementSizeConstraintStatementFieldToMatchAllQueryArguments struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementNotStatementStatementSizeConstraintStatementFieldToMatchBody struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementNotStatementStatementSizeConstraintStatementFieldToMatchMethod struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementNotStatementStatementSizeConstraintStatementFieldToMatchQueryString struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementNotStatementStatementSizeConstraintStatementFieldToMatchSingleHeader struct {
+	Name *string `json:"name" tf:"name"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementNotStatementStatementSizeConstraintStatementFieldToMatchSingleQueryArgument struct {
+	Name *string `json:"name" tf:"name"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementNotStatementStatementSizeConstraintStatementFieldToMatchUriPath struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementNotStatementStatementSizeConstraintStatementFieldToMatch struct {
+	// +optional
+	AllQueryArguments *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementNotStatementStatementSizeConstraintStatementFieldToMatchAllQueryArguments `json:"allQueryArguments,omitempty" tf:"all_query_arguments"`
+	// +optional
+	Body *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementNotStatementStatementSizeConstraintStatementFieldToMatchBody `json:"body,omitempty" tf:"body"`
+	// +optional
+	Method *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementNotStatementStatementSizeConstraintStatementFieldToMatchMethod `json:"method,omitempty" tf:"method"`
+	// +optional
+	QueryString *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementNotStatementStatementSizeConstraintStatementFieldToMatchQueryString `json:"queryString,omitempty" tf:"query_string"`
+	// +optional
+	SingleHeader *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementNotStatementStatementSizeConstraintStatementFieldToMatchSingleHeader `json:"singleHeader,omitempty" tf:"single_header"`
+	// +optional
+	SingleQueryArgument *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementNotStatementStatementSizeConstraintStatementFieldToMatchSingleQueryArgument `json:"singleQueryArgument,omitempty" tf:"single_query_argument"`
+	// +optional
+	UriPath *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementNotStatementStatementSizeConstraintStatementFieldToMatchUriPath `json:"uriPath,omitempty" tf:"uri_path"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementNotStatementStatementSizeConstraintStatementTextTransformation struct {
+	Priority *int64  `json:"priority" tf:"priority"`
+	Type     *string `json:"type" tf:"type"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementNotStatementStatementSizeConstraintStatement struct {
+	ComparisonOperator *string `json:"comparisonOperator" tf:"comparison_operator"`
+	// +optional
+	FieldToMatch       *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementNotStatementStatementSizeConstraintStatementFieldToMatch        `json:"fieldToMatch,omitempty" tf:"field_to_match"`
+	Size               *int64                                                                                                                                                  `json:"size" tf:"size"`
+	TextTransformation []WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementNotStatementStatementSizeConstraintStatementTextTransformation `json:"textTransformation" tf:"text_transformation"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementNotStatementStatementSqliMatchStatementFieldToMatchAllQueryArguments struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementNotStatementStatementSqliMatchStatementFieldToMatchBody struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementNotStatementStatementSqliMatchStatementFieldToMatchMethod struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementNotStatementStatementSqliMatchStatementFieldToMatchQueryString struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementNotStatementStatementSqliMatchStatementFieldToMatchSingleHeader struct {
+	Name *string `json:"name" tf:"name"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementNotStatementStatementSqliMatchStatementFieldToMatchSingleQueryArgument struct {
+	Name *string `json:"name" tf:"name"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementNotStatementStatementSqliMatchStatementFieldToMatchUriPath struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementNotStatementStatementSqliMatchStatementFieldToMatch struct {
+	// +optional
+	AllQueryArguments *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementNotStatementStatementSqliMatchStatementFieldToMatchAllQueryArguments `json:"allQueryArguments,omitempty" tf:"all_query_arguments"`
+	// +optional
+	Body *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementNotStatementStatementSqliMatchStatementFieldToMatchBody `json:"body,omitempty" tf:"body"`
+	// +optional
+	Method *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementNotStatementStatementSqliMatchStatementFieldToMatchMethod `json:"method,omitempty" tf:"method"`
+	// +optional
+	QueryString *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementNotStatementStatementSqliMatchStatementFieldToMatchQueryString `json:"queryString,omitempty" tf:"query_string"`
+	// +optional
+	SingleHeader *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementNotStatementStatementSqliMatchStatementFieldToMatchSingleHeader `json:"singleHeader,omitempty" tf:"single_header"`
+	// +optional
+	SingleQueryArgument *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementNotStatementStatementSqliMatchStatementFieldToMatchSingleQueryArgument `json:"singleQueryArgument,omitempty" tf:"single_query_argument"`
+	// +optional
+	UriPath *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementNotStatementStatementSqliMatchStatementFieldToMatchUriPath `json:"uriPath,omitempty" tf:"uri_path"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementNotStatementStatementSqliMatchStatementTextTransformation struct {
+	Priority *int64  `json:"priority" tf:"priority"`
+	Type     *string `json:"type" tf:"type"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementNotStatementStatementSqliMatchStatement struct {
+	// +optional
+	FieldToMatch       *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementNotStatementStatementSqliMatchStatementFieldToMatch        `json:"fieldToMatch,omitempty" tf:"field_to_match"`
+	TextTransformation []WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementNotStatementStatementSqliMatchStatementTextTransformation `json:"textTransformation" tf:"text_transformation"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementNotStatementStatementXssMatchStatementFieldToMatchAllQueryArguments struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementNotStatementStatementXssMatchStatementFieldToMatchBody struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementNotStatementStatementXssMatchStatementFieldToMatchMethod struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementNotStatementStatementXssMatchStatementFieldToMatchQueryString struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementNotStatementStatementXssMatchStatementFieldToMatchSingleHeader struct {
+	Name *string `json:"name" tf:"name"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementNotStatementStatementXssMatchStatementFieldToMatchSingleQueryArgument struct {
+	Name *string `json:"name" tf:"name"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementNotStatementStatementXssMatchStatementFieldToMatchUriPath struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementNotStatementStatementXssMatchStatementFieldToMatch struct {
+	// +optional
+	AllQueryArguments *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementNotStatementStatementXssMatchStatementFieldToMatchAllQueryArguments `json:"allQueryArguments,omitempty" tf:"all_query_arguments"`
+	// +optional
+	Body *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementNotStatementStatementXssMatchStatementFieldToMatchBody `json:"body,omitempty" tf:"body"`
+	// +optional
+	Method *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementNotStatementStatementXssMatchStatementFieldToMatchMethod `json:"method,omitempty" tf:"method"`
+	// +optional
+	QueryString *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementNotStatementStatementXssMatchStatementFieldToMatchQueryString `json:"queryString,omitempty" tf:"query_string"`
+	// +optional
+	SingleHeader *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementNotStatementStatementXssMatchStatementFieldToMatchSingleHeader `json:"singleHeader,omitempty" tf:"single_header"`
+	// +optional
+	SingleQueryArgument *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementNotStatementStatementXssMatchStatementFieldToMatchSingleQueryArgument `json:"singleQueryArgument,omitempty" tf:"single_query_argument"`
+	// +optional
+	UriPath *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementNotStatementStatementXssMatchStatementFieldToMatchUriPath `json:"uriPath,omitempty" tf:"uri_path"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementNotStatementStatementXssMatchStatementTextTransformation struct {
+	Priority *int64  `json:"priority" tf:"priority"`
+	Type     *string `json:"type" tf:"type"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementNotStatementStatementXssMatchStatement struct {
+	// +optional
+	FieldToMatch       *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementNotStatementStatementXssMatchStatementFieldToMatch        `json:"fieldToMatch,omitempty" tf:"field_to_match"`
+	TextTransformation []WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementNotStatementStatementXssMatchStatementTextTransformation `json:"textTransformation" tf:"text_transformation"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementNotStatementStatement struct {
+	// +optional
+	ByteMatchStatement *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementNotStatementStatementByteMatchStatement `json:"byteMatchStatement,omitempty" tf:"byte_match_statement"`
+	// +optional
+	GeoMatchStatement *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementNotStatementStatementGeoMatchStatement `json:"geoMatchStatement,omitempty" tf:"geo_match_statement"`
+	// +optional
+	IpSetReferenceStatement *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementNotStatementStatementIpSetReferenceStatement `json:"ipSetReferenceStatement,omitempty" tf:"ip_set_reference_statement"`
+	// +optional
+	LabelMatchStatement *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementNotStatementStatementLabelMatchStatement `json:"labelMatchStatement,omitempty" tf:"label_match_statement"`
+	// +optional
+	RegexPatternSetReferenceStatement *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementNotStatementStatementRegexPatternSetReferenceStatement `json:"regexPatternSetReferenceStatement,omitempty" tf:"regex_pattern_set_reference_statement"`
+	// +optional
+	SizeConstraintStatement *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementNotStatementStatementSizeConstraintStatement `json:"sizeConstraintStatement,omitempty" tf:"size_constraint_statement"`
+	// +optional
+	SqliMatchStatement *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementNotStatementStatementSqliMatchStatement `json:"sqliMatchStatement,omitempty" tf:"sqli_match_statement"`
+	// +optional
+	XssMatchStatement *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementNotStatementStatementXssMatchStatement `json:"xssMatchStatement,omitempty" tf:"xss_match_statement"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementNotStatement struct {
+	Statement []WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementNotStatementStatement `json:"statement" tf:"statement"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementOrStatementStatementByteMatchStatementFieldToMatchAllQueryArguments struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementOrStatementStatementByteMatchStatementFieldToMatchBody struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementOrStatementStatementByteMatchStatementFieldToMatchMethod struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementOrStatementStatementByteMatchStatementFieldToMatchQueryString struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementOrStatementStatementByteMatchStatementFieldToMatchSingleHeader struct {
+	Name *string `json:"name" tf:"name"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementOrStatementStatementByteMatchStatementFieldToMatchSingleQueryArgument struct {
+	Name *string `json:"name" tf:"name"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementOrStatementStatementByteMatchStatementFieldToMatchUriPath struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementOrStatementStatementByteMatchStatementFieldToMatch struct {
+	// +optional
+	AllQueryArguments *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementOrStatementStatementByteMatchStatementFieldToMatchAllQueryArguments `json:"allQueryArguments,omitempty" tf:"all_query_arguments"`
+	// +optional
+	Body *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementOrStatementStatementByteMatchStatementFieldToMatchBody `json:"body,omitempty" tf:"body"`
+	// +optional
+	Method *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementOrStatementStatementByteMatchStatementFieldToMatchMethod `json:"method,omitempty" tf:"method"`
+	// +optional
+	QueryString *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementOrStatementStatementByteMatchStatementFieldToMatchQueryString `json:"queryString,omitempty" tf:"query_string"`
+	// +optional
+	SingleHeader *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementOrStatementStatementByteMatchStatementFieldToMatchSingleHeader `json:"singleHeader,omitempty" tf:"single_header"`
+	// +optional
+	SingleQueryArgument *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementOrStatementStatementByteMatchStatementFieldToMatchSingleQueryArgument `json:"singleQueryArgument,omitempty" tf:"single_query_argument"`
+	// +optional
+	UriPath *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementOrStatementStatementByteMatchStatementFieldToMatchUriPath `json:"uriPath,omitempty" tf:"uri_path"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementOrStatementStatementByteMatchStatementTextTransformation struct {
+	Priority *int64  `json:"priority" tf:"priority"`
+	Type     *string `json:"type" tf:"type"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementOrStatementStatementByteMatchStatement struct {
+	// +optional
+	FieldToMatch         *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementOrStatementStatementByteMatchStatementFieldToMatch        `json:"fieldToMatch,omitempty" tf:"field_to_match"`
+	PositionalConstraint *string                                                                                                                                           `json:"positionalConstraint" tf:"positional_constraint"`
+	SearchString         *string                                                                                                                                           `json:"searchString" tf:"search_string"`
+	TextTransformation   []WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementOrStatementStatementByteMatchStatementTextTransformation `json:"textTransformation" tf:"text_transformation"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementOrStatementStatementGeoMatchStatementForwardedIPConfig struct {
+	FallbackBehavior *string `json:"fallbackBehavior" tf:"fallback_behavior"`
+	HeaderName       *string `json:"headerName" tf:"header_name"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementOrStatementStatementGeoMatchStatement struct {
+	// +kubebuilder:validation:MinItems=1
+	CountryCodes []string `json:"countryCodes" tf:"country_codes"`
+	// +optional
+	ForwardedIPConfig *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementOrStatementStatementGeoMatchStatementForwardedIPConfig `json:"forwardedIPConfig,omitempty" tf:"forwarded_ip_config"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementOrStatementStatementIpSetReferenceStatementIpSetForwardedIPConfig struct {
+	FallbackBehavior *string `json:"fallbackBehavior" tf:"fallback_behavior"`
+	HeaderName       *string `json:"headerName" tf:"header_name"`
+	Position         *string `json:"position" tf:"position"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementOrStatementStatementIpSetReferenceStatement struct {
+	Arn *string `json:"arn" tf:"arn"`
+	// +optional
+	IpSetForwardedIPConfig *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementOrStatementStatementIpSetReferenceStatementIpSetForwardedIPConfig `json:"ipSetForwardedIPConfig,omitempty" tf:"ip_set_forwarded_ip_config"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementOrStatementStatementLabelMatchStatement struct {
+	Key   *string `json:"key" tf:"key"`
+	Scope *string `json:"scope" tf:"scope"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementOrStatementStatementRegexPatternSetReferenceStatementFieldToMatchAllQueryArguments struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementOrStatementStatementRegexPatternSetReferenceStatementFieldToMatchBody struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementOrStatementStatementRegexPatternSetReferenceStatementFieldToMatchMethod struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementOrStatementStatementRegexPatternSetReferenceStatementFieldToMatchQueryString struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementOrStatementStatementRegexPatternSetReferenceStatementFieldToMatchSingleHeader struct {
+	Name *string `json:"name" tf:"name"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementOrStatementStatementRegexPatternSetReferenceStatementFieldToMatchSingleQueryArgument struct {
+	Name *string `json:"name" tf:"name"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementOrStatementStatementRegexPatternSetReferenceStatementFieldToMatchUriPath struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementOrStatementStatementRegexPatternSetReferenceStatementFieldToMatch struct {
+	// +optional
+	AllQueryArguments *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementOrStatementStatementRegexPatternSetReferenceStatementFieldToMatchAllQueryArguments `json:"allQueryArguments,omitempty" tf:"all_query_arguments"`
+	// +optional
+	Body *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementOrStatementStatementRegexPatternSetReferenceStatementFieldToMatchBody `json:"body,omitempty" tf:"body"`
+	// +optional
+	Method *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementOrStatementStatementRegexPatternSetReferenceStatementFieldToMatchMethod `json:"method,omitempty" tf:"method"`
+	// +optional
+	QueryString *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementOrStatementStatementRegexPatternSetReferenceStatementFieldToMatchQueryString `json:"queryString,omitempty" tf:"query_string"`
+	// +optional
+	SingleHeader *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementOrStatementStatementRegexPatternSetReferenceStatementFieldToMatchSingleHeader `json:"singleHeader,omitempty" tf:"single_header"`
+	// +optional
+	SingleQueryArgument *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementOrStatementStatementRegexPatternSetReferenceStatementFieldToMatchSingleQueryArgument `json:"singleQueryArgument,omitempty" tf:"single_query_argument"`
+	// +optional
+	UriPath *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementOrStatementStatementRegexPatternSetReferenceStatementFieldToMatchUriPath `json:"uriPath,omitempty" tf:"uri_path"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementOrStatementStatementRegexPatternSetReferenceStatementTextTransformation struct {
+	Priority *int64  `json:"priority" tf:"priority"`
+	Type     *string `json:"type" tf:"type"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementOrStatementStatementRegexPatternSetReferenceStatement struct {
+	Arn *string `json:"arn" tf:"arn"`
+	// +optional
+	FieldToMatch       *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementOrStatementStatementRegexPatternSetReferenceStatementFieldToMatch        `json:"fieldToMatch,omitempty" tf:"field_to_match"`
+	TextTransformation []WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementOrStatementStatementRegexPatternSetReferenceStatementTextTransformation `json:"textTransformation" tf:"text_transformation"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementOrStatementStatementSizeConstraintStatementFieldToMatchAllQueryArguments struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementOrStatementStatementSizeConstraintStatementFieldToMatchBody struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementOrStatementStatementSizeConstraintStatementFieldToMatchMethod struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementOrStatementStatementSizeConstraintStatementFieldToMatchQueryString struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementOrStatementStatementSizeConstraintStatementFieldToMatchSingleHeader struct {
+	Name *string `json:"name" tf:"name"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementOrStatementStatementSizeConstraintStatementFieldToMatchSingleQueryArgument struct {
+	Name *string `json:"name" tf:"name"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementOrStatementStatementSizeConstraintStatementFieldToMatchUriPath struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementOrStatementStatementSizeConstraintStatementFieldToMatch struct {
+	// +optional
+	AllQueryArguments *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementOrStatementStatementSizeConstraintStatementFieldToMatchAllQueryArguments `json:"allQueryArguments,omitempty" tf:"all_query_arguments"`
+	// +optional
+	Body *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementOrStatementStatementSizeConstraintStatementFieldToMatchBody `json:"body,omitempty" tf:"body"`
+	// +optional
+	Method *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementOrStatementStatementSizeConstraintStatementFieldToMatchMethod `json:"method,omitempty" tf:"method"`
+	// +optional
+	QueryString *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementOrStatementStatementSizeConstraintStatementFieldToMatchQueryString `json:"queryString,omitempty" tf:"query_string"`
+	// +optional
+	SingleHeader *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementOrStatementStatementSizeConstraintStatementFieldToMatchSingleHeader `json:"singleHeader,omitempty" tf:"single_header"`
+	// +optional
+	SingleQueryArgument *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementOrStatementStatementSizeConstraintStatementFieldToMatchSingleQueryArgument `json:"singleQueryArgument,omitempty" tf:"single_query_argument"`
+	// +optional
+	UriPath *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementOrStatementStatementSizeConstraintStatementFieldToMatchUriPath `json:"uriPath,omitempty" tf:"uri_path"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementOrStatementStatementSizeConstraintStatementTextTransformation struct {
+	Priority *int64  `json:"priority" tf:"priority"`
+	Type     *string `json:"type" tf:"type"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementOrStatementStatementSizeConstraintStatement struct {
+	ComparisonOperator *string `json:"comparisonOperator" tf:"comparison_operator"`
+	// +optional
+	FieldToMatch       *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementOrStatementStatementSizeConstraintStatementFieldToMatch        `json:"fieldToMatch,omitempty" tf:"field_to_match"`
+	Size               *int64                                                                                                                                                 `json:"size" tf:"size"`
+	TextTransformation []WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementOrStatementStatementSizeConstraintStatementTextTransformation `json:"textTransformation" tf:"text_transformation"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementOrStatementStatementSqliMatchStatementFieldToMatchAllQueryArguments struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementOrStatementStatementSqliMatchStatementFieldToMatchBody struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementOrStatementStatementSqliMatchStatementFieldToMatchMethod struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementOrStatementStatementSqliMatchStatementFieldToMatchQueryString struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementOrStatementStatementSqliMatchStatementFieldToMatchSingleHeader struct {
+	Name *string `json:"name" tf:"name"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementOrStatementStatementSqliMatchStatementFieldToMatchSingleQueryArgument struct {
+	Name *string `json:"name" tf:"name"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementOrStatementStatementSqliMatchStatementFieldToMatchUriPath struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementOrStatementStatementSqliMatchStatementFieldToMatch struct {
+	// +optional
+	AllQueryArguments *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementOrStatementStatementSqliMatchStatementFieldToMatchAllQueryArguments `json:"allQueryArguments,omitempty" tf:"all_query_arguments"`
+	// +optional
+	Body *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementOrStatementStatementSqliMatchStatementFieldToMatchBody `json:"body,omitempty" tf:"body"`
+	// +optional
+	Method *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementOrStatementStatementSqliMatchStatementFieldToMatchMethod `json:"method,omitempty" tf:"method"`
+	// +optional
+	QueryString *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementOrStatementStatementSqliMatchStatementFieldToMatchQueryString `json:"queryString,omitempty" tf:"query_string"`
+	// +optional
+	SingleHeader *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementOrStatementStatementSqliMatchStatementFieldToMatchSingleHeader `json:"singleHeader,omitempty" tf:"single_header"`
+	// +optional
+	SingleQueryArgument *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementOrStatementStatementSqliMatchStatementFieldToMatchSingleQueryArgument `json:"singleQueryArgument,omitempty" tf:"single_query_argument"`
+	// +optional
+	UriPath *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementOrStatementStatementSqliMatchStatementFieldToMatchUriPath `json:"uriPath,omitempty" tf:"uri_path"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementOrStatementStatementSqliMatchStatementTextTransformation struct {
+	Priority *int64  `json:"priority" tf:"priority"`
+	Type     *string `json:"type" tf:"type"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementOrStatementStatementSqliMatchStatement struct {
+	// +optional
+	FieldToMatch       *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementOrStatementStatementSqliMatchStatementFieldToMatch        `json:"fieldToMatch,omitempty" tf:"field_to_match"`
+	TextTransformation []WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementOrStatementStatementSqliMatchStatementTextTransformation `json:"textTransformation" tf:"text_transformation"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementOrStatementStatementXssMatchStatementFieldToMatchAllQueryArguments struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementOrStatementStatementXssMatchStatementFieldToMatchBody struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementOrStatementStatementXssMatchStatementFieldToMatchMethod struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementOrStatementStatementXssMatchStatementFieldToMatchQueryString struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementOrStatementStatementXssMatchStatementFieldToMatchSingleHeader struct {
+	Name *string `json:"name" tf:"name"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementOrStatementStatementXssMatchStatementFieldToMatchSingleQueryArgument struct {
+	Name *string `json:"name" tf:"name"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementOrStatementStatementXssMatchStatementFieldToMatchUriPath struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementOrStatementStatementXssMatchStatementFieldToMatch struct {
+	// +optional
+	AllQueryArguments *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementOrStatementStatementXssMatchStatementFieldToMatchAllQueryArguments `json:"allQueryArguments,omitempty" tf:"all_query_arguments"`
+	// +optional
+	Body *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementOrStatementStatementXssMatchStatementFieldToMatchBody `json:"body,omitempty" tf:"body"`
+	// +optional
+	Method *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementOrStatementStatementXssMatchStatementFieldToMatchMethod `json:"method,omitempty" tf:"method"`
+	// +optional
+	QueryString *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementOrStatementStatementXssMatchStatementFieldToMatchQueryString `json:"queryString,omitempty" tf:"query_string"`
+	// +optional
+	SingleHeader *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementOrStatementStatementXssMatchStatementFieldToMatchSingleHeader `json:"singleHeader,omitempty" tf:"single_header"`
+	// +optional
+	SingleQueryArgument *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementOrStatementStatementXssMatchStatementFieldToMatchSingleQueryArgument `json:"singleQueryArgument,omitempty" tf:"single_query_argument"`
+	// +optional
+	UriPath *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementOrStatementStatementXssMatchStatementFieldToMatchUriPath `json:"uriPath,omitempty" tf:"uri_path"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementOrStatementStatementXssMatchStatementTextTransformation struct {
+	Priority *int64  `json:"priority" tf:"priority"`
+	Type     *string `json:"type" tf:"type"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementOrStatementStatementXssMatchStatement struct {
+	// +optional
+	FieldToMatch       *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementOrStatementStatementXssMatchStatementFieldToMatch        `json:"fieldToMatch,omitempty" tf:"field_to_match"`
+	TextTransformation []WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementOrStatementStatementXssMatchStatementTextTransformation `json:"textTransformation" tf:"text_transformation"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementOrStatementStatement struct {
+	// +optional
+	ByteMatchStatement *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementOrStatementStatementByteMatchStatement `json:"byteMatchStatement,omitempty" tf:"byte_match_statement"`
+	// +optional
+	GeoMatchStatement *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementOrStatementStatementGeoMatchStatement `json:"geoMatchStatement,omitempty" tf:"geo_match_statement"`
+	// +optional
+	IpSetReferenceStatement *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementOrStatementStatementIpSetReferenceStatement `json:"ipSetReferenceStatement,omitempty" tf:"ip_set_reference_statement"`
+	// +optional
+	LabelMatchStatement *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementOrStatementStatementLabelMatchStatement `json:"labelMatchStatement,omitempty" tf:"label_match_statement"`
+	// +optional
+	RegexPatternSetReferenceStatement *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementOrStatementStatementRegexPatternSetReferenceStatement `json:"regexPatternSetReferenceStatement,omitempty" tf:"regex_pattern_set_reference_statement"`
+	// +optional
+	SizeConstraintStatement *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementOrStatementStatementSizeConstraintStatement `json:"sizeConstraintStatement,omitempty" tf:"size_constraint_statement"`
+	// +optional
+	SqliMatchStatement *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementOrStatementStatementSqliMatchStatement `json:"sqliMatchStatement,omitempty" tf:"sqli_match_statement"`
+	// +optional
+	XssMatchStatement *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementOrStatementStatementXssMatchStatement `json:"xssMatchStatement,omitempty" tf:"xss_match_statement"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementOrStatement struct {
+	Statement []WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementOrStatementStatement `json:"statement" tf:"statement"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementRegexPatternSetReferenceStatementFieldToMatchAllQueryArguments struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementRegexPatternSetReferenceStatementFieldToMatchBody struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementRegexPatternSetReferenceStatementFieldToMatchMethod struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementRegexPatternSetReferenceStatementFieldToMatchQueryString struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementRegexPatternSetReferenceStatementFieldToMatchSingleHeader struct {
+	Name *string `json:"name" tf:"name"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementRegexPatternSetReferenceStatementFieldToMatchSingleQueryArgument struct {
+	Name *string `json:"name" tf:"name"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementRegexPatternSetReferenceStatementFieldToMatchUriPath struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementRegexPatternSetReferenceStatementFieldToMatch struct {
+	// +optional
+	AllQueryArguments *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementRegexPatternSetReferenceStatementFieldToMatchAllQueryArguments `json:"allQueryArguments,omitempty" tf:"all_query_arguments"`
+	// +optional
+	Body *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementRegexPatternSetReferenceStatementFieldToMatchBody `json:"body,omitempty" tf:"body"`
+	// +optional
+	Method *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementRegexPatternSetReferenceStatementFieldToMatchMethod `json:"method,omitempty" tf:"method"`
+	// +optional
+	QueryString *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementRegexPatternSetReferenceStatementFieldToMatchQueryString `json:"queryString,omitempty" tf:"query_string"`
+	// +optional
+	SingleHeader *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementRegexPatternSetReferenceStatementFieldToMatchSingleHeader `json:"singleHeader,omitempty" tf:"single_header"`
+	// +optional
+	SingleQueryArgument *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementRegexPatternSetReferenceStatementFieldToMatchSingleQueryArgument `json:"singleQueryArgument,omitempty" tf:"single_query_argument"`
+	// +optional
+	UriPath *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementRegexPatternSetReferenceStatementFieldToMatchUriPath `json:"uriPath,omitempty" tf:"uri_path"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementRegexPatternSetReferenceStatementTextTransformation struct {
+	Priority *int64  `json:"priority" tf:"priority"`
+	Type     *string `json:"type" tf:"type"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementRegexPatternSetReferenceStatement struct {
+	Arn *string `json:"arn" tf:"arn"`
+	// +optional
+	FieldToMatch       *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementRegexPatternSetReferenceStatementFieldToMatch        `json:"fieldToMatch,omitempty" tf:"field_to_match"`
+	TextTransformation []WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementRegexPatternSetReferenceStatementTextTransformation `json:"textTransformation" tf:"text_transformation"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementSizeConstraintStatementFieldToMatchAllQueryArguments struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementSizeConstraintStatementFieldToMatchBody struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementSizeConstraintStatementFieldToMatchMethod struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementSizeConstraintStatementFieldToMatchQueryString struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementSizeConstraintStatementFieldToMatchSingleHeader struct {
+	Name *string `json:"name" tf:"name"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementSizeConstraintStatementFieldToMatchSingleQueryArgument struct {
+	Name *string `json:"name" tf:"name"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementSizeConstraintStatementFieldToMatchUriPath struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementSizeConstraintStatementFieldToMatch struct {
+	// +optional
+	AllQueryArguments *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementSizeConstraintStatementFieldToMatchAllQueryArguments `json:"allQueryArguments,omitempty" tf:"all_query_arguments"`
+	// +optional
+	Body *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementSizeConstraintStatementFieldToMatchBody `json:"body,omitempty" tf:"body"`
+	// +optional
+	Method *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementSizeConstraintStatementFieldToMatchMethod `json:"method,omitempty" tf:"method"`
+	// +optional
+	QueryString *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementSizeConstraintStatementFieldToMatchQueryString `json:"queryString,omitempty" tf:"query_string"`
+	// +optional
+	SingleHeader *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementSizeConstraintStatementFieldToMatchSingleHeader `json:"singleHeader,omitempty" tf:"single_header"`
+	// +optional
+	SingleQueryArgument *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementSizeConstraintStatementFieldToMatchSingleQueryArgument `json:"singleQueryArgument,omitempty" tf:"single_query_argument"`
+	// +optional
+	UriPath *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementSizeConstraintStatementFieldToMatchUriPath `json:"uriPath,omitempty" tf:"uri_path"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementSizeConstraintStatementTextTransformation struct {
+	Priority *int64  `json:"priority" tf:"priority"`
+	Type     *string `json:"type" tf:"type"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementSizeConstraintStatement struct {
+	ComparisonOperator *string `json:"comparisonOperator" tf:"comparison_operator"`
+	// +optional
+	FieldToMatch       *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementSizeConstraintStatementFieldToMatch        `json:"fieldToMatch,omitempty" tf:"field_to_match"`
+	Size               *int64                                                                                                                             `json:"size" tf:"size"`
+	TextTransformation []WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementSizeConstraintStatementTextTransformation `json:"textTransformation" tf:"text_transformation"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementSqliMatchStatementFieldToMatchAllQueryArguments struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementSqliMatchStatementFieldToMatchBody struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementSqliMatchStatementFieldToMatchMethod struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementSqliMatchStatementFieldToMatchQueryString struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementSqliMatchStatementFieldToMatchSingleHeader struct {
+	Name *string `json:"name" tf:"name"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementSqliMatchStatementFieldToMatchSingleQueryArgument struct {
+	Name *string `json:"name" tf:"name"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementSqliMatchStatementFieldToMatchUriPath struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementSqliMatchStatementFieldToMatch struct {
+	// +optional
+	AllQueryArguments *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementSqliMatchStatementFieldToMatchAllQueryArguments `json:"allQueryArguments,omitempty" tf:"all_query_arguments"`
+	// +optional
+	Body *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementSqliMatchStatementFieldToMatchBody `json:"body,omitempty" tf:"body"`
+	// +optional
+	Method *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementSqliMatchStatementFieldToMatchMethod `json:"method,omitempty" tf:"method"`
+	// +optional
+	QueryString *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementSqliMatchStatementFieldToMatchQueryString `json:"queryString,omitempty" tf:"query_string"`
+	// +optional
+	SingleHeader *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementSqliMatchStatementFieldToMatchSingleHeader `json:"singleHeader,omitempty" tf:"single_header"`
+	// +optional
+	SingleQueryArgument *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementSqliMatchStatementFieldToMatchSingleQueryArgument `json:"singleQueryArgument,omitempty" tf:"single_query_argument"`
+	// +optional
+	UriPath *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementSqliMatchStatementFieldToMatchUriPath `json:"uriPath,omitempty" tf:"uri_path"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementSqliMatchStatementTextTransformation struct {
+	Priority *int64  `json:"priority" tf:"priority"`
+	Type     *string `json:"type" tf:"type"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementSqliMatchStatement struct {
+	// +optional
+	FieldToMatch       *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementSqliMatchStatementFieldToMatch        `json:"fieldToMatch,omitempty" tf:"field_to_match"`
+	TextTransformation []WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementSqliMatchStatementTextTransformation `json:"textTransformation" tf:"text_transformation"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementXssMatchStatementFieldToMatchAllQueryArguments struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementXssMatchStatementFieldToMatchBody struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementXssMatchStatementFieldToMatchMethod struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementXssMatchStatementFieldToMatchQueryString struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementXssMatchStatementFieldToMatchSingleHeader struct {
+	Name *string `json:"name" tf:"name"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementXssMatchStatementFieldToMatchSingleQueryArgument struct {
+	Name *string `json:"name" tf:"name"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementXssMatchStatementFieldToMatchUriPath struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementXssMatchStatementFieldToMatch struct {
+	// +optional
+	AllQueryArguments *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementXssMatchStatementFieldToMatchAllQueryArguments `json:"allQueryArguments,omitempty" tf:"all_query_arguments"`
+	// +optional
+	Body *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementXssMatchStatementFieldToMatchBody `json:"body,omitempty" tf:"body"`
+	// +optional
+	Method *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementXssMatchStatementFieldToMatchMethod `json:"method,omitempty" tf:"method"`
+	// +optional
+	QueryString *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementXssMatchStatementFieldToMatchQueryString `json:"queryString,omitempty" tf:"query_string"`
+	// +optional
+	SingleHeader *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementXssMatchStatementFieldToMatchSingleHeader `json:"singleHeader,omitempty" tf:"single_header"`
+	// +optional
+	SingleQueryArgument *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementXssMatchStatementFieldToMatchSingleQueryArgument `json:"singleQueryArgument,omitempty" tf:"single_query_argument"`
+	// +optional
+	UriPath *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementXssMatchStatementFieldToMatchUriPath `json:"uriPath,omitempty" tf:"uri_path"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementXssMatchStatementTextTransformation struct {
+	Priority *int64  `json:"priority" tf:"priority"`
+	Type     *string `json:"type" tf:"type"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementXssMatchStatement struct {
+	// +optional
+	FieldToMatch       *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementXssMatchStatementFieldToMatch        `json:"fieldToMatch,omitempty" tf:"field_to_match"`
+	TextTransformation []WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementXssMatchStatementTextTransformation `json:"textTransformation" tf:"text_transformation"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatement struct {
+	// +optional
+	AndStatement *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementAndStatement `json:"andStatement,omitempty" tf:"and_statement"`
+	// +optional
+	ByteMatchStatement *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementByteMatchStatement `json:"byteMatchStatement,omitempty" tf:"byte_match_statement"`
+	// +optional
+	GeoMatchStatement *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementGeoMatchStatement `json:"geoMatchStatement,omitempty" tf:"geo_match_statement"`
+	// +optional
+	IpSetReferenceStatement *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementIpSetReferenceStatement `json:"ipSetReferenceStatement,omitempty" tf:"ip_set_reference_statement"`
+	// +optional
+	LabelMatchStatement *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementLabelMatchStatement `json:"labelMatchStatement,omitempty" tf:"label_match_statement"`
+	// +optional
+	NotStatement *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementNotStatement `json:"notStatement,omitempty" tf:"not_statement"`
+	// +optional
+	OrStatement *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementOrStatement `json:"orStatement,omitempty" tf:"or_statement"`
+	// +optional
+	RegexPatternSetReferenceStatement *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementRegexPatternSetReferenceStatement `json:"regexPatternSetReferenceStatement,omitempty" tf:"regex_pattern_set_reference_statement"`
+	// +optional
+	SizeConstraintStatement *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementSizeConstraintStatement `json:"sizeConstraintStatement,omitempty" tf:"size_constraint_statement"`
+	// +optional
+	SqliMatchStatement *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementSqliMatchStatement `json:"sqliMatchStatement,omitempty" tf:"sqli_match_statement"`
+	// +optional
+	XssMatchStatement *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatementXssMatchStatement `json:"xssMatchStatement,omitempty" tf:"xss_match_statement"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatement struct {
+	Statement []WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatementStatement `json:"statement" tf:"statement"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementByteMatchStatementFieldToMatchAllQueryArguments struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementByteMatchStatementFieldToMatchBody struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementByteMatchStatementFieldToMatchMethod struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementByteMatchStatementFieldToMatchQueryString struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementByteMatchStatementFieldToMatchSingleHeader struct {
+	Name *string `json:"name" tf:"name"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementByteMatchStatementFieldToMatchSingleQueryArgument struct {
+	Name *string `json:"name" tf:"name"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementByteMatchStatementFieldToMatchUriPath struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementByteMatchStatementFieldToMatch struct {
+	// +optional
+	AllQueryArguments *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementByteMatchStatementFieldToMatchAllQueryArguments `json:"allQueryArguments,omitempty" tf:"all_query_arguments"`
+	// +optional
+	Body *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementByteMatchStatementFieldToMatchBody `json:"body,omitempty" tf:"body"`
+	// +optional
+	Method *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementByteMatchStatementFieldToMatchMethod `json:"method,omitempty" tf:"method"`
+	// +optional
+	QueryString *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementByteMatchStatementFieldToMatchQueryString `json:"queryString,omitempty" tf:"query_string"`
+	// +optional
+	SingleHeader *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementByteMatchStatementFieldToMatchSingleHeader `json:"singleHeader,omitempty" tf:"single_header"`
+	// +optional
+	SingleQueryArgument *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementByteMatchStatementFieldToMatchSingleQueryArgument `json:"singleQueryArgument,omitempty" tf:"single_query_argument"`
+	// +optional
+	UriPath *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementByteMatchStatementFieldToMatchUriPath `json:"uriPath,omitempty" tf:"uri_path"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementByteMatchStatementTextTransformation struct {
+	Priority *int64  `json:"priority" tf:"priority"`
+	Type     *string `json:"type" tf:"type"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementByteMatchStatement struct {
+	// +optional
+	FieldToMatch         *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementByteMatchStatementFieldToMatch        `json:"fieldToMatch,omitempty" tf:"field_to_match"`
+	PositionalConstraint *string                                                                                                  `json:"positionalConstraint" tf:"positional_constraint"`
+	SearchString         *string                                                                                                  `json:"searchString" tf:"search_string"`
+	TextTransformation   []WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementByteMatchStatementTextTransformation `json:"textTransformation" tf:"text_transformation"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementGeoMatchStatementForwardedIPConfig struct {
+	FallbackBehavior *string `json:"fallbackBehavior" tf:"fallback_behavior"`
+	HeaderName       *string `json:"headerName" tf:"header_name"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementGeoMatchStatement struct {
+	// +kubebuilder:validation:MinItems=1
+	CountryCodes []string `json:"countryCodes" tf:"country_codes"`
+	// +optional
+	ForwardedIPConfig *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementGeoMatchStatementForwardedIPConfig `json:"forwardedIPConfig,omitempty" tf:"forwarded_ip_config"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementIpSetReferenceStatementIpSetForwardedIPConfig struct {
+	FallbackBehavior *string `json:"fallbackBehavior" tf:"fallback_behavior"`
+	HeaderName       *string `json:"headerName" tf:"header_name"`
+	Position         *string `json:"position" tf:"position"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementIpSetReferenceStatement struct {
+	Arn *string `json:"arn" tf:"arn"`
+	// +optional
+	IpSetForwardedIPConfig *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementIpSetReferenceStatementIpSetForwardedIPConfig `json:"ipSetForwardedIPConfig,omitempty" tf:"ip_set_forwarded_ip_config"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementLabelMatchStatement struct {
+	Key   *string `json:"key" tf:"key"`
+	Scope *string `json:"scope" tf:"scope"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementAndStatementStatementByteMatchStatementFieldToMatchAllQueryArguments struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementAndStatementStatementByteMatchStatementFieldToMatchBody struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementAndStatementStatementByteMatchStatementFieldToMatchMethod struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementAndStatementStatementByteMatchStatementFieldToMatchQueryString struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementAndStatementStatementByteMatchStatementFieldToMatchSingleHeader struct {
+	Name *string `json:"name" tf:"name"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementAndStatementStatementByteMatchStatementFieldToMatchSingleQueryArgument struct {
+	Name *string `json:"name" tf:"name"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementAndStatementStatementByteMatchStatementFieldToMatchUriPath struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementAndStatementStatementByteMatchStatementFieldToMatch struct {
+	// +optional
+	AllQueryArguments *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementAndStatementStatementByteMatchStatementFieldToMatchAllQueryArguments `json:"allQueryArguments,omitempty" tf:"all_query_arguments"`
+	// +optional
+	Body *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementAndStatementStatementByteMatchStatementFieldToMatchBody `json:"body,omitempty" tf:"body"`
+	// +optional
+	Method *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementAndStatementStatementByteMatchStatementFieldToMatchMethod `json:"method,omitempty" tf:"method"`
+	// +optional
+	QueryString *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementAndStatementStatementByteMatchStatementFieldToMatchQueryString `json:"queryString,omitempty" tf:"query_string"`
+	// +optional
+	SingleHeader *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementAndStatementStatementByteMatchStatementFieldToMatchSingleHeader `json:"singleHeader,omitempty" tf:"single_header"`
+	// +optional
+	SingleQueryArgument *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementAndStatementStatementByteMatchStatementFieldToMatchSingleQueryArgument `json:"singleQueryArgument,omitempty" tf:"single_query_argument"`
+	// +optional
+	UriPath *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementAndStatementStatementByteMatchStatementFieldToMatchUriPath `json:"uriPath,omitempty" tf:"uri_path"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementAndStatementStatementByteMatchStatementTextTransformation struct {
+	Priority *int64  `json:"priority" tf:"priority"`
+	Type     *string `json:"type" tf:"type"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementAndStatementStatementByteMatchStatement struct {
+	// +optional
+	FieldToMatch         *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementAndStatementStatementByteMatchStatementFieldToMatch        `json:"fieldToMatch,omitempty" tf:"field_to_match"`
+	PositionalConstraint *string                                                                                                                                            `json:"positionalConstraint" tf:"positional_constraint"`
+	SearchString         *string                                                                                                                                            `json:"searchString" tf:"search_string"`
+	TextTransformation   []WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementAndStatementStatementByteMatchStatementTextTransformation `json:"textTransformation" tf:"text_transformation"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementAndStatementStatementGeoMatchStatementForwardedIPConfig struct {
+	FallbackBehavior *string `json:"fallbackBehavior" tf:"fallback_behavior"`
+	HeaderName       *string `json:"headerName" tf:"header_name"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementAndStatementStatementGeoMatchStatement struct {
+	// +kubebuilder:validation:MinItems=1
+	CountryCodes []string `json:"countryCodes" tf:"country_codes"`
+	// +optional
+	ForwardedIPConfig *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementAndStatementStatementGeoMatchStatementForwardedIPConfig `json:"forwardedIPConfig,omitempty" tf:"forwarded_ip_config"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementAndStatementStatementIpSetReferenceStatementIpSetForwardedIPConfig struct {
+	FallbackBehavior *string `json:"fallbackBehavior" tf:"fallback_behavior"`
+	HeaderName       *string `json:"headerName" tf:"header_name"`
+	Position         *string `json:"position" tf:"position"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementAndStatementStatementIpSetReferenceStatement struct {
+	Arn *string `json:"arn" tf:"arn"`
+	// +optional
+	IpSetForwardedIPConfig *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementAndStatementStatementIpSetReferenceStatementIpSetForwardedIPConfig `json:"ipSetForwardedIPConfig,omitempty" tf:"ip_set_forwarded_ip_config"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementAndStatementStatementLabelMatchStatement struct {
+	Key   *string `json:"key" tf:"key"`
+	Scope *string `json:"scope" tf:"scope"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementAndStatementStatementRegexPatternSetReferenceStatementFieldToMatchAllQueryArguments struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementAndStatementStatementRegexPatternSetReferenceStatementFieldToMatchBody struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementAndStatementStatementRegexPatternSetReferenceStatementFieldToMatchMethod struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementAndStatementStatementRegexPatternSetReferenceStatementFieldToMatchQueryString struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementAndStatementStatementRegexPatternSetReferenceStatementFieldToMatchSingleHeader struct {
+	Name *string `json:"name" tf:"name"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementAndStatementStatementRegexPatternSetReferenceStatementFieldToMatchSingleQueryArgument struct {
+	Name *string `json:"name" tf:"name"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementAndStatementStatementRegexPatternSetReferenceStatementFieldToMatchUriPath struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementAndStatementStatementRegexPatternSetReferenceStatementFieldToMatch struct {
+	// +optional
+	AllQueryArguments *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementAndStatementStatementRegexPatternSetReferenceStatementFieldToMatchAllQueryArguments `json:"allQueryArguments,omitempty" tf:"all_query_arguments"`
+	// +optional
+	Body *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementAndStatementStatementRegexPatternSetReferenceStatementFieldToMatchBody `json:"body,omitempty" tf:"body"`
+	// +optional
+	Method *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementAndStatementStatementRegexPatternSetReferenceStatementFieldToMatchMethod `json:"method,omitempty" tf:"method"`
+	// +optional
+	QueryString *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementAndStatementStatementRegexPatternSetReferenceStatementFieldToMatchQueryString `json:"queryString,omitempty" tf:"query_string"`
+	// +optional
+	SingleHeader *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementAndStatementStatementRegexPatternSetReferenceStatementFieldToMatchSingleHeader `json:"singleHeader,omitempty" tf:"single_header"`
+	// +optional
+	SingleQueryArgument *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementAndStatementStatementRegexPatternSetReferenceStatementFieldToMatchSingleQueryArgument `json:"singleQueryArgument,omitempty" tf:"single_query_argument"`
+	// +optional
+	UriPath *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementAndStatementStatementRegexPatternSetReferenceStatementFieldToMatchUriPath `json:"uriPath,omitempty" tf:"uri_path"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementAndStatementStatementRegexPatternSetReferenceStatementTextTransformation struct {
+	Priority *int64  `json:"priority" tf:"priority"`
+	Type     *string `json:"type" tf:"type"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementAndStatementStatementRegexPatternSetReferenceStatement struct {
+	Arn *string `json:"arn" tf:"arn"`
+	// +optional
+	FieldToMatch       *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementAndStatementStatementRegexPatternSetReferenceStatementFieldToMatch        `json:"fieldToMatch,omitempty" tf:"field_to_match"`
+	TextTransformation []WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementAndStatementStatementRegexPatternSetReferenceStatementTextTransformation `json:"textTransformation" tf:"text_transformation"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementAndStatementStatementSizeConstraintStatementFieldToMatchAllQueryArguments struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementAndStatementStatementSizeConstraintStatementFieldToMatchBody struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementAndStatementStatementSizeConstraintStatementFieldToMatchMethod struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementAndStatementStatementSizeConstraintStatementFieldToMatchQueryString struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementAndStatementStatementSizeConstraintStatementFieldToMatchSingleHeader struct {
+	Name *string `json:"name" tf:"name"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementAndStatementStatementSizeConstraintStatementFieldToMatchSingleQueryArgument struct {
+	Name *string `json:"name" tf:"name"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementAndStatementStatementSizeConstraintStatementFieldToMatchUriPath struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementAndStatementStatementSizeConstraintStatementFieldToMatch struct {
+	// +optional
+	AllQueryArguments *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementAndStatementStatementSizeConstraintStatementFieldToMatchAllQueryArguments `json:"allQueryArguments,omitempty" tf:"all_query_arguments"`
+	// +optional
+	Body *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementAndStatementStatementSizeConstraintStatementFieldToMatchBody `json:"body,omitempty" tf:"body"`
+	// +optional
+	Method *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementAndStatementStatementSizeConstraintStatementFieldToMatchMethod `json:"method,omitempty" tf:"method"`
+	// +optional
+	QueryString *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementAndStatementStatementSizeConstraintStatementFieldToMatchQueryString `json:"queryString,omitempty" tf:"query_string"`
+	// +optional
+	SingleHeader *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementAndStatementStatementSizeConstraintStatementFieldToMatchSingleHeader `json:"singleHeader,omitempty" tf:"single_header"`
+	// +optional
+	SingleQueryArgument *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementAndStatementStatementSizeConstraintStatementFieldToMatchSingleQueryArgument `json:"singleQueryArgument,omitempty" tf:"single_query_argument"`
+	// +optional
+	UriPath *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementAndStatementStatementSizeConstraintStatementFieldToMatchUriPath `json:"uriPath,omitempty" tf:"uri_path"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementAndStatementStatementSizeConstraintStatementTextTransformation struct {
+	Priority *int64  `json:"priority" tf:"priority"`
+	Type     *string `json:"type" tf:"type"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementAndStatementStatementSizeConstraintStatement struct {
+	ComparisonOperator *string `json:"comparisonOperator" tf:"comparison_operator"`
+	// +optional
+	FieldToMatch       *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementAndStatementStatementSizeConstraintStatementFieldToMatch        `json:"fieldToMatch,omitempty" tf:"field_to_match"`
+	Size               *int64                                                                                                                                                  `json:"size" tf:"size"`
+	TextTransformation []WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementAndStatementStatementSizeConstraintStatementTextTransformation `json:"textTransformation" tf:"text_transformation"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementAndStatementStatementSqliMatchStatementFieldToMatchAllQueryArguments struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementAndStatementStatementSqliMatchStatementFieldToMatchBody struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementAndStatementStatementSqliMatchStatementFieldToMatchMethod struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementAndStatementStatementSqliMatchStatementFieldToMatchQueryString struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementAndStatementStatementSqliMatchStatementFieldToMatchSingleHeader struct {
+	Name *string `json:"name" tf:"name"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementAndStatementStatementSqliMatchStatementFieldToMatchSingleQueryArgument struct {
+	Name *string `json:"name" tf:"name"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementAndStatementStatementSqliMatchStatementFieldToMatchUriPath struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementAndStatementStatementSqliMatchStatementFieldToMatch struct {
+	// +optional
+	AllQueryArguments *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementAndStatementStatementSqliMatchStatementFieldToMatchAllQueryArguments `json:"allQueryArguments,omitempty" tf:"all_query_arguments"`
+	// +optional
+	Body *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementAndStatementStatementSqliMatchStatementFieldToMatchBody `json:"body,omitempty" tf:"body"`
+	// +optional
+	Method *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementAndStatementStatementSqliMatchStatementFieldToMatchMethod `json:"method,omitempty" tf:"method"`
+	// +optional
+	QueryString *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementAndStatementStatementSqliMatchStatementFieldToMatchQueryString `json:"queryString,omitempty" tf:"query_string"`
+	// +optional
+	SingleHeader *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementAndStatementStatementSqliMatchStatementFieldToMatchSingleHeader `json:"singleHeader,omitempty" tf:"single_header"`
+	// +optional
+	SingleQueryArgument *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementAndStatementStatementSqliMatchStatementFieldToMatchSingleQueryArgument `json:"singleQueryArgument,omitempty" tf:"single_query_argument"`
+	// +optional
+	UriPath *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementAndStatementStatementSqliMatchStatementFieldToMatchUriPath `json:"uriPath,omitempty" tf:"uri_path"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementAndStatementStatementSqliMatchStatementTextTransformation struct {
+	Priority *int64  `json:"priority" tf:"priority"`
+	Type     *string `json:"type" tf:"type"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementAndStatementStatementSqliMatchStatement struct {
+	// +optional
+	FieldToMatch       *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementAndStatementStatementSqliMatchStatementFieldToMatch        `json:"fieldToMatch,omitempty" tf:"field_to_match"`
+	TextTransformation []WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementAndStatementStatementSqliMatchStatementTextTransformation `json:"textTransformation" tf:"text_transformation"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementAndStatementStatementXssMatchStatementFieldToMatchAllQueryArguments struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementAndStatementStatementXssMatchStatementFieldToMatchBody struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementAndStatementStatementXssMatchStatementFieldToMatchMethod struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementAndStatementStatementXssMatchStatementFieldToMatchQueryString struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementAndStatementStatementXssMatchStatementFieldToMatchSingleHeader struct {
+	Name *string `json:"name" tf:"name"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementAndStatementStatementXssMatchStatementFieldToMatchSingleQueryArgument struct {
+	Name *string `json:"name" tf:"name"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementAndStatementStatementXssMatchStatementFieldToMatchUriPath struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementAndStatementStatementXssMatchStatementFieldToMatch struct {
+	// +optional
+	AllQueryArguments *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementAndStatementStatementXssMatchStatementFieldToMatchAllQueryArguments `json:"allQueryArguments,omitempty" tf:"all_query_arguments"`
+	// +optional
+	Body *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementAndStatementStatementXssMatchStatementFieldToMatchBody `json:"body,omitempty" tf:"body"`
+	// +optional
+	Method *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementAndStatementStatementXssMatchStatementFieldToMatchMethod `json:"method,omitempty" tf:"method"`
+	// +optional
+	QueryString *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementAndStatementStatementXssMatchStatementFieldToMatchQueryString `json:"queryString,omitempty" tf:"query_string"`
+	// +optional
+	SingleHeader *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementAndStatementStatementXssMatchStatementFieldToMatchSingleHeader `json:"singleHeader,omitempty" tf:"single_header"`
+	// +optional
+	SingleQueryArgument *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementAndStatementStatementXssMatchStatementFieldToMatchSingleQueryArgument `json:"singleQueryArgument,omitempty" tf:"single_query_argument"`
+	// +optional
+	UriPath *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementAndStatementStatementXssMatchStatementFieldToMatchUriPath `json:"uriPath,omitempty" tf:"uri_path"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementAndStatementStatementXssMatchStatementTextTransformation struct {
+	Priority *int64  `json:"priority" tf:"priority"`
+	Type     *string `json:"type" tf:"type"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementAndStatementStatementXssMatchStatement struct {
+	// +optional
+	FieldToMatch       *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementAndStatementStatementXssMatchStatementFieldToMatch        `json:"fieldToMatch,omitempty" tf:"field_to_match"`
+	TextTransformation []WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementAndStatementStatementXssMatchStatementTextTransformation `json:"textTransformation" tf:"text_transformation"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementAndStatementStatement struct {
+	// +optional
+	ByteMatchStatement *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementAndStatementStatementByteMatchStatement `json:"byteMatchStatement,omitempty" tf:"byte_match_statement"`
+	// +optional
+	GeoMatchStatement *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementAndStatementStatementGeoMatchStatement `json:"geoMatchStatement,omitempty" tf:"geo_match_statement"`
+	// +optional
+	IpSetReferenceStatement *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementAndStatementStatementIpSetReferenceStatement `json:"ipSetReferenceStatement,omitempty" tf:"ip_set_reference_statement"`
+	// +optional
+	LabelMatchStatement *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementAndStatementStatementLabelMatchStatement `json:"labelMatchStatement,omitempty" tf:"label_match_statement"`
+	// +optional
+	RegexPatternSetReferenceStatement *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementAndStatementStatementRegexPatternSetReferenceStatement `json:"regexPatternSetReferenceStatement,omitempty" tf:"regex_pattern_set_reference_statement"`
+	// +optional
+	SizeConstraintStatement *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementAndStatementStatementSizeConstraintStatement `json:"sizeConstraintStatement,omitempty" tf:"size_constraint_statement"`
+	// +optional
+	SqliMatchStatement *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementAndStatementStatementSqliMatchStatement `json:"sqliMatchStatement,omitempty" tf:"sqli_match_statement"`
+	// +optional
+	XssMatchStatement *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementAndStatementStatementXssMatchStatement `json:"xssMatchStatement,omitempty" tf:"xss_match_statement"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementAndStatement struct {
+	Statement []WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementAndStatementStatement `json:"statement" tf:"statement"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementByteMatchStatementFieldToMatchAllQueryArguments struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementByteMatchStatementFieldToMatchBody struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementByteMatchStatementFieldToMatchMethod struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementByteMatchStatementFieldToMatchQueryString struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementByteMatchStatementFieldToMatchSingleHeader struct {
+	Name *string `json:"name" tf:"name"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementByteMatchStatementFieldToMatchSingleQueryArgument struct {
+	Name *string `json:"name" tf:"name"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementByteMatchStatementFieldToMatchUriPath struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementByteMatchStatementFieldToMatch struct {
+	// +optional
+	AllQueryArguments *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementByteMatchStatementFieldToMatchAllQueryArguments `json:"allQueryArguments,omitempty" tf:"all_query_arguments"`
+	// +optional
+	Body *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementByteMatchStatementFieldToMatchBody `json:"body,omitempty" tf:"body"`
+	// +optional
+	Method *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementByteMatchStatementFieldToMatchMethod `json:"method,omitempty" tf:"method"`
+	// +optional
+	QueryString *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementByteMatchStatementFieldToMatchQueryString `json:"queryString,omitempty" tf:"query_string"`
+	// +optional
+	SingleHeader *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementByteMatchStatementFieldToMatchSingleHeader `json:"singleHeader,omitempty" tf:"single_header"`
+	// +optional
+	SingleQueryArgument *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementByteMatchStatementFieldToMatchSingleQueryArgument `json:"singleQueryArgument,omitempty" tf:"single_query_argument"`
+	// +optional
+	UriPath *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementByteMatchStatementFieldToMatchUriPath `json:"uriPath,omitempty" tf:"uri_path"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementByteMatchStatementTextTransformation struct {
+	Priority *int64  `json:"priority" tf:"priority"`
+	Type     *string `json:"type" tf:"type"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementByteMatchStatement struct {
+	// +optional
+	FieldToMatch         *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementByteMatchStatementFieldToMatch        `json:"fieldToMatch,omitempty" tf:"field_to_match"`
+	PositionalConstraint *string                                                                                                                       `json:"positionalConstraint" tf:"positional_constraint"`
+	SearchString         *string                                                                                                                       `json:"searchString" tf:"search_string"`
+	TextTransformation   []WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementByteMatchStatementTextTransformation `json:"textTransformation" tf:"text_transformation"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementGeoMatchStatementForwardedIPConfig struct {
+	FallbackBehavior *string `json:"fallbackBehavior" tf:"fallback_behavior"`
+	HeaderName       *string `json:"headerName" tf:"header_name"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementGeoMatchStatement struct {
+	// +kubebuilder:validation:MinItems=1
+	CountryCodes []string `json:"countryCodes" tf:"country_codes"`
+	// +optional
+	ForwardedIPConfig *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementGeoMatchStatementForwardedIPConfig `json:"forwardedIPConfig,omitempty" tf:"forwarded_ip_config"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementIpSetReferenceStatementIpSetForwardedIPConfig struct {
+	FallbackBehavior *string `json:"fallbackBehavior" tf:"fallback_behavior"`
+	HeaderName       *string `json:"headerName" tf:"header_name"`
+	Position         *string `json:"position" tf:"position"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementIpSetReferenceStatement struct {
+	Arn *string `json:"arn" tf:"arn"`
+	// +optional
+	IpSetForwardedIPConfig *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementIpSetReferenceStatementIpSetForwardedIPConfig `json:"ipSetForwardedIPConfig,omitempty" tf:"ip_set_forwarded_ip_config"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementLabelMatchStatement struct {
+	Key   *string `json:"key" tf:"key"`
+	Scope *string `json:"scope" tf:"scope"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementNotStatementStatementByteMatchStatementFieldToMatchAllQueryArguments struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementNotStatementStatementByteMatchStatementFieldToMatchBody struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementNotStatementStatementByteMatchStatementFieldToMatchMethod struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementNotStatementStatementByteMatchStatementFieldToMatchQueryString struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementNotStatementStatementByteMatchStatementFieldToMatchSingleHeader struct {
+	Name *string `json:"name" tf:"name"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementNotStatementStatementByteMatchStatementFieldToMatchSingleQueryArgument struct {
+	Name *string `json:"name" tf:"name"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementNotStatementStatementByteMatchStatementFieldToMatchUriPath struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementNotStatementStatementByteMatchStatementFieldToMatch struct {
+	// +optional
+	AllQueryArguments *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementNotStatementStatementByteMatchStatementFieldToMatchAllQueryArguments `json:"allQueryArguments,omitempty" tf:"all_query_arguments"`
+	// +optional
+	Body *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementNotStatementStatementByteMatchStatementFieldToMatchBody `json:"body,omitempty" tf:"body"`
+	// +optional
+	Method *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementNotStatementStatementByteMatchStatementFieldToMatchMethod `json:"method,omitempty" tf:"method"`
+	// +optional
+	QueryString *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementNotStatementStatementByteMatchStatementFieldToMatchQueryString `json:"queryString,omitempty" tf:"query_string"`
+	// +optional
+	SingleHeader *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementNotStatementStatementByteMatchStatementFieldToMatchSingleHeader `json:"singleHeader,omitempty" tf:"single_header"`
+	// +optional
+	SingleQueryArgument *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementNotStatementStatementByteMatchStatementFieldToMatchSingleQueryArgument `json:"singleQueryArgument,omitempty" tf:"single_query_argument"`
+	// +optional
+	UriPath *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementNotStatementStatementByteMatchStatementFieldToMatchUriPath `json:"uriPath,omitempty" tf:"uri_path"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementNotStatementStatementByteMatchStatementTextTransformation struct {
+	Priority *int64  `json:"priority" tf:"priority"`
+	Type     *string `json:"type" tf:"type"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementNotStatementStatementByteMatchStatement struct {
+	// +optional
+	FieldToMatch         *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementNotStatementStatementByteMatchStatementFieldToMatch        `json:"fieldToMatch,omitempty" tf:"field_to_match"`
+	PositionalConstraint *string                                                                                                                                            `json:"positionalConstraint" tf:"positional_constraint"`
+	SearchString         *string                                                                                                                                            `json:"searchString" tf:"search_string"`
+	TextTransformation   []WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementNotStatementStatementByteMatchStatementTextTransformation `json:"textTransformation" tf:"text_transformation"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementNotStatementStatementGeoMatchStatementForwardedIPConfig struct {
+	FallbackBehavior *string `json:"fallbackBehavior" tf:"fallback_behavior"`
+	HeaderName       *string `json:"headerName" tf:"header_name"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementNotStatementStatementGeoMatchStatement struct {
+	// +kubebuilder:validation:MinItems=1
+	CountryCodes []string `json:"countryCodes" tf:"country_codes"`
+	// +optional
+	ForwardedIPConfig *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementNotStatementStatementGeoMatchStatementForwardedIPConfig `json:"forwardedIPConfig,omitempty" tf:"forwarded_ip_config"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementNotStatementStatementIpSetReferenceStatementIpSetForwardedIPConfig struct {
+	FallbackBehavior *string `json:"fallbackBehavior" tf:"fallback_behavior"`
+	HeaderName       *string `json:"headerName" tf:"header_name"`
+	Position         *string `json:"position" tf:"position"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementNotStatementStatementIpSetReferenceStatement struct {
+	Arn *string `json:"arn" tf:"arn"`
+	// +optional
+	IpSetForwardedIPConfig *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementNotStatementStatementIpSetReferenceStatementIpSetForwardedIPConfig `json:"ipSetForwardedIPConfig,omitempty" tf:"ip_set_forwarded_ip_config"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementNotStatementStatementLabelMatchStatement struct {
+	Key   *string `json:"key" tf:"key"`
+	Scope *string `json:"scope" tf:"scope"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementNotStatementStatementRegexPatternSetReferenceStatementFieldToMatchAllQueryArguments struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementNotStatementStatementRegexPatternSetReferenceStatementFieldToMatchBody struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementNotStatementStatementRegexPatternSetReferenceStatementFieldToMatchMethod struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementNotStatementStatementRegexPatternSetReferenceStatementFieldToMatchQueryString struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementNotStatementStatementRegexPatternSetReferenceStatementFieldToMatchSingleHeader struct {
+	Name *string `json:"name" tf:"name"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementNotStatementStatementRegexPatternSetReferenceStatementFieldToMatchSingleQueryArgument struct {
+	Name *string `json:"name" tf:"name"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementNotStatementStatementRegexPatternSetReferenceStatementFieldToMatchUriPath struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementNotStatementStatementRegexPatternSetReferenceStatementFieldToMatch struct {
+	// +optional
+	AllQueryArguments *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementNotStatementStatementRegexPatternSetReferenceStatementFieldToMatchAllQueryArguments `json:"allQueryArguments,omitempty" tf:"all_query_arguments"`
+	// +optional
+	Body *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementNotStatementStatementRegexPatternSetReferenceStatementFieldToMatchBody `json:"body,omitempty" tf:"body"`
+	// +optional
+	Method *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementNotStatementStatementRegexPatternSetReferenceStatementFieldToMatchMethod `json:"method,omitempty" tf:"method"`
+	// +optional
+	QueryString *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementNotStatementStatementRegexPatternSetReferenceStatementFieldToMatchQueryString `json:"queryString,omitempty" tf:"query_string"`
+	// +optional
+	SingleHeader *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementNotStatementStatementRegexPatternSetReferenceStatementFieldToMatchSingleHeader `json:"singleHeader,omitempty" tf:"single_header"`
+	// +optional
+	SingleQueryArgument *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementNotStatementStatementRegexPatternSetReferenceStatementFieldToMatchSingleQueryArgument `json:"singleQueryArgument,omitempty" tf:"single_query_argument"`
+	// +optional
+	UriPath *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementNotStatementStatementRegexPatternSetReferenceStatementFieldToMatchUriPath `json:"uriPath,omitempty" tf:"uri_path"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementNotStatementStatementRegexPatternSetReferenceStatementTextTransformation struct {
+	Priority *int64  `json:"priority" tf:"priority"`
+	Type     *string `json:"type" tf:"type"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementNotStatementStatementRegexPatternSetReferenceStatement struct {
+	Arn *string `json:"arn" tf:"arn"`
+	// +optional
+	FieldToMatch       *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementNotStatementStatementRegexPatternSetReferenceStatementFieldToMatch        `json:"fieldToMatch,omitempty" tf:"field_to_match"`
+	TextTransformation []WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementNotStatementStatementRegexPatternSetReferenceStatementTextTransformation `json:"textTransformation" tf:"text_transformation"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementNotStatementStatementSizeConstraintStatementFieldToMatchAllQueryArguments struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementNotStatementStatementSizeConstraintStatementFieldToMatchBody struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementNotStatementStatementSizeConstraintStatementFieldToMatchMethod struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementNotStatementStatementSizeConstraintStatementFieldToMatchQueryString struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementNotStatementStatementSizeConstraintStatementFieldToMatchSingleHeader struct {
+	Name *string `json:"name" tf:"name"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementNotStatementStatementSizeConstraintStatementFieldToMatchSingleQueryArgument struct {
+	Name *string `json:"name" tf:"name"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementNotStatementStatementSizeConstraintStatementFieldToMatchUriPath struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementNotStatementStatementSizeConstraintStatementFieldToMatch struct {
+	// +optional
+	AllQueryArguments *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementNotStatementStatementSizeConstraintStatementFieldToMatchAllQueryArguments `json:"allQueryArguments,omitempty" tf:"all_query_arguments"`
+	// +optional
+	Body *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementNotStatementStatementSizeConstraintStatementFieldToMatchBody `json:"body,omitempty" tf:"body"`
+	// +optional
+	Method *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementNotStatementStatementSizeConstraintStatementFieldToMatchMethod `json:"method,omitempty" tf:"method"`
+	// +optional
+	QueryString *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementNotStatementStatementSizeConstraintStatementFieldToMatchQueryString `json:"queryString,omitempty" tf:"query_string"`
+	// +optional
+	SingleHeader *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementNotStatementStatementSizeConstraintStatementFieldToMatchSingleHeader `json:"singleHeader,omitempty" tf:"single_header"`
+	// +optional
+	SingleQueryArgument *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementNotStatementStatementSizeConstraintStatementFieldToMatchSingleQueryArgument `json:"singleQueryArgument,omitempty" tf:"single_query_argument"`
+	// +optional
+	UriPath *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementNotStatementStatementSizeConstraintStatementFieldToMatchUriPath `json:"uriPath,omitempty" tf:"uri_path"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementNotStatementStatementSizeConstraintStatementTextTransformation struct {
+	Priority *int64  `json:"priority" tf:"priority"`
+	Type     *string `json:"type" tf:"type"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementNotStatementStatementSizeConstraintStatement struct {
+	ComparisonOperator *string `json:"comparisonOperator" tf:"comparison_operator"`
+	// +optional
+	FieldToMatch       *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementNotStatementStatementSizeConstraintStatementFieldToMatch        `json:"fieldToMatch,omitempty" tf:"field_to_match"`
+	Size               *int64                                                                                                                                                  `json:"size" tf:"size"`
+	TextTransformation []WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementNotStatementStatementSizeConstraintStatementTextTransformation `json:"textTransformation" tf:"text_transformation"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementNotStatementStatementSqliMatchStatementFieldToMatchAllQueryArguments struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementNotStatementStatementSqliMatchStatementFieldToMatchBody struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementNotStatementStatementSqliMatchStatementFieldToMatchMethod struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementNotStatementStatementSqliMatchStatementFieldToMatchQueryString struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementNotStatementStatementSqliMatchStatementFieldToMatchSingleHeader struct {
+	Name *string `json:"name" tf:"name"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementNotStatementStatementSqliMatchStatementFieldToMatchSingleQueryArgument struct {
+	Name *string `json:"name" tf:"name"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementNotStatementStatementSqliMatchStatementFieldToMatchUriPath struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementNotStatementStatementSqliMatchStatementFieldToMatch struct {
+	// +optional
+	AllQueryArguments *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementNotStatementStatementSqliMatchStatementFieldToMatchAllQueryArguments `json:"allQueryArguments,omitempty" tf:"all_query_arguments"`
+	// +optional
+	Body *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementNotStatementStatementSqliMatchStatementFieldToMatchBody `json:"body,omitempty" tf:"body"`
+	// +optional
+	Method *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementNotStatementStatementSqliMatchStatementFieldToMatchMethod `json:"method,omitempty" tf:"method"`
+	// +optional
+	QueryString *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementNotStatementStatementSqliMatchStatementFieldToMatchQueryString `json:"queryString,omitempty" tf:"query_string"`
+	// +optional
+	SingleHeader *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementNotStatementStatementSqliMatchStatementFieldToMatchSingleHeader `json:"singleHeader,omitempty" tf:"single_header"`
+	// +optional
+	SingleQueryArgument *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementNotStatementStatementSqliMatchStatementFieldToMatchSingleQueryArgument `json:"singleQueryArgument,omitempty" tf:"single_query_argument"`
+	// +optional
+	UriPath *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementNotStatementStatementSqliMatchStatementFieldToMatchUriPath `json:"uriPath,omitempty" tf:"uri_path"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementNotStatementStatementSqliMatchStatementTextTransformation struct {
+	Priority *int64  `json:"priority" tf:"priority"`
+	Type     *string `json:"type" tf:"type"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementNotStatementStatementSqliMatchStatement struct {
+	// +optional
+	FieldToMatch       *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementNotStatementStatementSqliMatchStatementFieldToMatch        `json:"fieldToMatch,omitempty" tf:"field_to_match"`
+	TextTransformation []WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementNotStatementStatementSqliMatchStatementTextTransformation `json:"textTransformation" tf:"text_transformation"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementNotStatementStatementXssMatchStatementFieldToMatchAllQueryArguments struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementNotStatementStatementXssMatchStatementFieldToMatchBody struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementNotStatementStatementXssMatchStatementFieldToMatchMethod struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementNotStatementStatementXssMatchStatementFieldToMatchQueryString struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementNotStatementStatementXssMatchStatementFieldToMatchSingleHeader struct {
+	Name *string `json:"name" tf:"name"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementNotStatementStatementXssMatchStatementFieldToMatchSingleQueryArgument struct {
+	Name *string `json:"name" tf:"name"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementNotStatementStatementXssMatchStatementFieldToMatchUriPath struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementNotStatementStatementXssMatchStatementFieldToMatch struct {
+	// +optional
+	AllQueryArguments *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementNotStatementStatementXssMatchStatementFieldToMatchAllQueryArguments `json:"allQueryArguments,omitempty" tf:"all_query_arguments"`
+	// +optional
+	Body *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementNotStatementStatementXssMatchStatementFieldToMatchBody `json:"body,omitempty" tf:"body"`
+	// +optional
+	Method *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementNotStatementStatementXssMatchStatementFieldToMatchMethod `json:"method,omitempty" tf:"method"`
+	// +optional
+	QueryString *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementNotStatementStatementXssMatchStatementFieldToMatchQueryString `json:"queryString,omitempty" tf:"query_string"`
+	// +optional
+	SingleHeader *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementNotStatementStatementXssMatchStatementFieldToMatchSingleHeader `json:"singleHeader,omitempty" tf:"single_header"`
+	// +optional
+	SingleQueryArgument *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementNotStatementStatementXssMatchStatementFieldToMatchSingleQueryArgument `json:"singleQueryArgument,omitempty" tf:"single_query_argument"`
+	// +optional
+	UriPath *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementNotStatementStatementXssMatchStatementFieldToMatchUriPath `json:"uriPath,omitempty" tf:"uri_path"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementNotStatementStatementXssMatchStatementTextTransformation struct {
+	Priority *int64  `json:"priority" tf:"priority"`
+	Type     *string `json:"type" tf:"type"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementNotStatementStatementXssMatchStatement struct {
+	// +optional
+	FieldToMatch       *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementNotStatementStatementXssMatchStatementFieldToMatch        `json:"fieldToMatch,omitempty" tf:"field_to_match"`
+	TextTransformation []WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementNotStatementStatementXssMatchStatementTextTransformation `json:"textTransformation" tf:"text_transformation"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementNotStatementStatement struct {
+	// +optional
+	ByteMatchStatement *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementNotStatementStatementByteMatchStatement `json:"byteMatchStatement,omitempty" tf:"byte_match_statement"`
+	// +optional
+	GeoMatchStatement *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementNotStatementStatementGeoMatchStatement `json:"geoMatchStatement,omitempty" tf:"geo_match_statement"`
+	// +optional
+	IpSetReferenceStatement *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementNotStatementStatementIpSetReferenceStatement `json:"ipSetReferenceStatement,omitempty" tf:"ip_set_reference_statement"`
+	// +optional
+	LabelMatchStatement *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementNotStatementStatementLabelMatchStatement `json:"labelMatchStatement,omitempty" tf:"label_match_statement"`
+	// +optional
+	RegexPatternSetReferenceStatement *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementNotStatementStatementRegexPatternSetReferenceStatement `json:"regexPatternSetReferenceStatement,omitempty" tf:"regex_pattern_set_reference_statement"`
+	// +optional
+	SizeConstraintStatement *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementNotStatementStatementSizeConstraintStatement `json:"sizeConstraintStatement,omitempty" tf:"size_constraint_statement"`
+	// +optional
+	SqliMatchStatement *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementNotStatementStatementSqliMatchStatement `json:"sqliMatchStatement,omitempty" tf:"sqli_match_statement"`
+	// +optional
+	XssMatchStatement *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementNotStatementStatementXssMatchStatement `json:"xssMatchStatement,omitempty" tf:"xss_match_statement"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementNotStatement struct {
+	Statement []WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementNotStatementStatement `json:"statement" tf:"statement"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementOrStatementStatementByteMatchStatementFieldToMatchAllQueryArguments struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementOrStatementStatementByteMatchStatementFieldToMatchBody struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementOrStatementStatementByteMatchStatementFieldToMatchMethod struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementOrStatementStatementByteMatchStatementFieldToMatchQueryString struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementOrStatementStatementByteMatchStatementFieldToMatchSingleHeader struct {
+	Name *string `json:"name" tf:"name"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementOrStatementStatementByteMatchStatementFieldToMatchSingleQueryArgument struct {
+	Name *string `json:"name" tf:"name"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementOrStatementStatementByteMatchStatementFieldToMatchUriPath struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementOrStatementStatementByteMatchStatementFieldToMatch struct {
+	// +optional
+	AllQueryArguments *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementOrStatementStatementByteMatchStatementFieldToMatchAllQueryArguments `json:"allQueryArguments,omitempty" tf:"all_query_arguments"`
+	// +optional
+	Body *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementOrStatementStatementByteMatchStatementFieldToMatchBody `json:"body,omitempty" tf:"body"`
+	// +optional
+	Method *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementOrStatementStatementByteMatchStatementFieldToMatchMethod `json:"method,omitempty" tf:"method"`
+	// +optional
+	QueryString *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementOrStatementStatementByteMatchStatementFieldToMatchQueryString `json:"queryString,omitempty" tf:"query_string"`
+	// +optional
+	SingleHeader *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementOrStatementStatementByteMatchStatementFieldToMatchSingleHeader `json:"singleHeader,omitempty" tf:"single_header"`
+	// +optional
+	SingleQueryArgument *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementOrStatementStatementByteMatchStatementFieldToMatchSingleQueryArgument `json:"singleQueryArgument,omitempty" tf:"single_query_argument"`
+	// +optional
+	UriPath *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementOrStatementStatementByteMatchStatementFieldToMatchUriPath `json:"uriPath,omitempty" tf:"uri_path"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementOrStatementStatementByteMatchStatementTextTransformation struct {
+	Priority *int64  `json:"priority" tf:"priority"`
+	Type     *string `json:"type" tf:"type"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementOrStatementStatementByteMatchStatement struct {
+	// +optional
+	FieldToMatch         *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementOrStatementStatementByteMatchStatementFieldToMatch        `json:"fieldToMatch,omitempty" tf:"field_to_match"`
+	PositionalConstraint *string                                                                                                                                           `json:"positionalConstraint" tf:"positional_constraint"`
+	SearchString         *string                                                                                                                                           `json:"searchString" tf:"search_string"`
+	TextTransformation   []WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementOrStatementStatementByteMatchStatementTextTransformation `json:"textTransformation" tf:"text_transformation"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementOrStatementStatementGeoMatchStatementForwardedIPConfig struct {
+	FallbackBehavior *string `json:"fallbackBehavior" tf:"fallback_behavior"`
+	HeaderName       *string `json:"headerName" tf:"header_name"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementOrStatementStatementGeoMatchStatement struct {
+	// +kubebuilder:validation:MinItems=1
+	CountryCodes []string `json:"countryCodes" tf:"country_codes"`
+	// +optional
+	ForwardedIPConfig *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementOrStatementStatementGeoMatchStatementForwardedIPConfig `json:"forwardedIPConfig,omitempty" tf:"forwarded_ip_config"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementOrStatementStatementIpSetReferenceStatementIpSetForwardedIPConfig struct {
+	FallbackBehavior *string `json:"fallbackBehavior" tf:"fallback_behavior"`
+	HeaderName       *string `json:"headerName" tf:"header_name"`
+	Position         *string `json:"position" tf:"position"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementOrStatementStatementIpSetReferenceStatement struct {
+	Arn *string `json:"arn" tf:"arn"`
+	// +optional
+	IpSetForwardedIPConfig *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementOrStatementStatementIpSetReferenceStatementIpSetForwardedIPConfig `json:"ipSetForwardedIPConfig,omitempty" tf:"ip_set_forwarded_ip_config"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementOrStatementStatementLabelMatchStatement struct {
+	Key   *string `json:"key" tf:"key"`
+	Scope *string `json:"scope" tf:"scope"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementOrStatementStatementRegexPatternSetReferenceStatementFieldToMatchAllQueryArguments struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementOrStatementStatementRegexPatternSetReferenceStatementFieldToMatchBody struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementOrStatementStatementRegexPatternSetReferenceStatementFieldToMatchMethod struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementOrStatementStatementRegexPatternSetReferenceStatementFieldToMatchQueryString struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementOrStatementStatementRegexPatternSetReferenceStatementFieldToMatchSingleHeader struct {
+	Name *string `json:"name" tf:"name"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementOrStatementStatementRegexPatternSetReferenceStatementFieldToMatchSingleQueryArgument struct {
+	Name *string `json:"name" tf:"name"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementOrStatementStatementRegexPatternSetReferenceStatementFieldToMatchUriPath struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementOrStatementStatementRegexPatternSetReferenceStatementFieldToMatch struct {
+	// +optional
+	AllQueryArguments *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementOrStatementStatementRegexPatternSetReferenceStatementFieldToMatchAllQueryArguments `json:"allQueryArguments,omitempty" tf:"all_query_arguments"`
+	// +optional
+	Body *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementOrStatementStatementRegexPatternSetReferenceStatementFieldToMatchBody `json:"body,omitempty" tf:"body"`
+	// +optional
+	Method *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementOrStatementStatementRegexPatternSetReferenceStatementFieldToMatchMethod `json:"method,omitempty" tf:"method"`
+	// +optional
+	QueryString *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementOrStatementStatementRegexPatternSetReferenceStatementFieldToMatchQueryString `json:"queryString,omitempty" tf:"query_string"`
+	// +optional
+	SingleHeader *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementOrStatementStatementRegexPatternSetReferenceStatementFieldToMatchSingleHeader `json:"singleHeader,omitempty" tf:"single_header"`
+	// +optional
+	SingleQueryArgument *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementOrStatementStatementRegexPatternSetReferenceStatementFieldToMatchSingleQueryArgument `json:"singleQueryArgument,omitempty" tf:"single_query_argument"`
+	// +optional
+	UriPath *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementOrStatementStatementRegexPatternSetReferenceStatementFieldToMatchUriPath `json:"uriPath,omitempty" tf:"uri_path"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementOrStatementStatementRegexPatternSetReferenceStatementTextTransformation struct {
+	Priority *int64  `json:"priority" tf:"priority"`
+	Type     *string `json:"type" tf:"type"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementOrStatementStatementRegexPatternSetReferenceStatement struct {
+	Arn *string `json:"arn" tf:"arn"`
+	// +optional
+	FieldToMatch       *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementOrStatementStatementRegexPatternSetReferenceStatementFieldToMatch        `json:"fieldToMatch,omitempty" tf:"field_to_match"`
+	TextTransformation []WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementOrStatementStatementRegexPatternSetReferenceStatementTextTransformation `json:"textTransformation" tf:"text_transformation"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementOrStatementStatementSizeConstraintStatementFieldToMatchAllQueryArguments struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementOrStatementStatementSizeConstraintStatementFieldToMatchBody struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementOrStatementStatementSizeConstraintStatementFieldToMatchMethod struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementOrStatementStatementSizeConstraintStatementFieldToMatchQueryString struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementOrStatementStatementSizeConstraintStatementFieldToMatchSingleHeader struct {
+	Name *string `json:"name" tf:"name"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementOrStatementStatementSizeConstraintStatementFieldToMatchSingleQueryArgument struct {
+	Name *string `json:"name" tf:"name"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementOrStatementStatementSizeConstraintStatementFieldToMatchUriPath struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementOrStatementStatementSizeConstraintStatementFieldToMatch struct {
+	// +optional
+	AllQueryArguments *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementOrStatementStatementSizeConstraintStatementFieldToMatchAllQueryArguments `json:"allQueryArguments,omitempty" tf:"all_query_arguments"`
+	// +optional
+	Body *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementOrStatementStatementSizeConstraintStatementFieldToMatchBody `json:"body,omitempty" tf:"body"`
+	// +optional
+	Method *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementOrStatementStatementSizeConstraintStatementFieldToMatchMethod `json:"method,omitempty" tf:"method"`
+	// +optional
+	QueryString *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementOrStatementStatementSizeConstraintStatementFieldToMatchQueryString `json:"queryString,omitempty" tf:"query_string"`
+	// +optional
+	SingleHeader *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementOrStatementStatementSizeConstraintStatementFieldToMatchSingleHeader `json:"singleHeader,omitempty" tf:"single_header"`
+	// +optional
+	SingleQueryArgument *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementOrStatementStatementSizeConstraintStatementFieldToMatchSingleQueryArgument `json:"singleQueryArgument,omitempty" tf:"single_query_argument"`
+	// +optional
+	UriPath *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementOrStatementStatementSizeConstraintStatementFieldToMatchUriPath `json:"uriPath,omitempty" tf:"uri_path"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementOrStatementStatementSizeConstraintStatementTextTransformation struct {
+	Priority *int64  `json:"priority" tf:"priority"`
+	Type     *string `json:"type" tf:"type"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementOrStatementStatementSizeConstraintStatement struct {
+	ComparisonOperator *string `json:"comparisonOperator" tf:"comparison_operator"`
+	// +optional
+	FieldToMatch       *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementOrStatementStatementSizeConstraintStatementFieldToMatch        `json:"fieldToMatch,omitempty" tf:"field_to_match"`
+	Size               *int64                                                                                                                                                 `json:"size" tf:"size"`
+	TextTransformation []WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementOrStatementStatementSizeConstraintStatementTextTransformation `json:"textTransformation" tf:"text_transformation"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementOrStatementStatementSqliMatchStatementFieldToMatchAllQueryArguments struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementOrStatementStatementSqliMatchStatementFieldToMatchBody struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementOrStatementStatementSqliMatchStatementFieldToMatchMethod struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementOrStatementStatementSqliMatchStatementFieldToMatchQueryString struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementOrStatementStatementSqliMatchStatementFieldToMatchSingleHeader struct {
+	Name *string `json:"name" tf:"name"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementOrStatementStatementSqliMatchStatementFieldToMatchSingleQueryArgument struct {
+	Name *string `json:"name" tf:"name"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementOrStatementStatementSqliMatchStatementFieldToMatchUriPath struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementOrStatementStatementSqliMatchStatementFieldToMatch struct {
+	// +optional
+	AllQueryArguments *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementOrStatementStatementSqliMatchStatementFieldToMatchAllQueryArguments `json:"allQueryArguments,omitempty" tf:"all_query_arguments"`
+	// +optional
+	Body *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementOrStatementStatementSqliMatchStatementFieldToMatchBody `json:"body,omitempty" tf:"body"`
+	// +optional
+	Method *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementOrStatementStatementSqliMatchStatementFieldToMatchMethod `json:"method,omitempty" tf:"method"`
+	// +optional
+	QueryString *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementOrStatementStatementSqliMatchStatementFieldToMatchQueryString `json:"queryString,omitempty" tf:"query_string"`
+	// +optional
+	SingleHeader *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementOrStatementStatementSqliMatchStatementFieldToMatchSingleHeader `json:"singleHeader,omitempty" tf:"single_header"`
+	// +optional
+	SingleQueryArgument *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementOrStatementStatementSqliMatchStatementFieldToMatchSingleQueryArgument `json:"singleQueryArgument,omitempty" tf:"single_query_argument"`
+	// +optional
+	UriPath *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementOrStatementStatementSqliMatchStatementFieldToMatchUriPath `json:"uriPath,omitempty" tf:"uri_path"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementOrStatementStatementSqliMatchStatementTextTransformation struct {
+	Priority *int64  `json:"priority" tf:"priority"`
+	Type     *string `json:"type" tf:"type"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementOrStatementStatementSqliMatchStatement struct {
+	// +optional
+	FieldToMatch       *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementOrStatementStatementSqliMatchStatementFieldToMatch        `json:"fieldToMatch,omitempty" tf:"field_to_match"`
+	TextTransformation []WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementOrStatementStatementSqliMatchStatementTextTransformation `json:"textTransformation" tf:"text_transformation"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementOrStatementStatementXssMatchStatementFieldToMatchAllQueryArguments struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementOrStatementStatementXssMatchStatementFieldToMatchBody struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementOrStatementStatementXssMatchStatementFieldToMatchMethod struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementOrStatementStatementXssMatchStatementFieldToMatchQueryString struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementOrStatementStatementXssMatchStatementFieldToMatchSingleHeader struct {
+	Name *string `json:"name" tf:"name"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementOrStatementStatementXssMatchStatementFieldToMatchSingleQueryArgument struct {
+	Name *string `json:"name" tf:"name"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementOrStatementStatementXssMatchStatementFieldToMatchUriPath struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementOrStatementStatementXssMatchStatementFieldToMatch struct {
+	// +optional
+	AllQueryArguments *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementOrStatementStatementXssMatchStatementFieldToMatchAllQueryArguments `json:"allQueryArguments,omitempty" tf:"all_query_arguments"`
+	// +optional
+	Body *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementOrStatementStatementXssMatchStatementFieldToMatchBody `json:"body,omitempty" tf:"body"`
+	// +optional
+	Method *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementOrStatementStatementXssMatchStatementFieldToMatchMethod `json:"method,omitempty" tf:"method"`
+	// +optional
+	QueryString *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementOrStatementStatementXssMatchStatementFieldToMatchQueryString `json:"queryString,omitempty" tf:"query_string"`
+	// +optional
+	SingleHeader *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementOrStatementStatementXssMatchStatementFieldToMatchSingleHeader `json:"singleHeader,omitempty" tf:"single_header"`
+	// +optional
+	SingleQueryArgument *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementOrStatementStatementXssMatchStatementFieldToMatchSingleQueryArgument `json:"singleQueryArgument,omitempty" tf:"single_query_argument"`
+	// +optional
+	UriPath *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementOrStatementStatementXssMatchStatementFieldToMatchUriPath `json:"uriPath,omitempty" tf:"uri_path"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementOrStatementStatementXssMatchStatementTextTransformation struct {
+	Priority *int64  `json:"priority" tf:"priority"`
+	Type     *string `json:"type" tf:"type"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementOrStatementStatementXssMatchStatement struct {
+	// +optional
+	FieldToMatch       *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementOrStatementStatementXssMatchStatementFieldToMatch        `json:"fieldToMatch,omitempty" tf:"field_to_match"`
+	TextTransformation []WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementOrStatementStatementXssMatchStatementTextTransformation `json:"textTransformation" tf:"text_transformation"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementOrStatementStatement struct {
+	// +optional
+	ByteMatchStatement *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementOrStatementStatementByteMatchStatement `json:"byteMatchStatement,omitempty" tf:"byte_match_statement"`
+	// +optional
+	GeoMatchStatement *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementOrStatementStatementGeoMatchStatement `json:"geoMatchStatement,omitempty" tf:"geo_match_statement"`
+	// +optional
+	IpSetReferenceStatement *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementOrStatementStatementIpSetReferenceStatement `json:"ipSetReferenceStatement,omitempty" tf:"ip_set_reference_statement"`
+	// +optional
+	LabelMatchStatement *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementOrStatementStatementLabelMatchStatement `json:"labelMatchStatement,omitempty" tf:"label_match_statement"`
+	// +optional
+	RegexPatternSetReferenceStatement *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementOrStatementStatementRegexPatternSetReferenceStatement `json:"regexPatternSetReferenceStatement,omitempty" tf:"regex_pattern_set_reference_statement"`
+	// +optional
+	SizeConstraintStatement *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementOrStatementStatementSizeConstraintStatement `json:"sizeConstraintStatement,omitempty" tf:"size_constraint_statement"`
+	// +optional
+	SqliMatchStatement *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementOrStatementStatementSqliMatchStatement `json:"sqliMatchStatement,omitempty" tf:"sqli_match_statement"`
+	// +optional
+	XssMatchStatement *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementOrStatementStatementXssMatchStatement `json:"xssMatchStatement,omitempty" tf:"xss_match_statement"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementOrStatement struct {
+	Statement []WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementOrStatementStatement `json:"statement" tf:"statement"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementRegexPatternSetReferenceStatementFieldToMatchAllQueryArguments struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementRegexPatternSetReferenceStatementFieldToMatchBody struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementRegexPatternSetReferenceStatementFieldToMatchMethod struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementRegexPatternSetReferenceStatementFieldToMatchQueryString struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementRegexPatternSetReferenceStatementFieldToMatchSingleHeader struct {
+	Name *string `json:"name" tf:"name"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementRegexPatternSetReferenceStatementFieldToMatchSingleQueryArgument struct {
+	Name *string `json:"name" tf:"name"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementRegexPatternSetReferenceStatementFieldToMatchUriPath struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementRegexPatternSetReferenceStatementFieldToMatch struct {
+	// +optional
+	AllQueryArguments *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementRegexPatternSetReferenceStatementFieldToMatchAllQueryArguments `json:"allQueryArguments,omitempty" tf:"all_query_arguments"`
+	// +optional
+	Body *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementRegexPatternSetReferenceStatementFieldToMatchBody `json:"body,omitempty" tf:"body"`
+	// +optional
+	Method *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementRegexPatternSetReferenceStatementFieldToMatchMethod `json:"method,omitempty" tf:"method"`
+	// +optional
+	QueryString *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementRegexPatternSetReferenceStatementFieldToMatchQueryString `json:"queryString,omitempty" tf:"query_string"`
+	// +optional
+	SingleHeader *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementRegexPatternSetReferenceStatementFieldToMatchSingleHeader `json:"singleHeader,omitempty" tf:"single_header"`
+	// +optional
+	SingleQueryArgument *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementRegexPatternSetReferenceStatementFieldToMatchSingleQueryArgument `json:"singleQueryArgument,omitempty" tf:"single_query_argument"`
+	// +optional
+	UriPath *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementRegexPatternSetReferenceStatementFieldToMatchUriPath `json:"uriPath,omitempty" tf:"uri_path"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementRegexPatternSetReferenceStatementTextTransformation struct {
+	Priority *int64  `json:"priority" tf:"priority"`
+	Type     *string `json:"type" tf:"type"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementRegexPatternSetReferenceStatement struct {
+	Arn *string `json:"arn" tf:"arn"`
+	// +optional
+	FieldToMatch       *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementRegexPatternSetReferenceStatementFieldToMatch        `json:"fieldToMatch,omitempty" tf:"field_to_match"`
+	TextTransformation []WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementRegexPatternSetReferenceStatementTextTransformation `json:"textTransformation" tf:"text_transformation"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementSizeConstraintStatementFieldToMatchAllQueryArguments struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementSizeConstraintStatementFieldToMatchBody struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementSizeConstraintStatementFieldToMatchMethod struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementSizeConstraintStatementFieldToMatchQueryString struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementSizeConstraintStatementFieldToMatchSingleHeader struct {
+	Name *string `json:"name" tf:"name"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementSizeConstraintStatementFieldToMatchSingleQueryArgument struct {
+	Name *string `json:"name" tf:"name"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementSizeConstraintStatementFieldToMatchUriPath struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementSizeConstraintStatementFieldToMatch struct {
+	// +optional
+	AllQueryArguments *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementSizeConstraintStatementFieldToMatchAllQueryArguments `json:"allQueryArguments,omitempty" tf:"all_query_arguments"`
+	// +optional
+	Body *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementSizeConstraintStatementFieldToMatchBody `json:"body,omitempty" tf:"body"`
+	// +optional
+	Method *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementSizeConstraintStatementFieldToMatchMethod `json:"method,omitempty" tf:"method"`
+	// +optional
+	QueryString *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementSizeConstraintStatementFieldToMatchQueryString `json:"queryString,omitempty" tf:"query_string"`
+	// +optional
+	SingleHeader *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementSizeConstraintStatementFieldToMatchSingleHeader `json:"singleHeader,omitempty" tf:"single_header"`
+	// +optional
+	SingleQueryArgument *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementSizeConstraintStatementFieldToMatchSingleQueryArgument `json:"singleQueryArgument,omitempty" tf:"single_query_argument"`
+	// +optional
+	UriPath *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementSizeConstraintStatementFieldToMatchUriPath `json:"uriPath,omitempty" tf:"uri_path"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementSizeConstraintStatementTextTransformation struct {
+	Priority *int64  `json:"priority" tf:"priority"`
+	Type     *string `json:"type" tf:"type"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementSizeConstraintStatement struct {
+	ComparisonOperator *string `json:"comparisonOperator" tf:"comparison_operator"`
+	// +optional
+	FieldToMatch       *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementSizeConstraintStatementFieldToMatch        `json:"fieldToMatch,omitempty" tf:"field_to_match"`
+	Size               *int64                                                                                                                             `json:"size" tf:"size"`
+	TextTransformation []WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementSizeConstraintStatementTextTransformation `json:"textTransformation" tf:"text_transformation"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementSqliMatchStatementFieldToMatchAllQueryArguments struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementSqliMatchStatementFieldToMatchBody struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementSqliMatchStatementFieldToMatchMethod struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementSqliMatchStatementFieldToMatchQueryString struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementSqliMatchStatementFieldToMatchSingleHeader struct {
+	Name *string `json:"name" tf:"name"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementSqliMatchStatementFieldToMatchSingleQueryArgument struct {
+	Name *string `json:"name" tf:"name"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementSqliMatchStatementFieldToMatchUriPath struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementSqliMatchStatementFieldToMatch struct {
+	// +optional
+	AllQueryArguments *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementSqliMatchStatementFieldToMatchAllQueryArguments `json:"allQueryArguments,omitempty" tf:"all_query_arguments"`
+	// +optional
+	Body *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementSqliMatchStatementFieldToMatchBody `json:"body,omitempty" tf:"body"`
+	// +optional
+	Method *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementSqliMatchStatementFieldToMatchMethod `json:"method,omitempty" tf:"method"`
+	// +optional
+	QueryString *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementSqliMatchStatementFieldToMatchQueryString `json:"queryString,omitempty" tf:"query_string"`
+	// +optional
+	SingleHeader *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementSqliMatchStatementFieldToMatchSingleHeader `json:"singleHeader,omitempty" tf:"single_header"`
+	// +optional
+	SingleQueryArgument *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementSqliMatchStatementFieldToMatchSingleQueryArgument `json:"singleQueryArgument,omitempty" tf:"single_query_argument"`
+	// +optional
+	UriPath *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementSqliMatchStatementFieldToMatchUriPath `json:"uriPath,omitempty" tf:"uri_path"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementSqliMatchStatementTextTransformation struct {
+	Priority *int64  `json:"priority" tf:"priority"`
+	Type     *string `json:"type" tf:"type"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementSqliMatchStatement struct {
+	// +optional
+	FieldToMatch       *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementSqliMatchStatementFieldToMatch        `json:"fieldToMatch,omitempty" tf:"field_to_match"`
+	TextTransformation []WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementSqliMatchStatementTextTransformation `json:"textTransformation" tf:"text_transformation"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementXssMatchStatementFieldToMatchAllQueryArguments struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementXssMatchStatementFieldToMatchBody struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementXssMatchStatementFieldToMatchMethod struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementXssMatchStatementFieldToMatchQueryString struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementXssMatchStatementFieldToMatchSingleHeader struct {
+	Name *string `json:"name" tf:"name"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementXssMatchStatementFieldToMatchSingleQueryArgument struct {
+	Name *string `json:"name" tf:"name"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementXssMatchStatementFieldToMatchUriPath struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementXssMatchStatementFieldToMatch struct {
+	// +optional
+	AllQueryArguments *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementXssMatchStatementFieldToMatchAllQueryArguments `json:"allQueryArguments,omitempty" tf:"all_query_arguments"`
+	// +optional
+	Body *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementXssMatchStatementFieldToMatchBody `json:"body,omitempty" tf:"body"`
+	// +optional
+	Method *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementXssMatchStatementFieldToMatchMethod `json:"method,omitempty" tf:"method"`
+	// +optional
+	QueryString *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementXssMatchStatementFieldToMatchQueryString `json:"queryString,omitempty" tf:"query_string"`
+	// +optional
+	SingleHeader *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementXssMatchStatementFieldToMatchSingleHeader `json:"singleHeader,omitempty" tf:"single_header"`
+	// +optional
+	SingleQueryArgument *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementXssMatchStatementFieldToMatchSingleQueryArgument `json:"singleQueryArgument,omitempty" tf:"single_query_argument"`
+	// +optional
+	UriPath *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementXssMatchStatementFieldToMatchUriPath `json:"uriPath,omitempty" tf:"uri_path"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementXssMatchStatementTextTransformation struct {
+	Priority *int64  `json:"priority" tf:"priority"`
+	Type     *string `json:"type" tf:"type"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementXssMatchStatement struct {
+	// +optional
+	FieldToMatch       *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementXssMatchStatementFieldToMatch        `json:"fieldToMatch,omitempty" tf:"field_to_match"`
+	TextTransformation []WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementXssMatchStatementTextTransformation `json:"textTransformation" tf:"text_transformation"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatement struct {
+	// +optional
+	AndStatement *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementAndStatement `json:"andStatement,omitempty" tf:"and_statement"`
+	// +optional
+	ByteMatchStatement *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementByteMatchStatement `json:"byteMatchStatement,omitempty" tf:"byte_match_statement"`
+	// +optional
+	GeoMatchStatement *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementGeoMatchStatement `json:"geoMatchStatement,omitempty" tf:"geo_match_statement"`
+	// +optional
+	IpSetReferenceStatement *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementIpSetReferenceStatement `json:"ipSetReferenceStatement,omitempty" tf:"ip_set_reference_statement"`
+	// +optional
+	LabelMatchStatement *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementLabelMatchStatement `json:"labelMatchStatement,omitempty" tf:"label_match_statement"`
+	// +optional
+	NotStatement *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementNotStatement `json:"notStatement,omitempty" tf:"not_statement"`
+	// +optional
+	OrStatement *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementOrStatement `json:"orStatement,omitempty" tf:"or_statement"`
+	// +optional
+	RegexPatternSetReferenceStatement *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementRegexPatternSetReferenceStatement `json:"regexPatternSetReferenceStatement,omitempty" tf:"regex_pattern_set_reference_statement"`
+	// +optional
+	SizeConstraintStatement *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementSizeConstraintStatement `json:"sizeConstraintStatement,omitempty" tf:"size_constraint_statement"`
+	// +optional
+	SqliMatchStatement *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementSqliMatchStatement `json:"sqliMatchStatement,omitempty" tf:"sqli_match_statement"`
+	// +optional
+	XssMatchStatement *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatementXssMatchStatement `json:"xssMatchStatement,omitempty" tf:"xss_match_statement"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatement struct {
+	Statement []WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatementStatement `json:"statement" tf:"statement"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementAndStatementStatementByteMatchStatementFieldToMatchAllQueryArguments struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementAndStatementStatementByteMatchStatementFieldToMatchBody struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementAndStatementStatementByteMatchStatementFieldToMatchMethod struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementAndStatementStatementByteMatchStatementFieldToMatchQueryString struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementAndStatementStatementByteMatchStatementFieldToMatchSingleHeader struct {
+	Name *string `json:"name" tf:"name"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementAndStatementStatementByteMatchStatementFieldToMatchSingleQueryArgument struct {
+	Name *string `json:"name" tf:"name"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementAndStatementStatementByteMatchStatementFieldToMatchUriPath struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementAndStatementStatementByteMatchStatementFieldToMatch struct {
+	// +optional
+	AllQueryArguments *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementAndStatementStatementByteMatchStatementFieldToMatchAllQueryArguments `json:"allQueryArguments,omitempty" tf:"all_query_arguments"`
+	// +optional
+	Body *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementAndStatementStatementByteMatchStatementFieldToMatchBody `json:"body,omitempty" tf:"body"`
+	// +optional
+	Method *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementAndStatementStatementByteMatchStatementFieldToMatchMethod `json:"method,omitempty" tf:"method"`
+	// +optional
+	QueryString *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementAndStatementStatementByteMatchStatementFieldToMatchQueryString `json:"queryString,omitempty" tf:"query_string"`
+	// +optional
+	SingleHeader *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementAndStatementStatementByteMatchStatementFieldToMatchSingleHeader `json:"singleHeader,omitempty" tf:"single_header"`
+	// +optional
+	SingleQueryArgument *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementAndStatementStatementByteMatchStatementFieldToMatchSingleQueryArgument `json:"singleQueryArgument,omitempty" tf:"single_query_argument"`
+	// +optional
+	UriPath *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementAndStatementStatementByteMatchStatementFieldToMatchUriPath `json:"uriPath,omitempty" tf:"uri_path"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementAndStatementStatementByteMatchStatementTextTransformation struct {
+	Priority *int64  `json:"priority" tf:"priority"`
+	Type     *string `json:"type" tf:"type"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementAndStatementStatementByteMatchStatement struct {
+	// +optional
+	FieldToMatch         *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementAndStatementStatementByteMatchStatementFieldToMatch        `json:"fieldToMatch,omitempty" tf:"field_to_match"`
+	PositionalConstraint *string                                                                                                                                           `json:"positionalConstraint" tf:"positional_constraint"`
+	SearchString         *string                                                                                                                                           `json:"searchString" tf:"search_string"`
+	TextTransformation   []WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementAndStatementStatementByteMatchStatementTextTransformation `json:"textTransformation" tf:"text_transformation"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementAndStatementStatementGeoMatchStatementForwardedIPConfig struct {
+	FallbackBehavior *string `json:"fallbackBehavior" tf:"fallback_behavior"`
+	HeaderName       *string `json:"headerName" tf:"header_name"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementAndStatementStatementGeoMatchStatement struct {
+	// +kubebuilder:validation:MinItems=1
+	CountryCodes []string `json:"countryCodes" tf:"country_codes"`
+	// +optional
+	ForwardedIPConfig *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementAndStatementStatementGeoMatchStatementForwardedIPConfig `json:"forwardedIPConfig,omitempty" tf:"forwarded_ip_config"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementAndStatementStatementIpSetReferenceStatementIpSetForwardedIPConfig struct {
+	FallbackBehavior *string `json:"fallbackBehavior" tf:"fallback_behavior"`
+	HeaderName       *string `json:"headerName" tf:"header_name"`
+	Position         *string `json:"position" tf:"position"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementAndStatementStatementIpSetReferenceStatement struct {
+	Arn *string `json:"arn" tf:"arn"`
+	// +optional
+	IpSetForwardedIPConfig *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementAndStatementStatementIpSetReferenceStatementIpSetForwardedIPConfig `json:"ipSetForwardedIPConfig,omitempty" tf:"ip_set_forwarded_ip_config"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementAndStatementStatementLabelMatchStatement struct {
+	Key   *string `json:"key" tf:"key"`
+	Scope *string `json:"scope" tf:"scope"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementAndStatementStatementRegexPatternSetReferenceStatementFieldToMatchAllQueryArguments struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementAndStatementStatementRegexPatternSetReferenceStatementFieldToMatchBody struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementAndStatementStatementRegexPatternSetReferenceStatementFieldToMatchMethod struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementAndStatementStatementRegexPatternSetReferenceStatementFieldToMatchQueryString struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementAndStatementStatementRegexPatternSetReferenceStatementFieldToMatchSingleHeader struct {
+	Name *string `json:"name" tf:"name"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementAndStatementStatementRegexPatternSetReferenceStatementFieldToMatchSingleQueryArgument struct {
+	Name *string `json:"name" tf:"name"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementAndStatementStatementRegexPatternSetReferenceStatementFieldToMatchUriPath struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementAndStatementStatementRegexPatternSetReferenceStatementFieldToMatch struct {
+	// +optional
+	AllQueryArguments *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementAndStatementStatementRegexPatternSetReferenceStatementFieldToMatchAllQueryArguments `json:"allQueryArguments,omitempty" tf:"all_query_arguments"`
+	// +optional
+	Body *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementAndStatementStatementRegexPatternSetReferenceStatementFieldToMatchBody `json:"body,omitempty" tf:"body"`
+	// +optional
+	Method *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementAndStatementStatementRegexPatternSetReferenceStatementFieldToMatchMethod `json:"method,omitempty" tf:"method"`
+	// +optional
+	QueryString *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementAndStatementStatementRegexPatternSetReferenceStatementFieldToMatchQueryString `json:"queryString,omitempty" tf:"query_string"`
+	// +optional
+	SingleHeader *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementAndStatementStatementRegexPatternSetReferenceStatementFieldToMatchSingleHeader `json:"singleHeader,omitempty" tf:"single_header"`
+	// +optional
+	SingleQueryArgument *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementAndStatementStatementRegexPatternSetReferenceStatementFieldToMatchSingleQueryArgument `json:"singleQueryArgument,omitempty" tf:"single_query_argument"`
+	// +optional
+	UriPath *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementAndStatementStatementRegexPatternSetReferenceStatementFieldToMatchUriPath `json:"uriPath,omitempty" tf:"uri_path"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementAndStatementStatementRegexPatternSetReferenceStatementTextTransformation struct {
+	Priority *int64  `json:"priority" tf:"priority"`
+	Type     *string `json:"type" tf:"type"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementAndStatementStatementRegexPatternSetReferenceStatement struct {
+	Arn *string `json:"arn" tf:"arn"`
+	// +optional
+	FieldToMatch       *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementAndStatementStatementRegexPatternSetReferenceStatementFieldToMatch        `json:"fieldToMatch,omitempty" tf:"field_to_match"`
+	TextTransformation []WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementAndStatementStatementRegexPatternSetReferenceStatementTextTransformation `json:"textTransformation" tf:"text_transformation"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementAndStatementStatementSizeConstraintStatementFieldToMatchAllQueryArguments struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementAndStatementStatementSizeConstraintStatementFieldToMatchBody struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementAndStatementStatementSizeConstraintStatementFieldToMatchMethod struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementAndStatementStatementSizeConstraintStatementFieldToMatchQueryString struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementAndStatementStatementSizeConstraintStatementFieldToMatchSingleHeader struct {
+	Name *string `json:"name" tf:"name"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementAndStatementStatementSizeConstraintStatementFieldToMatchSingleQueryArgument struct {
+	Name *string `json:"name" tf:"name"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementAndStatementStatementSizeConstraintStatementFieldToMatchUriPath struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementAndStatementStatementSizeConstraintStatementFieldToMatch struct {
+	// +optional
+	AllQueryArguments *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementAndStatementStatementSizeConstraintStatementFieldToMatchAllQueryArguments `json:"allQueryArguments,omitempty" tf:"all_query_arguments"`
+	// +optional
+	Body *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementAndStatementStatementSizeConstraintStatementFieldToMatchBody `json:"body,omitempty" tf:"body"`
+	// +optional
+	Method *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementAndStatementStatementSizeConstraintStatementFieldToMatchMethod `json:"method,omitempty" tf:"method"`
+	// +optional
+	QueryString *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementAndStatementStatementSizeConstraintStatementFieldToMatchQueryString `json:"queryString,omitempty" tf:"query_string"`
+	// +optional
+	SingleHeader *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementAndStatementStatementSizeConstraintStatementFieldToMatchSingleHeader `json:"singleHeader,omitempty" tf:"single_header"`
+	// +optional
+	SingleQueryArgument *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementAndStatementStatementSizeConstraintStatementFieldToMatchSingleQueryArgument `json:"singleQueryArgument,omitempty" tf:"single_query_argument"`
+	// +optional
+	UriPath *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementAndStatementStatementSizeConstraintStatementFieldToMatchUriPath `json:"uriPath,omitempty" tf:"uri_path"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementAndStatementStatementSizeConstraintStatementTextTransformation struct {
+	Priority *int64  `json:"priority" tf:"priority"`
+	Type     *string `json:"type" tf:"type"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementAndStatementStatementSizeConstraintStatement struct {
+	ComparisonOperator *string `json:"comparisonOperator" tf:"comparison_operator"`
+	// +optional
+	FieldToMatch       *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementAndStatementStatementSizeConstraintStatementFieldToMatch        `json:"fieldToMatch,omitempty" tf:"field_to_match"`
+	Size               *int64                                                                                                                                                 `json:"size" tf:"size"`
+	TextTransformation []WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementAndStatementStatementSizeConstraintStatementTextTransformation `json:"textTransformation" tf:"text_transformation"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementAndStatementStatementSqliMatchStatementFieldToMatchAllQueryArguments struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementAndStatementStatementSqliMatchStatementFieldToMatchBody struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementAndStatementStatementSqliMatchStatementFieldToMatchMethod struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementAndStatementStatementSqliMatchStatementFieldToMatchQueryString struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementAndStatementStatementSqliMatchStatementFieldToMatchSingleHeader struct {
+	Name *string `json:"name" tf:"name"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementAndStatementStatementSqliMatchStatementFieldToMatchSingleQueryArgument struct {
+	Name *string `json:"name" tf:"name"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementAndStatementStatementSqliMatchStatementFieldToMatchUriPath struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementAndStatementStatementSqliMatchStatementFieldToMatch struct {
+	// +optional
+	AllQueryArguments *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementAndStatementStatementSqliMatchStatementFieldToMatchAllQueryArguments `json:"allQueryArguments,omitempty" tf:"all_query_arguments"`
+	// +optional
+	Body *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementAndStatementStatementSqliMatchStatementFieldToMatchBody `json:"body,omitempty" tf:"body"`
+	// +optional
+	Method *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementAndStatementStatementSqliMatchStatementFieldToMatchMethod `json:"method,omitempty" tf:"method"`
+	// +optional
+	QueryString *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementAndStatementStatementSqliMatchStatementFieldToMatchQueryString `json:"queryString,omitempty" tf:"query_string"`
+	// +optional
+	SingleHeader *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementAndStatementStatementSqliMatchStatementFieldToMatchSingleHeader `json:"singleHeader,omitempty" tf:"single_header"`
+	// +optional
+	SingleQueryArgument *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementAndStatementStatementSqliMatchStatementFieldToMatchSingleQueryArgument `json:"singleQueryArgument,omitempty" tf:"single_query_argument"`
+	// +optional
+	UriPath *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementAndStatementStatementSqliMatchStatementFieldToMatchUriPath `json:"uriPath,omitempty" tf:"uri_path"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementAndStatementStatementSqliMatchStatementTextTransformation struct {
+	Priority *int64  `json:"priority" tf:"priority"`
+	Type     *string `json:"type" tf:"type"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementAndStatementStatementSqliMatchStatement struct {
+	// +optional
+	FieldToMatch       *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementAndStatementStatementSqliMatchStatementFieldToMatch        `json:"fieldToMatch,omitempty" tf:"field_to_match"`
+	TextTransformation []WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementAndStatementStatementSqliMatchStatementTextTransformation `json:"textTransformation" tf:"text_transformation"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementAndStatementStatementXssMatchStatementFieldToMatchAllQueryArguments struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementAndStatementStatementXssMatchStatementFieldToMatchBody struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementAndStatementStatementXssMatchStatementFieldToMatchMethod struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementAndStatementStatementXssMatchStatementFieldToMatchQueryString struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementAndStatementStatementXssMatchStatementFieldToMatchSingleHeader struct {
+	Name *string `json:"name" tf:"name"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementAndStatementStatementXssMatchStatementFieldToMatchSingleQueryArgument struct {
+	Name *string `json:"name" tf:"name"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementAndStatementStatementXssMatchStatementFieldToMatchUriPath struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementAndStatementStatementXssMatchStatementFieldToMatch struct {
+	// +optional
+	AllQueryArguments *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementAndStatementStatementXssMatchStatementFieldToMatchAllQueryArguments `json:"allQueryArguments,omitempty" tf:"all_query_arguments"`
+	// +optional
+	Body *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementAndStatementStatementXssMatchStatementFieldToMatchBody `json:"body,omitempty" tf:"body"`
+	// +optional
+	Method *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementAndStatementStatementXssMatchStatementFieldToMatchMethod `json:"method,omitempty" tf:"method"`
+	// +optional
+	QueryString *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementAndStatementStatementXssMatchStatementFieldToMatchQueryString `json:"queryString,omitempty" tf:"query_string"`
+	// +optional
+	SingleHeader *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementAndStatementStatementXssMatchStatementFieldToMatchSingleHeader `json:"singleHeader,omitempty" tf:"single_header"`
+	// +optional
+	SingleQueryArgument *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementAndStatementStatementXssMatchStatementFieldToMatchSingleQueryArgument `json:"singleQueryArgument,omitempty" tf:"single_query_argument"`
+	// +optional
+	UriPath *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementAndStatementStatementXssMatchStatementFieldToMatchUriPath `json:"uriPath,omitempty" tf:"uri_path"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementAndStatementStatementXssMatchStatementTextTransformation struct {
+	Priority *int64  `json:"priority" tf:"priority"`
+	Type     *string `json:"type" tf:"type"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementAndStatementStatementXssMatchStatement struct {
+	// +optional
+	FieldToMatch       *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementAndStatementStatementXssMatchStatementFieldToMatch        `json:"fieldToMatch,omitempty" tf:"field_to_match"`
+	TextTransformation []WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementAndStatementStatementXssMatchStatementTextTransformation `json:"textTransformation" tf:"text_transformation"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementAndStatementStatement struct {
+	// +optional
+	ByteMatchStatement *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementAndStatementStatementByteMatchStatement `json:"byteMatchStatement,omitempty" tf:"byte_match_statement"`
+	// +optional
+	GeoMatchStatement *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementAndStatementStatementGeoMatchStatement `json:"geoMatchStatement,omitempty" tf:"geo_match_statement"`
+	// +optional
+	IpSetReferenceStatement *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementAndStatementStatementIpSetReferenceStatement `json:"ipSetReferenceStatement,omitempty" tf:"ip_set_reference_statement"`
+	// +optional
+	LabelMatchStatement *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementAndStatementStatementLabelMatchStatement `json:"labelMatchStatement,omitempty" tf:"label_match_statement"`
+	// +optional
+	RegexPatternSetReferenceStatement *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementAndStatementStatementRegexPatternSetReferenceStatement `json:"regexPatternSetReferenceStatement,omitempty" tf:"regex_pattern_set_reference_statement"`
+	// +optional
+	SizeConstraintStatement *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementAndStatementStatementSizeConstraintStatement `json:"sizeConstraintStatement,omitempty" tf:"size_constraint_statement"`
+	// +optional
+	SqliMatchStatement *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementAndStatementStatementSqliMatchStatement `json:"sqliMatchStatement,omitempty" tf:"sqli_match_statement"`
+	// +optional
+	XssMatchStatement *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementAndStatementStatementXssMatchStatement `json:"xssMatchStatement,omitempty" tf:"xss_match_statement"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementAndStatement struct {
+	Statement []WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementAndStatementStatement `json:"statement" tf:"statement"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementByteMatchStatementFieldToMatchAllQueryArguments struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementByteMatchStatementFieldToMatchBody struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementByteMatchStatementFieldToMatchMethod struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementByteMatchStatementFieldToMatchQueryString struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementByteMatchStatementFieldToMatchSingleHeader struct {
+	Name *string `json:"name" tf:"name"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementByteMatchStatementFieldToMatchSingleQueryArgument struct {
+	Name *string `json:"name" tf:"name"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementByteMatchStatementFieldToMatchUriPath struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementByteMatchStatementFieldToMatch struct {
+	// +optional
+	AllQueryArguments *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementByteMatchStatementFieldToMatchAllQueryArguments `json:"allQueryArguments,omitempty" tf:"all_query_arguments"`
+	// +optional
+	Body *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementByteMatchStatementFieldToMatchBody `json:"body,omitempty" tf:"body"`
+	// +optional
+	Method *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementByteMatchStatementFieldToMatchMethod `json:"method,omitempty" tf:"method"`
+	// +optional
+	QueryString *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementByteMatchStatementFieldToMatchQueryString `json:"queryString,omitempty" tf:"query_string"`
+	// +optional
+	SingleHeader *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementByteMatchStatementFieldToMatchSingleHeader `json:"singleHeader,omitempty" tf:"single_header"`
+	// +optional
+	SingleQueryArgument *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementByteMatchStatementFieldToMatchSingleQueryArgument `json:"singleQueryArgument,omitempty" tf:"single_query_argument"`
+	// +optional
+	UriPath *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementByteMatchStatementFieldToMatchUriPath `json:"uriPath,omitempty" tf:"uri_path"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementByteMatchStatementTextTransformation struct {
+	Priority *int64  `json:"priority" tf:"priority"`
+	Type     *string `json:"type" tf:"type"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementByteMatchStatement struct {
+	// +optional
+	FieldToMatch         *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementByteMatchStatementFieldToMatch        `json:"fieldToMatch,omitempty" tf:"field_to_match"`
+	PositionalConstraint *string                                                                                                                      `json:"positionalConstraint" tf:"positional_constraint"`
+	SearchString         *string                                                                                                                      `json:"searchString" tf:"search_string"`
+	TextTransformation   []WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementByteMatchStatementTextTransformation `json:"textTransformation" tf:"text_transformation"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementGeoMatchStatementForwardedIPConfig struct {
+	FallbackBehavior *string `json:"fallbackBehavior" tf:"fallback_behavior"`
+	HeaderName       *string `json:"headerName" tf:"header_name"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementGeoMatchStatement struct {
+	// +kubebuilder:validation:MinItems=1
+	CountryCodes []string `json:"countryCodes" tf:"country_codes"`
+	// +optional
+	ForwardedIPConfig *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementGeoMatchStatementForwardedIPConfig `json:"forwardedIPConfig,omitempty" tf:"forwarded_ip_config"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementIpSetReferenceStatementIpSetForwardedIPConfig struct {
+	FallbackBehavior *string `json:"fallbackBehavior" tf:"fallback_behavior"`
+	HeaderName       *string `json:"headerName" tf:"header_name"`
+	Position         *string `json:"position" tf:"position"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementIpSetReferenceStatement struct {
+	Arn *string `json:"arn" tf:"arn"`
+	// +optional
+	IpSetForwardedIPConfig *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementIpSetReferenceStatementIpSetForwardedIPConfig `json:"ipSetForwardedIPConfig,omitempty" tf:"ip_set_forwarded_ip_config"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementLabelMatchStatement struct {
+	Key   *string `json:"key" tf:"key"`
+	Scope *string `json:"scope" tf:"scope"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementNotStatementStatementByteMatchStatementFieldToMatchAllQueryArguments struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementNotStatementStatementByteMatchStatementFieldToMatchBody struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementNotStatementStatementByteMatchStatementFieldToMatchMethod struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementNotStatementStatementByteMatchStatementFieldToMatchQueryString struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementNotStatementStatementByteMatchStatementFieldToMatchSingleHeader struct {
+	Name *string `json:"name" tf:"name"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementNotStatementStatementByteMatchStatementFieldToMatchSingleQueryArgument struct {
+	Name *string `json:"name" tf:"name"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementNotStatementStatementByteMatchStatementFieldToMatchUriPath struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementNotStatementStatementByteMatchStatementFieldToMatch struct {
+	// +optional
+	AllQueryArguments *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementNotStatementStatementByteMatchStatementFieldToMatchAllQueryArguments `json:"allQueryArguments,omitempty" tf:"all_query_arguments"`
+	// +optional
+	Body *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementNotStatementStatementByteMatchStatementFieldToMatchBody `json:"body,omitempty" tf:"body"`
+	// +optional
+	Method *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementNotStatementStatementByteMatchStatementFieldToMatchMethod `json:"method,omitempty" tf:"method"`
+	// +optional
+	QueryString *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementNotStatementStatementByteMatchStatementFieldToMatchQueryString `json:"queryString,omitempty" tf:"query_string"`
+	// +optional
+	SingleHeader *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementNotStatementStatementByteMatchStatementFieldToMatchSingleHeader `json:"singleHeader,omitempty" tf:"single_header"`
+	// +optional
+	SingleQueryArgument *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementNotStatementStatementByteMatchStatementFieldToMatchSingleQueryArgument `json:"singleQueryArgument,omitempty" tf:"single_query_argument"`
+	// +optional
+	UriPath *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementNotStatementStatementByteMatchStatementFieldToMatchUriPath `json:"uriPath,omitempty" tf:"uri_path"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementNotStatementStatementByteMatchStatementTextTransformation struct {
+	Priority *int64  `json:"priority" tf:"priority"`
+	Type     *string `json:"type" tf:"type"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementNotStatementStatementByteMatchStatement struct {
+	// +optional
+	FieldToMatch         *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementNotStatementStatementByteMatchStatementFieldToMatch        `json:"fieldToMatch,omitempty" tf:"field_to_match"`
+	PositionalConstraint *string                                                                                                                                           `json:"positionalConstraint" tf:"positional_constraint"`
+	SearchString         *string                                                                                                                                           `json:"searchString" tf:"search_string"`
+	TextTransformation   []WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementNotStatementStatementByteMatchStatementTextTransformation `json:"textTransformation" tf:"text_transformation"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementNotStatementStatementGeoMatchStatementForwardedIPConfig struct {
+	FallbackBehavior *string `json:"fallbackBehavior" tf:"fallback_behavior"`
+	HeaderName       *string `json:"headerName" tf:"header_name"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementNotStatementStatementGeoMatchStatement struct {
+	// +kubebuilder:validation:MinItems=1
+	CountryCodes []string `json:"countryCodes" tf:"country_codes"`
+	// +optional
+	ForwardedIPConfig *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementNotStatementStatementGeoMatchStatementForwardedIPConfig `json:"forwardedIPConfig,omitempty" tf:"forwarded_ip_config"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementNotStatementStatementIpSetReferenceStatementIpSetForwardedIPConfig struct {
+	FallbackBehavior *string `json:"fallbackBehavior" tf:"fallback_behavior"`
+	HeaderName       *string `json:"headerName" tf:"header_name"`
+	Position         *string `json:"position" tf:"position"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementNotStatementStatementIpSetReferenceStatement struct {
+	Arn *string `json:"arn" tf:"arn"`
+	// +optional
+	IpSetForwardedIPConfig *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementNotStatementStatementIpSetReferenceStatementIpSetForwardedIPConfig `json:"ipSetForwardedIPConfig,omitempty" tf:"ip_set_forwarded_ip_config"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementNotStatementStatementLabelMatchStatement struct {
+	Key   *string `json:"key" tf:"key"`
+	Scope *string `json:"scope" tf:"scope"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementNotStatementStatementRegexPatternSetReferenceStatementFieldToMatchAllQueryArguments struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementNotStatementStatementRegexPatternSetReferenceStatementFieldToMatchBody struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementNotStatementStatementRegexPatternSetReferenceStatementFieldToMatchMethod struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementNotStatementStatementRegexPatternSetReferenceStatementFieldToMatchQueryString struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementNotStatementStatementRegexPatternSetReferenceStatementFieldToMatchSingleHeader struct {
+	Name *string `json:"name" tf:"name"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementNotStatementStatementRegexPatternSetReferenceStatementFieldToMatchSingleQueryArgument struct {
+	Name *string `json:"name" tf:"name"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementNotStatementStatementRegexPatternSetReferenceStatementFieldToMatchUriPath struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementNotStatementStatementRegexPatternSetReferenceStatementFieldToMatch struct {
+	// +optional
+	AllQueryArguments *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementNotStatementStatementRegexPatternSetReferenceStatementFieldToMatchAllQueryArguments `json:"allQueryArguments,omitempty" tf:"all_query_arguments"`
+	// +optional
+	Body *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementNotStatementStatementRegexPatternSetReferenceStatementFieldToMatchBody `json:"body,omitempty" tf:"body"`
+	// +optional
+	Method *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementNotStatementStatementRegexPatternSetReferenceStatementFieldToMatchMethod `json:"method,omitempty" tf:"method"`
+	// +optional
+	QueryString *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementNotStatementStatementRegexPatternSetReferenceStatementFieldToMatchQueryString `json:"queryString,omitempty" tf:"query_string"`
+	// +optional
+	SingleHeader *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementNotStatementStatementRegexPatternSetReferenceStatementFieldToMatchSingleHeader `json:"singleHeader,omitempty" tf:"single_header"`
+	// +optional
+	SingleQueryArgument *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementNotStatementStatementRegexPatternSetReferenceStatementFieldToMatchSingleQueryArgument `json:"singleQueryArgument,omitempty" tf:"single_query_argument"`
+	// +optional
+	UriPath *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementNotStatementStatementRegexPatternSetReferenceStatementFieldToMatchUriPath `json:"uriPath,omitempty" tf:"uri_path"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementNotStatementStatementRegexPatternSetReferenceStatementTextTransformation struct {
+	Priority *int64  `json:"priority" tf:"priority"`
+	Type     *string `json:"type" tf:"type"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementNotStatementStatementRegexPatternSetReferenceStatement struct {
+	Arn *string `json:"arn" tf:"arn"`
+	// +optional
+	FieldToMatch       *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementNotStatementStatementRegexPatternSetReferenceStatementFieldToMatch        `json:"fieldToMatch,omitempty" tf:"field_to_match"`
+	TextTransformation []WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementNotStatementStatementRegexPatternSetReferenceStatementTextTransformation `json:"textTransformation" tf:"text_transformation"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementNotStatementStatementSizeConstraintStatementFieldToMatchAllQueryArguments struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementNotStatementStatementSizeConstraintStatementFieldToMatchBody struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementNotStatementStatementSizeConstraintStatementFieldToMatchMethod struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementNotStatementStatementSizeConstraintStatementFieldToMatchQueryString struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementNotStatementStatementSizeConstraintStatementFieldToMatchSingleHeader struct {
+	Name *string `json:"name" tf:"name"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementNotStatementStatementSizeConstraintStatementFieldToMatchSingleQueryArgument struct {
+	Name *string `json:"name" tf:"name"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementNotStatementStatementSizeConstraintStatementFieldToMatchUriPath struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementNotStatementStatementSizeConstraintStatementFieldToMatch struct {
+	// +optional
+	AllQueryArguments *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementNotStatementStatementSizeConstraintStatementFieldToMatchAllQueryArguments `json:"allQueryArguments,omitempty" tf:"all_query_arguments"`
+	// +optional
+	Body *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementNotStatementStatementSizeConstraintStatementFieldToMatchBody `json:"body,omitempty" tf:"body"`
+	// +optional
+	Method *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementNotStatementStatementSizeConstraintStatementFieldToMatchMethod `json:"method,omitempty" tf:"method"`
+	// +optional
+	QueryString *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementNotStatementStatementSizeConstraintStatementFieldToMatchQueryString `json:"queryString,omitempty" tf:"query_string"`
+	// +optional
+	SingleHeader *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementNotStatementStatementSizeConstraintStatementFieldToMatchSingleHeader `json:"singleHeader,omitempty" tf:"single_header"`
+	// +optional
+	SingleQueryArgument *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementNotStatementStatementSizeConstraintStatementFieldToMatchSingleQueryArgument `json:"singleQueryArgument,omitempty" tf:"single_query_argument"`
+	// +optional
+	UriPath *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementNotStatementStatementSizeConstraintStatementFieldToMatchUriPath `json:"uriPath,omitempty" tf:"uri_path"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementNotStatementStatementSizeConstraintStatementTextTransformation struct {
+	Priority *int64  `json:"priority" tf:"priority"`
+	Type     *string `json:"type" tf:"type"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementNotStatementStatementSizeConstraintStatement struct {
+	ComparisonOperator *string `json:"comparisonOperator" tf:"comparison_operator"`
+	// +optional
+	FieldToMatch       *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementNotStatementStatementSizeConstraintStatementFieldToMatch        `json:"fieldToMatch,omitempty" tf:"field_to_match"`
+	Size               *int64                                                                                                                                                 `json:"size" tf:"size"`
+	TextTransformation []WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementNotStatementStatementSizeConstraintStatementTextTransformation `json:"textTransformation" tf:"text_transformation"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementNotStatementStatementSqliMatchStatementFieldToMatchAllQueryArguments struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementNotStatementStatementSqliMatchStatementFieldToMatchBody struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementNotStatementStatementSqliMatchStatementFieldToMatchMethod struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementNotStatementStatementSqliMatchStatementFieldToMatchQueryString struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementNotStatementStatementSqliMatchStatementFieldToMatchSingleHeader struct {
+	Name *string `json:"name" tf:"name"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementNotStatementStatementSqliMatchStatementFieldToMatchSingleQueryArgument struct {
+	Name *string `json:"name" tf:"name"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementNotStatementStatementSqliMatchStatementFieldToMatchUriPath struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementNotStatementStatementSqliMatchStatementFieldToMatch struct {
+	// +optional
+	AllQueryArguments *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementNotStatementStatementSqliMatchStatementFieldToMatchAllQueryArguments `json:"allQueryArguments,omitempty" tf:"all_query_arguments"`
+	// +optional
+	Body *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementNotStatementStatementSqliMatchStatementFieldToMatchBody `json:"body,omitempty" tf:"body"`
+	// +optional
+	Method *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementNotStatementStatementSqliMatchStatementFieldToMatchMethod `json:"method,omitempty" tf:"method"`
+	// +optional
+	QueryString *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementNotStatementStatementSqliMatchStatementFieldToMatchQueryString `json:"queryString,omitempty" tf:"query_string"`
+	// +optional
+	SingleHeader *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementNotStatementStatementSqliMatchStatementFieldToMatchSingleHeader `json:"singleHeader,omitempty" tf:"single_header"`
+	// +optional
+	SingleQueryArgument *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementNotStatementStatementSqliMatchStatementFieldToMatchSingleQueryArgument `json:"singleQueryArgument,omitempty" tf:"single_query_argument"`
+	// +optional
+	UriPath *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementNotStatementStatementSqliMatchStatementFieldToMatchUriPath `json:"uriPath,omitempty" tf:"uri_path"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementNotStatementStatementSqliMatchStatementTextTransformation struct {
+	Priority *int64  `json:"priority" tf:"priority"`
+	Type     *string `json:"type" tf:"type"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementNotStatementStatementSqliMatchStatement struct {
+	// +optional
+	FieldToMatch       *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementNotStatementStatementSqliMatchStatementFieldToMatch        `json:"fieldToMatch,omitempty" tf:"field_to_match"`
+	TextTransformation []WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementNotStatementStatementSqliMatchStatementTextTransformation `json:"textTransformation" tf:"text_transformation"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementNotStatementStatementXssMatchStatementFieldToMatchAllQueryArguments struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementNotStatementStatementXssMatchStatementFieldToMatchBody struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementNotStatementStatementXssMatchStatementFieldToMatchMethod struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementNotStatementStatementXssMatchStatementFieldToMatchQueryString struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementNotStatementStatementXssMatchStatementFieldToMatchSingleHeader struct {
+	Name *string `json:"name" tf:"name"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementNotStatementStatementXssMatchStatementFieldToMatchSingleQueryArgument struct {
+	Name *string `json:"name" tf:"name"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementNotStatementStatementXssMatchStatementFieldToMatchUriPath struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementNotStatementStatementXssMatchStatementFieldToMatch struct {
+	// +optional
+	AllQueryArguments *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementNotStatementStatementXssMatchStatementFieldToMatchAllQueryArguments `json:"allQueryArguments,omitempty" tf:"all_query_arguments"`
+	// +optional
+	Body *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementNotStatementStatementXssMatchStatementFieldToMatchBody `json:"body,omitempty" tf:"body"`
+	// +optional
+	Method *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementNotStatementStatementXssMatchStatementFieldToMatchMethod `json:"method,omitempty" tf:"method"`
+	// +optional
+	QueryString *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementNotStatementStatementXssMatchStatementFieldToMatchQueryString `json:"queryString,omitempty" tf:"query_string"`
+	// +optional
+	SingleHeader *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementNotStatementStatementXssMatchStatementFieldToMatchSingleHeader `json:"singleHeader,omitempty" tf:"single_header"`
+	// +optional
+	SingleQueryArgument *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementNotStatementStatementXssMatchStatementFieldToMatchSingleQueryArgument `json:"singleQueryArgument,omitempty" tf:"single_query_argument"`
+	// +optional
+	UriPath *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementNotStatementStatementXssMatchStatementFieldToMatchUriPath `json:"uriPath,omitempty" tf:"uri_path"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementNotStatementStatementXssMatchStatementTextTransformation struct {
+	Priority *int64  `json:"priority" tf:"priority"`
+	Type     *string `json:"type" tf:"type"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementNotStatementStatementXssMatchStatement struct {
+	// +optional
+	FieldToMatch       *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementNotStatementStatementXssMatchStatementFieldToMatch        `json:"fieldToMatch,omitempty" tf:"field_to_match"`
+	TextTransformation []WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementNotStatementStatementXssMatchStatementTextTransformation `json:"textTransformation" tf:"text_transformation"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementNotStatementStatement struct {
+	// +optional
+	ByteMatchStatement *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementNotStatementStatementByteMatchStatement `json:"byteMatchStatement,omitempty" tf:"byte_match_statement"`
+	// +optional
+	GeoMatchStatement *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementNotStatementStatementGeoMatchStatement `json:"geoMatchStatement,omitempty" tf:"geo_match_statement"`
+	// +optional
+	IpSetReferenceStatement *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementNotStatementStatementIpSetReferenceStatement `json:"ipSetReferenceStatement,omitempty" tf:"ip_set_reference_statement"`
+	// +optional
+	LabelMatchStatement *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementNotStatementStatementLabelMatchStatement `json:"labelMatchStatement,omitempty" tf:"label_match_statement"`
+	// +optional
+	RegexPatternSetReferenceStatement *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementNotStatementStatementRegexPatternSetReferenceStatement `json:"regexPatternSetReferenceStatement,omitempty" tf:"regex_pattern_set_reference_statement"`
+	// +optional
+	SizeConstraintStatement *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementNotStatementStatementSizeConstraintStatement `json:"sizeConstraintStatement,omitempty" tf:"size_constraint_statement"`
+	// +optional
+	SqliMatchStatement *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementNotStatementStatementSqliMatchStatement `json:"sqliMatchStatement,omitempty" tf:"sqli_match_statement"`
+	// +optional
+	XssMatchStatement *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementNotStatementStatementXssMatchStatement `json:"xssMatchStatement,omitempty" tf:"xss_match_statement"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementNotStatement struct {
+	Statement []WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementNotStatementStatement `json:"statement" tf:"statement"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementOrStatementStatementByteMatchStatementFieldToMatchAllQueryArguments struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementOrStatementStatementByteMatchStatementFieldToMatchBody struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementOrStatementStatementByteMatchStatementFieldToMatchMethod struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementOrStatementStatementByteMatchStatementFieldToMatchQueryString struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementOrStatementStatementByteMatchStatementFieldToMatchSingleHeader struct {
+	Name *string `json:"name" tf:"name"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementOrStatementStatementByteMatchStatementFieldToMatchSingleQueryArgument struct {
+	Name *string `json:"name" tf:"name"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementOrStatementStatementByteMatchStatementFieldToMatchUriPath struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementOrStatementStatementByteMatchStatementFieldToMatch struct {
+	// +optional
+	AllQueryArguments *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementOrStatementStatementByteMatchStatementFieldToMatchAllQueryArguments `json:"allQueryArguments,omitempty" tf:"all_query_arguments"`
+	// +optional
+	Body *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementOrStatementStatementByteMatchStatementFieldToMatchBody `json:"body,omitempty" tf:"body"`
+	// +optional
+	Method *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementOrStatementStatementByteMatchStatementFieldToMatchMethod `json:"method,omitempty" tf:"method"`
+	// +optional
+	QueryString *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementOrStatementStatementByteMatchStatementFieldToMatchQueryString `json:"queryString,omitempty" tf:"query_string"`
+	// +optional
+	SingleHeader *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementOrStatementStatementByteMatchStatementFieldToMatchSingleHeader `json:"singleHeader,omitempty" tf:"single_header"`
+	// +optional
+	SingleQueryArgument *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementOrStatementStatementByteMatchStatementFieldToMatchSingleQueryArgument `json:"singleQueryArgument,omitempty" tf:"single_query_argument"`
+	// +optional
+	UriPath *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementOrStatementStatementByteMatchStatementFieldToMatchUriPath `json:"uriPath,omitempty" tf:"uri_path"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementOrStatementStatementByteMatchStatementTextTransformation struct {
+	Priority *int64  `json:"priority" tf:"priority"`
+	Type     *string `json:"type" tf:"type"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementOrStatementStatementByteMatchStatement struct {
+	// +optional
+	FieldToMatch         *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementOrStatementStatementByteMatchStatementFieldToMatch        `json:"fieldToMatch,omitempty" tf:"field_to_match"`
+	PositionalConstraint *string                                                                                                                                          `json:"positionalConstraint" tf:"positional_constraint"`
+	SearchString         *string                                                                                                                                          `json:"searchString" tf:"search_string"`
+	TextTransformation   []WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementOrStatementStatementByteMatchStatementTextTransformation `json:"textTransformation" tf:"text_transformation"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementOrStatementStatementGeoMatchStatementForwardedIPConfig struct {
+	FallbackBehavior *string `json:"fallbackBehavior" tf:"fallback_behavior"`
+	HeaderName       *string `json:"headerName" tf:"header_name"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementOrStatementStatementGeoMatchStatement struct {
+	// +kubebuilder:validation:MinItems=1
+	CountryCodes []string `json:"countryCodes" tf:"country_codes"`
+	// +optional
+	ForwardedIPConfig *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementOrStatementStatementGeoMatchStatementForwardedIPConfig `json:"forwardedIPConfig,omitempty" tf:"forwarded_ip_config"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementOrStatementStatementIpSetReferenceStatementIpSetForwardedIPConfig struct {
+	FallbackBehavior *string `json:"fallbackBehavior" tf:"fallback_behavior"`
+	HeaderName       *string `json:"headerName" tf:"header_name"`
+	Position         *string `json:"position" tf:"position"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementOrStatementStatementIpSetReferenceStatement struct {
+	Arn *string `json:"arn" tf:"arn"`
+	// +optional
+	IpSetForwardedIPConfig *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementOrStatementStatementIpSetReferenceStatementIpSetForwardedIPConfig `json:"ipSetForwardedIPConfig,omitempty" tf:"ip_set_forwarded_ip_config"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementOrStatementStatementLabelMatchStatement struct {
+	Key   *string `json:"key" tf:"key"`
+	Scope *string `json:"scope" tf:"scope"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementOrStatementStatementRegexPatternSetReferenceStatementFieldToMatchAllQueryArguments struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementOrStatementStatementRegexPatternSetReferenceStatementFieldToMatchBody struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementOrStatementStatementRegexPatternSetReferenceStatementFieldToMatchMethod struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementOrStatementStatementRegexPatternSetReferenceStatementFieldToMatchQueryString struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementOrStatementStatementRegexPatternSetReferenceStatementFieldToMatchSingleHeader struct {
+	Name *string `json:"name" tf:"name"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementOrStatementStatementRegexPatternSetReferenceStatementFieldToMatchSingleQueryArgument struct {
+	Name *string `json:"name" tf:"name"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementOrStatementStatementRegexPatternSetReferenceStatementFieldToMatchUriPath struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementOrStatementStatementRegexPatternSetReferenceStatementFieldToMatch struct {
+	// +optional
+	AllQueryArguments *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementOrStatementStatementRegexPatternSetReferenceStatementFieldToMatchAllQueryArguments `json:"allQueryArguments,omitempty" tf:"all_query_arguments"`
+	// +optional
+	Body *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementOrStatementStatementRegexPatternSetReferenceStatementFieldToMatchBody `json:"body,omitempty" tf:"body"`
+	// +optional
+	Method *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementOrStatementStatementRegexPatternSetReferenceStatementFieldToMatchMethod `json:"method,omitempty" tf:"method"`
+	// +optional
+	QueryString *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementOrStatementStatementRegexPatternSetReferenceStatementFieldToMatchQueryString `json:"queryString,omitempty" tf:"query_string"`
+	// +optional
+	SingleHeader *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementOrStatementStatementRegexPatternSetReferenceStatementFieldToMatchSingleHeader `json:"singleHeader,omitempty" tf:"single_header"`
+	// +optional
+	SingleQueryArgument *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementOrStatementStatementRegexPatternSetReferenceStatementFieldToMatchSingleQueryArgument `json:"singleQueryArgument,omitempty" tf:"single_query_argument"`
+	// +optional
+	UriPath *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementOrStatementStatementRegexPatternSetReferenceStatementFieldToMatchUriPath `json:"uriPath,omitempty" tf:"uri_path"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementOrStatementStatementRegexPatternSetReferenceStatementTextTransformation struct {
+	Priority *int64  `json:"priority" tf:"priority"`
+	Type     *string `json:"type" tf:"type"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementOrStatementStatementRegexPatternSetReferenceStatement struct {
+	Arn *string `json:"arn" tf:"arn"`
+	// +optional
+	FieldToMatch       *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementOrStatementStatementRegexPatternSetReferenceStatementFieldToMatch        `json:"fieldToMatch,omitempty" tf:"field_to_match"`
+	TextTransformation []WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementOrStatementStatementRegexPatternSetReferenceStatementTextTransformation `json:"textTransformation" tf:"text_transformation"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementOrStatementStatementSizeConstraintStatementFieldToMatchAllQueryArguments struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementOrStatementStatementSizeConstraintStatementFieldToMatchBody struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementOrStatementStatementSizeConstraintStatementFieldToMatchMethod struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementOrStatementStatementSizeConstraintStatementFieldToMatchQueryString struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementOrStatementStatementSizeConstraintStatementFieldToMatchSingleHeader struct {
+	Name *string `json:"name" tf:"name"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementOrStatementStatementSizeConstraintStatementFieldToMatchSingleQueryArgument struct {
+	Name *string `json:"name" tf:"name"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementOrStatementStatementSizeConstraintStatementFieldToMatchUriPath struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementOrStatementStatementSizeConstraintStatementFieldToMatch struct {
+	// +optional
+	AllQueryArguments *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementOrStatementStatementSizeConstraintStatementFieldToMatchAllQueryArguments `json:"allQueryArguments,omitempty" tf:"all_query_arguments"`
+	// +optional
+	Body *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementOrStatementStatementSizeConstraintStatementFieldToMatchBody `json:"body,omitempty" tf:"body"`
+	// +optional
+	Method *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementOrStatementStatementSizeConstraintStatementFieldToMatchMethod `json:"method,omitempty" tf:"method"`
+	// +optional
+	QueryString *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementOrStatementStatementSizeConstraintStatementFieldToMatchQueryString `json:"queryString,omitempty" tf:"query_string"`
+	// +optional
+	SingleHeader *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementOrStatementStatementSizeConstraintStatementFieldToMatchSingleHeader `json:"singleHeader,omitempty" tf:"single_header"`
+	// +optional
+	SingleQueryArgument *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementOrStatementStatementSizeConstraintStatementFieldToMatchSingleQueryArgument `json:"singleQueryArgument,omitempty" tf:"single_query_argument"`
+	// +optional
+	UriPath *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementOrStatementStatementSizeConstraintStatementFieldToMatchUriPath `json:"uriPath,omitempty" tf:"uri_path"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementOrStatementStatementSizeConstraintStatementTextTransformation struct {
+	Priority *int64  `json:"priority" tf:"priority"`
+	Type     *string `json:"type" tf:"type"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementOrStatementStatementSizeConstraintStatement struct {
+	ComparisonOperator *string `json:"comparisonOperator" tf:"comparison_operator"`
+	// +optional
+	FieldToMatch       *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementOrStatementStatementSizeConstraintStatementFieldToMatch        `json:"fieldToMatch,omitempty" tf:"field_to_match"`
+	Size               *int64                                                                                                                                                `json:"size" tf:"size"`
+	TextTransformation []WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementOrStatementStatementSizeConstraintStatementTextTransformation `json:"textTransformation" tf:"text_transformation"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementOrStatementStatementSqliMatchStatementFieldToMatchAllQueryArguments struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementOrStatementStatementSqliMatchStatementFieldToMatchBody struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementOrStatementStatementSqliMatchStatementFieldToMatchMethod struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementOrStatementStatementSqliMatchStatementFieldToMatchQueryString struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementOrStatementStatementSqliMatchStatementFieldToMatchSingleHeader struct {
+	Name *string `json:"name" tf:"name"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementOrStatementStatementSqliMatchStatementFieldToMatchSingleQueryArgument struct {
+	Name *string `json:"name" tf:"name"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementOrStatementStatementSqliMatchStatementFieldToMatchUriPath struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementOrStatementStatementSqliMatchStatementFieldToMatch struct {
+	// +optional
+	AllQueryArguments *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementOrStatementStatementSqliMatchStatementFieldToMatchAllQueryArguments `json:"allQueryArguments,omitempty" tf:"all_query_arguments"`
+	// +optional
+	Body *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementOrStatementStatementSqliMatchStatementFieldToMatchBody `json:"body,omitempty" tf:"body"`
+	// +optional
+	Method *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementOrStatementStatementSqliMatchStatementFieldToMatchMethod `json:"method,omitempty" tf:"method"`
+	// +optional
+	QueryString *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementOrStatementStatementSqliMatchStatementFieldToMatchQueryString `json:"queryString,omitempty" tf:"query_string"`
+	// +optional
+	SingleHeader *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementOrStatementStatementSqliMatchStatementFieldToMatchSingleHeader `json:"singleHeader,omitempty" tf:"single_header"`
+	// +optional
+	SingleQueryArgument *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementOrStatementStatementSqliMatchStatementFieldToMatchSingleQueryArgument `json:"singleQueryArgument,omitempty" tf:"single_query_argument"`
+	// +optional
+	UriPath *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementOrStatementStatementSqliMatchStatementFieldToMatchUriPath `json:"uriPath,omitempty" tf:"uri_path"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementOrStatementStatementSqliMatchStatementTextTransformation struct {
+	Priority *int64  `json:"priority" tf:"priority"`
+	Type     *string `json:"type" tf:"type"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementOrStatementStatementSqliMatchStatement struct {
+	// +optional
+	FieldToMatch       *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementOrStatementStatementSqliMatchStatementFieldToMatch        `json:"fieldToMatch,omitempty" tf:"field_to_match"`
+	TextTransformation []WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementOrStatementStatementSqliMatchStatementTextTransformation `json:"textTransformation" tf:"text_transformation"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementOrStatementStatementXssMatchStatementFieldToMatchAllQueryArguments struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementOrStatementStatementXssMatchStatementFieldToMatchBody struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementOrStatementStatementXssMatchStatementFieldToMatchMethod struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementOrStatementStatementXssMatchStatementFieldToMatchQueryString struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementOrStatementStatementXssMatchStatementFieldToMatchSingleHeader struct {
+	Name *string `json:"name" tf:"name"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementOrStatementStatementXssMatchStatementFieldToMatchSingleQueryArgument struct {
+	Name *string `json:"name" tf:"name"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementOrStatementStatementXssMatchStatementFieldToMatchUriPath struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementOrStatementStatementXssMatchStatementFieldToMatch struct {
+	// +optional
+	AllQueryArguments *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementOrStatementStatementXssMatchStatementFieldToMatchAllQueryArguments `json:"allQueryArguments,omitempty" tf:"all_query_arguments"`
+	// +optional
+	Body *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementOrStatementStatementXssMatchStatementFieldToMatchBody `json:"body,omitempty" tf:"body"`
+	// +optional
+	Method *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementOrStatementStatementXssMatchStatementFieldToMatchMethod `json:"method,omitempty" tf:"method"`
+	// +optional
+	QueryString *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementOrStatementStatementXssMatchStatementFieldToMatchQueryString `json:"queryString,omitempty" tf:"query_string"`
+	// +optional
+	SingleHeader *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementOrStatementStatementXssMatchStatementFieldToMatchSingleHeader `json:"singleHeader,omitempty" tf:"single_header"`
+	// +optional
+	SingleQueryArgument *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementOrStatementStatementXssMatchStatementFieldToMatchSingleQueryArgument `json:"singleQueryArgument,omitempty" tf:"single_query_argument"`
+	// +optional
+	UriPath *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementOrStatementStatementXssMatchStatementFieldToMatchUriPath `json:"uriPath,omitempty" tf:"uri_path"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementOrStatementStatementXssMatchStatementTextTransformation struct {
+	Priority *int64  `json:"priority" tf:"priority"`
+	Type     *string `json:"type" tf:"type"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementOrStatementStatementXssMatchStatement struct {
+	// +optional
+	FieldToMatch       *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementOrStatementStatementXssMatchStatementFieldToMatch        `json:"fieldToMatch,omitempty" tf:"field_to_match"`
+	TextTransformation []WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementOrStatementStatementXssMatchStatementTextTransformation `json:"textTransformation" tf:"text_transformation"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementOrStatementStatement struct {
+	// +optional
+	ByteMatchStatement *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementOrStatementStatementByteMatchStatement `json:"byteMatchStatement,omitempty" tf:"byte_match_statement"`
+	// +optional
+	GeoMatchStatement *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementOrStatementStatementGeoMatchStatement `json:"geoMatchStatement,omitempty" tf:"geo_match_statement"`
+	// +optional
+	IpSetReferenceStatement *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementOrStatementStatementIpSetReferenceStatement `json:"ipSetReferenceStatement,omitempty" tf:"ip_set_reference_statement"`
+	// +optional
+	LabelMatchStatement *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementOrStatementStatementLabelMatchStatement `json:"labelMatchStatement,omitempty" tf:"label_match_statement"`
+	// +optional
+	RegexPatternSetReferenceStatement *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementOrStatementStatementRegexPatternSetReferenceStatement `json:"regexPatternSetReferenceStatement,omitempty" tf:"regex_pattern_set_reference_statement"`
+	// +optional
+	SizeConstraintStatement *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementOrStatementStatementSizeConstraintStatement `json:"sizeConstraintStatement,omitempty" tf:"size_constraint_statement"`
+	// +optional
+	SqliMatchStatement *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementOrStatementStatementSqliMatchStatement `json:"sqliMatchStatement,omitempty" tf:"sqli_match_statement"`
+	// +optional
+	XssMatchStatement *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementOrStatementStatementXssMatchStatement `json:"xssMatchStatement,omitempty" tf:"xss_match_statement"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementOrStatement struct {
+	Statement []WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementOrStatementStatement `json:"statement" tf:"statement"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementRegexPatternSetReferenceStatementFieldToMatchAllQueryArguments struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementRegexPatternSetReferenceStatementFieldToMatchBody struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementRegexPatternSetReferenceStatementFieldToMatchMethod struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementRegexPatternSetReferenceStatementFieldToMatchQueryString struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementRegexPatternSetReferenceStatementFieldToMatchSingleHeader struct {
+	Name *string `json:"name" tf:"name"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementRegexPatternSetReferenceStatementFieldToMatchSingleQueryArgument struct {
+	Name *string `json:"name" tf:"name"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementRegexPatternSetReferenceStatementFieldToMatchUriPath struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementRegexPatternSetReferenceStatementFieldToMatch struct {
+	// +optional
+	AllQueryArguments *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementRegexPatternSetReferenceStatementFieldToMatchAllQueryArguments `json:"allQueryArguments,omitempty" tf:"all_query_arguments"`
+	// +optional
+	Body *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementRegexPatternSetReferenceStatementFieldToMatchBody `json:"body,omitempty" tf:"body"`
+	// +optional
+	Method *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementRegexPatternSetReferenceStatementFieldToMatchMethod `json:"method,omitempty" tf:"method"`
+	// +optional
+	QueryString *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementRegexPatternSetReferenceStatementFieldToMatchQueryString `json:"queryString,omitempty" tf:"query_string"`
+	// +optional
+	SingleHeader *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementRegexPatternSetReferenceStatementFieldToMatchSingleHeader `json:"singleHeader,omitempty" tf:"single_header"`
+	// +optional
+	SingleQueryArgument *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementRegexPatternSetReferenceStatementFieldToMatchSingleQueryArgument `json:"singleQueryArgument,omitempty" tf:"single_query_argument"`
+	// +optional
+	UriPath *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementRegexPatternSetReferenceStatementFieldToMatchUriPath `json:"uriPath,omitempty" tf:"uri_path"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementRegexPatternSetReferenceStatementTextTransformation struct {
+	Priority *int64  `json:"priority" tf:"priority"`
+	Type     *string `json:"type" tf:"type"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementRegexPatternSetReferenceStatement struct {
+	Arn *string `json:"arn" tf:"arn"`
+	// +optional
+	FieldToMatch       *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementRegexPatternSetReferenceStatementFieldToMatch        `json:"fieldToMatch,omitempty" tf:"field_to_match"`
+	TextTransformation []WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementRegexPatternSetReferenceStatementTextTransformation `json:"textTransformation" tf:"text_transformation"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementSizeConstraintStatementFieldToMatchAllQueryArguments struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementSizeConstraintStatementFieldToMatchBody struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementSizeConstraintStatementFieldToMatchMethod struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementSizeConstraintStatementFieldToMatchQueryString struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementSizeConstraintStatementFieldToMatchSingleHeader struct {
+	Name *string `json:"name" tf:"name"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementSizeConstraintStatementFieldToMatchSingleQueryArgument struct {
+	Name *string `json:"name" tf:"name"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementSizeConstraintStatementFieldToMatchUriPath struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementSizeConstraintStatementFieldToMatch struct {
+	// +optional
+	AllQueryArguments *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementSizeConstraintStatementFieldToMatchAllQueryArguments `json:"allQueryArguments,omitempty" tf:"all_query_arguments"`
+	// +optional
+	Body *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementSizeConstraintStatementFieldToMatchBody `json:"body,omitempty" tf:"body"`
+	// +optional
+	Method *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementSizeConstraintStatementFieldToMatchMethod `json:"method,omitempty" tf:"method"`
+	// +optional
+	QueryString *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementSizeConstraintStatementFieldToMatchQueryString `json:"queryString,omitempty" tf:"query_string"`
+	// +optional
+	SingleHeader *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementSizeConstraintStatementFieldToMatchSingleHeader `json:"singleHeader,omitempty" tf:"single_header"`
+	// +optional
+	SingleQueryArgument *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementSizeConstraintStatementFieldToMatchSingleQueryArgument `json:"singleQueryArgument,omitempty" tf:"single_query_argument"`
+	// +optional
+	UriPath *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementSizeConstraintStatementFieldToMatchUriPath `json:"uriPath,omitempty" tf:"uri_path"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementSizeConstraintStatementTextTransformation struct {
+	Priority *int64  `json:"priority" tf:"priority"`
+	Type     *string `json:"type" tf:"type"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementSizeConstraintStatement struct {
+	ComparisonOperator *string `json:"comparisonOperator" tf:"comparison_operator"`
+	// +optional
+	FieldToMatch       *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementSizeConstraintStatementFieldToMatch        `json:"fieldToMatch,omitempty" tf:"field_to_match"`
+	Size               *int64                                                                                                                            `json:"size" tf:"size"`
+	TextTransformation []WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementSizeConstraintStatementTextTransformation `json:"textTransformation" tf:"text_transformation"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementSqliMatchStatementFieldToMatchAllQueryArguments struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementSqliMatchStatementFieldToMatchBody struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementSqliMatchStatementFieldToMatchMethod struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementSqliMatchStatementFieldToMatchQueryString struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementSqliMatchStatementFieldToMatchSingleHeader struct {
+	Name *string `json:"name" tf:"name"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementSqliMatchStatementFieldToMatchSingleQueryArgument struct {
+	Name *string `json:"name" tf:"name"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementSqliMatchStatementFieldToMatchUriPath struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementSqliMatchStatementFieldToMatch struct {
+	// +optional
+	AllQueryArguments *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementSqliMatchStatementFieldToMatchAllQueryArguments `json:"allQueryArguments,omitempty" tf:"all_query_arguments"`
+	// +optional
+	Body *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementSqliMatchStatementFieldToMatchBody `json:"body,omitempty" tf:"body"`
+	// +optional
+	Method *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementSqliMatchStatementFieldToMatchMethod `json:"method,omitempty" tf:"method"`
+	// +optional
+	QueryString *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementSqliMatchStatementFieldToMatchQueryString `json:"queryString,omitempty" tf:"query_string"`
+	// +optional
+	SingleHeader *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementSqliMatchStatementFieldToMatchSingleHeader `json:"singleHeader,omitempty" tf:"single_header"`
+	// +optional
+	SingleQueryArgument *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementSqliMatchStatementFieldToMatchSingleQueryArgument `json:"singleQueryArgument,omitempty" tf:"single_query_argument"`
+	// +optional
+	UriPath *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementSqliMatchStatementFieldToMatchUriPath `json:"uriPath,omitempty" tf:"uri_path"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementSqliMatchStatementTextTransformation struct {
+	Priority *int64  `json:"priority" tf:"priority"`
+	Type     *string `json:"type" tf:"type"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementSqliMatchStatement struct {
+	// +optional
+	FieldToMatch       *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementSqliMatchStatementFieldToMatch        `json:"fieldToMatch,omitempty" tf:"field_to_match"`
+	TextTransformation []WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementSqliMatchStatementTextTransformation `json:"textTransformation" tf:"text_transformation"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementXssMatchStatementFieldToMatchAllQueryArguments struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementXssMatchStatementFieldToMatchBody struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementXssMatchStatementFieldToMatchMethod struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementXssMatchStatementFieldToMatchQueryString struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementXssMatchStatementFieldToMatchSingleHeader struct {
+	Name *string `json:"name" tf:"name"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementXssMatchStatementFieldToMatchSingleQueryArgument struct {
+	Name *string `json:"name" tf:"name"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementXssMatchStatementFieldToMatchUriPath struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementXssMatchStatementFieldToMatch struct {
+	// +optional
+	AllQueryArguments *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementXssMatchStatementFieldToMatchAllQueryArguments `json:"allQueryArguments,omitempty" tf:"all_query_arguments"`
+	// +optional
+	Body *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementXssMatchStatementFieldToMatchBody `json:"body,omitempty" tf:"body"`
+	// +optional
+	Method *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementXssMatchStatementFieldToMatchMethod `json:"method,omitempty" tf:"method"`
+	// +optional
+	QueryString *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementXssMatchStatementFieldToMatchQueryString `json:"queryString,omitempty" tf:"query_string"`
+	// +optional
+	SingleHeader *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementXssMatchStatementFieldToMatchSingleHeader `json:"singleHeader,omitempty" tf:"single_header"`
+	// +optional
+	SingleQueryArgument *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementXssMatchStatementFieldToMatchSingleQueryArgument `json:"singleQueryArgument,omitempty" tf:"single_query_argument"`
+	// +optional
+	UriPath *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementXssMatchStatementFieldToMatchUriPath `json:"uriPath,omitempty" tf:"uri_path"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementXssMatchStatementTextTransformation struct {
+	Priority *int64  `json:"priority" tf:"priority"`
+	Type     *string `json:"type" tf:"type"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementXssMatchStatement struct {
+	// +optional
+	FieldToMatch       *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementXssMatchStatementFieldToMatch        `json:"fieldToMatch,omitempty" tf:"field_to_match"`
+	TextTransformation []WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementXssMatchStatementTextTransformation `json:"textTransformation" tf:"text_transformation"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatement struct {
+	// +optional
+	AndStatement *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementAndStatement `json:"andStatement,omitempty" tf:"and_statement"`
+	// +optional
+	ByteMatchStatement *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementByteMatchStatement `json:"byteMatchStatement,omitempty" tf:"byte_match_statement"`
+	// +optional
+	GeoMatchStatement *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementGeoMatchStatement `json:"geoMatchStatement,omitempty" tf:"geo_match_statement"`
+	// +optional
+	IpSetReferenceStatement *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementIpSetReferenceStatement `json:"ipSetReferenceStatement,omitempty" tf:"ip_set_reference_statement"`
+	// +optional
+	LabelMatchStatement *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementLabelMatchStatement `json:"labelMatchStatement,omitempty" tf:"label_match_statement"`
+	// +optional
+	NotStatement *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementNotStatement `json:"notStatement,omitempty" tf:"not_statement"`
+	// +optional
+	OrStatement *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementOrStatement `json:"orStatement,omitempty" tf:"or_statement"`
+	// +optional
+	RegexPatternSetReferenceStatement *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementRegexPatternSetReferenceStatement `json:"regexPatternSetReferenceStatement,omitempty" tf:"regex_pattern_set_reference_statement"`
+	// +optional
+	SizeConstraintStatement *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementSizeConstraintStatement `json:"sizeConstraintStatement,omitempty" tf:"size_constraint_statement"`
+	// +optional
+	SqliMatchStatement *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementSqliMatchStatement `json:"sqliMatchStatement,omitempty" tf:"sqli_match_statement"`
+	// +optional
+	XssMatchStatement *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatementXssMatchStatement `json:"xssMatchStatement,omitempty" tf:"xss_match_statement"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatement struct {
+	Statement []WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatementStatement `json:"statement" tf:"statement"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementRegexPatternSetReferenceStatementFieldToMatchAllQueryArguments struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementRegexPatternSetReferenceStatementFieldToMatchBody struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementRegexPatternSetReferenceStatementFieldToMatchMethod struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementRegexPatternSetReferenceStatementFieldToMatchQueryString struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementRegexPatternSetReferenceStatementFieldToMatchSingleHeader struct {
+	Name *string `json:"name" tf:"name"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementRegexPatternSetReferenceStatementFieldToMatchSingleQueryArgument struct {
+	Name *string `json:"name" tf:"name"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementRegexPatternSetReferenceStatementFieldToMatchUriPath struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementRegexPatternSetReferenceStatementFieldToMatch struct {
+	// +optional
+	AllQueryArguments *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementRegexPatternSetReferenceStatementFieldToMatchAllQueryArguments `json:"allQueryArguments,omitempty" tf:"all_query_arguments"`
+	// +optional
+	Body *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementRegexPatternSetReferenceStatementFieldToMatchBody `json:"body,omitempty" tf:"body"`
+	// +optional
+	Method *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementRegexPatternSetReferenceStatementFieldToMatchMethod `json:"method,omitempty" tf:"method"`
+	// +optional
+	QueryString *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementRegexPatternSetReferenceStatementFieldToMatchQueryString `json:"queryString,omitempty" tf:"query_string"`
+	// +optional
+	SingleHeader *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementRegexPatternSetReferenceStatementFieldToMatchSingleHeader `json:"singleHeader,omitempty" tf:"single_header"`
+	// +optional
+	SingleQueryArgument *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementRegexPatternSetReferenceStatementFieldToMatchSingleQueryArgument `json:"singleQueryArgument,omitempty" tf:"single_query_argument"`
+	// +optional
+	UriPath *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementRegexPatternSetReferenceStatementFieldToMatchUriPath `json:"uriPath,omitempty" tf:"uri_path"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementRegexPatternSetReferenceStatementTextTransformation struct {
+	Priority *int64  `json:"priority" tf:"priority"`
+	Type     *string `json:"type" tf:"type"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementRegexPatternSetReferenceStatement struct {
+	Arn *string `json:"arn" tf:"arn"`
+	// +optional
+	FieldToMatch       *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementRegexPatternSetReferenceStatementFieldToMatch        `json:"fieldToMatch,omitempty" tf:"field_to_match"`
+	TextTransformation []WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementRegexPatternSetReferenceStatementTextTransformation `json:"textTransformation" tf:"text_transformation"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementSizeConstraintStatementFieldToMatchAllQueryArguments struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementSizeConstraintStatementFieldToMatchBody struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementSizeConstraintStatementFieldToMatchMethod struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementSizeConstraintStatementFieldToMatchQueryString struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementSizeConstraintStatementFieldToMatchSingleHeader struct {
+	Name *string `json:"name" tf:"name"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementSizeConstraintStatementFieldToMatchSingleQueryArgument struct {
+	Name *string `json:"name" tf:"name"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementSizeConstraintStatementFieldToMatchUriPath struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementSizeConstraintStatementFieldToMatch struct {
+	// +optional
+	AllQueryArguments *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementSizeConstraintStatementFieldToMatchAllQueryArguments `json:"allQueryArguments,omitempty" tf:"all_query_arguments"`
+	// +optional
+	Body *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementSizeConstraintStatementFieldToMatchBody `json:"body,omitempty" tf:"body"`
+	// +optional
+	Method *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementSizeConstraintStatementFieldToMatchMethod `json:"method,omitempty" tf:"method"`
+	// +optional
+	QueryString *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementSizeConstraintStatementFieldToMatchQueryString `json:"queryString,omitempty" tf:"query_string"`
+	// +optional
+	SingleHeader *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementSizeConstraintStatementFieldToMatchSingleHeader `json:"singleHeader,omitempty" tf:"single_header"`
+	// +optional
+	SingleQueryArgument *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementSizeConstraintStatementFieldToMatchSingleQueryArgument `json:"singleQueryArgument,omitempty" tf:"single_query_argument"`
+	// +optional
+	UriPath *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementSizeConstraintStatementFieldToMatchUriPath `json:"uriPath,omitempty" tf:"uri_path"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementSizeConstraintStatementTextTransformation struct {
+	Priority *int64  `json:"priority" tf:"priority"`
+	Type     *string `json:"type" tf:"type"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementSizeConstraintStatement struct {
+	ComparisonOperator *string `json:"comparisonOperator" tf:"comparison_operator"`
+	// +optional
+	FieldToMatch       *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementSizeConstraintStatementFieldToMatch        `json:"fieldToMatch,omitempty" tf:"field_to_match"`
+	Size               *int64                                                                                                        `json:"size" tf:"size"`
+	TextTransformation []WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementSizeConstraintStatementTextTransformation `json:"textTransformation" tf:"text_transformation"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementSqliMatchStatementFieldToMatchAllQueryArguments struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementSqliMatchStatementFieldToMatchBody struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementSqliMatchStatementFieldToMatchMethod struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementSqliMatchStatementFieldToMatchQueryString struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementSqliMatchStatementFieldToMatchSingleHeader struct {
+	Name *string `json:"name" tf:"name"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementSqliMatchStatementFieldToMatchSingleQueryArgument struct {
+	Name *string `json:"name" tf:"name"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementSqliMatchStatementFieldToMatchUriPath struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementSqliMatchStatementFieldToMatch struct {
+	// +optional
+	AllQueryArguments *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementSqliMatchStatementFieldToMatchAllQueryArguments `json:"allQueryArguments,omitempty" tf:"all_query_arguments"`
+	// +optional
+	Body *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementSqliMatchStatementFieldToMatchBody `json:"body,omitempty" tf:"body"`
+	// +optional
+	Method *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementSqliMatchStatementFieldToMatchMethod `json:"method,omitempty" tf:"method"`
+	// +optional
+	QueryString *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementSqliMatchStatementFieldToMatchQueryString `json:"queryString,omitempty" tf:"query_string"`
+	// +optional
+	SingleHeader *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementSqliMatchStatementFieldToMatchSingleHeader `json:"singleHeader,omitempty" tf:"single_header"`
+	// +optional
+	SingleQueryArgument *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementSqliMatchStatementFieldToMatchSingleQueryArgument `json:"singleQueryArgument,omitempty" tf:"single_query_argument"`
+	// +optional
+	UriPath *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementSqliMatchStatementFieldToMatchUriPath `json:"uriPath,omitempty" tf:"uri_path"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementSqliMatchStatementTextTransformation struct {
+	Priority *int64  `json:"priority" tf:"priority"`
+	Type     *string `json:"type" tf:"type"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementSqliMatchStatement struct {
+	// +optional
+	FieldToMatch       *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementSqliMatchStatementFieldToMatch        `json:"fieldToMatch,omitempty" tf:"field_to_match"`
+	TextTransformation []WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementSqliMatchStatementTextTransformation `json:"textTransformation" tf:"text_transformation"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementXssMatchStatementFieldToMatchAllQueryArguments struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementXssMatchStatementFieldToMatchBody struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementXssMatchStatementFieldToMatchMethod struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementXssMatchStatementFieldToMatchQueryString struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementXssMatchStatementFieldToMatchSingleHeader struct {
+	Name *string `json:"name" tf:"name"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementXssMatchStatementFieldToMatchSingleQueryArgument struct {
+	Name *string `json:"name" tf:"name"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementXssMatchStatementFieldToMatchUriPath struct{}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementXssMatchStatementFieldToMatch struct {
+	// +optional
+	AllQueryArguments *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementXssMatchStatementFieldToMatchAllQueryArguments `json:"allQueryArguments,omitempty" tf:"all_query_arguments"`
+	// +optional
+	Body *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementXssMatchStatementFieldToMatchBody `json:"body,omitempty" tf:"body"`
+	// +optional
+	Method *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementXssMatchStatementFieldToMatchMethod `json:"method,omitempty" tf:"method"`
+	// +optional
+	QueryString *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementXssMatchStatementFieldToMatchQueryString `json:"queryString,omitempty" tf:"query_string"`
+	// +optional
+	SingleHeader *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementXssMatchStatementFieldToMatchSingleHeader `json:"singleHeader,omitempty" tf:"single_header"`
+	// +optional
+	SingleQueryArgument *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementXssMatchStatementFieldToMatchSingleQueryArgument `json:"singleQueryArgument,omitempty" tf:"single_query_argument"`
+	// +optional
+	UriPath *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementXssMatchStatementFieldToMatchUriPath `json:"uriPath,omitempty" tf:"uri_path"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementXssMatchStatementTextTransformation struct {
+	Priority *int64  `json:"priority" tf:"priority"`
+	Type     *string `json:"type" tf:"type"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementXssMatchStatement struct {
+	// +optional
+	FieldToMatch       *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementXssMatchStatementFieldToMatch        `json:"fieldToMatch,omitempty" tf:"field_to_match"`
+	TextTransformation []WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementXssMatchStatementTextTransformation `json:"textTransformation" tf:"text_transformation"`
+}
+
+type WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatement struct {
+	// +optional
+	AndStatement *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatement `json:"andStatement,omitempty" tf:"and_statement"`
+	// +optional
+	ByteMatchStatement *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementByteMatchStatement `json:"byteMatchStatement,omitempty" tf:"byte_match_statement"`
+	// +optional
+	GeoMatchStatement *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementGeoMatchStatement `json:"geoMatchStatement,omitempty" tf:"geo_match_statement"`
+	// +optional
+	IpSetReferenceStatement *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementIpSetReferenceStatement `json:"ipSetReferenceStatement,omitempty" tf:"ip_set_reference_statement"`
+	// +optional
+	LabelMatchStatement *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementLabelMatchStatement `json:"labelMatchStatement,omitempty" tf:"label_match_statement"`
+	// +optional
+	NotStatement *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatement `json:"notStatement,omitempty" tf:"not_statement"`
+	// +optional
+	OrStatement *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatement `json:"orStatement,omitempty" tf:"or_statement"`
+	// +optional
+	RegexPatternSetReferenceStatement *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementRegexPatternSetReferenceStatement `json:"regexPatternSetReferenceStatement,omitempty" tf:"regex_pattern_set_reference_statement"`
+	// +optional
+	SizeConstraintStatement *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementSizeConstraintStatement `json:"sizeConstraintStatement,omitempty" tf:"size_constraint_statement"`
+	// +optional
+	SqliMatchStatement *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementSqliMatchStatement `json:"sqliMatchStatement,omitempty" tf:"sqli_match_statement"`
+	// +optional
+	XssMatchStatement *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatementXssMatchStatement `json:"xssMatchStatement,omitempty" tf:"xss_match_statement"`
 }
 
 type WebACLSpecRuleStatementManagedRuleGroupStatement struct {
 	// +optional
 	ExcludedRule []WebACLSpecRuleStatementManagedRuleGroupStatementExcludedRule `json:"excludedRule,omitempty" tf:"excluded_rule"`
 	Name         *string                                                        `json:"name" tf:"name"`
-	VendorName   *string                                                        `json:"vendorName" tf:"vendor_name"`
+	// +optional
+	ScopeDownStatement *WebACLSpecRuleStatementManagedRuleGroupStatementScopeDownStatement `json:"scopeDownStatement,omitempty" tf:"scope_down_statement"`
+	VendorName         *string                                                             `json:"vendorName" tf:"vendor_name"`
+	// +optional
+	Version *string `json:"version,omitempty" tf:"version"`
 }
 
 type WebACLSpecRuleStatementNotStatementStatementAndStatementStatementAndStatementStatementByteMatchStatementFieldToMatchAllQueryArguments struct{}
@@ -3962,6 +7827,11 @@ type WebACLSpecRuleStatementNotStatementStatementAndStatementStatementAndStateme
 	Arn *string `json:"arn" tf:"arn"`
 	// +optional
 	IpSetForwardedIPConfig *WebACLSpecRuleStatementNotStatementStatementAndStatementStatementAndStatementStatementIpSetReferenceStatementIpSetForwardedIPConfig `json:"ipSetForwardedIPConfig,omitempty" tf:"ip_set_forwarded_ip_config"`
+}
+
+type WebACLSpecRuleStatementNotStatementStatementAndStatementStatementAndStatementStatementLabelMatchStatement struct {
+	Key   *string `json:"key" tf:"key"`
+	Scope *string `json:"scope" tf:"scope"`
 }
 
 type WebACLSpecRuleStatementNotStatementStatementAndStatementStatementAndStatementStatementRegexPatternSetReferenceStatementFieldToMatchAllQueryArguments struct{}
@@ -4159,6 +8029,8 @@ type WebACLSpecRuleStatementNotStatementStatementAndStatementStatementAndStateme
 	// +optional
 	IpSetReferenceStatement *WebACLSpecRuleStatementNotStatementStatementAndStatementStatementAndStatementStatementIpSetReferenceStatement `json:"ipSetReferenceStatement,omitempty" tf:"ip_set_reference_statement"`
 	// +optional
+	LabelMatchStatement *WebACLSpecRuleStatementNotStatementStatementAndStatementStatementAndStatementStatementLabelMatchStatement `json:"labelMatchStatement,omitempty" tf:"label_match_statement"`
+	// +optional
 	RegexPatternSetReferenceStatement *WebACLSpecRuleStatementNotStatementStatementAndStatementStatementAndStatementStatementRegexPatternSetReferenceStatement `json:"regexPatternSetReferenceStatement,omitempty" tf:"regex_pattern_set_reference_statement"`
 	// +optional
 	SizeConstraintStatement *WebACLSpecRuleStatementNotStatementStatementAndStatementStatementAndStatementStatementSizeConstraintStatement `json:"sizeConstraintStatement,omitempty" tf:"size_constraint_statement"`
@@ -4244,6 +8116,11 @@ type WebACLSpecRuleStatementNotStatementStatementAndStatementStatementIpSetRefer
 	IpSetForwardedIPConfig *WebACLSpecRuleStatementNotStatementStatementAndStatementStatementIpSetReferenceStatementIpSetForwardedIPConfig `json:"ipSetForwardedIPConfig,omitempty" tf:"ip_set_forwarded_ip_config"`
 }
 
+type WebACLSpecRuleStatementNotStatementStatementAndStatementStatementLabelMatchStatement struct {
+	Key   *string `json:"key" tf:"key"`
+	Scope *string `json:"scope" tf:"scope"`
+}
+
 type WebACLSpecRuleStatementNotStatementStatementAndStatementStatementNotStatementStatementByteMatchStatementFieldToMatchAllQueryArguments struct{}
 
 type WebACLSpecRuleStatementNotStatementStatementAndStatementStatementNotStatementStatementByteMatchStatementFieldToMatchBody struct{}
@@ -4314,6 +8191,11 @@ type WebACLSpecRuleStatementNotStatementStatementAndStatementStatementNotStateme
 	Arn *string `json:"arn" tf:"arn"`
 	// +optional
 	IpSetForwardedIPConfig *WebACLSpecRuleStatementNotStatementStatementAndStatementStatementNotStatementStatementIpSetReferenceStatementIpSetForwardedIPConfig `json:"ipSetForwardedIPConfig,omitempty" tf:"ip_set_forwarded_ip_config"`
+}
+
+type WebACLSpecRuleStatementNotStatementStatementAndStatementStatementNotStatementStatementLabelMatchStatement struct {
+	Key   *string `json:"key" tf:"key"`
+	Scope *string `json:"scope" tf:"scope"`
 }
 
 type WebACLSpecRuleStatementNotStatementStatementAndStatementStatementNotStatementStatementRegexPatternSetReferenceStatementFieldToMatchAllQueryArguments struct{}
@@ -4511,6 +8393,8 @@ type WebACLSpecRuleStatementNotStatementStatementAndStatementStatementNotStateme
 	// +optional
 	IpSetReferenceStatement *WebACLSpecRuleStatementNotStatementStatementAndStatementStatementNotStatementStatementIpSetReferenceStatement `json:"ipSetReferenceStatement,omitempty" tf:"ip_set_reference_statement"`
 	// +optional
+	LabelMatchStatement *WebACLSpecRuleStatementNotStatementStatementAndStatementStatementNotStatementStatementLabelMatchStatement `json:"labelMatchStatement,omitempty" tf:"label_match_statement"`
+	// +optional
 	RegexPatternSetReferenceStatement *WebACLSpecRuleStatementNotStatementStatementAndStatementStatementNotStatementStatementRegexPatternSetReferenceStatement `json:"regexPatternSetReferenceStatement,omitempty" tf:"regex_pattern_set_reference_statement"`
 	// +optional
 	SizeConstraintStatement *WebACLSpecRuleStatementNotStatementStatementAndStatementStatementNotStatementStatementSizeConstraintStatement `json:"sizeConstraintStatement,omitempty" tf:"size_constraint_statement"`
@@ -4594,6 +8478,11 @@ type WebACLSpecRuleStatementNotStatementStatementAndStatementStatementOrStatemen
 	Arn *string `json:"arn" tf:"arn"`
 	// +optional
 	IpSetForwardedIPConfig *WebACLSpecRuleStatementNotStatementStatementAndStatementStatementOrStatementStatementIpSetReferenceStatementIpSetForwardedIPConfig `json:"ipSetForwardedIPConfig,omitempty" tf:"ip_set_forwarded_ip_config"`
+}
+
+type WebACLSpecRuleStatementNotStatementStatementAndStatementStatementOrStatementStatementLabelMatchStatement struct {
+	Key   *string `json:"key" tf:"key"`
+	Scope *string `json:"scope" tf:"scope"`
 }
 
 type WebACLSpecRuleStatementNotStatementStatementAndStatementStatementOrStatementStatementRegexPatternSetReferenceStatementFieldToMatchAllQueryArguments struct{}
@@ -4790,6 +8679,8 @@ type WebACLSpecRuleStatementNotStatementStatementAndStatementStatementOrStatemen
 	GeoMatchStatement *WebACLSpecRuleStatementNotStatementStatementAndStatementStatementOrStatementStatementGeoMatchStatement `json:"geoMatchStatement,omitempty" tf:"geo_match_statement"`
 	// +optional
 	IpSetReferenceStatement *WebACLSpecRuleStatementNotStatementStatementAndStatementStatementOrStatementStatementIpSetReferenceStatement `json:"ipSetReferenceStatement,omitempty" tf:"ip_set_reference_statement"`
+	// +optional
+	LabelMatchStatement *WebACLSpecRuleStatementNotStatementStatementAndStatementStatementOrStatementStatementLabelMatchStatement `json:"labelMatchStatement,omitempty" tf:"label_match_statement"`
 	// +optional
 	RegexPatternSetReferenceStatement *WebACLSpecRuleStatementNotStatementStatementAndStatementStatementOrStatementStatementRegexPatternSetReferenceStatement `json:"regexPatternSetReferenceStatement,omitempty" tf:"regex_pattern_set_reference_statement"`
 	// +optional
@@ -5001,6 +8892,8 @@ type WebACLSpecRuleStatementNotStatementStatementAndStatementStatement struct {
 	// +optional
 	IpSetReferenceStatement *WebACLSpecRuleStatementNotStatementStatementAndStatementStatementIpSetReferenceStatement `json:"ipSetReferenceStatement,omitempty" tf:"ip_set_reference_statement"`
 	// +optional
+	LabelMatchStatement *WebACLSpecRuleStatementNotStatementStatementAndStatementStatementLabelMatchStatement `json:"labelMatchStatement,omitempty" tf:"label_match_statement"`
+	// +optional
 	NotStatement *WebACLSpecRuleStatementNotStatementStatementAndStatementStatementNotStatement `json:"notStatement,omitempty" tf:"not_statement"`
 	// +optional
 	OrStatement *WebACLSpecRuleStatementNotStatementStatementAndStatementStatementOrStatement `json:"orStatement,omitempty" tf:"or_statement"`
@@ -5090,6 +8983,11 @@ type WebACLSpecRuleStatementNotStatementStatementIpSetReferenceStatement struct 
 	IpSetForwardedIPConfig *WebACLSpecRuleStatementNotStatementStatementIpSetReferenceStatementIpSetForwardedIPConfig `json:"ipSetForwardedIPConfig,omitempty" tf:"ip_set_forwarded_ip_config"`
 }
 
+type WebACLSpecRuleStatementNotStatementStatementLabelMatchStatement struct {
+	Key   *string `json:"key" tf:"key"`
+	Scope *string `json:"scope" tf:"scope"`
+}
+
 type WebACLSpecRuleStatementNotStatementStatementNotStatementStatementAndStatementStatementByteMatchStatementFieldToMatchAllQueryArguments struct{}
 
 type WebACLSpecRuleStatementNotStatementStatementNotStatementStatementAndStatementStatementByteMatchStatementFieldToMatchBody struct{}
@@ -5160,6 +9058,11 @@ type WebACLSpecRuleStatementNotStatementStatementNotStatementStatementAndStateme
 	Arn *string `json:"arn" tf:"arn"`
 	// +optional
 	IpSetForwardedIPConfig *WebACLSpecRuleStatementNotStatementStatementNotStatementStatementAndStatementStatementIpSetReferenceStatementIpSetForwardedIPConfig `json:"ipSetForwardedIPConfig,omitempty" tf:"ip_set_forwarded_ip_config"`
+}
+
+type WebACLSpecRuleStatementNotStatementStatementNotStatementStatementAndStatementStatementLabelMatchStatement struct {
+	Key   *string `json:"key" tf:"key"`
+	Scope *string `json:"scope" tf:"scope"`
 }
 
 type WebACLSpecRuleStatementNotStatementStatementNotStatementStatementAndStatementStatementRegexPatternSetReferenceStatementFieldToMatchAllQueryArguments struct{}
@@ -5357,6 +9260,8 @@ type WebACLSpecRuleStatementNotStatementStatementNotStatementStatementAndStateme
 	// +optional
 	IpSetReferenceStatement *WebACLSpecRuleStatementNotStatementStatementNotStatementStatementAndStatementStatementIpSetReferenceStatement `json:"ipSetReferenceStatement,omitempty" tf:"ip_set_reference_statement"`
 	// +optional
+	LabelMatchStatement *WebACLSpecRuleStatementNotStatementStatementNotStatementStatementAndStatementStatementLabelMatchStatement `json:"labelMatchStatement,omitempty" tf:"label_match_statement"`
+	// +optional
 	RegexPatternSetReferenceStatement *WebACLSpecRuleStatementNotStatementStatementNotStatementStatementAndStatementStatementRegexPatternSetReferenceStatement `json:"regexPatternSetReferenceStatement,omitempty" tf:"regex_pattern_set_reference_statement"`
 	// +optional
 	SizeConstraintStatement *WebACLSpecRuleStatementNotStatementStatementNotStatementStatementAndStatementStatementSizeConstraintStatement `json:"sizeConstraintStatement,omitempty" tf:"size_constraint_statement"`
@@ -5442,6 +9347,11 @@ type WebACLSpecRuleStatementNotStatementStatementNotStatementStatementIpSetRefer
 	IpSetForwardedIPConfig *WebACLSpecRuleStatementNotStatementStatementNotStatementStatementIpSetReferenceStatementIpSetForwardedIPConfig `json:"ipSetForwardedIPConfig,omitempty" tf:"ip_set_forwarded_ip_config"`
 }
 
+type WebACLSpecRuleStatementNotStatementStatementNotStatementStatementLabelMatchStatement struct {
+	Key   *string `json:"key" tf:"key"`
+	Scope *string `json:"scope" tf:"scope"`
+}
+
 type WebACLSpecRuleStatementNotStatementStatementNotStatementStatementNotStatementStatementByteMatchStatementFieldToMatchAllQueryArguments struct{}
 
 type WebACLSpecRuleStatementNotStatementStatementNotStatementStatementNotStatementStatementByteMatchStatementFieldToMatchBody struct{}
@@ -5512,6 +9422,11 @@ type WebACLSpecRuleStatementNotStatementStatementNotStatementStatementNotStateme
 	Arn *string `json:"arn" tf:"arn"`
 	// +optional
 	IpSetForwardedIPConfig *WebACLSpecRuleStatementNotStatementStatementNotStatementStatementNotStatementStatementIpSetReferenceStatementIpSetForwardedIPConfig `json:"ipSetForwardedIPConfig,omitempty" tf:"ip_set_forwarded_ip_config"`
+}
+
+type WebACLSpecRuleStatementNotStatementStatementNotStatementStatementNotStatementStatementLabelMatchStatement struct {
+	Key   *string `json:"key" tf:"key"`
+	Scope *string `json:"scope" tf:"scope"`
 }
 
 type WebACLSpecRuleStatementNotStatementStatementNotStatementStatementNotStatementStatementRegexPatternSetReferenceStatementFieldToMatchAllQueryArguments struct{}
@@ -5709,6 +9624,8 @@ type WebACLSpecRuleStatementNotStatementStatementNotStatementStatementNotStateme
 	// +optional
 	IpSetReferenceStatement *WebACLSpecRuleStatementNotStatementStatementNotStatementStatementNotStatementStatementIpSetReferenceStatement `json:"ipSetReferenceStatement,omitempty" tf:"ip_set_reference_statement"`
 	// +optional
+	LabelMatchStatement *WebACLSpecRuleStatementNotStatementStatementNotStatementStatementNotStatementStatementLabelMatchStatement `json:"labelMatchStatement,omitempty" tf:"label_match_statement"`
+	// +optional
 	RegexPatternSetReferenceStatement *WebACLSpecRuleStatementNotStatementStatementNotStatementStatementNotStatementStatementRegexPatternSetReferenceStatement `json:"regexPatternSetReferenceStatement,omitempty" tf:"regex_pattern_set_reference_statement"`
 	// +optional
 	SizeConstraintStatement *WebACLSpecRuleStatementNotStatementStatementNotStatementStatementNotStatementStatementSizeConstraintStatement `json:"sizeConstraintStatement,omitempty" tf:"size_constraint_statement"`
@@ -5792,6 +9709,11 @@ type WebACLSpecRuleStatementNotStatementStatementNotStatementStatementOrStatemen
 	Arn *string `json:"arn" tf:"arn"`
 	// +optional
 	IpSetForwardedIPConfig *WebACLSpecRuleStatementNotStatementStatementNotStatementStatementOrStatementStatementIpSetReferenceStatementIpSetForwardedIPConfig `json:"ipSetForwardedIPConfig,omitempty" tf:"ip_set_forwarded_ip_config"`
+}
+
+type WebACLSpecRuleStatementNotStatementStatementNotStatementStatementOrStatementStatementLabelMatchStatement struct {
+	Key   *string `json:"key" tf:"key"`
+	Scope *string `json:"scope" tf:"scope"`
 }
 
 type WebACLSpecRuleStatementNotStatementStatementNotStatementStatementOrStatementStatementRegexPatternSetReferenceStatementFieldToMatchAllQueryArguments struct{}
@@ -5988,6 +9910,8 @@ type WebACLSpecRuleStatementNotStatementStatementNotStatementStatementOrStatemen
 	GeoMatchStatement *WebACLSpecRuleStatementNotStatementStatementNotStatementStatementOrStatementStatementGeoMatchStatement `json:"geoMatchStatement,omitempty" tf:"geo_match_statement"`
 	// +optional
 	IpSetReferenceStatement *WebACLSpecRuleStatementNotStatementStatementNotStatementStatementOrStatementStatementIpSetReferenceStatement `json:"ipSetReferenceStatement,omitempty" tf:"ip_set_reference_statement"`
+	// +optional
+	LabelMatchStatement *WebACLSpecRuleStatementNotStatementStatementNotStatementStatementOrStatementStatementLabelMatchStatement `json:"labelMatchStatement,omitempty" tf:"label_match_statement"`
 	// +optional
 	RegexPatternSetReferenceStatement *WebACLSpecRuleStatementNotStatementStatementNotStatementStatementOrStatementStatementRegexPatternSetReferenceStatement `json:"regexPatternSetReferenceStatement,omitempty" tf:"regex_pattern_set_reference_statement"`
 	// +optional
@@ -6199,6 +10123,8 @@ type WebACLSpecRuleStatementNotStatementStatementNotStatementStatement struct {
 	// +optional
 	IpSetReferenceStatement *WebACLSpecRuleStatementNotStatementStatementNotStatementStatementIpSetReferenceStatement `json:"ipSetReferenceStatement,omitempty" tf:"ip_set_reference_statement"`
 	// +optional
+	LabelMatchStatement *WebACLSpecRuleStatementNotStatementStatementNotStatementStatementLabelMatchStatement `json:"labelMatchStatement,omitempty" tf:"label_match_statement"`
+	// +optional
 	NotStatement *WebACLSpecRuleStatementNotStatementStatementNotStatementStatementNotStatement `json:"notStatement,omitempty" tf:"not_statement"`
 	// +optional
 	OrStatement *WebACLSpecRuleStatementNotStatementStatementNotStatementStatementOrStatement `json:"orStatement,omitempty" tf:"or_statement"`
@@ -6286,6 +10212,11 @@ type WebACLSpecRuleStatementNotStatementStatementOrStatementStatementAndStatemen
 	Arn *string `json:"arn" tf:"arn"`
 	// +optional
 	IpSetForwardedIPConfig *WebACLSpecRuleStatementNotStatementStatementOrStatementStatementAndStatementStatementIpSetReferenceStatementIpSetForwardedIPConfig `json:"ipSetForwardedIPConfig,omitempty" tf:"ip_set_forwarded_ip_config"`
+}
+
+type WebACLSpecRuleStatementNotStatementStatementOrStatementStatementAndStatementStatementLabelMatchStatement struct {
+	Key   *string `json:"key" tf:"key"`
+	Scope *string `json:"scope" tf:"scope"`
 }
 
 type WebACLSpecRuleStatementNotStatementStatementOrStatementStatementAndStatementStatementRegexPatternSetReferenceStatementFieldToMatchAllQueryArguments struct{}
@@ -6483,6 +10414,8 @@ type WebACLSpecRuleStatementNotStatementStatementOrStatementStatementAndStatemen
 	// +optional
 	IpSetReferenceStatement *WebACLSpecRuleStatementNotStatementStatementOrStatementStatementAndStatementStatementIpSetReferenceStatement `json:"ipSetReferenceStatement,omitempty" tf:"ip_set_reference_statement"`
 	// +optional
+	LabelMatchStatement *WebACLSpecRuleStatementNotStatementStatementOrStatementStatementAndStatementStatementLabelMatchStatement `json:"labelMatchStatement,omitempty" tf:"label_match_statement"`
+	// +optional
 	RegexPatternSetReferenceStatement *WebACLSpecRuleStatementNotStatementStatementOrStatementStatementAndStatementStatementRegexPatternSetReferenceStatement `json:"regexPatternSetReferenceStatement,omitempty" tf:"regex_pattern_set_reference_statement"`
 	// +optional
 	SizeConstraintStatement *WebACLSpecRuleStatementNotStatementStatementOrStatementStatementAndStatementStatementSizeConstraintStatement `json:"sizeConstraintStatement,omitempty" tf:"size_constraint_statement"`
@@ -6568,6 +10501,11 @@ type WebACLSpecRuleStatementNotStatementStatementOrStatementStatementIpSetRefere
 	IpSetForwardedIPConfig *WebACLSpecRuleStatementNotStatementStatementOrStatementStatementIpSetReferenceStatementIpSetForwardedIPConfig `json:"ipSetForwardedIPConfig,omitempty" tf:"ip_set_forwarded_ip_config"`
 }
 
+type WebACLSpecRuleStatementNotStatementStatementOrStatementStatementLabelMatchStatement struct {
+	Key   *string `json:"key" tf:"key"`
+	Scope *string `json:"scope" tf:"scope"`
+}
+
 type WebACLSpecRuleStatementNotStatementStatementOrStatementStatementNotStatementStatementByteMatchStatementFieldToMatchAllQueryArguments struct{}
 
 type WebACLSpecRuleStatementNotStatementStatementOrStatementStatementNotStatementStatementByteMatchStatementFieldToMatchBody struct{}
@@ -6638,6 +10576,11 @@ type WebACLSpecRuleStatementNotStatementStatementOrStatementStatementNotStatemen
 	Arn *string `json:"arn" tf:"arn"`
 	// +optional
 	IpSetForwardedIPConfig *WebACLSpecRuleStatementNotStatementStatementOrStatementStatementNotStatementStatementIpSetReferenceStatementIpSetForwardedIPConfig `json:"ipSetForwardedIPConfig,omitempty" tf:"ip_set_forwarded_ip_config"`
+}
+
+type WebACLSpecRuleStatementNotStatementStatementOrStatementStatementNotStatementStatementLabelMatchStatement struct {
+	Key   *string `json:"key" tf:"key"`
+	Scope *string `json:"scope" tf:"scope"`
 }
 
 type WebACLSpecRuleStatementNotStatementStatementOrStatementStatementNotStatementStatementRegexPatternSetReferenceStatementFieldToMatchAllQueryArguments struct{}
@@ -6835,6 +10778,8 @@ type WebACLSpecRuleStatementNotStatementStatementOrStatementStatementNotStatemen
 	// +optional
 	IpSetReferenceStatement *WebACLSpecRuleStatementNotStatementStatementOrStatementStatementNotStatementStatementIpSetReferenceStatement `json:"ipSetReferenceStatement,omitempty" tf:"ip_set_reference_statement"`
 	// +optional
+	LabelMatchStatement *WebACLSpecRuleStatementNotStatementStatementOrStatementStatementNotStatementStatementLabelMatchStatement `json:"labelMatchStatement,omitempty" tf:"label_match_statement"`
+	// +optional
 	RegexPatternSetReferenceStatement *WebACLSpecRuleStatementNotStatementStatementOrStatementStatementNotStatementStatementRegexPatternSetReferenceStatement `json:"regexPatternSetReferenceStatement,omitempty" tf:"regex_pattern_set_reference_statement"`
 	// +optional
 	SizeConstraintStatement *WebACLSpecRuleStatementNotStatementStatementOrStatementStatementNotStatementStatementSizeConstraintStatement `json:"sizeConstraintStatement,omitempty" tf:"size_constraint_statement"`
@@ -6918,6 +10863,11 @@ type WebACLSpecRuleStatementNotStatementStatementOrStatementStatementOrStatement
 	Arn *string `json:"arn" tf:"arn"`
 	// +optional
 	IpSetForwardedIPConfig *WebACLSpecRuleStatementNotStatementStatementOrStatementStatementOrStatementStatementIpSetReferenceStatementIpSetForwardedIPConfig `json:"ipSetForwardedIPConfig,omitempty" tf:"ip_set_forwarded_ip_config"`
+}
+
+type WebACLSpecRuleStatementNotStatementStatementOrStatementStatementOrStatementStatementLabelMatchStatement struct {
+	Key   *string `json:"key" tf:"key"`
+	Scope *string `json:"scope" tf:"scope"`
 }
 
 type WebACLSpecRuleStatementNotStatementStatementOrStatementStatementOrStatementStatementRegexPatternSetReferenceStatementFieldToMatchAllQueryArguments struct{}
@@ -7114,6 +11064,8 @@ type WebACLSpecRuleStatementNotStatementStatementOrStatementStatementOrStatement
 	GeoMatchStatement *WebACLSpecRuleStatementNotStatementStatementOrStatementStatementOrStatementStatementGeoMatchStatement `json:"geoMatchStatement,omitempty" tf:"geo_match_statement"`
 	// +optional
 	IpSetReferenceStatement *WebACLSpecRuleStatementNotStatementStatementOrStatementStatementOrStatementStatementIpSetReferenceStatement `json:"ipSetReferenceStatement,omitempty" tf:"ip_set_reference_statement"`
+	// +optional
+	LabelMatchStatement *WebACLSpecRuleStatementNotStatementStatementOrStatementStatementOrStatementStatementLabelMatchStatement `json:"labelMatchStatement,omitempty" tf:"label_match_statement"`
 	// +optional
 	RegexPatternSetReferenceStatement *WebACLSpecRuleStatementNotStatementStatementOrStatementStatementOrStatementStatementRegexPatternSetReferenceStatement `json:"regexPatternSetReferenceStatement,omitempty" tf:"regex_pattern_set_reference_statement"`
 	// +optional
@@ -7324,6 +11276,8 @@ type WebACLSpecRuleStatementNotStatementStatementOrStatementStatement struct {
 	GeoMatchStatement *WebACLSpecRuleStatementNotStatementStatementOrStatementStatementGeoMatchStatement `json:"geoMatchStatement,omitempty" tf:"geo_match_statement"`
 	// +optional
 	IpSetReferenceStatement *WebACLSpecRuleStatementNotStatementStatementOrStatementStatementIpSetReferenceStatement `json:"ipSetReferenceStatement,omitempty" tf:"ip_set_reference_statement"`
+	// +optional
+	LabelMatchStatement *WebACLSpecRuleStatementNotStatementStatementOrStatementStatementLabelMatchStatement `json:"labelMatchStatement,omitempty" tf:"label_match_statement"`
 	// +optional
 	NotStatement *WebACLSpecRuleStatementNotStatementStatementOrStatementStatementNotStatement `json:"notStatement,omitempty" tf:"not_statement"`
 	// +optional
@@ -7539,6 +11493,8 @@ type WebACLSpecRuleStatementNotStatementStatement struct {
 	// +optional
 	IpSetReferenceStatement *WebACLSpecRuleStatementNotStatementStatementIpSetReferenceStatement `json:"ipSetReferenceStatement,omitempty" tf:"ip_set_reference_statement"`
 	// +optional
+	LabelMatchStatement *WebACLSpecRuleStatementNotStatementStatementLabelMatchStatement `json:"labelMatchStatement,omitempty" tf:"label_match_statement"`
+	// +optional
 	NotStatement *WebACLSpecRuleStatementNotStatementStatementNotStatement `json:"notStatement,omitempty" tf:"not_statement"`
 	// +optional
 	OrStatement *WebACLSpecRuleStatementNotStatementStatementOrStatement `json:"orStatement,omitempty" tf:"or_statement"`
@@ -7626,6 +11582,11 @@ type WebACLSpecRuleStatementOrStatementStatementAndStatementStatementAndStatemen
 	Arn *string `json:"arn" tf:"arn"`
 	// +optional
 	IpSetForwardedIPConfig *WebACLSpecRuleStatementOrStatementStatementAndStatementStatementAndStatementStatementIpSetReferenceStatementIpSetForwardedIPConfig `json:"ipSetForwardedIPConfig,omitempty" tf:"ip_set_forwarded_ip_config"`
+}
+
+type WebACLSpecRuleStatementOrStatementStatementAndStatementStatementAndStatementStatementLabelMatchStatement struct {
+	Key   *string `json:"key" tf:"key"`
+	Scope *string `json:"scope" tf:"scope"`
 }
 
 type WebACLSpecRuleStatementOrStatementStatementAndStatementStatementAndStatementStatementRegexPatternSetReferenceStatementFieldToMatchAllQueryArguments struct{}
@@ -7823,6 +11784,8 @@ type WebACLSpecRuleStatementOrStatementStatementAndStatementStatementAndStatemen
 	// +optional
 	IpSetReferenceStatement *WebACLSpecRuleStatementOrStatementStatementAndStatementStatementAndStatementStatementIpSetReferenceStatement `json:"ipSetReferenceStatement,omitempty" tf:"ip_set_reference_statement"`
 	// +optional
+	LabelMatchStatement *WebACLSpecRuleStatementOrStatementStatementAndStatementStatementAndStatementStatementLabelMatchStatement `json:"labelMatchStatement,omitempty" tf:"label_match_statement"`
+	// +optional
 	RegexPatternSetReferenceStatement *WebACLSpecRuleStatementOrStatementStatementAndStatementStatementAndStatementStatementRegexPatternSetReferenceStatement `json:"regexPatternSetReferenceStatement,omitempty" tf:"regex_pattern_set_reference_statement"`
 	// +optional
 	SizeConstraintStatement *WebACLSpecRuleStatementOrStatementStatementAndStatementStatementAndStatementStatementSizeConstraintStatement `json:"sizeConstraintStatement,omitempty" tf:"size_constraint_statement"`
@@ -7908,6 +11871,11 @@ type WebACLSpecRuleStatementOrStatementStatementAndStatementStatementIpSetRefere
 	IpSetForwardedIPConfig *WebACLSpecRuleStatementOrStatementStatementAndStatementStatementIpSetReferenceStatementIpSetForwardedIPConfig `json:"ipSetForwardedIPConfig,omitempty" tf:"ip_set_forwarded_ip_config"`
 }
 
+type WebACLSpecRuleStatementOrStatementStatementAndStatementStatementLabelMatchStatement struct {
+	Key   *string `json:"key" tf:"key"`
+	Scope *string `json:"scope" tf:"scope"`
+}
+
 type WebACLSpecRuleStatementOrStatementStatementAndStatementStatementNotStatementStatementByteMatchStatementFieldToMatchAllQueryArguments struct{}
 
 type WebACLSpecRuleStatementOrStatementStatementAndStatementStatementNotStatementStatementByteMatchStatementFieldToMatchBody struct{}
@@ -7978,6 +11946,11 @@ type WebACLSpecRuleStatementOrStatementStatementAndStatementStatementNotStatemen
 	Arn *string `json:"arn" tf:"arn"`
 	// +optional
 	IpSetForwardedIPConfig *WebACLSpecRuleStatementOrStatementStatementAndStatementStatementNotStatementStatementIpSetReferenceStatementIpSetForwardedIPConfig `json:"ipSetForwardedIPConfig,omitempty" tf:"ip_set_forwarded_ip_config"`
+}
+
+type WebACLSpecRuleStatementOrStatementStatementAndStatementStatementNotStatementStatementLabelMatchStatement struct {
+	Key   *string `json:"key" tf:"key"`
+	Scope *string `json:"scope" tf:"scope"`
 }
 
 type WebACLSpecRuleStatementOrStatementStatementAndStatementStatementNotStatementStatementRegexPatternSetReferenceStatementFieldToMatchAllQueryArguments struct{}
@@ -8175,6 +12148,8 @@ type WebACLSpecRuleStatementOrStatementStatementAndStatementStatementNotStatemen
 	// +optional
 	IpSetReferenceStatement *WebACLSpecRuleStatementOrStatementStatementAndStatementStatementNotStatementStatementIpSetReferenceStatement `json:"ipSetReferenceStatement,omitempty" tf:"ip_set_reference_statement"`
 	// +optional
+	LabelMatchStatement *WebACLSpecRuleStatementOrStatementStatementAndStatementStatementNotStatementStatementLabelMatchStatement `json:"labelMatchStatement,omitempty" tf:"label_match_statement"`
+	// +optional
 	RegexPatternSetReferenceStatement *WebACLSpecRuleStatementOrStatementStatementAndStatementStatementNotStatementStatementRegexPatternSetReferenceStatement `json:"regexPatternSetReferenceStatement,omitempty" tf:"regex_pattern_set_reference_statement"`
 	// +optional
 	SizeConstraintStatement *WebACLSpecRuleStatementOrStatementStatementAndStatementStatementNotStatementStatementSizeConstraintStatement `json:"sizeConstraintStatement,omitempty" tf:"size_constraint_statement"`
@@ -8258,6 +12233,11 @@ type WebACLSpecRuleStatementOrStatementStatementAndStatementStatementOrStatement
 	Arn *string `json:"arn" tf:"arn"`
 	// +optional
 	IpSetForwardedIPConfig *WebACLSpecRuleStatementOrStatementStatementAndStatementStatementOrStatementStatementIpSetReferenceStatementIpSetForwardedIPConfig `json:"ipSetForwardedIPConfig,omitempty" tf:"ip_set_forwarded_ip_config"`
+}
+
+type WebACLSpecRuleStatementOrStatementStatementAndStatementStatementOrStatementStatementLabelMatchStatement struct {
+	Key   *string `json:"key" tf:"key"`
+	Scope *string `json:"scope" tf:"scope"`
 }
 
 type WebACLSpecRuleStatementOrStatementStatementAndStatementStatementOrStatementStatementRegexPatternSetReferenceStatementFieldToMatchAllQueryArguments struct{}
@@ -8454,6 +12434,8 @@ type WebACLSpecRuleStatementOrStatementStatementAndStatementStatementOrStatement
 	GeoMatchStatement *WebACLSpecRuleStatementOrStatementStatementAndStatementStatementOrStatementStatementGeoMatchStatement `json:"geoMatchStatement,omitempty" tf:"geo_match_statement"`
 	// +optional
 	IpSetReferenceStatement *WebACLSpecRuleStatementOrStatementStatementAndStatementStatementOrStatementStatementIpSetReferenceStatement `json:"ipSetReferenceStatement,omitempty" tf:"ip_set_reference_statement"`
+	// +optional
+	LabelMatchStatement *WebACLSpecRuleStatementOrStatementStatementAndStatementStatementOrStatementStatementLabelMatchStatement `json:"labelMatchStatement,omitempty" tf:"label_match_statement"`
 	// +optional
 	RegexPatternSetReferenceStatement *WebACLSpecRuleStatementOrStatementStatementAndStatementStatementOrStatementStatementRegexPatternSetReferenceStatement `json:"regexPatternSetReferenceStatement,omitempty" tf:"regex_pattern_set_reference_statement"`
 	// +optional
@@ -8665,6 +12647,8 @@ type WebACLSpecRuleStatementOrStatementStatementAndStatementStatement struct {
 	// +optional
 	IpSetReferenceStatement *WebACLSpecRuleStatementOrStatementStatementAndStatementStatementIpSetReferenceStatement `json:"ipSetReferenceStatement,omitempty" tf:"ip_set_reference_statement"`
 	// +optional
+	LabelMatchStatement *WebACLSpecRuleStatementOrStatementStatementAndStatementStatementLabelMatchStatement `json:"labelMatchStatement,omitempty" tf:"label_match_statement"`
+	// +optional
 	NotStatement *WebACLSpecRuleStatementOrStatementStatementAndStatementStatementNotStatement `json:"notStatement,omitempty" tf:"not_statement"`
 	// +optional
 	OrStatement *WebACLSpecRuleStatementOrStatementStatementAndStatementStatementOrStatement `json:"orStatement,omitempty" tf:"or_statement"`
@@ -8754,6 +12738,11 @@ type WebACLSpecRuleStatementOrStatementStatementIpSetReferenceStatement struct {
 	IpSetForwardedIPConfig *WebACLSpecRuleStatementOrStatementStatementIpSetReferenceStatementIpSetForwardedIPConfig `json:"ipSetForwardedIPConfig,omitempty" tf:"ip_set_forwarded_ip_config"`
 }
 
+type WebACLSpecRuleStatementOrStatementStatementLabelMatchStatement struct {
+	Key   *string `json:"key" tf:"key"`
+	Scope *string `json:"scope" tf:"scope"`
+}
+
 type WebACLSpecRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementByteMatchStatementFieldToMatchAllQueryArguments struct{}
 
 type WebACLSpecRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementByteMatchStatementFieldToMatchBody struct{}
@@ -8824,6 +12813,11 @@ type WebACLSpecRuleStatementOrStatementStatementNotStatementStatementAndStatemen
 	Arn *string `json:"arn" tf:"arn"`
 	// +optional
 	IpSetForwardedIPConfig *WebACLSpecRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementIpSetReferenceStatementIpSetForwardedIPConfig `json:"ipSetForwardedIPConfig,omitempty" tf:"ip_set_forwarded_ip_config"`
+}
+
+type WebACLSpecRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementLabelMatchStatement struct {
+	Key   *string `json:"key" tf:"key"`
+	Scope *string `json:"scope" tf:"scope"`
 }
 
 type WebACLSpecRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementRegexPatternSetReferenceStatementFieldToMatchAllQueryArguments struct{}
@@ -9021,6 +13015,8 @@ type WebACLSpecRuleStatementOrStatementStatementNotStatementStatementAndStatemen
 	// +optional
 	IpSetReferenceStatement *WebACLSpecRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementIpSetReferenceStatement `json:"ipSetReferenceStatement,omitempty" tf:"ip_set_reference_statement"`
 	// +optional
+	LabelMatchStatement *WebACLSpecRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementLabelMatchStatement `json:"labelMatchStatement,omitempty" tf:"label_match_statement"`
+	// +optional
 	RegexPatternSetReferenceStatement *WebACLSpecRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementRegexPatternSetReferenceStatement `json:"regexPatternSetReferenceStatement,omitempty" tf:"regex_pattern_set_reference_statement"`
 	// +optional
 	SizeConstraintStatement *WebACLSpecRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementSizeConstraintStatement `json:"sizeConstraintStatement,omitempty" tf:"size_constraint_statement"`
@@ -9106,6 +13102,11 @@ type WebACLSpecRuleStatementOrStatementStatementNotStatementStatementIpSetRefere
 	IpSetForwardedIPConfig *WebACLSpecRuleStatementOrStatementStatementNotStatementStatementIpSetReferenceStatementIpSetForwardedIPConfig `json:"ipSetForwardedIPConfig,omitempty" tf:"ip_set_forwarded_ip_config"`
 }
 
+type WebACLSpecRuleStatementOrStatementStatementNotStatementStatementLabelMatchStatement struct {
+	Key   *string `json:"key" tf:"key"`
+	Scope *string `json:"scope" tf:"scope"`
+}
+
 type WebACLSpecRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementByteMatchStatementFieldToMatchAllQueryArguments struct{}
 
 type WebACLSpecRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementByteMatchStatementFieldToMatchBody struct{}
@@ -9176,6 +13177,11 @@ type WebACLSpecRuleStatementOrStatementStatementNotStatementStatementNotStatemen
 	Arn *string `json:"arn" tf:"arn"`
 	// +optional
 	IpSetForwardedIPConfig *WebACLSpecRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementIpSetReferenceStatementIpSetForwardedIPConfig `json:"ipSetForwardedIPConfig,omitempty" tf:"ip_set_forwarded_ip_config"`
+}
+
+type WebACLSpecRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementLabelMatchStatement struct {
+	Key   *string `json:"key" tf:"key"`
+	Scope *string `json:"scope" tf:"scope"`
 }
 
 type WebACLSpecRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementRegexPatternSetReferenceStatementFieldToMatchAllQueryArguments struct{}
@@ -9373,6 +13379,8 @@ type WebACLSpecRuleStatementOrStatementStatementNotStatementStatementNotStatemen
 	// +optional
 	IpSetReferenceStatement *WebACLSpecRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementIpSetReferenceStatement `json:"ipSetReferenceStatement,omitempty" tf:"ip_set_reference_statement"`
 	// +optional
+	LabelMatchStatement *WebACLSpecRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementLabelMatchStatement `json:"labelMatchStatement,omitempty" tf:"label_match_statement"`
+	// +optional
 	RegexPatternSetReferenceStatement *WebACLSpecRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementRegexPatternSetReferenceStatement `json:"regexPatternSetReferenceStatement,omitempty" tf:"regex_pattern_set_reference_statement"`
 	// +optional
 	SizeConstraintStatement *WebACLSpecRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementSizeConstraintStatement `json:"sizeConstraintStatement,omitempty" tf:"size_constraint_statement"`
@@ -9456,6 +13464,11 @@ type WebACLSpecRuleStatementOrStatementStatementNotStatementStatementOrStatement
 	Arn *string `json:"arn" tf:"arn"`
 	// +optional
 	IpSetForwardedIPConfig *WebACLSpecRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementIpSetReferenceStatementIpSetForwardedIPConfig `json:"ipSetForwardedIPConfig,omitempty" tf:"ip_set_forwarded_ip_config"`
+}
+
+type WebACLSpecRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementLabelMatchStatement struct {
+	Key   *string `json:"key" tf:"key"`
+	Scope *string `json:"scope" tf:"scope"`
 }
 
 type WebACLSpecRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementRegexPatternSetReferenceStatementFieldToMatchAllQueryArguments struct{}
@@ -9652,6 +13665,8 @@ type WebACLSpecRuleStatementOrStatementStatementNotStatementStatementOrStatement
 	GeoMatchStatement *WebACLSpecRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementGeoMatchStatement `json:"geoMatchStatement,omitempty" tf:"geo_match_statement"`
 	// +optional
 	IpSetReferenceStatement *WebACLSpecRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementIpSetReferenceStatement `json:"ipSetReferenceStatement,omitempty" tf:"ip_set_reference_statement"`
+	// +optional
+	LabelMatchStatement *WebACLSpecRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementLabelMatchStatement `json:"labelMatchStatement,omitempty" tf:"label_match_statement"`
 	// +optional
 	RegexPatternSetReferenceStatement *WebACLSpecRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementRegexPatternSetReferenceStatement `json:"regexPatternSetReferenceStatement,omitempty" tf:"regex_pattern_set_reference_statement"`
 	// +optional
@@ -9863,6 +13878,8 @@ type WebACLSpecRuleStatementOrStatementStatementNotStatementStatement struct {
 	// +optional
 	IpSetReferenceStatement *WebACLSpecRuleStatementOrStatementStatementNotStatementStatementIpSetReferenceStatement `json:"ipSetReferenceStatement,omitempty" tf:"ip_set_reference_statement"`
 	// +optional
+	LabelMatchStatement *WebACLSpecRuleStatementOrStatementStatementNotStatementStatementLabelMatchStatement `json:"labelMatchStatement,omitempty" tf:"label_match_statement"`
+	// +optional
 	NotStatement *WebACLSpecRuleStatementOrStatementStatementNotStatementStatementNotStatement `json:"notStatement,omitempty" tf:"not_statement"`
 	// +optional
 	OrStatement *WebACLSpecRuleStatementOrStatementStatementNotStatementStatementOrStatement `json:"orStatement,omitempty" tf:"or_statement"`
@@ -9950,6 +13967,11 @@ type WebACLSpecRuleStatementOrStatementStatementOrStatementStatementAndStatement
 	Arn *string `json:"arn" tf:"arn"`
 	// +optional
 	IpSetForwardedIPConfig *WebACLSpecRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementIpSetReferenceStatementIpSetForwardedIPConfig `json:"ipSetForwardedIPConfig,omitempty" tf:"ip_set_forwarded_ip_config"`
+}
+
+type WebACLSpecRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementLabelMatchStatement struct {
+	Key   *string `json:"key" tf:"key"`
+	Scope *string `json:"scope" tf:"scope"`
 }
 
 type WebACLSpecRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementRegexPatternSetReferenceStatementFieldToMatchAllQueryArguments struct{}
@@ -10147,6 +14169,8 @@ type WebACLSpecRuleStatementOrStatementStatementOrStatementStatementAndStatement
 	// +optional
 	IpSetReferenceStatement *WebACLSpecRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementIpSetReferenceStatement `json:"ipSetReferenceStatement,omitempty" tf:"ip_set_reference_statement"`
 	// +optional
+	LabelMatchStatement *WebACLSpecRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementLabelMatchStatement `json:"labelMatchStatement,omitempty" tf:"label_match_statement"`
+	// +optional
 	RegexPatternSetReferenceStatement *WebACLSpecRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementRegexPatternSetReferenceStatement `json:"regexPatternSetReferenceStatement,omitempty" tf:"regex_pattern_set_reference_statement"`
 	// +optional
 	SizeConstraintStatement *WebACLSpecRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementSizeConstraintStatement `json:"sizeConstraintStatement,omitempty" tf:"size_constraint_statement"`
@@ -10232,6 +14256,11 @@ type WebACLSpecRuleStatementOrStatementStatementOrStatementStatementIpSetReferen
 	IpSetForwardedIPConfig *WebACLSpecRuleStatementOrStatementStatementOrStatementStatementIpSetReferenceStatementIpSetForwardedIPConfig `json:"ipSetForwardedIPConfig,omitempty" tf:"ip_set_forwarded_ip_config"`
 }
 
+type WebACLSpecRuleStatementOrStatementStatementOrStatementStatementLabelMatchStatement struct {
+	Key   *string `json:"key" tf:"key"`
+	Scope *string `json:"scope" tf:"scope"`
+}
+
 type WebACLSpecRuleStatementOrStatementStatementOrStatementStatementNotStatementStatementByteMatchStatementFieldToMatchAllQueryArguments struct{}
 
 type WebACLSpecRuleStatementOrStatementStatementOrStatementStatementNotStatementStatementByteMatchStatementFieldToMatchBody struct{}
@@ -10302,6 +14331,11 @@ type WebACLSpecRuleStatementOrStatementStatementOrStatementStatementNotStatement
 	Arn *string `json:"arn" tf:"arn"`
 	// +optional
 	IpSetForwardedIPConfig *WebACLSpecRuleStatementOrStatementStatementOrStatementStatementNotStatementStatementIpSetReferenceStatementIpSetForwardedIPConfig `json:"ipSetForwardedIPConfig,omitempty" tf:"ip_set_forwarded_ip_config"`
+}
+
+type WebACLSpecRuleStatementOrStatementStatementOrStatementStatementNotStatementStatementLabelMatchStatement struct {
+	Key   *string `json:"key" tf:"key"`
+	Scope *string `json:"scope" tf:"scope"`
 }
 
 type WebACLSpecRuleStatementOrStatementStatementOrStatementStatementNotStatementStatementRegexPatternSetReferenceStatementFieldToMatchAllQueryArguments struct{}
@@ -10499,6 +14533,8 @@ type WebACLSpecRuleStatementOrStatementStatementOrStatementStatementNotStatement
 	// +optional
 	IpSetReferenceStatement *WebACLSpecRuleStatementOrStatementStatementOrStatementStatementNotStatementStatementIpSetReferenceStatement `json:"ipSetReferenceStatement,omitempty" tf:"ip_set_reference_statement"`
 	// +optional
+	LabelMatchStatement *WebACLSpecRuleStatementOrStatementStatementOrStatementStatementNotStatementStatementLabelMatchStatement `json:"labelMatchStatement,omitempty" tf:"label_match_statement"`
+	// +optional
 	RegexPatternSetReferenceStatement *WebACLSpecRuleStatementOrStatementStatementOrStatementStatementNotStatementStatementRegexPatternSetReferenceStatement `json:"regexPatternSetReferenceStatement,omitempty" tf:"regex_pattern_set_reference_statement"`
 	// +optional
 	SizeConstraintStatement *WebACLSpecRuleStatementOrStatementStatementOrStatementStatementNotStatementStatementSizeConstraintStatement `json:"sizeConstraintStatement,omitempty" tf:"size_constraint_statement"`
@@ -10582,6 +14618,11 @@ type WebACLSpecRuleStatementOrStatementStatementOrStatementStatementOrStatementS
 	Arn *string `json:"arn" tf:"arn"`
 	// +optional
 	IpSetForwardedIPConfig *WebACLSpecRuleStatementOrStatementStatementOrStatementStatementOrStatementStatementIpSetReferenceStatementIpSetForwardedIPConfig `json:"ipSetForwardedIPConfig,omitempty" tf:"ip_set_forwarded_ip_config"`
+}
+
+type WebACLSpecRuleStatementOrStatementStatementOrStatementStatementOrStatementStatementLabelMatchStatement struct {
+	Key   *string `json:"key" tf:"key"`
+	Scope *string `json:"scope" tf:"scope"`
 }
 
 type WebACLSpecRuleStatementOrStatementStatementOrStatementStatementOrStatementStatementRegexPatternSetReferenceStatementFieldToMatchAllQueryArguments struct{}
@@ -10778,6 +14819,8 @@ type WebACLSpecRuleStatementOrStatementStatementOrStatementStatementOrStatementS
 	GeoMatchStatement *WebACLSpecRuleStatementOrStatementStatementOrStatementStatementOrStatementStatementGeoMatchStatement `json:"geoMatchStatement,omitempty" tf:"geo_match_statement"`
 	// +optional
 	IpSetReferenceStatement *WebACLSpecRuleStatementOrStatementStatementOrStatementStatementOrStatementStatementIpSetReferenceStatement `json:"ipSetReferenceStatement,omitempty" tf:"ip_set_reference_statement"`
+	// +optional
+	LabelMatchStatement *WebACLSpecRuleStatementOrStatementStatementOrStatementStatementOrStatementStatementLabelMatchStatement `json:"labelMatchStatement,omitempty" tf:"label_match_statement"`
 	// +optional
 	RegexPatternSetReferenceStatement *WebACLSpecRuleStatementOrStatementStatementOrStatementStatementOrStatementStatementRegexPatternSetReferenceStatement `json:"regexPatternSetReferenceStatement,omitempty" tf:"regex_pattern_set_reference_statement"`
 	// +optional
@@ -10988,6 +15031,8 @@ type WebACLSpecRuleStatementOrStatementStatementOrStatementStatement struct {
 	GeoMatchStatement *WebACLSpecRuleStatementOrStatementStatementOrStatementStatementGeoMatchStatement `json:"geoMatchStatement,omitempty" tf:"geo_match_statement"`
 	// +optional
 	IpSetReferenceStatement *WebACLSpecRuleStatementOrStatementStatementOrStatementStatementIpSetReferenceStatement `json:"ipSetReferenceStatement,omitempty" tf:"ip_set_reference_statement"`
+	// +optional
+	LabelMatchStatement *WebACLSpecRuleStatementOrStatementStatementOrStatementStatementLabelMatchStatement `json:"labelMatchStatement,omitempty" tf:"label_match_statement"`
 	// +optional
 	NotStatement *WebACLSpecRuleStatementOrStatementStatementOrStatementStatementNotStatement `json:"notStatement,omitempty" tf:"not_statement"`
 	// +optional
@@ -11203,6 +15248,8 @@ type WebACLSpecRuleStatementOrStatementStatement struct {
 	// +optional
 	IpSetReferenceStatement *WebACLSpecRuleStatementOrStatementStatementIpSetReferenceStatement `json:"ipSetReferenceStatement,omitempty" tf:"ip_set_reference_statement"`
 	// +optional
+	LabelMatchStatement *WebACLSpecRuleStatementOrStatementStatementLabelMatchStatement `json:"labelMatchStatement,omitempty" tf:"label_match_statement"`
+	// +optional
 	NotStatement *WebACLSpecRuleStatementOrStatementStatementNotStatement `json:"notStatement,omitempty" tf:"not_statement"`
 	// +optional
 	OrStatement *WebACLSpecRuleStatementOrStatementStatementOrStatement `json:"orStatement,omitempty" tf:"or_statement"`
@@ -11295,6 +15342,11 @@ type WebACLSpecRuleStatementRateBasedStatementScopeDownStatementAndStatementStat
 	Arn *string `json:"arn" tf:"arn"`
 	// +optional
 	IpSetForwardedIPConfig *WebACLSpecRuleStatementRateBasedStatementScopeDownStatementAndStatementStatementAndStatementStatementIpSetReferenceStatementIpSetForwardedIPConfig `json:"ipSetForwardedIPConfig,omitempty" tf:"ip_set_forwarded_ip_config"`
+}
+
+type WebACLSpecRuleStatementRateBasedStatementScopeDownStatementAndStatementStatementAndStatementStatementLabelMatchStatement struct {
+	Key   *string `json:"key" tf:"key"`
+	Scope *string `json:"scope" tf:"scope"`
 }
 
 type WebACLSpecRuleStatementRateBasedStatementScopeDownStatementAndStatementStatementAndStatementStatementRegexPatternSetReferenceStatementFieldToMatchAllQueryArguments struct{}
@@ -11492,6 +15544,8 @@ type WebACLSpecRuleStatementRateBasedStatementScopeDownStatementAndStatementStat
 	// +optional
 	IpSetReferenceStatement *WebACLSpecRuleStatementRateBasedStatementScopeDownStatementAndStatementStatementAndStatementStatementIpSetReferenceStatement `json:"ipSetReferenceStatement,omitempty" tf:"ip_set_reference_statement"`
 	// +optional
+	LabelMatchStatement *WebACLSpecRuleStatementRateBasedStatementScopeDownStatementAndStatementStatementAndStatementStatementLabelMatchStatement `json:"labelMatchStatement,omitempty" tf:"label_match_statement"`
+	// +optional
 	RegexPatternSetReferenceStatement *WebACLSpecRuleStatementRateBasedStatementScopeDownStatementAndStatementStatementAndStatementStatementRegexPatternSetReferenceStatement `json:"regexPatternSetReferenceStatement,omitempty" tf:"regex_pattern_set_reference_statement"`
 	// +optional
 	SizeConstraintStatement *WebACLSpecRuleStatementRateBasedStatementScopeDownStatementAndStatementStatementAndStatementStatementSizeConstraintStatement `json:"sizeConstraintStatement,omitempty" tf:"size_constraint_statement"`
@@ -11577,6 +15631,11 @@ type WebACLSpecRuleStatementRateBasedStatementScopeDownStatementAndStatementStat
 	IpSetForwardedIPConfig *WebACLSpecRuleStatementRateBasedStatementScopeDownStatementAndStatementStatementIpSetReferenceStatementIpSetForwardedIPConfig `json:"ipSetForwardedIPConfig,omitempty" tf:"ip_set_forwarded_ip_config"`
 }
 
+type WebACLSpecRuleStatementRateBasedStatementScopeDownStatementAndStatementStatementLabelMatchStatement struct {
+	Key   *string `json:"key" tf:"key"`
+	Scope *string `json:"scope" tf:"scope"`
+}
+
 type WebACLSpecRuleStatementRateBasedStatementScopeDownStatementAndStatementStatementNotStatementStatementByteMatchStatementFieldToMatchAllQueryArguments struct{}
 
 type WebACLSpecRuleStatementRateBasedStatementScopeDownStatementAndStatementStatementNotStatementStatementByteMatchStatementFieldToMatchBody struct{}
@@ -11647,6 +15706,11 @@ type WebACLSpecRuleStatementRateBasedStatementScopeDownStatementAndStatementStat
 	Arn *string `json:"arn" tf:"arn"`
 	// +optional
 	IpSetForwardedIPConfig *WebACLSpecRuleStatementRateBasedStatementScopeDownStatementAndStatementStatementNotStatementStatementIpSetReferenceStatementIpSetForwardedIPConfig `json:"ipSetForwardedIPConfig,omitempty" tf:"ip_set_forwarded_ip_config"`
+}
+
+type WebACLSpecRuleStatementRateBasedStatementScopeDownStatementAndStatementStatementNotStatementStatementLabelMatchStatement struct {
+	Key   *string `json:"key" tf:"key"`
+	Scope *string `json:"scope" tf:"scope"`
 }
 
 type WebACLSpecRuleStatementRateBasedStatementScopeDownStatementAndStatementStatementNotStatementStatementRegexPatternSetReferenceStatementFieldToMatchAllQueryArguments struct{}
@@ -11844,6 +15908,8 @@ type WebACLSpecRuleStatementRateBasedStatementScopeDownStatementAndStatementStat
 	// +optional
 	IpSetReferenceStatement *WebACLSpecRuleStatementRateBasedStatementScopeDownStatementAndStatementStatementNotStatementStatementIpSetReferenceStatement `json:"ipSetReferenceStatement,omitempty" tf:"ip_set_reference_statement"`
 	// +optional
+	LabelMatchStatement *WebACLSpecRuleStatementRateBasedStatementScopeDownStatementAndStatementStatementNotStatementStatementLabelMatchStatement `json:"labelMatchStatement,omitempty" tf:"label_match_statement"`
+	// +optional
 	RegexPatternSetReferenceStatement *WebACLSpecRuleStatementRateBasedStatementScopeDownStatementAndStatementStatementNotStatementStatementRegexPatternSetReferenceStatement `json:"regexPatternSetReferenceStatement,omitempty" tf:"regex_pattern_set_reference_statement"`
 	// +optional
 	SizeConstraintStatement *WebACLSpecRuleStatementRateBasedStatementScopeDownStatementAndStatementStatementNotStatementStatementSizeConstraintStatement `json:"sizeConstraintStatement,omitempty" tf:"size_constraint_statement"`
@@ -11927,6 +15993,11 @@ type WebACLSpecRuleStatementRateBasedStatementScopeDownStatementAndStatementStat
 	Arn *string `json:"arn" tf:"arn"`
 	// +optional
 	IpSetForwardedIPConfig *WebACLSpecRuleStatementRateBasedStatementScopeDownStatementAndStatementStatementOrStatementStatementIpSetReferenceStatementIpSetForwardedIPConfig `json:"ipSetForwardedIPConfig,omitempty" tf:"ip_set_forwarded_ip_config"`
+}
+
+type WebACLSpecRuleStatementRateBasedStatementScopeDownStatementAndStatementStatementOrStatementStatementLabelMatchStatement struct {
+	Key   *string `json:"key" tf:"key"`
+	Scope *string `json:"scope" tf:"scope"`
 }
 
 type WebACLSpecRuleStatementRateBasedStatementScopeDownStatementAndStatementStatementOrStatementStatementRegexPatternSetReferenceStatementFieldToMatchAllQueryArguments struct{}
@@ -12123,6 +16194,8 @@ type WebACLSpecRuleStatementRateBasedStatementScopeDownStatementAndStatementStat
 	GeoMatchStatement *WebACLSpecRuleStatementRateBasedStatementScopeDownStatementAndStatementStatementOrStatementStatementGeoMatchStatement `json:"geoMatchStatement,omitempty" tf:"geo_match_statement"`
 	// +optional
 	IpSetReferenceStatement *WebACLSpecRuleStatementRateBasedStatementScopeDownStatementAndStatementStatementOrStatementStatementIpSetReferenceStatement `json:"ipSetReferenceStatement,omitempty" tf:"ip_set_reference_statement"`
+	// +optional
+	LabelMatchStatement *WebACLSpecRuleStatementRateBasedStatementScopeDownStatementAndStatementStatementOrStatementStatementLabelMatchStatement `json:"labelMatchStatement,omitempty" tf:"label_match_statement"`
 	// +optional
 	RegexPatternSetReferenceStatement *WebACLSpecRuleStatementRateBasedStatementScopeDownStatementAndStatementStatementOrStatementStatementRegexPatternSetReferenceStatement `json:"regexPatternSetReferenceStatement,omitempty" tf:"regex_pattern_set_reference_statement"`
 	// +optional
@@ -12334,6 +16407,8 @@ type WebACLSpecRuleStatementRateBasedStatementScopeDownStatementAndStatementStat
 	// +optional
 	IpSetReferenceStatement *WebACLSpecRuleStatementRateBasedStatementScopeDownStatementAndStatementStatementIpSetReferenceStatement `json:"ipSetReferenceStatement,omitempty" tf:"ip_set_reference_statement"`
 	// +optional
+	LabelMatchStatement *WebACLSpecRuleStatementRateBasedStatementScopeDownStatementAndStatementStatementLabelMatchStatement `json:"labelMatchStatement,omitempty" tf:"label_match_statement"`
+	// +optional
 	NotStatement *WebACLSpecRuleStatementRateBasedStatementScopeDownStatementAndStatementStatementNotStatement `json:"notStatement,omitempty" tf:"not_statement"`
 	// +optional
 	OrStatement *WebACLSpecRuleStatementRateBasedStatementScopeDownStatementAndStatementStatementOrStatement `json:"orStatement,omitempty" tf:"or_statement"`
@@ -12423,6 +16498,11 @@ type WebACLSpecRuleStatementRateBasedStatementScopeDownStatementIpSetReferenceSt
 	IpSetForwardedIPConfig *WebACLSpecRuleStatementRateBasedStatementScopeDownStatementIpSetReferenceStatementIpSetForwardedIPConfig `json:"ipSetForwardedIPConfig,omitempty" tf:"ip_set_forwarded_ip_config"`
 }
 
+type WebACLSpecRuleStatementRateBasedStatementScopeDownStatementLabelMatchStatement struct {
+	Key   *string `json:"key" tf:"key"`
+	Scope *string `json:"scope" tf:"scope"`
+}
+
 type WebACLSpecRuleStatementRateBasedStatementScopeDownStatementNotStatementStatementAndStatementStatementByteMatchStatementFieldToMatchAllQueryArguments struct{}
 
 type WebACLSpecRuleStatementRateBasedStatementScopeDownStatementNotStatementStatementAndStatementStatementByteMatchStatementFieldToMatchBody struct{}
@@ -12493,6 +16573,11 @@ type WebACLSpecRuleStatementRateBasedStatementScopeDownStatementNotStatementStat
 	Arn *string `json:"arn" tf:"arn"`
 	// +optional
 	IpSetForwardedIPConfig *WebACLSpecRuleStatementRateBasedStatementScopeDownStatementNotStatementStatementAndStatementStatementIpSetReferenceStatementIpSetForwardedIPConfig `json:"ipSetForwardedIPConfig,omitempty" tf:"ip_set_forwarded_ip_config"`
+}
+
+type WebACLSpecRuleStatementRateBasedStatementScopeDownStatementNotStatementStatementAndStatementStatementLabelMatchStatement struct {
+	Key   *string `json:"key" tf:"key"`
+	Scope *string `json:"scope" tf:"scope"`
 }
 
 type WebACLSpecRuleStatementRateBasedStatementScopeDownStatementNotStatementStatementAndStatementStatementRegexPatternSetReferenceStatementFieldToMatchAllQueryArguments struct{}
@@ -12690,6 +16775,8 @@ type WebACLSpecRuleStatementRateBasedStatementScopeDownStatementNotStatementStat
 	// +optional
 	IpSetReferenceStatement *WebACLSpecRuleStatementRateBasedStatementScopeDownStatementNotStatementStatementAndStatementStatementIpSetReferenceStatement `json:"ipSetReferenceStatement,omitempty" tf:"ip_set_reference_statement"`
 	// +optional
+	LabelMatchStatement *WebACLSpecRuleStatementRateBasedStatementScopeDownStatementNotStatementStatementAndStatementStatementLabelMatchStatement `json:"labelMatchStatement,omitempty" tf:"label_match_statement"`
+	// +optional
 	RegexPatternSetReferenceStatement *WebACLSpecRuleStatementRateBasedStatementScopeDownStatementNotStatementStatementAndStatementStatementRegexPatternSetReferenceStatement `json:"regexPatternSetReferenceStatement,omitempty" tf:"regex_pattern_set_reference_statement"`
 	// +optional
 	SizeConstraintStatement *WebACLSpecRuleStatementRateBasedStatementScopeDownStatementNotStatementStatementAndStatementStatementSizeConstraintStatement `json:"sizeConstraintStatement,omitempty" tf:"size_constraint_statement"`
@@ -12775,6 +16862,11 @@ type WebACLSpecRuleStatementRateBasedStatementScopeDownStatementNotStatementStat
 	IpSetForwardedIPConfig *WebACLSpecRuleStatementRateBasedStatementScopeDownStatementNotStatementStatementIpSetReferenceStatementIpSetForwardedIPConfig `json:"ipSetForwardedIPConfig,omitempty" tf:"ip_set_forwarded_ip_config"`
 }
 
+type WebACLSpecRuleStatementRateBasedStatementScopeDownStatementNotStatementStatementLabelMatchStatement struct {
+	Key   *string `json:"key" tf:"key"`
+	Scope *string `json:"scope" tf:"scope"`
+}
+
 type WebACLSpecRuleStatementRateBasedStatementScopeDownStatementNotStatementStatementNotStatementStatementByteMatchStatementFieldToMatchAllQueryArguments struct{}
 
 type WebACLSpecRuleStatementRateBasedStatementScopeDownStatementNotStatementStatementNotStatementStatementByteMatchStatementFieldToMatchBody struct{}
@@ -12845,6 +16937,11 @@ type WebACLSpecRuleStatementRateBasedStatementScopeDownStatementNotStatementStat
 	Arn *string `json:"arn" tf:"arn"`
 	// +optional
 	IpSetForwardedIPConfig *WebACLSpecRuleStatementRateBasedStatementScopeDownStatementNotStatementStatementNotStatementStatementIpSetReferenceStatementIpSetForwardedIPConfig `json:"ipSetForwardedIPConfig,omitempty" tf:"ip_set_forwarded_ip_config"`
+}
+
+type WebACLSpecRuleStatementRateBasedStatementScopeDownStatementNotStatementStatementNotStatementStatementLabelMatchStatement struct {
+	Key   *string `json:"key" tf:"key"`
+	Scope *string `json:"scope" tf:"scope"`
 }
 
 type WebACLSpecRuleStatementRateBasedStatementScopeDownStatementNotStatementStatementNotStatementStatementRegexPatternSetReferenceStatementFieldToMatchAllQueryArguments struct{}
@@ -13042,6 +17139,8 @@ type WebACLSpecRuleStatementRateBasedStatementScopeDownStatementNotStatementStat
 	// +optional
 	IpSetReferenceStatement *WebACLSpecRuleStatementRateBasedStatementScopeDownStatementNotStatementStatementNotStatementStatementIpSetReferenceStatement `json:"ipSetReferenceStatement,omitempty" tf:"ip_set_reference_statement"`
 	// +optional
+	LabelMatchStatement *WebACLSpecRuleStatementRateBasedStatementScopeDownStatementNotStatementStatementNotStatementStatementLabelMatchStatement `json:"labelMatchStatement,omitempty" tf:"label_match_statement"`
+	// +optional
 	RegexPatternSetReferenceStatement *WebACLSpecRuleStatementRateBasedStatementScopeDownStatementNotStatementStatementNotStatementStatementRegexPatternSetReferenceStatement `json:"regexPatternSetReferenceStatement,omitempty" tf:"regex_pattern_set_reference_statement"`
 	// +optional
 	SizeConstraintStatement *WebACLSpecRuleStatementRateBasedStatementScopeDownStatementNotStatementStatementNotStatementStatementSizeConstraintStatement `json:"sizeConstraintStatement,omitempty" tf:"size_constraint_statement"`
@@ -13125,6 +17224,11 @@ type WebACLSpecRuleStatementRateBasedStatementScopeDownStatementNotStatementStat
 	Arn *string `json:"arn" tf:"arn"`
 	// +optional
 	IpSetForwardedIPConfig *WebACLSpecRuleStatementRateBasedStatementScopeDownStatementNotStatementStatementOrStatementStatementIpSetReferenceStatementIpSetForwardedIPConfig `json:"ipSetForwardedIPConfig,omitempty" tf:"ip_set_forwarded_ip_config"`
+}
+
+type WebACLSpecRuleStatementRateBasedStatementScopeDownStatementNotStatementStatementOrStatementStatementLabelMatchStatement struct {
+	Key   *string `json:"key" tf:"key"`
+	Scope *string `json:"scope" tf:"scope"`
 }
 
 type WebACLSpecRuleStatementRateBasedStatementScopeDownStatementNotStatementStatementOrStatementStatementRegexPatternSetReferenceStatementFieldToMatchAllQueryArguments struct{}
@@ -13321,6 +17425,8 @@ type WebACLSpecRuleStatementRateBasedStatementScopeDownStatementNotStatementStat
 	GeoMatchStatement *WebACLSpecRuleStatementRateBasedStatementScopeDownStatementNotStatementStatementOrStatementStatementGeoMatchStatement `json:"geoMatchStatement,omitempty" tf:"geo_match_statement"`
 	// +optional
 	IpSetReferenceStatement *WebACLSpecRuleStatementRateBasedStatementScopeDownStatementNotStatementStatementOrStatementStatementIpSetReferenceStatement `json:"ipSetReferenceStatement,omitempty" tf:"ip_set_reference_statement"`
+	// +optional
+	LabelMatchStatement *WebACLSpecRuleStatementRateBasedStatementScopeDownStatementNotStatementStatementOrStatementStatementLabelMatchStatement `json:"labelMatchStatement,omitempty" tf:"label_match_statement"`
 	// +optional
 	RegexPatternSetReferenceStatement *WebACLSpecRuleStatementRateBasedStatementScopeDownStatementNotStatementStatementOrStatementStatementRegexPatternSetReferenceStatement `json:"regexPatternSetReferenceStatement,omitempty" tf:"regex_pattern_set_reference_statement"`
 	// +optional
@@ -13532,6 +17638,8 @@ type WebACLSpecRuleStatementRateBasedStatementScopeDownStatementNotStatementStat
 	// +optional
 	IpSetReferenceStatement *WebACLSpecRuleStatementRateBasedStatementScopeDownStatementNotStatementStatementIpSetReferenceStatement `json:"ipSetReferenceStatement,omitempty" tf:"ip_set_reference_statement"`
 	// +optional
+	LabelMatchStatement *WebACLSpecRuleStatementRateBasedStatementScopeDownStatementNotStatementStatementLabelMatchStatement `json:"labelMatchStatement,omitempty" tf:"label_match_statement"`
+	// +optional
 	NotStatement *WebACLSpecRuleStatementRateBasedStatementScopeDownStatementNotStatementStatementNotStatement `json:"notStatement,omitempty" tf:"not_statement"`
 	// +optional
 	OrStatement *WebACLSpecRuleStatementRateBasedStatementScopeDownStatementNotStatementStatementOrStatement `json:"orStatement,omitempty" tf:"or_statement"`
@@ -13619,6 +17727,11 @@ type WebACLSpecRuleStatementRateBasedStatementScopeDownStatementOrStatementState
 	Arn *string `json:"arn" tf:"arn"`
 	// +optional
 	IpSetForwardedIPConfig *WebACLSpecRuleStatementRateBasedStatementScopeDownStatementOrStatementStatementAndStatementStatementIpSetReferenceStatementIpSetForwardedIPConfig `json:"ipSetForwardedIPConfig,omitempty" tf:"ip_set_forwarded_ip_config"`
+}
+
+type WebACLSpecRuleStatementRateBasedStatementScopeDownStatementOrStatementStatementAndStatementStatementLabelMatchStatement struct {
+	Key   *string `json:"key" tf:"key"`
+	Scope *string `json:"scope" tf:"scope"`
 }
 
 type WebACLSpecRuleStatementRateBasedStatementScopeDownStatementOrStatementStatementAndStatementStatementRegexPatternSetReferenceStatementFieldToMatchAllQueryArguments struct{}
@@ -13816,6 +17929,8 @@ type WebACLSpecRuleStatementRateBasedStatementScopeDownStatementOrStatementState
 	// +optional
 	IpSetReferenceStatement *WebACLSpecRuleStatementRateBasedStatementScopeDownStatementOrStatementStatementAndStatementStatementIpSetReferenceStatement `json:"ipSetReferenceStatement,omitempty" tf:"ip_set_reference_statement"`
 	// +optional
+	LabelMatchStatement *WebACLSpecRuleStatementRateBasedStatementScopeDownStatementOrStatementStatementAndStatementStatementLabelMatchStatement `json:"labelMatchStatement,omitempty" tf:"label_match_statement"`
+	// +optional
 	RegexPatternSetReferenceStatement *WebACLSpecRuleStatementRateBasedStatementScopeDownStatementOrStatementStatementAndStatementStatementRegexPatternSetReferenceStatement `json:"regexPatternSetReferenceStatement,omitempty" tf:"regex_pattern_set_reference_statement"`
 	// +optional
 	SizeConstraintStatement *WebACLSpecRuleStatementRateBasedStatementScopeDownStatementOrStatementStatementAndStatementStatementSizeConstraintStatement `json:"sizeConstraintStatement,omitempty" tf:"size_constraint_statement"`
@@ -13901,6 +18016,11 @@ type WebACLSpecRuleStatementRateBasedStatementScopeDownStatementOrStatementState
 	IpSetForwardedIPConfig *WebACLSpecRuleStatementRateBasedStatementScopeDownStatementOrStatementStatementIpSetReferenceStatementIpSetForwardedIPConfig `json:"ipSetForwardedIPConfig,omitempty" tf:"ip_set_forwarded_ip_config"`
 }
 
+type WebACLSpecRuleStatementRateBasedStatementScopeDownStatementOrStatementStatementLabelMatchStatement struct {
+	Key   *string `json:"key" tf:"key"`
+	Scope *string `json:"scope" tf:"scope"`
+}
+
 type WebACLSpecRuleStatementRateBasedStatementScopeDownStatementOrStatementStatementNotStatementStatementByteMatchStatementFieldToMatchAllQueryArguments struct{}
 
 type WebACLSpecRuleStatementRateBasedStatementScopeDownStatementOrStatementStatementNotStatementStatementByteMatchStatementFieldToMatchBody struct{}
@@ -13971,6 +18091,11 @@ type WebACLSpecRuleStatementRateBasedStatementScopeDownStatementOrStatementState
 	Arn *string `json:"arn" tf:"arn"`
 	// +optional
 	IpSetForwardedIPConfig *WebACLSpecRuleStatementRateBasedStatementScopeDownStatementOrStatementStatementNotStatementStatementIpSetReferenceStatementIpSetForwardedIPConfig `json:"ipSetForwardedIPConfig,omitempty" tf:"ip_set_forwarded_ip_config"`
+}
+
+type WebACLSpecRuleStatementRateBasedStatementScopeDownStatementOrStatementStatementNotStatementStatementLabelMatchStatement struct {
+	Key   *string `json:"key" tf:"key"`
+	Scope *string `json:"scope" tf:"scope"`
 }
 
 type WebACLSpecRuleStatementRateBasedStatementScopeDownStatementOrStatementStatementNotStatementStatementRegexPatternSetReferenceStatementFieldToMatchAllQueryArguments struct{}
@@ -14168,6 +18293,8 @@ type WebACLSpecRuleStatementRateBasedStatementScopeDownStatementOrStatementState
 	// +optional
 	IpSetReferenceStatement *WebACLSpecRuleStatementRateBasedStatementScopeDownStatementOrStatementStatementNotStatementStatementIpSetReferenceStatement `json:"ipSetReferenceStatement,omitempty" tf:"ip_set_reference_statement"`
 	// +optional
+	LabelMatchStatement *WebACLSpecRuleStatementRateBasedStatementScopeDownStatementOrStatementStatementNotStatementStatementLabelMatchStatement `json:"labelMatchStatement,omitempty" tf:"label_match_statement"`
+	// +optional
 	RegexPatternSetReferenceStatement *WebACLSpecRuleStatementRateBasedStatementScopeDownStatementOrStatementStatementNotStatementStatementRegexPatternSetReferenceStatement `json:"regexPatternSetReferenceStatement,omitempty" tf:"regex_pattern_set_reference_statement"`
 	// +optional
 	SizeConstraintStatement *WebACLSpecRuleStatementRateBasedStatementScopeDownStatementOrStatementStatementNotStatementStatementSizeConstraintStatement `json:"sizeConstraintStatement,omitempty" tf:"size_constraint_statement"`
@@ -14251,6 +18378,11 @@ type WebACLSpecRuleStatementRateBasedStatementScopeDownStatementOrStatementState
 	Arn *string `json:"arn" tf:"arn"`
 	// +optional
 	IpSetForwardedIPConfig *WebACLSpecRuleStatementRateBasedStatementScopeDownStatementOrStatementStatementOrStatementStatementIpSetReferenceStatementIpSetForwardedIPConfig `json:"ipSetForwardedIPConfig,omitempty" tf:"ip_set_forwarded_ip_config"`
+}
+
+type WebACLSpecRuleStatementRateBasedStatementScopeDownStatementOrStatementStatementOrStatementStatementLabelMatchStatement struct {
+	Key   *string `json:"key" tf:"key"`
+	Scope *string `json:"scope" tf:"scope"`
 }
 
 type WebACLSpecRuleStatementRateBasedStatementScopeDownStatementOrStatementStatementOrStatementStatementRegexPatternSetReferenceStatementFieldToMatchAllQueryArguments struct{}
@@ -14447,6 +18579,8 @@ type WebACLSpecRuleStatementRateBasedStatementScopeDownStatementOrStatementState
 	GeoMatchStatement *WebACLSpecRuleStatementRateBasedStatementScopeDownStatementOrStatementStatementOrStatementStatementGeoMatchStatement `json:"geoMatchStatement,omitempty" tf:"geo_match_statement"`
 	// +optional
 	IpSetReferenceStatement *WebACLSpecRuleStatementRateBasedStatementScopeDownStatementOrStatementStatementOrStatementStatementIpSetReferenceStatement `json:"ipSetReferenceStatement,omitempty" tf:"ip_set_reference_statement"`
+	// +optional
+	LabelMatchStatement *WebACLSpecRuleStatementRateBasedStatementScopeDownStatementOrStatementStatementOrStatementStatementLabelMatchStatement `json:"labelMatchStatement,omitempty" tf:"label_match_statement"`
 	// +optional
 	RegexPatternSetReferenceStatement *WebACLSpecRuleStatementRateBasedStatementScopeDownStatementOrStatementStatementOrStatementStatementRegexPatternSetReferenceStatement `json:"regexPatternSetReferenceStatement,omitempty" tf:"regex_pattern_set_reference_statement"`
 	// +optional
@@ -14657,6 +18791,8 @@ type WebACLSpecRuleStatementRateBasedStatementScopeDownStatementOrStatementState
 	GeoMatchStatement *WebACLSpecRuleStatementRateBasedStatementScopeDownStatementOrStatementStatementGeoMatchStatement `json:"geoMatchStatement,omitempty" tf:"geo_match_statement"`
 	// +optional
 	IpSetReferenceStatement *WebACLSpecRuleStatementRateBasedStatementScopeDownStatementOrStatementStatementIpSetReferenceStatement `json:"ipSetReferenceStatement,omitempty" tf:"ip_set_reference_statement"`
+	// +optional
+	LabelMatchStatement *WebACLSpecRuleStatementRateBasedStatementScopeDownStatementOrStatementStatementLabelMatchStatement `json:"labelMatchStatement,omitempty" tf:"label_match_statement"`
 	// +optional
 	NotStatement *WebACLSpecRuleStatementRateBasedStatementScopeDownStatementOrStatementStatementNotStatement `json:"notStatement,omitempty" tf:"not_statement"`
 	// +optional
@@ -14871,6 +19007,8 @@ type WebACLSpecRuleStatementRateBasedStatementScopeDownStatement struct {
 	GeoMatchStatement *WebACLSpecRuleStatementRateBasedStatementScopeDownStatementGeoMatchStatement `json:"geoMatchStatement,omitempty" tf:"geo_match_statement"`
 	// +optional
 	IpSetReferenceStatement *WebACLSpecRuleStatementRateBasedStatementScopeDownStatementIpSetReferenceStatement `json:"ipSetReferenceStatement,omitempty" tf:"ip_set_reference_statement"`
+	// +optional
+	LabelMatchStatement *WebACLSpecRuleStatementRateBasedStatementScopeDownStatementLabelMatchStatement `json:"labelMatchStatement,omitempty" tf:"label_match_statement"`
 	// +optional
 	NotStatement *WebACLSpecRuleStatementRateBasedStatementScopeDownStatementNotStatement `json:"notStatement,omitempty" tf:"not_statement"`
 	// +optional
@@ -15102,6 +19240,8 @@ type WebACLSpecRuleStatement struct {
 	// +optional
 	IpSetReferenceStatement *WebACLSpecRuleStatementIpSetReferenceStatement `json:"ipSetReferenceStatement,omitempty" tf:"ip_set_reference_statement"`
 	// +optional
+	LabelMatchStatement *WebACLSpecRuleStatementLabelMatchStatement `json:"labelMatchStatement,omitempty" tf:"label_match_statement"`
+	// +optional
 	ManagedRuleGroupStatement *WebACLSpecRuleStatementManagedRuleGroupStatement `json:"managedRuleGroupStatement,omitempty" tf:"managed_rule_group_statement"`
 	// +optional
 	NotStatement *WebACLSpecRuleStatementNotStatement `json:"notStatement,omitempty" tf:"not_statement"`
@@ -15132,8 +19272,10 @@ type WebACLSpecRule struct {
 	Action *WebACLSpecRuleAction `json:"action,omitempty" tf:"action"`
 	Name   *string               `json:"name" tf:"name"`
 	// +optional
-	OverrideAction   *WebACLSpecRuleOverrideAction   `json:"overrideAction,omitempty" tf:"override_action"`
-	Priority         *int64                          `json:"priority" tf:"priority"`
+	OverrideAction *WebACLSpecRuleOverrideAction `json:"overrideAction,omitempty" tf:"override_action"`
+	Priority       *int64                        `json:"priority" tf:"priority"`
+	// +optional
+	RuleLabel        []WebACLSpecRuleRuleLabel       `json:"ruleLabel,omitempty" tf:"rule_label"`
 	Statement        *WebACLSpecRuleStatement        `json:"statement" tf:"statement"`
 	VisibilityConfig *WebACLSpecRuleVisibilityConfig `json:"visibilityConfig" tf:"visibility_config"`
 }
@@ -15164,8 +19306,10 @@ type WebACLSpecResource struct {
 	// +optional
 	Arn *string `json:"arn,omitempty" tf:"arn"`
 	// +optional
-	Capacity      *int64                   `json:"capacity,omitempty" tf:"capacity"`
-	DefaultAction *WebACLSpecDefaultAction `json:"defaultAction" tf:"default_action"`
+	Capacity *int64 `json:"capacity,omitempty" tf:"capacity"`
+	// +optional
+	CustomResponseBody []WebACLSpecCustomResponseBody `json:"customResponseBody,omitempty" tf:"custom_response_body"`
+	DefaultAction      *WebACLSpecDefaultAction       `json:"defaultAction" tf:"default_action"`
 	// +optional
 	Description *string `json:"description,omitempty" tf:"description"`
 	// +optional

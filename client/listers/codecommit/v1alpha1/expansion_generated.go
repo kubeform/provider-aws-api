@@ -18,6 +18,22 @@ limitations under the License.
 
 package v1alpha1
 
+// ApprovalRuleTemplateListerExpansion allows custom methods to be added to
+// ApprovalRuleTemplateLister.
+type ApprovalRuleTemplateListerExpansion interface{}
+
+// ApprovalRuleTemplateNamespaceListerExpansion allows custom methods to be added to
+// ApprovalRuleTemplateNamespaceLister.
+type ApprovalRuleTemplateNamespaceListerExpansion interface{}
+
+// ApprovalRuleTemplateAssociationListerExpansion allows custom methods to be added to
+// ApprovalRuleTemplateAssociationLister.
+type ApprovalRuleTemplateAssociationListerExpansion interface{}
+
+// ApprovalRuleTemplateAssociationNamespaceListerExpansion allows custom methods to be added to
+// ApprovalRuleTemplateAssociationNamespaceLister.
+type ApprovalRuleTemplateAssociationNamespaceListerExpansion interface{}
+
 // RepositoryListerExpansion allows custom methods to be added to
 // RepositoryLister.
 type RepositoryListerExpansion interface{}

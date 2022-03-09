@@ -42,6 +42,9 @@ func (r *Log) SetupWebhookWithManager(mgr ctrl.Manager) error {
 var _ webhook.Validator = &Log{}
 
 var logForceNewList = map[string]bool{
+	"/destination_options/*/file_format":                true,
+	"/destination_options/*/hive_compatible_partitions": true,
+	"/destination_options/*/per_hour_partition":         true,
 	"/eni_id":                   true,
 	"/iam_role_arn":             true,
 	"/log_destination":          true,
@@ -97,7 +100,7 @@ func (r *Log) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range logForceNewList {
+	for key, _ := range logForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

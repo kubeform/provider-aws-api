@@ -45,6 +45,10 @@ func (c *FakeEbsV1alpha1) SnapshotCopies(namespace string) v1alpha1.SnapshotCopy
 	return &FakeSnapshotCopies{c, namespace}
 }
 
+func (c *FakeEbsV1alpha1) SnapshotImports(namespace string) v1alpha1.SnapshotImportInterface {
+	return &FakeSnapshotImports{c, namespace}
+}
+
 func (c *FakeEbsV1alpha1) Volumes(namespace string) v1alpha1.VolumeInterface {
 	return &FakeVolumes{c, namespace}
 }

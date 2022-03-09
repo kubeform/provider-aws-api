@@ -61,6 +61,8 @@ spec:
                     type: string
                   deleteAllPolicyResources:
                     type: boolean
+                  deleteUnusedFmManagedResources:
+                    type: boolean
                   excludeMap:
                     properties:
                       account:
@@ -111,6 +113,14 @@ spec:
                         type: string
                     required:
                     - type
+                    type: object
+                  tags:
+                    additionalProperties:
+                      type: string
+                    type: object
+                  tagsAll:
+                    additionalProperties:
+                      type: string
                     type: object
                 required:
                 - excludeResourceTags
@@ -123,6 +133,8 @@ spec:
                     type: string
                   deleteAllPolicyResources:
                     type: boolean
+                  deleteUnusedFmManagedResources:
+                    type: boolean
                   excludeMap:
                     properties:
                       account:
@@ -173,6 +185,14 @@ spec:
                         type: string
                     required:
                     - type
+                    type: object
+                  tags:
+                    additionalProperties:
+                      type: string
+                    type: object
+                  tagsAll:
+                    additionalProperties:
+                      type: string
                     type: object
                 required:
                 - excludeResourceTags

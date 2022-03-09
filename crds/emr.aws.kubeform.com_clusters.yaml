@@ -65,6 +65,12 @@ spec:
                     type: array
                   arn:
                     type: string
+                  autoTerminationPolicy:
+                    properties:
+                      idleTimeout:
+                        format: int64
+                        type: integer
+                    type: object
                   autoscalingRole:
                     type: string
                   bootstrapAction:
@@ -268,6 +274,8 @@ spec:
                     required:
                     - realm
                     type: object
+                  logEncryptionKmsKeyID:
+                    type: string
                   logURI:
                     type: string
                   masterInstanceFleet:
@@ -485,6 +493,12 @@ spec:
                     type: array
                   arn:
                     type: string
+                  autoTerminationPolicy:
+                    properties:
+                      idleTimeout:
+                        format: int64
+                        type: integer
+                    type: object
                   autoscalingRole:
                     type: string
                   bootstrapAction:
@@ -688,6 +702,8 @@ spec:
                     required:
                     - realm
                     type: object
+                  logEncryptionKmsKeyID:
+                    type: string
                   logURI:
                     type: string
                   masterInstanceFleet:

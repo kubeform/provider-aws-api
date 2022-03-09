@@ -53,6 +53,7 @@ type TableSpecRoute struct {
 	// +optional
 	GatewayID *string `json:"gatewayID,omitempty" tf:"gateway_id"`
 	// +optional
+	// Deprecated
 	InstanceID *string `json:"instanceID,omitempty" tf:"instance_id"`
 	// +optional
 	Ipv6CIDRBlock *string `json:"ipv6CIDRBlock,omitempty" tf:"ipv6_cidr_block"`
@@ -85,6 +86,8 @@ type TableSpec struct {
 }
 
 type TableSpecResource struct {
+	Timeouts *base.ResourceTimeout `json:"timeouts,omitempty" tf:"timeouts"`
+
 	ID string `json:"id,omitempty" tf:"id,omitempty"`
 
 	// +optional

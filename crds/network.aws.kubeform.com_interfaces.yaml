@@ -57,6 +57,8 @@ spec:
                 type: object
               resource:
                 properties:
+                  arn:
+                    type: string
                   attachment:
                     items:
                       properties:
@@ -78,10 +80,30 @@ spec:
                     type: string
                   interfaceType:
                     type: string
+                  ipv4PrefixCount:
+                    format: int64
+                    type: integer
+                  ipv4Prefixes:
+                    items:
+                      type: string
+                    type: array
                   ipv6AddressCount:
                     format: int64
                     type: integer
+                  ipv6AddressList:
+                    items:
+                      type: string
+                    type: array
+                  ipv6AddressListEnabled:
+                    type: boolean
                   ipv6Addresses:
+                    items:
+                      type: string
+                    type: array
+                  ipv6PrefixCount:
+                    format: int64
+                    type: integer
+                  ipv6Prefixes:
                     items:
                       type: string
                     type: array
@@ -89,10 +111,18 @@ spec:
                     type: string
                   outpostArn:
                     type: string
+                  ownerID:
+                    type: string
                   privateDNSName:
                     type: string
                   privateIP:
                     type: string
+                  privateIPList:
+                    items:
+                      type: string
+                    type: array
+                  privateIPListEnabled:
+                    type: boolean
                   privateIPS:
                     items:
                       type: string
@@ -121,6 +151,8 @@ spec:
                 type: object
               state:
                 properties:
+                  arn:
+                    type: string
                   attachment:
                     items:
                       properties:
@@ -142,10 +174,30 @@ spec:
                     type: string
                   interfaceType:
                     type: string
+                  ipv4PrefixCount:
+                    format: int64
+                    type: integer
+                  ipv4Prefixes:
+                    items:
+                      type: string
+                    type: array
                   ipv6AddressCount:
                     format: int64
                     type: integer
+                  ipv6AddressList:
+                    items:
+                      type: string
+                    type: array
+                  ipv6AddressListEnabled:
+                    type: boolean
                   ipv6Addresses:
+                    items:
+                      type: string
+                    type: array
+                  ipv6PrefixCount:
+                    format: int64
+                    type: integer
+                  ipv6Prefixes:
                     items:
                       type: string
                     type: array
@@ -153,10 +205,18 @@ spec:
                     type: string
                   outpostArn:
                     type: string
+                  ownerID:
+                    type: string
                   privateDNSName:
                     type: string
                   privateIP:
                     type: string
+                  privateIPList:
+                    items:
+                      type: string
+                    type: array
+                  privateIPListEnabled:
+                    type: boolean
                   privateIPS:
                     items:
                       type: string

@@ -41,6 +41,11 @@ type Cluster struct {
 	Status            ClusterStatus `json:"status,omitempty"`
 }
 
+type ClusterSpecAutoTerminationPolicy struct {
+	// +optional
+	IdleTimeout *int64 `json:"idleTimeout,omitempty" tf:"idle_timeout"`
+}
+
 type ClusterSpecBootstrapAction struct {
 	// +optional
 	Args []string `json:"args,omitempty" tf:"args"`
@@ -309,6 +314,8 @@ type ClusterSpecResource struct {
 	// +optional
 	Arn *string `json:"arn,omitempty" tf:"arn"`
 	// +optional
+	AutoTerminationPolicy *ClusterSpecAutoTerminationPolicy `json:"autoTerminationPolicy,omitempty" tf:"auto_termination_policy"`
+	// +optional
 	AutoscalingRole *string `json:"autoscalingRole,omitempty" tf:"autoscaling_role"`
 	// +optional
 	BootstrapAction []ClusterSpecBootstrapAction `json:"bootstrapAction,omitempty" tf:"bootstrap_action"`
@@ -332,6 +339,8 @@ type ClusterSpecResource struct {
 	KeepJobFlowAliveWhenNoSteps *bool `json:"keepJobFlowAliveWhenNoSteps,omitempty" tf:"keep_job_flow_alive_when_no_steps"`
 	// +optional
 	KerberosAttributes *ClusterSpecKerberosAttributes `json:"kerberosAttributes,omitempty" tf:"kerberos_attributes"`
+	// +optional
+	LogEncryptionKmsKeyID *string `json:"logEncryptionKmsKeyID,omitempty" tf:"log_encryption_kms_key_id"`
 	// +optional
 	LogURI *string `json:"logURI,omitempty" tf:"log_uri"`
 	// +optional

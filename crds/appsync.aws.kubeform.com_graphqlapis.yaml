@@ -62,6 +62,18 @@ spec:
                       properties:
                         authenticationType:
                           type: string
+                        lambdaAuthorizerConfig:
+                          properties:
+                            authorizerResultTtlInSeconds:
+                              format: int64
+                              type: integer
+                            authorizerURI:
+                              type: string
+                            identityValidationExpression:
+                              type: string
+                          required:
+                          - authorizerURI
+                          type: object
                         openidConnectConfig:
                           properties:
                             authTtl:
@@ -98,6 +110,18 @@ spec:
                     type: string
                   id:
                     type: string
+                  lambdaAuthorizerConfig:
+                    properties:
+                      authorizerResultTtlInSeconds:
+                        format: int64
+                        type: integer
+                      authorizerURI:
+                        type: string
+                      identityValidationExpression:
+                        type: string
+                    required:
+                    - authorizerURI
+                    type: object
                   logConfig:
                     properties:
                       cloudwatchLogsRoleArn:
@@ -168,6 +192,18 @@ spec:
                       properties:
                         authenticationType:
                           type: string
+                        lambdaAuthorizerConfig:
+                          properties:
+                            authorizerResultTtlInSeconds:
+                              format: int64
+                              type: integer
+                            authorizerURI:
+                              type: string
+                            identityValidationExpression:
+                              type: string
+                          required:
+                          - authorizerURI
+                          type: object
                         openidConnectConfig:
                           properties:
                             authTtl:
@@ -204,6 +240,18 @@ spec:
                     type: string
                   id:
                     type: string
+                  lambdaAuthorizerConfig:
+                    properties:
+                      authorizerResultTtlInSeconds:
+                        format: int64
+                        type: integer
+                      authorizerURI:
+                        type: string
+                      identityValidationExpression:
+                        type: string
+                    required:
+                    - authorizerURI
+                    type: object
                   logConfig:
                     properties:
                       cloudwatchLogsRoleArn:

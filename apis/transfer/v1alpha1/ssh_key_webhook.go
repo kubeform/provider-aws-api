@@ -90,7 +90,7 @@ func (r *SshKey) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range sshkeyForceNewList {
+	for key, _ := range sshkeyForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

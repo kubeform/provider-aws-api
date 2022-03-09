@@ -74,18 +74,22 @@ spec:
                   clusterEnabled:
                     type: boolean
                   clusterMode:
+                    description: Deprecated
                     properties:
                       numNodeGroups:
+                        description: Deprecated
                         format: int64
                         type: integer
                       replicasPerNodeGroup:
+                        description: Deprecated
                         format: int64
                         type: integer
-                    required:
-                    - numNodeGroups
-                    - replicasPerNodeGroup
                     type: object
                   configurationEndpointAddress:
+                    type: string
+                  dataTieringEnabled:
+                    type: boolean
+                  description:
                     type: string
                   engine:
                     type: string
@@ -113,7 +117,14 @@ spec:
                     type: string
                   notificationTopicArn:
                     type: string
+                  numCacheClusters:
+                    format: int64
+                    type: integer
+                  numNodeGroups:
+                    format: int64
+                    type: integer
                   numberCacheClusters:
+                    description: Deprecated
                     format: int64
                     type: integer
                   parameterGroupName:
@@ -121,11 +132,19 @@ spec:
                   port:
                     format: int64
                     type: integer
+                  preferredCacheClusterAzs:
+                    items:
+                      type: string
+                    type: array
                   primaryEndpointAddress:
                     type: string
                   readerEndpointAddress:
                     type: string
+                  replicasPerNodeGroup:
+                    format: int64
+                    type: integer
                   replicationGroupDescription:
+                    description: Deprecated
                     type: string
                   replicationGroupID:
                     type: string
@@ -198,8 +217,11 @@ spec:
                     type: object
                   transitEncryptionEnabled:
                     type: boolean
+                  userGroupIDS:
+                    items:
+                      type: string
+                    type: array
                 required:
-                - replicationGroupDescription
                 - replicationGroupID
                 type: object
               secretRef:
@@ -230,18 +252,22 @@ spec:
                   clusterEnabled:
                     type: boolean
                   clusterMode:
+                    description: Deprecated
                     properties:
                       numNodeGroups:
+                        description: Deprecated
                         format: int64
                         type: integer
                       replicasPerNodeGroup:
+                        description: Deprecated
                         format: int64
                         type: integer
-                    required:
-                    - numNodeGroups
-                    - replicasPerNodeGroup
                     type: object
                   configurationEndpointAddress:
+                    type: string
+                  dataTieringEnabled:
+                    type: boolean
+                  description:
                     type: string
                   engine:
                     type: string
@@ -269,7 +295,14 @@ spec:
                     type: string
                   notificationTopicArn:
                     type: string
+                  numCacheClusters:
+                    format: int64
+                    type: integer
+                  numNodeGroups:
+                    format: int64
+                    type: integer
                   numberCacheClusters:
+                    description: Deprecated
                     format: int64
                     type: integer
                   parameterGroupName:
@@ -277,11 +310,19 @@ spec:
                   port:
                     format: int64
                     type: integer
+                  preferredCacheClusterAzs:
+                    items:
+                      type: string
+                    type: array
                   primaryEndpointAddress:
                     type: string
                   readerEndpointAddress:
                     type: string
+                  replicasPerNodeGroup:
+                    format: int64
+                    type: integer
                   replicationGroupDescription:
+                    description: Deprecated
                     type: string
                   replicationGroupID:
                     type: string
@@ -354,8 +395,11 @@ spec:
                     type: object
                   transitEncryptionEnabled:
                     type: boolean
+                  userGroupIDS:
+                    items:
+                      type: string
+                    type: array
                 required:
-                - replicationGroupDescription
                 - replicationGroupID
                 type: object
               terminationPolicy:

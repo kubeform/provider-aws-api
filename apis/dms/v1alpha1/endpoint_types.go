@@ -53,12 +53,56 @@ type EndpointSpecElasticsearchSettings struct {
 type EndpointSpecKafkaSettings struct {
 	Broker *string `json:"broker" tf:"broker"`
 	// +optional
+	IncludeControlDetails *bool `json:"includeControlDetails,omitempty" tf:"include_control_details"`
+	// +optional
+	IncludeNullAndEmpty *bool `json:"includeNullAndEmpty,omitempty" tf:"include_null_and_empty"`
+	// +optional
+	IncludePartitionValue *bool `json:"includePartitionValue,omitempty" tf:"include_partition_value"`
+	// +optional
+	IncludeTableAlterOperations *bool `json:"includeTableAlterOperations,omitempty" tf:"include_table_alter_operations"`
+	// +optional
+	IncludeTransactionDetails *bool `json:"includeTransactionDetails,omitempty" tf:"include_transaction_details"`
+	// +optional
+	MessageFormat *string `json:"messageFormat,omitempty" tf:"message_format"`
+	// +optional
+	MessageMaxBytes *int64 `json:"messageMaxBytes,omitempty" tf:"message_max_bytes"`
+	// +optional
+	NoHexPrefix *bool `json:"noHexPrefix,omitempty" tf:"no_hex_prefix"`
+	// +optional
+	PartitionIncludeSchemaTable *bool `json:"partitionIncludeSchemaTable,omitempty" tf:"partition_include_schema_table"`
+	// +optional
+	SaslPassword *string `json:"-" sensitive:"true" tf:"sasl_password"`
+	// +optional
+	SaslUsername *string `json:"saslUsername,omitempty" tf:"sasl_username"`
+	// +optional
+	SecurityProtocol *string `json:"securityProtocol,omitempty" tf:"security_protocol"`
+	// +optional
+	SslCaCertificateArn *string `json:"sslCaCertificateArn,omitempty" tf:"ssl_ca_certificate_arn"`
+	// +optional
+	SslClientCertificateArn *string `json:"sslClientCertificateArn,omitempty" tf:"ssl_client_certificate_arn"`
+	// +optional
+	SslClientKeyArn *string `json:"sslClientKeyArn,omitempty" tf:"ssl_client_key_arn"`
+	// +optional
+	SslClientKeyPassword *string `json:"-" sensitive:"true" tf:"ssl_client_key_password"`
+	// +optional
 	Topic *string `json:"topic,omitempty" tf:"topic"`
 }
 
 type EndpointSpecKinesisSettings struct {
 	// +optional
+	IncludeControlDetails *bool `json:"includeControlDetails,omitempty" tf:"include_control_details"`
+	// +optional
+	IncludeNullAndEmpty *bool `json:"includeNullAndEmpty,omitempty" tf:"include_null_and_empty"`
+	// +optional
+	IncludePartitionValue *bool `json:"includePartitionValue,omitempty" tf:"include_partition_value"`
+	// +optional
+	IncludeTableAlterOperations *bool `json:"includeTableAlterOperations,omitempty" tf:"include_table_alter_operations"`
+	// +optional
+	IncludeTransactionDetails *bool `json:"includeTransactionDetails,omitempty" tf:"include_transaction_details"`
+	// +optional
 	MessageFormat *string `json:"messageFormat,omitempty" tf:"message_format"`
+	// +optional
+	PartitionIncludeSchemaTable *bool `json:"partitionIncludeSchemaTable,omitempty" tf:"partition_include_schema_table"`
 	// +optional
 	ServiceAccessRoleArn *string `json:"serviceAccessRoleArn,omitempty" tf:"service_access_role_arn"`
 	// +optional
@@ -82,21 +126,77 @@ type EndpointSpecMongodbSettings struct {
 
 type EndpointSpecS3Settings struct {
 	// +optional
+	AddColumnName *bool `json:"addColumnName,omitempty" tf:"add_column_name"`
+	// +optional
 	BucketFolder *string `json:"bucketFolder,omitempty" tf:"bucket_folder"`
 	// +optional
 	BucketName *string `json:"bucketName,omitempty" tf:"bucket_name"`
+	// +optional
+	CannedACLForObjects *string `json:"cannedACLForObjects,omitempty" tf:"canned_acl_for_objects"`
+	// +optional
+	CdcInsertsAndUpdates *bool `json:"cdcInsertsAndUpdates,omitempty" tf:"cdc_inserts_and_updates"`
+	// +optional
+	CdcInsertsOnly *bool `json:"cdcInsertsOnly,omitempty" tf:"cdc_inserts_only"`
+	// +optional
+	CdcMaxBatchInterval *int64 `json:"cdcMaxBatchInterval,omitempty" tf:"cdc_max_batch_interval"`
+	// +optional
+	CdcMinFileSize *int64 `json:"cdcMinFileSize,omitempty" tf:"cdc_min_file_size"`
+	// +optional
+	CdcPath *string `json:"cdcPath,omitempty" tf:"cdc_path"`
 	// +optional
 	CompressionType *string `json:"compressionType,omitempty" tf:"compression_type"`
 	// +optional
 	CsvDelimiter *string `json:"csvDelimiter,omitempty" tf:"csv_delimiter"`
 	// +optional
+	CsvNoSupValue *string `json:"csvNoSupValue,omitempty" tf:"csv_no_sup_value"`
+	// +optional
+	CsvNullValue *string `json:"csvNullValue,omitempty" tf:"csv_null_value"`
+	// +optional
 	CsvRowDelimiter *string `json:"csvRowDelimiter,omitempty" tf:"csv_row_delimiter"`
+	// +optional
+	DataFormat *string `json:"dataFormat,omitempty" tf:"data_format"`
+	// +optional
+	DataPageSize *int64 `json:"dataPageSize,omitempty" tf:"data_page_size"`
+	// +optional
+	DatePartitionDelimiter *string `json:"datePartitionDelimiter,omitempty" tf:"date_partition_delimiter"`
 	// +optional
 	DatePartitionEnabled *bool `json:"datePartitionEnabled,omitempty" tf:"date_partition_enabled"`
 	// +optional
+	DatePartitionSequence *string `json:"datePartitionSequence,omitempty" tf:"date_partition_sequence"`
+	// +optional
+	DictPageSizeLimit *int64 `json:"dictPageSizeLimit,omitempty" tf:"dict_page_size_limit"`
+	// +optional
+	EnableStatistics *bool `json:"enableStatistics,omitempty" tf:"enable_statistics"`
+	// +optional
+	EncodingType *string `json:"encodingType,omitempty" tf:"encoding_type"`
+	// +optional
+	EncryptionMode *string `json:"encryptionMode,omitempty" tf:"encryption_mode"`
+	// +optional
 	ExternalTableDefinition *string `json:"externalTableDefinition,omitempty" tf:"external_table_definition"`
 	// +optional
+	IgnoreHeadersRow *int64 `json:"ignoreHeadersRow,omitempty" tf:"ignore_headers_row"`
+	// +optional
+	IncludeOpForFullLoad *bool `json:"includeOpForFullLoad,omitempty" tf:"include_op_for_full_load"`
+	// +optional
+	MaxFileSize *int64 `json:"maxFileSize,omitempty" tf:"max_file_size"`
+	// +optional
+	ParquetTimestampInMillisecond *bool `json:"parquetTimestampInMillisecond,omitempty" tf:"parquet_timestamp_in_millisecond"`
+	// +optional
+	ParquetVersion *string `json:"parquetVersion,omitempty" tf:"parquet_version"`
+	// +optional
+	PreserveTransactions *bool `json:"preserveTransactions,omitempty" tf:"preserve_transactions"`
+	// +optional
+	Rfc4180 *bool `json:"rfc4180,omitempty" tf:"rfc_4180"`
+	// +optional
+	RowGroupLength *int64 `json:"rowGroupLength,omitempty" tf:"row_group_length"`
+	// +optional
+	ServerSideEncryptionKmsKeyID *string `json:"serverSideEncryptionKmsKeyID,omitempty" tf:"server_side_encryption_kms_key_id"`
+	// +optional
 	ServiceAccessRoleArn *string `json:"serviceAccessRoleArn,omitempty" tf:"service_access_role_arn"`
+	// +optional
+	TimestampColumnName *string `json:"timestampColumnName,omitempty" tf:"timestamp_column_name"`
+	// +optional
+	UseCsvNoSupValue *bool `json:"useCsvNoSupValue,omitempty" tf:"use_csv_no_sup_value"`
 }
 
 type EndpointSpec struct {
@@ -145,6 +245,10 @@ type EndpointSpecResource struct {
 	Port *int64 `json:"port,omitempty" tf:"port"`
 	// +optional
 	S3Settings *EndpointSpecS3Settings `json:"s3Settings,omitempty" tf:"s3_settings"`
+	// +optional
+	SecretsManagerAccessRoleArn *string `json:"secretsManagerAccessRoleArn,omitempty" tf:"secrets_manager_access_role_arn"`
+	// +optional
+	SecretsManagerArn *string `json:"secretsManagerArn,omitempty" tf:"secrets_manager_arn"`
 	// +optional
 	ServerName *string `json:"serverName,omitempty" tf:"server_name"`
 	// +optional

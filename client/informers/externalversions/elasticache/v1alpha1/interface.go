@@ -36,6 +36,10 @@ type Interface interface {
 	SecurityGroups() SecurityGroupInformer
 	// SubnetGroups returns a SubnetGroupInformer.
 	SubnetGroups() SubnetGroupInformer
+	// Users returns a UserInformer.
+	Users() UserInformer
+	// UserGroups returns a UserGroupInformer.
+	UserGroups() UserGroupInformer
 }
 
 type version struct {
@@ -77,4 +81,14 @@ func (v *version) SecurityGroups() SecurityGroupInformer {
 // SubnetGroups returns a SubnetGroupInformer.
 func (v *version) SubnetGroups() SubnetGroupInformer {
 	return &subnetGroupInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
+// Users returns a UserInformer.
+func (v *version) Users() UserInformer {
+	return &userInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
+// UserGroups returns a UserGroupInformer.
+func (v *version) UserGroups() UserGroupInformer {
+	return &userGroupInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
 }

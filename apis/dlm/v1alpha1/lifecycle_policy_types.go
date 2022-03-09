@@ -49,6 +49,29 @@ type LifecyclePolicySpecPolicyDetailsScheduleCreateRule struct {
 	Times []string `json:"times,omitempty" tf:"times"`
 }
 
+type LifecyclePolicySpecPolicyDetailsScheduleCrossRegionCopyRuleDeprecateRule struct {
+	Interval     *int64  `json:"interval" tf:"interval"`
+	IntervalUnit *string `json:"intervalUnit" tf:"interval_unit"`
+}
+
+type LifecyclePolicySpecPolicyDetailsScheduleCrossRegionCopyRuleRetainRule struct {
+	Interval     *int64  `json:"interval" tf:"interval"`
+	IntervalUnit *string `json:"intervalUnit" tf:"interval_unit"`
+}
+
+type LifecyclePolicySpecPolicyDetailsScheduleCrossRegionCopyRule struct {
+	// +optional
+	CmkArn *string `json:"cmkArn,omitempty" tf:"cmk_arn"`
+	// +optional
+	CopyTags *bool `json:"copyTags,omitempty" tf:"copy_tags"`
+	// +optional
+	DeprecateRule *LifecyclePolicySpecPolicyDetailsScheduleCrossRegionCopyRuleDeprecateRule `json:"deprecateRule,omitempty" tf:"deprecate_rule"`
+	Encrypted     *bool                                                                     `json:"encrypted" tf:"encrypted"`
+	// +optional
+	RetainRule *LifecyclePolicySpecPolicyDetailsScheduleCrossRegionCopyRuleRetainRule `json:"retainRule,omitempty" tf:"retain_rule"`
+	Target     *string                                                                `json:"target" tf:"target"`
+}
+
 type LifecyclePolicySpecPolicyDetailsScheduleRetainRule struct {
 	Count *int64 `json:"count" tf:"count"`
 }
@@ -57,8 +80,11 @@ type LifecyclePolicySpecPolicyDetailsSchedule struct {
 	// +optional
 	CopyTags   *bool                                               `json:"copyTags,omitempty" tf:"copy_tags"`
 	CreateRule *LifecyclePolicySpecPolicyDetailsScheduleCreateRule `json:"createRule" tf:"create_rule"`
-	Name       *string                                             `json:"name" tf:"name"`
-	RetainRule *LifecyclePolicySpecPolicyDetailsScheduleRetainRule `json:"retainRule" tf:"retain_rule"`
+	// +optional
+	// +kubebuilder:validation:MaxItems=3
+	CrossRegionCopyRule []LifecyclePolicySpecPolicyDetailsScheduleCrossRegionCopyRule `json:"crossRegionCopyRule,omitempty" tf:"cross_region_copy_rule"`
+	Name                *string                                                       `json:"name" tf:"name"`
+	RetainRule          *LifecyclePolicySpecPolicyDetailsScheduleRetainRule           `json:"retainRule" tf:"retain_rule"`
 	// +optional
 	TagsToAdd *map[string]string `json:"tagsToAdd,omitempty" tf:"tags_to_add"`
 }

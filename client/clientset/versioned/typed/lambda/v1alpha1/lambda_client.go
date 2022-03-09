@@ -32,7 +32,9 @@ type LambdaV1alpha1Interface interface {
 	EventSourceMappingsGetter
 	FunctionsGetter
 	FunctionEventInvokeConfigsGetter
+	InvocationsGetter
 	LayerVersionsGetter
+	LayerVersionPermissionsGetter
 	PermissionsGetter
 	ProvisionedConcurrencyConfigsGetter
 }
@@ -62,8 +64,16 @@ func (c *LambdaV1alpha1Client) FunctionEventInvokeConfigs(namespace string) Func
 	return newFunctionEventInvokeConfigs(c, namespace)
 }
 
+func (c *LambdaV1alpha1Client) Invocations(namespace string) InvocationInterface {
+	return newInvocations(c, namespace)
+}
+
 func (c *LambdaV1alpha1Client) LayerVersions(namespace string) LayerVersionInterface {
 	return newLayerVersions(c, namespace)
+}
+
+func (c *LambdaV1alpha1Client) LayerVersionPermissions(namespace string) LayerVersionPermissionInterface {
+	return newLayerVersionPermissions(c, namespace)
 }
 
 func (c *LambdaV1alpha1Client) Permissions(namespace string) PermissionInterface {

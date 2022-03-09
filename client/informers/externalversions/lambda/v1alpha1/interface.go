@@ -34,8 +34,12 @@ type Interface interface {
 	Functions() FunctionInformer
 	// FunctionEventInvokeConfigs returns a FunctionEventInvokeConfigInformer.
 	FunctionEventInvokeConfigs() FunctionEventInvokeConfigInformer
+	// Invocations returns a InvocationInformer.
+	Invocations() InvocationInformer
 	// LayerVersions returns a LayerVersionInformer.
 	LayerVersions() LayerVersionInformer
+	// LayerVersionPermissions returns a LayerVersionPermissionInformer.
+	LayerVersionPermissions() LayerVersionPermissionInformer
 	// Permissions returns a PermissionInformer.
 	Permissions() PermissionInformer
 	// ProvisionedConcurrencyConfigs returns a ProvisionedConcurrencyConfigInformer.
@@ -78,9 +82,19 @@ func (v *version) FunctionEventInvokeConfigs() FunctionEventInvokeConfigInformer
 	return &functionEventInvokeConfigInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
 }
 
+// Invocations returns a InvocationInformer.
+func (v *version) Invocations() InvocationInformer {
+	return &invocationInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
 // LayerVersions returns a LayerVersionInformer.
 func (v *version) LayerVersions() LayerVersionInformer {
 	return &layerVersionInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
+// LayerVersionPermissions returns a LayerVersionPermissionInformer.
+func (v *version) LayerVersionPermissions() LayerVersionPermissionInformer {
+	return &layerVersionPermissionInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
 }
 
 // Permissions returns a PermissionInformer.

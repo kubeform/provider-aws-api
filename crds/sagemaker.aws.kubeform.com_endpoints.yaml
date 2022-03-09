@@ -59,6 +59,69 @@ spec:
                 properties:
                   arn:
                     type: string
+                  deploymentConfig:
+                    properties:
+                      autoRollbackConfiguration:
+                        properties:
+                          alarms:
+                            items:
+                              properties:
+                                alarmName:
+                                  type: string
+                              required:
+                              - alarmName
+                              type: object
+                            maxItems: 10
+                            minItems: 1
+                            type: array
+                        type: object
+                      blueGreenUpdatePolicy:
+                        properties:
+                          maximumExecutionTimeoutInSeconds:
+                            format: int64
+                            type: integer
+                          terminationWaitInSeconds:
+                            format: int64
+                            type: integer
+                          trafficRoutingConfiguration:
+                            properties:
+                              canarySize:
+                                properties:
+                                  type:
+                                    type: string
+                                  value:
+                                    format: int64
+                                    type: integer
+                                required:
+                                - type
+                                - value
+                                type: object
+                              linearStepSize:
+                                properties:
+                                  type:
+                                    type: string
+                                  value:
+                                    format: int64
+                                    type: integer
+                                required:
+                                - type
+                                - value
+                                type: object
+                              type:
+                                type: string
+                              waitIntervalInSeconds:
+                                format: int64
+                                type: integer
+                            required:
+                            - type
+                            - waitIntervalInSeconds
+                            type: object
+                        required:
+                        - trafficRoutingConfiguration
+                        type: object
+                    required:
+                    - blueGreenUpdatePolicy
+                    type: object
                   endpointConfigName:
                     type: string
                   id:
@@ -80,6 +143,69 @@ spec:
                 properties:
                   arn:
                     type: string
+                  deploymentConfig:
+                    properties:
+                      autoRollbackConfiguration:
+                        properties:
+                          alarms:
+                            items:
+                              properties:
+                                alarmName:
+                                  type: string
+                              required:
+                              - alarmName
+                              type: object
+                            maxItems: 10
+                            minItems: 1
+                            type: array
+                        type: object
+                      blueGreenUpdatePolicy:
+                        properties:
+                          maximumExecutionTimeoutInSeconds:
+                            format: int64
+                            type: integer
+                          terminationWaitInSeconds:
+                            format: int64
+                            type: integer
+                          trafficRoutingConfiguration:
+                            properties:
+                              canarySize:
+                                properties:
+                                  type:
+                                    type: string
+                                  value:
+                                    format: int64
+                                    type: integer
+                                required:
+                                - type
+                                - value
+                                type: object
+                              linearStepSize:
+                                properties:
+                                  type:
+                                    type: string
+                                  value:
+                                    format: int64
+                                    type: integer
+                                required:
+                                - type
+                                - value
+                                type: object
+                              type:
+                                type: string
+                              waitIntervalInSeconds:
+                                format: int64
+                                type: integer
+                            required:
+                            - type
+                            - waitIntervalInSeconds
+                            type: object
+                        required:
+                        - trafficRoutingConfiguration
+                        type: object
+                    required:
+                    - blueGreenUpdatePolicy
+                    type: object
                   endpointConfigName:
                     type: string
                   id:

@@ -35,15 +35,26 @@ type Ec2V1alpha1Interface interface {
 	ClientVPNNetworkAssociationsGetter
 	ClientVPNRoutesGetter
 	FleetsGetter
+	HostsGetter
 	LocalGatewayRoutesGetter
 	LocalGatewayRouteTableVpcAssociationsGetter
 	ManagedPrefixListsGetter
+	ManagedPrefixListEntriesGetter
+	NetworkInsightsPathsGetter
+	SerialConsoleAccessesGetter
+	SubnetCIDRReservationsGetter
 	TagsGetter
 	TrafficMirrorFiltersGetter
 	TrafficMirrorFilterRulesGetter
 	TrafficMirrorSessionsGetter
 	TrafficMirrorTargetsGetter
 	TransitGatewaysGetter
+	TransitGatewayConnectsGetter
+	TransitGatewayConnectPeersGetter
+	TransitGatewayMulticastDomainsGetter
+	TransitGatewayMulticastDomainAssociationsGetter
+	TransitGatewayMulticastGroupMembersGetter
+	TransitGatewayMulticastGroupSourcesGetter
 	TransitGatewayPeeringAttachmentsGetter
 	TransitGatewayPeeringAttachmentAcceptersGetter
 	TransitGatewayPrefixListReferencesGetter
@@ -92,6 +103,10 @@ func (c *Ec2V1alpha1Client) Fleets(namespace string) FleetInterface {
 	return newFleets(c, namespace)
 }
 
+func (c *Ec2V1alpha1Client) Hosts(namespace string) HostInterface {
+	return newHosts(c, namespace)
+}
+
 func (c *Ec2V1alpha1Client) LocalGatewayRoutes(namespace string) LocalGatewayRouteInterface {
 	return newLocalGatewayRoutes(c, namespace)
 }
@@ -102,6 +117,22 @@ func (c *Ec2V1alpha1Client) LocalGatewayRouteTableVpcAssociations(namespace stri
 
 func (c *Ec2V1alpha1Client) ManagedPrefixLists(namespace string) ManagedPrefixListInterface {
 	return newManagedPrefixLists(c, namespace)
+}
+
+func (c *Ec2V1alpha1Client) ManagedPrefixListEntries(namespace string) ManagedPrefixListEntryInterface {
+	return newManagedPrefixListEntries(c, namespace)
+}
+
+func (c *Ec2V1alpha1Client) NetworkInsightsPaths(namespace string) NetworkInsightsPathInterface {
+	return newNetworkInsightsPaths(c, namespace)
+}
+
+func (c *Ec2V1alpha1Client) SerialConsoleAccesses(namespace string) SerialConsoleAccessInterface {
+	return newSerialConsoleAccesses(c, namespace)
+}
+
+func (c *Ec2V1alpha1Client) SubnetCIDRReservations(namespace string) SubnetCIDRReservationInterface {
+	return newSubnetCIDRReservations(c, namespace)
 }
 
 func (c *Ec2V1alpha1Client) Tags(namespace string) TagInterface {
@@ -126,6 +157,30 @@ func (c *Ec2V1alpha1Client) TrafficMirrorTargets(namespace string) TrafficMirror
 
 func (c *Ec2V1alpha1Client) TransitGateways(namespace string) TransitGatewayInterface {
 	return newTransitGateways(c, namespace)
+}
+
+func (c *Ec2V1alpha1Client) TransitGatewayConnects(namespace string) TransitGatewayConnectInterface {
+	return newTransitGatewayConnects(c, namespace)
+}
+
+func (c *Ec2V1alpha1Client) TransitGatewayConnectPeers(namespace string) TransitGatewayConnectPeerInterface {
+	return newTransitGatewayConnectPeers(c, namespace)
+}
+
+func (c *Ec2V1alpha1Client) TransitGatewayMulticastDomains(namespace string) TransitGatewayMulticastDomainInterface {
+	return newTransitGatewayMulticastDomains(c, namespace)
+}
+
+func (c *Ec2V1alpha1Client) TransitGatewayMulticastDomainAssociations(namespace string) TransitGatewayMulticastDomainAssociationInterface {
+	return newTransitGatewayMulticastDomainAssociations(c, namespace)
+}
+
+func (c *Ec2V1alpha1Client) TransitGatewayMulticastGroupMembers(namespace string) TransitGatewayMulticastGroupMemberInterface {
+	return newTransitGatewayMulticastGroupMembers(c, namespace)
+}
+
+func (c *Ec2V1alpha1Client) TransitGatewayMulticastGroupSources(namespace string) TransitGatewayMulticastGroupSourceInterface {
+	return newTransitGatewayMulticastGroupSources(c, namespace)
 }
 
 func (c *Ec2V1alpha1Client) TransitGatewayPeeringAttachments(namespace string) TransitGatewayPeeringAttachmentInterface {

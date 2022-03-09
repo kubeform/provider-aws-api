@@ -86,7 +86,7 @@ func (r *RouteTableAssociation) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range routetableassociationForceNewList {
+	for key, _ := range routetableassociationForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

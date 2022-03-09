@@ -65,9 +65,11 @@ spec:
                     format: int64
                     type: integer
                   icmpCode:
-                    type: string
+                    format: int64
+                    type: integer
                   icmpType:
-                    type: string
+                    format: int64
+                    type: integer
                   id:
                     type: string
                   ipv6CIDRBlock:
@@ -100,9 +102,11 @@ spec:
                     format: int64
                     type: integer
                   icmpCode:
-                    type: string
+                    format: int64
+                    type: integer
                   icmpType:
-                    type: string
+                    format: int64
+                    type: integer
                   id:
                     type: string
                   ipv6CIDRBlock:

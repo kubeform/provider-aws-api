@@ -89,7 +89,7 @@ func (r *VpcDHCPOptions) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range vpcdhcpoptionsForceNewList {
+	for key, _ := range vpcdhcpoptionsForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

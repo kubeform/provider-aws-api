@@ -62,6 +62,8 @@ type GroupSpecResource struct {
 	Arn  *string `json:"arn,omitempty" tf:"arn"`
 	Name *string `json:"name" tf:"name"`
 	// +optional
+	PartitionCount *int64 `json:"partitionCount,omitempty" tf:"partition_count"`
+	// +optional
 	PlacementGroupID *string `json:"placementGroupID,omitempty" tf:"placement_group_id"`
 	Strategy         *string `json:"strategy" tf:"strategy"`
 	// +optional

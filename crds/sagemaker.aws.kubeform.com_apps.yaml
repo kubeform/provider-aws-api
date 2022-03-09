@@ -71,7 +71,11 @@ spec:
                     properties:
                       instanceType:
                         type: string
+                      lifecycleConfigArn:
+                        type: string
                       sagemakerImageArn:
+                        type: string
+                      sagemakerImageVersionArn:
                         type: string
                     type: object
                   tags:
@@ -106,7 +110,11 @@ spec:
                     properties:
                       instanceType:
                         type: string
+                      lifecycleConfigArn:
+                        type: string
                       sagemakerImageArn:
+                        type: string
+                      sagemakerImageVersionArn:
                         type: string
                     type: object
                   tags:

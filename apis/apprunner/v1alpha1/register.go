@@ -64,6 +64,8 @@ func addKnownTypes(scheme *runtime.Scheme) error {
 		&CustomDomainAssociationList{},
 		&Service{},
 		&ServiceList{},
+		&VpcConnector{},
+		&VpcConnectorList{},
 	)
 
 	scheme.AddKnownTypes(SchemeGroupVersion,

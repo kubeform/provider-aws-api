@@ -93,7 +93,7 @@ func (r *Association) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range associationForceNewList {
+	for key, _ := range associationForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

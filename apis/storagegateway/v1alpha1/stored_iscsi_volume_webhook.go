@@ -95,7 +95,7 @@ func (r *StoredIscsiVolume) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range storediscsivolumeForceNewList {
+	for key, _ := range storediscsivolumeForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

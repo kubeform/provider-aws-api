@@ -89,7 +89,7 @@ func (r *TransitGatewayPrefixListReference) ValidateUpdate(old runtime.Object) e
 		return err
 	}
 
-	for key := range transitgatewayprefixlistreferenceForceNewList {
+	for key, _ := range transitgatewayprefixlistreferenceForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

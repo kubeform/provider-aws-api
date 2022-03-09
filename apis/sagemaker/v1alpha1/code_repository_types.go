@@ -70,6 +70,10 @@ type CodeRepositorySpecResource struct {
 	Arn                *string                      `json:"arn,omitempty" tf:"arn"`
 	CodeRepositoryName *string                      `json:"codeRepositoryName" tf:"code_repository_name"`
 	GitConfig          *CodeRepositorySpecGitConfig `json:"gitConfig" tf:"git_config"`
+	// +optional
+	Tags *map[string]string `json:"tags,omitempty" tf:"tags"`
+	// +optional
+	TagsAll *map[string]string `json:"tagsAll,omitempty" tf:"tags_all"`
 }
 
 type CodeRepositoryStatus struct {

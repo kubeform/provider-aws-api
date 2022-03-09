@@ -89,7 +89,7 @@ func (r *HostedTransitVirtualInterfaceAccepter) ValidateUpdate(old runtime.Objec
 		return err
 	}
 
-	for key := range hostedtransitvirtualinterfaceaccepterForceNewList {
+	for key, _ := range hostedtransitvirtualinterfaceaccepterForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

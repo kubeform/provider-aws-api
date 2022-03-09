@@ -86,7 +86,7 @@ func (r *ProtocolPolicy) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range protocolpolicyForceNewList {
+	for key, _ := range protocolpolicyForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

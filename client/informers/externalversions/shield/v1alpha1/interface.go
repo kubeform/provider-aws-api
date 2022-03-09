@@ -26,6 +26,10 @@ import (
 type Interface interface {
 	// Protections returns a ProtectionInformer.
 	Protections() ProtectionInformer
+	// ProtectionGroups returns a ProtectionGroupInformer.
+	ProtectionGroups() ProtectionGroupInformer
+	// ProtectionHealthCheckAssociations returns a ProtectionHealthCheckAssociationInformer.
+	ProtectionHealthCheckAssociations() ProtectionHealthCheckAssociationInformer
 }
 
 type version struct {
@@ -42,4 +46,14 @@ func New(f internalinterfaces.SharedInformerFactory, namespace string, tweakList
 // Protections returns a ProtectionInformer.
 func (v *version) Protections() ProtectionInformer {
 	return &protectionInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
+// ProtectionGroups returns a ProtectionGroupInformer.
+func (v *version) ProtectionGroups() ProtectionGroupInformer {
+	return &protectionGroupInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
+// ProtectionHealthCheckAssociations returns a ProtectionHealthCheckAssociationInformer.
+func (v *version) ProtectionHealthCheckAssociations() ProtectionHealthCheckAssociationInformer {
+	return &protectionHealthCheckAssociationInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
 }

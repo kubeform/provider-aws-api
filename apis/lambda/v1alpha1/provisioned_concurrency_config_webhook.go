@@ -89,7 +89,7 @@ func (r *ProvisionedConcurrencyConfig) ValidateUpdate(old runtime.Object) error 
 		return err
 	}
 
-	for key := range provisionedconcurrencyconfigForceNewList {
+	for key, _ := range provisionedconcurrencyconfigForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

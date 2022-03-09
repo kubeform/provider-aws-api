@@ -29,6 +29,10 @@ type FakeBackupV1alpha1 struct {
 	*testing.Fake
 }
 
+func (c *FakeBackupV1alpha1) Frameworks(namespace string) v1alpha1.FrameworkInterface {
+	return &FakeFrameworks{c, namespace}
+}
+
 func (c *FakeBackupV1alpha1) GlobalSettingses(namespace string) v1alpha1.GlobalSettingsInterface {
 	return &FakeGlobalSettingses{c, namespace}
 }
@@ -41,12 +45,20 @@ func (c *FakeBackupV1alpha1) RegionSettingses(namespace string) v1alpha1.RegionS
 	return &FakeRegionSettingses{c, namespace}
 }
 
+func (c *FakeBackupV1alpha1) ReportPlans(namespace string) v1alpha1.ReportPlanInterface {
+	return &FakeReportPlans{c, namespace}
+}
+
 func (c *FakeBackupV1alpha1) Selections(namespace string) v1alpha1.SelectionInterface {
 	return &FakeSelections{c, namespace}
 }
 
 func (c *FakeBackupV1alpha1) Vaults(namespace string) v1alpha1.VaultInterface {
 	return &FakeVaults{c, namespace}
+}
+
+func (c *FakeBackupV1alpha1) VaultLockConfigurations(namespace string) v1alpha1.VaultLockConfigurationInterface {
+	return &FakeVaultLockConfigurations{c, namespace}
 }
 
 func (c *FakeBackupV1alpha1) VaultNotificationses(namespace string) v1alpha1.VaultNotificationsInterface {

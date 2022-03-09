@@ -89,7 +89,7 @@ func (r *PermissionSetInlinePolicy) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range permissionsetinlinepolicyForceNewList {
+	for key, _ := range permissionsetinlinepolicyForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

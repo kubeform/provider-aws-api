@@ -29,12 +29,16 @@ type CloudfrontV1alpha1Interface interface {
 	RESTClient() rest.Interface
 	CachePoliciesGetter
 	DistributionsGetter
+	FieldLevelEncryptionConfigsGetter
+	FieldLevelEncryptionProfilesGetter
 	FunctionsGetter
 	KeyGroupsGetter
+	MonitoringSubscriptionsGetter
 	OriginAccessIdentitiesGetter
 	OriginRequestPoliciesGetter
 	PublicKeysGetter
 	RealtimeLogConfigsGetter
+	ResponseHeadersPoliciesGetter
 }
 
 // CloudfrontV1alpha1Client is used to interact with features provided by the cloudfront.aws.kubeform.com group.
@@ -50,12 +54,24 @@ func (c *CloudfrontV1alpha1Client) Distributions(namespace string) DistributionI
 	return newDistributions(c, namespace)
 }
 
+func (c *CloudfrontV1alpha1Client) FieldLevelEncryptionConfigs(namespace string) FieldLevelEncryptionConfigInterface {
+	return newFieldLevelEncryptionConfigs(c, namespace)
+}
+
+func (c *CloudfrontV1alpha1Client) FieldLevelEncryptionProfiles(namespace string) FieldLevelEncryptionProfileInterface {
+	return newFieldLevelEncryptionProfiles(c, namespace)
+}
+
 func (c *CloudfrontV1alpha1Client) Functions(namespace string) FunctionInterface {
 	return newFunctions(c, namespace)
 }
 
 func (c *CloudfrontV1alpha1Client) KeyGroups(namespace string) KeyGroupInterface {
 	return newKeyGroups(c, namespace)
+}
+
+func (c *CloudfrontV1alpha1Client) MonitoringSubscriptions(namespace string) MonitoringSubscriptionInterface {
+	return newMonitoringSubscriptions(c, namespace)
 }
 
 func (c *CloudfrontV1alpha1Client) OriginAccessIdentities(namespace string) OriginAccessIdentityInterface {
@@ -72,6 +88,10 @@ func (c *CloudfrontV1alpha1Client) PublicKeys(namespace string) PublicKeyInterfa
 
 func (c *CloudfrontV1alpha1Client) RealtimeLogConfigs(namespace string) RealtimeLogConfigInterface {
 	return newRealtimeLogConfigs(c, namespace)
+}
+
+func (c *CloudfrontV1alpha1Client) ResponseHeadersPolicies(namespace string) ResponseHeadersPolicyInterface {
+	return newResponseHeadersPolicies(c, namespace)
 }
 
 // NewForConfig creates a new CloudfrontV1alpha1Client for the given config.

@@ -88,7 +88,7 @@ func (r *StoreContainerPolicy) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range storecontainerpolicyForceNewList {
+	for key, _ := range storecontainerpolicyForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

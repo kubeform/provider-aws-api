@@ -88,7 +88,7 @@ func (r *GangliaLayer) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range ganglialayerForceNewList {
+	for key, _ := range ganglialayerForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

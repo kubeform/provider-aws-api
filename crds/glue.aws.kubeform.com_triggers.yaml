@@ -88,6 +88,20 @@ spec:
                     type: string
                   enabled:
                     type: boolean
+                  eventBatchingCondition:
+                    items:
+                      properties:
+                        batchSize:
+                          format: int64
+                          type: integer
+                        batchWindow:
+                          format: int64
+                          type: integer
+                      required:
+                      - batchSize
+                      type: object
+                    minItems: 1
+                    type: array
                   id:
                     type: string
                   name:
@@ -117,6 +131,8 @@ spec:
                     type: object
                   schedule:
                     type: string
+                  startOnCreation:
+                    type: boolean
                   state:
                     type: string
                   tags:
@@ -207,6 +223,20 @@ spec:
                     type: string
                   enabled:
                     type: boolean
+                  eventBatchingCondition:
+                    items:
+                      properties:
+                        batchSize:
+                          format: int64
+                          type: integer
+                        batchWindow:
+                          format: int64
+                          type: integer
+                      required:
+                      - batchSize
+                      type: object
+                    minItems: 1
+                    type: array
                   id:
                     type: string
                   name:
@@ -236,6 +266,8 @@ spec:
                     type: object
                   schedule:
                     type: string
+                  startOnCreation:
+                    type: boolean
                   state:
                     type: string
                   tags:

@@ -88,7 +88,7 @@ func (r *Cloudtrail) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range cloudtrailForceNewList {
+	for key, _ := range cloudtrailForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

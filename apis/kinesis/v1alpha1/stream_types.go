@@ -41,6 +41,10 @@ type Stream struct {
 	Status            StreamStatus `json:"status,omitempty"`
 }
 
+type StreamSpecStreamModeDetails struct {
+	StreamMode *string `json:"streamMode" tf:"stream_mode"`
+}
+
 type StreamSpec struct {
 	State *StreamSpecResource `json:"state,omitempty" tf:"-"`
 
@@ -71,9 +75,12 @@ type StreamSpecResource struct {
 	Name     *string `json:"name" tf:"name"`
 	// +optional
 	RetentionPeriod *int64 `json:"retentionPeriod,omitempty" tf:"retention_period"`
-	ShardCount      *int64 `json:"shardCount" tf:"shard_count"`
+	// +optional
+	ShardCount *int64 `json:"shardCount,omitempty" tf:"shard_count"`
 	// +optional
 	ShardLevelMetrics []string `json:"shardLevelMetrics,omitempty" tf:"shard_level_metrics"`
+	// +optional
+	StreamModeDetails *StreamSpecStreamModeDetails `json:"streamModeDetails,omitempty" tf:"stream_mode_details"`
 	// +optional
 	Tags *map[string]string `json:"tags,omitempty" tf:"tags"`
 	// +optional

@@ -154,6 +154,22 @@ type ServiceLinkedRoleListerExpansion interface{}
 // ServiceLinkedRoleNamespaceLister.
 type ServiceLinkedRoleNamespaceListerExpansion interface{}
 
+// ServiceSpecificCredentialListerExpansion allows custom methods to be added to
+// ServiceSpecificCredentialLister.
+type ServiceSpecificCredentialListerExpansion interface{}
+
+// ServiceSpecificCredentialNamespaceListerExpansion allows custom methods to be added to
+// ServiceSpecificCredentialNamespaceLister.
+type ServiceSpecificCredentialNamespaceListerExpansion interface{}
+
+// SigningCertificateListerExpansion allows custom methods to be added to
+// SigningCertificateLister.
+type SigningCertificateListerExpansion interface{}
+
+// SigningCertificateNamespaceListerExpansion allows custom methods to be added to
+// SigningCertificateNamespaceLister.
+type SigningCertificateNamespaceListerExpansion interface{}
+
 // UserListerExpansion allows custom methods to be added to
 // UserLister.
 type UserListerExpansion interface{}
@@ -201,3 +217,11 @@ type UserSSHKeyListerExpansion interface{}
 // UserSSHKeyNamespaceListerExpansion allows custom methods to be added to
 // UserSSHKeyNamespaceLister.
 type UserSSHKeyNamespaceListerExpansion interface{}
+
+// VirtualMfaDeviceListerExpansion allows custom methods to be added to
+// VirtualMfaDeviceLister.
+type VirtualMfaDeviceListerExpansion interface{}
+
+// VirtualMfaDeviceNamespaceListerExpansion allows custom methods to be added to
+// VirtualMfaDeviceNamespaceLister.
+type VirtualMfaDeviceNamespaceListerExpansion interface{}

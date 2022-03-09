@@ -62,10 +62,23 @@ type ServiceSpecHealthCheckConfiguration struct {
 
 type ServiceSpecInstanceConfiguration struct {
 	// +optional
-	Cpu             *string `json:"cpu,omitempty" tf:"cpu"`
-	InstanceRoleArn *string `json:"instanceRoleArn" tf:"instance_role_arn"`
+	Cpu *string `json:"cpu,omitempty" tf:"cpu"`
+	// +optional
+	InstanceRoleArn *string `json:"instanceRoleArn,omitempty" tf:"instance_role_arn"`
 	// +optional
 	Memory *string `json:"memory,omitempty" tf:"memory"`
+}
+
+type ServiceSpecNetworkConfigurationEgressConfiguration struct {
+	// +optional
+	EgressType *string `json:"egressType,omitempty" tf:"egress_type"`
+	// +optional
+	VpcConnectorArn *string `json:"vpcConnectorArn,omitempty" tf:"vpc_connector_arn"`
+}
+
+type ServiceSpecNetworkConfiguration struct {
+	// +optional
+	EgressConfiguration *ServiceSpecNetworkConfigurationEgressConfiguration `json:"egressConfiguration,omitempty" tf:"egress_configuration"`
 }
 
 type ServiceSpecSourceConfigurationAuthenticationConfiguration struct {
@@ -159,6 +172,8 @@ type ServiceSpecResource struct {
 	HealthCheckConfiguration *ServiceSpecHealthCheckConfiguration `json:"healthCheckConfiguration,omitempty" tf:"health_check_configuration"`
 	// +optional
 	InstanceConfiguration *ServiceSpecInstanceConfiguration `json:"instanceConfiguration,omitempty" tf:"instance_configuration"`
+	// +optional
+	NetworkConfiguration *ServiceSpecNetworkConfiguration `json:"networkConfiguration,omitempty" tf:"network_configuration"`
 	// +optional
 	ServiceID   *string `json:"serviceID,omitempty" tf:"service_id"`
 	ServiceName *string `json:"serviceName" tf:"service_name"`

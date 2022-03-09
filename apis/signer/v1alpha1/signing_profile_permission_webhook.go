@@ -93,7 +93,7 @@ func (r *SigningProfilePermission) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range signingprofilepermissionForceNewList {
+	for key, _ := range signingprofilepermissionForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

@@ -59,6 +59,8 @@ type DelegationSetSpecResource struct {
 	ID string `json:"id,omitempty" tf:"id,omitempty"`
 
 	// +optional
+	Arn *string `json:"arn,omitempty" tf:"arn"`
+	// +optional
 	NameServers []string `json:"nameServers,omitempty" tf:"name_servers"`
 	// +optional
 	ReferenceName *string `json:"referenceName,omitempty" tf:"reference_name"`

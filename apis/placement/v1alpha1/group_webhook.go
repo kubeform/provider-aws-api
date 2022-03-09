@@ -42,8 +42,9 @@ func (r *Group) SetupWebhookWithManager(mgr ctrl.Manager) error {
 var _ webhook.Validator = &Group{}
 
 var groupForceNewList = map[string]bool{
-	"/name":     true,
-	"/strategy": true,
+	"/name":            true,
+	"/partition_count": true,
+	"/strategy":        true,
 }
 
 // ValidateCreate implements webhook.Validator so a webhook will be registered for the type
@@ -89,7 +90,7 @@ func (r *Group) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range groupForceNewList {
+	for key, _ := range groupForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

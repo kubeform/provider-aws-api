@@ -59,6 +59,33 @@ spec:
                 properties:
                   arn:
                     type: string
+                  asyncInferenceConfig:
+                    properties:
+                      clientConfig:
+                        properties:
+                          maxConcurrentInvocationsPerInstance:
+                            format: int64
+                            type: integer
+                        type: object
+                      outputConfig:
+                        properties:
+                          kmsKeyID:
+                            type: string
+                          notificationConfig:
+                            properties:
+                              errorTopic:
+                                type: string
+                              successTopic:
+                                type: string
+                            type: object
+                          s3OutputPath:
+                            type: string
+                        required:
+                        - s3OutputPath
+                        type: object
+                    required:
+                    - outputConfig
+                    type: object
                   dataCaptureConfig:
                     properties:
                       captureContentTypeHeader:
@@ -145,6 +172,33 @@ spec:
                 properties:
                   arn:
                     type: string
+                  asyncInferenceConfig:
+                    properties:
+                      clientConfig:
+                        properties:
+                          maxConcurrentInvocationsPerInstance:
+                            format: int64
+                            type: integer
+                        type: object
+                      outputConfig:
+                        properties:
+                          kmsKeyID:
+                            type: string
+                          notificationConfig:
+                            properties:
+                              errorTopic:
+                                type: string
+                              successTopic:
+                                type: string
+                            type: object
+                          s3OutputPath:
+                            type: string
+                        required:
+                        - s3OutputPath
+                        type: object
+                    required:
+                    - outputConfig
+                    type: object
                   dataCaptureConfig:
                     properties:
                       captureContentTypeHeader:

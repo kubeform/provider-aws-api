@@ -27,37 +27,41 @@ import (
 
 func GetEncoder() map[string]jsoniter.ValEncoder {
 	return map[string]jsoniter.ValEncoder{
-		jsoniter.MustGetKind(reflect2.TypeOf(ElasticsearchDomainSpecAdvancedSecurityOptions{}).Type1()):                  ElasticsearchDomainSpecAdvancedSecurityOptionsCodec{},
-		jsoniter.MustGetKind(reflect2.TypeOf(ElasticsearchDomainSpecAdvancedSecurityOptionsMasterUserOptions{}).Type1()): ElasticsearchDomainSpecAdvancedSecurityOptionsMasterUserOptionsCodec{},
-		jsoniter.MustGetKind(reflect2.TypeOf(ElasticsearchDomainSpecClusterConfig{}).Type1()):                            ElasticsearchDomainSpecClusterConfigCodec{},
-		jsoniter.MustGetKind(reflect2.TypeOf(ElasticsearchDomainSpecClusterConfigZoneAwarenessConfig{}).Type1()):         ElasticsearchDomainSpecClusterConfigZoneAwarenessConfigCodec{},
-		jsoniter.MustGetKind(reflect2.TypeOf(ElasticsearchDomainSpecCognitoOptions{}).Type1()):                           ElasticsearchDomainSpecCognitoOptionsCodec{},
-		jsoniter.MustGetKind(reflect2.TypeOf(ElasticsearchDomainSpecDomainEndpointOptions{}).Type1()):                    ElasticsearchDomainSpecDomainEndpointOptionsCodec{},
-		jsoniter.MustGetKind(reflect2.TypeOf(ElasticsearchDomainSpecEbsOptions{}).Type1()):                               ElasticsearchDomainSpecEbsOptionsCodec{},
-		jsoniter.MustGetKind(reflect2.TypeOf(ElasticsearchDomainSpecEncryptAtRest{}).Type1()):                            ElasticsearchDomainSpecEncryptAtRestCodec{},
-		jsoniter.MustGetKind(reflect2.TypeOf(ElasticsearchDomainSpecNodeToNodeEncryption{}).Type1()):                     ElasticsearchDomainSpecNodeToNodeEncryptionCodec{},
-		jsoniter.MustGetKind(reflect2.TypeOf(ElasticsearchDomainSpecSnapshotOptions{}).Type1()):                          ElasticsearchDomainSpecSnapshotOptionsCodec{},
-		jsoniter.MustGetKind(reflect2.TypeOf(ElasticsearchDomainSpecVpcOptions{}).Type1()):                               ElasticsearchDomainSpecVpcOptionsCodec{},
-		jsoniter.MustGetKind(reflect2.TypeOf(SamlOptionsSpecSamlOptions{}).Type1()):                                      SamlOptionsSpecSamlOptionsCodec{},
-		jsoniter.MustGetKind(reflect2.TypeOf(SamlOptionsSpecSamlOptionsIdp{}).Type1()):                                   SamlOptionsSpecSamlOptionsIdpCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(ElasticsearchDomainSpecAdvancedSecurityOptions{}).Type1()):                    ElasticsearchDomainSpecAdvancedSecurityOptionsCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(ElasticsearchDomainSpecAdvancedSecurityOptionsMasterUserOptions{}).Type1()):   ElasticsearchDomainSpecAdvancedSecurityOptionsMasterUserOptionsCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(ElasticsearchDomainSpecAutoTuneOptions{}).Type1()):                            ElasticsearchDomainSpecAutoTuneOptionsCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(ElasticsearchDomainSpecAutoTuneOptionsMaintenanceScheduleDuration{}).Type1()): ElasticsearchDomainSpecAutoTuneOptionsMaintenanceScheduleDurationCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(ElasticsearchDomainSpecClusterConfig{}).Type1()):                              ElasticsearchDomainSpecClusterConfigCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(ElasticsearchDomainSpecClusterConfigZoneAwarenessConfig{}).Type1()):           ElasticsearchDomainSpecClusterConfigZoneAwarenessConfigCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(ElasticsearchDomainSpecCognitoOptions{}).Type1()):                             ElasticsearchDomainSpecCognitoOptionsCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(ElasticsearchDomainSpecDomainEndpointOptions{}).Type1()):                      ElasticsearchDomainSpecDomainEndpointOptionsCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(ElasticsearchDomainSpecEbsOptions{}).Type1()):                                 ElasticsearchDomainSpecEbsOptionsCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(ElasticsearchDomainSpecEncryptAtRest{}).Type1()):                              ElasticsearchDomainSpecEncryptAtRestCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(ElasticsearchDomainSpecNodeToNodeEncryption{}).Type1()):                       ElasticsearchDomainSpecNodeToNodeEncryptionCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(ElasticsearchDomainSpecSnapshotOptions{}).Type1()):                            ElasticsearchDomainSpecSnapshotOptionsCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(ElasticsearchDomainSpecVpcOptions{}).Type1()):                                 ElasticsearchDomainSpecVpcOptionsCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(SamlOptionsSpecSamlOptions{}).Type1()):                                        SamlOptionsSpecSamlOptionsCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(SamlOptionsSpecSamlOptionsIdp{}).Type1()):                                     SamlOptionsSpecSamlOptionsIdpCodec{},
 	}
 }
 
 func GetDecoder() map[string]jsoniter.ValDecoder {
 	return map[string]jsoniter.ValDecoder{
-		jsoniter.MustGetKind(reflect2.TypeOf(ElasticsearchDomainSpecAdvancedSecurityOptions{}).Type1()):                  ElasticsearchDomainSpecAdvancedSecurityOptionsCodec{},
-		jsoniter.MustGetKind(reflect2.TypeOf(ElasticsearchDomainSpecAdvancedSecurityOptionsMasterUserOptions{}).Type1()): ElasticsearchDomainSpecAdvancedSecurityOptionsMasterUserOptionsCodec{},
-		jsoniter.MustGetKind(reflect2.TypeOf(ElasticsearchDomainSpecClusterConfig{}).Type1()):                            ElasticsearchDomainSpecClusterConfigCodec{},
-		jsoniter.MustGetKind(reflect2.TypeOf(ElasticsearchDomainSpecClusterConfigZoneAwarenessConfig{}).Type1()):         ElasticsearchDomainSpecClusterConfigZoneAwarenessConfigCodec{},
-		jsoniter.MustGetKind(reflect2.TypeOf(ElasticsearchDomainSpecCognitoOptions{}).Type1()):                           ElasticsearchDomainSpecCognitoOptionsCodec{},
-		jsoniter.MustGetKind(reflect2.TypeOf(ElasticsearchDomainSpecDomainEndpointOptions{}).Type1()):                    ElasticsearchDomainSpecDomainEndpointOptionsCodec{},
-		jsoniter.MustGetKind(reflect2.TypeOf(ElasticsearchDomainSpecEbsOptions{}).Type1()):                               ElasticsearchDomainSpecEbsOptionsCodec{},
-		jsoniter.MustGetKind(reflect2.TypeOf(ElasticsearchDomainSpecEncryptAtRest{}).Type1()):                            ElasticsearchDomainSpecEncryptAtRestCodec{},
-		jsoniter.MustGetKind(reflect2.TypeOf(ElasticsearchDomainSpecNodeToNodeEncryption{}).Type1()):                     ElasticsearchDomainSpecNodeToNodeEncryptionCodec{},
-		jsoniter.MustGetKind(reflect2.TypeOf(ElasticsearchDomainSpecSnapshotOptions{}).Type1()):                          ElasticsearchDomainSpecSnapshotOptionsCodec{},
-		jsoniter.MustGetKind(reflect2.TypeOf(ElasticsearchDomainSpecVpcOptions{}).Type1()):                               ElasticsearchDomainSpecVpcOptionsCodec{},
-		jsoniter.MustGetKind(reflect2.TypeOf(SamlOptionsSpecSamlOptions{}).Type1()):                                      SamlOptionsSpecSamlOptionsCodec{},
-		jsoniter.MustGetKind(reflect2.TypeOf(SamlOptionsSpecSamlOptionsIdp{}).Type1()):                                   SamlOptionsSpecSamlOptionsIdpCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(ElasticsearchDomainSpecAdvancedSecurityOptions{}).Type1()):                    ElasticsearchDomainSpecAdvancedSecurityOptionsCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(ElasticsearchDomainSpecAdvancedSecurityOptionsMasterUserOptions{}).Type1()):   ElasticsearchDomainSpecAdvancedSecurityOptionsMasterUserOptionsCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(ElasticsearchDomainSpecAutoTuneOptions{}).Type1()):                            ElasticsearchDomainSpecAutoTuneOptionsCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(ElasticsearchDomainSpecAutoTuneOptionsMaintenanceScheduleDuration{}).Type1()): ElasticsearchDomainSpecAutoTuneOptionsMaintenanceScheduleDurationCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(ElasticsearchDomainSpecClusterConfig{}).Type1()):                              ElasticsearchDomainSpecClusterConfigCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(ElasticsearchDomainSpecClusterConfigZoneAwarenessConfig{}).Type1()):           ElasticsearchDomainSpecClusterConfigZoneAwarenessConfigCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(ElasticsearchDomainSpecCognitoOptions{}).Type1()):                             ElasticsearchDomainSpecCognitoOptionsCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(ElasticsearchDomainSpecDomainEndpointOptions{}).Type1()):                      ElasticsearchDomainSpecDomainEndpointOptionsCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(ElasticsearchDomainSpecEbsOptions{}).Type1()):                                 ElasticsearchDomainSpecEbsOptionsCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(ElasticsearchDomainSpecEncryptAtRest{}).Type1()):                              ElasticsearchDomainSpecEncryptAtRestCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(ElasticsearchDomainSpecNodeToNodeEncryption{}).Type1()):                       ElasticsearchDomainSpecNodeToNodeEncryptionCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(ElasticsearchDomainSpecSnapshotOptions{}).Type1()):                            ElasticsearchDomainSpecSnapshotOptionsCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(ElasticsearchDomainSpecVpcOptions{}).Type1()):                                 ElasticsearchDomainSpecVpcOptionsCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(SamlOptionsSpecSamlOptions{}).Type1()):                                        SamlOptionsSpecSamlOptionsCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(SamlOptionsSpecSamlOptionsIdp{}).Type1()):                                     SamlOptionsSpecSamlOptionsIdpCodec{},
 	}
 }
 
@@ -228,6 +232,164 @@ func (ElasticsearchDomainSpecAdvancedSecurityOptionsMasterUserOptionsCodec) Deco
 		}
 	default:
 		iter.ReportError("decode ElasticsearchDomainSpecAdvancedSecurityOptionsMasterUserOptions", "unexpected JSON type")
+	}
+}
+
+// +k8s:deepcopy-gen=false
+type ElasticsearchDomainSpecAutoTuneOptionsCodec struct {
+}
+
+func (ElasticsearchDomainSpecAutoTuneOptionsCodec) IsEmpty(ptr unsafe.Pointer) bool {
+	return (*ElasticsearchDomainSpecAutoTuneOptions)(ptr) == nil
+}
+
+func (ElasticsearchDomainSpecAutoTuneOptionsCodec) Encode(ptr unsafe.Pointer, stream *jsoniter.Stream) {
+	obj := (*ElasticsearchDomainSpecAutoTuneOptions)(ptr)
+	var objs []ElasticsearchDomainSpecAutoTuneOptions
+	if obj != nil {
+		objs = []ElasticsearchDomainSpecAutoTuneOptions{*obj}
+	}
+
+	jsonit := jsoniter.Config{
+		EscapeHTML:             true,
+		SortMapKeys:            true,
+		ValidateJsonRawMessage: true,
+		TagKey:                 "tf",
+		TypeEncoders:           getEncodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(ElasticsearchDomainSpecAutoTuneOptions{}).Type1())),
+	}.Froze()
+
+	byt, _ := jsonit.Marshal(objs)
+
+	stream.Write(byt)
+}
+
+func (ElasticsearchDomainSpecAutoTuneOptionsCodec) Decode(ptr unsafe.Pointer, iter *jsoniter.Iterator) {
+	switch iter.WhatIsNext() {
+	case jsoniter.NilValue:
+		iter.Skip()
+		*(*ElasticsearchDomainSpecAutoTuneOptions)(ptr) = ElasticsearchDomainSpecAutoTuneOptions{}
+		return
+	case jsoniter.ArrayValue:
+		objsByte := iter.SkipAndReturnBytes()
+		if len(objsByte) > 0 {
+			var objs []ElasticsearchDomainSpecAutoTuneOptions
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(ElasticsearchDomainSpecAutoTuneOptions{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objsByte, &objs)
+
+			if len(objs) > 0 {
+				*(*ElasticsearchDomainSpecAutoTuneOptions)(ptr) = objs[0]
+			} else {
+				*(*ElasticsearchDomainSpecAutoTuneOptions)(ptr) = ElasticsearchDomainSpecAutoTuneOptions{}
+			}
+		} else {
+			*(*ElasticsearchDomainSpecAutoTuneOptions)(ptr) = ElasticsearchDomainSpecAutoTuneOptions{}
+		}
+	case jsoniter.ObjectValue:
+		objByte := iter.SkipAndReturnBytes()
+		if len(objByte) > 0 {
+			var obj ElasticsearchDomainSpecAutoTuneOptions
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(ElasticsearchDomainSpecAutoTuneOptions{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objByte, &obj)
+
+			*(*ElasticsearchDomainSpecAutoTuneOptions)(ptr) = obj
+		} else {
+			*(*ElasticsearchDomainSpecAutoTuneOptions)(ptr) = ElasticsearchDomainSpecAutoTuneOptions{}
+		}
+	default:
+		iter.ReportError("decode ElasticsearchDomainSpecAutoTuneOptions", "unexpected JSON type")
+	}
+}
+
+// +k8s:deepcopy-gen=false
+type ElasticsearchDomainSpecAutoTuneOptionsMaintenanceScheduleDurationCodec struct {
+}
+
+func (ElasticsearchDomainSpecAutoTuneOptionsMaintenanceScheduleDurationCodec) IsEmpty(ptr unsafe.Pointer) bool {
+	return (*ElasticsearchDomainSpecAutoTuneOptionsMaintenanceScheduleDuration)(ptr) == nil
+}
+
+func (ElasticsearchDomainSpecAutoTuneOptionsMaintenanceScheduleDurationCodec) Encode(ptr unsafe.Pointer, stream *jsoniter.Stream) {
+	obj := (*ElasticsearchDomainSpecAutoTuneOptionsMaintenanceScheduleDuration)(ptr)
+	var objs []ElasticsearchDomainSpecAutoTuneOptionsMaintenanceScheduleDuration
+	if obj != nil {
+		objs = []ElasticsearchDomainSpecAutoTuneOptionsMaintenanceScheduleDuration{*obj}
+	}
+
+	jsonit := jsoniter.Config{
+		EscapeHTML:             true,
+		SortMapKeys:            true,
+		ValidateJsonRawMessage: true,
+		TagKey:                 "tf",
+		TypeEncoders:           getEncodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(ElasticsearchDomainSpecAutoTuneOptionsMaintenanceScheduleDuration{}).Type1())),
+	}.Froze()
+
+	byt, _ := jsonit.Marshal(objs)
+
+	stream.Write(byt)
+}
+
+func (ElasticsearchDomainSpecAutoTuneOptionsMaintenanceScheduleDurationCodec) Decode(ptr unsafe.Pointer, iter *jsoniter.Iterator) {
+	switch iter.WhatIsNext() {
+	case jsoniter.NilValue:
+		iter.Skip()
+		*(*ElasticsearchDomainSpecAutoTuneOptionsMaintenanceScheduleDuration)(ptr) = ElasticsearchDomainSpecAutoTuneOptionsMaintenanceScheduleDuration{}
+		return
+	case jsoniter.ArrayValue:
+		objsByte := iter.SkipAndReturnBytes()
+		if len(objsByte) > 0 {
+			var objs []ElasticsearchDomainSpecAutoTuneOptionsMaintenanceScheduleDuration
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(ElasticsearchDomainSpecAutoTuneOptionsMaintenanceScheduleDuration{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objsByte, &objs)
+
+			if len(objs) > 0 {
+				*(*ElasticsearchDomainSpecAutoTuneOptionsMaintenanceScheduleDuration)(ptr) = objs[0]
+			} else {
+				*(*ElasticsearchDomainSpecAutoTuneOptionsMaintenanceScheduleDuration)(ptr) = ElasticsearchDomainSpecAutoTuneOptionsMaintenanceScheduleDuration{}
+			}
+		} else {
+			*(*ElasticsearchDomainSpecAutoTuneOptionsMaintenanceScheduleDuration)(ptr) = ElasticsearchDomainSpecAutoTuneOptionsMaintenanceScheduleDuration{}
+		}
+	case jsoniter.ObjectValue:
+		objByte := iter.SkipAndReturnBytes()
+		if len(objByte) > 0 {
+			var obj ElasticsearchDomainSpecAutoTuneOptionsMaintenanceScheduleDuration
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(ElasticsearchDomainSpecAutoTuneOptionsMaintenanceScheduleDuration{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objByte, &obj)
+
+			*(*ElasticsearchDomainSpecAutoTuneOptionsMaintenanceScheduleDuration)(ptr) = obj
+		} else {
+			*(*ElasticsearchDomainSpecAutoTuneOptionsMaintenanceScheduleDuration)(ptr) = ElasticsearchDomainSpecAutoTuneOptionsMaintenanceScheduleDuration{}
+		}
+	default:
+		iter.ReportError("decode ElasticsearchDomainSpecAutoTuneOptionsMaintenanceScheduleDuration", "unexpected JSON type")
 	}
 }
 

@@ -18,6 +18,8 @@ limitations under the License.
 
 package v1alpha1
 
+type AuthorizerExpansion interface{}
+
 type CertificateExpansion interface{}
 
 type PolicyExpansion interface{}
@@ -27,6 +29,10 @@ type PolicyAttachmentExpansion interface{}
 type RoleAliasExpansion interface{}
 
 type ThingExpansion interface{}
+
+type ThingGroupExpansion interface{}
+
+type ThingGroupMembershipExpansion interface{}
 
 type ThingPrincipalAttachmentExpansion interface{}
 

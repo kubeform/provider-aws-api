@@ -88,7 +88,7 @@ func (r *ByteMatchSet) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range bytematchsetForceNewList {
+	for key, _ := range bytematchsetForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

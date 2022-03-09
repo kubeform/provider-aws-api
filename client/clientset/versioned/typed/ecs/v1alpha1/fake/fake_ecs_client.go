@@ -29,6 +29,10 @@ type FakeEcsV1alpha1 struct {
 	*testing.Fake
 }
 
+func (c *FakeEcsV1alpha1) AccountSettingDefaults(namespace string) v1alpha1.AccountSettingDefaultInterface {
+	return &FakeAccountSettingDefaults{c, namespace}
+}
+
 func (c *FakeEcsV1alpha1) CapacityProviders(namespace string) v1alpha1.CapacityProviderInterface {
 	return &FakeCapacityProviders{c, namespace}
 }
@@ -37,12 +41,24 @@ func (c *FakeEcsV1alpha1) Clusters(namespace string) v1alpha1.ClusterInterface {
 	return &FakeClusters{c, namespace}
 }
 
+func (c *FakeEcsV1alpha1) ClusterCapacityProviderses(namespace string) v1alpha1.ClusterCapacityProvidersInterface {
+	return &FakeClusterCapacityProviderses{c, namespace}
+}
+
 func (c *FakeEcsV1alpha1) Services(namespace string) v1alpha1.ServiceInterface {
 	return &FakeServices{c, namespace}
 }
 
+func (c *FakeEcsV1alpha1) Tags(namespace string) v1alpha1.TagInterface {
+	return &FakeTags{c, namespace}
+}
+
 func (c *FakeEcsV1alpha1) TaskDefinitions(namespace string) v1alpha1.TaskDefinitionInterface {
 	return &FakeTaskDefinitions{c, namespace}
+}
+
+func (c *FakeEcsV1alpha1) TaskSets(namespace string) v1alpha1.TaskSetInterface {
+	return &FakeTaskSets{c, namespace}
 }
 
 // RESTClient returns a RESTClient that is used to communicate

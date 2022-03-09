@@ -74,6 +74,14 @@ type DeliveryChannelListerExpansion interface{}
 // DeliveryChannelNamespaceLister.
 type DeliveryChannelNamespaceListerExpansion interface{}
 
+// OrganizationConformancePackListerExpansion allows custom methods to be added to
+// OrganizationConformancePackLister.
+type OrganizationConformancePackListerExpansion interface{}
+
+// OrganizationConformancePackNamespaceListerExpansion allows custom methods to be added to
+// OrganizationConformancePackNamespaceLister.
+type OrganizationConformancePackNamespaceListerExpansion interface{}
+
 // OrganizationCustomRuleListerExpansion allows custom methods to be added to
 // OrganizationCustomRuleLister.
 type OrganizationCustomRuleListerExpansion interface{}

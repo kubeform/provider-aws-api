@@ -31,9 +31,11 @@ func GetEncoder() map[string]jsoniter.ValEncoder {
 		jsoniter.MustGetKind(reflect2.TypeOf(ClusterSpecEncryptionConfigProvider{}).Type1()): ClusterSpecEncryptionConfigProviderCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(ClusterSpecKubernetesNetworkConfig{}).Type1()):  ClusterSpecKubernetesNetworkConfigCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(ClusterSpecVpcConfig{}).Type1()):                ClusterSpecVpcConfigCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(IdentityProviderConfigSpecOidc{}).Type1()):      IdentityProviderConfigSpecOidcCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(NodeGroupSpecLaunchTemplate{}).Type1()):         NodeGroupSpecLaunchTemplateCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(NodeGroupSpecRemoteAccess{}).Type1()):           NodeGroupSpecRemoteAccessCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(NodeGroupSpecScalingConfig{}).Type1()):          NodeGroupSpecScalingConfigCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(NodeGroupSpecUpdateConfig{}).Type1()):           NodeGroupSpecUpdateConfigCodec{},
 	}
 }
 
@@ -43,9 +45,11 @@ func GetDecoder() map[string]jsoniter.ValDecoder {
 		jsoniter.MustGetKind(reflect2.TypeOf(ClusterSpecEncryptionConfigProvider{}).Type1()): ClusterSpecEncryptionConfigProviderCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(ClusterSpecKubernetesNetworkConfig{}).Type1()):  ClusterSpecKubernetesNetworkConfigCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(ClusterSpecVpcConfig{}).Type1()):                ClusterSpecVpcConfigCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(IdentityProviderConfigSpecOidc{}).Type1()):      IdentityProviderConfigSpecOidcCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(NodeGroupSpecLaunchTemplate{}).Type1()):         NodeGroupSpecLaunchTemplateCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(NodeGroupSpecRemoteAccess{}).Type1()):           NodeGroupSpecRemoteAccessCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(NodeGroupSpecScalingConfig{}).Type1()):          NodeGroupSpecScalingConfigCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(NodeGroupSpecUpdateConfig{}).Type1()):           NodeGroupSpecUpdateConfigCodec{},
 	}
 }
 
@@ -378,6 +382,85 @@ func (ClusterSpecVpcConfigCodec) Decode(ptr unsafe.Pointer, iter *jsoniter.Itera
 }
 
 // +k8s:deepcopy-gen=false
+type IdentityProviderConfigSpecOidcCodec struct {
+}
+
+func (IdentityProviderConfigSpecOidcCodec) IsEmpty(ptr unsafe.Pointer) bool {
+	return (*IdentityProviderConfigSpecOidc)(ptr) == nil
+}
+
+func (IdentityProviderConfigSpecOidcCodec) Encode(ptr unsafe.Pointer, stream *jsoniter.Stream) {
+	obj := (*IdentityProviderConfigSpecOidc)(ptr)
+	var objs []IdentityProviderConfigSpecOidc
+	if obj != nil {
+		objs = []IdentityProviderConfigSpecOidc{*obj}
+	}
+
+	jsonit := jsoniter.Config{
+		EscapeHTML:             true,
+		SortMapKeys:            true,
+		ValidateJsonRawMessage: true,
+		TagKey:                 "tf",
+		TypeEncoders:           getEncodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(IdentityProviderConfigSpecOidc{}).Type1())),
+	}.Froze()
+
+	byt, _ := jsonit.Marshal(objs)
+
+	stream.Write(byt)
+}
+
+func (IdentityProviderConfigSpecOidcCodec) Decode(ptr unsafe.Pointer, iter *jsoniter.Iterator) {
+	switch iter.WhatIsNext() {
+	case jsoniter.NilValue:
+		iter.Skip()
+		*(*IdentityProviderConfigSpecOidc)(ptr) = IdentityProviderConfigSpecOidc{}
+		return
+	case jsoniter.ArrayValue:
+		objsByte := iter.SkipAndReturnBytes()
+		if len(objsByte) > 0 {
+			var objs []IdentityProviderConfigSpecOidc
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(IdentityProviderConfigSpecOidc{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objsByte, &objs)
+
+			if len(objs) > 0 {
+				*(*IdentityProviderConfigSpecOidc)(ptr) = objs[0]
+			} else {
+				*(*IdentityProviderConfigSpecOidc)(ptr) = IdentityProviderConfigSpecOidc{}
+			}
+		} else {
+			*(*IdentityProviderConfigSpecOidc)(ptr) = IdentityProviderConfigSpecOidc{}
+		}
+	case jsoniter.ObjectValue:
+		objByte := iter.SkipAndReturnBytes()
+		if len(objByte) > 0 {
+			var obj IdentityProviderConfigSpecOidc
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(IdentityProviderConfigSpecOidc{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objByte, &obj)
+
+			*(*IdentityProviderConfigSpecOidc)(ptr) = obj
+		} else {
+			*(*IdentityProviderConfigSpecOidc)(ptr) = IdentityProviderConfigSpecOidc{}
+		}
+	default:
+		iter.ReportError("decode IdentityProviderConfigSpecOidc", "unexpected JSON type")
+	}
+}
+
+// +k8s:deepcopy-gen=false
 type NodeGroupSpecLaunchTemplateCodec struct {
 }
 
@@ -611,5 +694,84 @@ func (NodeGroupSpecScalingConfigCodec) Decode(ptr unsafe.Pointer, iter *jsoniter
 		}
 	default:
 		iter.ReportError("decode NodeGroupSpecScalingConfig", "unexpected JSON type")
+	}
+}
+
+// +k8s:deepcopy-gen=false
+type NodeGroupSpecUpdateConfigCodec struct {
+}
+
+func (NodeGroupSpecUpdateConfigCodec) IsEmpty(ptr unsafe.Pointer) bool {
+	return (*NodeGroupSpecUpdateConfig)(ptr) == nil
+}
+
+func (NodeGroupSpecUpdateConfigCodec) Encode(ptr unsafe.Pointer, stream *jsoniter.Stream) {
+	obj := (*NodeGroupSpecUpdateConfig)(ptr)
+	var objs []NodeGroupSpecUpdateConfig
+	if obj != nil {
+		objs = []NodeGroupSpecUpdateConfig{*obj}
+	}
+
+	jsonit := jsoniter.Config{
+		EscapeHTML:             true,
+		SortMapKeys:            true,
+		ValidateJsonRawMessage: true,
+		TagKey:                 "tf",
+		TypeEncoders:           getEncodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(NodeGroupSpecUpdateConfig{}).Type1())),
+	}.Froze()
+
+	byt, _ := jsonit.Marshal(objs)
+
+	stream.Write(byt)
+}
+
+func (NodeGroupSpecUpdateConfigCodec) Decode(ptr unsafe.Pointer, iter *jsoniter.Iterator) {
+	switch iter.WhatIsNext() {
+	case jsoniter.NilValue:
+		iter.Skip()
+		*(*NodeGroupSpecUpdateConfig)(ptr) = NodeGroupSpecUpdateConfig{}
+		return
+	case jsoniter.ArrayValue:
+		objsByte := iter.SkipAndReturnBytes()
+		if len(objsByte) > 0 {
+			var objs []NodeGroupSpecUpdateConfig
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(NodeGroupSpecUpdateConfig{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objsByte, &objs)
+
+			if len(objs) > 0 {
+				*(*NodeGroupSpecUpdateConfig)(ptr) = objs[0]
+			} else {
+				*(*NodeGroupSpecUpdateConfig)(ptr) = NodeGroupSpecUpdateConfig{}
+			}
+		} else {
+			*(*NodeGroupSpecUpdateConfig)(ptr) = NodeGroupSpecUpdateConfig{}
+		}
+	case jsoniter.ObjectValue:
+		objByte := iter.SkipAndReturnBytes()
+		if len(objByte) > 0 {
+			var obj NodeGroupSpecUpdateConfig
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(NodeGroupSpecUpdateConfig{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objByte, &obj)
+
+			*(*NodeGroupSpecUpdateConfig)(ptr) = obj
+		} else {
+			*(*NodeGroupSpecUpdateConfig)(ptr) = NodeGroupSpecUpdateConfig{}
+		}
+	default:
+		iter.ReportError("decode NodeGroupSpecUpdateConfig", "unexpected JSON type")
 	}
 }

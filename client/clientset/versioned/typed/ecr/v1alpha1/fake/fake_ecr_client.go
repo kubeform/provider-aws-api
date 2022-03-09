@@ -33,8 +33,16 @@ func (c *FakeEcrV1alpha1) LifecyclePolicies(namespace string) v1alpha1.Lifecycle
 	return &FakeLifecyclePolicies{c, namespace}
 }
 
+func (c *FakeEcrV1alpha1) PullThroughCacheRules(namespace string) v1alpha1.PullThroughCacheRuleInterface {
+	return &FakePullThroughCacheRules{c, namespace}
+}
+
 func (c *FakeEcrV1alpha1) RegistryPolicies(namespace string) v1alpha1.RegistryPolicyInterface {
 	return &FakeRegistryPolicies{c, namespace}
+}
+
+func (c *FakeEcrV1alpha1) RegistryScanningConfigurations(namespace string) v1alpha1.RegistryScanningConfigurationInterface {
+	return &FakeRegistryScanningConfigurations{c, namespace}
 }
 
 func (c *FakeEcrV1alpha1) ReplicationConfigurations(namespace string) v1alpha1.ReplicationConfigurationInterface {

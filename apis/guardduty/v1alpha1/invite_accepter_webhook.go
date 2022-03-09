@@ -89,7 +89,7 @@ func (r *InviteAccepter) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range inviteaccepterForceNewList {
+	for key, _ := range inviteaccepterForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

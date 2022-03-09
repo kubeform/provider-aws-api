@@ -90,7 +90,7 @@ func (r *LocalGatewayRoute) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range localgatewayrouteForceNewList {
+	for key, _ := range localgatewayrouteForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

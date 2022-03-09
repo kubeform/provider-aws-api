@@ -88,7 +88,7 @@ func (r *AccountAlias) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range accountaliasForceNewList {
+	for key, _ := range accountaliasForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

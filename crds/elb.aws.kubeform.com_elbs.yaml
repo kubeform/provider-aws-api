@@ -84,6 +84,8 @@ spec:
                     type: integer
                   crossZoneLoadBalancing:
                     type: boolean
+                  desyncMitigationMode:
+                    type: string
                   dnsName:
                     type: string
                   healthCheck:
@@ -200,6 +202,8 @@ spec:
                     type: integer
                   crossZoneLoadBalancing:
                     type: boolean
+                  desyncMitigationMode:
+                    type: string
                   dnsName:
                     type: string
                   healthCheck:

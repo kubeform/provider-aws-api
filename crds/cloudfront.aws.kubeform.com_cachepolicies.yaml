@@ -127,6 +127,7 @@ spec:
                     type: object
                 required:
                 - name
+                - parametersInCacheKeyAndForwardedToOrigin
                 type: object
               state:
                 properties:
@@ -200,6 +201,7 @@ spec:
                     type: object
                 required:
                 - name
+                - parametersInCacheKeyAndForwardedToOrigin
                 type: object
               terminationPolicy:
                 enum:

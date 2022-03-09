@@ -75,7 +75,7 @@ type ConnectionSpecResource struct {
 	// +optional
 	CatalogID *string `json:"catalogID,omitempty" tf:"catalog_id"`
 	// +optional
-	ConnectionProperties map[string]string `json:"-" sensitive:"true" tf:"connection_properties"`
+	ConnectionProperties *map[string]string `json:"-" sensitive:"true" tf:"connection_properties"`
 	// +optional
 	ConnectionType *string `json:"connectionType,omitempty" tf:"connection_type"`
 	// +optional
@@ -86,6 +86,10 @@ type ConnectionSpecResource struct {
 	Name          *string  `json:"name" tf:"name"`
 	// +optional
 	PhysicalConnectionRequirements *ConnectionSpecPhysicalConnectionRequirements `json:"physicalConnectionRequirements,omitempty" tf:"physical_connection_requirements"`
+	// +optional
+	Tags *map[string]string `json:"tags,omitempty" tf:"tags"`
+	// +optional
+	TagsAll *map[string]string `json:"tagsAll,omitempty" tf:"tags_all"`
 }
 
 type ConnectionStatus struct {

@@ -101,10 +101,12 @@ type ClusterSpecResource struct {
 	// +optional
 	Arn *string `json:"arn,omitempty" tf:"arn"`
 	// +optional
+	// Deprecated
 	CapacityProviders []string `json:"capacityProviders,omitempty" tf:"capacity_providers"`
 	// +optional
 	Configuration *ClusterSpecConfiguration `json:"configuration,omitempty" tf:"configuration"`
 	// +optional
+	// Deprecated
 	DefaultCapacityProviderStrategy []ClusterSpecDefaultCapacityProviderStrategy `json:"defaultCapacityProviderStrategy,omitempty" tf:"default_capacity_provider_strategy"`
 	Name                            *string                                      `json:"name" tf:"name"`
 	// +optional

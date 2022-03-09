@@ -41,12 +41,24 @@ type Datasource struct {
 	Status            DatasourceStatus `json:"status,omitempty"`
 }
 
+type DatasourceSpecDynamodbConfigDeltaSyncConfig struct {
+	// +optional
+	BaseTableTtl       *int64  `json:"baseTableTtl,omitempty" tf:"base_table_ttl"`
+	DeltaSyncTableName *string `json:"deltaSyncTableName" tf:"delta_sync_table_name"`
+	// +optional
+	DeltaSyncTableTtl *int64 `json:"deltaSyncTableTtl,omitempty" tf:"delta_sync_table_ttl"`
+}
+
 type DatasourceSpecDynamodbConfig struct {
+	// +optional
+	DeltaSyncConfig *DatasourceSpecDynamodbConfigDeltaSyncConfig `json:"deltaSyncConfig,omitempty" tf:"delta_sync_config"`
 	// +optional
 	Region    *string `json:"region,omitempty" tf:"region"`
 	TableName *string `json:"tableName" tf:"table_name"`
 	// +optional
 	UseCallerCredentials *bool `json:"useCallerCredentials,omitempty" tf:"use_caller_credentials"`
+	// +optional
+	Versioned *bool `json:"versioned,omitempty" tf:"versioned"`
 }
 
 type DatasourceSpecElasticsearchConfig struct {
@@ -55,12 +67,46 @@ type DatasourceSpecElasticsearchConfig struct {
 	Region *string `json:"region,omitempty" tf:"region"`
 }
 
+type DatasourceSpecHttpConfigAuthorizationConfigAwsIamConfig struct {
+	// +optional
+	SigningRegion *string `json:"signingRegion,omitempty" tf:"signing_region"`
+	// +optional
+	SigningServiceName *string `json:"signingServiceName,omitempty" tf:"signing_service_name"`
+}
+
+type DatasourceSpecHttpConfigAuthorizationConfig struct {
+	// +optional
+	AuthorizationType *string `json:"authorizationType,omitempty" tf:"authorization_type"`
+	// +optional
+	AwsIamConfig *DatasourceSpecHttpConfigAuthorizationConfigAwsIamConfig `json:"awsIamConfig,omitempty" tf:"aws_iam_config"`
+}
+
 type DatasourceSpecHttpConfig struct {
-	Endpoint *string `json:"endpoint" tf:"endpoint"`
+	// +optional
+	AuthorizationConfig *DatasourceSpecHttpConfigAuthorizationConfig `json:"authorizationConfig,omitempty" tf:"authorization_config"`
+	Endpoint            *string                                      `json:"endpoint" tf:"endpoint"`
 }
 
 type DatasourceSpecLambdaConfig struct {
 	FunctionArn *string `json:"functionArn" tf:"function_arn"`
+}
+
+type DatasourceSpecRelationalDatabaseConfigHttpEndpointConfig struct {
+	AwsSecretStoreArn *string `json:"awsSecretStoreArn" tf:"aws_secret_store_arn"`
+	// +optional
+	DatabaseName        *string `json:"databaseName,omitempty" tf:"database_name"`
+	DbClusterIdentifier *string `json:"dbClusterIdentifier" tf:"db_cluster_identifier"`
+	// +optional
+	Region *string `json:"region,omitempty" tf:"region"`
+	// +optional
+	Schema *string `json:"schema,omitempty" tf:"schema"`
+}
+
+type DatasourceSpecRelationalDatabaseConfig struct {
+	// +optional
+	HttpEndpointConfig *DatasourceSpecRelationalDatabaseConfigHttpEndpointConfig `json:"httpEndpointConfig,omitempty" tf:"http_endpoint_config"`
+	// +optional
+	SourceType *string `json:"sourceType,omitempty" tf:"source_type"`
 }
 
 type DatasourceSpec struct {
@@ -94,6 +140,8 @@ type DatasourceSpecResource struct {
 	// +optional
 	LambdaConfig *DatasourceSpecLambdaConfig `json:"lambdaConfig,omitempty" tf:"lambda_config"`
 	Name         *string                     `json:"name" tf:"name"`
+	// +optional
+	RelationalDatabaseConfig *DatasourceSpecRelationalDatabaseConfig `json:"relationalDatabaseConfig,omitempty" tf:"relational_database_config"`
 	// +optional
 	ServiceRoleArn *string `json:"serviceRoleArn,omitempty" tf:"service_role_arn"`
 	Type           *string `json:"type" tf:"type"`

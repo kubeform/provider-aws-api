@@ -88,7 +88,7 @@ func (r *RailsAppLayer) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range railsapplayerForceNewList {
+	for key, _ := range railsapplayerForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

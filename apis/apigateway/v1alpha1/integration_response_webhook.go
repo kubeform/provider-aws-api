@@ -90,7 +90,7 @@ func (r *IntegrationResponse) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range integrationresponseForceNewList {
+	for key, _ := range integrationresponseForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

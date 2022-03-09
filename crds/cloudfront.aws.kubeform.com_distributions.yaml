@@ -169,6 +169,8 @@ spec:
                         type: string
                       realtimeLogConfigArn:
                         type: string
+                      responseHeadersPolicyID:
+                        type: string
                       smoothStreaming:
                         type: boolean
                       targetOriginID:
@@ -307,6 +309,8 @@ spec:
                         pathPattern:
                           type: string
                         realtimeLogConfigArn:
+                          type: string
+                        responseHeadersPolicyID:
                           type: string
                         smoothStreaming:
                           type: boolean
@@ -641,6 +645,8 @@ spec:
                         type: string
                       realtimeLogConfigArn:
                         type: string
+                      responseHeadersPolicyID:
+                        type: string
                       smoothStreaming:
                         type: boolean
                       targetOriginID:
@@ -779,6 +785,8 @@ spec:
                         pathPattern:
                           type: string
                         realtimeLogConfigArn:
+                          type: string
+                        responseHeadersPolicyID:
                           type: string
                         smoothStreaming:
                           type: boolean

@@ -89,7 +89,7 @@ func (r *Ipset) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range ipsetForceNewList {
+	for key, _ := range ipsetForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

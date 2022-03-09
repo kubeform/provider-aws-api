@@ -89,7 +89,7 @@ func (r *GlobalReplicationGroup) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range globalreplicationgroupForceNewList {
+	for key, _ := range globalreplicationgroupForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

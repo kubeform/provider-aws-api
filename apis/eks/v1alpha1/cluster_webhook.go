@@ -42,6 +42,7 @@ func (r *Cluster) SetupWebhookWithManager(mgr ctrl.Manager) error {
 var _ webhook.Validator = &Cluster{}
 
 var clusterForceNewList = map[string]bool{
+	"/kubernetes_network_config/*/ip_family":         true,
 	"/kubernetes_network_config/*/service_ipv4_cidr": true,
 	"/name":                            true,
 	"/role_arn":                        true,
@@ -92,7 +93,7 @@ func (r *Cluster) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range clusterForceNewList {
+	for key, _ := range clusterForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

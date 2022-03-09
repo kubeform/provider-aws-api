@@ -41,6 +41,13 @@ type Workgroup struct {
 	Status            WorkgroupStatus `json:"status,omitempty"`
 }
 
+type WorkgroupSpecConfigurationEngineVersion struct {
+	// +optional
+	EffectiveEngineVersion *string `json:"effectiveEngineVersion,omitempty" tf:"effective_engine_version"`
+	// +optional
+	SelectedEngineVersion *string `json:"selectedEngineVersion,omitempty" tf:"selected_engine_version"`
+}
+
 type WorkgroupSpecConfigurationResultConfigurationEncryptionConfiguration struct {
 	// +optional
 	EncryptionOption *string `json:"encryptionOption,omitempty" tf:"encryption_option"`
@@ -61,7 +68,11 @@ type WorkgroupSpecConfiguration struct {
 	// +optional
 	EnforceWorkgroupConfiguration *bool `json:"enforceWorkgroupConfiguration,omitempty" tf:"enforce_workgroup_configuration"`
 	// +optional
+	EngineVersion *WorkgroupSpecConfigurationEngineVersion `json:"engineVersion,omitempty" tf:"engine_version"`
+	// +optional
 	PublishCloudwatchMetricsEnabled *bool `json:"publishCloudwatchMetricsEnabled,omitempty" tf:"publish_cloudwatch_metrics_enabled"`
+	// +optional
+	RequesterPaysEnabled *bool `json:"requesterPaysEnabled,omitempty" tf:"requester_pays_enabled"`
 	// +optional
 	ResultConfiguration *WorkgroupSpecConfigurationResultConfiguration `json:"resultConfiguration,omitempty" tf:"result_configuration"`
 }

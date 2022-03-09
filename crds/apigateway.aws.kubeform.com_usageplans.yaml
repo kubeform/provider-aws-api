@@ -64,6 +64,21 @@ spec:
                           type: string
                         stage:
                           type: string
+                        throttle:
+                          items:
+                            properties:
+                              burstLimit:
+                                format: int64
+                                type: integer
+                              path:
+                                type: string
+                              rateLimit:
+                                format: double
+                                type: number
+                            required:
+                            - path
+                            type: object
+                          type: array
                       required:
                       - apiID
                       - stage
@@ -122,6 +137,21 @@ spec:
                           type: string
                         stage:
                           type: string
+                        throttle:
+                          items:
+                            properties:
+                              burstLimit:
+                                format: int64
+                                type: integer
+                              path:
+                                type: string
+                              rateLimit:
+                                format: double
+                                type: number
+                            required:
+                            - path
+                            type: object
+                          type: array
                       required:
                       - apiID
                       - stage

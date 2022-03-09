@@ -42,7 +42,10 @@ type FileSystem struct {
 }
 
 type FileSystemSpecLifecyclePolicy struct {
-	TransitionToIa *string `json:"transitionToIa" tf:"transition_to_ia"`
+	// +optional
+	TransitionToIa *string `json:"transitionToIa,omitempty" tf:"transition_to_ia"`
+	// +optional
+	TransitionToPrimaryStorageClass *string `json:"transitionToPrimaryStorageClass,omitempty" tf:"transition_to_primary_storage_class"`
 }
 
 type FileSystemSpecSizeInBytes struct {
@@ -86,7 +89,8 @@ type FileSystemSpecResource struct {
 	// +optional
 	KmsKeyID *string `json:"kmsKeyID,omitempty" tf:"kms_key_id"`
 	// +optional
-	LifecyclePolicy *FileSystemSpecLifecyclePolicy `json:"lifecyclePolicy,omitempty" tf:"lifecycle_policy"`
+	// +kubebuilder:validation:MaxItems=2
+	LifecyclePolicy []FileSystemSpecLifecyclePolicy `json:"lifecyclePolicy,omitempty" tf:"lifecycle_policy"`
 	// +optional
 	NumberOfMountTargets *int64 `json:"numberOfMountTargets,omitempty" tf:"number_of_mount_targets"`
 	// +optional

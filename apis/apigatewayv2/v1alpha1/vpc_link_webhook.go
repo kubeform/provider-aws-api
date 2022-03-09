@@ -89,7 +89,7 @@ func (r *VpcLink) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range vpclinkForceNewList {
+	for key, _ := range vpclinkForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

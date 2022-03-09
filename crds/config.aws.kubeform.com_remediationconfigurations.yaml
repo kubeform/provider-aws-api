@@ -59,10 +59,27 @@ spec:
                 properties:
                   arn:
                     type: string
+                  automatic:
+                    type: boolean
                   configRuleName:
                     type: string
+                  executionControls:
+                    properties:
+                      ssmControls:
+                        properties:
+                          concurrentExecutionRatePercentage:
+                            format: int64
+                            type: integer
+                          errorPercentage:
+                            format: int64
+                            type: integer
+                        type: object
+                    type: object
                   id:
                     type: string
+                  maximumAutomaticAttempts:
+                    format: int64
+                    type: integer
                   parameter:
                     items:
                       properties:
@@ -79,6 +96,9 @@ spec:
                     type: array
                   resourceType:
                     type: string
+                  retryAttemptSeconds:
+                    format: int64
+                    type: integer
                   targetID:
                     type: string
                   targetType:
@@ -94,10 +114,27 @@ spec:
                 properties:
                   arn:
                     type: string
+                  automatic:
+                    type: boolean
                   configRuleName:
                     type: string
+                  executionControls:
+                    properties:
+                      ssmControls:
+                        properties:
+                          concurrentExecutionRatePercentage:
+                            format: int64
+                            type: integer
+                          errorPercentage:
+                            format: int64
+                            type: integer
+                        type: object
+                    type: object
                   id:
                     type: string
+                  maximumAutomaticAttempts:
+                    format: int64
+                    type: integer
                   parameter:
                     items:
                       properties:
@@ -114,6 +151,9 @@ spec:
                     type: array
                   resourceType:
                     type: string
+                  retryAttemptSeconds:
+                    format: int64
+                    type: integer
                   targetID:
                     type: string
                   targetType:

@@ -84,7 +84,6 @@ spec:
                       resources:
                         items:
                           type: string
-                        minItems: 1
                         type: array
                     required:
                     - provider
@@ -108,6 +107,8 @@ spec:
                     type: array
                   kubernetesNetworkConfig:
                     properties:
+                      ipFamily:
+                        type: string
                       serviceIpv4CIDR:
                         type: string
                     type: object
@@ -227,7 +228,6 @@ spec:
                       resources:
                         items:
                           type: string
-                        minItems: 1
                         type: array
                     required:
                     - provider
@@ -251,6 +251,8 @@ spec:
                     type: array
                   kubernetesNetworkConfig:
                     properties:
+                      ipFamily:
+                        type: string
                       serviceIpv4CIDR:
                         type: string
                     type: object

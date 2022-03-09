@@ -62,6 +62,8 @@ func addKnownTypes(scheme *runtime.Scheme) error {
 		&JobDefinitionList{},
 		&JobQueue{},
 		&JobQueueList{},
+		&SchedulingPolicy{},
+		&SchedulingPolicyList{},
 	)
 
 	scheme.AddKnownTypes(SchemeGroupVersion,

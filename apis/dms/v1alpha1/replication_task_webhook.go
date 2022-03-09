@@ -91,7 +91,7 @@ func (r *ReplicationTask) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range replicationtaskForceNewList {
+	for key, _ := range replicationtaskForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

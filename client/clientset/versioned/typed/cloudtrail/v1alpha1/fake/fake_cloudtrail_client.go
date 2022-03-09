@@ -33,6 +33,10 @@ func (c *FakeCloudtrailV1alpha1) Cloudtrails(namespace string) v1alpha1.Cloudtra
 	return &FakeCloudtrails{c, namespace}
 }
 
+func (c *FakeCloudtrailV1alpha1) EventDataStores(namespace string) v1alpha1.EventDataStoreInterface {
+	return &FakeEventDataStores{c, namespace}
+}
+
 // RESTClient returns a RESTClient that is used to communicate
 // with API server by this client implementation.
 func (c *FakeCloudtrailV1alpha1) RESTClient() rest.Interface {

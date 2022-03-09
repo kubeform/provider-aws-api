@@ -41,6 +41,10 @@ func (c *FakeEksV1alpha1) FargateProfiles(namespace string) v1alpha1.FargateProf
 	return &FakeFargateProfiles{c, namespace}
 }
 
+func (c *FakeEksV1alpha1) IdentityProviderConfigs(namespace string) v1alpha1.IdentityProviderConfigInterface {
+	return &FakeIdentityProviderConfigs{c, namespace}
+}
+
 func (c *FakeEksV1alpha1) NodeGroups(namespace string) v1alpha1.NodeGroupInterface {
 	return &FakeNodeGroups{c, namespace}
 }

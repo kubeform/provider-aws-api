@@ -19,15 +19,22 @@ limitations under the License.
 package v1alpha1
 
 import (
+	"unsafe"
+
 	jsoniter "github.com/json-iterator/go"
+	"github.com/modern-go/reflect2"
 )
 
 func GetEncoder() map[string]jsoniter.ValEncoder {
-	return map[string]jsoniter.ValEncoder{}
+	return map[string]jsoniter.ValEncoder{
+		jsoniter.MustGetKind(reflect2.TypeOf(LogSpecDestinationOptions{}).Type1()): LogSpecDestinationOptionsCodec{},
+	}
 }
 
 func GetDecoder() map[string]jsoniter.ValDecoder {
-	return map[string]jsoniter.ValDecoder{}
+	return map[string]jsoniter.ValDecoder{
+		jsoniter.MustGetKind(reflect2.TypeOf(LogSpecDestinationOptions{}).Type1()): LogSpecDestinationOptionsCodec{},
+	}
 }
 
 func getEncodersWithout(typ string) map[string]jsoniter.ValEncoder {
@@ -40,4 +47,83 @@ func getDecodersWithout(typ string) map[string]jsoniter.ValDecoder {
 	origMap := GetDecoder()
 	delete(origMap, typ)
 	return origMap
+}
+
+// +k8s:deepcopy-gen=false
+type LogSpecDestinationOptionsCodec struct {
+}
+
+func (LogSpecDestinationOptionsCodec) IsEmpty(ptr unsafe.Pointer) bool {
+	return (*LogSpecDestinationOptions)(ptr) == nil
+}
+
+func (LogSpecDestinationOptionsCodec) Encode(ptr unsafe.Pointer, stream *jsoniter.Stream) {
+	obj := (*LogSpecDestinationOptions)(ptr)
+	var objs []LogSpecDestinationOptions
+	if obj != nil {
+		objs = []LogSpecDestinationOptions{*obj}
+	}
+
+	jsonit := jsoniter.Config{
+		EscapeHTML:             true,
+		SortMapKeys:            true,
+		ValidateJsonRawMessage: true,
+		TagKey:                 "tf",
+		TypeEncoders:           getEncodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(LogSpecDestinationOptions{}).Type1())),
+	}.Froze()
+
+	byt, _ := jsonit.Marshal(objs)
+
+	stream.Write(byt)
+}
+
+func (LogSpecDestinationOptionsCodec) Decode(ptr unsafe.Pointer, iter *jsoniter.Iterator) {
+	switch iter.WhatIsNext() {
+	case jsoniter.NilValue:
+		iter.Skip()
+		*(*LogSpecDestinationOptions)(ptr) = LogSpecDestinationOptions{}
+		return
+	case jsoniter.ArrayValue:
+		objsByte := iter.SkipAndReturnBytes()
+		if len(objsByte) > 0 {
+			var objs []LogSpecDestinationOptions
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(LogSpecDestinationOptions{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objsByte, &objs)
+
+			if len(objs) > 0 {
+				*(*LogSpecDestinationOptions)(ptr) = objs[0]
+			} else {
+				*(*LogSpecDestinationOptions)(ptr) = LogSpecDestinationOptions{}
+			}
+		} else {
+			*(*LogSpecDestinationOptions)(ptr) = LogSpecDestinationOptions{}
+		}
+	case jsoniter.ObjectValue:
+		objByte := iter.SkipAndReturnBytes()
+		if len(objByte) > 0 {
+			var obj LogSpecDestinationOptions
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(LogSpecDestinationOptions{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objByte, &obj)
+
+			*(*LogSpecDestinationOptions)(ptr) = obj
+		} else {
+			*(*LogSpecDestinationOptions)(ptr) = LogSpecDestinationOptions{}
+		}
+	default:
+		iter.ReportError("decode LogSpecDestinationOptions", "unexpected JSON type")
+	}
 }

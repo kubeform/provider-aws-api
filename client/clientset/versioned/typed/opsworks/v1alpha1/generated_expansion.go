@@ -22,6 +22,8 @@ type ApplicationExpansion interface{}
 
 type CustomLayerExpansion interface{}
 
+type EcsClusterLayerExpansion interface{}
+
 type GangliaLayerExpansion interface{}
 
 type HaproxyLayerExpansion interface{}

@@ -90,6 +90,10 @@ func addKnownTypes(scheme *runtime.Scheme) error {
 		&ServerCertificateList{},
 		&ServiceLinkedRole{},
 		&ServiceLinkedRoleList{},
+		&ServiceSpecificCredential{},
+		&ServiceSpecificCredentialList{},
+		&SigningCertificate{},
+		&SigningCertificateList{},
 		&User{},
 		&UserList{},
 		&UserGroupMembership{},
@@ -102,6 +106,8 @@ func addKnownTypes(scheme *runtime.Scheme) error {
 		&UserPolicyAttachmentList{},
 		&UserSSHKey{},
 		&UserSSHKeyList{},
+		&VirtualMfaDevice{},
+		&VirtualMfaDeviceList{},
 	)
 
 	scheme.AddKnownTypes(SchemeGroupVersion,

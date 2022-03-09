@@ -75,6 +75,8 @@ type WebhookSpecResource struct {
 	// +optional
 	BranchFilter *string `json:"branchFilter,omitempty" tf:"branch_filter"`
 	// +optional
+	BuildType *string `json:"buildType,omitempty" tf:"build_type"`
+	// +optional
 	FilterGroup []WebhookSpecFilterGroup `json:"filterGroup,omitempty" tf:"filter_group"`
 	// +optional
 	PayloadURL  *string `json:"payloadURL,omitempty" tf:"payload_url"`

@@ -29,6 +29,10 @@ type FakeTransferV1alpha1 struct {
 	*testing.Fake
 }
 
+func (c *FakeTransferV1alpha1) Accesses(namespace string) v1alpha1.AccessInterface {
+	return &FakeAccesses{c, namespace}
+}
+
 func (c *FakeTransferV1alpha1) Servers(namespace string) v1alpha1.ServerInterface {
 	return &FakeServers{c, namespace}
 }

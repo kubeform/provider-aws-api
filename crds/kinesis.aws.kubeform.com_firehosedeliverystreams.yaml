@@ -278,6 +278,14 @@ spec:
                         - outputFormatConfiguration
                         - schemaConfiguration
                         type: object
+                      dynamicPartitioningConfiguration:
+                        properties:
+                          enabled:
+                            type: boolean
+                          retryDuration:
+                            format: int64
+                            type: integer
+                        type: object
                       errorOutputPrefix:
                         type: string
                       kmsKeyArn:
@@ -332,6 +340,8 @@ spec:
                                 type: string
                             type: object
                           compressionFormat:
+                            type: string
+                          errorOutputPrefix:
                             type: string
                           kmsKeyArn:
                             type: string
@@ -508,6 +518,8 @@ spec:
                             type: object
                           compressionFormat:
                             type: string
+                          errorOutputPrefix:
+                            type: string
                           kmsKeyArn:
                             type: string
                           prefix:
@@ -548,6 +560,8 @@ spec:
                             type: string
                         type: object
                       compressionFormat:
+                        type: string
+                      errorOutputPrefix:
                         type: string
                       kmsKeyArn:
                         type: string
@@ -869,6 +883,14 @@ spec:
                         - outputFormatConfiguration
                         - schemaConfiguration
                         type: object
+                      dynamicPartitioningConfiguration:
+                        properties:
+                          enabled:
+                            type: boolean
+                          retryDuration:
+                            format: int64
+                            type: integer
+                        type: object
                       errorOutputPrefix:
                         type: string
                       kmsKeyArn:
@@ -923,6 +945,8 @@ spec:
                                 type: string
                             type: object
                           compressionFormat:
+                            type: string
+                          errorOutputPrefix:
                             type: string
                           kmsKeyArn:
                             type: string
@@ -1099,6 +1123,8 @@ spec:
                             type: object
                           compressionFormat:
                             type: string
+                          errorOutputPrefix:
+                            type: string
                           kmsKeyArn:
                             type: string
                           prefix:
@@ -1139,6 +1165,8 @@ spec:
                             type: string
                         type: object
                       compressionFormat:
+                        type: string
+                      errorOutputPrefix:
                         type: string
                       kmsKeyArn:
                         type: string

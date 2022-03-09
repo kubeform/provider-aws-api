@@ -63,9 +63,23 @@ spec:
                     type: string
                   firewallPolicy:
                     properties:
+                      statefulDefaultActions:
+                        items:
+                          type: string
+                        type: array
+                      statefulEngineOptions:
+                        properties:
+                          ruleOrder:
+                            type: string
+                        required:
+                        - ruleOrder
+                        type: object
                       statefulRuleGroupReference:
                         items:
                           properties:
+                            priority:
+                              format: int64
+                              type: integer
                             resourceArn:
                               type: string
                           required:
@@ -152,9 +166,23 @@ spec:
                     type: string
                   firewallPolicy:
                     properties:
+                      statefulDefaultActions:
+                        items:
+                          type: string
+                        type: array
+                      statefulEngineOptions:
+                        properties:
+                          ruleOrder:
+                            type: string
+                        required:
+                        - ruleOrder
+                        type: object
                       statefulRuleGroupReference:
                         items:
                           properties:
+                            priority:
+                              format: int64
+                              type: integer
                             resourceArn:
                               type: string
                           required:

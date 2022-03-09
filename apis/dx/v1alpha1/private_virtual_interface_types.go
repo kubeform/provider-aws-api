@@ -83,6 +83,8 @@ type PrivateVirtualInterfaceSpecResource struct {
 	Mtu  *int64  `json:"mtu,omitempty" tf:"mtu"`
 	Name *string `json:"name" tf:"name"`
 	// +optional
+	SitelinkEnabled *bool `json:"sitelinkEnabled,omitempty" tf:"sitelink_enabled"`
+	// +optional
 	Tags *map[string]string `json:"tags,omitempty" tf:"tags"`
 	// +optional
 	TagsAll *map[string]string `json:"tagsAll,omitempty" tf:"tags_all"`

@@ -59,6 +59,8 @@ spec:
                 properties:
                   bucket:
                     type: string
+                  eventbridge:
+                    type: boolean
                   id:
                     type: string
                   lambdaFunction:
@@ -127,6 +129,8 @@ spec:
                 properties:
                   bucket:
                     type: string
+                  eventbridge:
+                    type: boolean
                   id:
                     type: string
                   lambdaFunction:

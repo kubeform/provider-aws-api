@@ -69,12 +69,24 @@ spec:
                     type: string
                   customerOwnedIpv4Pool:
                     type: string
+                  enableDns64:
+                    type: boolean
+                  enableResourceNameDNSARecordOnLaunch:
+                    type: boolean
+                  enableResourceNameDNSAaaaRecordOnLaunch:
+                    type: boolean
+                  existingDefaultSubnet:
+                    type: boolean
+                  forceDestroy:
+                    type: boolean
                   id:
                     type: string
                   ipv6CIDRBlock:
                     type: string
                   ipv6CIDRBlockAssociationID:
                     type: string
+                  ipv6Native:
+                    type: boolean
                   mapCustomerOwnedIPOnLaunch:
                     type: boolean
                   mapPublicIPOnLaunch:
@@ -82,6 +94,8 @@ spec:
                   outpostArn:
                     type: string
                   ownerID:
+                    type: string
+                  privateDNSHostnameTypeOnLaunch:
                     type: string
                   tags:
                     additionalProperties:
@@ -148,12 +162,24 @@ spec:
                     type: string
                   customerOwnedIpv4Pool:
                     type: string
+                  enableDns64:
+                    type: boolean
+                  enableResourceNameDNSARecordOnLaunch:
+                    type: boolean
+                  enableResourceNameDNSAaaaRecordOnLaunch:
+                    type: boolean
+                  existingDefaultSubnet:
+                    type: boolean
+                  forceDestroy:
+                    type: boolean
                   id:
                     type: string
                   ipv6CIDRBlock:
                     type: string
                   ipv6CIDRBlockAssociationID:
                     type: string
+                  ipv6Native:
+                    type: boolean
                   mapCustomerOwnedIPOnLaunch:
                     type: boolean
                   mapPublicIPOnLaunch:
@@ -161,6 +187,8 @@ spec:
                   outpostArn:
                     type: string
                   ownerID:
+                    type: string
+                  privateDNSHostnameTypeOnLaunch:
                     type: string
                   tags:
                     additionalProperties:

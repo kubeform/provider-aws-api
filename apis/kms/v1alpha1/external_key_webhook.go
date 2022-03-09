@@ -41,7 +41,9 @@ func (r *ExternalKey) SetupWebhookWithManager(mgr ctrl.Manager) error {
 
 var _ webhook.Validator = &ExternalKey{}
 
-var externalkeyForceNewList = map[string]bool{}
+var externalkeyForceNewList = map[string]bool{
+	"/multi_region": true,
+}
 
 // ValidateCreate implements webhook.Validator so a webhook will be registered for the type
 func (r *ExternalKey) ValidateCreate() error {
@@ -86,7 +88,7 @@ func (r *ExternalKey) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range externalkeyForceNewList {
+	for key, _ := range externalkeyForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

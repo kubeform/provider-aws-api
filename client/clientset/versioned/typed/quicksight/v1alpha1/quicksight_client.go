@@ -27,7 +27,9 @@ import (
 
 type QuicksightV1alpha1Interface interface {
 	RESTClient() rest.Interface
+	DataSourcesGetter
 	GroupsGetter
+	GroupMembershipsGetter
 	UsersGetter
 }
 
@@ -36,8 +38,16 @@ type QuicksightV1alpha1Client struct {
 	restClient rest.Interface
 }
 
+func (c *QuicksightV1alpha1Client) DataSources(namespace string) DataSourceInterface {
+	return newDataSources(c, namespace)
+}
+
 func (c *QuicksightV1alpha1Client) Groups(namespace string) GroupInterface {
 	return newGroups(c, namespace)
+}
+
+func (c *QuicksightV1alpha1Client) GroupMemberships(namespace string) GroupMembershipInterface {
+	return newGroupMemberships(c, namespace)
 }
 
 func (c *QuicksightV1alpha1Client) Users(namespace string) UserInterface {

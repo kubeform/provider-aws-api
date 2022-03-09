@@ -63,8 +63,10 @@ type AttachmentSpecResource struct {
 	ForceDetach *bool   `json:"forceDetach,omitempty" tf:"force_detach"`
 	InstanceID  *string `json:"instanceID" tf:"instance_id"`
 	// +optional
-	SkipDestroy *bool   `json:"skipDestroy,omitempty" tf:"skip_destroy"`
-	VolumeID    *string `json:"volumeID" tf:"volume_id"`
+	SkipDestroy *bool `json:"skipDestroy,omitempty" tf:"skip_destroy"`
+	// +optional
+	StopInstanceBeforeDetaching *bool   `json:"stopInstanceBeforeDetaching,omitempty" tf:"stop_instance_before_detaching"`
+	VolumeID                    *string `json:"volumeID" tf:"volume_id"`
 }
 
 type AttachmentStatus struct {

@@ -27,6 +27,7 @@ import (
 
 func GetEncoder() map[string]jsoniter.ValEncoder {
 	return map[string]jsoniter.ValEncoder{
+		jsoniter.MustGetKind(reflect2.TypeOf(AccessSpecPosixProfile{}).Type1()):    AccessSpecPosixProfileCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(ServerSpecEndpointDetails{}).Type1()): ServerSpecEndpointDetailsCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(UserSpecPosixProfile{}).Type1()):      UserSpecPosixProfileCodec{},
 	}
@@ -34,6 +35,7 @@ func GetEncoder() map[string]jsoniter.ValEncoder {
 
 func GetDecoder() map[string]jsoniter.ValDecoder {
 	return map[string]jsoniter.ValDecoder{
+		jsoniter.MustGetKind(reflect2.TypeOf(AccessSpecPosixProfile{}).Type1()):    AccessSpecPosixProfileCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(ServerSpecEndpointDetails{}).Type1()): ServerSpecEndpointDetailsCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(UserSpecPosixProfile{}).Type1()):      UserSpecPosixProfileCodec{},
 	}
@@ -49,6 +51,85 @@ func getDecodersWithout(typ string) map[string]jsoniter.ValDecoder {
 	origMap := GetDecoder()
 	delete(origMap, typ)
 	return origMap
+}
+
+// +k8s:deepcopy-gen=false
+type AccessSpecPosixProfileCodec struct {
+}
+
+func (AccessSpecPosixProfileCodec) IsEmpty(ptr unsafe.Pointer) bool {
+	return (*AccessSpecPosixProfile)(ptr) == nil
+}
+
+func (AccessSpecPosixProfileCodec) Encode(ptr unsafe.Pointer, stream *jsoniter.Stream) {
+	obj := (*AccessSpecPosixProfile)(ptr)
+	var objs []AccessSpecPosixProfile
+	if obj != nil {
+		objs = []AccessSpecPosixProfile{*obj}
+	}
+
+	jsonit := jsoniter.Config{
+		EscapeHTML:             true,
+		SortMapKeys:            true,
+		ValidateJsonRawMessage: true,
+		TagKey:                 "tf",
+		TypeEncoders:           getEncodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(AccessSpecPosixProfile{}).Type1())),
+	}.Froze()
+
+	byt, _ := jsonit.Marshal(objs)
+
+	stream.Write(byt)
+}
+
+func (AccessSpecPosixProfileCodec) Decode(ptr unsafe.Pointer, iter *jsoniter.Iterator) {
+	switch iter.WhatIsNext() {
+	case jsoniter.NilValue:
+		iter.Skip()
+		*(*AccessSpecPosixProfile)(ptr) = AccessSpecPosixProfile{}
+		return
+	case jsoniter.ArrayValue:
+		objsByte := iter.SkipAndReturnBytes()
+		if len(objsByte) > 0 {
+			var objs []AccessSpecPosixProfile
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(AccessSpecPosixProfile{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objsByte, &objs)
+
+			if len(objs) > 0 {
+				*(*AccessSpecPosixProfile)(ptr) = objs[0]
+			} else {
+				*(*AccessSpecPosixProfile)(ptr) = AccessSpecPosixProfile{}
+			}
+		} else {
+			*(*AccessSpecPosixProfile)(ptr) = AccessSpecPosixProfile{}
+		}
+	case jsoniter.ObjectValue:
+		objByte := iter.SkipAndReturnBytes()
+		if len(objByte) > 0 {
+			var obj AccessSpecPosixProfile
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(AccessSpecPosixProfile{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objByte, &obj)
+
+			*(*AccessSpecPosixProfile)(ptr) = obj
+		} else {
+			*(*AccessSpecPosixProfile)(ptr) = AccessSpecPosixProfile{}
+		}
+	default:
+		iter.ReportError("decode AccessSpecPosixProfile", "unexpected JSON type")
+	}
 }
 
 // +k8s:deepcopy-gen=false

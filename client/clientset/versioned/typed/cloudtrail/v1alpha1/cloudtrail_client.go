@@ -28,6 +28,7 @@ import (
 type CloudtrailV1alpha1Interface interface {
 	RESTClient() rest.Interface
 	CloudtrailsGetter
+	EventDataStoresGetter
 }
 
 // CloudtrailV1alpha1Client is used to interact with features provided by the cloudtrail.aws.kubeform.com group.
@@ -37,6 +38,10 @@ type CloudtrailV1alpha1Client struct {
 
 func (c *CloudtrailV1alpha1Client) Cloudtrails(namespace string) CloudtrailInterface {
 	return newCloudtrails(c, namespace)
+}
+
+func (c *CloudtrailV1alpha1Client) EventDataStores(namespace string) EventDataStoreInterface {
+	return newEventDataStores(c, namespace)
 }
 
 // NewForConfig creates a new CloudtrailV1alpha1Client for the given config.

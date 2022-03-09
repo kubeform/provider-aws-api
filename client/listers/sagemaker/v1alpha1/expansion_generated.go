@@ -42,6 +42,22 @@ type CodeRepositoryListerExpansion interface{}
 // CodeRepositoryNamespaceLister.
 type CodeRepositoryNamespaceListerExpansion interface{}
 
+// DeviceListerExpansion allows custom methods to be added to
+// DeviceLister.
+type DeviceListerExpansion interface{}
+
+// DeviceNamespaceListerExpansion allows custom methods to be added to
+// DeviceNamespaceLister.
+type DeviceNamespaceListerExpansion interface{}
+
+// DeviceFleetListerExpansion allows custom methods to be added to
+// DeviceFleetLister.
+type DeviceFleetListerExpansion interface{}
+
+// DeviceFleetNamespaceListerExpansion allows custom methods to be added to
+// DeviceFleetNamespaceLister.
+type DeviceFleetNamespaceListerExpansion interface{}
+
 // DomainListerExpansion allows custom methods to be added to
 // DomainLister.
 type DomainListerExpansion interface{}
@@ -73,6 +89,22 @@ type FeatureGroupListerExpansion interface{}
 // FeatureGroupNamespaceListerExpansion allows custom methods to be added to
 // FeatureGroupNamespaceLister.
 type FeatureGroupNamespaceListerExpansion interface{}
+
+// FlowDefinitionListerExpansion allows custom methods to be added to
+// FlowDefinitionLister.
+type FlowDefinitionListerExpansion interface{}
+
+// FlowDefinitionNamespaceListerExpansion allows custom methods to be added to
+// FlowDefinitionNamespaceLister.
+type FlowDefinitionNamespaceListerExpansion interface{}
+
+// HumanTaskUiListerExpansion allows custom methods to be added to
+// HumanTaskUiLister.
+type HumanTaskUiListerExpansion interface{}
+
+// HumanTaskUiNamespaceListerExpansion allows custom methods to be added to
+// HumanTaskUiNamespaceLister.
+type HumanTaskUiNamespaceListerExpansion interface{}
 
 // ImageListerExpansion allows custom methods to be added to
 // ImageLister.
@@ -106,6 +138,14 @@ type ModelPackageGroupListerExpansion interface{}
 // ModelPackageGroupNamespaceLister.
 type ModelPackageGroupNamespaceListerExpansion interface{}
 
+// ModelPackageGroupPolicyListerExpansion allows custom methods to be added to
+// ModelPackageGroupPolicyLister.
+type ModelPackageGroupPolicyListerExpansion interface{}
+
+// ModelPackageGroupPolicyNamespaceListerExpansion allows custom methods to be added to
+// ModelPackageGroupPolicyNamespaceLister.
+type ModelPackageGroupPolicyNamespaceListerExpansion interface{}
+
 // NotebookInstanceListerExpansion allows custom methods to be added to
 // NotebookInstanceLister.
 type NotebookInstanceListerExpansion interface{}
@@ -122,6 +162,22 @@ type NotebookInstanceLifecycleConfigurationListerExpansion interface{}
 // NotebookInstanceLifecycleConfigurationNamespaceLister.
 type NotebookInstanceLifecycleConfigurationNamespaceListerExpansion interface{}
 
+// ProjectListerExpansion allows custom methods to be added to
+// ProjectLister.
+type ProjectListerExpansion interface{}
+
+// ProjectNamespaceListerExpansion allows custom methods to be added to
+// ProjectNamespaceLister.
+type ProjectNamespaceListerExpansion interface{}
+
+// StudioLifecycleConfigListerExpansion allows custom methods to be added to
+// StudioLifecycleConfigLister.
+type StudioLifecycleConfigListerExpansion interface{}
+
+// StudioLifecycleConfigNamespaceListerExpansion allows custom methods to be added to
+// StudioLifecycleConfigNamespaceLister.
+type StudioLifecycleConfigNamespaceListerExpansion interface{}
+
 // UserProfileListerExpansion allows custom methods to be added to
 // UserProfileLister.
 type UserProfileListerExpansion interface{}
@@ -129,3 +185,19 @@ type UserProfileListerExpansion interface{}
 // UserProfileNamespaceListerExpansion allows custom methods to be added to
 // UserProfileNamespaceLister.
 type UserProfileNamespaceListerExpansion interface{}
+
+// WorkforceListerExpansion allows custom methods to be added to
+// WorkforceLister.
+type WorkforceListerExpansion interface{}
+
+// WorkforceNamespaceListerExpansion allows custom methods to be added to
+// WorkforceNamespaceLister.
+type WorkforceNamespaceListerExpansion interface{}
+
+// WorkteamListerExpansion allows custom methods to be added to
+// WorkteamLister.
+type WorkteamListerExpansion interface{}
+
+// WorkteamNamespaceListerExpansion allows custom methods to be added to
+// WorkteamNamespaceLister.
+type WorkteamNamespaceListerExpansion interface{}

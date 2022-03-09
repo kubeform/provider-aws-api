@@ -90,7 +90,7 @@ func (r *Elb) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range elbForceNewList {
+	for key, _ := range elbForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

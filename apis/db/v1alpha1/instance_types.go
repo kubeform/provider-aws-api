@@ -107,6 +107,10 @@ type InstanceSpecResource struct {
 	// +optional
 	CopyTagsToSnapshot *bool `json:"copyTagsToSnapshot,omitempty" tf:"copy_tags_to_snapshot"`
 	// +optional
+	CustomerOwnedIPEnabled *bool `json:"customerOwnedIPEnabled,omitempty" tf:"customer_owned_ip_enabled"`
+	// +optional
+	DbName *string `json:"dbName,omitempty" tf:"db_name"`
+	// +optional
 	DbSubnetGroupName *string `json:"dbSubnetGroupName,omitempty" tf:"db_subnet_group_name"`
 	// +optional
 	DeleteAutomatedBackups *bool `json:"deleteAutomatedBackups,omitempty" tf:"delete_automated_backups"`
@@ -124,6 +128,8 @@ type InstanceSpecResource struct {
 	Engine *string `json:"engine,omitempty" tf:"engine"`
 	// +optional
 	EngineVersion *string `json:"engineVersion,omitempty" tf:"engine_version"`
+	// +optional
+	EngineVersionActual *string `json:"engineVersionActual,omitempty" tf:"engine_version_actual"`
 	// +optional
 	FinalSnapshotIdentifier *string `json:"finalSnapshotIdentifier,omitempty" tf:"final_snapshot_identifier"`
 	// +optional
@@ -154,7 +160,10 @@ type InstanceSpecResource struct {
 	// +optional
 	MultiAz *bool `json:"multiAz,omitempty" tf:"multi_az"`
 	// +optional
+	// Deprecated
 	Name *string `json:"name,omitempty" tf:"name"`
+	// +optional
+	NcharCharacterSetName *string `json:"ncharCharacterSetName,omitempty" tf:"nchar_character_set_name"`
 	// +optional
 	OptionGroupName *string `json:"optionGroupName,omitempty" tf:"option_group_name"`
 	// +optional
@@ -171,6 +180,8 @@ type InstanceSpecResource struct {
 	Port *int64 `json:"port,omitempty" tf:"port"`
 	// +optional
 	PubliclyAccessible *bool `json:"publiclyAccessible,omitempty" tf:"publicly_accessible"`
+	// +optional
+	ReplicaMode *string `json:"replicaMode,omitempty" tf:"replica_mode"`
 	// +optional
 	Replicas []string `json:"replicas,omitempty" tf:"replicas"`
 	// +optional

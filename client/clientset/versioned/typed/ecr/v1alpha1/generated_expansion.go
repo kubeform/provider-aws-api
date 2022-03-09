@@ -20,7 +20,11 @@ package v1alpha1
 
 type LifecyclePolicyExpansion interface{}
 
+type PullThroughCacheRuleExpansion interface{}
+
 type RegistryPolicyExpansion interface{}
+
+type RegistryScanningConfigurationExpansion interface{}
 
 type ReplicationConfigurationExpansion interface{}
 

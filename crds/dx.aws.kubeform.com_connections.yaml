@@ -73,6 +73,10 @@ spec:
                     type: string
                   name:
                     type: string
+                  ownerAccountID:
+                    type: string
+                  providerName:
+                    type: string
                   tags:
                     additionalProperties:
                       type: string
@@ -103,6 +107,10 @@ spec:
                   location:
                     type: string
                   name:
+                    type: string
+                  ownerAccountID:
+                    type: string
+                  providerName:
                     type: string
                   tags:
                     additionalProperties:

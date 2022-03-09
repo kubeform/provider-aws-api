@@ -32,6 +32,8 @@ type Interface interface {
 	CustomDomainAssociations() CustomDomainAssociationInformer
 	// Services returns a ServiceInformer.
 	Services() ServiceInformer
+	// VpcConnectors returns a VpcConnectorInformer.
+	VpcConnectors() VpcConnectorInformer
 }
 
 type version struct {
@@ -63,4 +65,9 @@ func (v *version) CustomDomainAssociations() CustomDomainAssociationInformer {
 // Services returns a ServiceInformer.
 func (v *version) Services() ServiceInformer {
 	return &serviceInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
+// VpcConnectors returns a VpcConnectorInformer.
+func (v *version) VpcConnectors() VpcConnectorInformer {
+	return &vpcConnectorInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
 }

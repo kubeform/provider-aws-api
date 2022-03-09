@@ -89,7 +89,7 @@ func (r *Cache) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range cacheForceNewList {
+	for key, _ := range cacheForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

@@ -27,14 +27,23 @@ import (
 
 type S3controlV1alpha1Interface interface {
 	RESTClient() rest.Interface
+	AccessPointPoliciesGetter
 	BucketsGetter
 	BucketLifecycleConfigurationsGetter
 	BucketPoliciesGetter
+	MultiRegionAccessPointsGetter
+	MultiRegionAccessPointPoliciesGetter
+	ObjectLambdaAccessPointsGetter
+	ObjectLambdaAccessPointPoliciesGetter
 }
 
 // S3controlV1alpha1Client is used to interact with features provided by the s3control.aws.kubeform.com group.
 type S3controlV1alpha1Client struct {
 	restClient rest.Interface
+}
+
+func (c *S3controlV1alpha1Client) AccessPointPolicies(namespace string) AccessPointPolicyInterface {
+	return newAccessPointPolicies(c, namespace)
 }
 
 func (c *S3controlV1alpha1Client) Buckets(namespace string) BucketInterface {
@@ -47,6 +56,22 @@ func (c *S3controlV1alpha1Client) BucketLifecycleConfigurations(namespace string
 
 func (c *S3controlV1alpha1Client) BucketPolicies(namespace string) BucketPolicyInterface {
 	return newBucketPolicies(c, namespace)
+}
+
+func (c *S3controlV1alpha1Client) MultiRegionAccessPoints(namespace string) MultiRegionAccessPointInterface {
+	return newMultiRegionAccessPoints(c, namespace)
+}
+
+func (c *S3controlV1alpha1Client) MultiRegionAccessPointPolicies(namespace string) MultiRegionAccessPointPolicyInterface {
+	return newMultiRegionAccessPointPolicies(c, namespace)
+}
+
+func (c *S3controlV1alpha1Client) ObjectLambdaAccessPoints(namespace string) ObjectLambdaAccessPointInterface {
+	return newObjectLambdaAccessPoints(c, namespace)
+}
+
+func (c *S3controlV1alpha1Client) ObjectLambdaAccessPointPolicies(namespace string) ObjectLambdaAccessPointPolicyInterface {
+	return newObjectLambdaAccessPointPolicies(c, namespace)
 }
 
 // NewForConfig creates a new S3controlV1alpha1Client for the given config.

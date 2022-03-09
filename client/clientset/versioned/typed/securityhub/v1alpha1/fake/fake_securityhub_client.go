@@ -37,6 +37,10 @@ func (c *FakeSecurityhubV1alpha1) ActionTargets(namespace string) v1alpha1.Actio
 	return &FakeActionTargets{c, namespace}
 }
 
+func (c *FakeSecurityhubV1alpha1) FindingAggregators(namespace string) v1alpha1.FindingAggregatorInterface {
+	return &FakeFindingAggregators{c, namespace}
+}
+
 func (c *FakeSecurityhubV1alpha1) Insights(namespace string) v1alpha1.InsightInterface {
 	return &FakeInsights{c, namespace}
 }
@@ -53,8 +57,16 @@ func (c *FakeSecurityhubV1alpha1) OrganizationAdminAccounts(namespace string) v1
 	return &FakeOrganizationAdminAccounts{c, namespace}
 }
 
+func (c *FakeSecurityhubV1alpha1) OrganizationConfigurations(namespace string) v1alpha1.OrganizationConfigurationInterface {
+	return &FakeOrganizationConfigurations{c, namespace}
+}
+
 func (c *FakeSecurityhubV1alpha1) ProductSubscriptions(namespace string) v1alpha1.ProductSubscriptionInterface {
 	return &FakeProductSubscriptions{c, namespace}
+}
+
+func (c *FakeSecurityhubV1alpha1) StandardsControls(namespace string) v1alpha1.StandardsControlInterface {
+	return &FakeStandardsControls{c, namespace}
 }
 
 func (c *FakeSecurityhubV1alpha1) StandardsSubscriptions(namespace string) v1alpha1.StandardsSubscriptionInterface {

@@ -67,6 +67,8 @@ spec:
                     type: string
                   skipDestroy:
                     type: boolean
+                  stopInstanceBeforeDetaching:
+                    type: boolean
                   volumeID:
                     type: string
                 required:
@@ -85,6 +87,8 @@ spec:
                   instanceID:
                     type: string
                   skipDestroy:
+                    type: boolean
+                  stopInstanceBeforeDetaching:
                     type: boolean
                   volumeID:
                     type: string

@@ -59,6 +59,8 @@ type ReplicationTaskSpecResource struct {
 	ID string `json:"id,omitempty" tf:"id,omitempty"`
 
 	// +optional
+	CdcStartPosition *string `json:"cdcStartPosition,omitempty" tf:"cdc_start_position"`
+	// +optional
 	CdcStartTime           *string `json:"cdcStartTime,omitempty" tf:"cdc_start_time"`
 	MigrationType          *string `json:"migrationType" tf:"migration_type"`
 	ReplicationInstanceArn *string `json:"replicationInstanceArn" tf:"replication_instance_arn"`

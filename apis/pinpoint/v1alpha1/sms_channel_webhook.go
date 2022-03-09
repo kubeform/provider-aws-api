@@ -88,7 +88,7 @@ func (r *SmsChannel) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range smschannelForceNewList {
+	for key, _ := range smschannelForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

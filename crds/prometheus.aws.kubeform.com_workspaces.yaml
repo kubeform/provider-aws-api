@@ -65,6 +65,14 @@ spec:
                     type: string
                   prometheusEndpoint:
                     type: string
+                  tags:
+                    additionalProperties:
+                      type: string
+                    type: object
+                  tagsAll:
+                    additionalProperties:
+                      type: string
+                    type: object
                 type: object
               state:
                 properties:
@@ -76,6 +84,14 @@ spec:
                     type: string
                   prometheusEndpoint:
                     type: string
+                  tags:
+                    additionalProperties:
+                      type: string
+                    type: object
+                  tagsAll:
+                    additionalProperties:
+                      type: string
+                    type: object
                 type: object
               terminationPolicy:
                 enum:

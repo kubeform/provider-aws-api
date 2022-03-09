@@ -96,7 +96,7 @@ func (r *DevEndpoint) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range devendpointForceNewList {
+	for key, _ := range devendpointForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

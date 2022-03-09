@@ -26,6 +26,14 @@ type AclListerExpansion interface{}
 // AclNamespaceLister.
 type AclNamespaceListerExpansion interface{}
 
+// AclAssociationListerExpansion allows custom methods to be added to
+// AclAssociationLister.
+type AclAssociationListerExpansion interface{}
+
+// AclAssociationNamespaceListerExpansion allows custom methods to be added to
+// AclAssociationNamespaceLister.
+type AclAssociationNamespaceListerExpansion interface{}
+
 // AclRuleListerExpansion allows custom methods to be added to
 // AclRuleLister.
 type AclRuleListerExpansion interface{}

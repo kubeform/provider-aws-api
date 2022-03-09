@@ -58,8 +58,10 @@ type FileSystemPolicySpec struct {
 type FileSystemPolicySpecResource struct {
 	ID string `json:"id,omitempty" tf:"id,omitempty"`
 
-	FileSystemID *string `json:"fileSystemID" tf:"file_system_id"`
-	Policy       *string `json:"policy" tf:"policy"`
+	// +optional
+	BypassPolicyLockoutSafetyCheck *bool   `json:"bypassPolicyLockoutSafetyCheck,omitempty" tf:"bypass_policy_lockout_safety_check"`
+	FileSystemID                   *string `json:"fileSystemID" tf:"file_system_id"`
+	Policy                         *string `json:"policy" tf:"policy"`
 }
 
 type FileSystemPolicyStatus struct {

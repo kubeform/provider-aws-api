@@ -88,7 +88,7 @@ func (r *GcmChannel) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range gcmchannelForceNewList {
+	for key, _ := range gcmchannelForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

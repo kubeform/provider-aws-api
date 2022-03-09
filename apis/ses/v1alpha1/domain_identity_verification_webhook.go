@@ -88,7 +88,7 @@ func (r *DomainIdentityVerification) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range domainidentityverificationForceNewList {
+	for key, _ := range domainidentityverificationForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

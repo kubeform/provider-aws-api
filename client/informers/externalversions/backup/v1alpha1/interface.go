@@ -24,16 +24,22 @@ import (
 
 // Interface provides access to all the informers in this group version.
 type Interface interface {
+	// Frameworks returns a FrameworkInformer.
+	Frameworks() FrameworkInformer
 	// GlobalSettingses returns a GlobalSettingsInformer.
 	GlobalSettingses() GlobalSettingsInformer
 	// Plans returns a PlanInformer.
 	Plans() PlanInformer
 	// RegionSettingses returns a RegionSettingsInformer.
 	RegionSettingses() RegionSettingsInformer
+	// ReportPlans returns a ReportPlanInformer.
+	ReportPlans() ReportPlanInformer
 	// Selections returns a SelectionInformer.
 	Selections() SelectionInformer
 	// Vaults returns a VaultInformer.
 	Vaults() VaultInformer
+	// VaultLockConfigurations returns a VaultLockConfigurationInformer.
+	VaultLockConfigurations() VaultLockConfigurationInformer
 	// VaultNotificationses returns a VaultNotificationsInformer.
 	VaultNotificationses() VaultNotificationsInformer
 	// VaultPolicies returns a VaultPolicyInformer.
@@ -51,6 +57,11 @@ func New(f internalinterfaces.SharedInformerFactory, namespace string, tweakList
 	return &version{factory: f, namespace: namespace, tweakListOptions: tweakListOptions}
 }
 
+// Frameworks returns a FrameworkInformer.
+func (v *version) Frameworks() FrameworkInformer {
+	return &frameworkInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
 // GlobalSettingses returns a GlobalSettingsInformer.
 func (v *version) GlobalSettingses() GlobalSettingsInformer {
 	return &globalSettingsInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
@@ -66,6 +77,11 @@ func (v *version) RegionSettingses() RegionSettingsInformer {
 	return &regionSettingsInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
 }
 
+// ReportPlans returns a ReportPlanInformer.
+func (v *version) ReportPlans() ReportPlanInformer {
+	return &reportPlanInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
 // Selections returns a SelectionInformer.
 func (v *version) Selections() SelectionInformer {
 	return &selectionInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
@@ -74,6 +90,11 @@ func (v *version) Selections() SelectionInformer {
 // Vaults returns a VaultInformer.
 func (v *version) Vaults() VaultInformer {
 	return &vaultInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
+// VaultLockConfigurations returns a VaultLockConfigurationInformer.
+func (v *version) VaultLockConfigurations() VaultLockConfigurationInformer {
+	return &vaultLockConfigurationInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
 }
 
 // VaultNotificationses returns a VaultNotificationsInformer.

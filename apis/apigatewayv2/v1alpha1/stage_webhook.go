@@ -89,7 +89,7 @@ func (r *Stage) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range stageForceNewList {
+	for key, _ := range stageForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

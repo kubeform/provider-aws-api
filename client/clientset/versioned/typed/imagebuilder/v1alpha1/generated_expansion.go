@@ -20,6 +20,8 @@ package v1alpha1
 
 type ComponentExpansion interface{}
 
+type ContainerRecipeExpansion interface{}
+
 type DistributionConfigurationExpansion interface{}
 
 type ImageExpansion interface{}

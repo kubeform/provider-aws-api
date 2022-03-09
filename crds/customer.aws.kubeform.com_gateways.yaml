@@ -61,6 +61,8 @@ spec:
                     type: string
                   bgpAsn:
                     type: string
+                  certificateArn:
+                    type: string
                   deviceName:
                     type: string
                   id:
@@ -87,6 +89,8 @@ spec:
                   arn:
                     type: string
                   bgpAsn:
+                    type: string
+                  certificateArn:
                     type: string
                   deviceName:
                     type: string

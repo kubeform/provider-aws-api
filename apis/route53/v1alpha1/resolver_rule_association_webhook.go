@@ -90,7 +90,7 @@ func (r *ResolverRuleAssociation) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range resolverruleassociationForceNewList {
+	for key, _ := range resolverruleassociationForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

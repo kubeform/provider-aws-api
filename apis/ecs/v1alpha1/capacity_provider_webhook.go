@@ -89,7 +89,7 @@ func (r *CapacityProvider) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range capacityproviderForceNewList {
+	for key, _ := range capacityproviderForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

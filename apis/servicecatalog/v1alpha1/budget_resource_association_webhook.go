@@ -89,7 +89,7 @@ func (r *BudgetResourceAssociation) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range budgetresourceassociationForceNewList {
+	for key, _ := range budgetresourceassociationForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

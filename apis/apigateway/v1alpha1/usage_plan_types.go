@@ -41,9 +41,19 @@ type UsagePlan struct {
 	Status            UsagePlanStatus `json:"status,omitempty"`
 }
 
+type UsagePlanSpecApiStagesThrottle struct {
+	// +optional
+	BurstLimit *int64  `json:"burstLimit,omitempty" tf:"burst_limit"`
+	Path       *string `json:"path" tf:"path"`
+	// +optional
+	RateLimit *float64 `json:"rateLimit,omitempty" tf:"rate_limit"`
+}
+
 type UsagePlanSpecApiStages struct {
 	ApiID *string `json:"apiID" tf:"api_id"`
 	Stage *string `json:"stage" tf:"stage"`
+	// +optional
+	Throttle []UsagePlanSpecApiStagesThrottle `json:"throttle,omitempty" tf:"throttle"`
 }
 
 type UsagePlanSpecQuotaSettings struct {

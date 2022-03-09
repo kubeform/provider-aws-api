@@ -33,6 +33,10 @@ func (c *FakeServicediscoveryV1alpha1) HttpNamespaces(namespace string) v1alpha1
 	return &FakeHttpNamespaces{c, namespace}
 }
 
+func (c *FakeServicediscoveryV1alpha1) Instances(namespace string) v1alpha1.InstanceInterface {
+	return &FakeInstances{c, namespace}
+}
+
 func (c *FakeServicediscoveryV1alpha1) PrivateDNSNamespaces(namespace string) v1alpha1.PrivateDNSNamespaceInterface {
 	return &FakePrivateDNSNamespaces{c, namespace}
 }

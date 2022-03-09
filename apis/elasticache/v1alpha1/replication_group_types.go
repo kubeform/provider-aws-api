@@ -42,8 +42,12 @@ type ReplicationGroup struct {
 }
 
 type ReplicationGroupSpecClusterMode struct {
-	NumNodeGroups        *int64 `json:"numNodeGroups" tf:"num_node_groups"`
-	ReplicasPerNodeGroup *int64 `json:"replicasPerNodeGroup" tf:"replicas_per_node_group"`
+	// +optional
+	// Deprecated
+	NumNodeGroups *int64 `json:"numNodeGroups,omitempty" tf:"num_node_groups"`
+	// +optional
+	// Deprecated
+	ReplicasPerNodeGroup *int64 `json:"replicasPerNodeGroup,omitempty" tf:"replicas_per_node_group"`
 }
 
 type ReplicationGroupSpec struct {
@@ -84,9 +88,14 @@ type ReplicationGroupSpecResource struct {
 	// +optional
 	ClusterEnabled *bool `json:"clusterEnabled,omitempty" tf:"cluster_enabled"`
 	// +optional
+	// Deprecated
 	ClusterMode *ReplicationGroupSpecClusterMode `json:"clusterMode,omitempty" tf:"cluster_mode"`
 	// +optional
 	ConfigurationEndpointAddress *string `json:"configurationEndpointAddress,omitempty" tf:"configuration_endpoint_address"`
+	// +optional
+	DataTieringEnabled *bool `json:"dataTieringEnabled,omitempty" tf:"data_tiering_enabled"`
+	// +optional
+	Description *string `json:"description,omitempty" tf:"description"`
 	// +optional
 	Engine *string `json:"engine,omitempty" tf:"engine"`
 	// +optional
@@ -110,16 +119,27 @@ type ReplicationGroupSpecResource struct {
 	// +optional
 	NotificationTopicArn *string `json:"notificationTopicArn,omitempty" tf:"notification_topic_arn"`
 	// +optional
+	NumCacheClusters *int64 `json:"numCacheClusters,omitempty" tf:"num_cache_clusters"`
+	// +optional
+	NumNodeGroups *int64 `json:"numNodeGroups,omitempty" tf:"num_node_groups"`
+	// +optional
+	// Deprecated
 	NumberCacheClusters *int64 `json:"numberCacheClusters,omitempty" tf:"number_cache_clusters"`
 	// +optional
 	ParameterGroupName *string `json:"parameterGroupName,omitempty" tf:"parameter_group_name"`
 	// +optional
 	Port *int64 `json:"port,omitempty" tf:"port"`
 	// +optional
+	PreferredCacheClusterAzs []string `json:"preferredCacheClusterAzs,omitempty" tf:"preferred_cache_cluster_azs"`
+	// +optional
 	PrimaryEndpointAddress *string `json:"primaryEndpointAddress,omitempty" tf:"primary_endpoint_address"`
 	// +optional
-	ReaderEndpointAddress       *string `json:"readerEndpointAddress,omitempty" tf:"reader_endpoint_address"`
-	ReplicationGroupDescription *string `json:"replicationGroupDescription" tf:"replication_group_description"`
+	ReaderEndpointAddress *string `json:"readerEndpointAddress,omitempty" tf:"reader_endpoint_address"`
+	// +optional
+	ReplicasPerNodeGroup *int64 `json:"replicasPerNodeGroup,omitempty" tf:"replicas_per_node_group"`
+	// +optional
+	// Deprecated
+	ReplicationGroupDescription *string `json:"replicationGroupDescription,omitempty" tf:"replication_group_description"`
 	ReplicationGroupID          *string `json:"replicationGroupID" tf:"replication_group_id"`
 	// +optional
 	SecurityGroupIDS []string `json:"securityGroupIDS,omitempty" tf:"security_group_ids"`
@@ -141,6 +161,8 @@ type ReplicationGroupSpecResource struct {
 	TagsAll *map[string]string `json:"tagsAll,omitempty" tf:"tags_all"`
 	// +optional
 	TransitEncryptionEnabled *bool `json:"transitEncryptionEnabled,omitempty" tf:"transit_encryption_enabled"`
+	// +optional
+	UserGroupIDS []string `json:"userGroupIDS,omitempty" tf:"user_group_ids"`
 }
 
 type ReplicationGroupStatus struct {

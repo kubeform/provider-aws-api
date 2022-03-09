@@ -91,7 +91,7 @@ func (r *CookieStickinessPolicy) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range cookiestickinesspolicyForceNewList {
+	for key, _ := range cookiestickinesspolicyForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

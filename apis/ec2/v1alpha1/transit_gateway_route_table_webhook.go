@@ -88,7 +88,7 @@ func (r *TransitGatewayRouteTable) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range transitgatewayroutetableForceNewList {
+	for key, _ := range transitgatewayroutetableForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

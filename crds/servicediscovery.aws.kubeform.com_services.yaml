@@ -84,6 +84,8 @@ spec:
                     - dnsRecords
                     - namespaceID
                     type: object
+                  forceDestroy:
+                    type: boolean
                   healthCheckConfig:
                     properties:
                       failureThreshold:
@@ -146,6 +148,8 @@ spec:
                     - dnsRecords
                     - namespaceID
                     type: object
+                  forceDestroy:
+                    type: boolean
                   healthCheckConfig:
                     properties:
                       failureThreshold:

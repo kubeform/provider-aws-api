@@ -63,6 +63,25 @@ spec:
                     type: string
                   id:
                     type: string
+                  magneticStoreWriteProperties:
+                    properties:
+                      enableMagneticStoreWrites:
+                        type: boolean
+                      magneticStoreRejectedDataLocation:
+                        properties:
+                          s3Configuration:
+                            properties:
+                              bucketName:
+                                type: string
+                              encryptionOption:
+                                type: string
+                              kmsKeyID:
+                                type: string
+                              objectKeyPrefix:
+                                type: string
+                            type: object
+                        type: object
+                    type: object
                   retentionProperties:
                     properties:
                       magneticStoreRetentionPeriodInDays:
@@ -97,6 +116,25 @@ spec:
                     type: string
                   id:
                     type: string
+                  magneticStoreWriteProperties:
+                    properties:
+                      enableMagneticStoreWrites:
+                        type: boolean
+                      magneticStoreRejectedDataLocation:
+                        properties:
+                          s3Configuration:
+                            properties:
+                              bucketName:
+                                type: string
+                              encryptionOption:
+                                type: string
+                              kmsKeyID:
+                                type: string
+                              objectKeyPrefix:
+                                type: string
+                            type: object
+                        type: object
+                    type: object
                   retentionProperties:
                     properties:
                       magneticStoreRetentionPeriodInDays:

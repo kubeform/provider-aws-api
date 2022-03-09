@@ -60,6 +60,8 @@ func addKnownTypes(scheme *runtime.Scheme) error {
 		&ProjectList{},
 		&ReportGroup{},
 		&ReportGroupList{},
+		&ResourcePolicy{},
+		&ResourcePolicyList{},
 		&SourceCredential{},
 		&SourceCredentialList{},
 		&Webhook{},

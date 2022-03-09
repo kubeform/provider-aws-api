@@ -59,6 +59,10 @@ spec:
                 properties:
                   id:
                     type: string
+                  resourceTypeManagementPreference:
+                    additionalProperties:
+                      type: boolean
+                    type: object
                   resourceTypeOptInPreference:
                     additionalProperties:
                       type: boolean
@@ -70,6 +74,10 @@ spec:
                 properties:
                   id:
                     type: string
+                  resourceTypeManagementPreference:
+                    additionalProperties:
+                      type: boolean
+                    type: object
                   resourceTypeOptInPreference:
                     additionalProperties:
                       type: boolean

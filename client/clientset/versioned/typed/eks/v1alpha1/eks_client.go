@@ -30,6 +30,7 @@ type EksV1alpha1Interface interface {
 	AddonsGetter
 	ClustersGetter
 	FargateProfilesGetter
+	IdentityProviderConfigsGetter
 	NodeGroupsGetter
 }
 
@@ -48,6 +49,10 @@ func (c *EksV1alpha1Client) Clusters(namespace string) ClusterInterface {
 
 func (c *EksV1alpha1Client) FargateProfiles(namespace string) FargateProfileInterface {
 	return newFargateProfiles(c, namespace)
+}
+
+func (c *EksV1alpha1Client) IdentityProviderConfigs(namespace string) IdentityProviderConfigInterface {
+	return newIdentityProviderConfigs(c, namespace)
 }
 
 func (c *EksV1alpha1Client) NodeGroups(namespace string) NodeGroupInterface {

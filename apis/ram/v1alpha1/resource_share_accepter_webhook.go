@@ -88,7 +88,7 @@ func (r *ResourceShareAccepter) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range resourceshareaccepterForceNewList {
+	for key, _ := range resourceshareaccepterForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

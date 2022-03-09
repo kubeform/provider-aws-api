@@ -88,7 +88,7 @@ func (r *DefaultKmsKey) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range defaultkmskeyForceNewList {
+	for key, _ := range defaultkmskeyForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

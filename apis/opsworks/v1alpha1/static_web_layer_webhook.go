@@ -88,7 +88,7 @@ func (r *StaticWebLayer) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range staticweblayerForceNewList {
+	for key, _ := range staticweblayerForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

@@ -42,6 +42,14 @@ type EndpointListerExpansion interface{}
 // EndpointNamespaceLister.
 type EndpointNamespaceListerExpansion interface{}
 
+// EndpointConnectionAccepterListerExpansion allows custom methods to be added to
+// EndpointConnectionAccepterLister.
+type EndpointConnectionAccepterListerExpansion interface{}
+
+// EndpointConnectionAccepterNamespaceListerExpansion allows custom methods to be added to
+// EndpointConnectionAccepterNamespaceLister.
+type EndpointConnectionAccepterNamespaceListerExpansion interface{}
+
 // EndpointConnectionNotificationListerExpansion allows custom methods to be added to
 // EndpointConnectionNotificationLister.
 type EndpointConnectionNotificationListerExpansion interface{}
@@ -49,6 +57,14 @@ type EndpointConnectionNotificationListerExpansion interface{}
 // EndpointConnectionNotificationNamespaceListerExpansion allows custom methods to be added to
 // EndpointConnectionNotificationNamespaceLister.
 type EndpointConnectionNotificationNamespaceListerExpansion interface{}
+
+// EndpointPolicyListerExpansion allows custom methods to be added to
+// EndpointPolicyLister.
+type EndpointPolicyListerExpansion interface{}
+
+// EndpointPolicyNamespaceListerExpansion allows custom methods to be added to
+// EndpointPolicyNamespaceLister.
+type EndpointPolicyNamespaceListerExpansion interface{}
 
 // EndpointRouteTableAssociationListerExpansion allows custom methods to be added to
 // EndpointRouteTableAssociationLister.
@@ -82,6 +98,62 @@ type EndpointSubnetAssociationListerExpansion interface{}
 // EndpointSubnetAssociationNamespaceLister.
 type EndpointSubnetAssociationNamespaceListerExpansion interface{}
 
+// IpamListerExpansion allows custom methods to be added to
+// IpamLister.
+type IpamListerExpansion interface{}
+
+// IpamNamespaceListerExpansion allows custom methods to be added to
+// IpamNamespaceLister.
+type IpamNamespaceListerExpansion interface{}
+
+// IpamOrganizationAdminAccountListerExpansion allows custom methods to be added to
+// IpamOrganizationAdminAccountLister.
+type IpamOrganizationAdminAccountListerExpansion interface{}
+
+// IpamOrganizationAdminAccountNamespaceListerExpansion allows custom methods to be added to
+// IpamOrganizationAdminAccountNamespaceLister.
+type IpamOrganizationAdminAccountNamespaceListerExpansion interface{}
+
+// IpamPoolListerExpansion allows custom methods to be added to
+// IpamPoolLister.
+type IpamPoolListerExpansion interface{}
+
+// IpamPoolNamespaceListerExpansion allows custom methods to be added to
+// IpamPoolNamespaceLister.
+type IpamPoolNamespaceListerExpansion interface{}
+
+// IpamPoolCIDRListerExpansion allows custom methods to be added to
+// IpamPoolCIDRLister.
+type IpamPoolCIDRListerExpansion interface{}
+
+// IpamPoolCIDRNamespaceListerExpansion allows custom methods to be added to
+// IpamPoolCIDRNamespaceLister.
+type IpamPoolCIDRNamespaceListerExpansion interface{}
+
+// IpamPoolCIDRAllocationListerExpansion allows custom methods to be added to
+// IpamPoolCIDRAllocationLister.
+type IpamPoolCIDRAllocationListerExpansion interface{}
+
+// IpamPoolCIDRAllocationNamespaceListerExpansion allows custom methods to be added to
+// IpamPoolCIDRAllocationNamespaceLister.
+type IpamPoolCIDRAllocationNamespaceListerExpansion interface{}
+
+// IpamPreviewNextCIDRListerExpansion allows custom methods to be added to
+// IpamPreviewNextCIDRLister.
+type IpamPreviewNextCIDRListerExpansion interface{}
+
+// IpamPreviewNextCIDRNamespaceListerExpansion allows custom methods to be added to
+// IpamPreviewNextCIDRNamespaceLister.
+type IpamPreviewNextCIDRNamespaceListerExpansion interface{}
+
+// IpamScopeListerExpansion allows custom methods to be added to
+// IpamScopeLister.
+type IpamScopeListerExpansion interface{}
+
+// IpamScopeNamespaceListerExpansion allows custom methods to be added to
+// IpamScopeNamespaceLister.
+type IpamScopeNamespaceListerExpansion interface{}
+
 // Ipv4CIDRBlockAssociationListerExpansion allows custom methods to be added to
 // Ipv4CIDRBlockAssociationLister.
 type Ipv4CIDRBlockAssociationListerExpansion interface{}
@@ -89,6 +161,14 @@ type Ipv4CIDRBlockAssociationListerExpansion interface{}
 // Ipv4CIDRBlockAssociationNamespaceListerExpansion allows custom methods to be added to
 // Ipv4CIDRBlockAssociationNamespaceLister.
 type Ipv4CIDRBlockAssociationNamespaceListerExpansion interface{}
+
+// Ipv6CIDRBlockAssociationListerExpansion allows custom methods to be added to
+// Ipv6CIDRBlockAssociationLister.
+type Ipv6CIDRBlockAssociationListerExpansion interface{}
+
+// Ipv6CIDRBlockAssociationNamespaceListerExpansion allows custom methods to be added to
+// Ipv6CIDRBlockAssociationNamespaceLister.
+type Ipv6CIDRBlockAssociationNamespaceListerExpansion interface{}
 
 // PeeringConnectionListerExpansion allows custom methods to be added to
 // PeeringConnectionLister.

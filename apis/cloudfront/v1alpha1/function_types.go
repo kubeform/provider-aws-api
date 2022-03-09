@@ -65,7 +65,9 @@ type FunctionSpecResource struct {
 	Comment *string `json:"comment,omitempty" tf:"comment"`
 	// +optional
 	Etag *string `json:"etag,omitempty" tf:"etag"`
-	Name *string `json:"name" tf:"name"`
+	// +optional
+	LiveStageEtag *string `json:"liveStageEtag,omitempty" tf:"live_stage_etag"`
+	Name          *string `json:"name" tf:"name"`
 	// +optional
 	Publish *bool   `json:"publish,omitempty" tf:"publish"`
 	Runtime *string `json:"runtime" tf:"runtime"`

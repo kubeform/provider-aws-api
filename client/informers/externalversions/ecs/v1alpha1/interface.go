@@ -24,14 +24,22 @@ import (
 
 // Interface provides access to all the informers in this group version.
 type Interface interface {
+	// AccountSettingDefaults returns a AccountSettingDefaultInformer.
+	AccountSettingDefaults() AccountSettingDefaultInformer
 	// CapacityProviders returns a CapacityProviderInformer.
 	CapacityProviders() CapacityProviderInformer
 	// Clusters returns a ClusterInformer.
 	Clusters() ClusterInformer
+	// ClusterCapacityProviderses returns a ClusterCapacityProvidersInformer.
+	ClusterCapacityProviderses() ClusterCapacityProvidersInformer
 	// Services returns a ServiceInformer.
 	Services() ServiceInformer
+	// Tags returns a TagInformer.
+	Tags() TagInformer
 	// TaskDefinitions returns a TaskDefinitionInformer.
 	TaskDefinitions() TaskDefinitionInformer
+	// TaskSets returns a TaskSetInformer.
+	TaskSets() TaskSetInformer
 }
 
 type version struct {
@@ -45,6 +53,11 @@ func New(f internalinterfaces.SharedInformerFactory, namespace string, tweakList
 	return &version{factory: f, namespace: namespace, tweakListOptions: tweakListOptions}
 }
 
+// AccountSettingDefaults returns a AccountSettingDefaultInformer.
+func (v *version) AccountSettingDefaults() AccountSettingDefaultInformer {
+	return &accountSettingDefaultInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
 // CapacityProviders returns a CapacityProviderInformer.
 func (v *version) CapacityProviders() CapacityProviderInformer {
 	return &capacityProviderInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
@@ -55,12 +68,27 @@ func (v *version) Clusters() ClusterInformer {
 	return &clusterInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
 }
 
+// ClusterCapacityProviderses returns a ClusterCapacityProvidersInformer.
+func (v *version) ClusterCapacityProviderses() ClusterCapacityProvidersInformer {
+	return &clusterCapacityProvidersInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
 // Services returns a ServiceInformer.
 func (v *version) Services() ServiceInformer {
 	return &serviceInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
 }
 
+// Tags returns a TagInformer.
+func (v *version) Tags() TagInformer {
+	return &tagInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
 // TaskDefinitions returns a TaskDefinitionInformer.
 func (v *version) TaskDefinitions() TaskDefinitionInformer {
 	return &taskDefinitionInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
+// TaskSets returns a TaskSetInformer.
+func (v *version) TaskSets() TaskSetInformer {
+	return &taskSetInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
 }

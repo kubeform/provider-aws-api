@@ -37,6 +37,10 @@ func (c *FakeOpsworksV1alpha1) CustomLayers(namespace string) v1alpha1.CustomLay
 	return &FakeCustomLayers{c, namespace}
 }
 
+func (c *FakeOpsworksV1alpha1) EcsClusterLayers(namespace string) v1alpha1.EcsClusterLayerInterface {
+	return &FakeEcsClusterLayers{c, namespace}
+}
+
 func (c *FakeOpsworksV1alpha1) GangliaLayers(namespace string) v1alpha1.GangliaLayerInterface {
 	return &FakeGangliaLayers{c, namespace}
 }

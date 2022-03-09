@@ -27,13 +27,15 @@ import (
 
 func GetEncoder() map[string]jsoniter.ValEncoder {
 	return map[string]jsoniter.ValEncoder{
-		jsoniter.MustGetKind(reflect2.TypeOf(SetSpecAutoDeployment{}).Type1()): SetSpecAutoDeploymentCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(SetSpecAutoDeployment{}).Type1()):            SetSpecAutoDeploymentCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(SetInstanceSpecDeploymentTargets{}).Type1()): SetInstanceSpecDeploymentTargetsCodec{},
 	}
 }
 
 func GetDecoder() map[string]jsoniter.ValDecoder {
 	return map[string]jsoniter.ValDecoder{
-		jsoniter.MustGetKind(reflect2.TypeOf(SetSpecAutoDeployment{}).Type1()): SetSpecAutoDeploymentCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(SetSpecAutoDeployment{}).Type1()):            SetSpecAutoDeploymentCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(SetInstanceSpecDeploymentTargets{}).Type1()): SetInstanceSpecDeploymentTargetsCodec{},
 	}
 }
 
@@ -125,5 +127,84 @@ func (SetSpecAutoDeploymentCodec) Decode(ptr unsafe.Pointer, iter *jsoniter.Iter
 		}
 	default:
 		iter.ReportError("decode SetSpecAutoDeployment", "unexpected JSON type")
+	}
+}
+
+// +k8s:deepcopy-gen=false
+type SetInstanceSpecDeploymentTargetsCodec struct {
+}
+
+func (SetInstanceSpecDeploymentTargetsCodec) IsEmpty(ptr unsafe.Pointer) bool {
+	return (*SetInstanceSpecDeploymentTargets)(ptr) == nil
+}
+
+func (SetInstanceSpecDeploymentTargetsCodec) Encode(ptr unsafe.Pointer, stream *jsoniter.Stream) {
+	obj := (*SetInstanceSpecDeploymentTargets)(ptr)
+	var objs []SetInstanceSpecDeploymentTargets
+	if obj != nil {
+		objs = []SetInstanceSpecDeploymentTargets{*obj}
+	}
+
+	jsonit := jsoniter.Config{
+		EscapeHTML:             true,
+		SortMapKeys:            true,
+		ValidateJsonRawMessage: true,
+		TagKey:                 "tf",
+		TypeEncoders:           getEncodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(SetInstanceSpecDeploymentTargets{}).Type1())),
+	}.Froze()
+
+	byt, _ := jsonit.Marshal(objs)
+
+	stream.Write(byt)
+}
+
+func (SetInstanceSpecDeploymentTargetsCodec) Decode(ptr unsafe.Pointer, iter *jsoniter.Iterator) {
+	switch iter.WhatIsNext() {
+	case jsoniter.NilValue:
+		iter.Skip()
+		*(*SetInstanceSpecDeploymentTargets)(ptr) = SetInstanceSpecDeploymentTargets{}
+		return
+	case jsoniter.ArrayValue:
+		objsByte := iter.SkipAndReturnBytes()
+		if len(objsByte) > 0 {
+			var objs []SetInstanceSpecDeploymentTargets
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(SetInstanceSpecDeploymentTargets{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objsByte, &objs)
+
+			if len(objs) > 0 {
+				*(*SetInstanceSpecDeploymentTargets)(ptr) = objs[0]
+			} else {
+				*(*SetInstanceSpecDeploymentTargets)(ptr) = SetInstanceSpecDeploymentTargets{}
+			}
+		} else {
+			*(*SetInstanceSpecDeploymentTargets)(ptr) = SetInstanceSpecDeploymentTargets{}
+		}
+	case jsoniter.ObjectValue:
+		objByte := iter.SkipAndReturnBytes()
+		if len(objByte) > 0 {
+			var obj SetInstanceSpecDeploymentTargets
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(SetInstanceSpecDeploymentTargets{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objByte, &obj)
+
+			*(*SetInstanceSpecDeploymentTargets)(ptr) = obj
+		} else {
+			*(*SetInstanceSpecDeploymentTargets)(ptr) = SetInstanceSpecDeploymentTargets{}
+		}
+	default:
+		iter.ReportError("decode SetInstanceSpecDeploymentTargets", "unexpected JSON type")
 	}
 }

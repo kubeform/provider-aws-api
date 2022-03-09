@@ -33,6 +33,10 @@ func (c *FakeImagebuilderV1alpha1) Components(namespace string) v1alpha1.Compone
 	return &FakeComponents{c, namespace}
 }
 
+func (c *FakeImagebuilderV1alpha1) ContainerRecipes(namespace string) v1alpha1.ContainerRecipeInterface {
+	return &FakeContainerRecipes{c, namespace}
+}
+
 func (c *FakeImagebuilderV1alpha1) DistributionConfigurations(namespace string) v1alpha1.DistributionConfigurationInterface {
 	return &FakeDistributionConfigurations{c, namespace}
 }

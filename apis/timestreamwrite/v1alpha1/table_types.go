@@ -41,6 +41,29 @@ type Table struct {
 	Status            TableStatus `json:"status,omitempty"`
 }
 
+type TableSpecMagneticStoreWritePropertiesMagneticStoreRejectedDataLocationS3Configuration struct {
+	// +optional
+	BucketName *string `json:"bucketName,omitempty" tf:"bucket_name"`
+	// +optional
+	EncryptionOption *string `json:"encryptionOption,omitempty" tf:"encryption_option"`
+	// +optional
+	KmsKeyID *string `json:"kmsKeyID,omitempty" tf:"kms_key_id"`
+	// +optional
+	ObjectKeyPrefix *string `json:"objectKeyPrefix,omitempty" tf:"object_key_prefix"`
+}
+
+type TableSpecMagneticStoreWritePropertiesMagneticStoreRejectedDataLocation struct {
+	// +optional
+	S3Configuration *TableSpecMagneticStoreWritePropertiesMagneticStoreRejectedDataLocationS3Configuration `json:"s3Configuration,omitempty" tf:"s3_configuration"`
+}
+
+type TableSpecMagneticStoreWriteProperties struct {
+	// +optional
+	EnableMagneticStoreWrites *bool `json:"enableMagneticStoreWrites,omitempty" tf:"enable_magnetic_store_writes"`
+	// +optional
+	MagneticStoreRejectedDataLocation *TableSpecMagneticStoreWritePropertiesMagneticStoreRejectedDataLocation `json:"magneticStoreRejectedDataLocation,omitempty" tf:"magnetic_store_rejected_data_location"`
+}
+
 type TableSpecRetentionProperties struct {
 	MagneticStoreRetentionPeriodInDays *int64 `json:"magneticStoreRetentionPeriodInDays" tf:"magnetic_store_retention_period_in_days"`
 	MemoryStoreRetentionPeriodInHours  *int64 `json:"memoryStoreRetentionPeriodInHours" tf:"memory_store_retention_period_in_hours"`
@@ -66,6 +89,8 @@ type TableSpecResource struct {
 	// +optional
 	Arn          *string `json:"arn,omitempty" tf:"arn"`
 	DatabaseName *string `json:"databaseName" tf:"database_name"`
+	// +optional
+	MagneticStoreWriteProperties *TableSpecMagneticStoreWriteProperties `json:"magneticStoreWriteProperties,omitempty" tf:"magnetic_store_write_properties"`
 	// +optional
 	RetentionProperties *TableSpecRetentionProperties `json:"retentionProperties,omitempty" tf:"retention_properties"`
 	TableName           *string                       `json:"tableName" tf:"table_name"`

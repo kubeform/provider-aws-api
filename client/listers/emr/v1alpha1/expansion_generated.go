@@ -57,3 +57,19 @@ type SecurityConfigurationListerExpansion interface{}
 // SecurityConfigurationNamespaceListerExpansion allows custom methods to be added to
 // SecurityConfigurationNamespaceLister.
 type SecurityConfigurationNamespaceListerExpansion interface{}
+
+// StudioListerExpansion allows custom methods to be added to
+// StudioLister.
+type StudioListerExpansion interface{}
+
+// StudioNamespaceListerExpansion allows custom methods to be added to
+// StudioNamespaceLister.
+type StudioNamespaceListerExpansion interface{}
+
+// StudioSessionMappingListerExpansion allows custom methods to be added to
+// StudioSessionMappingLister.
+type StudioSessionMappingListerExpansion interface{}
+
+// StudioSessionMappingNamespaceListerExpansion allows custom methods to be added to
+// StudioSessionMappingNamespaceLister.
+type StudioSessionMappingNamespaceListerExpansion interface{}

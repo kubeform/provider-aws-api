@@ -61,6 +61,20 @@ spec:
                     type: string
                   catalogID:
                     type: string
+                  createTableDefaultPermission:
+                    items:
+                      properties:
+                        permissions:
+                          items:
+                            type: string
+                          type: array
+                        principal:
+                          properties:
+                            dataLakePrincipalIdentifier:
+                              type: string
+                          type: object
+                      type: object
+                    type: array
                   description:
                     type: string
                   id:
@@ -92,6 +106,20 @@ spec:
                     type: string
                   catalogID:
                     type: string
+                  createTableDefaultPermission:
+                    items:
+                      properties:
+                        permissions:
+                          items:
+                            type: string
+                          type: array
+                        principal:
+                          properties:
+                            dataLakePrincipalIdentifier:
+                              type: string
+                          type: object
+                      type: object
+                    type: array
                   description:
                     type: string
                   id:

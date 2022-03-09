@@ -88,7 +88,7 @@ func (r *TransitGatewayVpcAttachmentAccepter) ValidateUpdate(old runtime.Object)
 		return err
 	}
 
-	for key := range transitgatewayvpcattachmentaccepterForceNewList {
+	for key, _ := range transitgatewayvpcattachmentaccepterForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

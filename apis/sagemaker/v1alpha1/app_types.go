@@ -45,7 +45,11 @@ type AppSpecResourceSpec struct {
 	// +optional
 	InstanceType *string `json:"instanceType,omitempty" tf:"instance_type"`
 	// +optional
+	LifecycleConfigArn *string `json:"lifecycleConfigArn,omitempty" tf:"lifecycle_config_arn"`
+	// +optional
 	SagemakerImageArn *string `json:"sagemakerImageArn,omitempty" tf:"sagemaker_image_arn"`
+	// +optional
+	SagemakerImageVersionArn *string `json:"sagemakerImageVersionArn,omitempty" tf:"sagemaker_image_version_arn"`
 }
 
 type AppSpec struct {

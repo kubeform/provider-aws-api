@@ -88,7 +88,7 @@ func (r *ResolverDnssecConfig) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range resolverdnssecconfigForceNewList {
+	for key, _ := range resolverdnssecconfigForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

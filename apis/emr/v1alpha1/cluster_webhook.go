@@ -87,6 +87,7 @@ var clusterForceNewList = map[string]bool{
 	"/keep_job_flow_alive_when_no_steps":                         true,
 	"/kerberos_attributes/*/ad_domain_join_user":                 true,
 	"/kerberos_attributes/*/realm":                               true,
+	"/log_encryption_kms_key_id":                                 true,
 	"/log_uri":                                                   true,
 	"/master_instance_fleet/*/instance_type_configs/*/bid_price": true,
 	"/master_instance_fleet/*/instance_type_configs/*/bid_price_as_percentage_of_on_demand_price":    true,
@@ -170,7 +171,7 @@ func (r *Cluster) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range clusterForceNewList {
+	for key, _ := range clusterForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

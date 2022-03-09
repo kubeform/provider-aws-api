@@ -327,9 +327,19 @@ func (in *SqsQueueSpecResource) DeepCopyInto(out *SqsQueueSpecResource) {
 		*out = new(int64)
 		**out = **in
 	}
+	if in.RedriveAllowPolicy != nil {
+		in, out := &in.RedriveAllowPolicy, &out.RedriveAllowPolicy
+		*out = new(string)
+		**out = **in
+	}
 	if in.RedrivePolicy != nil {
 		in, out := &in.RedrivePolicy, &out.RedrivePolicy
 		*out = new(string)
+		**out = **in
+	}
+	if in.SqsManagedSseEnabled != nil {
+		in, out := &in.SqsManagedSseEnabled, &out.SqsManagedSseEnabled
+		*out = new(bool)
 		**out = **in
 	}
 	if in.Tags != nil {

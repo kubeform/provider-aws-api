@@ -63,7 +63,17 @@ type EventTargetSpecEcsTargetNetworkConfiguration struct {
 	Subnets        []string `json:"subnets" tf:"subnets"`
 }
 
+type EventTargetSpecEcsTargetPlacementConstraint struct {
+	// +optional
+	Expression *string `json:"expression,omitempty" tf:"expression"`
+	Type       *string `json:"type" tf:"type"`
+}
+
 type EventTargetSpecEcsTarget struct {
+	// +optional
+	EnableEcsManagedTags *bool `json:"enableEcsManagedTags,omitempty" tf:"enable_ecs_managed_tags"`
+	// +optional
+	EnableExecuteCommand *bool `json:"enableExecuteCommand,omitempty" tf:"enable_execute_command"`
 	// +optional
 	Group *string `json:"group,omitempty" tf:"group"`
 	// +optional
@@ -71,7 +81,14 @@ type EventTargetSpecEcsTarget struct {
 	// +optional
 	NetworkConfiguration *EventTargetSpecEcsTargetNetworkConfiguration `json:"networkConfiguration,omitempty" tf:"network_configuration"`
 	// +optional
+	// +kubebuilder:validation:MaxItems=10
+	PlacementConstraint []EventTargetSpecEcsTargetPlacementConstraint `json:"placementConstraint,omitempty" tf:"placement_constraint"`
+	// +optional
 	PlatformVersion *string `json:"platformVersion,omitempty" tf:"platform_version"`
+	// +optional
+	PropagateTags *string `json:"propagateTags,omitempty" tf:"propagate_tags"`
+	// +optional
+	Tags *map[string]string `json:"tags,omitempty" tf:"tags"`
 	// +optional
 	TaskCount         *int64  `json:"taskCount,omitempty" tf:"task_count"`
 	TaskDefinitionArn *string `json:"taskDefinitionArn" tf:"task_definition_arn"`
@@ -97,6 +114,20 @@ type EventTargetSpecKinesisTarget struct {
 	PartitionKeyPath *string `json:"partitionKeyPath,omitempty" tf:"partition_key_path"`
 }
 
+type EventTargetSpecRedshiftTarget struct {
+	Database *string `json:"database" tf:"database"`
+	// +optional
+	DbUser *string `json:"dbUser,omitempty" tf:"db_user"`
+	// +optional
+	SecretsManagerArn *string `json:"secretsManagerArn,omitempty" tf:"secrets_manager_arn"`
+	// +optional
+	Sql *string `json:"sql,omitempty" tf:"sql"`
+	// +optional
+	StatementName *string `json:"statementName,omitempty" tf:"statement_name"`
+	// +optional
+	WithEvent *bool `json:"withEvent,omitempty" tf:"with_event"`
+}
+
 type EventTargetSpecRetryPolicy struct {
 	// +optional
 	MaximumEventAgeInSeconds *int64 `json:"maximumEventAgeInSeconds,omitempty" tf:"maximum_event_age_in_seconds"`
@@ -105,7 +136,8 @@ type EventTargetSpecRetryPolicy struct {
 }
 
 type EventTargetSpecRunCommandTargets struct {
-	Key    *string  `json:"key" tf:"key"`
+	Key *string `json:"key" tf:"key"`
+	// +kubebuilder:validation:MaxItems=50
 	Values []string `json:"values" tf:"values"`
 }
 
@@ -150,6 +182,8 @@ type EventTargetSpecResource struct {
 	InputTransformer *EventTargetSpecInputTransformer `json:"inputTransformer,omitempty" tf:"input_transformer"`
 	// +optional
 	KinesisTarget *EventTargetSpecKinesisTarget `json:"kinesisTarget,omitempty" tf:"kinesis_target"`
+	// +optional
+	RedshiftTarget *EventTargetSpecRedshiftTarget `json:"redshiftTarget,omitempty" tf:"redshift_target"`
 	// +optional
 	RetryPolicy *EventTargetSpecRetryPolicy `json:"retryPolicy,omitempty" tf:"retry_policy"`
 	// +optional

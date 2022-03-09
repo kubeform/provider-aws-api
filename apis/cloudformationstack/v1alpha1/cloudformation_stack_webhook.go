@@ -91,7 +91,7 @@ func (r *CloudformationStack) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range cloudformationstackForceNewList {
+	for key, _ := range cloudformationstackForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

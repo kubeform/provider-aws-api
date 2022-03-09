@@ -76,6 +76,8 @@ func addKnownTypes(scheme *runtime.Scheme) error {
 		&MlTransformList{},
 		&Partition{},
 		&PartitionList{},
+		&PartitionIndex{},
+		&PartitionIndexList{},
 		&Registry{},
 		&RegistryList{},
 		&ResourcePolicy{},

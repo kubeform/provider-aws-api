@@ -764,6 +764,16 @@ func (in *InstanceSpecResource) DeepCopyInto(out *InstanceSpecResource) {
 		*out = new(bool)
 		**out = **in
 	}
+	if in.CustomerOwnedIPEnabled != nil {
+		in, out := &in.CustomerOwnedIPEnabled, &out.CustomerOwnedIPEnabled
+		*out = new(bool)
+		**out = **in
+	}
+	if in.DbName != nil {
+		in, out := &in.DbName, &out.DbName
+		*out = new(string)
+		**out = **in
+	}
 	if in.DbSubnetGroupName != nil {
 		in, out := &in.DbSubnetGroupName, &out.DbSubnetGroupName
 		*out = new(string)
@@ -806,6 +816,11 @@ func (in *InstanceSpecResource) DeepCopyInto(out *InstanceSpecResource) {
 	}
 	if in.EngineVersion != nil {
 		in, out := &in.EngineVersion, &out.EngineVersion
+		*out = new(string)
+		**out = **in
+	}
+	if in.EngineVersionActual != nil {
+		in, out := &in.EngineVersionActual, &out.EngineVersionActual
 		*out = new(string)
 		**out = **in
 	}
@@ -889,6 +904,11 @@ func (in *InstanceSpecResource) DeepCopyInto(out *InstanceSpecResource) {
 		*out = new(string)
 		**out = **in
 	}
+	if in.NcharCharacterSetName != nil {
+		in, out := &in.NcharCharacterSetName, &out.NcharCharacterSetName
+		*out = new(string)
+		**out = **in
+	}
 	if in.OptionGroupName != nil {
 		in, out := &in.OptionGroupName, &out.OptionGroupName
 		*out = new(string)
@@ -927,6 +947,11 @@ func (in *InstanceSpecResource) DeepCopyInto(out *InstanceSpecResource) {
 	if in.PubliclyAccessible != nil {
 		in, out := &in.PubliclyAccessible, &out.PubliclyAccessible
 		*out = new(bool)
+		**out = **in
+	}
+	if in.ReplicaMode != nil {
+		in, out := &in.ReplicaMode, &out.ReplicaMode
+		*out = new(string)
 		**out = **in
 	}
 	if in.Replicas != nil {

@@ -88,8 +88,6 @@ type TableSpecTtl struct {
 	AttributeName *string `json:"attributeName" tf:"attribute_name"`
 	// +optional
 	Enabled *bool `json:"enabled,omitempty" tf:"enabled"`
-	// +optional
-	KmsKeyArn *string `json:"kmsKeyArn,omitempty" tf:"kms_key_arn"`
 }
 
 type TableSpec struct {
@@ -112,13 +110,15 @@ type TableSpecResource struct {
 	ID string `json:"id,omitempty" tf:"id,omitempty"`
 
 	// +optional
-	Arn       *string              `json:"arn,omitempty" tf:"arn"`
-	Attribute []TableSpecAttribute `json:"attribute" tf:"attribute"`
+	Arn *string `json:"arn,omitempty" tf:"arn"`
+	// +optional
+	Attribute []TableSpecAttribute `json:"attribute,omitempty" tf:"attribute"`
 	// +optional
 	BillingMode *string `json:"billingMode,omitempty" tf:"billing_mode"`
 	// +optional
 	GlobalSecondaryIndex []TableSpecGlobalSecondaryIndex `json:"globalSecondaryIndex,omitempty" tf:"global_secondary_index"`
-	HashKey              *string                         `json:"hashKey" tf:"hash_key"`
+	// +optional
+	HashKey *string `json:"hashKey,omitempty" tf:"hash_key"`
 	// +optional
 	LocalSecondaryIndex []TableSpecLocalSecondaryIndex `json:"localSecondaryIndex,omitempty" tf:"local_secondary_index"`
 	Name                *string                        `json:"name" tf:"name"`
@@ -131,6 +131,12 @@ type TableSpecResource struct {
 	// +optional
 	Replica []TableSpecReplica `json:"replica,omitempty" tf:"replica"`
 	// +optional
+	RestoreDateTime *string `json:"restoreDateTime,omitempty" tf:"restore_date_time"`
+	// +optional
+	RestoreSourceName *string `json:"restoreSourceName,omitempty" tf:"restore_source_name"`
+	// +optional
+	RestoreToLatestTime *bool `json:"restoreToLatestTime,omitempty" tf:"restore_to_latest_time"`
+	// +optional
 	ServerSideEncryption *TableSpecServerSideEncryption `json:"serverSideEncryption,omitempty" tf:"server_side_encryption"`
 	// +optional
 	StreamArn *string `json:"streamArn,omitempty" tf:"stream_arn"`
@@ -140,6 +146,8 @@ type TableSpecResource struct {
 	StreamLabel *string `json:"streamLabel,omitempty" tf:"stream_label"`
 	// +optional
 	StreamViewType *string `json:"streamViewType,omitempty" tf:"stream_view_type"`
+	// +optional
+	TableClass *string `json:"tableClass,omitempty" tf:"table_class"`
 	// +optional
 	Tags *map[string]string `json:"tags,omitempty" tf:"tags"`
 	// +optional

@@ -96,6 +96,8 @@ spec:
                     type: string
                   finalSnapshotIdentifier:
                     type: string
+                  globalClusterIdentifier:
+                    type: string
                   hostedZoneID:
                     type: string
                   id:
@@ -219,6 +221,8 @@ spec:
                   engineVersion:
                     type: string
                   finalSnapshotIdentifier:
+                    type: string
+                  globalClusterIdentifier:
                     type: string
                   hostedZoneID:
                     type: string

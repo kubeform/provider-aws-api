@@ -65,6 +65,44 @@ spec:
                     type: boolean
                   autoHealing:
                     type: boolean
+                  cloudwatchConfiguration:
+                    properties:
+                      enabled:
+                        type: boolean
+                      logStreams:
+                        items:
+                          properties:
+                            batchCount:
+                              format: int64
+                              type: integer
+                            batchSize:
+                              format: int64
+                              type: integer
+                            bufferDuration:
+                              format: int64
+                              type: integer
+                            datetimeFormat:
+                              type: string
+                            encoding:
+                              type: string
+                            file:
+                              type: string
+                            fileFingerprintLines:
+                              type: string
+                            initialPosition:
+                              type: string
+                            logGroupName:
+                              type: string
+                            multilineStartPattern:
+                              type: string
+                            timeZone:
+                              type: string
+                          required:
+                          - file
+                          - logGroupName
+                          type: object
+                        type: array
+                    type: object
                   customConfigureRecipes:
                     items:
                       type: string
@@ -163,6 +201,44 @@ spec:
                     type: boolean
                   autoHealing:
                     type: boolean
+                  cloudwatchConfiguration:
+                    properties:
+                      enabled:
+                        type: boolean
+                      logStreams:
+                        items:
+                          properties:
+                            batchCount:
+                              format: int64
+                              type: integer
+                            batchSize:
+                              format: int64
+                              type: integer
+                            bufferDuration:
+                              format: int64
+                              type: integer
+                            datetimeFormat:
+                              type: string
+                            encoding:
+                              type: string
+                            file:
+                              type: string
+                            fileFingerprintLines:
+                              type: string
+                            initialPosition:
+                              type: string
+                            logGroupName:
+                              type: string
+                            multilineStartPattern:
+                              type: string
+                            timeZone:
+                              type: string
+                          required:
+                          - file
+                          - logGroupName
+                          type: object
+                        type: array
+                    type: object
                   customConfigureRecipes:
                     items:
                       type: string

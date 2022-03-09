@@ -88,7 +88,7 @@ func (r *DeliveryChannel) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range deliverychannelForceNewList {
+	for key, _ := range deliverychannelForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

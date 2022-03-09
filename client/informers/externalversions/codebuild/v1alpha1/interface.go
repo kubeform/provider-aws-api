@@ -28,6 +28,8 @@ type Interface interface {
 	Projects() ProjectInformer
 	// ReportGroups returns a ReportGroupInformer.
 	ReportGroups() ReportGroupInformer
+	// ResourcePolicies returns a ResourcePolicyInformer.
+	ResourcePolicies() ResourcePolicyInformer
 	// SourceCredentials returns a SourceCredentialInformer.
 	SourceCredentials() SourceCredentialInformer
 	// Webhooks returns a WebhookInformer.
@@ -53,6 +55,11 @@ func (v *version) Projects() ProjectInformer {
 // ReportGroups returns a ReportGroupInformer.
 func (v *version) ReportGroups() ReportGroupInformer {
 	return &reportGroupInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
+// ResourcePolicies returns a ResourcePolicyInformer.
+func (v *version) ResourcePolicies() ResourcePolicyInformer {
+	return &resourcePolicyInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
 }
 
 // SourceCredentials returns a SourceCredentialInformer.

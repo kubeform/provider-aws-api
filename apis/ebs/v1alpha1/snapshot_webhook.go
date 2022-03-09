@@ -43,6 +43,7 @@ var _ webhook.Validator = &Snapshot{}
 
 var snapshotForceNewList = map[string]bool{
 	"/description": true,
+	"/outpost_arn": true,
 	"/volume_id":   true,
 }
 
@@ -89,7 +90,7 @@ func (r *Snapshot) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range snapshotForceNewList {
+	for key, _ := range snapshotForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

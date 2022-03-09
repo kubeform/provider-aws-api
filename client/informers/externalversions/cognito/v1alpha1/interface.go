@@ -26,12 +26,16 @@ import (
 type Interface interface {
 	// IdentityPools returns a IdentityPoolInformer.
 	IdentityPools() IdentityPoolInformer
+	// IdentityPoolProviderPrincipalTags returns a IdentityPoolProviderPrincipalTagInformer.
+	IdentityPoolProviderPrincipalTags() IdentityPoolProviderPrincipalTagInformer
 	// IdentityPoolRolesAttachments returns a IdentityPoolRolesAttachmentInformer.
 	IdentityPoolRolesAttachments() IdentityPoolRolesAttachmentInformer
 	// IdentityProviders returns a IdentityProviderInformer.
 	IdentityProviders() IdentityProviderInformer
 	// ResourceServers returns a ResourceServerInformer.
 	ResourceServers() ResourceServerInformer
+	// Users returns a UserInformer.
+	Users() UserInformer
 	// UserGroups returns a UserGroupInformer.
 	UserGroups() UserGroupInformer
 	// UserPools returns a UserPoolInformer.
@@ -60,6 +64,11 @@ func (v *version) IdentityPools() IdentityPoolInformer {
 	return &identityPoolInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
 }
 
+// IdentityPoolProviderPrincipalTags returns a IdentityPoolProviderPrincipalTagInformer.
+func (v *version) IdentityPoolProviderPrincipalTags() IdentityPoolProviderPrincipalTagInformer {
+	return &identityPoolProviderPrincipalTagInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
 // IdentityPoolRolesAttachments returns a IdentityPoolRolesAttachmentInformer.
 func (v *version) IdentityPoolRolesAttachments() IdentityPoolRolesAttachmentInformer {
 	return &identityPoolRolesAttachmentInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
@@ -73,6 +82,11 @@ func (v *version) IdentityProviders() IdentityProviderInformer {
 // ResourceServers returns a ResourceServerInformer.
 func (v *version) ResourceServers() ResourceServerInformer {
 	return &resourceServerInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
+// Users returns a UserInformer.
+func (v *version) Users() UserInformer {
+	return &userInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
 }
 
 // UserGroups returns a UserGroupInformer.

@@ -29,6 +29,7 @@ type OpsworksV1alpha1Interface interface {
 	RESTClient() rest.Interface
 	ApplicationsGetter
 	CustomLayersGetter
+	EcsClusterLayersGetter
 	GangliaLayersGetter
 	HaproxyLayersGetter
 	InstancesGetter
@@ -56,6 +57,10 @@ func (c *OpsworksV1alpha1Client) Applications(namespace string) ApplicationInter
 
 func (c *OpsworksV1alpha1Client) CustomLayers(namespace string) CustomLayerInterface {
 	return newCustomLayers(c, namespace)
+}
+
+func (c *OpsworksV1alpha1Client) EcsClusterLayers(namespace string) EcsClusterLayerInterface {
+	return newEcsClusterLayers(c, namespace)
 }
 
 func (c *OpsworksV1alpha1Client) GangliaLayers(namespace string) GangliaLayerInterface {

@@ -63,18 +63,19 @@ var instanceForceNewList = map[string]bool{
 	"/ipv6_address_count":                        true,
 	"/ipv6_addresses":                            true,
 	"/key_name":                                  true,
+	"/launch_template/*/id":                      true,
+	"/launch_template/*/name":                    true,
 	"/network_interface/*/delete_on_termination": true,
 	"/network_interface/*/device_index":          true,
 	"/network_interface/*/network_interface_id":  true,
 	"/placement_group":                           true,
+	"/placement_partition_number":                true,
 	"/private_ip":                                true,
 	"/root_block_device/*/encrypted":             true,
 	"/root_block_device/*/kms_key_id":            true,
 	"/security_groups":                           true,
 	"/subnet_id":                                 true,
 	"/tenancy":                                   true,
-	"/user_data":                                 true,
-	"/user_data_base64":                          true,
 }
 
 // ValidateCreate implements webhook.Validator so a webhook will be registered for the type
@@ -120,7 +121,7 @@ func (r *Instance) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range instanceForceNewList {
+	for key, _ := range instanceForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

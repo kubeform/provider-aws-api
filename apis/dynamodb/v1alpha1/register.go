@@ -64,6 +64,8 @@ func addKnownTypes(scheme *runtime.Scheme) error {
 		&TableList{},
 		&TableItem{},
 		&TableItemList{},
+		&Tag{},
+		&TagList{},
 	)
 
 	scheme.AddKnownTypes(SchemeGroupVersion,

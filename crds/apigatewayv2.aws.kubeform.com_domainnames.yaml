@@ -71,6 +71,8 @@ spec:
                         type: string
                       hostedZoneID:
                         type: string
+                      ownershipVerificationCertificateArn:
+                        type: string
                       securityPolicy:
                         type: string
                       targetDomainName:
@@ -156,6 +158,8 @@ spec:
                       endpointType:
                         type: string
                       hostedZoneID:
+                        type: string
+                      ownershipVerificationCertificateArn:
                         type: string
                       securityPolicy:
                         type: string

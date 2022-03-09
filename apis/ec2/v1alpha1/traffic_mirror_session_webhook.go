@@ -88,7 +88,7 @@ func (r *TrafficMirrorSession) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range trafficmirrorsessionForceNewList {
+	for key, _ := range trafficmirrorsessionForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

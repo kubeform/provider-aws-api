@@ -33,6 +33,10 @@ func (c *FakeDatapipelineV1alpha1) Pipelines(namespace string) v1alpha1.Pipeline
 	return &FakePipelines{c, namespace}
 }
 
+func (c *FakeDatapipelineV1alpha1) PipelineDefinitions(namespace string) v1alpha1.PipelineDefinitionInterface {
+	return &FakePipelineDefinitions{c, namespace}
+}
+
 // RESTClient returns a RESTClient that is used to communicate
 // with API server by this client implementation.
 func (c *FakeDatapipelineV1alpha1) RESTClient() rest.Interface {

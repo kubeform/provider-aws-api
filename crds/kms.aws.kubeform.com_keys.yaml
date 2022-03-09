@@ -59,6 +59,8 @@ spec:
                 properties:
                   arn:
                     type: string
+                  bypassPolicyLockoutSafetyCheck:
+                    type: boolean
                   customerMasterKeySpec:
                     type: string
                   deletionWindowInDays:
@@ -76,6 +78,8 @@ spec:
                     type: string
                   keyUsage:
                     type: string
+                  multiRegion:
+                    type: boolean
                   policy:
                     type: string
                   tags:
@@ -91,6 +95,8 @@ spec:
                 properties:
                   arn:
                     type: string
+                  bypassPolicyLockoutSafetyCheck:
+                    type: boolean
                   customerMasterKeySpec:
                     type: string
                   deletionWindowInDays:
@@ -108,6 +114,8 @@ spec:
                     type: string
                   keyUsage:
                     type: string
+                  multiRegion:
+                    type: boolean
                   policy:
                     type: string
                   tags:

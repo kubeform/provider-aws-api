@@ -22,7 +22,11 @@ type AgentExpansion interface{}
 
 type LocationEfsExpansion interface{}
 
+type LocationFsxLustreFileSystemExpansion interface{}
+
 type LocationFsxWindowsFileSystemExpansion interface{}
+
+type LocationHdfsExpansion interface{}
 
 type LocationNfsExpansion interface{}
 

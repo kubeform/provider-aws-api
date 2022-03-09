@@ -41,6 +41,15 @@ type Detector struct {
 	Status            DetectorStatus `json:"status,omitempty"`
 }
 
+type DetectorSpecDatasourcesS3Logs struct {
+	Enable *bool `json:"enable" tf:"enable"`
+}
+
+type DetectorSpecDatasources struct {
+	// +optional
+	S3Logs *DetectorSpecDatasourcesS3Logs `json:"s3Logs,omitempty" tf:"s3_logs"`
+}
+
 type DetectorSpec struct {
 	State *DetectorSpecResource `json:"state,omitempty" tf:"-"`
 
@@ -62,6 +71,8 @@ type DetectorSpecResource struct {
 	AccountID *string `json:"accountID,omitempty" tf:"account_id"`
 	// +optional
 	Arn *string `json:"arn,omitempty" tf:"arn"`
+	// +optional
+	Datasources *DetectorSpecDatasources `json:"datasources,omitempty" tf:"datasources"`
 	// +optional
 	Enable *bool `json:"enable,omitempty" tf:"enable"`
 	// +optional

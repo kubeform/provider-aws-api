@@ -24,6 +24,8 @@ type EventSubscriptionExpansion interface{}
 
 type ParameterGroupExpansion interface{}
 
+type ScheduledActionExpansion interface{}
+
 type SecurityGroupExpansion interface{}
 
 type SnapshotCopyGrantExpansion interface{}

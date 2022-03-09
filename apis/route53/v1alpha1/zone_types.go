@@ -65,6 +65,8 @@ type ZoneSpecResource struct {
 	ID string `json:"id,omitempty" tf:"id,omitempty"`
 
 	// +optional
+	Arn *string `json:"arn,omitempty" tf:"arn"`
+	// +optional
 	Comment *string `json:"comment,omitempty" tf:"comment"`
 	// +optional
 	DelegationSetID *string `json:"delegationSetID,omitempty" tf:"delegation_set_id"`

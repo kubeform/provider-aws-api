@@ -58,6 +58,10 @@ func addKnownTypes(scheme *runtime.Scheme) error {
 	scheme.AddKnownTypes(SchemeGroupVersion,
 		&Protection{},
 		&ProtectionList{},
+		&ProtectionGroup{},
+		&ProtectionGroupList{},
+		&ProtectionHealthCheckAssociation{},
+		&ProtectionHealthCheckAssociationList{},
 	)
 
 	scheme.AddKnownTypes(SchemeGroupVersion,

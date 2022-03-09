@@ -69,6 +69,8 @@ spec:
                     type: string
                   authentication:
                     type: string
+                  bucketRegion:
+                    type: string
                   cacheAttributes:
                     properties:
                       cacheStaleTimeoutInSeconds:
@@ -104,6 +106,8 @@ spec:
                     type: string
                   objectACL:
                     type: string
+                  oplocksEnabled:
+                    type: boolean
                   path:
                     type: string
                   readOnly:
@@ -165,6 +169,8 @@ spec:
                       type: string
                     maxItems: 100
                     type: array
+                  vpcEndpointDNSName:
+                    type: string
                 required:
                 - gatewayArn
                 - locationArn
@@ -184,6 +190,8 @@ spec:
                     type: string
                   authentication:
                     type: string
+                  bucketRegion:
+                    type: string
                   cacheAttributes:
                     properties:
                       cacheStaleTimeoutInSeconds:
@@ -219,6 +227,8 @@ spec:
                     type: string
                   objectACL:
                     type: string
+                  oplocksEnabled:
+                    type: boolean
                   path:
                     type: string
                   readOnly:
@@ -280,6 +290,8 @@ spec:
                       type: string
                     maxItems: 100
                     type: array
+                  vpcEndpointDNSName:
+                    type: string
                 required:
                 - gatewayArn
                 - locationArn

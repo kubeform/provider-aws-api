@@ -88,7 +88,7 @@ func (r *Workgroup) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range workgroupForceNewList {
+	for key, _ := range workgroupForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

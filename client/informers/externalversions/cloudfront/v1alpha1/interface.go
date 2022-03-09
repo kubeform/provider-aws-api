@@ -28,10 +28,16 @@ type Interface interface {
 	CachePolicies() CachePolicyInformer
 	// Distributions returns a DistributionInformer.
 	Distributions() DistributionInformer
+	// FieldLevelEncryptionConfigs returns a FieldLevelEncryptionConfigInformer.
+	FieldLevelEncryptionConfigs() FieldLevelEncryptionConfigInformer
+	// FieldLevelEncryptionProfiles returns a FieldLevelEncryptionProfileInformer.
+	FieldLevelEncryptionProfiles() FieldLevelEncryptionProfileInformer
 	// Functions returns a FunctionInformer.
 	Functions() FunctionInformer
 	// KeyGroups returns a KeyGroupInformer.
 	KeyGroups() KeyGroupInformer
+	// MonitoringSubscriptions returns a MonitoringSubscriptionInformer.
+	MonitoringSubscriptions() MonitoringSubscriptionInformer
 	// OriginAccessIdentities returns a OriginAccessIdentityInformer.
 	OriginAccessIdentities() OriginAccessIdentityInformer
 	// OriginRequestPolicies returns a OriginRequestPolicyInformer.
@@ -40,6 +46,8 @@ type Interface interface {
 	PublicKeys() PublicKeyInformer
 	// RealtimeLogConfigs returns a RealtimeLogConfigInformer.
 	RealtimeLogConfigs() RealtimeLogConfigInformer
+	// ResponseHeadersPolicies returns a ResponseHeadersPolicyInformer.
+	ResponseHeadersPolicies() ResponseHeadersPolicyInformer
 }
 
 type version struct {
@@ -63,6 +71,16 @@ func (v *version) Distributions() DistributionInformer {
 	return &distributionInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
 }
 
+// FieldLevelEncryptionConfigs returns a FieldLevelEncryptionConfigInformer.
+func (v *version) FieldLevelEncryptionConfigs() FieldLevelEncryptionConfigInformer {
+	return &fieldLevelEncryptionConfigInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
+// FieldLevelEncryptionProfiles returns a FieldLevelEncryptionProfileInformer.
+func (v *version) FieldLevelEncryptionProfiles() FieldLevelEncryptionProfileInformer {
+	return &fieldLevelEncryptionProfileInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
 // Functions returns a FunctionInformer.
 func (v *version) Functions() FunctionInformer {
 	return &functionInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
@@ -71,6 +89,11 @@ func (v *version) Functions() FunctionInformer {
 // KeyGroups returns a KeyGroupInformer.
 func (v *version) KeyGroups() KeyGroupInformer {
 	return &keyGroupInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
+// MonitoringSubscriptions returns a MonitoringSubscriptionInformer.
+func (v *version) MonitoringSubscriptions() MonitoringSubscriptionInformer {
+	return &monitoringSubscriptionInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
 }
 
 // OriginAccessIdentities returns a OriginAccessIdentityInformer.
@@ -91,4 +114,9 @@ func (v *version) PublicKeys() PublicKeyInformer {
 // RealtimeLogConfigs returns a RealtimeLogConfigInformer.
 func (v *version) RealtimeLogConfigs() RealtimeLogConfigInformer {
 	return &realtimeLogConfigInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
+// ResponseHeadersPolicies returns a ResponseHeadersPolicyInformer.
+func (v *version) ResponseHeadersPolicies() ResponseHeadersPolicyInformer {
+	return &responseHeadersPolicyInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
 }

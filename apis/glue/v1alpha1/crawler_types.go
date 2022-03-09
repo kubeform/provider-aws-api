@@ -46,6 +46,12 @@ type CrawlerSpecCatalogTarget struct {
 	Tables       []string `json:"tables" tf:"tables"`
 }
 
+type CrawlerSpecDeltaTarget struct {
+	ConnectionName *string  `json:"connectionName" tf:"connection_name"`
+	DeltaTables    []string `json:"deltaTables" tf:"delta_tables"`
+	WriteManifest  *bool    `json:"writeManifest" tf:"write_manifest"`
+}
+
 type CrawlerSpecDynamodbTarget struct {
 	Path *string `json:"path" tf:"path"`
 	// +optional
@@ -82,8 +88,14 @@ type CrawlerSpecS3Target struct {
 	// +optional
 	ConnectionName *string `json:"connectionName,omitempty" tf:"connection_name"`
 	// +optional
+	DlqEventQueueArn *string `json:"dlqEventQueueArn,omitempty" tf:"dlq_event_queue_arn"`
+	// +optional
+	EventQueueArn *string `json:"eventQueueArn,omitempty" tf:"event_queue_arn"`
+	// +optional
 	Exclusions []string `json:"exclusions,omitempty" tf:"exclusions"`
 	Path       *string  `json:"path" tf:"path"`
+	// +optional
+	SampleSize *int64 `json:"sampleSize,omitempty" tf:"sample_size"`
 }
 
 type CrawlerSpecSchemaChangePolicy struct {
@@ -120,6 +132,9 @@ type CrawlerSpecResource struct {
 	// +optional
 	Configuration *string `json:"configuration,omitempty" tf:"configuration"`
 	DatabaseName  *string `json:"databaseName" tf:"database_name"`
+	// +optional
+	// +kubebuilder:validation:MinItems=1
+	DeltaTarget []CrawlerSpecDeltaTarget `json:"deltaTarget,omitempty" tf:"delta_target"`
 	// +optional
 	Description *string `json:"description,omitempty" tf:"description"`
 	// +optional

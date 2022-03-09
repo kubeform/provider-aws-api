@@ -91,7 +91,7 @@ func (r *EnvironmentEc2) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range environmentec2ForceNewList {
+	for key, _ := range environmentec2ForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

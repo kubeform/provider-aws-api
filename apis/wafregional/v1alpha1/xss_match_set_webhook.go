@@ -88,7 +88,7 @@ func (r *XssMatchSet) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range xssmatchsetForceNewList {
+	for key, _ := range xssmatchsetForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

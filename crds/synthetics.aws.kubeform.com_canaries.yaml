@@ -59,6 +59,16 @@ spec:
                 properties:
                   arn:
                     type: string
+                  artifactConfig:
+                    properties:
+                      s3Encryption:
+                        properties:
+                          encryptionMode:
+                            type: string
+                          kmsKeyArn:
+                            type: string
+                        type: object
+                    type: object
                   artifactS3Location:
                     type: string
                   engineArn:
@@ -160,6 +170,16 @@ spec:
                 properties:
                   arn:
                     type: string
+                  artifactConfig:
+                    properties:
+                      s3Encryption:
+                        properties:
+                          encryptionMode:
+                            type: string
+                          kmsKeyArn:
+                            type: string
+                        type: object
+                    type: object
                   artifactS3Location:
                     type: string
                   engineArn:

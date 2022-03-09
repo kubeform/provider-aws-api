@@ -41,6 +41,10 @@ func (c *FakeRedshiftV1alpha1) ParameterGroups(namespace string) v1alpha1.Parame
 	return &FakeParameterGroups{c, namespace}
 }
 
+func (c *FakeRedshiftV1alpha1) ScheduledActions(namespace string) v1alpha1.ScheduledActionInterface {
+	return &FakeScheduledActions{c, namespace}
+}
+
 func (c *FakeRedshiftV1alpha1) SecurityGroups(namespace string) v1alpha1.SecurityGroupInterface {
 	return &FakeSecurityGroups{c, namespace}
 }

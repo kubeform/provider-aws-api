@@ -45,6 +45,10 @@ func (c *FakeDynamodbV1alpha1) TableItems(namespace string) v1alpha1.TableItemIn
 	return &FakeTableItems{c, namespace}
 }
 
+func (c *FakeDynamodbV1alpha1) Tags(namespace string) v1alpha1.TagInterface {
+	return &FakeTags{c, namespace}
+}
+
 // RESTClient returns a RESTClient that is used to communicate
 // with API server by this client implementation.
 func (c *FakeDynamodbV1alpha1) RESTClient() rest.Interface {

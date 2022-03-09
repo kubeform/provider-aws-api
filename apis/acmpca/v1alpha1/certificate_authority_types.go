@@ -134,6 +134,7 @@ type CertificateAuthoritySpecResource struct {
 	// +optional
 	Serial *string `json:"serial,omitempty" tf:"serial"`
 	// +optional
+	// Deprecated
 	Status *string `json:"status,omitempty" tf:"status"`
 	// +optional
 	Tags *map[string]string `json:"tags,omitempty" tf:"tags"`

@@ -27,7 +27,12 @@ import (
 
 type DevicefarmV1alpha1Interface interface {
 	RESTClient() rest.Interface
+	DevicePoolsGetter
+	InstanceProfilesGetter
+	NetworkProfilesGetter
 	ProjectsGetter
+	TestGridProjectsGetter
+	UploadsGetter
 }
 
 // DevicefarmV1alpha1Client is used to interact with features provided by the devicefarm.aws.kubeform.com group.
@@ -35,8 +40,28 @@ type DevicefarmV1alpha1Client struct {
 	restClient rest.Interface
 }
 
+func (c *DevicefarmV1alpha1Client) DevicePools(namespace string) DevicePoolInterface {
+	return newDevicePools(c, namespace)
+}
+
+func (c *DevicefarmV1alpha1Client) InstanceProfiles(namespace string) InstanceProfileInterface {
+	return newInstanceProfiles(c, namespace)
+}
+
+func (c *DevicefarmV1alpha1Client) NetworkProfiles(namespace string) NetworkProfileInterface {
+	return newNetworkProfiles(c, namespace)
+}
+
 func (c *DevicefarmV1alpha1Client) Projects(namespace string) ProjectInterface {
 	return newProjects(c, namespace)
+}
+
+func (c *DevicefarmV1alpha1Client) TestGridProjects(namespace string) TestGridProjectInterface {
+	return newTestGridProjects(c, namespace)
+}
+
+func (c *DevicefarmV1alpha1Client) Uploads(namespace string) UploadInterface {
+	return newUploads(c, namespace)
 }
 
 // NewForConfig creates a new DevicefarmV1alpha1Client for the given config.

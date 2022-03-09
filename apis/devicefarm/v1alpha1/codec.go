@@ -19,15 +19,22 @@ limitations under the License.
 package v1alpha1
 
 import (
+	"unsafe"
+
 	jsoniter "github.com/json-iterator/go"
+	"github.com/modern-go/reflect2"
 )
 
 func GetEncoder() map[string]jsoniter.ValEncoder {
-	return map[string]jsoniter.ValEncoder{}
+	return map[string]jsoniter.ValEncoder{
+		jsoniter.MustGetKind(reflect2.TypeOf(TestGridProjectSpecVpcConfig{}).Type1()): TestGridProjectSpecVpcConfigCodec{},
+	}
 }
 
 func GetDecoder() map[string]jsoniter.ValDecoder {
-	return map[string]jsoniter.ValDecoder{}
+	return map[string]jsoniter.ValDecoder{
+		jsoniter.MustGetKind(reflect2.TypeOf(TestGridProjectSpecVpcConfig{}).Type1()): TestGridProjectSpecVpcConfigCodec{},
+	}
 }
 
 func getEncodersWithout(typ string) map[string]jsoniter.ValEncoder {
@@ -40,4 +47,83 @@ func getDecodersWithout(typ string) map[string]jsoniter.ValDecoder {
 	origMap := GetDecoder()
 	delete(origMap, typ)
 	return origMap
+}
+
+// +k8s:deepcopy-gen=false
+type TestGridProjectSpecVpcConfigCodec struct {
+}
+
+func (TestGridProjectSpecVpcConfigCodec) IsEmpty(ptr unsafe.Pointer) bool {
+	return (*TestGridProjectSpecVpcConfig)(ptr) == nil
+}
+
+func (TestGridProjectSpecVpcConfigCodec) Encode(ptr unsafe.Pointer, stream *jsoniter.Stream) {
+	obj := (*TestGridProjectSpecVpcConfig)(ptr)
+	var objs []TestGridProjectSpecVpcConfig
+	if obj != nil {
+		objs = []TestGridProjectSpecVpcConfig{*obj}
+	}
+
+	jsonit := jsoniter.Config{
+		EscapeHTML:             true,
+		SortMapKeys:            true,
+		ValidateJsonRawMessage: true,
+		TagKey:                 "tf",
+		TypeEncoders:           getEncodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(TestGridProjectSpecVpcConfig{}).Type1())),
+	}.Froze()
+
+	byt, _ := jsonit.Marshal(objs)
+
+	stream.Write(byt)
+}
+
+func (TestGridProjectSpecVpcConfigCodec) Decode(ptr unsafe.Pointer, iter *jsoniter.Iterator) {
+	switch iter.WhatIsNext() {
+	case jsoniter.NilValue:
+		iter.Skip()
+		*(*TestGridProjectSpecVpcConfig)(ptr) = TestGridProjectSpecVpcConfig{}
+		return
+	case jsoniter.ArrayValue:
+		objsByte := iter.SkipAndReturnBytes()
+		if len(objsByte) > 0 {
+			var objs []TestGridProjectSpecVpcConfig
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(TestGridProjectSpecVpcConfig{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objsByte, &objs)
+
+			if len(objs) > 0 {
+				*(*TestGridProjectSpecVpcConfig)(ptr) = objs[0]
+			} else {
+				*(*TestGridProjectSpecVpcConfig)(ptr) = TestGridProjectSpecVpcConfig{}
+			}
+		} else {
+			*(*TestGridProjectSpecVpcConfig)(ptr) = TestGridProjectSpecVpcConfig{}
+		}
+	case jsoniter.ObjectValue:
+		objByte := iter.SkipAndReturnBytes()
+		if len(objByte) > 0 {
+			var obj TestGridProjectSpecVpcConfig
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(TestGridProjectSpecVpcConfig{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objByte, &obj)
+
+			*(*TestGridProjectSpecVpcConfig)(ptr) = obj
+		} else {
+			*(*TestGridProjectSpecVpcConfig)(ptr) = TestGridProjectSpecVpcConfig{}
+		}
+	default:
+		iter.ReportError("decode TestGridProjectSpecVpcConfig", "unexpected JSON type")
+	}
 }

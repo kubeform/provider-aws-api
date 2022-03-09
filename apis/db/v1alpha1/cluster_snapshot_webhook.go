@@ -89,7 +89,7 @@ func (r *ClusterSnapshot) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range clustersnapshotForceNewList {
+	for key, _ := range clustersnapshotForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

@@ -58,6 +58,8 @@ func addKnownTypes(scheme *runtime.Scheme) error {
 	scheme.AddKnownTypes(SchemeGroupVersion,
 		&EnvironmentEc2{},
 		&EnvironmentEc2List{},
+		&EnvironmentMembership{},
+		&EnvironmentMembershipList{},
 	)
 
 	scheme.AddKnownTypes(SchemeGroupVersion,

@@ -27,15 +27,17 @@ import (
 
 func GetEncoder() map[string]jsoniter.ValEncoder {
 	return map[string]jsoniter.ValEncoder{
-		jsoniter.MustGetKind(reflect2.TypeOf(ProductSpecProvisioningArtifactParameters{}).Type1()): ProductSpecProvisioningArtifactParametersCodec{},
-		jsoniter.MustGetKind(reflect2.TypeOf(ServiceActionSpecDefinition{}).Type1()):               ServiceActionSpecDefinitionCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(ProductSpecProvisioningArtifactParameters{}).Type1()):             ProductSpecProvisioningArtifactParametersCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(ProvisionedProductSpecStackSetProvisioningPreferences{}).Type1()): ProvisionedProductSpecStackSetProvisioningPreferencesCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(ServiceActionSpecDefinition{}).Type1()):                           ServiceActionSpecDefinitionCodec{},
 	}
 }
 
 func GetDecoder() map[string]jsoniter.ValDecoder {
 	return map[string]jsoniter.ValDecoder{
-		jsoniter.MustGetKind(reflect2.TypeOf(ProductSpecProvisioningArtifactParameters{}).Type1()): ProductSpecProvisioningArtifactParametersCodec{},
-		jsoniter.MustGetKind(reflect2.TypeOf(ServiceActionSpecDefinition{}).Type1()):               ServiceActionSpecDefinitionCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(ProductSpecProvisioningArtifactParameters{}).Type1()):             ProductSpecProvisioningArtifactParametersCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(ProvisionedProductSpecStackSetProvisioningPreferences{}).Type1()): ProvisionedProductSpecStackSetProvisioningPreferencesCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(ServiceActionSpecDefinition{}).Type1()):                           ServiceActionSpecDefinitionCodec{},
 	}
 }
 
@@ -127,6 +129,85 @@ func (ProductSpecProvisioningArtifactParametersCodec) Decode(ptr unsafe.Pointer,
 		}
 	default:
 		iter.ReportError("decode ProductSpecProvisioningArtifactParameters", "unexpected JSON type")
+	}
+}
+
+// +k8s:deepcopy-gen=false
+type ProvisionedProductSpecStackSetProvisioningPreferencesCodec struct {
+}
+
+func (ProvisionedProductSpecStackSetProvisioningPreferencesCodec) IsEmpty(ptr unsafe.Pointer) bool {
+	return (*ProvisionedProductSpecStackSetProvisioningPreferences)(ptr) == nil
+}
+
+func (ProvisionedProductSpecStackSetProvisioningPreferencesCodec) Encode(ptr unsafe.Pointer, stream *jsoniter.Stream) {
+	obj := (*ProvisionedProductSpecStackSetProvisioningPreferences)(ptr)
+	var objs []ProvisionedProductSpecStackSetProvisioningPreferences
+	if obj != nil {
+		objs = []ProvisionedProductSpecStackSetProvisioningPreferences{*obj}
+	}
+
+	jsonit := jsoniter.Config{
+		EscapeHTML:             true,
+		SortMapKeys:            true,
+		ValidateJsonRawMessage: true,
+		TagKey:                 "tf",
+		TypeEncoders:           getEncodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(ProvisionedProductSpecStackSetProvisioningPreferences{}).Type1())),
+	}.Froze()
+
+	byt, _ := jsonit.Marshal(objs)
+
+	stream.Write(byt)
+}
+
+func (ProvisionedProductSpecStackSetProvisioningPreferencesCodec) Decode(ptr unsafe.Pointer, iter *jsoniter.Iterator) {
+	switch iter.WhatIsNext() {
+	case jsoniter.NilValue:
+		iter.Skip()
+		*(*ProvisionedProductSpecStackSetProvisioningPreferences)(ptr) = ProvisionedProductSpecStackSetProvisioningPreferences{}
+		return
+	case jsoniter.ArrayValue:
+		objsByte := iter.SkipAndReturnBytes()
+		if len(objsByte) > 0 {
+			var objs []ProvisionedProductSpecStackSetProvisioningPreferences
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(ProvisionedProductSpecStackSetProvisioningPreferences{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objsByte, &objs)
+
+			if len(objs) > 0 {
+				*(*ProvisionedProductSpecStackSetProvisioningPreferences)(ptr) = objs[0]
+			} else {
+				*(*ProvisionedProductSpecStackSetProvisioningPreferences)(ptr) = ProvisionedProductSpecStackSetProvisioningPreferences{}
+			}
+		} else {
+			*(*ProvisionedProductSpecStackSetProvisioningPreferences)(ptr) = ProvisionedProductSpecStackSetProvisioningPreferences{}
+		}
+	case jsoniter.ObjectValue:
+		objByte := iter.SkipAndReturnBytes()
+		if len(objByte) > 0 {
+			var obj ProvisionedProductSpecStackSetProvisioningPreferences
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(ProvisionedProductSpecStackSetProvisioningPreferences{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objByte, &obj)
+
+			*(*ProvisionedProductSpecStackSetProvisioningPreferences)(ptr) = obj
+		} else {
+			*(*ProvisionedProductSpecStackSetProvisioningPreferences)(ptr) = ProvisionedProductSpecStackSetProvisioningPreferences{}
+		}
+	default:
+		iter.ReportError("decode ProvisionedProductSpecStackSetProvisioningPreferences", "unexpected JSON type")
 	}
 }
 

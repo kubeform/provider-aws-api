@@ -94,7 +94,7 @@ func (r *CapacityReservation) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range capacityreservationForceNewList {
+	for key, _ := range capacityreservationForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

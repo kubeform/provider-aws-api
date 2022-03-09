@@ -73,6 +73,14 @@ spec:
                     type: string
                   path:
                     type: string
+                  tags:
+                    additionalProperties:
+                      type: string
+                    type: object
+                  tagsAll:
+                    additionalProperties:
+                      type: string
+                    type: object
                   uniqueID:
                     type: string
                 required:
@@ -96,6 +104,14 @@ spec:
                     type: string
                   path:
                     type: string
+                  tags:
+                    additionalProperties:
+                      type: string
+                    type: object
+                  tagsAll:
+                    additionalProperties:
+                      type: string
+                    type: object
                   uniqueID:
                     type: string
                 required:

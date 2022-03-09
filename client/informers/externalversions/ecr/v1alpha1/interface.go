@@ -26,8 +26,12 @@ import (
 type Interface interface {
 	// LifecyclePolicies returns a LifecyclePolicyInformer.
 	LifecyclePolicies() LifecyclePolicyInformer
+	// PullThroughCacheRules returns a PullThroughCacheRuleInformer.
+	PullThroughCacheRules() PullThroughCacheRuleInformer
 	// RegistryPolicies returns a RegistryPolicyInformer.
 	RegistryPolicies() RegistryPolicyInformer
+	// RegistryScanningConfigurations returns a RegistryScanningConfigurationInformer.
+	RegistryScanningConfigurations() RegistryScanningConfigurationInformer
 	// ReplicationConfigurations returns a ReplicationConfigurationInformer.
 	ReplicationConfigurations() ReplicationConfigurationInformer
 	// Repositories returns a RepositoryInformer.
@@ -52,9 +56,19 @@ func (v *version) LifecyclePolicies() LifecyclePolicyInformer {
 	return &lifecyclePolicyInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
 }
 
+// PullThroughCacheRules returns a PullThroughCacheRuleInformer.
+func (v *version) PullThroughCacheRules() PullThroughCacheRuleInformer {
+	return &pullThroughCacheRuleInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
 // RegistryPolicies returns a RegistryPolicyInformer.
 func (v *version) RegistryPolicies() RegistryPolicyInformer {
 	return &registryPolicyInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
+// RegistryScanningConfigurations returns a RegistryScanningConfigurationInformer.
+func (v *version) RegistryScanningConfigurations() RegistryScanningConfigurationInformer {
+	return &registryScanningConfigurationInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
 }
 
 // ReplicationConfigurations returns a ReplicationConfigurationInformer.

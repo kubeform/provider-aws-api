@@ -76,6 +76,17 @@ spec:
                     type: boolean
                   eventSourceArn:
                     type: string
+                  filterCriteria:
+                    properties:
+                      filter:
+                        items:
+                          properties:
+                            pattern:
+                              type: string
+                          type: object
+                        maxItems: 5
+                        type: array
+                    type: object
                   functionArn:
                     type: string
                   functionName:
@@ -169,6 +180,17 @@ spec:
                     type: boolean
                   eventSourceArn:
                     type: string
+                  filterCriteria:
+                    properties:
+                      filter:
+                        items:
+                          properties:
+                            pattern:
+                              type: string
+                          type: object
+                        maxItems: 5
+                        type: array
+                    type: object
                   functionArn:
                     type: string
                   functionName:

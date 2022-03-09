@@ -34,6 +34,14 @@ type ReportGroupListerExpansion interface{}
 // ReportGroupNamespaceLister.
 type ReportGroupNamespaceListerExpansion interface{}
 
+// ResourcePolicyListerExpansion allows custom methods to be added to
+// ResourcePolicyLister.
+type ResourcePolicyListerExpansion interface{}
+
+// ResourcePolicyNamespaceListerExpansion allows custom methods to be added to
+// ResourcePolicyNamespaceLister.
+type ResourcePolicyNamespaceListerExpansion interface{}
+
 // SourceCredentialListerExpansion allows custom methods to be added to
 // SourceCredentialLister.
 type SourceCredentialListerExpansion interface{}

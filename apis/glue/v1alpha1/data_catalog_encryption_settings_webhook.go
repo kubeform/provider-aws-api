@@ -88,7 +88,7 @@ func (r *DataCatalogEncryptionSettings) ValidateUpdate(old runtime.Object) error
 		return err
 	}
 
-	for key := range datacatalogencryptionsettingsForceNewList {
+	for key, _ := range datacatalogencryptionsettingsForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

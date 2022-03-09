@@ -31,6 +31,7 @@ type EbsV1alpha1Interface interface {
 	EncryptionByDefaultsGetter
 	SnapshotsGetter
 	SnapshotCopiesGetter
+	SnapshotImportsGetter
 	VolumesGetter
 }
 
@@ -53,6 +54,10 @@ func (c *EbsV1alpha1Client) Snapshots(namespace string) SnapshotInterface {
 
 func (c *EbsV1alpha1Client) SnapshotCopies(namespace string) SnapshotCopyInterface {
 	return newSnapshotCopies(c, namespace)
+}
+
+func (c *EbsV1alpha1Client) SnapshotImports(namespace string) SnapshotImportInterface {
+	return newSnapshotImports(c, namespace)
 }
 
 func (c *EbsV1alpha1Client) Volumes(namespace string) VolumeInterface {

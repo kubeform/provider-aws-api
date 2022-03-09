@@ -64,6 +64,8 @@ spec:
                   automaticBackupRetentionDays:
                     format: int64
                     type: integer
+                  backupID:
+                    type: string
                   copyTagsToBackups:
                     type: boolean
                   dailyAutomaticBackupStartTime:
@@ -78,6 +80,8 @@ spec:
                     type: string
                   exportPath:
                     type: string
+                  fileSystemTypeVersion:
+                    type: string
                   id:
                     type: string
                   importPath:
@@ -87,6 +91,13 @@ spec:
                     type: integer
                   kmsKeyID:
                     type: string
+                  logConfiguration:
+                    properties:
+                      destination:
+                        type: string
+                      level:
+                        type: string
+                    type: object
                   mountName:
                     type: string
                   networkInterfaceIDS:
@@ -163,7 +174,6 @@ spec:
                   weeklyMaintenanceStartTime:
                     type: string
                 required:
-                - storageCapacity
                 - subnetIDS
                 type: object
               state:
@@ -175,6 +185,8 @@ spec:
                   automaticBackupRetentionDays:
                     format: int64
                     type: integer
+                  backupID:
+                    type: string
                   copyTagsToBackups:
                     type: boolean
                   dailyAutomaticBackupStartTime:
@@ -189,6 +201,8 @@ spec:
                     type: string
                   exportPath:
                     type: string
+                  fileSystemTypeVersion:
+                    type: string
                   id:
                     type: string
                   importPath:
@@ -198,6 +212,13 @@ spec:
                     type: integer
                   kmsKeyID:
                     type: string
+                  logConfiguration:
+                    properties:
+                      destination:
+                        type: string
+                      level:
+                        type: string
+                    type: object
                   mountName:
                     type: string
                   networkInterfaceIDS:
@@ -274,7 +295,6 @@ spec:
                   weeklyMaintenanceStartTime:
                     type: string
                 required:
-                - storageCapacity
                 - subnetIDS
                 type: object
               terminationPolicy:

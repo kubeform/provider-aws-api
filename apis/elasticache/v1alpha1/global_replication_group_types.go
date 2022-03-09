@@ -59,9 +59,6 @@ type GlobalReplicationGroupSpecResource struct {
 	ID string `json:"id,omitempty" tf:"id,omitempty"`
 
 	// +optional
-	// Deprecated
-	ActualEngineVersion *string `json:"actualEngineVersion,omitempty" tf:"actual_engine_version"`
-	// +optional
 	Arn *string `json:"arn,omitempty" tf:"arn"`
 	// +optional
 	AtRestEncryptionEnabled *bool `json:"atRestEncryptionEnabled,omitempty" tf:"at_rest_encryption_enabled"`

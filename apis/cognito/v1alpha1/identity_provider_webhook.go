@@ -90,7 +90,7 @@ func (r *IdentityProvider) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range identityproviderForceNewList {
+	for key, _ := range identityproviderForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

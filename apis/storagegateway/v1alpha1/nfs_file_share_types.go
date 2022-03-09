@@ -79,6 +79,8 @@ type NfsFileShareSpecResource struct {
 	// +optional
 	Arn *string `json:"arn,omitempty" tf:"arn"`
 	// +optional
+	AuditDestinationArn *string `json:"auditDestinationArn,omitempty" tf:"audit_destination_arn"`
+	// +optional
 	CacheAttributes *NfsFileShareSpecCacheAttributes `json:"cacheAttributes,omitempty" tf:"cache_attributes"`
 	// +kubebuilder:validation:MaxItems=100
 	// +kubebuilder:validation:MinItems=1

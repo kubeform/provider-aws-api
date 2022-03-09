@@ -89,7 +89,7 @@ func (r *ResolverQueryLogConfig) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range resolverquerylogconfigForceNewList {
+	for key, _ := range resolverquerylogconfigForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

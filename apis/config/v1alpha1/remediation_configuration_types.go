@@ -41,6 +41,18 @@ type RemediationConfiguration struct {
 	Status            RemediationConfigurationStatus `json:"status,omitempty"`
 }
 
+type RemediationConfigurationSpecExecutionControlsSsmControls struct {
+	// +optional
+	ConcurrentExecutionRatePercentage *int64 `json:"concurrentExecutionRatePercentage,omitempty" tf:"concurrent_execution_rate_percentage"`
+	// +optional
+	ErrorPercentage *int64 `json:"errorPercentage,omitempty" tf:"error_percentage"`
+}
+
+type RemediationConfigurationSpecExecutionControls struct {
+	// +optional
+	SsmControls *RemediationConfigurationSpecExecutionControlsSsmControls `json:"ssmControls,omitempty" tf:"ssm_controls"`
+}
+
 type RemediationConfigurationSpecParameter struct {
 	Name *string `json:"name" tf:"name"`
 	// +optional
@@ -67,15 +79,23 @@ type RemediationConfigurationSpecResource struct {
 	ID string `json:"id,omitempty" tf:"id,omitempty"`
 
 	// +optional
-	Arn            *string `json:"arn,omitempty" tf:"arn"`
+	Arn *string `json:"arn,omitempty" tf:"arn"`
+	// +optional
+	Automatic      *bool   `json:"automatic,omitempty" tf:"automatic"`
 	ConfigRuleName *string `json:"configRuleName" tf:"config_rule_name"`
+	// +optional
+	ExecutionControls *RemediationConfigurationSpecExecutionControls `json:"executionControls,omitempty" tf:"execution_controls"`
+	// +optional
+	MaximumAutomaticAttempts *int64 `json:"maximumAutomaticAttempts,omitempty" tf:"maximum_automatic_attempts"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=25
 	Parameter []RemediationConfigurationSpecParameter `json:"parameter,omitempty" tf:"parameter"`
 	// +optional
 	ResourceType *string `json:"resourceType,omitempty" tf:"resource_type"`
-	TargetID     *string `json:"targetID" tf:"target_id"`
-	TargetType   *string `json:"targetType" tf:"target_type"`
+	// +optional
+	RetryAttemptSeconds *int64  `json:"retryAttemptSeconds,omitempty" tf:"retry_attempt_seconds"`
+	TargetID            *string `json:"targetID" tf:"target_id"`
+	TargetType          *string `json:"targetType" tf:"target_type"`
 	// +optional
 	TargetVersion *string `json:"targetVersion,omitempty" tf:"target_version"`
 }

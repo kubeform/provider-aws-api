@@ -91,7 +91,7 @@ func (r *ProvisioningArtifact) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range provisioningartifactForceNewList {
+	for key, _ := range provisioningartifactForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

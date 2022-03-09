@@ -18,9 +18,15 @@ limitations under the License.
 
 package v1alpha1
 
+type ApiCacheExpansion interface{}
+
 type ApiKeyExpansion interface{}
 
 type DatasourceExpansion interface{}
+
+type DomainNameExpansion interface{}
+
+type DomainNameAPIAssociationExpansion interface{}
 
 type FunctionExpansion interface{}
 

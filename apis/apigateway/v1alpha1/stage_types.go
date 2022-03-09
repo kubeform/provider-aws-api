@@ -91,6 +91,8 @@ type StageSpecResource struct {
 	// +optional
 	Variables *map[string]string `json:"variables,omitempty" tf:"variables"`
 	// +optional
+	WebACLArn *string `json:"webACLArn,omitempty" tf:"web_acl_arn"`
+	// +optional
 	XrayTracingEnabled *bool `json:"xrayTracingEnabled,omitempty" tf:"xray_tracing_enabled"`
 }
 

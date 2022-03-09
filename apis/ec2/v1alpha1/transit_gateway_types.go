@@ -56,6 +56,8 @@ type TransitGatewaySpec struct {
 }
 
 type TransitGatewaySpecResource struct {
+	Timeouts *base.ResourceTimeout `json:"timeouts,omitempty" tf:"timeouts"`
+
 	ID string `json:"id,omitempty" tf:"id,omitempty"`
 
 	// +optional
@@ -75,6 +77,8 @@ type TransitGatewaySpecResource struct {
 	// +optional
 	DnsSupport *string `json:"dnsSupport,omitempty" tf:"dns_support"`
 	// +optional
+	MulticastSupport *string `json:"multicastSupport,omitempty" tf:"multicast_support"`
+	// +optional
 	OwnerID *string `json:"ownerID,omitempty" tf:"owner_id"`
 	// +optional
 	PropagationDefaultRouteTableID *string `json:"propagationDefaultRouteTableID,omitempty" tf:"propagation_default_route_table_id"`
@@ -82,6 +86,9 @@ type TransitGatewaySpecResource struct {
 	Tags *map[string]string `json:"tags,omitempty" tf:"tags"`
 	// +optional
 	TagsAll *map[string]string `json:"tagsAll,omitempty" tf:"tags_all"`
+	// +optional
+	// +kubebuilder:validation:MaxItems=2
+	TransitGatewayCIDRBlocks []string `json:"transitGatewayCIDRBlocks,omitempty" tf:"transit_gateway_cidr_blocks"`
 	// +optional
 	VpnEcmpSupport *string `json:"vpnEcmpSupport,omitempty" tf:"vpn_ecmp_support"`
 }

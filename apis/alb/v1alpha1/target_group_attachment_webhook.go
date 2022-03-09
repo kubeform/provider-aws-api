@@ -91,7 +91,7 @@ func (r *TargetGroupAttachment) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range targetgroupattachmentForceNewList {
+	for key, _ := range targetgroupattachmentForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

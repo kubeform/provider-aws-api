@@ -30,6 +30,8 @@ type Interface interface {
 	EventSubscriptions() EventSubscriptionInformer
 	// ParameterGroups returns a ParameterGroupInformer.
 	ParameterGroups() ParameterGroupInformer
+	// ScheduledActions returns a ScheduledActionInformer.
+	ScheduledActions() ScheduledActionInformer
 	// SecurityGroups returns a SecurityGroupInformer.
 	SecurityGroups() SecurityGroupInformer
 	// SnapshotCopyGrants returns a SnapshotCopyGrantInformer.
@@ -66,6 +68,11 @@ func (v *version) EventSubscriptions() EventSubscriptionInformer {
 // ParameterGroups returns a ParameterGroupInformer.
 func (v *version) ParameterGroups() ParameterGroupInformer {
 	return &parameterGroupInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
+// ScheduledActions returns a ScheduledActionInformer.
+func (v *version) ScheduledActions() ScheduledActionInformer {
+	return &scheduledActionInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
 }
 
 // SecurityGroups returns a SecurityGroupInformer.

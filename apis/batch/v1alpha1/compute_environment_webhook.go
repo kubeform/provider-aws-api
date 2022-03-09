@@ -46,6 +46,8 @@ var computeenvironmentForceNewList = map[string]bool{
 	"/compute_environment_name_prefix":                            true,
 	"/compute_resources/*/allocation_strategy":                    true,
 	"/compute_resources/*/bid_percentage":                         true,
+	"/compute_resources/*/ec2_configuration/*/image_id_override":  true,
+	"/compute_resources/*/ec2_configuration/*/image_type":         true,
 	"/compute_resources/*/ec2_key_pair":                           true,
 	"/compute_resources/*/image_id":                               true,
 	"/compute_resources/*/instance_role":                          true,
@@ -102,7 +104,7 @@ func (r *ComputeEnvironment) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range computeenvironmentForceNewList {
+	for key, _ := range computeenvironmentForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

@@ -89,7 +89,7 @@ func (r *Proxy) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range proxyForceNewList {
+	for key, _ := range proxyForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

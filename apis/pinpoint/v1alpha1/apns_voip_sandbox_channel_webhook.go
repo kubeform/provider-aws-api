@@ -88,7 +88,7 @@ func (r *ApnsVoipSandboxChannel) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range apnsvoipsandboxchannelForceNewList {
+	for key, _ := range apnsvoipsandboxchannelForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

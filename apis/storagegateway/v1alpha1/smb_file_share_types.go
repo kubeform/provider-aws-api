@@ -76,6 +76,8 @@ type SmbFileShareSpecResource struct {
 	// +optional
 	Authentication *string `json:"authentication,omitempty" tf:"authentication"`
 	// +optional
+	BucketRegion *string `json:"bucketRegion,omitempty" tf:"bucket_region"`
+	// +optional
 	CacheAttributes *SmbFileShareSpecCacheAttributes `json:"cacheAttributes,omitempty" tf:"cache_attributes"`
 	// +optional
 	CaseSensitivity *string `json:"caseSensitivity,omitempty" tf:"case_sensitivity"`
@@ -101,6 +103,8 @@ type SmbFileShareSpecResource struct {
 	// +optional
 	ObjectACL *string `json:"objectACL,omitempty" tf:"object_acl"`
 	// +optional
+	OplocksEnabled *bool `json:"oplocksEnabled,omitempty" tf:"oplocks_enabled"`
+	// +optional
 	Path *string `json:"path,omitempty" tf:"path"`
 	// +optional
 	ReadOnly *bool `json:"readOnly,omitempty" tf:"read_only"`
@@ -116,6 +120,8 @@ type SmbFileShareSpecResource struct {
 	// +optional
 	// +kubebuilder:validation:MaxItems=100
 	ValidUserList []string `json:"validUserList,omitempty" tf:"valid_user_list"`
+	// +optional
+	VpcEndpointDNSName *string `json:"vpcEndpointDNSName,omitempty" tf:"vpc_endpoint_dns_name"`
 }
 
 type SmbFileShareStatus struct {

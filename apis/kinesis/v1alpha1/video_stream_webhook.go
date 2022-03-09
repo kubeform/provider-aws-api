@@ -90,7 +90,7 @@ func (r *VideoStream) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range videostreamForceNewList {
+	for key, _ := range videostreamForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

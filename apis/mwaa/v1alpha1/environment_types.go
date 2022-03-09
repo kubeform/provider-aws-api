@@ -142,7 +142,7 @@ type EnvironmentSpecResource struct {
 	ID string `json:"id,omitempty" tf:"id,omitempty"`
 
 	// +optional
-	AirflowConfigurationOptions map[string]string `json:"-" sensitive:"true" tf:"airflow_configuration_options"`
+	AirflowConfigurationOptions *map[string]string `json:"-" sensitive:"true" tf:"airflow_configuration_options"`
 	// +optional
 	AirflowVersion *string `json:"airflowVersion,omitempty" tf:"airflow_version"`
 	// +optional

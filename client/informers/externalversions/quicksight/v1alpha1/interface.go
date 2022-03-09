@@ -24,8 +24,12 @@ import (
 
 // Interface provides access to all the informers in this group version.
 type Interface interface {
+	// DataSources returns a DataSourceInformer.
+	DataSources() DataSourceInformer
 	// Groups returns a GroupInformer.
 	Groups() GroupInformer
+	// GroupMemberships returns a GroupMembershipInformer.
+	GroupMemberships() GroupMembershipInformer
 	// Users returns a UserInformer.
 	Users() UserInformer
 }
@@ -41,9 +45,19 @@ func New(f internalinterfaces.SharedInformerFactory, namespace string, tweakList
 	return &version{factory: f, namespace: namespace, tweakListOptions: tweakListOptions}
 }
 
+// DataSources returns a DataSourceInformer.
+func (v *version) DataSources() DataSourceInformer {
+	return &dataSourceInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
 // Groups returns a GroupInformer.
 func (v *version) Groups() GroupInformer {
 	return &groupInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
+// GroupMemberships returns a GroupMembershipInformer.
+func (v *version) GroupMemberships() GroupMembershipInformer {
+	return &groupMembershipInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
 }
 
 // Users returns a UserInformer.

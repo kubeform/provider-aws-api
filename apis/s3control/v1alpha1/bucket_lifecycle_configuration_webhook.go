@@ -88,7 +88,7 @@ func (r *BucketLifecycleConfiguration) ValidateUpdate(old runtime.Object) error 
 		return err
 	}
 
-	for key := range bucketlifecycleconfigurationForceNewList {
+	for key, _ := range bucketlifecycleconfigurationForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

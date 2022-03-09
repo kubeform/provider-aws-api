@@ -131,7 +131,7 @@ func (r *Preset) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range presetForceNewList {
+	for key, _ := range presetForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

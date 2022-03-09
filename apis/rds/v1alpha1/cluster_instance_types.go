@@ -86,6 +86,8 @@ type ClusterInstanceSpecResource struct {
 	// +optional
 	EngineVersion *string `json:"engineVersion,omitempty" tf:"engine_version"`
 	// +optional
+	EngineVersionActual *string `json:"engineVersionActual,omitempty" tf:"engine_version_actual"`
+	// +optional
 	Identifier *string `json:"identifier,omitempty" tf:"identifier"`
 	// +optional
 	IdentifierPrefix *string `json:"identifierPrefix,omitempty" tf:"identifier_prefix"`
@@ -100,6 +102,8 @@ type ClusterInstanceSpecResource struct {
 	PerformanceInsightsEnabled *bool `json:"performanceInsightsEnabled,omitempty" tf:"performance_insights_enabled"`
 	// +optional
 	PerformanceInsightsKmsKeyID *string `json:"performanceInsightsKmsKeyID,omitempty" tf:"performance_insights_kms_key_id"`
+	// +optional
+	PerformanceInsightsRetentionPeriod *int64 `json:"performanceInsightsRetentionPeriod,omitempty" tf:"performance_insights_retention_period"`
 	// +optional
 	Port *int64 `json:"port,omitempty" tf:"port"`
 	// +optional

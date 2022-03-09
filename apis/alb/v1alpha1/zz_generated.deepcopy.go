@@ -177,6 +177,11 @@ func (in *AlbSpecResource) DeepCopyInto(out *AlbSpecResource) {
 		*out = new(string)
 		**out = **in
 	}
+	if in.DesyncMitigationMode != nil {
+		in, out := &in.DesyncMitigationMode, &out.DesyncMitigationMode
+		*out = new(string)
+		**out = **in
+	}
 	if in.DnsName != nil {
 		in, out := &in.DnsName, &out.DnsName
 		*out = new(string)
@@ -199,6 +204,11 @@ func (in *AlbSpecResource) DeepCopyInto(out *AlbSpecResource) {
 	}
 	if in.EnableHttp2 != nil {
 		in, out := &in.EnableHttp2, &out.EnableHttp2
+		*out = new(bool)
+		**out = **in
+	}
+	if in.EnableWafFailOpen != nil {
+		in, out := &in.EnableWafFailOpen, &out.EnableWafFailOpen
 		*out = new(bool)
 		**out = **in
 	}
@@ -2081,9 +2091,14 @@ func (in *TargetGroupSpecResource) DeepCopyInto(out *TargetGroupSpecResource) {
 		*out = new(string)
 		**out = **in
 	}
+	if in.ConnectionTermination != nil {
+		in, out := &in.ConnectionTermination, &out.ConnectionTermination
+		*out = new(bool)
+		**out = **in
+	}
 	if in.DeregistrationDelay != nil {
 		in, out := &in.DeregistrationDelay, &out.DeregistrationDelay
-		*out = new(int64)
+		*out = new(string)
 		**out = **in
 	}
 	if in.HealthCheck != nil {

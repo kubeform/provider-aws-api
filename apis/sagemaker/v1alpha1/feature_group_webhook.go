@@ -92,7 +92,7 @@ func (r *FeatureGroup) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range featuregroupForceNewList {
+	for key, _ := range featuregroupForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

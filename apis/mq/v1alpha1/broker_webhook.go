@@ -42,13 +42,11 @@ func (r *Broker) SetupWebhookWithManager(mgr ctrl.Manager) error {
 var _ webhook.Validator = &Broker{}
 
 var brokerForceNewList = map[string]bool{
-	"/auto_minor_version_upgrade":             true,
 	"/broker_name":                            true,
 	"/deployment_mode":                        true,
 	"/encryption_options/*/kms_key_id":        true,
 	"/encryption_options/*/use_aws_owned_key": true,
 	"/engine_type":                            true,
-	"/host_instance_type":                     true,
 	"/publicly_accessible":                    true,
 	"/subnet_ids":                             true,
 }
@@ -96,7 +94,7 @@ func (r *Broker) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range brokerForceNewList {
+	for key, _ := range brokerForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

@@ -26,4 +26,6 @@ type ClusterParameterGroupExpansion interface{}
 
 type ClusterSnapshotExpansion interface{}
 
+type GlobalClusterExpansion interface{}
+
 type SubnetGroupExpansion interface{}

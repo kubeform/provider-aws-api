@@ -33,6 +33,10 @@ func (c *FakeCloud9V1alpha1) EnvironmentEc2s(namespace string) v1alpha1.Environm
 	return &FakeEnvironmentEc2s{c, namespace}
 }
 
+func (c *FakeCloud9V1alpha1) EnvironmentMemberships(namespace string) v1alpha1.EnvironmentMembershipInterface {
+	return &FakeEnvironmentMemberships{c, namespace}
+}
+
 // RESTClient returns a RESTClient that is used to communicate
 // with API server by this client implementation.
 func (c *FakeCloud9V1alpha1) RESTClient() rest.Interface {

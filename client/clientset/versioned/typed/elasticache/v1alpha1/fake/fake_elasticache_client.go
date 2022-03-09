@@ -53,6 +53,14 @@ func (c *FakeElasticacheV1alpha1) SubnetGroups(namespace string) v1alpha1.Subnet
 	return &FakeSubnetGroups{c, namespace}
 }
 
+func (c *FakeElasticacheV1alpha1) Users(namespace string) v1alpha1.UserInterface {
+	return &FakeUsers{c, namespace}
+}
+
+func (c *FakeElasticacheV1alpha1) UserGroups(namespace string) v1alpha1.UserGroupInterface {
+	return &FakeUserGroups{c, namespace}
+}
+
 // RESTClient returns a RESTClient that is used to communicate
 // with API server by this client implementation.
 func (c *FakeElasticacheV1alpha1) RESTClient() rest.Interface {

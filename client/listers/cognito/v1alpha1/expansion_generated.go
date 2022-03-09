@@ -26,6 +26,14 @@ type IdentityPoolListerExpansion interface{}
 // IdentityPoolNamespaceLister.
 type IdentityPoolNamespaceListerExpansion interface{}
 
+// IdentityPoolProviderPrincipalTagListerExpansion allows custom methods to be added to
+// IdentityPoolProviderPrincipalTagLister.
+type IdentityPoolProviderPrincipalTagListerExpansion interface{}
+
+// IdentityPoolProviderPrincipalTagNamespaceListerExpansion allows custom methods to be added to
+// IdentityPoolProviderPrincipalTagNamespaceLister.
+type IdentityPoolProviderPrincipalTagNamespaceListerExpansion interface{}
+
 // IdentityPoolRolesAttachmentListerExpansion allows custom methods to be added to
 // IdentityPoolRolesAttachmentLister.
 type IdentityPoolRolesAttachmentListerExpansion interface{}
@@ -49,6 +57,14 @@ type ResourceServerListerExpansion interface{}
 // ResourceServerNamespaceListerExpansion allows custom methods to be added to
 // ResourceServerNamespaceLister.
 type ResourceServerNamespaceListerExpansion interface{}
+
+// UserListerExpansion allows custom methods to be added to
+// UserLister.
+type UserListerExpansion interface{}
+
+// UserNamespaceListerExpansion allows custom methods to be added to
+// UserNamespaceLister.
+type UserNamespaceListerExpansion interface{}
 
 // UserGroupListerExpansion allows custom methods to be added to
 // UserGroupLister.

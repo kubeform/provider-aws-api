@@ -90,7 +90,7 @@ func (r *VirtualRouter) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range virtualrouterForceNewList {
+	for key, _ := range virtualrouterForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

@@ -82,6 +82,14 @@ type ProductPortfolioAssociationListerExpansion interface{}
 // ProductPortfolioAssociationNamespaceLister.
 type ProductPortfolioAssociationNamespaceListerExpansion interface{}
 
+// ProvisionedProductListerExpansion allows custom methods to be added to
+// ProvisionedProductLister.
+type ProvisionedProductListerExpansion interface{}
+
+// ProvisionedProductNamespaceListerExpansion allows custom methods to be added to
+// ProvisionedProductNamespaceLister.
+type ProvisionedProductNamespaceListerExpansion interface{}
+
 // ProvisioningArtifactListerExpansion allows custom methods to be added to
 // ProvisioningArtifactLister.
 type ProvisioningArtifactListerExpansion interface{}

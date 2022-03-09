@@ -91,7 +91,7 @@ func (r *ScheduledAction) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range scheduledactionForceNewList {
+	for key, _ := range scheduledactionForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

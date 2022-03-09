@@ -27,17 +27,21 @@ import (
 
 func GetEncoder() map[string]jsoniter.ValEncoder {
 	return map[string]jsoniter.ValEncoder{
-		jsoniter.MustGetKind(reflect2.TypeOf(CanarySpecRunConfig{}).Type1()): CanarySpecRunConfigCodec{},
-		jsoniter.MustGetKind(reflect2.TypeOf(CanarySpecSchedule{}).Type1()):  CanarySpecScheduleCodec{},
-		jsoniter.MustGetKind(reflect2.TypeOf(CanarySpecVpcConfig{}).Type1()): CanarySpecVpcConfigCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(CanarySpecArtifactConfig{}).Type1()):             CanarySpecArtifactConfigCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(CanarySpecArtifactConfigS3Encryption{}).Type1()): CanarySpecArtifactConfigS3EncryptionCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(CanarySpecRunConfig{}).Type1()):                  CanarySpecRunConfigCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(CanarySpecSchedule{}).Type1()):                   CanarySpecScheduleCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(CanarySpecVpcConfig{}).Type1()):                  CanarySpecVpcConfigCodec{},
 	}
 }
 
 func GetDecoder() map[string]jsoniter.ValDecoder {
 	return map[string]jsoniter.ValDecoder{
-		jsoniter.MustGetKind(reflect2.TypeOf(CanarySpecRunConfig{}).Type1()): CanarySpecRunConfigCodec{},
-		jsoniter.MustGetKind(reflect2.TypeOf(CanarySpecSchedule{}).Type1()):  CanarySpecScheduleCodec{},
-		jsoniter.MustGetKind(reflect2.TypeOf(CanarySpecVpcConfig{}).Type1()): CanarySpecVpcConfigCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(CanarySpecArtifactConfig{}).Type1()):             CanarySpecArtifactConfigCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(CanarySpecArtifactConfigS3Encryption{}).Type1()): CanarySpecArtifactConfigS3EncryptionCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(CanarySpecRunConfig{}).Type1()):                  CanarySpecRunConfigCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(CanarySpecSchedule{}).Type1()):                   CanarySpecScheduleCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(CanarySpecVpcConfig{}).Type1()):                  CanarySpecVpcConfigCodec{},
 	}
 }
 
@@ -51,6 +55,164 @@ func getDecodersWithout(typ string) map[string]jsoniter.ValDecoder {
 	origMap := GetDecoder()
 	delete(origMap, typ)
 	return origMap
+}
+
+// +k8s:deepcopy-gen=false
+type CanarySpecArtifactConfigCodec struct {
+}
+
+func (CanarySpecArtifactConfigCodec) IsEmpty(ptr unsafe.Pointer) bool {
+	return (*CanarySpecArtifactConfig)(ptr) == nil
+}
+
+func (CanarySpecArtifactConfigCodec) Encode(ptr unsafe.Pointer, stream *jsoniter.Stream) {
+	obj := (*CanarySpecArtifactConfig)(ptr)
+	var objs []CanarySpecArtifactConfig
+	if obj != nil {
+		objs = []CanarySpecArtifactConfig{*obj}
+	}
+
+	jsonit := jsoniter.Config{
+		EscapeHTML:             true,
+		SortMapKeys:            true,
+		ValidateJsonRawMessage: true,
+		TagKey:                 "tf",
+		TypeEncoders:           getEncodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(CanarySpecArtifactConfig{}).Type1())),
+	}.Froze()
+
+	byt, _ := jsonit.Marshal(objs)
+
+	stream.Write(byt)
+}
+
+func (CanarySpecArtifactConfigCodec) Decode(ptr unsafe.Pointer, iter *jsoniter.Iterator) {
+	switch iter.WhatIsNext() {
+	case jsoniter.NilValue:
+		iter.Skip()
+		*(*CanarySpecArtifactConfig)(ptr) = CanarySpecArtifactConfig{}
+		return
+	case jsoniter.ArrayValue:
+		objsByte := iter.SkipAndReturnBytes()
+		if len(objsByte) > 0 {
+			var objs []CanarySpecArtifactConfig
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(CanarySpecArtifactConfig{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objsByte, &objs)
+
+			if len(objs) > 0 {
+				*(*CanarySpecArtifactConfig)(ptr) = objs[0]
+			} else {
+				*(*CanarySpecArtifactConfig)(ptr) = CanarySpecArtifactConfig{}
+			}
+		} else {
+			*(*CanarySpecArtifactConfig)(ptr) = CanarySpecArtifactConfig{}
+		}
+	case jsoniter.ObjectValue:
+		objByte := iter.SkipAndReturnBytes()
+		if len(objByte) > 0 {
+			var obj CanarySpecArtifactConfig
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(CanarySpecArtifactConfig{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objByte, &obj)
+
+			*(*CanarySpecArtifactConfig)(ptr) = obj
+		} else {
+			*(*CanarySpecArtifactConfig)(ptr) = CanarySpecArtifactConfig{}
+		}
+	default:
+		iter.ReportError("decode CanarySpecArtifactConfig", "unexpected JSON type")
+	}
+}
+
+// +k8s:deepcopy-gen=false
+type CanarySpecArtifactConfigS3EncryptionCodec struct {
+}
+
+func (CanarySpecArtifactConfigS3EncryptionCodec) IsEmpty(ptr unsafe.Pointer) bool {
+	return (*CanarySpecArtifactConfigS3Encryption)(ptr) == nil
+}
+
+func (CanarySpecArtifactConfigS3EncryptionCodec) Encode(ptr unsafe.Pointer, stream *jsoniter.Stream) {
+	obj := (*CanarySpecArtifactConfigS3Encryption)(ptr)
+	var objs []CanarySpecArtifactConfigS3Encryption
+	if obj != nil {
+		objs = []CanarySpecArtifactConfigS3Encryption{*obj}
+	}
+
+	jsonit := jsoniter.Config{
+		EscapeHTML:             true,
+		SortMapKeys:            true,
+		ValidateJsonRawMessage: true,
+		TagKey:                 "tf",
+		TypeEncoders:           getEncodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(CanarySpecArtifactConfigS3Encryption{}).Type1())),
+	}.Froze()
+
+	byt, _ := jsonit.Marshal(objs)
+
+	stream.Write(byt)
+}
+
+func (CanarySpecArtifactConfigS3EncryptionCodec) Decode(ptr unsafe.Pointer, iter *jsoniter.Iterator) {
+	switch iter.WhatIsNext() {
+	case jsoniter.NilValue:
+		iter.Skip()
+		*(*CanarySpecArtifactConfigS3Encryption)(ptr) = CanarySpecArtifactConfigS3Encryption{}
+		return
+	case jsoniter.ArrayValue:
+		objsByte := iter.SkipAndReturnBytes()
+		if len(objsByte) > 0 {
+			var objs []CanarySpecArtifactConfigS3Encryption
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(CanarySpecArtifactConfigS3Encryption{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objsByte, &objs)
+
+			if len(objs) > 0 {
+				*(*CanarySpecArtifactConfigS3Encryption)(ptr) = objs[0]
+			} else {
+				*(*CanarySpecArtifactConfigS3Encryption)(ptr) = CanarySpecArtifactConfigS3Encryption{}
+			}
+		} else {
+			*(*CanarySpecArtifactConfigS3Encryption)(ptr) = CanarySpecArtifactConfigS3Encryption{}
+		}
+	case jsoniter.ObjectValue:
+		objByte := iter.SkipAndReturnBytes()
+		if len(objByte) > 0 {
+			var obj CanarySpecArtifactConfigS3Encryption
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(CanarySpecArtifactConfigS3Encryption{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objByte, &obj)
+
+			*(*CanarySpecArtifactConfigS3Encryption)(ptr) = obj
+		} else {
+			*(*CanarySpecArtifactConfigS3Encryption)(ptr) = CanarySpecArtifactConfigS3Encryption{}
+		}
+	default:
+		iter.ReportError("decode CanarySpecArtifactConfigS3Encryption", "unexpected JSON type")
+	}
 }
 
 // +k8s:deepcopy-gen=false

@@ -74,6 +74,8 @@ type SetSpecResource struct {
 	// +optional
 	AutoDeployment *SetSpecAutoDeployment `json:"autoDeployment,omitempty" tf:"auto_deployment"`
 	// +optional
+	CallAs *string `json:"callAs,omitempty" tf:"call_as"`
+	// +optional
 	Capabilities []string `json:"capabilities,omitempty" tf:"capabilities"`
 	// +optional
 	Description *string `json:"description,omitempty" tf:"description"`

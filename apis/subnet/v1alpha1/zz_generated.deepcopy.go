@@ -156,6 +156,21 @@ func (in *SubnetSpecResource) DeepCopyInto(out *SubnetSpecResource) {
 		*out = new(string)
 		**out = **in
 	}
+	if in.EnableDns64 != nil {
+		in, out := &in.EnableDns64, &out.EnableDns64
+		*out = new(bool)
+		**out = **in
+	}
+	if in.EnableResourceNameDNSARecordOnLaunch != nil {
+		in, out := &in.EnableResourceNameDNSARecordOnLaunch, &out.EnableResourceNameDNSARecordOnLaunch
+		*out = new(bool)
+		**out = **in
+	}
+	if in.EnableResourceNameDNSAaaaRecordOnLaunch != nil {
+		in, out := &in.EnableResourceNameDNSAaaaRecordOnLaunch, &out.EnableResourceNameDNSAaaaRecordOnLaunch
+		*out = new(bool)
+		**out = **in
+	}
 	if in.Ipv6CIDRBlock != nil {
 		in, out := &in.Ipv6CIDRBlock, &out.Ipv6CIDRBlock
 		*out = new(string)
@@ -164,6 +179,11 @@ func (in *SubnetSpecResource) DeepCopyInto(out *SubnetSpecResource) {
 	if in.Ipv6CIDRBlockAssociationID != nil {
 		in, out := &in.Ipv6CIDRBlockAssociationID, &out.Ipv6CIDRBlockAssociationID
 		*out = new(string)
+		**out = **in
+	}
+	if in.Ipv6Native != nil {
+		in, out := &in.Ipv6Native, &out.Ipv6Native
+		*out = new(bool)
 		**out = **in
 	}
 	if in.MapCustomerOwnedIPOnLaunch != nil {
@@ -183,6 +203,11 @@ func (in *SubnetSpecResource) DeepCopyInto(out *SubnetSpecResource) {
 	}
 	if in.OwnerID != nil {
 		in, out := &in.OwnerID, &out.OwnerID
+		*out = new(string)
+		**out = **in
+	}
+	if in.PrivateDNSHostnameTypeOnLaunch != nil {
+		in, out := &in.PrivateDNSHostnameTypeOnLaunch, &out.PrivateDNSHostnameTypeOnLaunch
 		*out = new(string)
 		**out = **in
 	}

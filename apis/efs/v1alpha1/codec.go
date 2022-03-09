@@ -31,7 +31,6 @@ func GetEncoder() map[string]jsoniter.ValEncoder {
 		jsoniter.MustGetKind(reflect2.TypeOf(AccessPointSpecRootDirectory{}).Type1()):             AccessPointSpecRootDirectoryCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(AccessPointSpecRootDirectoryCreationInfo{}).Type1()): AccessPointSpecRootDirectoryCreationInfoCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(BackupPolicySpecBackupPolicy{}).Type1()):             BackupPolicySpecBackupPolicyCodec{},
-		jsoniter.MustGetKind(reflect2.TypeOf(FileSystemSpecLifecyclePolicy{}).Type1()):            FileSystemSpecLifecyclePolicyCodec{},
 	}
 }
 
@@ -41,7 +40,6 @@ func GetDecoder() map[string]jsoniter.ValDecoder {
 		jsoniter.MustGetKind(reflect2.TypeOf(AccessPointSpecRootDirectory{}).Type1()):             AccessPointSpecRootDirectoryCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(AccessPointSpecRootDirectoryCreationInfo{}).Type1()): AccessPointSpecRootDirectoryCreationInfoCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(BackupPolicySpecBackupPolicy{}).Type1()):             BackupPolicySpecBackupPolicyCodec{},
-		jsoniter.MustGetKind(reflect2.TypeOf(FileSystemSpecLifecyclePolicy{}).Type1()):            FileSystemSpecLifecyclePolicyCodec{},
 	}
 }
 
@@ -370,84 +368,5 @@ func (BackupPolicySpecBackupPolicyCodec) Decode(ptr unsafe.Pointer, iter *jsonit
 		}
 	default:
 		iter.ReportError("decode BackupPolicySpecBackupPolicy", "unexpected JSON type")
-	}
-}
-
-// +k8s:deepcopy-gen=false
-type FileSystemSpecLifecyclePolicyCodec struct {
-}
-
-func (FileSystemSpecLifecyclePolicyCodec) IsEmpty(ptr unsafe.Pointer) bool {
-	return (*FileSystemSpecLifecyclePolicy)(ptr) == nil
-}
-
-func (FileSystemSpecLifecyclePolicyCodec) Encode(ptr unsafe.Pointer, stream *jsoniter.Stream) {
-	obj := (*FileSystemSpecLifecyclePolicy)(ptr)
-	var objs []FileSystemSpecLifecyclePolicy
-	if obj != nil {
-		objs = []FileSystemSpecLifecyclePolicy{*obj}
-	}
-
-	jsonit := jsoniter.Config{
-		EscapeHTML:             true,
-		SortMapKeys:            true,
-		ValidateJsonRawMessage: true,
-		TagKey:                 "tf",
-		TypeEncoders:           getEncodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(FileSystemSpecLifecyclePolicy{}).Type1())),
-	}.Froze()
-
-	byt, _ := jsonit.Marshal(objs)
-
-	stream.Write(byt)
-}
-
-func (FileSystemSpecLifecyclePolicyCodec) Decode(ptr unsafe.Pointer, iter *jsoniter.Iterator) {
-	switch iter.WhatIsNext() {
-	case jsoniter.NilValue:
-		iter.Skip()
-		*(*FileSystemSpecLifecyclePolicy)(ptr) = FileSystemSpecLifecyclePolicy{}
-		return
-	case jsoniter.ArrayValue:
-		objsByte := iter.SkipAndReturnBytes()
-		if len(objsByte) > 0 {
-			var objs []FileSystemSpecLifecyclePolicy
-
-			jsonit := jsoniter.Config{
-				EscapeHTML:             true,
-				SortMapKeys:            true,
-				ValidateJsonRawMessage: true,
-				TagKey:                 "tf",
-				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(FileSystemSpecLifecyclePolicy{}).Type1())),
-			}.Froze()
-			jsonit.Unmarshal(objsByte, &objs)
-
-			if len(objs) > 0 {
-				*(*FileSystemSpecLifecyclePolicy)(ptr) = objs[0]
-			} else {
-				*(*FileSystemSpecLifecyclePolicy)(ptr) = FileSystemSpecLifecyclePolicy{}
-			}
-		} else {
-			*(*FileSystemSpecLifecyclePolicy)(ptr) = FileSystemSpecLifecyclePolicy{}
-		}
-	case jsoniter.ObjectValue:
-		objByte := iter.SkipAndReturnBytes()
-		if len(objByte) > 0 {
-			var obj FileSystemSpecLifecyclePolicy
-
-			jsonit := jsoniter.Config{
-				EscapeHTML:             true,
-				SortMapKeys:            true,
-				ValidateJsonRawMessage: true,
-				TagKey:                 "tf",
-				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(FileSystemSpecLifecyclePolicy{}).Type1())),
-			}.Froze()
-			jsonit.Unmarshal(objByte, &obj)
-
-			*(*FileSystemSpecLifecyclePolicy)(ptr) = obj
-		} else {
-			*(*FileSystemSpecLifecyclePolicy)(ptr) = FileSystemSpecLifecyclePolicy{}
-		}
-	default:
-		iter.ReportError("decode FileSystemSpecLifecyclePolicy", "unexpected JSON type")
 	}
 }

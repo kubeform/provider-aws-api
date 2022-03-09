@@ -29,6 +29,7 @@ type AutoscalingV1alpha1Interface interface {
 	RESTClient() rest.Interface
 	AttachmentsGetter
 	GroupsGetter
+	GroupTagsGetter
 	LifecycleHooksGetter
 	NotificationsGetter
 	PoliciesGetter
@@ -46,6 +47,10 @@ func (c *AutoscalingV1alpha1Client) Attachments(namespace string) AttachmentInte
 
 func (c *AutoscalingV1alpha1Client) Groups(namespace string) GroupInterface {
 	return newGroups(c, namespace)
+}
+
+func (c *AutoscalingV1alpha1Client) GroupTags(namespace string) GroupTagInterface {
+	return newGroupTags(c, namespace)
 }
 
 func (c *AutoscalingV1alpha1Client) LifecycleHooks(namespace string) LifecycleHookInterface {

@@ -250,6 +250,8 @@ spec:
                     type: object
                   zookeeperConnectString:
                     type: string
+                  zookeeperConnectStringTls:
+                    type: string
                 required:
                 - brokerNodeGroupInfo
                 - clusterName
@@ -450,6 +452,8 @@ spec:
                         type: integer
                     type: object
                   zookeeperConnectString:
+                    type: string
+                  zookeeperConnectStringTls:
                     type: string
                 required:
                 - brokerNodeGroupInfo

@@ -45,8 +45,10 @@ type DomainNameSpecDomainNameConfiguration struct {
 	CertificateArn *string `json:"certificateArn" tf:"certificate_arn"`
 	EndpointType   *string `json:"endpointType" tf:"endpoint_type"`
 	// +optional
-	HostedZoneID   *string `json:"hostedZoneID,omitempty" tf:"hosted_zone_id"`
-	SecurityPolicy *string `json:"securityPolicy" tf:"security_policy"`
+	HostedZoneID *string `json:"hostedZoneID,omitempty" tf:"hosted_zone_id"`
+	// +optional
+	OwnershipVerificationCertificateArn *string `json:"ownershipVerificationCertificateArn,omitempty" tf:"ownership_verification_certificate_arn"`
+	SecurityPolicy                      *string `json:"securityPolicy" tf:"security_policy"`
 	// +optional
 	TargetDomainName *string `json:"targetDomainName,omitempty" tf:"target_domain_name"`
 }

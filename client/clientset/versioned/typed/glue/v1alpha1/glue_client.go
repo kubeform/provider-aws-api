@@ -37,6 +37,7 @@ type GlueV1alpha1Interface interface {
 	JobsGetter
 	MlTransformsGetter
 	PartitionsGetter
+	PartitionIndexesGetter
 	RegistriesGetter
 	ResourcePoliciesGetter
 	SchemasGetter
@@ -89,6 +90,10 @@ func (c *GlueV1alpha1Client) MlTransforms(namespace string) MlTransformInterface
 
 func (c *GlueV1alpha1Client) Partitions(namespace string) PartitionInterface {
 	return newPartitions(c, namespace)
+}
+
+func (c *GlueV1alpha1Client) PartitionIndexes(namespace string) PartitionIndexInterface {
+	return newPartitionIndexes(c, namespace)
 }
 
 func (c *GlueV1alpha1Client) Registries(namespace string) RegistryInterface {

@@ -88,7 +88,7 @@ func (r *ReplicationSubnetGroup) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range replicationsubnetgroupForceNewList {
+	for key, _ := range replicationsubnetgroupForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

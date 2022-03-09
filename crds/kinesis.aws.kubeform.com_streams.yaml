@@ -79,6 +79,13 @@ spec:
                     items:
                       type: string
                     type: array
+                  streamModeDetails:
+                    properties:
+                      streamMode:
+                        type: string
+                    required:
+                    - streamMode
+                    type: object
                   tags:
                     additionalProperties:
                       type: string
@@ -127,7 +134,6 @@ spec:
                     type: object
                 required:
                 - name
-                - shardCount
                 type: object
               state:
                 properties:
@@ -153,6 +159,13 @@ spec:
                     items:
                       type: string
                     type: array
+                  streamModeDetails:
+                    properties:
+                      streamMode:
+                        type: string
+                    required:
+                    - streamMode
+                    type: object
                   tags:
                     additionalProperties:
                       type: string
@@ -201,7 +214,6 @@ spec:
                     type: object
                 required:
                 - name
-                - shardCount
                 type: object
               terminationPolicy:
                 enum:

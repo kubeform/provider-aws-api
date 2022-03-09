@@ -32,6 +32,8 @@ type ConformancePackExpansion interface{}
 
 type DeliveryChannelExpansion interface{}
 
+type OrganizationConformancePackExpansion interface{}
+
 type OrganizationCustomRuleExpansion interface{}
 
 type OrganizationManagedRuleExpansion interface{}

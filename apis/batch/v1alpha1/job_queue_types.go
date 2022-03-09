@@ -59,12 +59,13 @@ type JobQueueSpecResource struct {
 	ID string `json:"id,omitempty" tf:"id,omitempty"`
 
 	// +optional
-	Arn *string `json:"arn,omitempty" tf:"arn"`
-	// +kubebuilder:validation:MaxItems=3
+	Arn                 *string  `json:"arn,omitempty" tf:"arn"`
 	ComputeEnvironments []string `json:"computeEnvironments" tf:"compute_environments"`
 	Name                *string  `json:"name" tf:"name"`
 	Priority            *int64   `json:"priority" tf:"priority"`
-	State               *string  `json:"state" tf:"state"`
+	// +optional
+	SchedulingPolicyArn *string `json:"schedulingPolicyArn,omitempty" tf:"scheduling_policy_arn"`
+	State               *string `json:"state" tf:"state"`
 	// +optional
 	Tags *map[string]string `json:"tags,omitempty" tf:"tags"`
 	// +optional

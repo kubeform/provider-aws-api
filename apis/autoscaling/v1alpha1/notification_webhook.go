@@ -88,7 +88,7 @@ func (r *Notification) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range notificationForceNewList {
+	for key, _ := range notificationForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

@@ -89,7 +89,7 @@ func (r *WebACLLoggingConfiguration) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range webaclloggingconfigurationForceNewList {
+	for key, _ := range webaclloggingconfigurationForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

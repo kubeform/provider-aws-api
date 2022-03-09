@@ -91,7 +91,7 @@ func (r *KeyPair) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range keypairForceNewList {
+	for key, _ := range keypairForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

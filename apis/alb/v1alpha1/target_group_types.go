@@ -94,7 +94,9 @@ type TargetGroupSpecResource struct {
 	// +optional
 	ArnSuffix *string `json:"arnSuffix,omitempty" tf:"arn_suffix"`
 	// +optional
-	DeregistrationDelay *int64 `json:"deregistrationDelay,omitempty" tf:"deregistration_delay"`
+	ConnectionTermination *bool `json:"connectionTermination,omitempty" tf:"connection_termination"`
+	// +optional
+	DeregistrationDelay *string `json:"deregistrationDelay,omitempty" tf:"deregistration_delay"`
 	// +optional
 	HealthCheck *TargetGroupSpecHealthCheck `json:"healthCheck,omitempty" tf:"health_check"`
 	// +optional

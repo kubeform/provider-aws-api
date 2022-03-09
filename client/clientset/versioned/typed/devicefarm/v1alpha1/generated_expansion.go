@@ -18,4 +18,14 @@ limitations under the License.
 
 package v1alpha1
 
+type DevicePoolExpansion interface{}
+
+type InstanceProfileExpansion interface{}
+
+type NetworkProfileExpansion interface{}
+
 type ProjectExpansion interface{}
+
+type TestGridProjectExpansion interface{}
+
+type UploadExpansion interface{}

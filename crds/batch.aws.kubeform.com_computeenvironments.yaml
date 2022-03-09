@@ -73,6 +73,13 @@ spec:
                       desiredVcpus:
                         format: int64
                         type: integer
+                      ec2Configuration:
+                        properties:
+                          imageIDOverride:
+                            type: string
+                          imageType:
+                            type: string
+                        type: object
                       ec2KeyPair:
                         type: string
                       imageID:
@@ -163,6 +170,13 @@ spec:
                       desiredVcpus:
                         format: int64
                         type: integer
+                      ec2Configuration:
+                        properties:
+                          imageIDOverride:
+                            type: string
+                          imageType:
+                            type: string
+                        type: object
                       ec2KeyPair:
                         type: string
                       imageID:

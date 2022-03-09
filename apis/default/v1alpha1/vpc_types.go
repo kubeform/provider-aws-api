@@ -81,11 +81,21 @@ type VpcSpecResource struct {
 	// +optional
 	EnableDNSSupport *bool `json:"enableDNSSupport,omitempty" tf:"enable_dns_support"`
 	// +optional
+	ExistingDefaultVpc *bool `json:"existingDefaultVpc,omitempty" tf:"existing_default_vpc"`
+	// +optional
+	ForceDestroy *bool `json:"forceDestroy,omitempty" tf:"force_destroy"`
+	// +optional
 	InstanceTenancy *string `json:"instanceTenancy,omitempty" tf:"instance_tenancy"`
 	// +optional
 	Ipv6AssociationID *string `json:"ipv6AssociationID,omitempty" tf:"ipv6_association_id"`
 	// +optional
 	Ipv6CIDRBlock *string `json:"ipv6CIDRBlock,omitempty" tf:"ipv6_cidr_block"`
+	// +optional
+	Ipv6CIDRBlockNetworkBorderGroup *string `json:"ipv6CIDRBlockNetworkBorderGroup,omitempty" tf:"ipv6_cidr_block_network_border_group"`
+	// +optional
+	Ipv6IpamPoolID *string `json:"ipv6IpamPoolID,omitempty" tf:"ipv6_ipam_pool_id"`
+	// +optional
+	Ipv6NetmaskLength *int64 `json:"ipv6NetmaskLength,omitempty" tf:"ipv6_netmask_length"`
 	// +optional
 	MainRouteTableID *string `json:"mainRouteTableID,omitempty" tf:"main_route_table_id"`
 	// +optional

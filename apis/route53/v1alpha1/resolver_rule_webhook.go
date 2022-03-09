@@ -89,7 +89,7 @@ func (r *ResolverRule) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range resolverruleForceNewList {
+	for key, _ := range resolverruleForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

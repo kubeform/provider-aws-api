@@ -66,6 +66,10 @@ func addKnownTypes(scheme *runtime.Scheme) error {
 		&ManagedScalingPolicyList{},
 		&SecurityConfiguration{},
 		&SecurityConfigurationList{},
+		&Studio{},
+		&StudioList{},
+		&StudioSessionMapping{},
+		&StudioSessionMappingList{},
 	)
 
 	scheme.AddKnownTypes(SchemeGroupVersion,

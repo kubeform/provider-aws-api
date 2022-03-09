@@ -59,6 +59,8 @@ type AuthorizerSpecResource struct {
 	ID string `json:"id,omitempty" tf:"id,omitempty"`
 
 	// +optional
+	Arn *string `json:"arn,omitempty" tf:"arn"`
+	// +optional
 	AuthorizerCredentials *string `json:"authorizerCredentials,omitempty" tf:"authorizer_credentials"`
 	// +optional
 	AuthorizerResultTtlInSeconds *int64 `json:"authorizerResultTtlInSeconds,omitempty" tf:"authorizer_result_ttl_in_seconds"`

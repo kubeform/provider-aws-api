@@ -89,7 +89,7 @@ func (r *CatalogDatabase) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range catalogdatabaseForceNewList {
+	for key, _ := range catalogdatabaseForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

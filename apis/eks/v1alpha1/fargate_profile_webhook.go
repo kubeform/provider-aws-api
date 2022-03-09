@@ -93,7 +93,7 @@ func (r *FargateProfile) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range fargateprofileForceNewList {
+	for key, _ := range fargateprofileForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

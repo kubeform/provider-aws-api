@@ -63,11 +63,14 @@ type UserLoginProfileSpecResource struct {
 	// +optional
 	KeyFingerprint *string `json:"keyFingerprint,omitempty" tf:"key_fingerprint"`
 	// +optional
+	Password *string `json:"password,omitempty" tf:"password"`
+	// +optional
 	PasswordLength *int64 `json:"passwordLength,omitempty" tf:"password_length"`
 	// +optional
-	PasswordResetRequired *bool   `json:"passwordResetRequired,omitempty" tf:"password_reset_required"`
-	PgpKey                *string `json:"pgpKey" tf:"pgp_key"`
-	User                  *string `json:"user" tf:"user"`
+	PasswordResetRequired *bool `json:"passwordResetRequired,omitempty" tf:"password_reset_required"`
+	// +optional
+	PgpKey *string `json:"pgpKey,omitempty" tf:"pgp_key"`
+	User   *string `json:"user" tf:"user"`
 }
 
 type UserLoginProfileStatus struct {

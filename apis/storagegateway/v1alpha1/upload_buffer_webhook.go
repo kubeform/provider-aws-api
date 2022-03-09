@@ -90,7 +90,7 @@ func (r *UploadBuffer) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range uploadbufferForceNewList {
+	for key, _ := range uploadbufferForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

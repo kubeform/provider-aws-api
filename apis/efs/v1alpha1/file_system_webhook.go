@@ -92,7 +92,7 @@ func (r *FileSystem) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range filesystemForceNewList {
+	for key, _ := range filesystemForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

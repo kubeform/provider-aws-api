@@ -22,6 +22,7 @@ import (
 	"fmt"
 
 	accessanalyzerv1alpha1 "kubeform.dev/provider-aws-api/client/clientset/versioned/typed/accessanalyzer/v1alpha1"
+	accountv1alpha1 "kubeform.dev/provider-aws-api/client/clientset/versioned/typed/account/v1alpha1"
 	acmv1alpha1 "kubeform.dev/provider-aws-api/client/clientset/versioned/typed/acm/v1alpha1"
 	acmpcav1alpha1 "kubeform.dev/provider-aws-api/client/clientset/versioned/typed/acmpca/v1alpha1"
 	albv1alpha1 "kubeform.dev/provider-aws-api/client/clientset/versioned/typed/alb/v1alpha1"
@@ -31,8 +32,10 @@ import (
 	apigatewayv2v1alpha1 "kubeform.dev/provider-aws-api/client/clientset/versioned/typed/apigatewayv2/v1alpha1"
 	appv1alpha1 "kubeform.dev/provider-aws-api/client/clientset/versioned/typed/app/v1alpha1"
 	appautoscalingv1alpha1 "kubeform.dev/provider-aws-api/client/clientset/versioned/typed/appautoscaling/v1alpha1"
+	appconfigv1alpha1 "kubeform.dev/provider-aws-api/client/clientset/versioned/typed/appconfig/v1alpha1"
 	appmeshv1alpha1 "kubeform.dev/provider-aws-api/client/clientset/versioned/typed/appmesh/v1alpha1"
 	apprunnerv1alpha1 "kubeform.dev/provider-aws-api/client/clientset/versioned/typed/apprunner/v1alpha1"
+	appstreamv1alpha1 "kubeform.dev/provider-aws-api/client/clientset/versioned/typed/appstream/v1alpha1"
 	appsyncv1alpha1 "kubeform.dev/provider-aws-api/client/clientset/versioned/typed/appsync/v1alpha1"
 	athenav1alpha1 "kubeform.dev/provider-aws-api/client/clientset/versioned/typed/athena/v1alpha1"
 	autoscalingv1alpha1 "kubeform.dev/provider-aws-api/client/clientset/versioned/typed/autoscaling/v1alpha1"
@@ -40,11 +43,14 @@ import (
 	backupv1alpha1 "kubeform.dev/provider-aws-api/client/clientset/versioned/typed/backup/v1alpha1"
 	batchv1alpha1 "kubeform.dev/provider-aws-api/client/clientset/versioned/typed/batch/v1alpha1"
 	budgetsv1alpha1 "kubeform.dev/provider-aws-api/client/clientset/versioned/typed/budgets/v1alpha1"
+	chimev1alpha1 "kubeform.dev/provider-aws-api/client/clientset/versioned/typed/chime/v1alpha1"
 	cloud9v1alpha1 "kubeform.dev/provider-aws-api/client/clientset/versioned/typed/cloud9/v1alpha1"
+	cloudcontrolapiv1alpha1 "kubeform.dev/provider-aws-api/client/clientset/versioned/typed/cloudcontrolapi/v1alpha1"
 	cloudformationstackv1alpha1 "kubeform.dev/provider-aws-api/client/clientset/versioned/typed/cloudformationstack/v1alpha1"
 	cloudformationtypev1alpha1 "kubeform.dev/provider-aws-api/client/clientset/versioned/typed/cloudformationtype/v1alpha1"
 	cloudfrontv1alpha1 "kubeform.dev/provider-aws-api/client/clientset/versioned/typed/cloudfront/v1alpha1"
 	cloudhsmv2v1alpha1 "kubeform.dev/provider-aws-api/client/clientset/versioned/typed/cloudhsmv2/v1alpha1"
+	cloudsearchv1alpha1 "kubeform.dev/provider-aws-api/client/clientset/versioned/typed/cloudsearch/v1alpha1"
 	cloudtrailv1alpha1 "kubeform.dev/provider-aws-api/client/clientset/versioned/typed/cloudtrail/v1alpha1"
 	cloudwatchv1alpha1 "kubeform.dev/provider-aws-api/client/clientset/versioned/typed/cloudwatch/v1alpha1"
 	codeartifactv1alpha1 "kubeform.dev/provider-aws-api/client/clientset/versioned/typed/codeartifact/v1alpha1"
@@ -56,13 +62,16 @@ import (
 	codestarnotificationsv1alpha1 "kubeform.dev/provider-aws-api/client/clientset/versioned/typed/codestarnotifications/v1alpha1"
 	cognitov1alpha1 "kubeform.dev/provider-aws-api/client/clientset/versioned/typed/cognito/v1alpha1"
 	configv1alpha1 "kubeform.dev/provider-aws-api/client/clientset/versioned/typed/config/v1alpha1"
+	connectv1alpha1 "kubeform.dev/provider-aws-api/client/clientset/versioned/typed/connect/v1alpha1"
 	curv1alpha1 "kubeform.dev/provider-aws-api/client/clientset/versioned/typed/cur/v1alpha1"
 	customerv1alpha1 "kubeform.dev/provider-aws-api/client/clientset/versioned/typed/customer/v1alpha1"
+	dataexchangev1alpha1 "kubeform.dev/provider-aws-api/client/clientset/versioned/typed/dataexchange/v1alpha1"
 	datapipelinev1alpha1 "kubeform.dev/provider-aws-api/client/clientset/versioned/typed/datapipeline/v1alpha1"
 	datasyncv1alpha1 "kubeform.dev/provider-aws-api/client/clientset/versioned/typed/datasync/v1alpha1"
 	daxv1alpha1 "kubeform.dev/provider-aws-api/client/clientset/versioned/typed/dax/v1alpha1"
 	dbv1alpha1 "kubeform.dev/provider-aws-api/client/clientset/versioned/typed/db/v1alpha1"
 	defaultv1alpha1 "kubeform.dev/provider-aws-api/client/clientset/versioned/typed/default/v1alpha1"
+	detectivev1alpha1 "kubeform.dev/provider-aws-api/client/clientset/versioned/typed/detective/v1alpha1"
 	devicefarmv1alpha1 "kubeform.dev/provider-aws-api/client/clientset/versioned/typed/devicefarm/v1alpha1"
 	directoryservicev1alpha1 "kubeform.dev/provider-aws-api/client/clientset/versioned/typed/directoryservice/v1alpha1"
 	dlmv1alpha1 "kubeform.dev/provider-aws-api/client/clientset/versioned/typed/dlm/v1alpha1"
@@ -92,6 +101,7 @@ import (
 	glaciervaultv1alpha1 "kubeform.dev/provider-aws-api/client/clientset/versioned/typed/glaciervault/v1alpha1"
 	globalacceleratorv1alpha1 "kubeform.dev/provider-aws-api/client/clientset/versioned/typed/globalaccelerator/v1alpha1"
 	gluev1alpha1 "kubeform.dev/provider-aws-api/client/clientset/versioned/typed/glue/v1alpha1"
+	grafanav1alpha1 "kubeform.dev/provider-aws-api/client/clientset/versioned/typed/grafana/v1alpha1"
 	guarddutyv1alpha1 "kubeform.dev/provider-aws-api/client/clientset/versioned/typed/guardduty/v1alpha1"
 	iamv1alpha1 "kubeform.dev/provider-aws-api/client/clientset/versioned/typed/iam/v1alpha1"
 	imagebuilderv1alpha1 "kubeform.dev/provider-aws-api/client/clientset/versioned/typed/imagebuilder/v1alpha1"
@@ -115,8 +125,10 @@ import (
 	macie2v1alpha1 "kubeform.dev/provider-aws-api/client/clientset/versioned/typed/macie2/v1alpha1"
 	mainv1alpha1 "kubeform.dev/provider-aws-api/client/clientset/versioned/typed/main/v1alpha1"
 	mediav1alpha1 "kubeform.dev/provider-aws-api/client/clientset/versioned/typed/media/v1alpha1"
+	memorydbv1alpha1 "kubeform.dev/provider-aws-api/client/clientset/versioned/typed/memorydb/v1alpha1"
 	mqv1alpha1 "kubeform.dev/provider-aws-api/client/clientset/versioned/typed/mq/v1alpha1"
 	mskv1alpha1 "kubeform.dev/provider-aws-api/client/clientset/versioned/typed/msk/v1alpha1"
+	mskconnectv1alpha1 "kubeform.dev/provider-aws-api/client/clientset/versioned/typed/mskconnect/v1alpha1"
 	mwaav1alpha1 "kubeform.dev/provider-aws-api/client/clientset/versioned/typed/mwaa/v1alpha1"
 	natv1alpha1 "kubeform.dev/provider-aws-api/client/clientset/versioned/typed/nat/v1alpha1"
 	neptunev1alpha1 "kubeform.dev/provider-aws-api/client/clientset/versioned/typed/neptune/v1alpha1"
@@ -136,6 +148,9 @@ import (
 	resourcegroupsv1alpha1 "kubeform.dev/provider-aws-api/client/clientset/versioned/typed/resourcegroups/v1alpha1"
 	routev1alpha1 "kubeform.dev/provider-aws-api/client/clientset/versioned/typed/route/v1alpha1"
 	route53v1alpha1 "kubeform.dev/provider-aws-api/client/clientset/versioned/typed/route53/v1alpha1"
+	route53domainsv1alpha1 "kubeform.dev/provider-aws-api/client/clientset/versioned/typed/route53domains/v1alpha1"
+	route53recoverycontrolconfigv1alpha1 "kubeform.dev/provider-aws-api/client/clientset/versioned/typed/route53recoverycontrolconfig/v1alpha1"
+	route53recoveryreadinessv1alpha1 "kubeform.dev/provider-aws-api/client/clientset/versioned/typed/route53recoveryreadiness/v1alpha1"
 	s3v1alpha1 "kubeform.dev/provider-aws-api/client/clientset/versioned/typed/s3/v1alpha1"
 	s3controlv1alpha1 "kubeform.dev/provider-aws-api/client/clientset/versioned/typed/s3control/v1alpha1"
 	s3outpostsv1alpha1 "kubeform.dev/provider-aws-api/client/clientset/versioned/typed/s3outposts/v1alpha1"
@@ -183,6 +198,7 @@ import (
 type Interface interface {
 	Discovery() discovery.DiscoveryInterface
 	AccessanalyzerV1alpha1() accessanalyzerv1alpha1.AccessanalyzerV1alpha1Interface
+	AccountV1alpha1() accountv1alpha1.AccountV1alpha1Interface
 	AcmV1alpha1() acmv1alpha1.AcmV1alpha1Interface
 	AcmpcaV1alpha1() acmpcav1alpha1.AcmpcaV1alpha1Interface
 	AlbV1alpha1() albv1alpha1.AlbV1alpha1Interface
@@ -192,8 +208,10 @@ type Interface interface {
 	Apigatewayv2V1alpha1() apigatewayv2v1alpha1.Apigatewayv2V1alpha1Interface
 	AppV1alpha1() appv1alpha1.AppV1alpha1Interface
 	AppautoscalingV1alpha1() appautoscalingv1alpha1.AppautoscalingV1alpha1Interface
+	AppconfigV1alpha1() appconfigv1alpha1.AppconfigV1alpha1Interface
 	AppmeshV1alpha1() appmeshv1alpha1.AppmeshV1alpha1Interface
 	ApprunnerV1alpha1() apprunnerv1alpha1.ApprunnerV1alpha1Interface
+	AppstreamV1alpha1() appstreamv1alpha1.AppstreamV1alpha1Interface
 	AppsyncV1alpha1() appsyncv1alpha1.AppsyncV1alpha1Interface
 	AthenaV1alpha1() athenav1alpha1.AthenaV1alpha1Interface
 	AutoscalingV1alpha1() autoscalingv1alpha1.AutoscalingV1alpha1Interface
@@ -201,11 +219,14 @@ type Interface interface {
 	BackupV1alpha1() backupv1alpha1.BackupV1alpha1Interface
 	BatchV1alpha1() batchv1alpha1.BatchV1alpha1Interface
 	BudgetsV1alpha1() budgetsv1alpha1.BudgetsV1alpha1Interface
+	ChimeV1alpha1() chimev1alpha1.ChimeV1alpha1Interface
 	Cloud9V1alpha1() cloud9v1alpha1.Cloud9V1alpha1Interface
+	CloudcontrolapiV1alpha1() cloudcontrolapiv1alpha1.CloudcontrolapiV1alpha1Interface
 	CloudformationstackV1alpha1() cloudformationstackv1alpha1.CloudformationstackV1alpha1Interface
 	CloudformationtypeV1alpha1() cloudformationtypev1alpha1.CloudformationtypeV1alpha1Interface
 	CloudfrontV1alpha1() cloudfrontv1alpha1.CloudfrontV1alpha1Interface
 	Cloudhsmv2V1alpha1() cloudhsmv2v1alpha1.Cloudhsmv2V1alpha1Interface
+	CloudsearchV1alpha1() cloudsearchv1alpha1.CloudsearchV1alpha1Interface
 	CloudtrailV1alpha1() cloudtrailv1alpha1.CloudtrailV1alpha1Interface
 	CloudwatchV1alpha1() cloudwatchv1alpha1.CloudwatchV1alpha1Interface
 	CodeartifactV1alpha1() codeartifactv1alpha1.CodeartifactV1alpha1Interface
@@ -217,13 +238,16 @@ type Interface interface {
 	CodestarnotificationsV1alpha1() codestarnotificationsv1alpha1.CodestarnotificationsV1alpha1Interface
 	CognitoV1alpha1() cognitov1alpha1.CognitoV1alpha1Interface
 	ConfigV1alpha1() configv1alpha1.ConfigV1alpha1Interface
+	ConnectV1alpha1() connectv1alpha1.ConnectV1alpha1Interface
 	CurV1alpha1() curv1alpha1.CurV1alpha1Interface
 	CustomerV1alpha1() customerv1alpha1.CustomerV1alpha1Interface
+	DataexchangeV1alpha1() dataexchangev1alpha1.DataexchangeV1alpha1Interface
 	DatapipelineV1alpha1() datapipelinev1alpha1.DatapipelineV1alpha1Interface
 	DatasyncV1alpha1() datasyncv1alpha1.DatasyncV1alpha1Interface
 	DaxV1alpha1() daxv1alpha1.DaxV1alpha1Interface
 	DbV1alpha1() dbv1alpha1.DbV1alpha1Interface
 	DefaultV1alpha1() defaultv1alpha1.DefaultV1alpha1Interface
+	DetectiveV1alpha1() detectivev1alpha1.DetectiveV1alpha1Interface
 	DevicefarmV1alpha1() devicefarmv1alpha1.DevicefarmV1alpha1Interface
 	DirectoryserviceV1alpha1() directoryservicev1alpha1.DirectoryserviceV1alpha1Interface
 	DlmV1alpha1() dlmv1alpha1.DlmV1alpha1Interface
@@ -253,6 +277,7 @@ type Interface interface {
 	GlaciervaultV1alpha1() glaciervaultv1alpha1.GlaciervaultV1alpha1Interface
 	GlobalacceleratorV1alpha1() globalacceleratorv1alpha1.GlobalacceleratorV1alpha1Interface
 	GlueV1alpha1() gluev1alpha1.GlueV1alpha1Interface
+	GrafanaV1alpha1() grafanav1alpha1.GrafanaV1alpha1Interface
 	GuarddutyV1alpha1() guarddutyv1alpha1.GuarddutyV1alpha1Interface
 	IamV1alpha1() iamv1alpha1.IamV1alpha1Interface
 	ImagebuilderV1alpha1() imagebuilderv1alpha1.ImagebuilderV1alpha1Interface
@@ -276,8 +301,10 @@ type Interface interface {
 	Macie2V1alpha1() macie2v1alpha1.Macie2V1alpha1Interface
 	MainV1alpha1() mainv1alpha1.MainV1alpha1Interface
 	MediaV1alpha1() mediav1alpha1.MediaV1alpha1Interface
+	MemorydbV1alpha1() memorydbv1alpha1.MemorydbV1alpha1Interface
 	MqV1alpha1() mqv1alpha1.MqV1alpha1Interface
 	MskV1alpha1() mskv1alpha1.MskV1alpha1Interface
+	MskconnectV1alpha1() mskconnectv1alpha1.MskconnectV1alpha1Interface
 	MwaaV1alpha1() mwaav1alpha1.MwaaV1alpha1Interface
 	NatV1alpha1() natv1alpha1.NatV1alpha1Interface
 	NeptuneV1alpha1() neptunev1alpha1.NeptuneV1alpha1Interface
@@ -297,6 +324,9 @@ type Interface interface {
 	ResourcegroupsV1alpha1() resourcegroupsv1alpha1.ResourcegroupsV1alpha1Interface
 	RouteV1alpha1() routev1alpha1.RouteV1alpha1Interface
 	Route53V1alpha1() route53v1alpha1.Route53V1alpha1Interface
+	Route53domainsV1alpha1() route53domainsv1alpha1.Route53domainsV1alpha1Interface
+	Route53recoverycontrolconfigV1alpha1() route53recoverycontrolconfigv1alpha1.Route53recoverycontrolconfigV1alpha1Interface
+	Route53recoveryreadinessV1alpha1() route53recoveryreadinessv1alpha1.Route53recoveryreadinessV1alpha1Interface
 	S3V1alpha1() s3v1alpha1.S3V1alpha1Interface
 	S3controlV1alpha1() s3controlv1alpha1.S3controlV1alpha1Interface
 	S3outpostsV1alpha1() s3outpostsv1alpha1.S3outpostsV1alpha1Interface
@@ -342,6 +372,7 @@ type Interface interface {
 type Clientset struct {
 	*discovery.DiscoveryClient
 	accessanalyzerV1alpha1                  *accessanalyzerv1alpha1.AccessanalyzerV1alpha1Client
+	accountV1alpha1                         *accountv1alpha1.AccountV1alpha1Client
 	acmV1alpha1                             *acmv1alpha1.AcmV1alpha1Client
 	acmpcaV1alpha1                          *acmpcav1alpha1.AcmpcaV1alpha1Client
 	albV1alpha1                             *albv1alpha1.AlbV1alpha1Client
@@ -351,8 +382,10 @@ type Clientset struct {
 	apigatewayv2V1alpha1                    *apigatewayv2v1alpha1.Apigatewayv2V1alpha1Client
 	appV1alpha1                             *appv1alpha1.AppV1alpha1Client
 	appautoscalingV1alpha1                  *appautoscalingv1alpha1.AppautoscalingV1alpha1Client
+	appconfigV1alpha1                       *appconfigv1alpha1.AppconfigV1alpha1Client
 	appmeshV1alpha1                         *appmeshv1alpha1.AppmeshV1alpha1Client
 	apprunnerV1alpha1                       *apprunnerv1alpha1.ApprunnerV1alpha1Client
+	appstreamV1alpha1                       *appstreamv1alpha1.AppstreamV1alpha1Client
 	appsyncV1alpha1                         *appsyncv1alpha1.AppsyncV1alpha1Client
 	athenaV1alpha1                          *athenav1alpha1.AthenaV1alpha1Client
 	autoscalingV1alpha1                     *autoscalingv1alpha1.AutoscalingV1alpha1Client
@@ -360,11 +393,14 @@ type Clientset struct {
 	backupV1alpha1                          *backupv1alpha1.BackupV1alpha1Client
 	batchV1alpha1                           *batchv1alpha1.BatchV1alpha1Client
 	budgetsV1alpha1                         *budgetsv1alpha1.BudgetsV1alpha1Client
+	chimeV1alpha1                           *chimev1alpha1.ChimeV1alpha1Client
 	cloud9V1alpha1                          *cloud9v1alpha1.Cloud9V1alpha1Client
+	cloudcontrolapiV1alpha1                 *cloudcontrolapiv1alpha1.CloudcontrolapiV1alpha1Client
 	cloudformationstackV1alpha1             *cloudformationstackv1alpha1.CloudformationstackV1alpha1Client
 	cloudformationtypeV1alpha1              *cloudformationtypev1alpha1.CloudformationtypeV1alpha1Client
 	cloudfrontV1alpha1                      *cloudfrontv1alpha1.CloudfrontV1alpha1Client
 	cloudhsmv2V1alpha1                      *cloudhsmv2v1alpha1.Cloudhsmv2V1alpha1Client
+	cloudsearchV1alpha1                     *cloudsearchv1alpha1.CloudsearchV1alpha1Client
 	cloudtrailV1alpha1                      *cloudtrailv1alpha1.CloudtrailV1alpha1Client
 	cloudwatchV1alpha1                      *cloudwatchv1alpha1.CloudwatchV1alpha1Client
 	codeartifactV1alpha1                    *codeartifactv1alpha1.CodeartifactV1alpha1Client
@@ -376,13 +412,16 @@ type Clientset struct {
 	codestarnotificationsV1alpha1           *codestarnotificationsv1alpha1.CodestarnotificationsV1alpha1Client
 	cognitoV1alpha1                         *cognitov1alpha1.CognitoV1alpha1Client
 	configV1alpha1                          *configv1alpha1.ConfigV1alpha1Client
+	connectV1alpha1                         *connectv1alpha1.ConnectV1alpha1Client
 	curV1alpha1                             *curv1alpha1.CurV1alpha1Client
 	customerV1alpha1                        *customerv1alpha1.CustomerV1alpha1Client
+	dataexchangeV1alpha1                    *dataexchangev1alpha1.DataexchangeV1alpha1Client
 	datapipelineV1alpha1                    *datapipelinev1alpha1.DatapipelineV1alpha1Client
 	datasyncV1alpha1                        *datasyncv1alpha1.DatasyncV1alpha1Client
 	daxV1alpha1                             *daxv1alpha1.DaxV1alpha1Client
 	dbV1alpha1                              *dbv1alpha1.DbV1alpha1Client
 	defaultV1alpha1                         *defaultv1alpha1.DefaultV1alpha1Client
+	detectiveV1alpha1                       *detectivev1alpha1.DetectiveV1alpha1Client
 	devicefarmV1alpha1                      *devicefarmv1alpha1.DevicefarmV1alpha1Client
 	directoryserviceV1alpha1                *directoryservicev1alpha1.DirectoryserviceV1alpha1Client
 	dlmV1alpha1                             *dlmv1alpha1.DlmV1alpha1Client
@@ -412,6 +451,7 @@ type Clientset struct {
 	glaciervaultV1alpha1                    *glaciervaultv1alpha1.GlaciervaultV1alpha1Client
 	globalacceleratorV1alpha1               *globalacceleratorv1alpha1.GlobalacceleratorV1alpha1Client
 	glueV1alpha1                            *gluev1alpha1.GlueV1alpha1Client
+	grafanaV1alpha1                         *grafanav1alpha1.GrafanaV1alpha1Client
 	guarddutyV1alpha1                       *guarddutyv1alpha1.GuarddutyV1alpha1Client
 	iamV1alpha1                             *iamv1alpha1.IamV1alpha1Client
 	imagebuilderV1alpha1                    *imagebuilderv1alpha1.ImagebuilderV1alpha1Client
@@ -435,8 +475,10 @@ type Clientset struct {
 	macie2V1alpha1                          *macie2v1alpha1.Macie2V1alpha1Client
 	mainV1alpha1                            *mainv1alpha1.MainV1alpha1Client
 	mediaV1alpha1                           *mediav1alpha1.MediaV1alpha1Client
+	memorydbV1alpha1                        *memorydbv1alpha1.MemorydbV1alpha1Client
 	mqV1alpha1                              *mqv1alpha1.MqV1alpha1Client
 	mskV1alpha1                             *mskv1alpha1.MskV1alpha1Client
+	mskconnectV1alpha1                      *mskconnectv1alpha1.MskconnectV1alpha1Client
 	mwaaV1alpha1                            *mwaav1alpha1.MwaaV1alpha1Client
 	natV1alpha1                             *natv1alpha1.NatV1alpha1Client
 	neptuneV1alpha1                         *neptunev1alpha1.NeptuneV1alpha1Client
@@ -456,6 +498,9 @@ type Clientset struct {
 	resourcegroupsV1alpha1                  *resourcegroupsv1alpha1.ResourcegroupsV1alpha1Client
 	routeV1alpha1                           *routev1alpha1.RouteV1alpha1Client
 	route53V1alpha1                         *route53v1alpha1.Route53V1alpha1Client
+	route53domainsV1alpha1                  *route53domainsv1alpha1.Route53domainsV1alpha1Client
+	route53recoverycontrolconfigV1alpha1    *route53recoverycontrolconfigv1alpha1.Route53recoverycontrolconfigV1alpha1Client
+	route53recoveryreadinessV1alpha1        *route53recoveryreadinessv1alpha1.Route53recoveryreadinessV1alpha1Client
 	s3V1alpha1                              *s3v1alpha1.S3V1alpha1Client
 	s3controlV1alpha1                       *s3controlv1alpha1.S3controlV1alpha1Client
 	s3outpostsV1alpha1                      *s3outpostsv1alpha1.S3outpostsV1alpha1Client
@@ -499,6 +544,11 @@ type Clientset struct {
 // AccessanalyzerV1alpha1 retrieves the AccessanalyzerV1alpha1Client
 func (c *Clientset) AccessanalyzerV1alpha1() accessanalyzerv1alpha1.AccessanalyzerV1alpha1Interface {
 	return c.accessanalyzerV1alpha1
+}
+
+// AccountV1alpha1 retrieves the AccountV1alpha1Client
+func (c *Clientset) AccountV1alpha1() accountv1alpha1.AccountV1alpha1Interface {
+	return c.accountV1alpha1
 }
 
 // AcmV1alpha1 retrieves the AcmV1alpha1Client
@@ -546,6 +596,11 @@ func (c *Clientset) AppautoscalingV1alpha1() appautoscalingv1alpha1.Appautoscali
 	return c.appautoscalingV1alpha1
 }
 
+// AppconfigV1alpha1 retrieves the AppconfigV1alpha1Client
+func (c *Clientset) AppconfigV1alpha1() appconfigv1alpha1.AppconfigV1alpha1Interface {
+	return c.appconfigV1alpha1
+}
+
 // AppmeshV1alpha1 retrieves the AppmeshV1alpha1Client
 func (c *Clientset) AppmeshV1alpha1() appmeshv1alpha1.AppmeshV1alpha1Interface {
 	return c.appmeshV1alpha1
@@ -554,6 +609,11 @@ func (c *Clientset) AppmeshV1alpha1() appmeshv1alpha1.AppmeshV1alpha1Interface {
 // ApprunnerV1alpha1 retrieves the ApprunnerV1alpha1Client
 func (c *Clientset) ApprunnerV1alpha1() apprunnerv1alpha1.ApprunnerV1alpha1Interface {
 	return c.apprunnerV1alpha1
+}
+
+// AppstreamV1alpha1 retrieves the AppstreamV1alpha1Client
+func (c *Clientset) AppstreamV1alpha1() appstreamv1alpha1.AppstreamV1alpha1Interface {
+	return c.appstreamV1alpha1
 }
 
 // AppsyncV1alpha1 retrieves the AppsyncV1alpha1Client
@@ -591,9 +651,19 @@ func (c *Clientset) BudgetsV1alpha1() budgetsv1alpha1.BudgetsV1alpha1Interface {
 	return c.budgetsV1alpha1
 }
 
+// ChimeV1alpha1 retrieves the ChimeV1alpha1Client
+func (c *Clientset) ChimeV1alpha1() chimev1alpha1.ChimeV1alpha1Interface {
+	return c.chimeV1alpha1
+}
+
 // Cloud9V1alpha1 retrieves the Cloud9V1alpha1Client
 func (c *Clientset) Cloud9V1alpha1() cloud9v1alpha1.Cloud9V1alpha1Interface {
 	return c.cloud9V1alpha1
+}
+
+// CloudcontrolapiV1alpha1 retrieves the CloudcontrolapiV1alpha1Client
+func (c *Clientset) CloudcontrolapiV1alpha1() cloudcontrolapiv1alpha1.CloudcontrolapiV1alpha1Interface {
+	return c.cloudcontrolapiV1alpha1
 }
 
 // CloudformationstackV1alpha1 retrieves the CloudformationstackV1alpha1Client
@@ -614,6 +684,11 @@ func (c *Clientset) CloudfrontV1alpha1() cloudfrontv1alpha1.CloudfrontV1alpha1In
 // Cloudhsmv2V1alpha1 retrieves the Cloudhsmv2V1alpha1Client
 func (c *Clientset) Cloudhsmv2V1alpha1() cloudhsmv2v1alpha1.Cloudhsmv2V1alpha1Interface {
 	return c.cloudhsmv2V1alpha1
+}
+
+// CloudsearchV1alpha1 retrieves the CloudsearchV1alpha1Client
+func (c *Clientset) CloudsearchV1alpha1() cloudsearchv1alpha1.CloudsearchV1alpha1Interface {
+	return c.cloudsearchV1alpha1
 }
 
 // CloudtrailV1alpha1 retrieves the CloudtrailV1alpha1Client
@@ -671,6 +746,11 @@ func (c *Clientset) ConfigV1alpha1() configv1alpha1.ConfigV1alpha1Interface {
 	return c.configV1alpha1
 }
 
+// ConnectV1alpha1 retrieves the ConnectV1alpha1Client
+func (c *Clientset) ConnectV1alpha1() connectv1alpha1.ConnectV1alpha1Interface {
+	return c.connectV1alpha1
+}
+
 // CurV1alpha1 retrieves the CurV1alpha1Client
 func (c *Clientset) CurV1alpha1() curv1alpha1.CurV1alpha1Interface {
 	return c.curV1alpha1
@@ -679,6 +759,11 @@ func (c *Clientset) CurV1alpha1() curv1alpha1.CurV1alpha1Interface {
 // CustomerV1alpha1 retrieves the CustomerV1alpha1Client
 func (c *Clientset) CustomerV1alpha1() customerv1alpha1.CustomerV1alpha1Interface {
 	return c.customerV1alpha1
+}
+
+// DataexchangeV1alpha1 retrieves the DataexchangeV1alpha1Client
+func (c *Clientset) DataexchangeV1alpha1() dataexchangev1alpha1.DataexchangeV1alpha1Interface {
+	return c.dataexchangeV1alpha1
 }
 
 // DatapipelineV1alpha1 retrieves the DatapipelineV1alpha1Client
@@ -704,6 +789,11 @@ func (c *Clientset) DbV1alpha1() dbv1alpha1.DbV1alpha1Interface {
 // DefaultV1alpha1 retrieves the DefaultV1alpha1Client
 func (c *Clientset) DefaultV1alpha1() defaultv1alpha1.DefaultV1alpha1Interface {
 	return c.defaultV1alpha1
+}
+
+// DetectiveV1alpha1 retrieves the DetectiveV1alpha1Client
+func (c *Clientset) DetectiveV1alpha1() detectivev1alpha1.DetectiveV1alpha1Interface {
+	return c.detectiveV1alpha1
 }
 
 // DevicefarmV1alpha1 retrieves the DevicefarmV1alpha1Client
@@ -851,6 +941,11 @@ func (c *Clientset) GlueV1alpha1() gluev1alpha1.GlueV1alpha1Interface {
 	return c.glueV1alpha1
 }
 
+// GrafanaV1alpha1 retrieves the GrafanaV1alpha1Client
+func (c *Clientset) GrafanaV1alpha1() grafanav1alpha1.GrafanaV1alpha1Interface {
+	return c.grafanaV1alpha1
+}
+
 // GuarddutyV1alpha1 retrieves the GuarddutyV1alpha1Client
 func (c *Clientset) GuarddutyV1alpha1() guarddutyv1alpha1.GuarddutyV1alpha1Interface {
 	return c.guarddutyV1alpha1
@@ -966,6 +1061,11 @@ func (c *Clientset) MediaV1alpha1() mediav1alpha1.MediaV1alpha1Interface {
 	return c.mediaV1alpha1
 }
 
+// MemorydbV1alpha1 retrieves the MemorydbV1alpha1Client
+func (c *Clientset) MemorydbV1alpha1() memorydbv1alpha1.MemorydbV1alpha1Interface {
+	return c.memorydbV1alpha1
+}
+
 // MqV1alpha1 retrieves the MqV1alpha1Client
 func (c *Clientset) MqV1alpha1() mqv1alpha1.MqV1alpha1Interface {
 	return c.mqV1alpha1
@@ -974,6 +1074,11 @@ func (c *Clientset) MqV1alpha1() mqv1alpha1.MqV1alpha1Interface {
 // MskV1alpha1 retrieves the MskV1alpha1Client
 func (c *Clientset) MskV1alpha1() mskv1alpha1.MskV1alpha1Interface {
 	return c.mskV1alpha1
+}
+
+// MskconnectV1alpha1 retrieves the MskconnectV1alpha1Client
+func (c *Clientset) MskconnectV1alpha1() mskconnectv1alpha1.MskconnectV1alpha1Interface {
+	return c.mskconnectV1alpha1
 }
 
 // MwaaV1alpha1 retrieves the MwaaV1alpha1Client
@@ -1069,6 +1174,21 @@ func (c *Clientset) RouteV1alpha1() routev1alpha1.RouteV1alpha1Interface {
 // Route53V1alpha1 retrieves the Route53V1alpha1Client
 func (c *Clientset) Route53V1alpha1() route53v1alpha1.Route53V1alpha1Interface {
 	return c.route53V1alpha1
+}
+
+// Route53domainsV1alpha1 retrieves the Route53domainsV1alpha1Client
+func (c *Clientset) Route53domainsV1alpha1() route53domainsv1alpha1.Route53domainsV1alpha1Interface {
+	return c.route53domainsV1alpha1
+}
+
+// Route53recoverycontrolconfigV1alpha1 retrieves the Route53recoverycontrolconfigV1alpha1Client
+func (c *Clientset) Route53recoverycontrolconfigV1alpha1() route53recoverycontrolconfigv1alpha1.Route53recoverycontrolconfigV1alpha1Interface {
+	return c.route53recoverycontrolconfigV1alpha1
+}
+
+// Route53recoveryreadinessV1alpha1 retrieves the Route53recoveryreadinessV1alpha1Client
+func (c *Clientset) Route53recoveryreadinessV1alpha1() route53recoveryreadinessv1alpha1.Route53recoveryreadinessV1alpha1Interface {
+	return c.route53recoveryreadinessV1alpha1
 }
 
 // S3V1alpha1 retrieves the S3V1alpha1Client
@@ -1286,6 +1406,10 @@ func NewForConfig(c *rest.Config) (*Clientset, error) {
 	if err != nil {
 		return nil, err
 	}
+	cs.accountV1alpha1, err = accountv1alpha1.NewForConfig(&configShallowCopy)
+	if err != nil {
+		return nil, err
+	}
 	cs.acmV1alpha1, err = acmv1alpha1.NewForConfig(&configShallowCopy)
 	if err != nil {
 		return nil, err
@@ -1322,11 +1446,19 @@ func NewForConfig(c *rest.Config) (*Clientset, error) {
 	if err != nil {
 		return nil, err
 	}
+	cs.appconfigV1alpha1, err = appconfigv1alpha1.NewForConfig(&configShallowCopy)
+	if err != nil {
+		return nil, err
+	}
 	cs.appmeshV1alpha1, err = appmeshv1alpha1.NewForConfig(&configShallowCopy)
 	if err != nil {
 		return nil, err
 	}
 	cs.apprunnerV1alpha1, err = apprunnerv1alpha1.NewForConfig(&configShallowCopy)
+	if err != nil {
+		return nil, err
+	}
+	cs.appstreamV1alpha1, err = appstreamv1alpha1.NewForConfig(&configShallowCopy)
 	if err != nil {
 		return nil, err
 	}
@@ -1358,7 +1490,15 @@ func NewForConfig(c *rest.Config) (*Clientset, error) {
 	if err != nil {
 		return nil, err
 	}
+	cs.chimeV1alpha1, err = chimev1alpha1.NewForConfig(&configShallowCopy)
+	if err != nil {
+		return nil, err
+	}
 	cs.cloud9V1alpha1, err = cloud9v1alpha1.NewForConfig(&configShallowCopy)
+	if err != nil {
+		return nil, err
+	}
+	cs.cloudcontrolapiV1alpha1, err = cloudcontrolapiv1alpha1.NewForConfig(&configShallowCopy)
 	if err != nil {
 		return nil, err
 	}
@@ -1375,6 +1515,10 @@ func NewForConfig(c *rest.Config) (*Clientset, error) {
 		return nil, err
 	}
 	cs.cloudhsmv2V1alpha1, err = cloudhsmv2v1alpha1.NewForConfig(&configShallowCopy)
+	if err != nil {
+		return nil, err
+	}
+	cs.cloudsearchV1alpha1, err = cloudsearchv1alpha1.NewForConfig(&configShallowCopy)
 	if err != nil {
 		return nil, err
 	}
@@ -1422,11 +1566,19 @@ func NewForConfig(c *rest.Config) (*Clientset, error) {
 	if err != nil {
 		return nil, err
 	}
+	cs.connectV1alpha1, err = connectv1alpha1.NewForConfig(&configShallowCopy)
+	if err != nil {
+		return nil, err
+	}
 	cs.curV1alpha1, err = curv1alpha1.NewForConfig(&configShallowCopy)
 	if err != nil {
 		return nil, err
 	}
 	cs.customerV1alpha1, err = customerv1alpha1.NewForConfig(&configShallowCopy)
+	if err != nil {
+		return nil, err
+	}
+	cs.dataexchangeV1alpha1, err = dataexchangev1alpha1.NewForConfig(&configShallowCopy)
 	if err != nil {
 		return nil, err
 	}
@@ -1447,6 +1599,10 @@ func NewForConfig(c *rest.Config) (*Clientset, error) {
 		return nil, err
 	}
 	cs.defaultV1alpha1, err = defaultv1alpha1.NewForConfig(&configShallowCopy)
+	if err != nil {
+		return nil, err
+	}
+	cs.detectiveV1alpha1, err = detectivev1alpha1.NewForConfig(&configShallowCopy)
 	if err != nil {
 		return nil, err
 	}
@@ -1566,6 +1722,10 @@ func NewForConfig(c *rest.Config) (*Clientset, error) {
 	if err != nil {
 		return nil, err
 	}
+	cs.grafanaV1alpha1, err = grafanav1alpha1.NewForConfig(&configShallowCopy)
+	if err != nil {
+		return nil, err
+	}
 	cs.guarddutyV1alpha1, err = guarddutyv1alpha1.NewForConfig(&configShallowCopy)
 	if err != nil {
 		return nil, err
@@ -1658,11 +1818,19 @@ func NewForConfig(c *rest.Config) (*Clientset, error) {
 	if err != nil {
 		return nil, err
 	}
+	cs.memorydbV1alpha1, err = memorydbv1alpha1.NewForConfig(&configShallowCopy)
+	if err != nil {
+		return nil, err
+	}
 	cs.mqV1alpha1, err = mqv1alpha1.NewForConfig(&configShallowCopy)
 	if err != nil {
 		return nil, err
 	}
 	cs.mskV1alpha1, err = mskv1alpha1.NewForConfig(&configShallowCopy)
+	if err != nil {
+		return nil, err
+	}
+	cs.mskconnectV1alpha1, err = mskconnectv1alpha1.NewForConfig(&configShallowCopy)
 	if err != nil {
 		return nil, err
 	}
@@ -1739,6 +1907,18 @@ func NewForConfig(c *rest.Config) (*Clientset, error) {
 		return nil, err
 	}
 	cs.route53V1alpha1, err = route53v1alpha1.NewForConfig(&configShallowCopy)
+	if err != nil {
+		return nil, err
+	}
+	cs.route53domainsV1alpha1, err = route53domainsv1alpha1.NewForConfig(&configShallowCopy)
+	if err != nil {
+		return nil, err
+	}
+	cs.route53recoverycontrolconfigV1alpha1, err = route53recoverycontrolconfigv1alpha1.NewForConfig(&configShallowCopy)
+	if err != nil {
+		return nil, err
+	}
+	cs.route53recoveryreadinessV1alpha1, err = route53recoveryreadinessv1alpha1.NewForConfig(&configShallowCopy)
 	if err != nil {
 		return nil, err
 	}
@@ -1907,6 +2087,7 @@ func NewForConfig(c *rest.Config) (*Clientset, error) {
 func NewForConfigOrDie(c *rest.Config) *Clientset {
 	var cs Clientset
 	cs.accessanalyzerV1alpha1 = accessanalyzerv1alpha1.NewForConfigOrDie(c)
+	cs.accountV1alpha1 = accountv1alpha1.NewForConfigOrDie(c)
 	cs.acmV1alpha1 = acmv1alpha1.NewForConfigOrDie(c)
 	cs.acmpcaV1alpha1 = acmpcav1alpha1.NewForConfigOrDie(c)
 	cs.albV1alpha1 = albv1alpha1.NewForConfigOrDie(c)
@@ -1916,8 +2097,10 @@ func NewForConfigOrDie(c *rest.Config) *Clientset {
 	cs.apigatewayv2V1alpha1 = apigatewayv2v1alpha1.NewForConfigOrDie(c)
 	cs.appV1alpha1 = appv1alpha1.NewForConfigOrDie(c)
 	cs.appautoscalingV1alpha1 = appautoscalingv1alpha1.NewForConfigOrDie(c)
+	cs.appconfigV1alpha1 = appconfigv1alpha1.NewForConfigOrDie(c)
 	cs.appmeshV1alpha1 = appmeshv1alpha1.NewForConfigOrDie(c)
 	cs.apprunnerV1alpha1 = apprunnerv1alpha1.NewForConfigOrDie(c)
+	cs.appstreamV1alpha1 = appstreamv1alpha1.NewForConfigOrDie(c)
 	cs.appsyncV1alpha1 = appsyncv1alpha1.NewForConfigOrDie(c)
 	cs.athenaV1alpha1 = athenav1alpha1.NewForConfigOrDie(c)
 	cs.autoscalingV1alpha1 = autoscalingv1alpha1.NewForConfigOrDie(c)
@@ -1925,11 +2108,14 @@ func NewForConfigOrDie(c *rest.Config) *Clientset {
 	cs.backupV1alpha1 = backupv1alpha1.NewForConfigOrDie(c)
 	cs.batchV1alpha1 = batchv1alpha1.NewForConfigOrDie(c)
 	cs.budgetsV1alpha1 = budgetsv1alpha1.NewForConfigOrDie(c)
+	cs.chimeV1alpha1 = chimev1alpha1.NewForConfigOrDie(c)
 	cs.cloud9V1alpha1 = cloud9v1alpha1.NewForConfigOrDie(c)
+	cs.cloudcontrolapiV1alpha1 = cloudcontrolapiv1alpha1.NewForConfigOrDie(c)
 	cs.cloudformationstackV1alpha1 = cloudformationstackv1alpha1.NewForConfigOrDie(c)
 	cs.cloudformationtypeV1alpha1 = cloudformationtypev1alpha1.NewForConfigOrDie(c)
 	cs.cloudfrontV1alpha1 = cloudfrontv1alpha1.NewForConfigOrDie(c)
 	cs.cloudhsmv2V1alpha1 = cloudhsmv2v1alpha1.NewForConfigOrDie(c)
+	cs.cloudsearchV1alpha1 = cloudsearchv1alpha1.NewForConfigOrDie(c)
 	cs.cloudtrailV1alpha1 = cloudtrailv1alpha1.NewForConfigOrDie(c)
 	cs.cloudwatchV1alpha1 = cloudwatchv1alpha1.NewForConfigOrDie(c)
 	cs.codeartifactV1alpha1 = codeartifactv1alpha1.NewForConfigOrDie(c)
@@ -1941,13 +2127,16 @@ func NewForConfigOrDie(c *rest.Config) *Clientset {
 	cs.codestarnotificationsV1alpha1 = codestarnotificationsv1alpha1.NewForConfigOrDie(c)
 	cs.cognitoV1alpha1 = cognitov1alpha1.NewForConfigOrDie(c)
 	cs.configV1alpha1 = configv1alpha1.NewForConfigOrDie(c)
+	cs.connectV1alpha1 = connectv1alpha1.NewForConfigOrDie(c)
 	cs.curV1alpha1 = curv1alpha1.NewForConfigOrDie(c)
 	cs.customerV1alpha1 = customerv1alpha1.NewForConfigOrDie(c)
+	cs.dataexchangeV1alpha1 = dataexchangev1alpha1.NewForConfigOrDie(c)
 	cs.datapipelineV1alpha1 = datapipelinev1alpha1.NewForConfigOrDie(c)
 	cs.datasyncV1alpha1 = datasyncv1alpha1.NewForConfigOrDie(c)
 	cs.daxV1alpha1 = daxv1alpha1.NewForConfigOrDie(c)
 	cs.dbV1alpha1 = dbv1alpha1.NewForConfigOrDie(c)
 	cs.defaultV1alpha1 = defaultv1alpha1.NewForConfigOrDie(c)
+	cs.detectiveV1alpha1 = detectivev1alpha1.NewForConfigOrDie(c)
 	cs.devicefarmV1alpha1 = devicefarmv1alpha1.NewForConfigOrDie(c)
 	cs.directoryserviceV1alpha1 = directoryservicev1alpha1.NewForConfigOrDie(c)
 	cs.dlmV1alpha1 = dlmv1alpha1.NewForConfigOrDie(c)
@@ -1977,6 +2166,7 @@ func NewForConfigOrDie(c *rest.Config) *Clientset {
 	cs.glaciervaultV1alpha1 = glaciervaultv1alpha1.NewForConfigOrDie(c)
 	cs.globalacceleratorV1alpha1 = globalacceleratorv1alpha1.NewForConfigOrDie(c)
 	cs.glueV1alpha1 = gluev1alpha1.NewForConfigOrDie(c)
+	cs.grafanaV1alpha1 = grafanav1alpha1.NewForConfigOrDie(c)
 	cs.guarddutyV1alpha1 = guarddutyv1alpha1.NewForConfigOrDie(c)
 	cs.iamV1alpha1 = iamv1alpha1.NewForConfigOrDie(c)
 	cs.imagebuilderV1alpha1 = imagebuilderv1alpha1.NewForConfigOrDie(c)
@@ -2000,8 +2190,10 @@ func NewForConfigOrDie(c *rest.Config) *Clientset {
 	cs.macie2V1alpha1 = macie2v1alpha1.NewForConfigOrDie(c)
 	cs.mainV1alpha1 = mainv1alpha1.NewForConfigOrDie(c)
 	cs.mediaV1alpha1 = mediav1alpha1.NewForConfigOrDie(c)
+	cs.memorydbV1alpha1 = memorydbv1alpha1.NewForConfigOrDie(c)
 	cs.mqV1alpha1 = mqv1alpha1.NewForConfigOrDie(c)
 	cs.mskV1alpha1 = mskv1alpha1.NewForConfigOrDie(c)
+	cs.mskconnectV1alpha1 = mskconnectv1alpha1.NewForConfigOrDie(c)
 	cs.mwaaV1alpha1 = mwaav1alpha1.NewForConfigOrDie(c)
 	cs.natV1alpha1 = natv1alpha1.NewForConfigOrDie(c)
 	cs.neptuneV1alpha1 = neptunev1alpha1.NewForConfigOrDie(c)
@@ -2021,6 +2213,9 @@ func NewForConfigOrDie(c *rest.Config) *Clientset {
 	cs.resourcegroupsV1alpha1 = resourcegroupsv1alpha1.NewForConfigOrDie(c)
 	cs.routeV1alpha1 = routev1alpha1.NewForConfigOrDie(c)
 	cs.route53V1alpha1 = route53v1alpha1.NewForConfigOrDie(c)
+	cs.route53domainsV1alpha1 = route53domainsv1alpha1.NewForConfigOrDie(c)
+	cs.route53recoverycontrolconfigV1alpha1 = route53recoverycontrolconfigv1alpha1.NewForConfigOrDie(c)
+	cs.route53recoveryreadinessV1alpha1 = route53recoveryreadinessv1alpha1.NewForConfigOrDie(c)
 	cs.s3V1alpha1 = s3v1alpha1.NewForConfigOrDie(c)
 	cs.s3controlV1alpha1 = s3controlv1alpha1.NewForConfigOrDie(c)
 	cs.s3outpostsV1alpha1 = s3outpostsv1alpha1.NewForConfigOrDie(c)
@@ -2068,6 +2263,7 @@ func NewForConfigOrDie(c *rest.Config) *Clientset {
 func New(c rest.Interface) *Clientset {
 	var cs Clientset
 	cs.accessanalyzerV1alpha1 = accessanalyzerv1alpha1.New(c)
+	cs.accountV1alpha1 = accountv1alpha1.New(c)
 	cs.acmV1alpha1 = acmv1alpha1.New(c)
 	cs.acmpcaV1alpha1 = acmpcav1alpha1.New(c)
 	cs.albV1alpha1 = albv1alpha1.New(c)
@@ -2077,8 +2273,10 @@ func New(c rest.Interface) *Clientset {
 	cs.apigatewayv2V1alpha1 = apigatewayv2v1alpha1.New(c)
 	cs.appV1alpha1 = appv1alpha1.New(c)
 	cs.appautoscalingV1alpha1 = appautoscalingv1alpha1.New(c)
+	cs.appconfigV1alpha1 = appconfigv1alpha1.New(c)
 	cs.appmeshV1alpha1 = appmeshv1alpha1.New(c)
 	cs.apprunnerV1alpha1 = apprunnerv1alpha1.New(c)
+	cs.appstreamV1alpha1 = appstreamv1alpha1.New(c)
 	cs.appsyncV1alpha1 = appsyncv1alpha1.New(c)
 	cs.athenaV1alpha1 = athenav1alpha1.New(c)
 	cs.autoscalingV1alpha1 = autoscalingv1alpha1.New(c)
@@ -2086,11 +2284,14 @@ func New(c rest.Interface) *Clientset {
 	cs.backupV1alpha1 = backupv1alpha1.New(c)
 	cs.batchV1alpha1 = batchv1alpha1.New(c)
 	cs.budgetsV1alpha1 = budgetsv1alpha1.New(c)
+	cs.chimeV1alpha1 = chimev1alpha1.New(c)
 	cs.cloud9V1alpha1 = cloud9v1alpha1.New(c)
+	cs.cloudcontrolapiV1alpha1 = cloudcontrolapiv1alpha1.New(c)
 	cs.cloudformationstackV1alpha1 = cloudformationstackv1alpha1.New(c)
 	cs.cloudformationtypeV1alpha1 = cloudformationtypev1alpha1.New(c)
 	cs.cloudfrontV1alpha1 = cloudfrontv1alpha1.New(c)
 	cs.cloudhsmv2V1alpha1 = cloudhsmv2v1alpha1.New(c)
+	cs.cloudsearchV1alpha1 = cloudsearchv1alpha1.New(c)
 	cs.cloudtrailV1alpha1 = cloudtrailv1alpha1.New(c)
 	cs.cloudwatchV1alpha1 = cloudwatchv1alpha1.New(c)
 	cs.codeartifactV1alpha1 = codeartifactv1alpha1.New(c)
@@ -2102,13 +2303,16 @@ func New(c rest.Interface) *Clientset {
 	cs.codestarnotificationsV1alpha1 = codestarnotificationsv1alpha1.New(c)
 	cs.cognitoV1alpha1 = cognitov1alpha1.New(c)
 	cs.configV1alpha1 = configv1alpha1.New(c)
+	cs.connectV1alpha1 = connectv1alpha1.New(c)
 	cs.curV1alpha1 = curv1alpha1.New(c)
 	cs.customerV1alpha1 = customerv1alpha1.New(c)
+	cs.dataexchangeV1alpha1 = dataexchangev1alpha1.New(c)
 	cs.datapipelineV1alpha1 = datapipelinev1alpha1.New(c)
 	cs.datasyncV1alpha1 = datasyncv1alpha1.New(c)
 	cs.daxV1alpha1 = daxv1alpha1.New(c)
 	cs.dbV1alpha1 = dbv1alpha1.New(c)
 	cs.defaultV1alpha1 = defaultv1alpha1.New(c)
+	cs.detectiveV1alpha1 = detectivev1alpha1.New(c)
 	cs.devicefarmV1alpha1 = devicefarmv1alpha1.New(c)
 	cs.directoryserviceV1alpha1 = directoryservicev1alpha1.New(c)
 	cs.dlmV1alpha1 = dlmv1alpha1.New(c)
@@ -2138,6 +2342,7 @@ func New(c rest.Interface) *Clientset {
 	cs.glaciervaultV1alpha1 = glaciervaultv1alpha1.New(c)
 	cs.globalacceleratorV1alpha1 = globalacceleratorv1alpha1.New(c)
 	cs.glueV1alpha1 = gluev1alpha1.New(c)
+	cs.grafanaV1alpha1 = grafanav1alpha1.New(c)
 	cs.guarddutyV1alpha1 = guarddutyv1alpha1.New(c)
 	cs.iamV1alpha1 = iamv1alpha1.New(c)
 	cs.imagebuilderV1alpha1 = imagebuilderv1alpha1.New(c)
@@ -2161,8 +2366,10 @@ func New(c rest.Interface) *Clientset {
 	cs.macie2V1alpha1 = macie2v1alpha1.New(c)
 	cs.mainV1alpha1 = mainv1alpha1.New(c)
 	cs.mediaV1alpha1 = mediav1alpha1.New(c)
+	cs.memorydbV1alpha1 = memorydbv1alpha1.New(c)
 	cs.mqV1alpha1 = mqv1alpha1.New(c)
 	cs.mskV1alpha1 = mskv1alpha1.New(c)
+	cs.mskconnectV1alpha1 = mskconnectv1alpha1.New(c)
 	cs.mwaaV1alpha1 = mwaav1alpha1.New(c)
 	cs.natV1alpha1 = natv1alpha1.New(c)
 	cs.neptuneV1alpha1 = neptunev1alpha1.New(c)
@@ -2182,6 +2389,9 @@ func New(c rest.Interface) *Clientset {
 	cs.resourcegroupsV1alpha1 = resourcegroupsv1alpha1.New(c)
 	cs.routeV1alpha1 = routev1alpha1.New(c)
 	cs.route53V1alpha1 = route53v1alpha1.New(c)
+	cs.route53domainsV1alpha1 = route53domainsv1alpha1.New(c)
+	cs.route53recoverycontrolconfigV1alpha1 = route53recoverycontrolconfigv1alpha1.New(c)
+	cs.route53recoveryreadinessV1alpha1 = route53recoveryreadinessv1alpha1.New(c)
 	cs.s3V1alpha1 = s3v1alpha1.New(c)
 	cs.s3controlV1alpha1 = s3controlv1alpha1.New(c)
 	cs.s3outpostsV1alpha1 = s3outpostsv1alpha1.New(c)

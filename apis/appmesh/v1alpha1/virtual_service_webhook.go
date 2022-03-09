@@ -90,7 +90,7 @@ func (r *VirtualService) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range virtualserviceForceNewList {
+	for key, _ := range virtualserviceForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

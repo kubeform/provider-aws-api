@@ -89,7 +89,7 @@ func (r *RdsDbInstance) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range rdsdbinstanceForceNewList {
+	for key, _ := range rdsdbinstanceForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

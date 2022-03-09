@@ -97,6 +97,14 @@ func (c *FakeIamV1alpha1) ServiceLinkedRoles(namespace string) v1alpha1.ServiceL
 	return &FakeServiceLinkedRoles{c, namespace}
 }
 
+func (c *FakeIamV1alpha1) ServiceSpecificCredentials(namespace string) v1alpha1.ServiceSpecificCredentialInterface {
+	return &FakeServiceSpecificCredentials{c, namespace}
+}
+
+func (c *FakeIamV1alpha1) SigningCertificates(namespace string) v1alpha1.SigningCertificateInterface {
+	return &FakeSigningCertificates{c, namespace}
+}
+
 func (c *FakeIamV1alpha1) Users(namespace string) v1alpha1.UserInterface {
 	return &FakeUsers{c, namespace}
 }
@@ -119,6 +127,10 @@ func (c *FakeIamV1alpha1) UserPolicyAttachments(namespace string) v1alpha1.UserP
 
 func (c *FakeIamV1alpha1) UserSSHKeys(namespace string) v1alpha1.UserSSHKeyInterface {
 	return &FakeUserSSHKeys{c, namespace}
+}
+
+func (c *FakeIamV1alpha1) VirtualMfaDevices(namespace string) v1alpha1.VirtualMfaDeviceInterface {
+	return &FakeVirtualMfaDevices{c, namespace}
 }
 
 // RESTClient returns a RESTClient that is used to communicate

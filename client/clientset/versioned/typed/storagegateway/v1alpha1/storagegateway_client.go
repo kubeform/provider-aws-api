@@ -29,6 +29,7 @@ type StoragegatewayV1alpha1Interface interface {
 	RESTClient() rest.Interface
 	CachesGetter
 	CachedIscsiVolumesGetter
+	FileSystemAssociationsGetter
 	GatewaysGetter
 	NfsFileSharesGetter
 	SmbFileSharesGetter
@@ -49,6 +50,10 @@ func (c *StoragegatewayV1alpha1Client) Caches(namespace string) CacheInterface {
 
 func (c *StoragegatewayV1alpha1Client) CachedIscsiVolumes(namespace string) CachedIscsiVolumeInterface {
 	return newCachedIscsiVolumes(c, namespace)
+}
+
+func (c *StoragegatewayV1alpha1Client) FileSystemAssociations(namespace string) FileSystemAssociationInterface {
+	return newFileSystemAssociations(c, namespace)
 }
 
 func (c *StoragegatewayV1alpha1Client) Gateways(namespace string) GatewayInterface {

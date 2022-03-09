@@ -285,6 +285,11 @@ func (in *DirectorySpecWorkspaceAccessProperties) DeepCopyInto(out *DirectorySpe
 		*out = new(string)
 		**out = **in
 	}
+	if in.DeviceTypeLinux != nil {
+		in, out := &in.DeviceTypeLinux, &out.DeviceTypeLinux
+		*out = new(string)
+		**out = **in
+	}
 	if in.DeviceTypeOsx != nil {
 		in, out := &in.DeviceTypeOsx, &out.DeviceTypeOsx
 		*out = new(string)

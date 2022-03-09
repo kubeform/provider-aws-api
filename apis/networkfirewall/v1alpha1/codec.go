@@ -28,6 +28,7 @@ import (
 func GetEncoder() map[string]jsoniter.ValEncoder {
 	return map[string]jsoniter.ValEncoder{
 		jsoniter.MustGetKind(reflect2.TypeOf(FirewallPolicySpecFirewallPolicy{}).Type1()):                                                                               FirewallPolicySpecFirewallPolicyCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(FirewallPolicySpecFirewallPolicyStatefulEngineOptions{}).Type1()):                                                          FirewallPolicySpecFirewallPolicyStatefulEngineOptionsCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(FirewallPolicySpecFirewallPolicyStatelessCustomActionActionDefinition{}).Type1()):                                          FirewallPolicySpecFirewallPolicyStatelessCustomActionActionDefinitionCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(FirewallPolicySpecFirewallPolicyStatelessCustomActionActionDefinitionPublishMetricAction{}).Type1()):                       FirewallPolicySpecFirewallPolicyStatelessCustomActionActionDefinitionPublishMetricActionCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(LoggingConfigurationSpecLoggingConfiguration{}).Type1()):                                                                   LoggingConfigurationSpecLoggingConfigurationCodec{},
@@ -43,12 +44,14 @@ func GetEncoder() map[string]jsoniter.ValEncoder {
 		jsoniter.MustGetKind(reflect2.TypeOf(RuleGroupSpecRuleGroupRulesSourceStatelessRulesAndCustomActionsCustomActionActionDefinitionPublishMetricAction{}).Type1()): RuleGroupSpecRuleGroupRulesSourceStatelessRulesAndCustomActionsCustomActionActionDefinitionPublishMetricActionCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(RuleGroupSpecRuleGroupRulesSourceStatelessRulesAndCustomActionsStatelessRuleRuleDefinition{}).Type1()):                     RuleGroupSpecRuleGroupRulesSourceStatelessRulesAndCustomActionsStatelessRuleRuleDefinitionCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(RuleGroupSpecRuleGroupRulesSourceStatelessRulesAndCustomActionsStatelessRuleRuleDefinitionMatchAttributes{}).Type1()):      RuleGroupSpecRuleGroupRulesSourceStatelessRulesAndCustomActionsStatelessRuleRuleDefinitionMatchAttributesCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(RuleGroupSpecRuleGroupStatefulRuleOptions{}).Type1()):                                                                      RuleGroupSpecRuleGroupStatefulRuleOptionsCodec{},
 	}
 }
 
 func GetDecoder() map[string]jsoniter.ValDecoder {
 	return map[string]jsoniter.ValDecoder{
 		jsoniter.MustGetKind(reflect2.TypeOf(FirewallPolicySpecFirewallPolicy{}).Type1()):                                                                               FirewallPolicySpecFirewallPolicyCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(FirewallPolicySpecFirewallPolicyStatefulEngineOptions{}).Type1()):                                                          FirewallPolicySpecFirewallPolicyStatefulEngineOptionsCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(FirewallPolicySpecFirewallPolicyStatelessCustomActionActionDefinition{}).Type1()):                                          FirewallPolicySpecFirewallPolicyStatelessCustomActionActionDefinitionCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(FirewallPolicySpecFirewallPolicyStatelessCustomActionActionDefinitionPublishMetricAction{}).Type1()):                       FirewallPolicySpecFirewallPolicyStatelessCustomActionActionDefinitionPublishMetricActionCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(LoggingConfigurationSpecLoggingConfiguration{}).Type1()):                                                                   LoggingConfigurationSpecLoggingConfigurationCodec{},
@@ -64,6 +67,7 @@ func GetDecoder() map[string]jsoniter.ValDecoder {
 		jsoniter.MustGetKind(reflect2.TypeOf(RuleGroupSpecRuleGroupRulesSourceStatelessRulesAndCustomActionsCustomActionActionDefinitionPublishMetricAction{}).Type1()): RuleGroupSpecRuleGroupRulesSourceStatelessRulesAndCustomActionsCustomActionActionDefinitionPublishMetricActionCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(RuleGroupSpecRuleGroupRulesSourceStatelessRulesAndCustomActionsStatelessRuleRuleDefinition{}).Type1()):                     RuleGroupSpecRuleGroupRulesSourceStatelessRulesAndCustomActionsStatelessRuleRuleDefinitionCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(RuleGroupSpecRuleGroupRulesSourceStatelessRulesAndCustomActionsStatelessRuleRuleDefinitionMatchAttributes{}).Type1()):      RuleGroupSpecRuleGroupRulesSourceStatelessRulesAndCustomActionsStatelessRuleRuleDefinitionMatchAttributesCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(RuleGroupSpecRuleGroupStatefulRuleOptions{}).Type1()):                                                                      RuleGroupSpecRuleGroupStatefulRuleOptionsCodec{},
 	}
 }
 
@@ -155,6 +159,85 @@ func (FirewallPolicySpecFirewallPolicyCodec) Decode(ptr unsafe.Pointer, iter *js
 		}
 	default:
 		iter.ReportError("decode FirewallPolicySpecFirewallPolicy", "unexpected JSON type")
+	}
+}
+
+// +k8s:deepcopy-gen=false
+type FirewallPolicySpecFirewallPolicyStatefulEngineOptionsCodec struct {
+}
+
+func (FirewallPolicySpecFirewallPolicyStatefulEngineOptionsCodec) IsEmpty(ptr unsafe.Pointer) bool {
+	return (*FirewallPolicySpecFirewallPolicyStatefulEngineOptions)(ptr) == nil
+}
+
+func (FirewallPolicySpecFirewallPolicyStatefulEngineOptionsCodec) Encode(ptr unsafe.Pointer, stream *jsoniter.Stream) {
+	obj := (*FirewallPolicySpecFirewallPolicyStatefulEngineOptions)(ptr)
+	var objs []FirewallPolicySpecFirewallPolicyStatefulEngineOptions
+	if obj != nil {
+		objs = []FirewallPolicySpecFirewallPolicyStatefulEngineOptions{*obj}
+	}
+
+	jsonit := jsoniter.Config{
+		EscapeHTML:             true,
+		SortMapKeys:            true,
+		ValidateJsonRawMessage: true,
+		TagKey:                 "tf",
+		TypeEncoders:           getEncodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(FirewallPolicySpecFirewallPolicyStatefulEngineOptions{}).Type1())),
+	}.Froze()
+
+	byt, _ := jsonit.Marshal(objs)
+
+	stream.Write(byt)
+}
+
+func (FirewallPolicySpecFirewallPolicyStatefulEngineOptionsCodec) Decode(ptr unsafe.Pointer, iter *jsoniter.Iterator) {
+	switch iter.WhatIsNext() {
+	case jsoniter.NilValue:
+		iter.Skip()
+		*(*FirewallPolicySpecFirewallPolicyStatefulEngineOptions)(ptr) = FirewallPolicySpecFirewallPolicyStatefulEngineOptions{}
+		return
+	case jsoniter.ArrayValue:
+		objsByte := iter.SkipAndReturnBytes()
+		if len(objsByte) > 0 {
+			var objs []FirewallPolicySpecFirewallPolicyStatefulEngineOptions
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(FirewallPolicySpecFirewallPolicyStatefulEngineOptions{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objsByte, &objs)
+
+			if len(objs) > 0 {
+				*(*FirewallPolicySpecFirewallPolicyStatefulEngineOptions)(ptr) = objs[0]
+			} else {
+				*(*FirewallPolicySpecFirewallPolicyStatefulEngineOptions)(ptr) = FirewallPolicySpecFirewallPolicyStatefulEngineOptions{}
+			}
+		} else {
+			*(*FirewallPolicySpecFirewallPolicyStatefulEngineOptions)(ptr) = FirewallPolicySpecFirewallPolicyStatefulEngineOptions{}
+		}
+	case jsoniter.ObjectValue:
+		objByte := iter.SkipAndReturnBytes()
+		if len(objByte) > 0 {
+			var obj FirewallPolicySpecFirewallPolicyStatefulEngineOptions
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(FirewallPolicySpecFirewallPolicyStatefulEngineOptions{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objByte, &obj)
+
+			*(*FirewallPolicySpecFirewallPolicyStatefulEngineOptions)(ptr) = obj
+		} else {
+			*(*FirewallPolicySpecFirewallPolicyStatefulEngineOptions)(ptr) = FirewallPolicySpecFirewallPolicyStatefulEngineOptions{}
+		}
+	default:
+		iter.ReportError("decode FirewallPolicySpecFirewallPolicyStatefulEngineOptions", "unexpected JSON type")
 	}
 }
 
@@ -1340,5 +1423,84 @@ func (RuleGroupSpecRuleGroupRulesSourceStatelessRulesAndCustomActionsStatelessRu
 		}
 	default:
 		iter.ReportError("decode RuleGroupSpecRuleGroupRulesSourceStatelessRulesAndCustomActionsStatelessRuleRuleDefinitionMatchAttributes", "unexpected JSON type")
+	}
+}
+
+// +k8s:deepcopy-gen=false
+type RuleGroupSpecRuleGroupStatefulRuleOptionsCodec struct {
+}
+
+func (RuleGroupSpecRuleGroupStatefulRuleOptionsCodec) IsEmpty(ptr unsafe.Pointer) bool {
+	return (*RuleGroupSpecRuleGroupStatefulRuleOptions)(ptr) == nil
+}
+
+func (RuleGroupSpecRuleGroupStatefulRuleOptionsCodec) Encode(ptr unsafe.Pointer, stream *jsoniter.Stream) {
+	obj := (*RuleGroupSpecRuleGroupStatefulRuleOptions)(ptr)
+	var objs []RuleGroupSpecRuleGroupStatefulRuleOptions
+	if obj != nil {
+		objs = []RuleGroupSpecRuleGroupStatefulRuleOptions{*obj}
+	}
+
+	jsonit := jsoniter.Config{
+		EscapeHTML:             true,
+		SortMapKeys:            true,
+		ValidateJsonRawMessage: true,
+		TagKey:                 "tf",
+		TypeEncoders:           getEncodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(RuleGroupSpecRuleGroupStatefulRuleOptions{}).Type1())),
+	}.Froze()
+
+	byt, _ := jsonit.Marshal(objs)
+
+	stream.Write(byt)
+}
+
+func (RuleGroupSpecRuleGroupStatefulRuleOptionsCodec) Decode(ptr unsafe.Pointer, iter *jsoniter.Iterator) {
+	switch iter.WhatIsNext() {
+	case jsoniter.NilValue:
+		iter.Skip()
+		*(*RuleGroupSpecRuleGroupStatefulRuleOptions)(ptr) = RuleGroupSpecRuleGroupStatefulRuleOptions{}
+		return
+	case jsoniter.ArrayValue:
+		objsByte := iter.SkipAndReturnBytes()
+		if len(objsByte) > 0 {
+			var objs []RuleGroupSpecRuleGroupStatefulRuleOptions
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(RuleGroupSpecRuleGroupStatefulRuleOptions{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objsByte, &objs)
+
+			if len(objs) > 0 {
+				*(*RuleGroupSpecRuleGroupStatefulRuleOptions)(ptr) = objs[0]
+			} else {
+				*(*RuleGroupSpecRuleGroupStatefulRuleOptions)(ptr) = RuleGroupSpecRuleGroupStatefulRuleOptions{}
+			}
+		} else {
+			*(*RuleGroupSpecRuleGroupStatefulRuleOptions)(ptr) = RuleGroupSpecRuleGroupStatefulRuleOptions{}
+		}
+	case jsoniter.ObjectValue:
+		objByte := iter.SkipAndReturnBytes()
+		if len(objByte) > 0 {
+			var obj RuleGroupSpecRuleGroupStatefulRuleOptions
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(RuleGroupSpecRuleGroupStatefulRuleOptions{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objByte, &obj)
+
+			*(*RuleGroupSpecRuleGroupStatefulRuleOptions)(ptr) = obj
+		} else {
+			*(*RuleGroupSpecRuleGroupStatefulRuleOptions)(ptr) = RuleGroupSpecRuleGroupStatefulRuleOptions{}
+		}
+	default:
+		iter.ReportError("decode RuleGroupSpecRuleGroupStatefulRuleOptions", "unexpected JSON type")
 	}
 }

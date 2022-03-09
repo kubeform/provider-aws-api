@@ -67,6 +67,8 @@ spec:
                     type: string
                   id:
                     type: string
+                  liveStageEtag:
+                    type: string
                   name:
                     type: string
                   publish:
@@ -91,6 +93,8 @@ spec:
                   etag:
                     type: string
                   id:
+                    type: string
+                  liveStageEtag:
                     type: string
                   name:
                     type: string

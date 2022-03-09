@@ -42,9 +42,11 @@ type Build struct {
 }
 
 type BuildSpecStorageLocation struct {
-	Bucket  *string `json:"bucket" tf:"bucket"`
-	Key     *string `json:"key" tf:"key"`
-	RoleArn *string `json:"roleArn" tf:"role_arn"`
+	Bucket *string `json:"bucket" tf:"bucket"`
+	Key    *string `json:"key" tf:"key"`
+	// +optional
+	ObjectVersion *string `json:"objectVersion,omitempty" tf:"object_version"`
+	RoleArn       *string `json:"roleArn" tf:"role_arn"`
 }
 
 type BuildSpec struct {

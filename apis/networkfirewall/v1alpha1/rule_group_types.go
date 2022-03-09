@@ -178,10 +178,16 @@ type RuleGroupSpecRuleGroupRulesSource struct {
 	StatelessRulesAndCustomActions *RuleGroupSpecRuleGroupRulesSourceStatelessRulesAndCustomActions `json:"statelessRulesAndCustomActions,omitempty" tf:"stateless_rules_and_custom_actions"`
 }
 
+type RuleGroupSpecRuleGroupStatefulRuleOptions struct {
+	RuleOrder *string `json:"ruleOrder" tf:"rule_order"`
+}
+
 type RuleGroupSpecRuleGroup struct {
 	// +optional
 	RuleVariables *RuleGroupSpecRuleGroupRuleVariables `json:"ruleVariables,omitempty" tf:"rule_variables"`
 	RulesSource   *RuleGroupSpecRuleGroupRulesSource   `json:"rulesSource" tf:"rules_source"`
+	// +optional
+	StatefulRuleOptions *RuleGroupSpecRuleGroupStatefulRuleOptions `json:"statefulRuleOptions,omitempty" tf:"stateful_rule_options"`
 }
 
 type RuleGroupSpec struct {

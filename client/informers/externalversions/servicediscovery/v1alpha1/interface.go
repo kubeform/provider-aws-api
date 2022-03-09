@@ -26,6 +26,8 @@ import (
 type Interface interface {
 	// HttpNamespaces returns a HttpNamespaceInformer.
 	HttpNamespaces() HttpNamespaceInformer
+	// Instances returns a InstanceInformer.
+	Instances() InstanceInformer
 	// PrivateDNSNamespaces returns a PrivateDNSNamespaceInformer.
 	PrivateDNSNamespaces() PrivateDNSNamespaceInformer
 	// PublicDNSNamespaces returns a PublicDNSNamespaceInformer.
@@ -48,6 +50,11 @@ func New(f internalinterfaces.SharedInformerFactory, namespace string, tweakList
 // HttpNamespaces returns a HttpNamespaceInformer.
 func (v *version) HttpNamespaces() HttpNamespaceInformer {
 	return &httpNamespaceInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
+// Instances returns a InstanceInformer.
+func (v *version) Instances() InstanceInformer {
+	return &instanceInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
 }
 
 // PrivateDNSNamespaces returns a PrivateDNSNamespaceInformer.

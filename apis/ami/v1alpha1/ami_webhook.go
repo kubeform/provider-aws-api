@@ -43,10 +43,12 @@ var _ webhook.Validator = &Ami{}
 
 var amiForceNewList = map[string]bool{
 	"/architecture": true,
+	"/boot_mode":    true,
 	"/ebs_block_device/*/delete_on_termination": true,
 	"/ebs_block_device/*/device_name":           true,
 	"/ebs_block_device/*/encrypted":             true,
 	"/ebs_block_device/*/iops":                  true,
+	"/ebs_block_device/*/outpost_arn":           true,
 	"/ebs_block_device/*/snapshot_id":           true,
 	"/ebs_block_device/*/throughput":            true,
 	"/ebs_block_device/*/volume_size":           true,
@@ -104,7 +106,7 @@ func (r *Ami) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range amiForceNewList {
+	for key, _ := range amiForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

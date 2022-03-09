@@ -58,6 +58,8 @@ func addKnownTypes(scheme *runtime.Scheme) error {
 	scheme.AddKnownTypes(SchemeGroupVersion,
 		&Acl{},
 		&AclList{},
+		&AclAssociation{},
+		&AclAssociationList{},
 		&AclRule{},
 		&AclRuleList{},
 		&Interface{},

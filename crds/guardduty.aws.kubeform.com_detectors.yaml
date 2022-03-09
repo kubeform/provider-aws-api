@@ -61,6 +61,16 @@ spec:
                     type: string
                   arn:
                     type: string
+                  datasources:
+                    properties:
+                      s3Logs:
+                        properties:
+                          enable:
+                            type: boolean
+                        required:
+                        - enable
+                        type: object
+                    type: object
                   enable:
                     type: boolean
                   findingPublishingFrequency:
@@ -82,6 +92,16 @@ spec:
                     type: string
                   arn:
                     type: string
+                  datasources:
+                    properties:
+                      s3Logs:
+                        properties:
+                          enable:
+                            type: boolean
+                        required:
+                        - enable
+                        type: object
+                    type: object
                   enable:
                     type: boolean
                   findingPublishingFrequency:

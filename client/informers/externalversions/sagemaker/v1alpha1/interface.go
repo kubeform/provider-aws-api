@@ -30,6 +30,10 @@ type Interface interface {
 	AppImageConfigs() AppImageConfigInformer
 	// CodeRepositories returns a CodeRepositoryInformer.
 	CodeRepositories() CodeRepositoryInformer
+	// Devices returns a DeviceInformer.
+	Devices() DeviceInformer
+	// DeviceFleets returns a DeviceFleetInformer.
+	DeviceFleets() DeviceFleetInformer
 	// Domains returns a DomainInformer.
 	Domains() DomainInformer
 	// Endpoints returns a EndpointInformer.
@@ -38,6 +42,10 @@ type Interface interface {
 	EndpointConfigurations() EndpointConfigurationInformer
 	// FeatureGroups returns a FeatureGroupInformer.
 	FeatureGroups() FeatureGroupInformer
+	// FlowDefinitions returns a FlowDefinitionInformer.
+	FlowDefinitions() FlowDefinitionInformer
+	// HumanTaskUis returns a HumanTaskUiInformer.
+	HumanTaskUis() HumanTaskUiInformer
 	// Images returns a ImageInformer.
 	Images() ImageInformer
 	// ImageVersions returns a ImageVersionInformer.
@@ -46,12 +54,22 @@ type Interface interface {
 	Models() ModelInformer
 	// ModelPackageGroups returns a ModelPackageGroupInformer.
 	ModelPackageGroups() ModelPackageGroupInformer
+	// ModelPackageGroupPolicies returns a ModelPackageGroupPolicyInformer.
+	ModelPackageGroupPolicies() ModelPackageGroupPolicyInformer
 	// NotebookInstances returns a NotebookInstanceInformer.
 	NotebookInstances() NotebookInstanceInformer
 	// NotebookInstanceLifecycleConfigurations returns a NotebookInstanceLifecycleConfigurationInformer.
 	NotebookInstanceLifecycleConfigurations() NotebookInstanceLifecycleConfigurationInformer
+	// Projects returns a ProjectInformer.
+	Projects() ProjectInformer
+	// StudioLifecycleConfigs returns a StudioLifecycleConfigInformer.
+	StudioLifecycleConfigs() StudioLifecycleConfigInformer
 	// UserProfiles returns a UserProfileInformer.
 	UserProfiles() UserProfileInformer
+	// Workforces returns a WorkforceInformer.
+	Workforces() WorkforceInformer
+	// Workteams returns a WorkteamInformer.
+	Workteams() WorkteamInformer
 }
 
 type version struct {
@@ -80,6 +98,16 @@ func (v *version) CodeRepositories() CodeRepositoryInformer {
 	return &codeRepositoryInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
 }
 
+// Devices returns a DeviceInformer.
+func (v *version) Devices() DeviceInformer {
+	return &deviceInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
+// DeviceFleets returns a DeviceFleetInformer.
+func (v *version) DeviceFleets() DeviceFleetInformer {
+	return &deviceFleetInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
 // Domains returns a DomainInformer.
 func (v *version) Domains() DomainInformer {
 	return &domainInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
@@ -98,6 +126,16 @@ func (v *version) EndpointConfigurations() EndpointConfigurationInformer {
 // FeatureGroups returns a FeatureGroupInformer.
 func (v *version) FeatureGroups() FeatureGroupInformer {
 	return &featureGroupInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
+// FlowDefinitions returns a FlowDefinitionInformer.
+func (v *version) FlowDefinitions() FlowDefinitionInformer {
+	return &flowDefinitionInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
+// HumanTaskUis returns a HumanTaskUiInformer.
+func (v *version) HumanTaskUis() HumanTaskUiInformer {
+	return &humanTaskUiInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
 }
 
 // Images returns a ImageInformer.
@@ -120,6 +158,11 @@ func (v *version) ModelPackageGroups() ModelPackageGroupInformer {
 	return &modelPackageGroupInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
 }
 
+// ModelPackageGroupPolicies returns a ModelPackageGroupPolicyInformer.
+func (v *version) ModelPackageGroupPolicies() ModelPackageGroupPolicyInformer {
+	return &modelPackageGroupPolicyInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
 // NotebookInstances returns a NotebookInstanceInformer.
 func (v *version) NotebookInstances() NotebookInstanceInformer {
 	return &notebookInstanceInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
@@ -130,7 +173,27 @@ func (v *version) NotebookInstanceLifecycleConfigurations() NotebookInstanceLife
 	return &notebookInstanceLifecycleConfigurationInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
 }
 
+// Projects returns a ProjectInformer.
+func (v *version) Projects() ProjectInformer {
+	return &projectInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
+// StudioLifecycleConfigs returns a StudioLifecycleConfigInformer.
+func (v *version) StudioLifecycleConfigs() StudioLifecycleConfigInformer {
+	return &studioLifecycleConfigInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
 // UserProfiles returns a UserProfileInformer.
 func (v *version) UserProfiles() UserProfileInformer {
 	return &userProfileInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
+// Workforces returns a WorkforceInformer.
+func (v *version) Workforces() WorkforceInformer {
+	return &workforceInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
+// Workteams returns a WorkteamInformer.
+func (v *version) Workteams() WorkteamInformer {
+	return &workteamInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
 }

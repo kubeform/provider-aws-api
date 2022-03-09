@@ -129,6 +129,11 @@ func (in *GatewaySpecResource) DeepCopyInto(out *GatewaySpecResource) {
 		*out = new(string)
 		**out = **in
 	}
+	if in.CertificateArn != nil {
+		in, out := &in.CertificateArn, &out.CertificateArn
+		*out = new(string)
+		**out = **in
+	}
 	if in.DeviceName != nil {
 		in, out := &in.DeviceName, &out.DeviceName
 		*out = new(string)

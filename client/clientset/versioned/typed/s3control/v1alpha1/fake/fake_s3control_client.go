@@ -29,6 +29,10 @@ type FakeS3controlV1alpha1 struct {
 	*testing.Fake
 }
 
+func (c *FakeS3controlV1alpha1) AccessPointPolicies(namespace string) v1alpha1.AccessPointPolicyInterface {
+	return &FakeAccessPointPolicies{c, namespace}
+}
+
 func (c *FakeS3controlV1alpha1) Buckets(namespace string) v1alpha1.BucketInterface {
 	return &FakeBuckets{c, namespace}
 }
@@ -39,6 +43,22 @@ func (c *FakeS3controlV1alpha1) BucketLifecycleConfigurations(namespace string) 
 
 func (c *FakeS3controlV1alpha1) BucketPolicies(namespace string) v1alpha1.BucketPolicyInterface {
 	return &FakeBucketPolicies{c, namespace}
+}
+
+func (c *FakeS3controlV1alpha1) MultiRegionAccessPoints(namespace string) v1alpha1.MultiRegionAccessPointInterface {
+	return &FakeMultiRegionAccessPoints{c, namespace}
+}
+
+func (c *FakeS3controlV1alpha1) MultiRegionAccessPointPolicies(namespace string) v1alpha1.MultiRegionAccessPointPolicyInterface {
+	return &FakeMultiRegionAccessPointPolicies{c, namespace}
+}
+
+func (c *FakeS3controlV1alpha1) ObjectLambdaAccessPoints(namespace string) v1alpha1.ObjectLambdaAccessPointInterface {
+	return &FakeObjectLambdaAccessPoints{c, namespace}
+}
+
+func (c *FakeS3controlV1alpha1) ObjectLambdaAccessPointPolicies(namespace string) v1alpha1.ObjectLambdaAccessPointPolicyInterface {
+	return &FakeObjectLambdaAccessPointPolicies{c, namespace}
 }
 
 // RESTClient returns a RESTClient that is used to communicate

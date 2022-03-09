@@ -58,6 +58,25 @@ type ElasticsearchDomainSpecAdvancedSecurityOptions struct {
 	MasterUserOptions *ElasticsearchDomainSpecAdvancedSecurityOptionsMasterUserOptions `json:"masterUserOptions,omitempty" tf:"master_user_options"`
 }
 
+type ElasticsearchDomainSpecAutoTuneOptionsMaintenanceScheduleDuration struct {
+	Unit  *string `json:"unit" tf:"unit"`
+	Value *int64  `json:"value" tf:"value"`
+}
+
+type ElasticsearchDomainSpecAutoTuneOptionsMaintenanceSchedule struct {
+	CronExpressionForRecurrence *string                                                            `json:"cronExpressionForRecurrence" tf:"cron_expression_for_recurrence"`
+	Duration                    *ElasticsearchDomainSpecAutoTuneOptionsMaintenanceScheduleDuration `json:"duration" tf:"duration"`
+	StartAt                     *string                                                            `json:"startAt" tf:"start_at"`
+}
+
+type ElasticsearchDomainSpecAutoTuneOptions struct {
+	DesiredState *string `json:"desiredState" tf:"desired_state"`
+	// +optional
+	MaintenanceSchedule []ElasticsearchDomainSpecAutoTuneOptionsMaintenanceSchedule `json:"maintenanceSchedule,omitempty" tf:"maintenance_schedule"`
+	// +optional
+	RollbackOnDisable *string `json:"rollbackOnDisable,omitempty" tf:"rollback_on_disable"`
+}
+
 type ElasticsearchDomainSpecClusterConfigZoneAwarenessConfig struct {
 	// +optional
 	AvailabilityZoneCount *int64 `json:"availabilityZoneCount,omitempty" tf:"availability_zone_count"`
@@ -178,6 +197,8 @@ type ElasticsearchDomainSpecResource struct {
 	AdvancedSecurityOptions *ElasticsearchDomainSpecAdvancedSecurityOptions `json:"advancedSecurityOptions,omitempty" tf:"advanced_security_options"`
 	// +optional
 	Arn *string `json:"arn,omitempty" tf:"arn"`
+	// +optional
+	AutoTuneOptions *ElasticsearchDomainSpecAutoTuneOptions `json:"autoTuneOptions,omitempty" tf:"auto_tune_options"`
 	// +optional
 	ClusterConfig *ElasticsearchDomainSpecClusterConfig `json:"clusterConfig,omitempty" tf:"cluster_config"`
 	// +optional

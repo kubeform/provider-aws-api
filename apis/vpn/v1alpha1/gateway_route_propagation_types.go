@@ -56,6 +56,8 @@ type GatewayRoutePropagationSpec struct {
 }
 
 type GatewayRoutePropagationSpecResource struct {
+	Timeouts *base.ResourceTimeout `json:"timeouts,omitempty" tf:"timeouts"`
+
 	ID string `json:"id,omitempty" tf:"id,omitempty"`
 
 	RouteTableID *string `json:"routeTableID" tf:"route_table_id"`

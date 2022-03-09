@@ -98,6 +98,14 @@ type PartitionListerExpansion interface{}
 // PartitionNamespaceLister.
 type PartitionNamespaceListerExpansion interface{}
 
+// PartitionIndexListerExpansion allows custom methods to be added to
+// PartitionIndexLister.
+type PartitionIndexListerExpansion interface{}
+
+// PartitionIndexNamespaceListerExpansion allows custom methods to be added to
+// PartitionIndexNamespaceLister.
+type PartitionIndexNamespaceListerExpansion interface{}
+
 // RegistryListerExpansion allows custom methods to be added to
 // RegistryLister.
 type RegistryListerExpansion interface{}

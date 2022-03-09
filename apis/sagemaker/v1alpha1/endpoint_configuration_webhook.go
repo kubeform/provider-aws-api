@@ -42,21 +42,26 @@ func (r *EndpointConfiguration) SetupWebhookWithManager(mgr ctrl.Manager) error 
 var _ webhook.Validator = &EndpointConfiguration{}
 
 var endpointconfigurationForceNewList = map[string]bool{
-	"/data_capture_config/*/capture_content_type_header/*/csv_content_types":  true,
-	"/data_capture_config/*/capture_content_type_header/*/json_content_types": true,
-	"/data_capture_config/*/capture_options/*/capture_mode":                   true,
-	"/data_capture_config/*/destination_s3_uri":                               true,
-	"/data_capture_config/*/enable_capture":                                   true,
-	"/data_capture_config/*/initial_sampling_percentage":                      true,
-	"/data_capture_config/*/kms_key_id":                                       true,
-	"/kms_key_arn":                                                            true,
-	"/name":                                                                   true,
-	"/production_variants/*/accelerator_type":                                 true,
-	"/production_variants/*/initial_instance_count":                           true,
-	"/production_variants/*/initial_variant_weight":                           true,
-	"/production_variants/*/instance_type":                                    true,
-	"/production_variants/*/model_name":                                       true,
-	"/production_variants/*/variant_name":                                     true,
+	"/async_inference_config/*/client_config/*/max_concurrent_invocations_per_instance": true,
+	"/async_inference_config/*/output_config/*/kms_key_id":                              true,
+	"/async_inference_config/*/output_config/*/notification_config/*/error_topic":       true,
+	"/async_inference_config/*/output_config/*/notification_config/*/success_topic":     true,
+	"/async_inference_config/*/output_config/*/s3_output_path":                          true,
+	"/data_capture_config/*/capture_content_type_header/*/csv_content_types":            true,
+	"/data_capture_config/*/capture_content_type_header/*/json_content_types":           true,
+	"/data_capture_config/*/capture_options/*/capture_mode":                             true,
+	"/data_capture_config/*/destination_s3_uri":                                         true,
+	"/data_capture_config/*/enable_capture":                                             true,
+	"/data_capture_config/*/initial_sampling_percentage":                                true,
+	"/data_capture_config/*/kms_key_id":                                                 true,
+	"/kms_key_arn":                                                                      true,
+	"/name":                                                                             true,
+	"/production_variants/*/accelerator_type":                                           true,
+	"/production_variants/*/initial_instance_count":                                     true,
+	"/production_variants/*/initial_variant_weight":                                     true,
+	"/production_variants/*/instance_type":                                              true,
+	"/production_variants/*/model_name":                                                 true,
+	"/production_variants/*/variant_name":                                               true,
 }
 
 // ValidateCreate implements webhook.Validator so a webhook will be registered for the type
@@ -102,7 +107,7 @@ func (r *EndpointConfiguration) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range endpointconfigurationForceNewList {
+	for key, _ := range endpointconfigurationForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

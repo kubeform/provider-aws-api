@@ -64,6 +64,10 @@ type WorkspaceSpecResource struct {
 	Arn *string `json:"arn,omitempty" tf:"arn"`
 	// +optional
 	PrometheusEndpoint *string `json:"prometheusEndpoint,omitempty" tf:"prometheus_endpoint"`
+	// +optional
+	Tags *map[string]string `json:"tags,omitempty" tf:"tags"`
+	// +optional
+	TagsAll *map[string]string `json:"tagsAll,omitempty" tf:"tags_all"`
 }
 
 type WorkspaceStatus struct {

@@ -61,6 +61,8 @@ type KeySpecResource struct {
 	// +optional
 	Arn *string `json:"arn,omitempty" tf:"arn"`
 	// +optional
+	BypassPolicyLockoutSafetyCheck *bool `json:"bypassPolicyLockoutSafetyCheck,omitempty" tf:"bypass_policy_lockout_safety_check"`
+	// +optional
 	CustomerMasterKeySpec *string `json:"customerMasterKeySpec,omitempty" tf:"customer_master_key_spec"`
 	// +optional
 	DeletionWindowInDays *int64 `json:"deletionWindowInDays,omitempty" tf:"deletion_window_in_days"`
@@ -74,6 +76,8 @@ type KeySpecResource struct {
 	KeyID *string `json:"keyID,omitempty" tf:"key_id"`
 	// +optional
 	KeyUsage *string `json:"keyUsage,omitempty" tf:"key_usage"`
+	// +optional
+	MultiRegion *bool `json:"multiRegion,omitempty" tf:"multi_region"`
 	// +optional
 	Policy *string `json:"policy,omitempty" tf:"policy"`
 	// +optional

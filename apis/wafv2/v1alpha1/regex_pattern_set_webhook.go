@@ -89,7 +89,7 @@ func (r *RegexPatternSet) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range regexpatternsetForceNewList {
+	for key, _ := range regexpatternsetForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

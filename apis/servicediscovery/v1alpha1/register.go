@@ -58,6 +58,8 @@ func addKnownTypes(scheme *runtime.Scheme) error {
 	scheme.AddKnownTypes(SchemeGroupVersion,
 		&HttpNamespace{},
 		&HttpNamespaceList{},
+		&Instance{},
+		&InstanceList{},
 		&PrivateDNSNamespace{},
 		&PrivateDNSNamespaceList{},
 		&PublicDNSNamespace{},

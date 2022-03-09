@@ -32,6 +32,8 @@ type Interface interface {
 	Snapshots() SnapshotInformer
 	// SnapshotCopies returns a SnapshotCopyInformer.
 	SnapshotCopies() SnapshotCopyInformer
+	// SnapshotImports returns a SnapshotImportInformer.
+	SnapshotImports() SnapshotImportInformer
 	// Volumes returns a VolumeInformer.
 	Volumes() VolumeInformer
 }
@@ -65,6 +67,11 @@ func (v *version) Snapshots() SnapshotInformer {
 // SnapshotCopies returns a SnapshotCopyInformer.
 func (v *version) SnapshotCopies() SnapshotCopyInformer {
 	return &snapshotCopyInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
+// SnapshotImports returns a SnapshotImportInformer.
+func (v *version) SnapshotImports() SnapshotImportInformer {
+	return &snapshotImportInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
 }
 
 // Volumes returns a VolumeInformer.

@@ -18,10 +18,18 @@ limitations under the License.
 
 package v1alpha1
 
+type AccountSettingDefaultExpansion interface{}
+
 type CapacityProviderExpansion interface{}
 
 type ClusterExpansion interface{}
 
+type ClusterCapacityProvidersExpansion interface{}
+
 type ServiceExpansion interface{}
 
+type TagExpansion interface{}
+
 type TaskDefinitionExpansion interface{}
+
+type TaskSetExpansion interface{}

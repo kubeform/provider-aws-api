@@ -89,7 +89,7 @@ func (r *IdentityNotificationTopic) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range identitynotificationtopicForceNewList {
+	for key, _ := range identitynotificationtopicForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

@@ -42,6 +42,7 @@ func GetEncoder() map[string]jsoniter.ValEncoder {
 		jsoniter.MustGetKind(reflect2.TypeOf(EventTargetSpecHttpTarget{}).Type1()):                                 EventTargetSpecHttpTargetCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(EventTargetSpecInputTransformer{}).Type1()):                           EventTargetSpecInputTransformerCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(EventTargetSpecKinesisTarget{}).Type1()):                              EventTargetSpecKinesisTargetCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(EventTargetSpecRedshiftTarget{}).Type1()):                             EventTargetSpecRedshiftTargetCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(EventTargetSpecRetryPolicy{}).Type1()):                                EventTargetSpecRetryPolicyCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(EventTargetSpecSqsTarget{}).Type1()):                                  EventTargetSpecSqsTargetCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(LogMetricFilterSpecMetricTransformation{}).Type1()):                   LogMetricFilterSpecMetricTransformationCodec{},
@@ -66,6 +67,7 @@ func GetDecoder() map[string]jsoniter.ValDecoder {
 		jsoniter.MustGetKind(reflect2.TypeOf(EventTargetSpecHttpTarget{}).Type1()):                                 EventTargetSpecHttpTargetCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(EventTargetSpecInputTransformer{}).Type1()):                           EventTargetSpecInputTransformerCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(EventTargetSpecKinesisTarget{}).Type1()):                              EventTargetSpecKinesisTargetCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(EventTargetSpecRedshiftTarget{}).Type1()):                             EventTargetSpecRedshiftTargetCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(EventTargetSpecRetryPolicy{}).Type1()):                                EventTargetSpecRetryPolicyCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(EventTargetSpecSqsTarget{}).Type1()):                                  EventTargetSpecSqsTargetCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(LogMetricFilterSpecMetricTransformation{}).Type1()):                   LogMetricFilterSpecMetricTransformationCodec{},
@@ -1267,6 +1269,85 @@ func (EventTargetSpecKinesisTargetCodec) Decode(ptr unsafe.Pointer, iter *jsonit
 		}
 	default:
 		iter.ReportError("decode EventTargetSpecKinesisTarget", "unexpected JSON type")
+	}
+}
+
+// +k8s:deepcopy-gen=false
+type EventTargetSpecRedshiftTargetCodec struct {
+}
+
+func (EventTargetSpecRedshiftTargetCodec) IsEmpty(ptr unsafe.Pointer) bool {
+	return (*EventTargetSpecRedshiftTarget)(ptr) == nil
+}
+
+func (EventTargetSpecRedshiftTargetCodec) Encode(ptr unsafe.Pointer, stream *jsoniter.Stream) {
+	obj := (*EventTargetSpecRedshiftTarget)(ptr)
+	var objs []EventTargetSpecRedshiftTarget
+	if obj != nil {
+		objs = []EventTargetSpecRedshiftTarget{*obj}
+	}
+
+	jsonit := jsoniter.Config{
+		EscapeHTML:             true,
+		SortMapKeys:            true,
+		ValidateJsonRawMessage: true,
+		TagKey:                 "tf",
+		TypeEncoders:           getEncodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(EventTargetSpecRedshiftTarget{}).Type1())),
+	}.Froze()
+
+	byt, _ := jsonit.Marshal(objs)
+
+	stream.Write(byt)
+}
+
+func (EventTargetSpecRedshiftTargetCodec) Decode(ptr unsafe.Pointer, iter *jsoniter.Iterator) {
+	switch iter.WhatIsNext() {
+	case jsoniter.NilValue:
+		iter.Skip()
+		*(*EventTargetSpecRedshiftTarget)(ptr) = EventTargetSpecRedshiftTarget{}
+		return
+	case jsoniter.ArrayValue:
+		objsByte := iter.SkipAndReturnBytes()
+		if len(objsByte) > 0 {
+			var objs []EventTargetSpecRedshiftTarget
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(EventTargetSpecRedshiftTarget{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objsByte, &objs)
+
+			if len(objs) > 0 {
+				*(*EventTargetSpecRedshiftTarget)(ptr) = objs[0]
+			} else {
+				*(*EventTargetSpecRedshiftTarget)(ptr) = EventTargetSpecRedshiftTarget{}
+			}
+		} else {
+			*(*EventTargetSpecRedshiftTarget)(ptr) = EventTargetSpecRedshiftTarget{}
+		}
+	case jsoniter.ObjectValue:
+		objByte := iter.SkipAndReturnBytes()
+		if len(objByte) > 0 {
+			var obj EventTargetSpecRedshiftTarget
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(EventTargetSpecRedshiftTarget{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objByte, &obj)
+
+			*(*EventTargetSpecRedshiftTarget)(ptr) = obj
+		} else {
+			*(*EventTargetSpecRedshiftTarget)(ptr) = EventTargetSpecRedshiftTarget{}
+		}
+	default:
+		iter.ReportError("decode EventTargetSpecRedshiftTarget", "unexpected JSON type")
 	}
 }
 

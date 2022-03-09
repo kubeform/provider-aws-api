@@ -86,7 +86,7 @@ func (r *FindingsFilter) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range findingsfilterForceNewList {
+	for key, _ := range findingsfilterForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

@@ -28,6 +28,7 @@ import (
 type DatapipelineV1alpha1Interface interface {
 	RESTClient() rest.Interface
 	PipelinesGetter
+	PipelineDefinitionsGetter
 }
 
 // DatapipelineV1alpha1Client is used to interact with features provided by the datapipeline.aws.kubeform.com group.
@@ -37,6 +38,10 @@ type DatapipelineV1alpha1Client struct {
 
 func (c *DatapipelineV1alpha1Client) Pipelines(namespace string) PipelineInterface {
 	return newPipelines(c, namespace)
+}
+
+func (c *DatapipelineV1alpha1Client) PipelineDefinitions(namespace string) PipelineDefinitionInterface {
+	return newPipelineDefinitions(c, namespace)
 }
 
 // NewForConfig creates a new DatapipelineV1alpha1Client for the given config.

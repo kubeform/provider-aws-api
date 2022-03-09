@@ -46,8 +46,9 @@ var endpointForceNewList = map[string]bool{
 	"/elasticsearch_settings/*/error_retry_duration":       true,
 	"/elasticsearch_settings/*/full_load_error_percentage": true,
 	"/elasticsearch_settings/*/service_access_role_arn":    true,
-	"/endpoint_id": true,
-	"/kms_key_arn": true,
+	"/endpoint_id":                       true,
+	"/kinesis_settings/*/message_format": true,
+	"/kms_key_arn":                       true,
 }
 
 // ValidateCreate implements webhook.Validator so a webhook will be registered for the type
@@ -93,7 +94,7 @@ func (r *Endpoint) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range endpointForceNewList {
+	for key, _ := range endpointForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

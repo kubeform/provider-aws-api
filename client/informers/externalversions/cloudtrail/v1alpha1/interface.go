@@ -26,6 +26,8 @@ import (
 type Interface interface {
 	// Cloudtrails returns a CloudtrailInformer.
 	Cloudtrails() CloudtrailInformer
+	// EventDataStores returns a EventDataStoreInformer.
+	EventDataStores() EventDataStoreInformer
 }
 
 type version struct {
@@ -42,4 +44,9 @@ func New(f internalinterfaces.SharedInformerFactory, namespace string, tweakList
 // Cloudtrails returns a CloudtrailInformer.
 func (v *version) Cloudtrails() CloudtrailInformer {
 	return &cloudtrailInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
+// EventDataStores returns a EventDataStoreInformer.
+func (v *version) EventDataStores() EventDataStoreInformer {
+	return &eventDataStoreInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
 }

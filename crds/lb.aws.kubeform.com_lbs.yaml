@@ -74,6 +74,8 @@ spec:
                     type: string
                   customerOwnedIpv4Pool:
                     type: string
+                  desyncMitigationMode:
+                    type: string
                   dnsName:
                     type: string
                   dropInvalidHeaderFields:
@@ -83,6 +85,8 @@ spec:
                   enableDeletionProtection:
                     type: boolean
                   enableHttp2:
+                    type: boolean
+                  enableWafFailOpen:
                     type: boolean
                   id:
                     type: string
@@ -194,6 +198,8 @@ spec:
                     type: string
                   customerOwnedIpv4Pool:
                     type: string
+                  desyncMitigationMode:
+                    type: string
                   dnsName:
                     type: string
                   dropInvalidHeaderFields:
@@ -203,6 +209,8 @@ spec:
                   enableDeletionProtection:
                     type: boolean
                   enableHttp2:
+                    type: boolean
+                  enableWafFailOpen:
                     type: boolean
                   id:
                     type: string

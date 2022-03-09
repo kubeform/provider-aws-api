@@ -45,6 +45,8 @@ type ProjectSpecArtifacts struct {
 	// +optional
 	ArtifactIdentifier *string `json:"artifactIdentifier,omitempty" tf:"artifact_identifier"`
 	// +optional
+	BucketOwnerAccess *string `json:"bucketOwnerAccess,omitempty" tf:"bucket_owner_access"`
+	// +optional
 	EncryptionDisabled *bool `json:"encryptionDisabled,omitempty" tf:"encryption_disabled"`
 	// +optional
 	Location *string `json:"location,omitempty" tf:"location"`
@@ -139,6 +141,8 @@ type ProjectSpecLogsConfigCloudwatchLogs struct {
 
 type ProjectSpecLogsConfigS3Logs struct {
 	// +optional
+	BucketOwnerAccess *string `json:"bucketOwnerAccess,omitempty" tf:"bucket_owner_access"`
+	// +optional
 	EncryptionDisabled *bool `json:"encryptionDisabled,omitempty" tf:"encryption_disabled"`
 	// +optional
 	Location *string `json:"location,omitempty" tf:"location"`
@@ -156,6 +160,8 @@ type ProjectSpecLogsConfig struct {
 type ProjectSpecSecondaryArtifacts struct {
 	ArtifactIdentifier *string `json:"artifactIdentifier" tf:"artifact_identifier"`
 	// +optional
+	BucketOwnerAccess *string `json:"bucketOwnerAccess,omitempty" tf:"bucket_owner_access"`
+	// +optional
 	EncryptionDisabled *bool `json:"encryptionDisabled,omitempty" tf:"encryption_disabled"`
 	// +optional
 	Location *string `json:"location,omitempty" tf:"location"`
@@ -170,6 +176,11 @@ type ProjectSpecSecondaryArtifacts struct {
 	// +optional
 	Path *string `json:"path,omitempty" tf:"path"`
 	Type *string `json:"type" tf:"type"`
+}
+
+type ProjectSpecSecondarySourceVersion struct {
+	SourceIdentifier *string `json:"sourceIdentifier" tf:"source_identifier"`
+	SourceVersion    *string `json:"sourceVersion" tf:"source_version"`
 }
 
 type ProjectSpecSecondarySourcesAuth struct {
@@ -304,10 +315,19 @@ type ProjectSpecResource struct {
 	LogsConfig *ProjectSpecLogsConfig `json:"logsConfig,omitempty" tf:"logs_config"`
 	Name       *string                `json:"name" tf:"name"`
 	// +optional
+	ProjectVisibility *string `json:"projectVisibility,omitempty" tf:"project_visibility"`
+	// +optional
+	PublicProjectAlias *string `json:"publicProjectAlias,omitempty" tf:"public_project_alias"`
+	// +optional
 	QueuedTimeout *int64 `json:"queuedTimeout,omitempty" tf:"queued_timeout"`
+	// +optional
+	ResourceAccessRole *string `json:"resourceAccessRole,omitempty" tf:"resource_access_role"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=12
 	SecondaryArtifacts []ProjectSpecSecondaryArtifacts `json:"secondaryArtifacts,omitempty" tf:"secondary_artifacts"`
+	// +optional
+	// +kubebuilder:validation:MaxItems=12
+	SecondarySourceVersion []ProjectSpecSecondarySourceVersion `json:"secondarySourceVersion,omitempty" tf:"secondary_source_version"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=12
 	SecondarySources []ProjectSpecSecondarySources `json:"secondarySources,omitempty" tf:"secondary_sources"`

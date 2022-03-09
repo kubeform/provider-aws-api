@@ -89,7 +89,7 @@ func (r *EndpointRouteTableAssociation) ValidateUpdate(old runtime.Object) error
 		return err
 	}
 
-	for key := range endpointroutetableassociationForceNewList {
+	for key, _ := range endpointroutetableassociationForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

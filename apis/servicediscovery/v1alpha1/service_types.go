@@ -91,6 +91,8 @@ type ServiceSpecResource struct {
 	// +optional
 	DnsConfig *ServiceSpecDnsConfig `json:"dnsConfig,omitempty" tf:"dns_config"`
 	// +optional
+	ForceDestroy *bool `json:"forceDestroy,omitempty" tf:"force_destroy"`
+	// +optional
 	HealthCheckConfig *ServiceSpecHealthCheckConfig `json:"healthCheckConfig,omitempty" tf:"health_check_config"`
 	// +optional
 	HealthCheckCustomConfig *ServiceSpecHealthCheckCustomConfig `json:"healthCheckCustomConfig,omitempty" tf:"health_check_custom_config"`

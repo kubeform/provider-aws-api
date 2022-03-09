@@ -62,6 +62,8 @@ func addKnownTypes(scheme *runtime.Scheme) error {
 		&EventSubscriptionList{},
 		&ParameterGroup{},
 		&ParameterGroupList{},
+		&ScheduledAction{},
+		&ScheduledActionList{},
 		&SecurityGroup{},
 		&SecurityGroupList{},
 		&SnapshotCopyGrant{},

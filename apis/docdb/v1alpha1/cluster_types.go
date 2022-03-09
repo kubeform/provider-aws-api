@@ -95,6 +95,8 @@ type ClusterSpecResource struct {
 	// +optional
 	FinalSnapshotIdentifier *string `json:"finalSnapshotIdentifier,omitempty" tf:"final_snapshot_identifier"`
 	// +optional
+	GlobalClusterIdentifier *string `json:"globalClusterIdentifier,omitempty" tf:"global_cluster_identifier"`
+	// +optional
 	HostedZoneID *string `json:"hostedZoneID,omitempty" tf:"hosted_zone_id"`
 	// +optional
 	KmsKeyID *string `json:"kmsKeyID,omitempty" tf:"kms_key_id"`

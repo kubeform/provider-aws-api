@@ -28,6 +28,7 @@ import (
 type ImagebuilderV1alpha1Interface interface {
 	RESTClient() rest.Interface
 	ComponentsGetter
+	ContainerRecipesGetter
 	DistributionConfigurationsGetter
 	ImagesGetter
 	ImagePipelinesGetter
@@ -42,6 +43,10 @@ type ImagebuilderV1alpha1Client struct {
 
 func (c *ImagebuilderV1alpha1Client) Components(namespace string) ComponentInterface {
 	return newComponents(c, namespace)
+}
+
+func (c *ImagebuilderV1alpha1Client) ContainerRecipes(namespace string) ContainerRecipeInterface {
+	return newContainerRecipes(c, namespace)
 }
 
 func (c *ImagebuilderV1alpha1Client) DistributionConfigurations(namespace string) DistributionConfigurationInterface {

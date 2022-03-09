@@ -42,10 +42,11 @@ func (r *Build) SetupWebhookWithManager(mgr ctrl.Manager) error {
 var _ webhook.Validator = &Build{}
 
 var buildForceNewList = map[string]bool{
-	"/operating_system":            true,
-	"/storage_location/*/bucket":   true,
-	"/storage_location/*/key":      true,
-	"/storage_location/*/role_arn": true,
+	"/operating_system":                  true,
+	"/storage_location/*/bucket":         true,
+	"/storage_location/*/key":            true,
+	"/storage_location/*/object_version": true,
+	"/storage_location/*/role_arn":       true,
 }
 
 // ValidateCreate implements webhook.Validator so a webhook will be registered for the type
@@ -91,7 +92,7 @@ func (r *Build) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range buildForceNewList {
+	for key, _ := range buildForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

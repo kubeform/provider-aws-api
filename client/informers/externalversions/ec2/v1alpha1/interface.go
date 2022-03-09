@@ -40,12 +40,22 @@ type Interface interface {
 	ClientVPNRoutes() ClientVPNRouteInformer
 	// Fleets returns a FleetInformer.
 	Fleets() FleetInformer
+	// Hosts returns a HostInformer.
+	Hosts() HostInformer
 	// LocalGatewayRoutes returns a LocalGatewayRouteInformer.
 	LocalGatewayRoutes() LocalGatewayRouteInformer
 	// LocalGatewayRouteTableVpcAssociations returns a LocalGatewayRouteTableVpcAssociationInformer.
 	LocalGatewayRouteTableVpcAssociations() LocalGatewayRouteTableVpcAssociationInformer
 	// ManagedPrefixLists returns a ManagedPrefixListInformer.
 	ManagedPrefixLists() ManagedPrefixListInformer
+	// ManagedPrefixListEntries returns a ManagedPrefixListEntryInformer.
+	ManagedPrefixListEntries() ManagedPrefixListEntryInformer
+	// NetworkInsightsPaths returns a NetworkInsightsPathInformer.
+	NetworkInsightsPaths() NetworkInsightsPathInformer
+	// SerialConsoleAccesses returns a SerialConsoleAccessInformer.
+	SerialConsoleAccesses() SerialConsoleAccessInformer
+	// SubnetCIDRReservations returns a SubnetCIDRReservationInformer.
+	SubnetCIDRReservations() SubnetCIDRReservationInformer
 	// Tags returns a TagInformer.
 	Tags() TagInformer
 	// TrafficMirrorFilters returns a TrafficMirrorFilterInformer.
@@ -58,6 +68,18 @@ type Interface interface {
 	TrafficMirrorTargets() TrafficMirrorTargetInformer
 	// TransitGateways returns a TransitGatewayInformer.
 	TransitGateways() TransitGatewayInformer
+	// TransitGatewayConnects returns a TransitGatewayConnectInformer.
+	TransitGatewayConnects() TransitGatewayConnectInformer
+	// TransitGatewayConnectPeers returns a TransitGatewayConnectPeerInformer.
+	TransitGatewayConnectPeers() TransitGatewayConnectPeerInformer
+	// TransitGatewayMulticastDomains returns a TransitGatewayMulticastDomainInformer.
+	TransitGatewayMulticastDomains() TransitGatewayMulticastDomainInformer
+	// TransitGatewayMulticastDomainAssociations returns a TransitGatewayMulticastDomainAssociationInformer.
+	TransitGatewayMulticastDomainAssociations() TransitGatewayMulticastDomainAssociationInformer
+	// TransitGatewayMulticastGroupMembers returns a TransitGatewayMulticastGroupMemberInformer.
+	TransitGatewayMulticastGroupMembers() TransitGatewayMulticastGroupMemberInformer
+	// TransitGatewayMulticastGroupSources returns a TransitGatewayMulticastGroupSourceInformer.
+	TransitGatewayMulticastGroupSources() TransitGatewayMulticastGroupSourceInformer
 	// TransitGatewayPeeringAttachments returns a TransitGatewayPeeringAttachmentInformer.
 	TransitGatewayPeeringAttachments() TransitGatewayPeeringAttachmentInformer
 	// TransitGatewayPeeringAttachmentAccepters returns a TransitGatewayPeeringAttachmentAccepterInformer.
@@ -129,6 +151,11 @@ func (v *version) Fleets() FleetInformer {
 	return &fleetInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
 }
 
+// Hosts returns a HostInformer.
+func (v *version) Hosts() HostInformer {
+	return &hostInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
 // LocalGatewayRoutes returns a LocalGatewayRouteInformer.
 func (v *version) LocalGatewayRoutes() LocalGatewayRouteInformer {
 	return &localGatewayRouteInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
@@ -142,6 +169,26 @@ func (v *version) LocalGatewayRouteTableVpcAssociations() LocalGatewayRouteTable
 // ManagedPrefixLists returns a ManagedPrefixListInformer.
 func (v *version) ManagedPrefixLists() ManagedPrefixListInformer {
 	return &managedPrefixListInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
+// ManagedPrefixListEntries returns a ManagedPrefixListEntryInformer.
+func (v *version) ManagedPrefixListEntries() ManagedPrefixListEntryInformer {
+	return &managedPrefixListEntryInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
+// NetworkInsightsPaths returns a NetworkInsightsPathInformer.
+func (v *version) NetworkInsightsPaths() NetworkInsightsPathInformer {
+	return &networkInsightsPathInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
+// SerialConsoleAccesses returns a SerialConsoleAccessInformer.
+func (v *version) SerialConsoleAccesses() SerialConsoleAccessInformer {
+	return &serialConsoleAccessInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
+// SubnetCIDRReservations returns a SubnetCIDRReservationInformer.
+func (v *version) SubnetCIDRReservations() SubnetCIDRReservationInformer {
+	return &subnetCIDRReservationInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
 }
 
 // Tags returns a TagInformer.
@@ -172,6 +219,36 @@ func (v *version) TrafficMirrorTargets() TrafficMirrorTargetInformer {
 // TransitGateways returns a TransitGatewayInformer.
 func (v *version) TransitGateways() TransitGatewayInformer {
 	return &transitGatewayInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
+// TransitGatewayConnects returns a TransitGatewayConnectInformer.
+func (v *version) TransitGatewayConnects() TransitGatewayConnectInformer {
+	return &transitGatewayConnectInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
+// TransitGatewayConnectPeers returns a TransitGatewayConnectPeerInformer.
+func (v *version) TransitGatewayConnectPeers() TransitGatewayConnectPeerInformer {
+	return &transitGatewayConnectPeerInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
+// TransitGatewayMulticastDomains returns a TransitGatewayMulticastDomainInformer.
+func (v *version) TransitGatewayMulticastDomains() TransitGatewayMulticastDomainInformer {
+	return &transitGatewayMulticastDomainInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
+// TransitGatewayMulticastDomainAssociations returns a TransitGatewayMulticastDomainAssociationInformer.
+func (v *version) TransitGatewayMulticastDomainAssociations() TransitGatewayMulticastDomainAssociationInformer {
+	return &transitGatewayMulticastDomainAssociationInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
+// TransitGatewayMulticastGroupMembers returns a TransitGatewayMulticastGroupMemberInformer.
+func (v *version) TransitGatewayMulticastGroupMembers() TransitGatewayMulticastGroupMemberInformer {
+	return &transitGatewayMulticastGroupMemberInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
+// TransitGatewayMulticastGroupSources returns a TransitGatewayMulticastGroupSourceInformer.
+func (v *version) TransitGatewayMulticastGroupSources() TransitGatewayMulticastGroupSourceInformer {
+	return &transitGatewayMulticastGroupSourceInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
 }
 
 // TransitGatewayPeeringAttachments returns a TransitGatewayPeeringAttachmentInformer.

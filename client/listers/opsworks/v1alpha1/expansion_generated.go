@@ -34,6 +34,14 @@ type CustomLayerListerExpansion interface{}
 // CustomLayerNamespaceLister.
 type CustomLayerNamespaceListerExpansion interface{}
 
+// EcsClusterLayerListerExpansion allows custom methods to be added to
+// EcsClusterLayerLister.
+type EcsClusterLayerListerExpansion interface{}
+
+// EcsClusterLayerNamespaceListerExpansion allows custom methods to be added to
+// EcsClusterLayerNamespaceLister.
+type EcsClusterLayerNamespaceListerExpansion interface{}
+
 // GangliaLayerListerExpansion allows custom methods to be added to
 // GangliaLayerLister.
 type GangliaLayerListerExpansion interface{}

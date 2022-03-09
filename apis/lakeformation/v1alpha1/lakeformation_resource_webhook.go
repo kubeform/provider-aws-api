@@ -89,7 +89,7 @@ func (r *LakeformationResource) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range lakeformationresourceForceNewList {
+	for key, _ := range lakeformationresourceForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

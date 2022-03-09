@@ -35,6 +35,7 @@ type ServicecatalogV1alpha1Interface interface {
 	PrincipalPortfolioAssociationsGetter
 	ProductsGetter
 	ProductPortfolioAssociationsGetter
+	ProvisionedProductsGetter
 	ProvisioningArtifactsGetter
 	ServiceActionsGetter
 	TagOptionsGetter
@@ -76,6 +77,10 @@ func (c *ServicecatalogV1alpha1Client) Products(namespace string) ProductInterfa
 
 func (c *ServicecatalogV1alpha1Client) ProductPortfolioAssociations(namespace string) ProductPortfolioAssociationInterface {
 	return newProductPortfolioAssociations(c, namespace)
+}
+
+func (c *ServicecatalogV1alpha1Client) ProvisionedProducts(namespace string) ProvisionedProductInterface {
+	return newProvisionedProducts(c, namespace)
 }
 
 func (c *ServicecatalogV1alpha1Client) ProvisioningArtifacts(namespace string) ProvisioningArtifactInterface {

@@ -41,12 +41,36 @@ func (c *FakeS3V1alpha1) Buckets(namespace string) v1alpha1.BucketInterface {
 	return &FakeBuckets{c, namespace}
 }
 
+func (c *FakeS3V1alpha1) BucketACLs(namespace string) v1alpha1.BucketACLInterface {
+	return &FakeBucketACLs{c, namespace}
+}
+
+func (c *FakeS3V1alpha1) BucketAccelerateConfigurations(namespace string) v1alpha1.BucketAccelerateConfigurationInterface {
+	return &FakeBucketAccelerateConfigurations{c, namespace}
+}
+
 func (c *FakeS3V1alpha1) BucketAnalyticsConfigurations(namespace string) v1alpha1.BucketAnalyticsConfigurationInterface {
 	return &FakeBucketAnalyticsConfigurations{c, namespace}
 }
 
+func (c *FakeS3V1alpha1) BucketCorsConfigurations(namespace string) v1alpha1.BucketCorsConfigurationInterface {
+	return &FakeBucketCorsConfigurations{c, namespace}
+}
+
+func (c *FakeS3V1alpha1) BucketIntelligentTieringConfigurations(namespace string) v1alpha1.BucketIntelligentTieringConfigurationInterface {
+	return &FakeBucketIntelligentTieringConfigurations{c, namespace}
+}
+
 func (c *FakeS3V1alpha1) BucketInventories(namespace string) v1alpha1.BucketInventoryInterface {
 	return &FakeBucketInventories{c, namespace}
+}
+
+func (c *FakeS3V1alpha1) BucketLifecycleConfigurations(namespace string) v1alpha1.BucketLifecycleConfigurationInterface {
+	return &FakeBucketLifecycleConfigurations{c, namespace}
+}
+
+func (c *FakeS3V1alpha1) BucketLoggings(namespace string) v1alpha1.BucketLoggingInterface {
+	return &FakeBucketLoggings{c, namespace}
 }
 
 func (c *FakeS3V1alpha1) BucketMetrics(namespace string) v1alpha1.BucketMetricInterface {
@@ -61,6 +85,10 @@ func (c *FakeS3V1alpha1) BucketObjects(namespace string) v1alpha1.BucketObjectIn
 	return &FakeBucketObjects{c, namespace}
 }
 
+func (c *FakeS3V1alpha1) BucketObjectLockConfigurations(namespace string) v1alpha1.BucketObjectLockConfigurationInterface {
+	return &FakeBucketObjectLockConfigurations{c, namespace}
+}
+
 func (c *FakeS3V1alpha1) BucketOwnershipControlses(namespace string) v1alpha1.BucketOwnershipControlsInterface {
 	return &FakeBucketOwnershipControlses{c, namespace}
 }
@@ -71,6 +99,30 @@ func (c *FakeS3V1alpha1) BucketPolicies(namespace string) v1alpha1.BucketPolicyI
 
 func (c *FakeS3V1alpha1) BucketPublicAccessBlocks(namespace string) v1alpha1.BucketPublicAccessBlockInterface {
 	return &FakeBucketPublicAccessBlocks{c, namespace}
+}
+
+func (c *FakeS3V1alpha1) BucketReplicationConfigurations(namespace string) v1alpha1.BucketReplicationConfigurationInterface {
+	return &FakeBucketReplicationConfigurations{c, namespace}
+}
+
+func (c *FakeS3V1alpha1) BucketRequestPaymentConfigurations(namespace string) v1alpha1.BucketRequestPaymentConfigurationInterface {
+	return &FakeBucketRequestPaymentConfigurations{c, namespace}
+}
+
+func (c *FakeS3V1alpha1) BucketServerSideEncryptionConfigurations(namespace string) v1alpha1.BucketServerSideEncryptionConfigurationInterface {
+	return &FakeBucketServerSideEncryptionConfigurations{c, namespace}
+}
+
+func (c *FakeS3V1alpha1) BucketVersionings(namespace string) v1alpha1.BucketVersioningInterface {
+	return &FakeBucketVersionings{c, namespace}
+}
+
+func (c *FakeS3V1alpha1) BucketWebsiteConfigurations(namespace string) v1alpha1.BucketWebsiteConfigurationInterface {
+	return &FakeBucketWebsiteConfigurations{c, namespace}
+}
+
+func (c *FakeS3V1alpha1) Objects(namespace string) v1alpha1.ObjectInterface {
+	return &FakeObjects{c, namespace}
 }
 
 func (c *FakeS3V1alpha1) ObjectCopies(namespace string) v1alpha1.ObjectCopyInterface {

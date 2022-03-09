@@ -38,6 +38,8 @@ type Interface interface {
 	ConformancePacks() ConformancePackInformer
 	// DeliveryChannels returns a DeliveryChannelInformer.
 	DeliveryChannels() DeliveryChannelInformer
+	// OrganizationConformancePacks returns a OrganizationConformancePackInformer.
+	OrganizationConformancePacks() OrganizationConformancePackInformer
 	// OrganizationCustomRules returns a OrganizationCustomRuleInformer.
 	OrganizationCustomRules() OrganizationCustomRuleInformer
 	// OrganizationManagedRules returns a OrganizationManagedRuleInformer.
@@ -90,6 +92,11 @@ func (v *version) ConformancePacks() ConformancePackInformer {
 // DeliveryChannels returns a DeliveryChannelInformer.
 func (v *version) DeliveryChannels() DeliveryChannelInformer {
 	return &deliveryChannelInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
+// OrganizationConformancePacks returns a OrganizationConformancePackInformer.
+func (v *version) OrganizationConformancePacks() OrganizationConformancePackInformer {
+	return &organizationConformancePackInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
 }
 
 // OrganizationCustomRules returns a OrganizationCustomRuleInformer.

@@ -59,8 +59,6 @@ spec:
                 properties:
                   arn:
                     type: string
-                  customerGatewayConfiguration:
-                    type: string
                   customerGatewayID:
                     type: string
                   enableAcceleration:
@@ -244,6 +242,8 @@ spec:
                         acceptedRouteCount:
                           format: int64
                           type: integer
+                        certificateArn:
+                          type: string
                         lastStatusChange:
                           type: string
                         outsideIPAddress:
@@ -273,8 +273,6 @@ spec:
                 properties:
                   arn:
                     type: string
-                  customerGatewayConfiguration:
-                    type: string
                   customerGatewayID:
                     type: string
                   enableAcceleration:
@@ -458,6 +456,8 @@ spec:
                         acceptedRouteCount:
                           format: int64
                           type: integer
+                        certificateArn:
+                          type: string
                         lastStatusChange:
                           type: string
                         outsideIPAddress:

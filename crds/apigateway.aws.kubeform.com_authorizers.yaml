@@ -57,6 +57,8 @@ spec:
                 type: object
               resource:
                 properties:
+                  arn:
+                    type: string
                   authorizerCredentials:
                     type: string
                   authorizerResultTtlInSeconds:
@@ -86,6 +88,8 @@ spec:
                 type: object
               state:
                 properties:
+                  arn:
+                    type: string
                   authorizerCredentials:
                     type: string
                   authorizerResultTtlInSeconds:
